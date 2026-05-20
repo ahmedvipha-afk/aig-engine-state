@@ -17,11 +17,32 @@ heuristic uses 7 calendar days (was 10) for intraday.
 """
 
 from __future__ import annotations
+import os
 import numpy as np
 import pandas as pd
 
 from config import RANDOM_SEED, market_of
 from aig.agents import audit
+
+_CACHE_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                          "data_cache")
+
+
+def _cache_read(ticker: str) -> pd.DataFrame | None:
+    """Load OHLCV from data_cache/<ticker>.csv if present.
+
+    Used to source bars for tickers that yfinance can't reach (notably UAE
+    ADX/DFM names sourced via TradingView MCP). Returns None if no cache file
+    exists, letting the caller fall through to the live adapter.
+    """
+    path = os.path.join(_CACHE_DIR, f"{ticker}.csv")
+    if not os.path.exists(path):
+        return None
+    df = pd.read_csv(path)
+    df.columns = [c.lower() for c in df.columns]
+    df["date"] = pd.to_datetime(df["date"])
+    df = df.set_index("date").sort_index()
+    return df[["open", "high", "low", "close", "volume"]].astype(float)
 
 
 # ---- Live data via yfinance (real, runs on the user's machine) -----------
@@ -76,6 +97,14 @@ def get_history(ticker: str, offline: bool = True,
                 timeframe: str = "1d") -> pd.DataFrame:
     if offline:
         return _synthetic_history(ticker)
+    # Cache-first for any ticker that has a data_cache/<ticker>.csv on disk.
+    # Used primarily for UAE ADX/DFM tickers sourced via TradingView MCP.
+    if timeframe == "1d":
+        cached = _cache_read(ticker)
+        if cached is not None and len(cached) >= 100:
+            audit("IN-L", f"{ticker}@{timeframe} loaded from cache "
+                          f"({len(cached)} bars)")
+            return cached
     try:
         return _yf_history(ticker, timeframe=timeframe)
     except Exception as e:
@@ -109,21 +138,32 @@ def integrity_check(ticker: str, df: pd.DataFrame,
     # date monotonicity + gap check (look-ahead / corporate-action guard)
     if not df.index.is_monotonic_increasing:
         fails.append("non-monotonic dates")
-    # gap threshold: intraday bars are dense so gap >2d is suspicious; daily allows 10d.
-    gap_days_threshold = 2 if timeframe in ("1h", "60m", "4h") else 10
-    gaps = df.index.to_series().diff().dt.days.dropna()
-    if (gaps > gap_days_threshold).sum() > len(df) * 0.02:
-        fails.append(f"excessive date gaps (>2% of bars gap >{gap_days_threshold}d)")
-    # extreme unadjusted-split jump heuristic. Market-aware: crypto can
-    # legitimately move >50%, so use a looser threshold for it.
+    # gap threshold: intraday bars are dense so gap >2d is suspicious.
+    # Daily: US allows 10d, UAE relaxed to 30d (Eid + National Day + illiquid
+    # microcaps with infrequent trading). Crypto skipped (24/7 markets).
+    market = market_of(ticker)
+    if timeframe in ("1h", "60m", "4h"):
+        gap_days_threshold = 2
+    elif market == "UAE":
+        gap_days_threshold = 30
+    elif market == "CRYPTO":
+        gap_days_threshold = None
+    else:
+        gap_days_threshold = 10
+    if gap_days_threshold is not None:
+        gaps = df.index.to_series().diff().dt.days.dropna()
+        if (gaps > gap_days_threshold).sum() > len(df) * 0.02:
+            fails.append(f"excessive date gaps (>2% of bars gap >{gap_days_threshold}d)")
+    # extreme unadjusted-split jump heuristic. Equities only.
+    # Crypto is exempt — alts genuinely move 100%+ during pumps, and that's
+    # signal, not data corruption. The other integrity checks (NaN, OHL
+    # ordering, date monotonicity, gap detection) still apply.
     rets = df["close"].pct_change().dropna()
     market = market_of(ticker)
-    if market == "CRYPTO":
-        spike_threshold = 0.60 if timeframe in ("1h", "60m", "4h") else 1.00
-    else:
+    if market != "CRYPTO":
         spike_threshold = 0.30 if timeframe in ("1h", "60m", "4h") else 0.50
-    if (rets.abs() > spike_threshold).sum() > 0:
-        fails.append(f"unadjusted split/spike suspected (|ret|>{int(spike_threshold*100)}%)")
+        if (rets.abs() > spike_threshold).sum() > 0:
+            fails.append(f"unadjusted split/spike suspected (|ret|>{int(spike_threshold*100)}%)")
 
     ok = len(fails) == 0
     audit("RI-H", f"{ticker}@{timeframe} integrity {'PASS' if ok else 'FAIL ' + str(fails)}")

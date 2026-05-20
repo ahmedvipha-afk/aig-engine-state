@@ -1,0 +1,60 @@
+# UAE halal universe — UNIFIED (cache + yfinance hybrid, 2026-05-20).
+# Engine routes .AD/.DU tickers via data_cache/ (TV MCP sourced).
+# .AE/.AB tickers route via yfinance.
+# 44 total retrievable (6 illiquid ADX/DFM names dropped — MCP couldn't extract).
+
+# --- ADX tickers (via data_cache/ from TradingView MCP, 500 bars each) ---
+ADIB.AD
+ADNOCDIST.AD
+ADNOCDRILL.AD
+ADNOCGAS.AD
+ADNOCLS.AD
+ADPORTS.AD
+ALDAR.AD
+ALPHADHABI.AD
+BOROUGE.AD
+DANA.AD
+EAND.AD
+EMSTEEL.AD
+FERTIGLB.AD
+IHC.AD
+MULTIPLY.AD
+NMDC.AD
+PRESIGHT.AD
+PUREHEALTH.AD
+RAKCEC.AD
+RAKWCT.AD
+RAPCO.AD
+SPACE42.AD
+TAQA.AD
+
+# --- DFM tickers (via yfinance .AE/.AB) ---
+AGTHIA.AB
+AIRARABIA.AE
+AMANAT.AE
+AMLAK.AE
+ARMX.AE
+DEWA.AE
+DEYAAR.AE
+DIB.AE
+DIC.AE
+DTC.AE
+EIBANK.AE
+EMAAR.AE
+EMAARDEV.AE
+EMPOWER.AE
+GFH.AE
+PARKIN.AE
+SALIK.AE
+SUKOON.AE
+TABREED.AE
+TALABAT.AE
+TECOM.AE
+
+# --- DROPPED (TV MCP extraction failed - illiquid/sparse) ---
+# ASMAK.AD
+# GULFCEMENT.AD
+# SHAREK.AD
+# UMC.AD
+# DUBAIINV.DU
+# EMIRATESREIT.DU
