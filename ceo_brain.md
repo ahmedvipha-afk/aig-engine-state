@@ -214,6 +214,37 @@ would not have shown.
 
 ---
 
+## GITHUB BACKUP (added end of Session 3)
+
+**Repo:** https://github.com/ahmedvipha-afk/aig-engine-state — **private**, backup-only,
+NOT for Cowork integration (per Ahmed's directive).
+
+**Auth:**
+- gh CLI v2.92.0 installed via `winget`.
+  Binary path (PATH-refresh is unreliable in Claude PS — use full path):
+  `C:\Users\ahmed\AppData\Local\Microsoft\WinGet\Packages\GitHub.cli_Microsoft.Winget.Source_8wekyb3d8bbwe\bin\gh.exe`
+- PAT saved at `~/.claude/credentials/gh_token` (ACL-restricted to current user).
+- Authenticated as `ahmedvipha-afk` with `repo` scope.
+- Token scopes pending an optional `read:org` refresh (not needed for backup).
+
+**Workflow:**
+- `scripts/commit_session.ps1` — idempotent end-of-session commit + push helper.
+  Auto-loads GH_TOKEN from credential file. Refuses to commit any file matching
+  `\.env$|token|secret|credential` regardless of `.gitignore` (defence in depth).
+- Both Cloud Routines (`aig-morning-scan`, `aig-weekly-full-universe`) now invoke
+  `scripts/commit_session.ps1` as their final step — every scheduled run produces a
+  versioned snapshot in the private repo.
+- `.gitignore` excludes: `.env*`, `*_token*`, `*_secret*`, `*_credential*`,
+  `__pycache__`, `.ruff_cache`, `logs/`, `*.parquet`, `data_cache/`.
+- Initial commit: `Initial commit: aig_engine state, sessions 1-3 (US Divergence portfolio cleared)` — 54 files, 75,692 insertions.
+
+**Manual commit (any time):**
+```
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/commit_session.ps1
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/commit_session.ps1 -Message "Custom message"
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/commit_session.ps1 -DryRun
+```
+
 ## SESSION 3 ARTIFACTS
 
 - `aig/data.py` — market-aware integrity gate (crypto 1.0 daily / 0.6
