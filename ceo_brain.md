@@ -42,12 +42,13 @@ Action taken:
    any new trial requires appending to that table BEFORE the run.
 3. `aig/validation_gate.portfolio_evaluate` updated to use the new key
    (back-compat alias retained for prior callers).
-4. US Divergence 1603 re-run launched under corrected haircut (background
-   task `b384nkuu9`). Expected math:
-   - Raw Sharpe (Session 4): 3.011
-   - Old haircut (N=2): √(2 ln 2) × 0.25 = 0.294 → dSharpe 2.717
-   - **New haircut (N=6): √(2 ln 6) × 0.25 = 0.474 → expected dSharpe ≈ 2.537**
-   - Still well above the 0.5 threshold. Deployment not in danger.
+4. US Divergence 1603 re-run completed (background task `b384nkuu9`,
+   result file `validation_divergence_1d_full_haircut6.json`):
+   - Raw Sharpe (re-run): 3.0795
+   - Haircut (N=6): √(2 ln 6) × 0.25 = 0.474
+   - **Deflated Sharpe (corrected): 2.6063 — PASSES the 0.5 threshold by 5.2x margin.**
+   - Verdict: PORTFOLIO_CLEARED_FOR_PAPER_FORWARD ✅
+   - Trades 10,715 · contributors 1,030/1,124 · coverage 91.64% · exp 1.227 · WR 44.78%
 5. Trial budget pre-registration discipline now load-bearing — any
    future trial added MUST update the table and bump `n_trials_registered`
    in the same commit.
@@ -126,16 +127,17 @@ until next cache refresh anyway), but logged as a Phase B item.
 
 | Trial id | Universe | Coverage | Trades | Exp | WR | dSharpe (N=6) | Verdict |
 |----------|----------|---------:|-------:|----:|----|--------------:|---------|
-| `divergence_us_1d`     | 1,603 | 1027  | 10,729 | 1.22 | 44.7% | **~2.54 expected** | re-running — see below |
+| `divergence_us_1d`     | 1,603 | 1030/1124 | 10,715 | 1.23 | 44.8% | **2.61 (confirmed N=6)** | **PORTFOLIO_CLEARED** ✅ |
 | `ema200_us_1d`         | 1,603 | 1072  | 5,361  | 1.56 | 18.6% | 1.78 expected | FAIL: WR<40% (and Concern 4 acknowledged) |
 | `divergence_uae_1d`    | 44    | 13/31 | 38     | 1.65 | 47.4% | 0.57 expected | FAIL: trades<<1000 |
 | `ema200_uae_1d`        | 44    | 25/31 | 40     | 0.29 | 10%   | -3.04 expected | FAIL multi |
 | `divergence_crypto_1d` | 150   | 107/140 | 644  | 3.54 | 37.1% | 0.05 expected | FAIL: WR + trades + Sharpe |
 | `ema200_crypto_1d`     | 150   | 132/140 | 550  | 0.95 | 18.2% | -0.60 expected | FAIL multi |
 
-**Note:** the dSharpe values above are pre-computed estimates under N=6.
-Authoritative values come from the in-flight `b384nkuu9` re-run; will be
-patched in here when it lands.
+**Note:** the dSharpe values above for non-US trials are pre-computed
+estimates under N=6; their verdicts remain PORTFOLIO_FAIL and were not
+re-run (no claim to revise). US Divergence value is authoritative from the
+`b384nkuu9` re-run.
 
 ---
 
@@ -178,11 +180,17 @@ Three forward paths from Session 4 close, revised per audit:
 ## CONTEXT RESUME
 
 1. Read this file (you are reading it now).
-2. Check `b384nkuu9` background result — `validation_divergence_1d_full_haircut6.json`.
-3. If dSharpe ≥ 0.5 under N=6: Path 1 is unblocked. Execute Pine port + TV
-   Strategy Tester per-ticker verification per v7.0 §19 + alerts on top 5
-   contributors (DY, EXPGY, PSX, ARW, ROL).
-4. If dSharpe < 0.5: surface to Ahmed. Do not deploy without his decision.
+2. Audit BLOCKING findings all resolved (Session 5). Path 1 unblocked.
+3. **Execute Path 1 deployment** per Session 4 plan, now with audit conditions met:
+   - Port `aig/strategy_divergence.py` to Pine v6 → fresh slot `AIG_Divergence_V1`
+     via the Make-a-copy DOM flow (NEVER touch existing slots — Ahmed's rule).
+   - TV Strategy Tester per-ticker on top 5 contributors (DY, EXPGY, PSX,
+     ARW, ROL) to cross-check engine portfolio result.
+   - Set TV MCP alerts on top 5 contributors: condition = strategy entry
+     fires (RSI bullish divergence + close > EMA-200 confirmation bar).
+   - Send Telegram daily summary marking Divergence as DEPLOYED_PAPER_FWD.
+4. Paper-forward stays paper-forward. No real-money discussion until
+   ≥ 6 months of forward results exist under the SAME gate that certified.
 
 ---
 

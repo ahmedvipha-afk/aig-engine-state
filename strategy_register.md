@@ -76,7 +76,7 @@ trial means appending a row here BEFORE the run; the haircut recomputes.
 | 1 | `ema200_us_1d`        | ema200     | US     | 1D | yfinance        | 2026-05-21 (this amendment) | 2026-05-20 | PORTFOLIO_FAIL (WR floor) |
 | 2 | `ema200_uae_1d`       | ema200     | UAE    | 1D | yfinance+cache  | 2026-05-21 (this amendment) | 2026-05-20 | PORTFOLIO_FAIL |
 | 3 | `ema200_crypto_1d`    | ema200     | CRYPTO | 1D | yfinance        | 2026-05-21 (this amendment) | 2026-05-20 | PORTFOLIO_FAIL |
-| 4 | `divergence_us_1d`    | divergence | US     | 1D | yfinance        | 2026-05-20            | 2026-05-20 | **PORTFOLIO_CLEARED** |
+| 4 | `divergence_us_1d`    | divergence | US     | 1D | yfinance        | 2026-05-20            | 2026-05-20 (re-confirmed 2026-05-21 under N=6 haircut) | **PORTFOLIO_CLEARED** — dSharpe 2.606, exp 1.227, WR 44.78%, 10,715 trades |
 | 5 | `divergence_uae_1d`   | divergence | UAE    | 1D | yfinance+cache  | 2026-05-20            | 2026-05-20 | PORTFOLIO_FAIL (trades) |
 | 6 | `divergence_crypto_1d`| divergence | CRYPTO | 1D | yfinance        | 2026-05-20            | 2026-05-20 | PORTFOLIO_FAIL |
 
