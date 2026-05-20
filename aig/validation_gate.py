@@ -70,6 +70,7 @@ def evaluate(bt: dict, n_trials: int) -> dict:
 
 def portfolio_evaluate(per_ticker_results: list[dict],
                        strategy: str, timeframe: str,
+                       n_trials: int | None = None,
                        n_strategies: int | None = None) -> dict:
     """Aggregate per-ticker OOS trades into a portfolio-level verdict.
 
@@ -79,10 +80,19 @@ def portfolio_evaluate(per_ticker_results: list[dict],
     Sharpe. The honest claim is portfolio-level: "across this universe,
     after costs, the strategy has positive expectancy and Sharpe > 0.5
     on the aggregate trade stream." Multi-testing is then applied at the
-    STRATEGY count (2-5 registered), not ticker count.
+    TRIAL count (strategy × market × timeframe combinations
+    pre-registered, not ticker count).
+
+    Per auditor 2026-05-21: the haircut MUST account for every trial in
+    the pre-registered budget, including failing ones. n_trials must
+    reflect the full claim set, not the winning subset.
     """
     g = PORTFOLIO_GATE
-    n_strats = n_strategies or g["n_strategies_registered"]
+    # back-compat shim: old callers passed n_strategies; treat as alias.
+    n_trials_val = (n_trials if n_trials is not None
+                    else n_strategies if n_strategies is not None
+                    else g.get("n_trials_registered", g.get("n_strategies_registered", 2)))
+    n_strats = n_trials_val
     # only count tickers that produced trades (others are noise carriers)
     contributors = [r for r in per_ticker_results
                     if isinstance(r, dict) and r.get("oos_trades")]
@@ -135,7 +145,7 @@ def portfolio_evaluate(per_ticker_results: list[dict],
           + ("" if passed else f" — {reasons}")
           + f" | trades={n_total} contributors={len(contributors)}/{n_universe} "
             f"exp={exp:.3f} sr={sr:.3f} dsr={dsr:.3f} wr={wr:.3f} "
-            f"CI=({lo:.5f},{hi:.5f})")
+            f"CI=({lo:.5f},{hi:.5f}) n_trials={n_strats}")
     return {
         "strategy": strategy, "timeframe": timeframe,
         "verdict": verdict, "passed": passed,
@@ -149,6 +159,7 @@ def portfolio_evaluate(per_ticker_results: list[dict],
         "portfolio_sharpe_deflated": round(dsr, 4),
         "portfolio_ci_low": None if lo != lo else round(lo, 6),
         "portfolio_ci_high": None if hi != hi else round(hi, 6),
-        "n_strategies_haircut": n_strats,
+        "n_trials_haircut": n_strats,
+        "n_strategies_haircut": n_strats,  # back-compat alias for old callers
         "reasons": reasons,
     }

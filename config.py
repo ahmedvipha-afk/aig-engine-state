@@ -67,19 +67,26 @@ GATE = {
     "wf_folds": 5,               # walk-forward rolling folds over the full history
 }
 
-# Portfolio-level gate (frozen 2026-05-20): aggregates ALL trades across the
-# universe into one sample, certifies "strategy S has edge across the
-# universe". Multi-testing is applied at the STRATEGY level (currently 2
-# strategies), not the ticker level — much smaller haircut.
+# Portfolio-level gate (frozen 2026-05-20, trial-budget amendment 2026-05-21):
+# aggregates ALL trades across the universe into one sample, certifies
+# "strategy S has edge across the universe". Multi-testing is applied at the
+# TRIAL level — one trial per (strategy × market × timeframe) combination
+# the CEO has run. Pre-registered trial budget lives in strategy_register.md.
+#
+# Per auditor finding 2026-05-21 (Concern 1): the haircut MUST cover every
+# trial the CEO chose between, including the failing ones, not just the
+# winning subset. n_trials_registered is the binding count.
 PORTFOLIO_GATE = {
     "min_trades": 1000,          # certifying a strategy, not a ticker — demand mass
-    "min_oos_sharpe": 0.5,       # deflated, with sqrt(2 ln N_strategies) haircut
+    "min_oos_sharpe": 0.5,       # deflated, with sqrt(2 ln N_trials) haircut
     "min_expectancy": 1.0,       # aggregate expectancy > 1.0
     "min_win_rate": 0.40,        # broad strategies survive on positive expectancy + WR floor
     "min_universe_coverage": 0.05, # at least 5% of universe must contribute trades
     "bootstrap_iters": 2000,
     "bootstrap_conf": 0.95,
-    "n_strategies_registered": 2, # multi-test correction denominator at strategy level
+    "n_trials_registered": 6,    # 2 strategies × 3 markets × 1 timeframe (1D) run so far.
+                                 # Adding MBV → +3 trials. Adding a 4H variant → +N.
+                                 # Pre-register in strategy_register.md before running.
 }
 
 # ---- Reproducibility -----------------------------------------------------
