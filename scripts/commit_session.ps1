@@ -23,6 +23,13 @@ if (Test-Path $ghBin) {
     $env:Path = (Split-Path $ghBin) + ';' + $env:Path
 }
 
+# Auto-load GH_TOKEN from the credential file written during setup. This lets
+# the script run unattended from Cloud Routines.
+$ghTokenFile = "$env:USERPROFILE\.claude\credentials\gh_token"
+if ((Test-Path $ghTokenFile) -and -not $env:GH_TOKEN) {
+    $env:GH_TOKEN = (Get-Content $ghTokenFile -Raw).Trim()
+}
+
 if (-not (Test-Path .git)) {
     Write-Output 'ERROR: No git repo here. Run `git init` first.'
     exit 1
