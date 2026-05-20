@@ -1,4 +1,7 @@
 # --- Secrets / credentials (ABSOLUTE NEVER COMMIT) ---
+# This repo is PUBLIC as of 2026-05-21. The exclusions below are load-bearing.
+# scripts/commit_session.ps1 also refuses to stage files matching
+# `\.env$|token|secret|credential` as a defense-in-depth check.
 *.env
 .env
 .env.*

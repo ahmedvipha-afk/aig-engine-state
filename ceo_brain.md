@@ -125,6 +125,33 @@ Three forward paths (CEO autonomy says I can choose 1+2; #3 needs Ahmed):
 4. **Don't lower the gate without Ahmed's sign-off.** Surface the structural finding, let him decide.
 5. **TV MCP cache-CSV pattern works.** When yfinance can't reach a market (UAE ADX, future Asian exchanges, etc.) — `chart_set_symbol` + `data_get_ohlcv` + `tv_latest_batch.py` is the proven pipeline.
 
+## GITHUB BACKUP REPO (visibility flipped 2026-05-21)
+
+**Repo:** https://github.com/ahmedvipha-afk/aig-engine-state — **PUBLIC** as of 2026-05-21.
+
+Flipped from private → public by Ahmed's directive. Audit before flip:
+zero tracked files matched `\.env|token|secret|credential|password|api[_-]?key|\.pem|\.key`;
+zero tracked content matched token-shaped regex (`ghp_`, `github_pat`, `sk-`,
+Telegram-bot-token). Defense in depth:
+- `.gitignore` excludes secret-shaped paths
+- `scripts/commit_session.ps1` refuses to commit any staged file matching
+  `(?i)\.env$|token|secret|credential` regardless of `.gitignore`
+- All credentials live OUTSIDE the working dir at `~/.claude/credentials/`
+  and `~/.claude/channels/telegram/.env`
+
+**Cowork read pattern** (no auth needed):
+`https://raw.githubusercontent.com/ahmedvipha-afk/aig-engine-state/main/<path>`
+
+Examples Cowork can hit:
+- `ceo_brain.md` — current state
+- `dashboard.html` — full cockpit (rendered HTML)
+- `validation_divergence_1d_full.json` — latest US Divergence portfolio result
+- `validation_uae_divergence_1d_v3.json` — latest UAE result
+- `strategy_register.md` — frozen strategy specs
+- `universe/us_halal_full.txt`, `universe/uae_tickers_full.txt`,
+  `universe/halal_crypto_150_USD.txt` — current universes
+- `pine/aig_ema200_vol_v1.pine` — Pine source
+
 ## SESSION 4 ARTIFACTS
 
 - `data_cache/*.AD.csv` — 23 ADX tickers, 500 bars each (TV-MCP sourced)
