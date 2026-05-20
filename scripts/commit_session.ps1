@@ -36,19 +36,31 @@ if (-not (Test-Path .git)) {
 }
 
 # Stage explicit safe paths. Use git directly (suppress LF/CRLF warnings).
+# When adding new top-level artifacts, append them here so the routine and
+# Cowork (raw GitHub) can see them.
 $paths = @(
+    # Core state files
     'ceo_brain.md', 'strategy_register.md', 'README.md', '.gitignore',
+    # Engine
     'config.py', 'run_validation.py', 'requirements.txt',
-    'aig', 'tests', 'pine', 'universe', 'scripts'
+    'aig', 'tests', 'pine', 'universe', 'scripts',
+    # Cockpit + Cowork-facing artifacts (added 2026-05-21)
+    'dashboard.html', 'auditor_report.md', 'reports',
+    'data_cache'
 )
 foreach ($p in $paths) {
     if (Test-Path $p) { git add $p 2>$null | Out-Null }
 }
 # Glob patterns separately
-Get-ChildItem -Filter 'findings_*.md' | ForEach-Object { git add $_.Name 2>$null | Out-Null }
-Get-ChildItem -Filter 'analyze_*.py' | ForEach-Object { git add $_.Name 2>$null | Out-Null }
-Get-ChildItem -Filter 'validation_*.json' | ForEach-Object { git add $_.Name 2>$null | Out-Null }
-Get-ChildItem -Filter 'tv_strategy_tester_*.json' | ForEach-Object { git add $_.Name 2>$null | Out-Null }
+Get-ChildItem -Filter 'findings_*.md' -ErrorAction SilentlyContinue | ForEach-Object { git add $_.Name 2>$null | Out-Null }
+Get-ChildItem -Filter 'analyze_*.py' -ErrorAction SilentlyContinue | ForEach-Object { git add $_.Name 2>$null | Out-Null }
+Get-ChildItem -Filter 'validation_*.json' -ErrorAction SilentlyContinue | ForEach-Object { git add $_.Name 2>$null | Out-Null }
+Get-ChildItem -Filter 'tv_strategy_tester_*.json' -ErrorAction SilentlyContinue | ForEach-Object { git add $_.Name 2>$null | Out-Null }
+# Any top-level .md that's an audit / report / log file should be tracked too
+Get-ChildItem -Filter '*_report*.md' -ErrorAction SilentlyContinue | ForEach-Object { git add $_.Name 2>$null | Out-Null }
+Get-ChildItem -Filter '*_log.md' -ErrorAction SilentlyContinue | ForEach-Object { git add $_.Name 2>$null | Out-Null }
+Get-ChildItem -Filter 'signals_log.md' -ErrorAction SilentlyContinue | ForEach-Object { git add $_.Name 2>$null | Out-Null }
+Get-ChildItem -Filter 'kpi_tracker.md' -ErrorAction SilentlyContinue | ForEach-Object { git add $_.Name 2>$null | Out-Null }
 
 # Safety: refuse to commit if .env or token-shaped files staged anywhere
 $staged = git diff --cached --name-only 2>$null
