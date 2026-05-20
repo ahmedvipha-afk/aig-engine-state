@@ -46,7 +46,7 @@ $paths = @(
     'aig', 'tests', 'pine', 'universe', 'scripts',
     # Cockpit + Cowork-facing artifacts (added 2026-05-21)
     'dashboard.html', 'auditor_report.md', 'reports',
-    'data_cache'
+    'data_cache', 'URLS_FOR_COWORK.md'
 )
 foreach ($p in $paths) {
     if (Test-Path $p) { git add $p 2>$null | Out-Null }
