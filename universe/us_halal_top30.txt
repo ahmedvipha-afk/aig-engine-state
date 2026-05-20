@@ -1,0 +1,33 @@
+# Top 30 US halal tickers by market cap (from Ahmed's authoritative list, 2026-05-20).
+# Replaces the HLAL proxy used in Session 1.
+
+NVDA
+MSFT
+AAPL
+GOOGL
+GOOG
+META
+AVGO
+TSLA
+TSM
+ORCL
+LLY
+XOM
+JNJ
+HD
+ABBV
+ASML
+PG
+CVX
+SAP
+KO
+CSCO
+IBM
+NVS
+AMD
+RHHBY
+ABT
+CRM
+NSRGY
+LRLCY
+APP

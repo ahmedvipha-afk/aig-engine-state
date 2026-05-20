@@ -1,0 +1,1056 @@
+{
+  "provenance": {
+    "utc": "2026-05-20T17:06:36+00:00",
+    "file_hashes": {
+      "config.py": "b2e10cfee75a2b88",
+      "aig/strategy_ema200.py": "53b58f8a447b09d9",
+      "aig/backtest.py": "0c3faa9e6bf45f1e",
+      "aig/validation_gate.py": "a72a73a5a08f2438",
+      "aig/stats.py": "23715e456732ed73",
+      "aig/costs.py": "aab2cafc67d08ba2"
+    },
+    "config_hash": "99ac75edb64eea3b"
+  },
+  "args": {
+    "tickers": null,
+    "universe": "universe/crypto_halal.txt",
+    "live": true,
+    "timeframe": "1d",
+    "strategy": "divergence",
+    "out": "validation_crypto_divergence_1d.json"
+  },
+  "portfolio": {
+    "strategy": "divergence",
+    "timeframe": "1d",
+    "verdict": "PORTFOLIO_FAIL",
+    "passed": false,
+    "portfolio_trades": 131,
+    "contributing_tickers": 16,
+    "universe_size": 22,
+    "universe_coverage": 0.7273,
+    "portfolio_expectancy": 0.7045,
+    "portfolio_win_rate": 0.3969,
+    "portfolio_sharpe_raw": -0.7067,
+    "portfolio_sharpe_deflated": -1.0011,
+    "portfolio_ci_low": -0.029242,
+    "portfolio_ci_high": 0.004992,
+    "n_strategies_haircut": 2,
+    "reasons": [
+      "portfolio trades 131 < 1000",
+      "portfolio expectancy 0.705 < 1.0",
+      "portfolio win rate 0.397 < 0.4",
+      "portfolio deflated Sharpe -1.001 < 0.5 (raw -0.707, 2 strategies)",
+      "95% CI lower bound on mean trade not > 0 (lo=-0.029242340022718385)"
+    ]
+  },
+  "results": [
+    {
+      "ticker": "BTC-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 28,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 4.14,
+      "oos_expectancy": 0.684,
+      "oos_sharpe_raw": -0.289,
+      "oos_sharpe_deflated": -1.047,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 28 < 30",
+        "OOS expectancy 0.68 < 1.0",
+        "deflated OOS Sharpe -1.05 < 0.5 (raw -0.29, 100 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.81 < 1.0"
+      ]
+    },
+    {
+      "ticker": "ETH-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 9,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 1.82,
+      "oos_expectancy": 0.907,
+      "oos_sharpe_raw": -0.054,
+      "oos_sharpe_deflated": -0.813,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 9 < 30",
+        "OOS expectancy 0.91 < 1.0",
+        "deflated OOS Sharpe -0.81 < 0.5 (raw -0.05, 100 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "BNB-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "SOL-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 10,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 2.82,
+      "oos_expectancy": 0.971,
+      "oos_sharpe_raw": -0.018,
+      "oos_sharpe_deflated": -0.777,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 10 < 30",
+        "OOS expectancy 0.97 < 1.0",
+        "deflated OOS Sharpe -0.78 < 0.5 (raw -0.02, 100 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.63 < 1.0"
+      ]
+    },
+    {
+      "ticker": "XRP-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "ADA-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "DOGE-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "AVAX-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "TRX-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "DOT-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "LINK-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "MATIC-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "LTC-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "BCH-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency",
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "SHIB-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "NaN in OHLC",
+        "non-positive close prices",
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "NEAR-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 10,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 3.08,
+      "oos_expectancy": 0.563,
+      "oos_sharpe_raw": -0.404,
+      "oos_sharpe_deflated": -1.163,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 10 < 30",
+        "OOS expectancy 0.56 < 1.0",
+        "deflated OOS Sharpe -1.16 < 0.5 (raw -0.40, 100 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "ATOM-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 11,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 2.64,
+      "oos_expectancy": 0.368,
+      "oos_sharpe_raw": -0.659,
+      "oos_sharpe_deflated": -1.418,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 11 < 30",
+        "OOS expectancy 0.37 < 1.0",
+        "deflated OOS Sharpe -1.42 < 0.5 (raw -0.66, 100 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.40 < 1.0"
+      ]
+    },
+    {
+      "ticker": "ALGO-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "ETC-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 1,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 0.2,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.759,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 1 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -0.76 < 0.5 (raw 0.00, 100 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.03 < 1.0"
+      ]
+    },
+    {
+      "ticker": "XLM-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "FIL-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "ICP-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 0,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 0.0,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.759,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 0 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -0.76 < 0.5 (raw 0.00, 100 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.00 < 1.0"
+      ]
+    },
+    {
+      "ticker": "HBAR-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "APT-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "ARB-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "OP-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "VET-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 14,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 3.09,
+      "oos_expectancy": 0.811,
+      "oos_sharpe_raw": -0.121,
+      "oos_sharpe_deflated": -0.879,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 14 < 30",
+        "OOS expectancy 0.81 < 1.0",
+        "deflated OOS Sharpe -0.88 < 0.5 (raw -0.12, 100 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "RUNE-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 1,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 0.25,
+      "oos_expectancy": Infinity,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.759,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 1 < 30",
+        "deflated OOS Sharpe -0.76 < 0.5 (raw 0.00, 100 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "INJ-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 8,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 2.47,
+      "oos_expectancy": 0.198,
+      "oos_sharpe_raw": -1.058,
+      "oos_sharpe_deflated": -1.817,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 8 < 30",
+        "OOS expectancy 0.20 < 1.0",
+        "deflated OOS Sharpe -1.82 < 0.5 (raw -1.06, 100 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.79 < 1.0"
+      ]
+    },
+    {
+      "ticker": "SUI-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "SEI-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 6,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 3.75,
+      "oos_expectancy": 0.892,
+      "oos_sharpe_raw": -0.072,
+      "oos_sharpe_deflated": -0.831,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 6 < 30",
+        "OOS expectancy 0.89 < 1.0",
+        "deflated OOS Sharpe -0.83 < 0.5 (raw -0.07, 100 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.03 < 1.0"
+      ]
+    },
+    {
+      "ticker": "TIA-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "RNDR-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "GRT-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "THETA-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "FTM-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "EGLD-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 0,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 0.0,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.759,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 0 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -0.76 < 0.5 (raw 0.00, 100 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "FLOW-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 0,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 0.0,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.759,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 0 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -0.76 < 0.5 (raw 0.00, 100 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "EOS-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "AXS-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "SAND-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "MANA-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "APE-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "CHZ-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "ENJ-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "GALA-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "IMX-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "LDO-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "MINA-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "ROSE-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 0,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 0.0,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.759,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 0 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -0.76 < 0.5 (raw 0.00, 100 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.82 < 1.0"
+      ]
+    },
+    {
+      "ticker": "KAVA-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency",
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "ZIL-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "QNT-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "CFX-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "CSPR-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "KCS-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "HNT-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency",
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "GMT-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "WLD-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "PYTH-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "JUP-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "TON-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "LUNC-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "NEO-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 1,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 0.2,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.759,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 1 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -0.76 < 0.5 (raw 0.00, 100 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.57 < 1.0"
+      ]
+    },
+    {
+      "ticker": "ONE-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "HOT-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "IOTA-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 4,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 2.61,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -2.497,
+      "oos_sharpe_deflated": -3.256,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 4 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -3.26 < 0.5 (raw -2.50, 100 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.00 < 1.0"
+      ]
+    },
+    {
+      "ticker": "BAT-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 11,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 2.22,
+      "oos_expectancy": 0.718,
+      "oos_sharpe_raw": -0.139,
+      "oos_sharpe_deflated": -0.898,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 11 < 30",
+        "OOS expectancy 0.72 < 1.0",
+        "deflated OOS Sharpe -0.90 < 0.5 (raw -0.14, 100 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.72 < 1.0"
+      ]
+    },
+    {
+      "ticker": "ZRX-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "DASH-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "WAVES-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "KSM-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "HEX-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "CELO-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "GLMR-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 0,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 0.0,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.759,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 0 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -0.76 < 0.5 (raw 0.00, 100 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "MOVR-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "ICX-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "ZEC-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency",
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "ANKR-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 15,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 3.59,
+      "oos_expectancy": 2.945,
+      "oos_sharpe_raw": 0.645,
+      "oos_sharpe_deflated": -0.114,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 15 < 30",
+        "deflated OOS Sharpe -0.11 < 0.5 (raw 0.65, 100 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "SKL-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "STORJ-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "LRC-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "1INCH-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 1,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 0.32,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.759,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 1 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -0.76 < 0.5 (raw 0.00, 100 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.45 < 1.0"
+      ]
+    },
+    {
+      "ticker": "KAS-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "PEPE-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "insufficient history (119 rows < 300)"
+      ]
+    },
+    {
+      "ticker": "WIF-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "FLOKI-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "NaN in OHLC",
+        "non-positive close prices",
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "BONK-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "NaN in OHLC",
+        "non-positive close prices",
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "JTO-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency"
+      ]
+    },
+    {
+      "ticker": "PIXEL-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "ONDO-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 1,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 0.74,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.759,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 1 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -0.76 < 0.5 (raw 0.00, 100 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.72 < 1.0"
+      ]
+    },
+    {
+      "ticker": "TAO-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "insufficient history (1 rows < 300)"
+      ]
+    },
+    {
+      "ticker": "RPL-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "BRETT-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "insufficient history (33 rows < 300)"
+      ]
+    },
+    {
+      "ticker": "W-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "ENS-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "AR-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "DYDX-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 0,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 0.0,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.759,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 0 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -0.76 < 0.5 (raw 0.00, 100 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.82 < 1.0"
+      ]
+    },
+    {
+      "ticker": "JASMY-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "GMX-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    }
+  ]
+}

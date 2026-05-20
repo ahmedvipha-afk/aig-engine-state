@@ -1,0 +1,59 @@
+//@version=5
+// AIG EMA-200 + Volume Confirmation (Long Only)
+// Mirrors aig/strategy_ema200.py @ config_hash=d2c90fd7a64f27ef
+// Frozen pre-registration: EMA-200 trend with 2-bar confirm and 1.2x SMA(20) volume gate.
+// Long only (Rule 15). No leverage (Rule 16). Stop = entry - 2.0*ATR(14).
+// Cost model matches engine: commission 5 bps per side (10 bps round-trip), slippage 3 ticks.
+
+strategy(
+     title="AIG EMA-200 + Vol Confirm (Long Only) v1",
+     shorttitle="AIG_EMA200_V1",
+     overlay=true,
+     pyramiding=0,
+     initial_capital=100000,
+     default_qty_type=strategy.percent_of_equity,
+     default_qty_value=100,
+     commission_type=strategy.commission.percent,
+     commission_value=0.05,
+     slippage=3,
+     process_orders_on_close=true,
+     calc_on_every_tick=false)
+
+// === FROZEN PARAMETERS (do not tune in TV — change config.py first) ===
+emaPeriod   = input.int(200, "EMA period",       minval=10,  group="Frozen Params")
+confirmBars = input.int(2,   "Confirm bars",     minval=1,   group="Frozen Params")
+atrPeriod   = input.int(14,  "ATR period",       minval=2,   group="Frozen Params")
+stopAtr     = input.float(2.0,"Stop × ATR",      minval=0.5, step=0.1, group="Frozen Params")
+volPeriod   = input.int(20,  "Volume SMA",       minval=2,   group="Frozen Params")
+volMult     = input.float(1.2,"Volume mult",     minval=1.0, step=0.1, group="Frozen Params")
+
+// === INDICATORS ===
+emaLine = ta.ema(close, emaPeriod)
+atrLine = ta.atr(atrPeriod)
+volSma  = ta.sma(volume, volPeriod)
+volOK   = volume >= volMult * volSma
+
+// === ENTRY / EXIT LOGIC (matches Python engine bit-for-bit) ===
+//   held = close > EMA for confirmBars consecutive bars (incl. current)
+//   entry on rising edge of held AND volume confirmation
+above       = close > emaLine
+streak      = ta.barssince(not above)
+heldNow     = streak >= confirmBars
+heldPrev    = nz(streak[1], 0) >= confirmBars
+entrySignal = heldNow and not heldPrev and volOK
+exitSignal  = close < emaLine
+
+// === ORDERS (long only — Rule 15) ===
+if (entrySignal and strategy.position_size == 0)
+    strategy.entry("Long", strategy.long)
+    strategy.exit("ExitStop", from_entry="Long", stop=close - stopAtr * atrLine)
+
+if (exitSignal and strategy.position_size > 0)
+    strategy.close("Long", comment="EMA cross-down")
+
+// === VISUALS ===
+plot(emaLine, "EMA-200", color=color.orange, linewidth=2)
+plotshape(entrySignal, "Entry", location.belowbar,
+          color.new(color.green, 0), style=shape.triangleup, size=size.small)
+plotshape(exitSignal and strategy.position_size > 0, "Exit", location.abovebar,
+          color.new(color.red, 0), style=shape.triangledown, size=size.small)

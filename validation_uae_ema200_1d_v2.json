@@ -1,0 +1,305 @@
+{
+  "provenance": {
+    "utc": "2026-05-20T17:19:31+00:00",
+    "file_hashes": {
+      "config.py": "b2e10cfee75a2b88",
+      "aig/strategy_ema200.py": "53b58f8a447b09d9",
+      "aig/backtest.py": "0c3faa9e6bf45f1e",
+      "aig/validation_gate.py": "a72a73a5a08f2438",
+      "aig/stats.py": "23715e456732ed73",
+      "aig/costs.py": "aab2cafc67d08ba2"
+    },
+    "config_hash": "99ac75edb64eea3b"
+  },
+  "args": {
+    "tickers": null,
+    "universe": "universe/uae_tickers_yf.txt",
+    "live": true,
+    "timeframe": "1d",
+    "strategy": "ema200",
+    "out": "validation_uae_ema200_1d_v2.json"
+  },
+  "portfolio": {
+    "strategy": "ema200",
+    "timeframe": "1d",
+    "verdict": "PORTFOLIO_FAIL",
+    "passed": false,
+    "portfolio_trades": 11,
+    "contributing_tickers": 7,
+    "universe_size": 8,
+    "universe_coverage": 0.875,
+    "portfolio_expectancy": 0.7799,
+    "portfolio_win_rate": 0.0909,
+    "portfolio_sharpe_raw": -0.2124,
+    "portfolio_sharpe_deflated": -0.5067,
+    "portfolio_ci_low": null,
+    "portfolio_ci_high": null,
+    "n_strategies_haircut": 2,
+    "reasons": [
+      "portfolio trades 11 < 1000",
+      "portfolio expectancy 0.780 < 1.0",
+      "portfolio win rate 0.091 < 0.4",
+      "portfolio deflated Sharpe -0.507 < 0.5 (raw -0.212, 2 strategies)",
+      "95% CI lower bound on mean trade not > 0 (lo=nan)"
+    ]
+  },
+  "results": [
+    {
+      "ticker": "AGTHIA.AB",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency"
+      ]
+    },
+    {
+      "ticker": "AIRARABIA.AE",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency",
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "AMANAT.AE",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency",
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "AMLAK.AE",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency"
+      ]
+    },
+    {
+      "ticker": "ARMX.AE",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency",
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "DEWA.AE",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 1,
+      "timeframe": "1d",
+      "strategy": "ema200",
+      "oos_trades_per_year": 0.77,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.617,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 1 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -0.62 < 0.5 (raw 0.00, 21 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "DEYAAR.AE",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency",
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "DIB.AE",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency",
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "DIC.AE",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency"
+      ]
+    },
+    {
+      "ticker": "DTC.AE",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 1,
+      "timeframe": "1d",
+      "strategy": "ema200",
+      "oos_trades_per_year": 1.25,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.617,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 1 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -0.62 < 0.5 (raw 0.00, 21 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "EIBANK.AE",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 2,
+      "timeframe": "1d",
+      "strategy": "ema200",
+      "oos_trades_per_year": 0.43,
+      "oos_expectancy": 3.498,
+      "oos_sharpe_raw": 0.393,
+      "oos_sharpe_deflated": -0.224,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 2 < 30",
+        "deflated OOS Sharpe -0.22 < 0.5 (raw 0.39, 21 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "EMAAR.AE",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency"
+      ]
+    },
+    {
+      "ticker": "EMAARDEV.AE",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "EMPOWER.AE",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 3,
+      "timeframe": "1d",
+      "strategy": "ema200",
+      "oos_trades_per_year": 2.62,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -2.661,
+      "oos_sharpe_deflated": -3.278,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 3 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -3.28 < 0.5 (raw -2.66, 21 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "GFH.AE",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency"
+      ]
+    },
+    {
+      "ticker": "PARKIN.AE",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 1,
+      "timeframe": "1d",
+      "strategy": "ema200",
+      "oos_trades_per_year": 1.42,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.617,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 1 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -0.62 < 0.5 (raw 0.00, 21 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "SALIK.AE",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 0,
+      "timeframe": "1d",
+      "strategy": "ema200",
+      "oos_trades_per_year": 0.0,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.617,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 0 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -0.62 < 0.5 (raw 0.00, 21 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "SUKOON.AE",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 1,
+      "timeframe": "1d",
+      "strategy": "ema200",
+      "oos_trades_per_year": 0.19,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.617,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 1 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -0.62 < 0.5 (raw 0.00, 21 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.00 < 1.0"
+      ]
+    },
+    {
+      "ticker": "TABREED.AE",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency"
+      ]
+    },
+    {
+      "ticker": "TALABAT.AE",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "insufficient history (291 rows < 300)"
+      ]
+    },
+    {
+      "ticker": "TECOM.AE",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 2,
+      "timeframe": "1d",
+      "strategy": "ema200",
+      "oos_trades_per_year": 1.58,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -5.982,
+      "oos_sharpe_deflated": -6.599,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 2 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -6.60 < 0.5 (raw -5.98, 21 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.00 < 1.0"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,457 @@
+{
+  "provenance": {
+    "utc": "2026-05-20T15:37:18+00:00",
+    "file_hashes": {
+      "config.py": "937633edff7d18b2",
+      "aig/strategy_ema200.py": "53b58f8a447b09d9",
+      "aig/backtest.py": "0c3faa9e6bf45f1e",
+      "aig/validation_gate.py": "5ff7d458ed42f3d4",
+      "aig/stats.py": "23715e456732ed73",
+      "aig/costs.py": "aab2cafc67d08ba2"
+    },
+    "config_hash": "d2c90fd7a64f27ef"
+  },
+  "args": {
+    "tickers": null,
+    "universe": "universe/us_halal_top30.txt",
+    "live": true,
+    "timeframe": "1d",
+    "strategy": "divergence",
+    "out": "validation_divergence_1d_top30.json"
+  },
+  "results": [
+    {
+      "ticker": "NVDA",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 29,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 4.84,
+      "oos_expectancy": 1.686,
+      "oos_sharpe_raw": 0.395,
+      "oos_sharpe_deflated": -0.257,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 29 < 30",
+        "deflated OOS Sharpe -0.26 < 0.5 (raw 0.39, 30 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "MSFT",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 11,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 1.84,
+      "oos_expectancy": 1.259,
+      "oos_sharpe_raw": 0.087,
+      "oos_sharpe_deflated": -0.565,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 11 < 30",
+        "deflated OOS Sharpe -0.57 < 0.5 (raw 0.09, 30 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "AAPL",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 15,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 2.5,
+      "oos_expectancy": 2.223,
+      "oos_sharpe_raw": 0.534,
+      "oos_sharpe_deflated": -0.118,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 15 < 30",
+        "deflated OOS Sharpe -0.12 < 0.5 (raw 0.53, 30 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "GOOGL",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 17,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 2.84,
+      "oos_expectancy": 1.786,
+      "oos_sharpe_raw": 0.329,
+      "oos_sharpe_deflated": -0.323,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 17 < 30",
+        "deflated OOS Sharpe -0.32 < 0.5 (raw 0.33, 30 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "AVGO",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 6,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 1.0,
+      "oos_expectancy": 0.545,
+      "oos_sharpe_raw": -0.228,
+      "oos_sharpe_deflated": -0.88,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 6 < 30",
+        "OOS expectancy 0.54 < 1.0",
+        "deflated OOS Sharpe -0.88 < 0.5 (raw -0.23, 30 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "META",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 7,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 1.25,
+      "oos_expectancy": 1.707,
+      "oos_sharpe_raw": 0.211,
+      "oos_sharpe_deflated": -0.441,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 7 < 30",
+        "deflated OOS Sharpe -0.44 < 0.5 (raw 0.21, 30 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "TSLA",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 9,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 1.5,
+      "oos_expectancy": 0.291,
+      "oos_sharpe_raw": -0.494,
+      "oos_sharpe_deflated": -1.146,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 9 < 30",
+        "OOS expectancy 0.29 < 1.0",
+        "deflated OOS Sharpe -1.15 < 0.5 (raw -0.49, 30 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.46 < 1.0"
+      ]
+    },
+    {
+      "ticker": "ORCL",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 30,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 5.01,
+      "oos_expectancy": 1.358,
+      "oos_sharpe_raw": 0.205,
+      "oos_sharpe_deflated": -0.447,
+      "ci_low": -0.0109,
+      "reasons": [
+        "deflated OOS Sharpe -0.45 < 0.5 (raw 0.20, 30 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=-0.010897371766873725)"
+      ]
+    },
+    {
+      "ticker": "NFLX",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 12,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 2.0,
+      "oos_expectancy": 1.404,
+      "oos_sharpe_raw": 0.15,
+      "oos_sharpe_deflated": -0.502,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 12 < 30",
+        "deflated OOS Sharpe -0.50 < 0.5 (raw 0.15, 30 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "AMD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "ADBE",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 10,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 1.67,
+      "oos_expectancy": 1.634,
+      "oos_sharpe_raw": 0.24,
+      "oos_sharpe_deflated": -0.413,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 10 < 30",
+        "deflated OOS Sharpe -0.41 < 0.5 (raw 0.24, 30 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "QCOM",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency"
+      ]
+    },
+    {
+      "ticker": "JNJ",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency"
+      ]
+    },
+    {
+      "ticker": "LLY",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency"
+      ]
+    },
+    {
+      "ticker": "ABBV",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency"
+      ]
+    },
+    {
+      "ticker": "INTU",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 13,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 2.17,
+      "oos_expectancy": 1.448,
+      "oos_sharpe_raw": 0.144,
+      "oos_sharpe_deflated": -0.508,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 13 < 30",
+        "deflated OOS Sharpe -0.51 < 0.5 (raw 0.14, 30 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.99 < 1.0"
+      ]
+    },
+    {
+      "ticker": "AMGN",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 29,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 4.84,
+      "oos_expectancy": 1.981,
+      "oos_sharpe_raw": 0.473,
+      "oos_sharpe_deflated": -0.179,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 29 < 30",
+        "deflated OOS Sharpe -0.18 < 0.5 (raw 0.47, 30 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "CSCO",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency"
+      ]
+    },
+    {
+      "ticker": "IBM",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency"
+      ]
+    },
+    {
+      "ticker": "TXN",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 15,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 2.5,
+      "oos_expectancy": 1.342,
+      "oos_sharpe_raw": 0.161,
+      "oos_sharpe_deflated": -0.492,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 15 < 30",
+        "deflated OOS Sharpe -0.49 < 0.5 (raw 0.16, 30 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "NOW",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 5,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 0.9,
+      "oos_expectancy": 0.502,
+      "oos_sharpe_raw": -0.243,
+      "oos_sharpe_deflated": -0.895,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 5 < 30",
+        "OOS expectancy 0.50 < 1.0",
+        "deflated OOS Sharpe -0.89 < 0.5 (raw -0.24, 30 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.34 < 1.0"
+      ]
+    },
+    {
+      "ticker": "PFE",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency"
+      ]
+    },
+    {
+      "ticker": "AMAT",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 9,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 1.5,
+      "oos_expectancy": 2.846,
+      "oos_sharpe_raw": 0.516,
+      "oos_sharpe_deflated": -0.136,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 9 < 30",
+        "deflated OOS Sharpe -0.14 < 0.5 (raw 0.52, 30 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "ADP",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 11,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 1.84,
+      "oos_expectancy": 0.388,
+      "oos_sharpe_raw": -0.423,
+      "oos_sharpe_deflated": -1.075,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 11 < 30",
+        "OOS expectancy 0.39 < 1.0",
+        "deflated OOS Sharpe -1.07 < 0.5 (raw -0.42, 30 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.62 < 1.0"
+      ]
+    },
+    {
+      "ticker": "ANET",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 18,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 3.77,
+      "oos_expectancy": 2.425,
+      "oos_sharpe_raw": 0.607,
+      "oos_sharpe_deflated": -0.045,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 18 < 30",
+        "deflated OOS Sharpe -0.04 < 0.5 (raw 0.61, 30 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "GILD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency"
+      ]
+    },
+    {
+      "ticker": "ADI",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency"
+      ]
+    },
+    {
+      "ticker": "MRK",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency"
+      ]
+    },
+    {
+      "ticker": "KLAC",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency"
+      ]
+    },
+    {
+      "ticker": "PANW",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 16,
+      "timeframe": "1d",
+      "strategy": "divergence",
+      "oos_trades_per_year": 2.9,
+      "oos_expectancy": 1.401,
+      "oos_sharpe_raw": 0.184,
+      "oos_sharpe_deflated": -0.468,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 16 < 30",
+        "deflated OOS Sharpe -0.47 < 0.5 (raw 0.18, 30 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    }
+  ]
+}

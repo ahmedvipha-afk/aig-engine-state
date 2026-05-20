@@ -1,0 +1,5 @@
+# Layers 1-2. Core engine needs only:
+numpy>=1.26
+pandas>=2.0
+# For LIVE real-data mode (--live), on your machine:
+# pip install openbb

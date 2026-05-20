@@ -1,0 +1,69 @@
+# UAE Shariah-compliant universe (CEO-curated proxy, 2026-05-20)
+# Source: universe/uae_stocks.xlsx — 'Halal Universe' sheet, status=HALAL.
+# Drop Ahmed's authoritative ADIB UAE list over this file to override.
+# 50 HALAL tickers (engine consumes these).
+# 10 VERIFY tickers commented out below — uncomment after Ahmed confirms.
+# ADX suffix .AD ; DFM suffix .DU
+
+ADIB.AD
+ADNOCDIST.AD
+ADNOCDRILL.AD
+ADNOCGAS.AD
+ADNOCLS.AD
+ADPORTS.AD
+AGTHIA.AD
+ALDAR.AD
+ALPHADHABI.AD
+ASMAK.AD
+BOROUGE.AD
+DANA.AD
+EAND.AD
+EMSTEEL.AD
+FERTIGLB.AD
+GULFCEMENT.AD
+IHC.AD
+MULTIPLY.AD
+NMDC.AD
+PRESIGHT.AD
+PUREHEALTH.AD
+RAKCEC.AD
+RAKWCT.AD
+RAPCO.AD
+SHAREK.AD
+SPACE42.AD
+TAQA.AD
+UMC.AD
+AIRARABIA.DU
+AMANAT.DU
+AMLAK.DU
+ARMX.DU
+DEWA.DU
+DEYAAR.DU
+DIB.DU
+DIC.DU
+DTC.DU
+DUBAIINV.DU
+EIBANK.DU
+EMAAR.DU
+EMAARDEV.DU
+EMIRATESREIT.DU
+EMPOWER.DU
+GFH.DU
+PARKIN.DU
+SALIK.DU
+SUKOON.DU
+TABREED.DU
+TALABAT.DU
+TECOM.DU
+
+# --- VERIFY (commented; need Ahmed's confirm) ---
+# UMORTH.AD
+# WAHA.AD
+# DFM.DU
+# SHUAA.DU
+# UPP.DU
+# ABNIC.AD
+# MANAZEL.AD
+# NCC.AD
+# NGI.DU
+# ORASCONST.DU

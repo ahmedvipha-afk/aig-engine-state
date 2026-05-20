@@ -1,0 +1,412 @@
+{
+  "provenance": {
+    "utc": "2026-05-20T17:06:47+00:00",
+    "file_hashes": {
+      "config.py": "b2e10cfee75a2b88",
+      "aig/strategy_ema200.py": "53b58f8a447b09d9",
+      "aig/backtest.py": "0c3faa9e6bf45f1e",
+      "aig/validation_gate.py": "a72a73a5a08f2438",
+      "aig/stats.py": "23715e456732ed73",
+      "aig/costs.py": "aab2cafc67d08ba2"
+    },
+    "config_hash": "99ac75edb64eea3b"
+  },
+  "args": {
+    "tickers": null,
+    "universe": "universe/uae_tickers.txt",
+    "live": true,
+    "timeframe": "1d",
+    "strategy": "ema200",
+    "out": "validation_uae_ema200_1d.json"
+  },
+  "portfolio": {
+    "strategy": "ema200",
+    "timeframe": "1d",
+    "verdict": "PORTFOLIO_FAIL",
+    "passed": false,
+    "portfolio_trades": 2,
+    "contributing_tickers": 1,
+    "universe_size": 1,
+    "universe_coverage": 1.0,
+    "portfolio_expectancy": 0.0,
+    "portfolio_win_rate": 0.0,
+    "portfolio_sharpe_raw": -1.7773,
+    "portfolio_sharpe_deflated": -2.0716,
+    "portfolio_ci_low": null,
+    "portfolio_ci_high": null,
+    "n_strategies_haircut": 2,
+    "reasons": [
+      "portfolio trades 2 < 1000",
+      "portfolio expectancy 0.000 < 1.0",
+      "portfolio win rate 0.000 < 0.4",
+      "portfolio deflated Sharpe -2.072 < 0.5 (raw -1.777, 2 strategies)",
+      "95% CI lower bound on mean trade not > 0 (lo=nan)"
+    ]
+  },
+  "results": [
+    {
+      "ticker": "ADIB.AD",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for ADIB.AD @ 1d"
+      ]
+    },
+    {
+      "ticker": "ADNOCDIST.AD",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for ADNOCDIST.AD @ 1d"
+      ]
+    },
+    {
+      "ticker": "ADNOCDRILL.AD",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for ADNOCDRILL.AD @ 1d"
+      ]
+    },
+    {
+      "ticker": "ADNOCGAS.AD",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for ADNOCGAS.AD @ 1d"
+      ]
+    },
+    {
+      "ticker": "ADNOCLS.AD",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for ADNOCLS.AD @ 1d"
+      ]
+    },
+    {
+      "ticker": "ADPORTS.AD",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for ADPORTS.AD @ 1d"
+      ]
+    },
+    {
+      "ticker": "AGTHIA.AD",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for AGTHIA.AD @ 1d"
+      ]
+    },
+    {
+      "ticker": "ALDAR.AD",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for ALDAR.AD @ 1d"
+      ]
+    },
+    {
+      "ticker": "ALPHADHABI.AD",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for ALPHADHABI.AD @ 1d"
+      ]
+    },
+    {
+      "ticker": "ASMAK.AD",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for ASMAK.AD @ 1d"
+      ]
+    },
+    {
+      "ticker": "BOROUGE.AD",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for BOROUGE.AD @ 1d"
+      ]
+    },
+    {
+      "ticker": "DANA.AD",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for DANA.AD @ 1d"
+      ]
+    },
+    {
+      "ticker": "EAND.AD",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for EAND.AD @ 1d"
+      ]
+    },
+    {
+      "ticker": "EMSTEEL.AD",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for EMSTEEL.AD @ 1d"
+      ]
+    },
+    {
+      "ticker": "FERTIGLB.AD",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for FERTIGLB.AD @ 1d"
+      ]
+    },
+    {
+      "ticker": "GULFCEMENT.AD",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for GULFCEMENT.AD @ 1d"
+      ]
+    },
+    {
+      "ticker": "IHC.AD",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for IHC.AD @ 1d"
+      ]
+    },
+    {
+      "ticker": "MULTIPLY.AD",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for MULTIPLY.AD @ 1d"
+      ]
+    },
+    {
+      "ticker": "NMDC.AD",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for NMDC.AD @ 1d"
+      ]
+    },
+    {
+      "ticker": "PRESIGHT.AD",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for PRESIGHT.AD @ 1d"
+      ]
+    },
+    {
+      "ticker": "PUREHEALTH.AD",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for PUREHEALTH.AD @ 1d"
+      ]
+    },
+    {
+      "ticker": "RAKCEC.AD",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for RAKCEC.AD @ 1d"
+      ]
+    },
+    {
+      "ticker": "RAKWCT.AD",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for RAKWCT.AD @ 1d"
+      ]
+    },
+    {
+      "ticker": "RAPCO.AD",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for RAPCO.AD @ 1d"
+      ]
+    },
+    {
+      "ticker": "SHAREK.AD",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for SHAREK.AD @ 1d"
+      ]
+    },
+    {
+      "ticker": "SPACE42.AD",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for SPACE42.AD @ 1d"
+      ]
+    },
+    {
+      "ticker": "TAQA.AD",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for TAQA.AD @ 1d"
+      ]
+    },
+    {
+      "ticker": "UMC.AD",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for UMC.AD @ 1d"
+      ]
+    },
+    {
+      "ticker": "AIRARABIA.DU",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for AIRARABIA.DU @ 1d"
+      ]
+    },
+    {
+      "ticker": "AMANAT.DU",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for AMANAT.DU @ 1d"
+      ]
+    },
+    {
+      "ticker": "AMLAK.DU",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for AMLAK.DU @ 1d"
+      ]
+    },
+    {
+      "ticker": "ARMX.DU",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for ARMX.DU @ 1d"
+      ]
+    },
+    {
+      "ticker": "DEWA.DU",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for DEWA.DU @ 1d"
+      ]
+    },
+    {
+      "ticker": "DEYAAR.DU",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for DEYAAR.DU @ 1d"
+      ]
+    },
+    {
+      "ticker": "DIB.DU",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for DIB.DU @ 1d"
+      ]
+    },
+    {
+      "ticker": "DIC.DU",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for DIC.DU @ 1d"
+      ]
+    },
+    {
+      "ticker": "DTC.DU",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 2,
+      "timeframe": "1d",
+      "strategy": "ema200",
+      "oos_trades_per_year": 1.12,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -1.777,
+      "oos_sharpe_deflated": -2.477,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 2 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -2.48 < 0.5 (raw -1.78, 50 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.86 < 1.0"
+      ]
+    },
+    {
+      "ticker": "DUBAIINV.DU",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for DUBAIINV.DU @ 1d"
+      ]
+    },
+    {
+      "ticker": "EIBANK.DU",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for EIBANK.DU @ 1d"
+      ]
+    },
+    {
+      "ticker": "EMAAR.DU",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for EMAAR.DU @ 1d"
+      ]
+    },
+    {
+      "ticker": "EMAARDEV.DU",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for EMAARDEV.DU @ 1d"
+      ]
+    },
+    {
+      "ticker": "EMIRATESREIT.DU",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for EMIRATESREIT.DU @ 1d"
+      ]
+    },
+    {
+      "ticker": "EMPOWER.DU",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for EMPOWER.DU @ 1d"
+      ]
+    },
+    {
+      "ticker": "GFH.DU",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for GFH.DU @ 1d"
+      ]
+    },
+    {
+      "ticker": "PARKIN.DU",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for PARKIN.DU @ 1d"
+      ]
+    },
+    {
+      "ticker": "SALIK.DU",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for SALIK.DU @ 1d"
+      ]
+    },
+    {
+      "ticker": "SUKOON.DU",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for SUKOON.DU @ 1d"
+      ]
+    },
+    {
+      "ticker": "TABREED.DU",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for TABREED.DU @ 1d"
+      ]
+    },
+    {
+      "ticker": "TALABAT.DU",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for TALABAT.DU @ 1d"
+      ]
+    },
+    {
+      "ticker": "TECOM.DU",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for TECOM.DU @ 1d"
+      ]
+    }
+  ]
+}

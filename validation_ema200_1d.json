@@ -1,0 +1,127 @@
+{
+  "provenance": {
+    "utc": "2026-05-20T15:31:11+00:00",
+    "file_hashes": {
+      "config.py": "937633edff7d18b2",
+      "aig/strategy_ema200.py": "53b58f8a447b09d9",
+      "aig/backtest.py": "0c3faa9e6bf45f1e",
+      "aig/validation_gate.py": "5ff7d458ed42f3d4",
+      "aig/stats.py": "23715e456732ed73",
+      "aig/costs.py": "aab2cafc67d08ba2"
+    },
+    "config_hash": "d2c90fd7a64f27ef"
+  },
+  "args": {
+    "tickers": null,
+    "universe": null,
+    "live": false,
+    "timeframe": "1d",
+    "strategy": "ema200",
+    "out": null
+  },
+  "results": [
+    {
+      "ticker": "AAPL",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 5,
+      "timeframe": "1d",
+      "strategy": "ema200",
+      "oos_trades_per_year": 2.1,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -2.658,
+      "oos_sharpe_deflated": -3.107,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 5 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -3.11 < 0.5 (raw -2.66, 5 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "MSFT",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 4,
+      "timeframe": "1d",
+      "strategy": "ema200",
+      "oos_trades_per_year": 1.68,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -1.785,
+      "oos_sharpe_deflated": -2.234,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 4 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -2.23 < 0.5 (raw -1.79, 5 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.00 < 1.0"
+      ]
+    },
+    {
+      "ticker": "NVDA",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 1,
+      "timeframe": "1d",
+      "strategy": "ema200",
+      "oos_trades_per_year": 0.42,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.449,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 1 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -0.45 < 0.5 (raw 0.00, 5 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.00 < 1.0"
+      ]
+    },
+    {
+      "ticker": "XOM",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 5,
+      "timeframe": "1d",
+      "strategy": "ema200",
+      "oos_trades_per_year": 2.1,
+      "oos_expectancy": 0.022,
+      "oos_sharpe_raw": -2.007,
+      "oos_sharpe_deflated": -2.456,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 5 < 30",
+        "OOS expectancy 0.02 < 1.0",
+        "deflated OOS Sharpe -2.46 < 0.5 (raw -2.01, 5 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.01 < 1.0"
+      ]
+    },
+    {
+      "ticker": "BTC-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 0,
+      "timeframe": "1d",
+      "strategy": "ema200",
+      "oos_trades_per_year": 0.0,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.449,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 0 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -0.45 < 0.5 (raw 0.00, 5 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    }
+  ]
+}

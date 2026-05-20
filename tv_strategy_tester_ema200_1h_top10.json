@@ -1,0 +1,28 @@
+{
+  "session": "2026-05-20",
+  "strategy": "AIG EMA-200 + Vol Confirm (Long Only) v1",
+  "pine_source": "pine/aig_ema200_vol_v1.pine",
+  "timeframe": "1H",
+  "universe_source": "universe/us_halal_top30.txt (Ahmed authoritative)",
+  "tv_strategy_props": {
+    "initial_capital": 100000,
+    "default_qty_type": "percent_of_equity",
+    "default_qty_value": 100,
+    "commission_type": "percent",
+    "commission_value": 0.05,
+    "slippage_ticks": 3,
+    "process_orders_on_close": true
+  },
+  "results": [
+    {"ticker":"NVDA",  "exchange":"NASDAQ", "date_from":"Jan 2, 2020","date_to":"May 20, 2026", "total_pl_pct":292.67, "max_dd_pct":23.84, "total_trades":112, "win_rate_pct":22.32, "profit_factor":1.927, "sharpe":0.196, "sortino":0.764, "avg_win_pct":5.29, "avg_loss_pct":1.62, "bh_return_pct":3165.41},
+    {"ticker":"MSFT",  "exchange":"NASDAQ", "date_from":"Jan 2, 2020","date_to":"May 20, 2026", "total_pl_pct":16.04,  "max_dd_pct":24.48, "total_trades":100, "win_rate_pct":16.00, "profit_factor":0.793, "sharpe":null,  "sortino":null,  "avg_win_pct":1.22, "avg_loss_pct":0.97, "bh_return_pct":189.45},
+    {"ticker":"AAPL",  "exchange":"NASDAQ", "date_from":"Jan 2, 2020","date_to":"May 20, 2026", "total_pl_pct":55.15,  "max_dd_pct":16.95, "total_trades":109, "win_rate_pct":24.77, "profit_factor":1.556, "sharpe":0.114, "sortino":0.355, "avg_win_pct":2.41, "avg_loss_pct":0.91, "bh_return_pct":379.45},
+    {"ticker":"GOOGL", "exchange":"NASDAQ", "date_from":"Jan 2, 2019","date_to":"May 20, 2026", "total_pl_pct":81.44,  "max_dd_pct":23.97, "total_trades":126, "win_rate_pct":27.78, "profit_factor":1.689, "sharpe":0.128, "sortino":0.338, "avg_win_pct":2.72, "avg_loss_pct":1.09, "bh_return_pct":599.82},
+    {"ticker":"GOOG",  "exchange":"NASDAQ", "date_from":"Jan 2, 2019","date_to":"May 20, 2026", "total_pl_pct":137.01, "max_dd_pct":12.97, "total_trades":119, "win_rate_pct":29.41, "profit_factor":2.089, "sharpe":0.191, "sortino":0.703, "avg_win_pct":2.86, "avg_loss_pct":1.05, "bh_return_pct":592.27},
+    {"ticker":"META",  "exchange":"NASDAQ", "date_from":"Jan 2, 2020","date_to":"May 20, 2026", "total_pl_pct":18.82,  "max_dd_pct":30.29, "total_trades":123, "win_rate_pct":21.14, "profit_factor":1.147, "sharpe":0.038, "sortino":0.121, "avg_win_pct":2.31, "avg_loss_pct":1.26, "bh_return_pct":183.99},
+    {"ticker":"AVGO",  "exchange":"NASDAQ", "date_from":"Jan 2, 2018","date_to":"May 20, 2026", "total_pl_pct":18.02,  "max_dd_pct":31.68, "total_trades":122, "win_rate_pct":19.67, "profit_factor":1.116, "sharpe":0.027, "sortino":0.062, "avg_win_pct":3.27, "avg_loss_pct":1.59, "bh_return_pct":1954.41},
+    {"ticker":"TSLA",  "exchange":"NASDAQ", "date_from":"Jan 2, 2020","date_to":"May 20, 2026", "total_pl_pct":20.07,  "max_dd_pct":45.58, "total_trades":115, "win_rate_pct":18.26, "profit_factor":1.087, "sharpe":0.049, "sortino":0.177, "avg_win_pct":2.72, "avg_loss_pct":1.69, "bh_return_pct":682.27},
+    {"ticker":"TSM",   "exchange":"NYSE",   "date_from":"Jan 2, 2019","date_to":"May 20, 2026", "total_pl_pct":206.38, "max_dd_pct":15.56, "total_trades":86,  "win_rate_pct":24.42, "profit_factor":2.534, "sharpe":0.195, "sortino":0.889, "avg_win_pct":3.59, "avg_loss_pct":1.18, "bh_return_pct":1075.32},
+    {"ticker":"ORCL",  "exchange":"NYSE",   "date_from":"Jan 2, 2019","date_to":"May 20, 2026", "total_pl_pct":119.45, "max_dd_pct":20.80, "total_trades":96,  "win_rate_pct":19.79, "profit_factor":2.051, "sharpe":0.139, "sortino":0.538, "avg_win_pct":5.74, "avg_loss_pct":1.05, "bh_return_pct":286.20}
+  ]
+}

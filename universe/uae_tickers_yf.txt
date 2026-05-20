@@ -1,0 +1,56 @@
+# UAE tickers that work via yfinance (CEO probe 2026-05-20)
+# 21 confirmed-working, 29 without yfinance coverage
+# To re-test or add new: re-run universe/probe_uae_yfinance.py
+
+AGTHIA.AB
+AIRARABIA.AE
+AMANAT.AE
+AMLAK.AE
+ARMX.AE
+DEWA.AE
+DEYAAR.AE
+DIB.AE
+DIC.AE
+DTC.AE
+EIBANK.AE
+EMAAR.AE
+EMAARDEV.AE
+EMPOWER.AE
+GFH.AE
+PARKIN.AE
+SALIK.AE
+SUKOON.AE
+TABREED.AE
+TALABAT.AE
+TECOM.AE
+
+# --- No yfinance coverage (need alternate data source: TV MCP, etc.) ---
+# ADIB.AD
+# ADNOCDIST.AD
+# ADNOCDRILL.AD
+# ADNOCGAS.AD
+# ADNOCLS.AD
+# ADPORTS.AD
+# ALDAR.AD
+# ALPHADHABI.AD
+# ASMAK.AD
+# BOROUGE.AD
+# DANA.AD
+# EAND.AD
+# EMSTEEL.AD
+# FERTIGLB.AD
+# GULFCEMENT.AD
+# IHC.AD
+# MULTIPLY.AD
+# NMDC.AD
+# PRESIGHT.AD
+# PUREHEALTH.AD
+# RAKCEC.AD
+# RAKWCT.AD
+# RAPCO.AD
+# SHAREK.AD
+# SPACE42.AD
+# TAQA.AD
+# UMC.AD
+# DUBAIINV.DU
+# EMIRATESREIT.DU

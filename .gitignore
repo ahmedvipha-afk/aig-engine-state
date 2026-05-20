@@ -1,0 +1,46 @@
+# --- Secrets / credentials (ABSOLUTE NEVER COMMIT) ---
+*.env
+.env
+.env.*
+credentials.json
+*_token.txt
+*_secret*
+.claude/channels/**/.env
+
+# --- Python build/cache ---
+__pycache__/
+*.py[cod]
+*.pyc
+.ruff_cache/
+.pytest_cache/
+.mypy_cache/
+*.egg-info/
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+~$*
+
+# --- Logs (re-derivable; keep findings_*.md instead) ---
+logs/
+audit_trail.md.bak
+
+# --- Background task scratch ---
+*.tmp
+tmp/
+
+# --- Large data caches (raw market data, rebuildable) ---
+data_cache/
+*.parquet
+*.feather
+
+# Keep these explicitly even though they look like cache:
+# - validation_*.json (results — real state)
+# - universe/*.txt + universe/*.xlsx + universe/*.json
+# - aig/audit_trail.md
+# - ceo_brain.md, findings_*.md
+# - strategy_register.md
+# - pine/*.pine

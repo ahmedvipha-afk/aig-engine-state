@@ -1,0 +1,193 @@
+{
+  "provenance": {
+    "utc": "2026-05-20T14:12:17+00:00",
+    "file_hashes": {
+      "config.py": "6c3305b922b0dd28",
+      "aig/strategy_ema200.py": "5e5d34dd42a1444d",
+      "aig/backtest.py": "5e4c49119de6db89",
+      "aig/validation_gate.py": "7e059799a9e7cea1",
+      "aig/stats.py": "6f3363e1cf365f2c",
+      "aig/costs.py": "aab2cafc67d08ba2"
+    },
+    "config_hash": "36c05199475e884b"
+  },
+  "results": [
+    {
+      "ticker": "AAPL",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 18,
+      "oos_expectancy": 3.477,
+      "oos_sharpe_raw": 1.131,
+      "oos_sharpe_deflated": 0.574,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 18 < 30",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "MSFT",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 20,
+      "oos_expectancy": 3.332,
+      "oos_sharpe_raw": 1.152,
+      "oos_sharpe_deflated": 0.595,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 20 < 30",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "NVDA",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 11,
+      "oos_expectancy": 21.13,
+      "oos_sharpe_raw": 1.956,
+      "oos_sharpe_deflated": 1.398,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 11 < 30",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "AVGO",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 11,
+      "oos_expectancy": 12.245,
+      "oos_sharpe_raw": 2.135,
+      "oos_sharpe_deflated": 1.578,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 11 < 30",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "GOOGL",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 14,
+      "oos_expectancy": 5.874,
+      "oos_sharpe_raw": 1.767,
+      "oos_sharpe_deflated": 1.21,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 14 < 30",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "META",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 17,
+      "oos_expectancy": 0.541,
+      "oos_sharpe_raw": -1.099,
+      "oos_sharpe_deflated": -1.656,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 17 < 30",
+        "OOS expectancy 0.54 < 1.0",
+        "deflated OOS Sharpe -1.66 < 0.5 (raw -1.10, 12 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "TSLA",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 25,
+      "oos_expectancy": 3.954,
+      "oos_sharpe_raw": 0.89,
+      "oos_sharpe_deflated": 0.332,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 25 < 30",
+        "deflated OOS Sharpe 0.33 < 0.5 (raw 0.89, 12 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "AMD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|daily ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "MU",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 30,
+      "oos_expectancy": 0.864,
+      "oos_sharpe_raw": -0.195,
+      "oos_sharpe_deflated": -0.753,
+      "ci_low": -0.04842,
+      "reasons": [
+        "OOS expectancy 0.86 < 1.0",
+        "deflated OOS Sharpe -0.75 < 0.5 (raw -0.20, 12 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=-0.04842456869901705)"
+      ]
+    },
+    {
+      "ticker": "LLY",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 19,
+      "oos_expectancy": 7.311,
+      "oos_sharpe_raw": 1.677,
+      "oos_sharpe_deflated": 1.12,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 19 < 30",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "VLO",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 24,
+      "oos_expectancy": 1.297,
+      "oos_sharpe_raw": 0.382,
+      "oos_sharpe_deflated": -0.175,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 24 < 30",
+        "deflated OOS Sharpe -0.18 < 0.5 (raw 0.38, 12 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "ORCL",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 22,
+      "oos_expectancy": 3.922,
+      "oos_sharpe_raw": 1.615,
+      "oos_sharpe_deflated": 1.057,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 22 < 30",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    }
+  ]
+}
