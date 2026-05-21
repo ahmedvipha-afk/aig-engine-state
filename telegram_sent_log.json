@@ -6,5 +6,253 @@
     "ok": true,
     "message_id": 15,
     "preview": "\ud83c\udfaf Sprint Item 5 \u2192 DONE \u2014 MBV strategy validated across 3 markets\n\nconfig_hash: 6ce4b38242d54771\nN_trials_registered: 9 (3 strategies \u00d7 3 markets \u00d7 1D)\n\nUS MBV PORTFOLIO_CLEARED under N=9 haircut:\n\u2022 Tr"
+  },
+  {
+    "ts_utc": "2026-05-21T11:54:20+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 16,
+    "preview": "\ud83d\ude80 AIG PHASE 1 \u2014 Fire 0 complete\n\nCEO directive received and acknowledged. Sprint cadence ratcheted: 2h \u2192 15min, 24/7.\nCron */15 * * * * active.\n\nPHASE 1 TRACKER (8 objectives):\n\u2705 1. Multi-strategy uni"
+  },
+  {
+    "ts_utc": "2026-05-21T12:17:03+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 17,
+    "preview": "\ud83d\udcc9 Paper-Backward tab shipped on dashboard\n\nA new tab between 'Paper Money' and 'Risk' shows the historical 100K simulator:\n\nTop-100 by dSharpe (2016-01-04 \u2192 today, 10.37 yrs):\n\u2022 100,000 \u2192 393,688.63\n\u2022"
+  },
+  {
+    "ts_utc": "2026-05-21T12:34:02+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 18,
+    "preview": "\ud83d\ude80 PHASE 1 \u2014 Fire 1 complete (manual)\n\nPHASE 1 SCORE: 6/8 \u2705 (was 4/8)\n\u2705 2. Historical winners recovered (1,101 tickers + 6 TV watchlist)\n\u2705 3. Coverage targets all 3 markets x all 3 registered strats\n\u23f3 "
+  },
+  {
+    "ts_utc": "2026-05-21T12:49:42+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 19,
+    "preview": "\ud83d\udcca DBO US verdict landed: FAIL on WR floor ONLY (near-miss)\n\nDBO US 1603-universe under N=12 haircut:\n\u2022 Trades: 11,910 (huge sample) \u2705\n\u2022 Expectancy: 1.298 \u2705\n\u2022 Raw Sharpe: 3.498 \u2705\n\u2022 Deflated Sharpe: 2.9"
+  },
+  {
+    "ts_utc": "2026-05-21T13:12:42+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 20,
+    "preview": "\u2705 Path A confirmed + ROC Momentum pre-registered\n\nDBO US near-miss logged in winners_registry.md with CEO's verbatim note (research-grade only; first candidate if WR-floor gate is later amended per Wa"
+  },
+  {
+    "ts_utc": "2026-05-21T13:37:54+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udcca Two dashboard fixes shipped + ROC US near-miss landed\n\nFIX 1: All user-facing GST \u2192 UAE / 'UAE Time' across dashboard (timestamps, schedule strings, mode-2 cron description). Arabic version uses '\u0628\u062a"
+  },
+  {
+    "ts_utc": "2026-05-21T13:38:07+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 21,
+    "preview": "\ud83d\udcca Dashboard FIX 1+2 shipped (commits c151047, f54e00b)\n\nFIX 1: GST \u2192 UAE throughout\nFIX 2: Per-market winners visibility \u2014 Active Paper-Forward + Full Validated Winners Registry (1,107 rows for US, fi"
+  },
+  {
+    "ts_utc": "2026-05-21T13:48:34+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 22,
+    "preview": "\u26a0 Phase 1 sprint: 5 fires missed in a row.\n\nCron windows were skipped because the REPL was busy. Catching up all 5 fires now back-to-back, then resuming normal 15-min cadence.\n\nTo reduce missed fires,"
+  },
+  {
+    "ts_utc": "2026-05-21T13:52:03+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\u2699\ufe0f Sprint catch-up policy implemented\n\nPer directive: messages no longer block scheduled sprints. Missed cron windows queue up and drain back-to-back when REPL goes idle.\n\nNew script: scripts/sprint_c"
+  },
+  {
+    "ts_utc": "2026-05-21T13:52:10+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 23,
+    "preview": "\u2699 Sprint catch-up policy live (commit e8cc7da). missed_sprints.log + Telegram alert at 4+. SKILL loops N+1 iterations. Going quiet so cron can fire."
+  },
+  {
+    "ts_utc": "2026-05-21T14:17:52+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward (full universe) \u2014 2026-05-21</b>\n<i>2 entries \u00b7 2 exits \u2014 showing top 4 by dSharpe (cap=10)</i>\n\n\ud83d\udfe2 ENTRY <b>SYNA</b> [divergence] $130.91 (stop $56.52) \u00b7 dSh -0.46\n\ud83d\udfe2 ENTRY <b>TT"
+  },
+  {
+    "ts_utc": "2026-05-21T14:28:07+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 24,
+    "preview": "\u2705 Staged-batch validation live (Path a)\n\nNew strategies validate 200 tickers per fire over ~10 fires:\n\u2022 Fire 1: enroll + UAE (~60 tickers)\n\u2022 Fire 2: Crypto (~140 tickers)\n\u2022 Fires 3-9: US in 200-batch "
+  },
+  {
+    "ts_utc": "2026-05-21T14:58:28+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward (full universe) \u2014 2026-05-21</b>\n<i>2 entries \u00b7 0 exits \u2014 showing top 2 by dSharpe (cap=10)</i>\n\n\ud83d\udfe2 ENTRY <b>CAH</b> [divergence] $199.85 (stop $190.33) \u00b7 dSh -0.64\n\ud83d\udfe2 ENTRY <b>FL"
+  },
+  {
+    "ts_utc": "2026-05-21T15:00:49+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 25,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward (full universe) \u2014 2026-05-21</b>\n<i>2 entries \u00b7 0 exits \u2014 showing top 2 by dSharpe (cap=10)</i>\n\n\ud83d\udfe2 ENTRY <b>CAH</b> [divergence] $199.93 (stop $190.33) \u00b7 dSh -0.64\n\ud83d\udfe2 ENTRY <b>FL"
+  },
+  {
+    "ts_utc": "2026-05-21T15:18:18+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 26,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward (full universe) \u2014 2026-05-21</b>\n<i>2 entries \u00b7 0 exits \u2014 showing top 2 by dSharpe (cap=10)</i>\n\n\ud83d\udfe2 ENTRY <b>GSK</b> [divergence] $51.28 (stop $48.53) \u00b7 dSh -0.90\n\ud83d\udfe2 ENTRY <b>PEN<"
+  },
+  {
+    "ts_utc": "2026-05-21T15:43:46+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 27,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward (full universe) \u2014 2026-05-21</b>\n<i>1 entries \u00b7 0 exits \u2014 showing top 1 by dSharpe (cap=10)</i>\n\n\ud83d\udfe2 ENTRY <b>AS</b> [divergence] $34.89 (stop $30.59) \u00b7 dSh +0.85\n\nOpen: 5 \u00b7 Close"
+  },
+  {
+    "ts_utc": "2026-05-21T15:57:55+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 28,
+    "preview": "\ud83d\ude80 Sprint fire 19:57 UAE \u2014 1 iteration"
+  },
+  {
+    "ts_utc": "2026-05-21T15:58:23+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 29,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward (full universe) \u2014 2026-05-21</b>\n<i>1 entries \u00b7 1 exits \u2014 showing top 2 by dSharpe (cap=10)</i>\n\n\ud83d\udfe2 ENTRY <b>TTDKY</b> [divergence] $19.75 (stop $12.57) \u00b7 dSh -0.47\n\ud83d\udd34 EXIT <b>TTD"
+  },
+  {
+    "ts_utc": "2026-05-21T16:18:55+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 30,
+    "preview": "\ud83d\ude80 Sprint fire 20:18 UAE \u2014 1 iteration"
+  },
+  {
+    "ts_utc": "2026-05-21T16:23:55+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 31,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward (full universe) \u2014 2026-05-21</b>\n<i>1 entries \u00b7 0 exits \u2014 showing top 1 by dSharpe (cap=10)</i>\n\n\ud83d\udfe2 ENTRY <b>ZUMZ</b> [divergence] $22.93 (stop $20.95) \u00b7 dSh -0.74\n\nOpen: 6 \u00b7 Clo"
+  },
+  {
+    "ts_utc": "2026-05-21T16:34:53+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 32,
+    "preview": "\ud83d\ude80 Sprint fire 20:34 UAE \u2014 1 iteration"
+  },
+  {
+    "ts_utc": "2026-05-21T16:49:05+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 33,
+    "preview": "\ud83d\ude80 Sprint fire 20:48 UAE \u2014 1 iteration"
+  },
+  {
+    "ts_utc": "2026-05-21T17:00:54+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 34,
+    "preview": "\ud83d\ude80 Sprint fire 21:00 UAE \u2014 1 iteration"
+  },
+  {
+    "ts_utc": "2026-05-21T17:18:47+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 35,
+    "preview": "\ud83d\ude80 Sprint fire 21:18 UAE \u2014 1 iteration"
+  },
+  {
+    "ts_utc": "2026-05-21T17:22:44+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 36,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward (full universe) \u2014 2026-05-21</b>\n<i>1 entries \u00b7 1 exits \u2014 showing top 2 by dSharpe (cap=10)</i>\n\n\ud83d\udfe2 ENTRY <b>TTDKY</b> [divergence] $19.78 (stop $12.57) \u00b7 dSh -0.47\n\ud83d\udd34 EXIT <b>TTD"
+  },
+  {
+    "ts_utc": "2026-05-21T17:33:41+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 37,
+    "preview": "\ud83d\ude80 Sprint fire 21:33 UAE \u2014 1 iteration"
+  },
+  {
+    "ts_utc": "2026-05-21T17:37:34+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 38,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward (full universe) \u2014 2026-05-21</b>\n<i>1 entries \u00b7 0 exits \u2014 showing top 1 by dSharpe (cap=10)</i>\n\n\ud83d\udfe2 ENTRY <b>BIIB</b> [divergence] $188.63 (stop $163.05) \u00b7 dSh -0.68\n\nOpen: 7 \u00b7 C"
+  },
+  {
+    "ts_utc": "2026-05-21T17:48:43+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 39,
+    "preview": "\ud83d\ude80 Sprint fire 21:48 UAE \u2014 1 iteration"
+  },
+  {
+    "ts_utc": "2026-05-21T18:18:31+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 40,
+    "preview": "\ud83d\udccb Phase 1 coverage correction applied + audit complete\n\nPART A (CEO directive 2026-05-21 evening):\n\u2022 10 exit criteria now (was 8) \u2014 coverage as % of FULL halal universe\n\u2022 US 1,621 target \u2192 1,216 (75%)"
+  },
+  {
+    "ts_utc": "2026-05-21T18:18:43+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 41,
+    "preview": "\ud83d\ude80 Sprint fire 22:18 UAE \u2014 1 iteration"
+  },
+  {
+    "ts_utc": "2026-05-21T18:22:29+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 42,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward (full universe) \u2014 2026-05-21</b>\n<i>1 entries \u00b7 1 exits \u2014 showing top 2 by dSharpe (cap=10)</i>\n\n\ud83d\udfe2 ENTRY <b>IFNNY</b> [divergence] $80.47 (stop $37.97) \u00b7 dSh -0.07\n\ud83d\udd34 EXIT <b>IFN"
   }
 ]
