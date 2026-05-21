@@ -1,8 +1,26 @@
-# URLs for Cowork (raw GitHub ingestion)
+# URLs for Cowork + browser viewing
 
-Public read-only endpoints. No authentication required.
+## Dashboard (browser-rendered HTML — opens like a real webpage)
 
-## Canonical pattern
+**Use this URL when opening dashboard.html in a browser:**
+
+```
+https://ahmedvipha-afk.github.io/aig-engine-state/dashboard.html
+```
+
+Hosted via **GitHub Pages**. Serves `Content-Type: text/html` so browsers
+render it instead of showing source code. Updates after every Cloud
+Routine fire (push to main triggers Pages rebuild — ~30s).
+
+Local fallback (Ahmed's machine):
+```
+file:///C:/Users/ahmed/OneDrive/Documents/Projects/stocks/Ahmed%20group/Working%20Area/aig_engine/dashboard.html
+```
+
+## Raw file ingestion (for Cowork to parse JSON/Markdown)
+
+Use the raw URL pattern. Returns the file as `text/plain` — perfect for
+machine parsing, NOT for browser rendering of HTML.
 
 ```
 https://raw.githubusercontent.com/ahmedvipha-afk/aig-engine-state/main/<path>
