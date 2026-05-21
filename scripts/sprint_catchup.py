@@ -100,6 +100,26 @@ def _telegram_alert(missed_count: int) -> bool:
         return False
 
 
+def _telegram_start(missed_count: int, now_utc: datetime) -> bool:
+    """Sprint-start notification per CEO request 2026-05-21. Short, no spam."""
+    try:
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from telegram_send import send_message
+        uae = now_utc.astimezone(timezone(timedelta(hours=4)))
+        ts = uae.strftime("%H:%M UAE")
+        iters = missed_count + 1
+        if missed_count == 0:
+            line = f"🚀 Sprint fire {ts} — 1 iteration"
+        else:
+            line = (f"🚀 Sprint fire {ts} — catching up {missed_count} missed → "
+                    f"{iters} iterations back-to-back")
+        send_message(line, parse_mode="HTML")
+        return True
+    except Exception as e:
+        sys.stderr.write(f"sprint-start telegram failed: {e}\n")
+        return False
+
+
 def main():
     """Detect + log + alert.
 
@@ -142,6 +162,13 @@ def main():
     if missed >= ALERT_THRESHOLD:
         alerted = _telegram_alert(missed)
 
+    # Sprint-start notification (CEO directive 2026-05-21 — "always notify
+    # me when sprint starts"). Sent only when --notify-start is passed so
+    # manual diagnostic runs don't spam Telegram.
+    notified_start = False
+    if "--notify-start" in sys.argv:
+        notified_start = _telegram_start(missed, now)
+
     # NOTE: sentinel intentionally NOT updated here.
     # The SKILL prompt updates it after each catch-up iteration (or at the end
     # of the loop) via `python scripts/sprint_catchup.py --mark-done`.
@@ -150,6 +177,7 @@ def main():
     print(f"LAST_FIRE={last.isoformat()}")
     print(f"NOW={now.isoformat()}")
     print(f"ALERTED={'true' if alerted else 'false'}")
+    print(f"NOTIFIED_START={'true' if notified_start else 'false'}")
     if missed_marks:
         print(f"FIRST_MISSED={missed_marks[0].isoformat()}")
         print(f"LAST_MISSED={missed_marks[-1].isoformat()}")
