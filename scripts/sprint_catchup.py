@@ -100,8 +100,62 @@ def _telegram_alert(missed_count: int) -> bool:
         return False
 
 
+def _next_cron_fire(now_utc: datetime) -> datetime:
+    """Next cron mark after now (uses same CRON_MINUTES this script tracks)."""
+    cur = now_utc.replace(second=0, microsecond=0) + timedelta(minutes=1)
+    while cur.minute not in CRON_MINUTES:
+        cur += timedelta(minutes=1)
+    return cur
+
+
+def _staged_progress_brief() -> str:
+    """Brief one-liner on the active staged validation, or 'queue empty'."""
+    try:
+        import json
+        queue_file = ROOT / "staged_validation_queue.json"
+        if not queue_file.exists():
+            return "queue empty"
+        data = json.loads(queue_file.read_text(encoding="utf-8"))
+        plans = data.get("plans", [])
+        if not plans:
+            return "queue empty"
+        p = plans[0]
+        trial = p.get("trial_id", "?")
+        total = len(p.get("tickers", []))
+        stage_dir = ROOT / "staging" / trial
+        batches = sorted(stage_dir.glob("batch_*.json")) if stage_dir.exists() else []
+        done = min(len(batches) * 200, total) if total else len(batches) * 200
+        if total:
+            pct = 100 * done / total
+            return f"{trial} ~{done}/{total} ({pct:.0f}%)"
+        return f"{trial} {len(batches)} batches"
+    except Exception:
+        return "validation status unknown"
+
+
+def _paper_forward_brief() -> str:
+    """Brief one-liner on the paper-forward detector state."""
+    try:
+        import json
+        pf_file = ROOT / "paper_forward_positions_full.json"
+        if not pf_file.exists():
+            return "detector idle"
+        data = json.loads(pf_file.read_text(encoding="utf-8"))
+        n_open = len(data.get("open_positions", {}))
+        n_hist = len(data.get("history", []))
+        return f"{n_open} open, {n_hist} closed"
+    except Exception:
+        return "detector state unknown"
+
+
 def _telegram_start(missed_count: int, now_utc: datetime) -> bool:
-    """Sprint-start notification per CEO request 2026-05-21. Short, no spam."""
+    """Sprint-start notification (CEO request 2026-05-21, expanded 2026-05-22).
+
+    Brief + plain English. Three sections: what the sprint will do, what to
+    expect, and when the next sprint fires. Dynamic context pulled from
+    staged_validation_queue.json and paper_forward_positions_full.json so
+    the user sees current state at a glance.
+    """
     try:
         sys.path.insert(0, str(ROOT / "scripts"))
         from telegram_send import send_message
@@ -109,11 +163,31 @@ def _telegram_start(missed_count: int, now_utc: datetime) -> bool:
         ts = uae.strftime("%H:%M UAE")
         iters = missed_count + 1
         if missed_count == 0:
-            line = f"🚀 Sprint fire {ts} — 1 iteration"
+            iter_line = "1 iteration"
         else:
-            line = (f"🚀 Sprint fire {ts} — catching up {missed_count} missed → "
-                    f"{iters} iterations back-to-back")
-        send_message(line, parse_mode="HTML")
+            iter_line = (f"catching up {missed_count} missed → "
+                         f"{iters} iterations back-to-back")
+
+        val_brief = _staged_progress_brief()
+        pf_brief = _paper_forward_brief()
+
+        next_fire = _next_cron_fire(now_utc)
+        next_uae = next_fire.astimezone(timezone(timedelta(hours=4)))
+        next_ts = next_uae.strftime("%H:%M UAE")
+        mins_until = max(1, int((next_fire - now_utc).total_seconds() / 60))
+
+        msg = (
+            f"🚀 Sprint fire {ts} — {iter_line}\n\n"
+            f"📋 What it does: reads CEO brain, advances the next Phase 1 "
+            f"objective by one step, scans paper-forward for new "
+            f"entries/exits, runs one staged validation batch, regenerates "
+            f"dashboard, commits and pushes to GitHub.\n\n"
+            f"⏳ What to expect: 1 new commit on GitHub, Telegram alerts "
+            f"only on new paper-forward positions, exits, or validation "
+            f"finalize. Validation: {val_brief}. Paper-forward: {pf_brief}.\n\n"
+            f"⏭️ Next sprint: {next_ts} (~{mins_until} min from now)."
+        )
+        send_message(msg, parse_mode="HTML")
         return True
     except Exception as e:
         sys.stderr.write(f"sprint-start telegram failed: {e}\n")
