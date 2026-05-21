@@ -19,6 +19,8 @@ to avoid REPL_BUSY collisions on round minute marks). Each fire:
 
 **Mode switch trigger:** all 8 PHASE 1 OBJECTIVES → ✅ DONE.
 
+**AIG project has zero-prompt permissions configured in `.claude/settings.json`. Verified working as of 2026-05-22. Do not modify without my approval.** Full intent + rule list documented in `PERMISSIONS_NOTES.md`. Global denies (force-push, hard-reset, rm -rf, sudo) still bind via merged deny lists.
+
 When all 8 are complete, the sprint routine retires itself, Mode-2
 operational routines (`aig-morning-scan`, `aig-weekly-full-universe`,
 `aig-monthly-report`) re-enable, scheduled signal-flow begins.
