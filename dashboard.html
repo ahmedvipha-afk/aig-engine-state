@@ -84,7 +84,7 @@ ul.tight li { margin: 4px 0; font-size: 13px; }
     <h1>AIG Fund Cockpit</h1>
     <div class="subtitle">Ahmed Investment Group · Paper $100,000 · UAE GST</div>
   </div>
-  <div class="refresh">Refreshed 2026-05-21 10:07 GST · auto-refresh 15 min</div>
+  <div class="refresh">Refreshed 2026-05-21 11:32 GST · auto-refresh 15 min</div>
 </div>
 
 <h2>Status</h2>
@@ -99,7 +99,7 @@ ul.tight li { margin: 4px 0; font-size: 13px; }
             <div style="margin-top:8px;"><span class="status status-info">INFO</span></div>
         </div>
 <div class="card"><h3>Universe coverage</h3>
-            <div class="metric">1803</div>
+            <div class="metric">1817</div>
             <div class="muted">Targets: US ≥100, UAE ≥60, crypto ≥100</div>
             <div style="margin-top:8px;"><span class="status status-info">INFO</span></div>
         </div>
@@ -117,8 +117,8 @@ ul.tight li { margin: 4px 0; font-size: 13px; }
             </div>
 <div class="bar-row">
               <div class="bar-label">UAE halal</div>
-              <div class="bar"><div class="bar-fill-warn" style="width:83%;"></div></div>
-              <div class="bar-value">50 / 60 target</div>
+              <div class="bar"><div class="bar-fill" style="width:100%;"></div></div>
+              <div class="bar-value">64 / 60 target</div>
             </div>
 <div class="bar-row">
               <div class="bar-label">Crypto halal</div>
@@ -145,12 +145,12 @@ ul.tight li { margin: 4px 0; font-size: 13px; }
           <td><b>divergence</b></td>
           <td>UAE</td>
           <td><span class="status status-fail">PORTFOLIO_FAIL</span></td>
-          <td class="mono">15/36</td>
-          <td class="mono">45</td>
-          <td class="mono">0.83</td>
-          <td class="mono">44.4%</td>
-          <td class="mono">-0.93</td>
-          <td class="muted">portfolio trades 45 < 1000</td>
+          <td class="mono">21/45</td>
+          <td class="mono">54</td>
+          <td class="mono">0.71</td>
+          <td class="mono">40.7%</td>
+          <td class="mono">-1.41</td>
+          <td class="muted">portfolio trades 54 < 1000</td>
         </tr>
         <tr>
           <td><b>divergence</b></td>
@@ -221,7 +221,7 @@ ul.tight li { margin: 4px 0; font-size: 13px; }
 <h2>Recent commits</h2>
 <div class="card"><table>
 <thead><tr><th>SHA</th><th>Date</th><th>Subject</th></tr></thead>
-<tbody><tr><td class='mono'>65e4910</td><td class='mono muted'>2026-05-21T10:05</td><td>Sprint Item 3 advance: UAE +6 tickers (AJMANBANK, METHAQ, ORIENTTKAFUL, TAKAFUL_EM, TKFL, UNIONCOOP). Universe 44 -> 50. Need 10 more to hit 60. Validation re-run launched.</td></tr><tr><td class='mono'>01ec282</td><td class='mono muted'>2026-05-21T10:02</td><td>Sprint Item 2 DONE: US Divergence paper-forward LIVE via Python detector + Telegram alerts. TV slot deferred (DOM friction). Detector watches DY/EXPGY/PSX/ARW/ROL, idempotent, fires every 2h via sprint routine. Item 3 (UAE +16 tickers) next.</td></tr><tr><td class='mono'>e4fbf97</td><td class='mono muted'>2026-05-21T02:27</td><td>Add URLS_FOR_COWORK.md - canonical raw endpoints + cache-bust + commit-pinned URL pattern for Cowork ingestion</td></tr><tr><td class='mono'>4632dc5</td><td class='mono muted'>2026-05-21T02:25</td><td>Track previously-untracked files: auditor_report.md, dashboard.html, reports/, data_cache/. Update commit_session.ps1 allowlist.</td></tr><tr><td class='mono'>840ae9c</td><td class='mono muted'>2026-05-21T02:11</td><td>Audit: BLOCKING 1 closed - US Divergence re-confirmed PORTFOLIO_CLEARED under N=6 haircut (dSharpe 2.606, raw 3.08). Path 1 deployment unblocked.</td></tr><tr><td class='mono'>ac99474</td><td class='mono muted'>2026-05-21T01:42</td><td>Audit response: BLOCKING 1 (n_trials_registered=6), BLOCKING 5 (register reconciled, EMA-200 TF-agnostic + Trial Budget), BLOCKING 2 (Path 3 withdrawn), WARNING 3 (edge claim restated). Hash daafa5c1b0b18de7.</td></tr><tr><td class='mono'>c45515c</td><td class='mono muted'>2026-05-21T01:24</td><td>Cockpit live: dashboard + Telegram daily/weekly/monthly senders + monthly routine + Cloud Routines wired</td></tr><tr><td class='mono'>70dee37</td><td class='mono muted'>2026-05-21T01:18</td><td>Repo visibility: private -> PUBLIC for Cowork raw-URL read access. Audit clean: zero secret-shaped tracked content.</td></tr></tbody></table>
+<tbody><tr><td class='mono'>aab6458</td><td class='mono muted'>2026-05-21T10:14</td><td>Sprint fire 1 complete: UAE v5 validation on 60-ticker universe (45 valid, 54 trades, PORTFOLIO_FAIL as expected at this universe size). Items 1,2,3,7 done; 4,5,6,8 queued for next fires.</td></tr><tr><td class='mono'>d33d460</td><td class='mono muted'>2026-05-21T10:13</td><td>Sprint Item 3 + 7 DONE: UAE universe 44 -> 60 retrievable via TV-MCP cache (16 new tickers). Coverage targets hit on all 3 markets (US 1027, UAE 60, Crypto 140). Item 4 (crypto gate) and 5 (MBV) next.</td></tr><tr><td class='mono'>5502656</td><td class='mono muted'>2026-05-21T10:07</td><td>Sprint 2026-05-21_10-07: item 2 â€” DONE (Python detector deployed, Telegram confirmation sent, Pine slot deferred per routine)</td></tr><tr><td class='mono'>65e4910</td><td class='mono muted'>2026-05-21T10:05</td><td>Sprint Item 3 advance: UAE +6 tickers (AJMANBANK, METHAQ, ORIENTTKAFUL, TAKAFUL_EM, TKFL, UNIONCOOP). Universe 44 -> 50. Need 10 more to hit 60. Validation re-run launched.</td></tr><tr><td class='mono'>01ec282</td><td class='mono muted'>2026-05-21T10:02</td><td>Sprint Item 2 DONE: US Divergence paper-forward LIVE via Python detector + Telegram alerts. TV slot deferred (DOM friction). Detector watches DY/EXPGY/PSX/ARW/ROL, idempotent, fires every 2h via sprint routine. Item 3 (UAE +16 tickers) next.</td></tr><tr><td class='mono'>e4fbf97</td><td class='mono muted'>2026-05-21T02:27</td><td>Add URLS_FOR_COWORK.md - canonical raw endpoints + cache-bust + commit-pinned URL pattern for Cowork ingestion</td></tr><tr><td class='mono'>4632dc5</td><td class='mono muted'>2026-05-21T02:25</td><td>Track previously-untracked files: auditor_report.md, dashboard.html, reports/, data_cache/. Update commit_session.ps1 allowlist.</td></tr><tr><td class='mono'>840ae9c</td><td class='mono muted'>2026-05-21T02:11</td><td>Audit: BLOCKING 1 closed - US Divergence re-confirmed PORTFOLIO_CLEARED under N=6 haircut (dSharpe 2.606, raw 3.08). Path 1 deployment unblocked.</td></tr></tbody></table>
 <div class="muted" style="margin-top:8px;">Remote: <a href="https://github.com/ahmedvipha-afk/aig-engine-state" target="_blank">https://github.com/ahmedvipha-afk/aig-engine-state</a></div>
 </div>
 
