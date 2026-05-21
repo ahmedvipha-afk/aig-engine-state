@@ -162,6 +162,49 @@ entry.
 
 ---
 
+## STRATEGY 6 — VCB: Volatility Compression Breakout (long only) — NEW 2026-05-21 Fire 2
+
+| Field | Value |
+|-------|-------|
+| Strategy id | `vcb` |
+| Module | `aig/strategy_vcb.py` |
+| Timeframes registered | **1D** |
+| Long only | YES (Rule 15) |
+| Pre-registered | 2026-05-21 Fire 2 (BEFORE seeing any VCB data — Phase 1 directive F1) |
+
+**Concept**: long-only **volatility-cycle** strategy. Buys when realized
+volatility (ATR) compresses to a 20-day low AND the broader regime is
+bullish AND the bar shows directional pickup. Captures the canonical
+"compression precedes expansion" cycle. Methodologically distinct from
+the five prior strategies:
+
+- **EMA-200** (trend-confirm): position-based — close > long EMA.
+- **Divergence** (mean-rev-on-low): RSI hookup at lows.
+- **MBV** (mean-rev-in-uptrend): low-range pullback inside trend.
+- **DBO** (breakout): close crosses a Donchian level.
+- **ROC** (velocity-momentum): rate of price change.
+- **VCB** (vol-cycle): **VOLATILITY** is the primary input. Two stocks
+  at the same EMA distance / momentum / Donchian level can have very
+  different ATR profiles; VCB sees the regime-state difference that
+  pure price-based strategies miss.
+
+**Hypothesis**: volatility cycles. Compression-bottoms are followed by
+expansion. Restricting to bullish regimes makes expected expansion
+direction long. Frozen BEFORE seeing data per audit Concern 2.
+
+**Entry** (all three must hold on the entry bar, edge-triggered):
+1. `ATR(14) == min(ATR(14))` over trailing `VCB_ATR_LOOKBACK=20` bars
+   (volatility at a local low).
+2. `close > SMA(VCB_TREND_SMA=50)` (bullish regime).
+3. `close > close.shift(1)` (directional pickup confirmation).
+
+**Stop**: entry − `VCB_STOP_ATR_MULT=2.0` × ATR(14).
+
+**Exit**: `ATR(14) > VCB_EXPANSION_MULT=1.5 × mean(ATR over 20 bars)`
+(expansion released), OR `close < SMA(50)` (regime broke), OR ATR stop hit.
+
+---
+
 ## STRATEGY 2 — Bullish RSI Divergence (long only, regime-filtered)
 
 | Field | Value |
@@ -212,9 +255,12 @@ trial means appending a row here BEFORE the run; the haircut recomputes.
 | 13 | `roc_us_1d`           | roc        | US     | 1D | yfinance        | 2026-05-21 (Fire 1.5) | 2026-05-21 | **PORTFOLIO_FAIL on WR-floor only** — 34,612 trades, exp 1.217, WR 29.9% (< 40% floor), raw Sharpe 4.306, **dSharpe 3.724** (7.4× the 0.5 floor), 99.7% coverage. Second momentum-family near-miss (after DBO US). |
 | 14 | `roc_uae_1d`          | roc        | UAE    | 1D | yfinance+cache  | 2026-05-21 (Fire 1.5) | 2026-05-21 | PORTFOLIO_FAIL (178 trades < 1000; exp 0.58 < 1.0; WR 24.2% < 40%; dSharpe -3.01) |
 | 15 | `roc_crypto_1d`       | roc        | CRYPTO | 1D | yfinance        | 2026-05-21 (Fire 1.5) | 2026-05-21 | PORTFOLIO_FAIL (exp 0.84 < 1.0; WR 20.3% < 40%; dSharpe -1.64; CI lo<0) |
+| 16 | `vcb_us_1d`           | vcb        | US     | 1D | yfinance        | 2026-05-21 (Fire 2)   | pending    | _validation pending — frozen rules in this commit before any VCB data seen_ |
+| 17 | `vcb_uae_1d`          | vcb        | UAE    | 1D | yfinance+cache  | 2026-05-21 (Fire 2)   | pending    | _validation pending_ |
+| 18 | `vcb_crypto_1d`       | vcb        | CRYPTO | 1D | yfinance        | 2026-05-21 (Fire 2)   | pending    | _validation pending_ |
 
 **`config.PORTFOLIO_GATE.n_trials_registered` must equal the row count above.**
-Current value: **15** (bumped 12 → 15 when ROC registered Fire 1.5 2026-05-21,
+Current value: **18** (bumped 15 → 18 when VCB registered Fire 2 2026-05-21,
 in the same commit that added the trial budget rows above).
 
 ### How to add a trial (procedure)

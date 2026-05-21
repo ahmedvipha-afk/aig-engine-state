@@ -59,6 +59,18 @@ ROC_THRESHOLD      = 0.05  # entry threshold: ROC must exceed 5% over window
 ROC_TREND_SMA      = 50    # bullish-regime filter
 ROC_STOP_ATR_MULT  = 2.0   # stop = entry - mult x ATR(14)
 
+# ---- VCB strategy (frozen 2026-05-21 Fire 2) ----------------------------
+# Volatility Compression Breakout. Long-only volatility-cycle strategy.
+# Pre-registered BEFORE any VCB test data was seen, per v7.0 §19 (6th
+# strategy in the pipeline). Methodologically distinct: VOLATILITY (ATR)
+# is the primary input — not price level, not price momentum, not range
+# position. Captures the "compression precedes expansion" regime cycle.
+# Trial budget extended to 18 to cover VCB × {US, UAE, CRYPTO}.
+VCB_ATR_LOOKBACK   = 20    # window for ATR-minimum detection (compression bar)
+VCB_TREND_SMA      = 50    # bullish-regime filter (no longs in downtrends)
+VCB_EXPANSION_MULT = 1.5   # exit when ATR(14) > VCB_EXPANSION_MULT * mean(ATR over lookback)
+VCB_STOP_ATR_MULT  = 2.0   # stop = entry - mult x ATR(14)
+
 # ---- Divergence strategy (frozen 2026-05-20, daily) ----------------------
 # Bullish RSI divergence on swing lows, long-only, with EMA-200 trend filter.
 DIV_RSI_PERIOD = 14
@@ -119,8 +131,8 @@ PORTFOLIO_GATE = {
     "min_universe_coverage": 0.05, # at least 5% of universe must contribute trades
     "bootstrap_iters": 2000,
     "bootstrap_conf": 0.95,
-    "n_trials_registered": 15,   # 5 strategies (ema200, divergence, mbv, dbo, roc) × 3 markets × 1 timeframe (1D).
-                                 # ROC added 2026-05-21 Fire 1.5 — trial budget bumped 12 -> 15.
+    "n_trials_registered": 18,   # 6 strategies (ema200, divergence, mbv, dbo, roc, vcb) × 3 markets × 1 timeframe (1D).
+                                 # VCB added 2026-05-21 Fire 2 — trial budget bumped 15 -> 18.
                                  # Adding a 4H variant or new strategy -> +N. Pre-register in strategy_register.md
                                  # before running.
 }
