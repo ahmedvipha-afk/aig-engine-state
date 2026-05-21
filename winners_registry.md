@@ -11,6 +11,41 @@ clears its market's portfolio gate.
 
 ---
 
+## ⚠️ Pending Full-Universe Re-Validation (PART B Step 4 — directive 2026-05-21)
+
+Per Phase 1 Coverage Correction PART B Step 4, all tickers below are
+**provisionally listed but not yet "Validated Winners"** until full-universe
+re-runs confirm them on the 1,621-ticker US halal target.
+
+**Status of the 1,101 contributors:**
+
+| Source trial | Sweep tested | Full target | Audit verdict | Required action |
+|--------------|-------------:|------------:|---------------|------------------|
+| `divergence_us_1d` | 1,603 | 1,621 | VALID (98.9% — priority-1 verification recommended) | Re-run on 1,621 (PART B Step 2) |
+| `mbv_us_1d`        | 1,603 | 1,621 | VALID (98.9% — priority-1 verification recommended) | Re-run on 1,621 (PART B Step 2) |
+
+**Promotion rule:** when the US universe is expanded to 1,621 tickers (18
+missing names added to `universe/us_halal_full.txt`, tracked in
+`sweep_coverage_audit.md`) and the priority-1 re-runs complete, tickers that
+remain in `winners_assignment.json` move to the **Validated Winners** section
+below. Tickers that drop out under the wider sweep are explicitly removed.
+
+Until that re-run lands, the Paper-Forward Roster operates on the provisional
+list (paper-forward continues — no operational impact) but Phase 1 Obj 2
+remains ⏳ PROVISIONAL in `ceo_brain.md`, not ✅ DONE.
+
+---
+
+## ✅ Validated Winners (Full-Universe Confirmed)
+
+_Empty — awaiting PART B Step 2 priority-1 re-runs._
+
+When the divergence_us_1d and mbv_us_1d trials are re-validated on the full
+1,621-ticker US halal universe, confirmed contributors will be promoted here
+from the Pending section above.
+
+---
+
 ## Paper-Forward Roster (assigned by cleared portfolio)
 
 ### DIVERGENCE — 516 tickers

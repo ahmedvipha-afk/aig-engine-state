@@ -35,6 +35,16 @@ audit_trail.md.bak
 *.tmp
 tmp/
 
+# --- Sprint runtime state (regenerable; staged-batch resumes idempotently) ---
+staging/
+staged_validation_queue.json
+paper_forward_positions_full.json
+logs_*.txt
+
+# --- Local-only CEO directive text (40KB+ raw v7.0 prose) ---
+_instructions_v7.txt
+_scope_v7.txt
+
 # --- Large data caches (raw market data, rebuildable) ---
 data_cache/
 *.parquet

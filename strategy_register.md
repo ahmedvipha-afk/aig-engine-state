@@ -16,6 +16,28 @@ test runs was a provenance issue and is reconciled here.
 
 ---
 
+## PHASE 1 EXIT CRITERIA — 75% FULL-HALAL COVERAGE (directive 2026-05-21 evening)
+
+Canonical 10-objective tracker lives in `ceo_brain.md` (single source of truth).
+The two rules below are load-bearing for every trial registered in this file:
+
+1. **Coverage target = ≥75% of FULL halal universe per market.** US 1,621
+   tickers → ~1,216 must pass under at least one strategy. UAE ~80 → ~60.
+   Crypto ~140 → ~105. Coverage = union across cleared strategies, no
+   double-counting.
+2. **Sweep rule = every trial MUST sweep the FULL halal universe of its
+   market.** Staged batches (200 tickers/fire) are acceptable for execution,
+   but the trial verdict is only final after the FULL universe has been
+   tested. Partial sweeps are flagged in `sweep_coverage_audit.md` and
+   require re-validation (PART B Step 2) before contributing to Phase 1
+   coverage tallies.
+
+Per audit Concern 2: thresholds, gate parameters, and the WR floor are
+frozen ahead of data and must NOT be amended post-hoc to rescue a failing
+strategy. Same-strategy iteration on a failing dataset is forbidden.
+
+---
+
 ## STRATEGY 1 — EMA-200 + Volume Confirmation (long only)
 
 | Field | Value |
