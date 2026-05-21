@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "strategy": "divergence",
+  "timeframe": "1d",
+  "config_hash_at_deploy": "daafa5c1b0b18de7",
+  "deployed_at": "2026-05-21T02:41:52+04:00",
+  "open_positions": {},
+  "history": [],
+  "last_run": "2026-05-21T09:46:46+04:00",
+  "last_run_summary": "watched 5 tickers \u00b7 0 new entries \u00b7 0 exits \u00b7 open positions 0 \u00b7 history 0",
+  "watch_list": [
+    "DY",
+    "EXPGY",
+    "PSX",
+    "ARW",
+    "ROL"
+  ]
+}

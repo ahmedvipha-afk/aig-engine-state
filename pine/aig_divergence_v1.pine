@@ -1,0 +1,90 @@
+//@version=6
+// AIG Bullish RSI Divergence Daily (Long Only) — Pine mirror of
+// aig/strategy_divergence.py @ config_hash=daafa5c1b0b18de7.
+// Long only (Rule 15). No leverage (Rule 16). Daily timeframe.
+// Look-ahead-free: pivot lows confirmed only after halfwidth bars pass.
+
+strategy(
+     title="AIG Divergence Daily v1 (Long Only)",
+     shorttitle="AIG_DIV_V1",
+     overlay=true,
+     pyramiding=0,
+     initial_capital=100000,
+     default_qty_type=strategy.percent_of_equity,
+     default_qty_value=100,
+     commission_type=strategy.commission.percent,
+     commission_value=0.05,
+     slippage=3,
+     process_orders_on_close=true,
+     calc_on_every_tick=false)
+
+// === FROZEN PARAMS (mirror config.py Divergence block — do not tune in TV) ===
+rsiP    = input.int(14,   "RSI period",                 minval=2, group="Frozen Params")
+halfW   = input.int(5,    "Pivot halfwidth (each side)", minval=2, group="Frozen Params")
+lookB   = input.int(60,   "Divergence lookback bars",   minval=10, group="Frozen Params")
+trendE  = input.int(200,  "Trend EMA",                  minval=10, group="Frozen Params")
+rsiExit = input.int(65,   "RSI exit",                   minval=50, maxval=95, group="Frozen Params")
+stopAtr = input.float(1.5,"Stop x ATR",                 minval=0.5, step=0.1, group="Frozen Params")
+atrP    = input.int(14,   "ATR period",                 minval=2, group="Frozen Params")
+
+// === INDICATORS ===
+rsi    = ta.rsi(close, rsiP)
+emaT   = ta.ema(close, trendE)
+atrV   = ta.atr(atrP)
+
+// === PIVOT LOW DETECTION (look-ahead-free) ===
+// ta.pivotlow returns the pivot value `halfW` bars AFTER it occurs.
+// Effective pivot bar index = bar_index - halfW.
+piv    = ta.pivotlow(low, halfW, halfW)
+pivRsi = ta.pivotlow(rsi, halfW, halfW)
+
+// === TRACK THE LAST TWO CONFIRMED SWING LOWS ===
+var float prevLow = na
+var float prevRsi = na
+var float lastLow = na
+var float lastRsi = na
+var int   lastIdx = na
+if not na(piv)
+    prevLow := lastLow
+    prevRsi := lastRsi
+    lastLow := piv
+    lastRsi := pivRsi
+    lastIdx := bar_index - halfW
+
+// === DIVERGENCE + ENTRY CONFIRMATION ===
+// Bullish: recent swing low has lower price AND higher RSI than prior swing low
+// Plus: prev pivot within lookback, close > prev close, close > EMA(200)
+diverg      = not na(prevLow) and not na(lastLow)
+              and lastLow < prevLow and lastRsi > prevRsi
+inLookback  = not na(lastIdx) and (bar_index - lastIdx) <= lookB
+trendOK     = close > emaT
+upBar       = close > close[1]
+entrySignal = diverg and inLookback and trendOK and upBar
+
+// === EXIT LOGIC ===
+exitSignal = rsi >= rsiExit or close < emaT
+
+// === ORDERS (long only — Rule 15) ===
+if entrySignal and strategy.position_size == 0
+    stopPx = lastLow - stopAtr * atrV
+    strategy.entry("Long", strategy.long)
+    strategy.exit("ExitStop", from_entry="Long", stop=stopPx)
+
+if exitSignal and strategy.position_size > 0
+    strategy.close("Long", comment="RSI>=65 or trend break")
+
+// === VISUALS ===
+plot(emaT,  title="EMA-200", color=color.orange, linewidth=2)
+plot(rsi,   title="RSI(14)", color=color.new(color.blue, 0), display=display.none)
+
+plotshape(series=entrySignal, title="Bullish Divergence Entry",
+          location=location.belowbar, color=color.new(color.green, 0),
+          style=shape.triangleup, size=size.small)
+plotshape(series=(exitSignal and strategy.position_size > 0), title="Exit",
+          location=location.abovebar, color=color.new(color.red, 0),
+          style=shape.triangledown, size=size.small)
+
+// Mark confirmed pivots for visual sanity check
+plotshape(series=not na(piv), title="Confirmed Pivot Low",
+          location=location.belowbar, color=color.new(color.aqua, 70),
+          style=shape.circle, size=size.tiny, offset=-halfW)

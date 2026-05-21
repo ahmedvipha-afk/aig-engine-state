@@ -4,6 +4,41 @@ _Per v7.0 §2.5 — read FIRST at start of every session. Updated end-of-session
 
 ---
 
+## OPERATING MODE: **MODE 1 — FULL SPRINT**
+
+**Sprint 1 started 2026-05-21.** Cloud Routine `aig-mode1-sprint` fires every
+2 hours from 06:13–22:13 GST + 00:13 GST, 7 days/week. Each fire:
+1. Reads `ceo_brain.md` (this file) + `auditor_report.md`.
+2. Identifies the lowest-numbered unfinished item in the SPRINT TRACKER below.
+3. Advances that item by one concrete step (whatever fits in 5–20 min).
+4. Updates the tracker with progress + new state.
+5. Commits + pushes.
+
+**Mode switch trigger:** all 8 items → ✅ DONE.
+
+When all 8 are complete, the sprint routine retires itself, the Mode-2
+operational routines (`aig-morning-scan`, `aig-weekly-full-universe`,
+`aig-monthly-report`) are re-enabled, and signal-flow to Ahmed begins.
+
+---
+
+## SPRINT TRACKER (Mode 1)
+
+| # | Item | Status | Concrete completion criteria | Notes |
+|---|------|--------|------------------------------|-------|
+| 1 | Audit BLOCKING items resolved | ✅ **DONE** | All 3 (Concerns 1, 2, 5) fixed and committed; dSharpe 2.606 re-confirmed under N=6 haircut. | See AUDIT RESPONSE section below |
+| 2 | Deploy US Divergence paper-forward with alerts | ✅ **DONE** | (a) Pine v6 source committed `pine/aig_divergence_v1.pine`; (b/c/d) TV-slot DEFERRED per routine — Python detector route; (e) Telegram DEPLOYED_PAPER_FWD confirmation sent 2026-05-21 (msg 13) | Detector: `scripts/paper_forward_divergence.py` · state: `paper_forward_positions.json` (deployed_at 2026-05-21T02:41:52+04). Fires every 2h via aig-mode1-sprint. TV slot can be added cosmetically later if DOM friction resolves; not blocking. |
+| 3 | Wire UAE data via TV MCP + validate ≥60 tickers | ⏳ PENDING | 60+ UAE tickers retrievable AND validated (gate-evaluated, regardless of pass/fail) | 23 ADX cached + 21 .AE/.AB yf = 44 today. Need +16 more (more ADX via TV-MCP) |
+| 4 | Crypto: ≥100 coverage validated | ⏳ PENDING | 100+ crypto tickers gate-evaluated; portfolio result captured | 140 valid in last run; gate did not clear — needs strategy iteration or further integrity work |
+| 5 | Add MBV as 3rd strategy + validate across 3 markets | ⏳ PENDING | `aig/strategy_mbv.py` written, frozen in config, registered in Trial Budget (+3 trials → n_trials_registered=9), run on US+UAE+Crypto | v7.0 §19 spec; will rebalance multi-test haircut |
+| 6 | Paper-forward results match backtest expectations | ⏳ PENDING | After ≥10 paper-forward signals fire, compare actual vs backtest expectancy with tolerance ±20% | Activated by Item 2 deployment |
+| 7 | All coverage targets met | ⏳ PENDING | US ≥100 ✅ (1027) · UAE ≥60 (currently 44) · Crypto ≥100 ✅ (140) — only UAE remaining | UAE coverage gate depends on Item 3 |
+| 8 | All strategies verified with gate clearance per market | ⏳ PENDING | At least one strategy clears `PORTFOLIO_GATE` per market (US ✅, UAE pending, Crypto pending) | UAE/Crypto need either strategy iteration or accept FAIL verdict honestly |
+
+**Currently working:** Item 3 (UAE 60+ retrievable). Items 1–2 done. Items 4–8 queued.
+
+---
+
 ## CURRENT STATE (as of 2026-05-21, post-audit response)
 
 **Phase:** Pre-deployment cleanup of auditor BLOCKING findings before
@@ -239,3 +274,10 @@ Key endpoints for Cowork ingestion:
 
 _End of brain dump. When the b384nkuu9 background lands and dSharpe ≥ 0.5
 is confirmed, Path 1 deployment proceeds._
+
+---
+
+## DECISION CONTINUITY (sprint log)
+
+- 2026-05-21 09:50 D-001 — Item 2 → ✅ DONE. Python detector route operational (`scripts/paper_forward_divergence.py`, state file persists open_positions + history, Telegram alerts on entry/exit). Deployment confirmation Telegram sent (msg 13). Pine TV-slot remains DEFERRED per routine note. Sprint focus shifts to Item 3 (UAE 60+ retrievable).
+
