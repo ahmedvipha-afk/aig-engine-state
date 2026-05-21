@@ -31,6 +31,9 @@ def _strategy_signals(name: str, df: pd.DataFrame) -> pd.DataFrame:
     if name == "mbv":
         from aig.strategy_mbv import signals
         return signals(df)
+    if name == "dbo":
+        from aig.strategy_dbo import signals
+        return signals(df)
     raise ValueError(f"unknown strategy: {name}")
 
 
@@ -46,6 +49,9 @@ def _stop_distance(name: str, row) -> float:
     if name == "mbv":
         from config import MBV_STOP_ATR_MULT
         return MBV_STOP_ATR_MULT * row["atr"]
+    if name == "dbo":
+        from config import DBO_STOP_ATR_MULT
+        return DBO_STOP_ATR_MULT * row["atr"]
     raise ValueError(name)
 
 

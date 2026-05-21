@@ -1,0 +1,1125 @@
+{
+  "provenance": {
+    "utc": "2026-05-21T12:29:01+00:00",
+    "file_hashes": {
+      "config.py": "fa5ffb3f1edbe49d",
+      "aig/strategy_ema200.py": "53b58f8a447b09d9",
+      "aig/backtest.py": "c6168d2078fa76e6",
+      "aig/validation_gate.py": "5667054d2407e5b5",
+      "aig/stats.py": "23715e456732ed73",
+      "aig/costs.py": "aab2cafc67d08ba2"
+    },
+    "config_hash": "915c102a479353d7"
+  },
+  "args": {
+    "tickers": null,
+    "universe": "universe/uae_tickers_full.txt",
+    "live": true,
+    "timeframe": "1d",
+    "strategy": "dbo",
+    "out": "validation_dbo_uae_1d.json"
+  },
+  "portfolio": {
+    "strategy": "dbo",
+    "timeframe": "1d",
+    "verdict": "PORTFOLIO_FAIL",
+    "passed": false,
+    "portfolio_trades": 104,
+    "contributing_tickers": 45,
+    "universe_size": 49,
+    "universe_coverage": 0.9184,
+    "portfolio_expectancy": 0.9316,
+    "portfolio_win_rate": 0.2596,
+    "portfolio_sharpe_raw": -0.2255,
+    "portfolio_sharpe_deflated": -0.7828,
+    "portfolio_ci_low": -0.019948,
+    "portfolio_ci_high": 0.018084,
+    "n_trials_haircut": 12,
+    "n_strategies_haircut": 12,
+    "reasons": [
+      "portfolio trades 104 < 1000",
+      "portfolio expectancy 0.932 < 1.0",
+      "portfolio win rate 0.260 < 0.4",
+      "portfolio deflated Sharpe -0.783 < 0.5 (raw -0.225, 12 strategies)",
+      "95% CI lower bound on mean trade not > 0 (lo=-0.019948204772307847)"
+    ]
+  },
+  "results": [
+    {
+      "ticker": "ADIB.AD",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 1,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 1.26,
+      "oos_expectancy": Infinity,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.721,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 1 < 30",
+        "deflated OOS Sharpe -0.72 < 0.5 (raw 0.00, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "ADNOCDIST.AD",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 1,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 1.26,
+      "oos_expectancy": Infinity,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.721,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 1 < 30",
+        "deflated OOS Sharpe -0.72 < 0.5 (raw 0.00, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "ADNOCDRILL.AD",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 2,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 2.52,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -7.555,
+      "oos_sharpe_deflated": -8.276,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 2 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -8.28 < 0.5 (raw -7.55, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "ADNOCGAS.AD",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 2,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 2.52,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -1.251,
+      "oos_sharpe_deflated": -1.972,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 2 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -1.97 < 0.5 (raw -1.25, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "ADNOCLS.AD",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 3,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 3.78,
+      "oos_expectancy": 1.931,
+      "oos_sharpe_raw": 0.518,
+      "oos_sharpe_deflated": -0.203,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 3 < 30",
+        "deflated OOS Sharpe -0.20 < 0.5 (raw 0.52, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "ADPORTS.AD",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 2,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 2.52,
+      "oos_expectancy": 3.908,
+      "oos_sharpe_raw": 0.665,
+      "oos_sharpe_deflated": -0.056,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 2 < 30",
+        "deflated OOS Sharpe -0.06 < 0.5 (raw 0.67, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "ALDAR.AD",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 2,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 2.52,
+      "oos_expectancy": 3.358,
+      "oos_sharpe_raw": 0.607,
+      "oos_sharpe_deflated": -0.114,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 2 < 30",
+        "deflated OOS Sharpe -0.11 < 0.5 (raw 0.61, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "ALPHADHABI.AD",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 0,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 0.0,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.721,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 0 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -0.72 < 0.5 (raw 0.00, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "BOROUGE.AD",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 2,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 2.52,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -2.484,
+      "oos_sharpe_deflated": -3.205,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 2 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -3.21 < 0.5 (raw -2.48, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "DANA.AD",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 2,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 2.52,
+      "oos_expectancy": 3.196,
+      "oos_sharpe_raw": 0.587,
+      "oos_sharpe_deflated": -0.134,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 2 < 30",
+        "deflated OOS Sharpe -0.13 < 0.5 (raw 0.59, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "EAND.AD",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 3,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 3.78,
+      "oos_expectancy": 2.236,
+      "oos_sharpe_raw": 0.503,
+      "oos_sharpe_deflated": -0.219,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 3 < 30",
+        "deflated OOS Sharpe -0.22 < 0.5 (raw 0.50, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "EMSTEEL.AD",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 1,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 1.26,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.721,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 1 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -0.72 < 0.5 (raw 0.00, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "FERTIGLB.AD",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 1,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 1.26,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.721,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 1 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -0.72 < 0.5 (raw 0.00, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "IHC.AD",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 0,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 0.0,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.721,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 0 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -0.72 < 0.5 (raw 0.00, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "MULTIPLY.AD",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 1,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 1.26,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.721,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 1 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -0.72 < 0.5 (raw 0.00, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "NMDC.AD",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 2,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 2.52,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -7.527,
+      "oos_sharpe_deflated": -8.248,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 2 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -8.25 < 0.5 (raw -7.53, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "PRESIGHT.AD",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 3,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 3.78,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -2.432,
+      "oos_sharpe_deflated": -3.153,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 3 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -3.15 < 0.5 (raw -2.43, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "PUREHEALTH.AD",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 2,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 2.52,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -3.784,
+      "oos_sharpe_deflated": -4.505,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 2 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -4.51 < 0.5 (raw -3.78, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "RAKCEC.AD",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 2,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 2.52,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -2.824,
+      "oos_sharpe_deflated": -3.545,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 2 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -3.54 < 0.5 (raw -2.82, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "RAKWCT.AD",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 1,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 1.26,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.721,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 1 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -0.72 < 0.5 (raw 0.00, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "RAPCO.AD",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 2,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 2.52,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -2.651,
+      "oos_sharpe_deflated": -3.372,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 2 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -3.37 < 0.5 (raw -2.65, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "SPACE42.AD",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 1,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 1.26,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.721,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 1 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -0.72 < 0.5 (raw 0.00, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "TAQA.AD",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 5,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 6.3,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -6.83,
+      "oos_sharpe_deflated": -7.551,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 5 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -7.55 < 0.5 (raw -6.83, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "METHAQ.AD",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 3,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 3.78,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -7.749,
+      "oos_sharpe_deflated": -8.47,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 3 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -8.47 < 0.5 (raw -7.75, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "TKFL.AD",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 2,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 2.52,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -4.475,
+      "oos_sharpe_deflated": -5.196,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 2 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -5.20 < 0.5 (raw -4.48, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "ESHRAQ.AD",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 3,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 3.78,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -6.284,
+      "oos_sharpe_deflated": -7.005,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 3 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -7.00 < 0.5 (raw -6.28, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "WAHA.AD",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 1,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 1.26,
+      "oos_expectancy": Infinity,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.721,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 1 < 30",
+        "deflated OOS Sharpe -0.72 < 0.5 (raw 0.00, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "GHITHA.AD",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 0,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 0.0,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.721,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 0 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -0.72 < 0.5 (raw 0.00, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "RAKPROP.AD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "excessive date gaps (>2% of bars gap >30d)"
+      ]
+    },
+    {
+      "ticker": "NCTH.AD",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 1,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 1.26,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.721,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 1 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -0.72 < 0.5 (raw 0.00, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "ABNIC.AD",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 2,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 2.52,
+      "oos_expectancy": 0.448,
+      "oos_sharpe_raw": -0.428,
+      "oos_sharpe_deflated": -1.149,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 2 < 30",
+        "OOS expectancy 0.45 < 1.0",
+        "deflated OOS Sharpe -1.15 < 0.5 (raw -0.43, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "ADAVIATION.AD",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 3,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 3.78,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -6.659,
+      "oos_sharpe_deflated": -7.38,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 3 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -7.38 < 0.5 (raw -6.66, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "ADSB.AD",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 2,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 2.52,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -2.514,
+      "oos_sharpe_deflated": -3.235,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 2 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -3.23 < 0.5 (raw -2.51, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "ADNH.AD",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 2,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 2.52,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -13.688,
+      "oos_sharpe_deflated": -14.409,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 2 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -14.41 < 0.5 (raw -13.69, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "BILDCO.AD",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 1,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 1.26,
+      "oos_expectancy": Infinity,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.721,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 1 < 30",
+        "deflated OOS Sharpe -0.72 < 0.5 (raw 0.00, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "AJMANBANK.DU",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 2,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 2.52,
+      "oos_expectancy": 0.501,
+      "oos_sharpe_raw": -0.373,
+      "oos_sharpe_deflated": -1.094,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 2 < 30",
+        "OOS expectancy 0.50 < 1.0",
+        "deflated OOS Sharpe -1.09 < 0.5 (raw -0.37, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "ORIENTTKAFUL.DU",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 0,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 0.0,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.721,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 0 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -0.72 < 0.5 (raw 0.00, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "TAKAFUL_EM.DU",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "UNIONCOOP.DU",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 2,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 2.52,
+      "oos_expectancy": 0.033,
+      "oos_sharpe_raw": -1.05,
+      "oos_sharpe_deflated": -1.771,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 2 < 30",
+        "OOS expectancy 0.03 < 1.0",
+        "deflated OOS Sharpe -1.77 < 0.5 (raw -1.05, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "UPP.DU",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 4,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 5.04,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -5.335,
+      "oos_sharpe_deflated": -6.056,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 4 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -6.06 < 0.5 (raw -5.34, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "GULFNAV.DU",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 1,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 1.26,
+      "oos_expectancy": Infinity,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.721,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 1 < 30",
+        "deflated OOS Sharpe -0.72 < 0.5 (raw 0.00, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "ALSALAMSUDAN.DU",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 2,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 2.52,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -14.435,
+      "oos_sharpe_deflated": -15.156,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 2 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -15.16 < 0.5 (raw -14.44, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "AMANAT.DU",
+      "market": "UAE",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 2,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 2.52,
+      "oos_expectancy": Infinity,
+      "oos_sharpe_raw": 1.162,
+      "oos_sharpe_deflated": 0.441,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 2 < 30",
+        "deflated OOS Sharpe 0.44 < 0.5 (raw 1.16, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "AGTHIA.AB",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency"
+      ]
+    },
+    {
+      "ticker": "AIRARABIA.AE",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency",
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "AMANAT.AE",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency",
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "AMLAK.AE",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency"
+      ]
+    },
+    {
+      "ticker": "ARMX.AE",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency",
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "DEWA.AE",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 3,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 2.32,
+      "oos_expectancy": 2.643,
+      "oos_sharpe_raw": 0.557,
+      "oos_sharpe_deflated": -0.164,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 3 < 30",
+        "deflated OOS Sharpe -0.16 < 0.5 (raw 0.56, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.78 < 1.0"
+      ]
+    },
+    {
+      "ticker": "DEYAAR.AE",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency",
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "DIB.AE",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency",
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "DIC.AE",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency"
+      ]
+    },
+    {
+      "ticker": "DTC.AE",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 1,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 1.25,
+      "oos_expectancy": Infinity,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.721,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 1 < 30",
+        "deflated OOS Sharpe -0.72 < 0.5 (raw 0.00, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "EIBANK.AE",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 5,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 1.07,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -0.567,
+      "oos_sharpe_deflated": -1.288,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 5 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -1.29 < 0.5 (raw -0.57, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.00 < 1.0"
+      ]
+    },
+    {
+      "ticker": "EMAAR.AE",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency"
+      ]
+    },
+    {
+      "ticker": "EMAARDEV.AE",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "unadjusted split/spike suspected (|ret|>50%)"
+      ]
+    },
+    {
+      "ticker": "EMPOWER.AE",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 4,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 3.48,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -3.933,
+      "oos_sharpe_deflated": -4.654,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 4 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -4.65 < 0.5 (raw -3.93, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "GFH.AE",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency"
+      ]
+    },
+    {
+      "ticker": "PARKIN.AE",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 3,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 4.25,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -2.388,
+      "oos_sharpe_deflated": -3.109,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 3 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -3.11 < 0.5 (raw -2.39, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "SALIK.AE",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 4,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 3.36,
+      "oos_expectancy": 0.25,
+      "oos_sharpe_raw": -1.037,
+      "oos_sharpe_deflated": -1.758,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 4 < 30",
+        "OOS expectancy 0.25 < 1.0",
+        "deflated OOS Sharpe -1.76 < 0.5 (raw -1.04, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "SUKOON.AE",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 8,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 1.55,
+      "oos_expectancy": 14.661,
+      "oos_sharpe_raw": 0.83,
+      "oos_sharpe_deflated": 0.109,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 8 < 30",
+        "deflated OOS Sharpe 0.11 < 0.5 (raw 0.83, 64 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "TABREED.AE",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency"
+      ]
+    },
+    {
+      "ticker": "TALABAT.AE",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "insufficient history (292 rows < 300)"
+      ]
+    },
+    {
+      "ticker": "TECOM.AE",
+      "market": "US",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 2,
+      "timeframe": "1d",
+      "strategy": "dbo",
+      "oos_trades_per_year": 1.57,
+      "oos_expectancy": Infinity,
+      "oos_sharpe_raw": 1.222,
+      "oos_sharpe_deflated": 0.501,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 2 < 30",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    }
+  ]
+}

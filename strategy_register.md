@@ -76,6 +76,45 @@ separate trial.
 
 ---
 
+## STRATEGY 4 — DBO: Donchian Breakout + Volume (long only) — NEW 2026-05-21
+
+| Field | Value |
+|-------|-------|
+| Strategy id | `dbo` |
+| Module | `aig/strategy_dbo.py` |
+| Timeframes registered | **1D** |
+| Long only | YES (Rule 15) |
+| Pre-registered | 2026-05-21 by CEO Fire 1 (BEFORE seeing data — Phase 1 directive F1 genuine new methodology) |
+
+**Concept**: long-only **trend-following BREAKOUT** strategy. Buys on price
+strength — when close punches above the trailing 20-day Donchian high *and*
+the breakout is confirmed by elevated volume. Methodologically distinct
+from the three existing strategies:
+
+- **EMA-200**: trend confirmation via long EMA + recent bullish action
+  (buys established trend follow-through).
+- **Divergence**: mean-reversion at bullish oversold (buys RSI hookup at lows).
+- **MBV**: mean-reversion *inside* uptrend (buys low-range pullback + volume).
+- **DBO**: BREAKOUT — buys strength when price makes new highs (NOT mean-rev).
+
+**Hypothesis**: markets that don't show enough mean-reversion edge (UAE, Crypto)
+may show breakout edge. The thesis is genuinely different from the three
+existing strategies' shared mean-reversion-or-trend-confirmation lineage.
+Frozen BEFORE seeing data per audit Concern 2 — failure is acceptable.
+
+**Entry**: close > 20-day Donchian high (`max(high[-20:-1])`) AND
+volume ≥ `DBO_VOLUME_MULT=1.5` × SMA(`DBO_VOLUME_PERIOD=20`) of volume.
+Donchian high is shifted by 1 bar so the current bar's high never
+contaminates its breakout test (look-ahead-free).
+
+**Stop**: entry − `DBO_STOP_ATR_MULT=2.0` × ATR(14).
+
+**Exit**: close < 10-day Donchian low (`min(low[-10:-1])`) — trend
+breakdown — OR ATR stop hit. Tighter exit window than entry window
+(asymmetric Donchian) so winners run and losers cut quickly.
+
+---
+
 ## STRATEGY 2 — Bullish RSI Divergence (long only, regime-filtered)
 
 | Field | Value |
@@ -119,10 +158,13 @@ trial means appending a row here BEFORE the run; the haircut recomputes.
 | 6 | `divergence_crypto_1d`| divergence | CRYPTO | 1D | yfinance        | 2026-05-20            | 2026-05-20 | PORTFOLIO_FAIL |
 | 7 | `mbv_us_1d`           | mbv        | US     | 1D | yfinance        | 2026-05-21            | 2026-05-21 | **PORTFOLIO_CLEARED** — dSharpe 4.365, exp 1.302, WR 53.06%, 10,833 trades, 96.0% coverage |
 | 8 | `mbv_uae_1d`          | mbv        | UAE    | 1D | yfinance+cache  | 2026-05-21            | 2026-05-21 | PORTFOLIO_FAIL (36 trades < 1000; CI lo<0) |
-| 9 | `mbv_crypto_1d`       | mbv        | CRYPTO | 1D | yfinance        | 2026-05-21            | 2026-05-21 | PORTFOLIO_FAIL (WR 35.9% < 40%, dSharpe -0.175) |
+| 9  | `mbv_crypto_1d`       | mbv        | CRYPTO | 1D | yfinance        | 2026-05-21            | 2026-05-21 | PORTFOLIO_FAIL (WR 35.9% < 40%, dSharpe -0.175) |
+| 10 | `dbo_us_1d`           | dbo        | US     | 1D | yfinance        | 2026-05-21 (Fire 1)   | TBD        | TBD (queued) |
+| 11 | `dbo_uae_1d`          | dbo        | UAE    | 1D | yfinance+cache  | 2026-05-21 (Fire 1)   | TBD        | TBD (queued) |
+| 12 | `dbo_crypto_1d`       | dbo        | CRYPTO | 1D | yfinance        | 2026-05-21 (Fire 1)   | TBD        | TBD (queued) |
 
 **`config.PORTFOLIO_GATE.n_trials_registered` must equal the row count above.**
-Current value: **9** (bumped from 6 → 9 when MBV registered 2026-05-21,
+Current value: **12** (bumped 9 → 12 when DBO registered Fire 1 2026-05-21,
 in the same commit that added the trial budget rows above).
 
 ### How to add a trial (procedure)
@@ -209,3 +251,46 @@ either file's hash changes, the verdict is no longer claimable.
   removed from active proposals.
 - Concern 5 (register drift): RESOLVED. EMA-200 explicitly timeframe-
   agnostic; trial budget captures every TF/market combination.
+
+---
+
+## PAPER-FORWARD WATCH-LIST PROTOCOL (pre-registered)
+
+Added 2026-05-21 in response to **Session 5 audit finding NEW-1 (BLOCKING)**:
+the original deployed watch list (DY, EXPGY, PSX, ARW, ROL) was top-5 by
+per-ticker OOS expectancy — exactly the cherry-picking failure mode the
+portfolio gate exists to prevent.
+
+**Frozen protocol for US Divergence Daily paper-forward:**
+
+1. **Source population:** the set of contributing tickers from the
+   `PORTFOLIO_CLEARED_FOR_PAPER_FORWARD` run that certified the strategy
+   (`validation_divergence_1d_full_haircut6.json`, config_hash
+   `6ce4b38242d54771`, 1,030 US tickers with `oos_n > 0`).
+2. **Selection method:** `random.sample(population, k=50)` with **seed=42**,
+   drawn once at deployment.
+3. **Frozen artefact:** `universe/divergence_us_paperforward_watchlist.txt`
+   committed at deployment. The file IS the watch list — the detector
+   reads from it. Modification requires bumping `config_hash` and a new
+   pre-registration entry in this section.
+4. **Audit tag:** the detector writes
+   `watch_list_method = "random_sample_seed42_n50_from_cleared_universe_2026-05-21"`
+   into `paper_forward_positions.json` on every run.
+5. **Rationale (size and method):** N=50 chosen before drawing the sample,
+   for operational concentration (attention budget, Telegram noise control);
+   randomness chosen as the non-expectancy criterion the auditor named.
+   This is option (b) in the audit text ("randomly selected representative
+   sample"). Option (a) ("entire cleared universe with Kelly-fraction sizing")
+   was rejected on operational grounds: 1,030-ticker yfinance fetch every
+   2 hours under the sprint routine would saturate the rate budget without
+   adding information value at the paper-forward stage where sizing is unit.
+
+**Future strategy paper-forward deployments must follow the same template:**
+draw from the cleared-universe set; pre-register seed and N before sampling;
+freeze to a file; tag the state with the method. No expectancy-based
+selection is admissible.
+
+- Audit NEW-1: **RESOLVED** by the protocol above + the committed watch
+  list file. The detector now scans 50 random names rather than the
+  top-5 by expectancy. The deployment has zero closed paper trades, so
+  resolving this before any trade fires keeps the audit trail clean.

@@ -36,6 +36,18 @@ MBV_VOLUME_PERIOD  = 20     # SMA window for volume
 MBV_VOLUME_MULT    = 1.2    # entry-bar volume ≥ mult × SMA
 MBV_STOP_ATR_MULT  = 1.5    # stop distance = mult × ATR(14)
 
+# ---- DBO strategy (frozen 2026-05-21 Fire 1) ----------------------------
+# Donchian Breakout + Volume. Long-only trend-following BREAKOUT.
+# Pre-registered before any DBO test data was seen, per v7.0 §19 (4th strategy
+# in the pipeline, genuinely new methodology distinct from the existing 3
+# mean-reversion/trend-confirmation strategies). Trial budget extended to 12
+# to cover DBO × {US, UAE, CRYPTO}.
+DBO_DONCHIAN_HIGH  = 20    # entry: close > max(high[-N:-1])
+DBO_DONCHIAN_LOW   = 10    # exit:  close < min(low[-N:-1])
+DBO_VOLUME_PERIOD  = 20    # SMA window for volume
+DBO_VOLUME_MULT    = 1.5   # entry-bar volume >= mult x SMA
+DBO_STOP_ATR_MULT  = 2.0   # stop = entry - mult x ATR(14)
+
 # ---- Divergence strategy (frozen 2026-05-20, daily) ----------------------
 # Bullish RSI divergence on swing lows, long-only, with EMA-200 trend filter.
 DIV_RSI_PERIOD = 14
@@ -96,9 +108,10 @@ PORTFOLIO_GATE = {
     "min_universe_coverage": 0.05, # at least 5% of universe must contribute trades
     "bootstrap_iters": 2000,
     "bootstrap_conf": 0.95,
-    "n_trials_registered": 9,    # 3 strategies (ema200, divergence, mbv) × 3 markets × 1 timeframe (1D).
-                                 # MBV added 2026-05-21 — trial budget bumped accordingly.
-                                 # Adding a 4H variant → +N. Pre-register in strategy_register.md before running.
+    "n_trials_registered": 12,   # 4 strategies (ema200, divergence, mbv, dbo) × 3 markets × 1 timeframe (1D).
+                                 # DBO added 2026-05-21 Fire 1 — trial budget bumped 9 -> 12.
+                                 # Adding a 4H variant or new strategy -> +N. Pre-register in strategy_register.md
+                                 # before running.
 }
 
 # ---- Reproducibility -----------------------------------------------------

@@ -61,7 +61,7 @@ def main():
                     choices=["1d", "1h", "60m", "4h", "1w"],
                     help="bar resolution")
     ap.add_argument("--strategy", default="ema200",
-                    choices=["ema200", "divergence", "mbv"],
+                    choices=["ema200", "divergence", "mbv", "dbo"],
                     help="frozen strategy module to run")
     ap.add_argument("--out", default=None,
                     help="output JSON path (default: validation_<strategy>_<tf>.json)")
