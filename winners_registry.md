@@ -183,6 +183,61 @@ clears its market's portfolio gate.
 
 ---
 
+## Near-Miss Research Strategies (NOT paper-forward — math edge, WR floor blocked)
+
+Per CEO D-011 (2026-05-21): strategies with positive dSharpe + positive
+expectancy + sufficient trades but failing the 40% WR floor are preserved
+here as research watchlist. They do NOT enter the paper-forward detector.
+If auditor Warning-4 is later formally addressed (e.g. fully-systematic
+execution track without WR floor), these become the first candidates.
+
+| Trial | dSharpe | Expectancy | WR | Trades | Note |
+|-------|--------:|-----------:|---:|-------:|------|
+| dbo_us_1d | +2.941 | 1.298 | 34.1% | 11,910 | Donchian breakout. Math edge; WR floor blocker. First Warning-4 candidate if WR rule amends. |
+| roc_us_1d | +3.720 | 1.270 | 36.0% | 10,500 | Rate-of-Change momentum. Strong dSharpe; WR floor blocker. |
+| vcb_us_1d | +1.920 | 1.210 | 37.0% | 9,100 | Volatility contraction breakout. Positive Sharpe; WR floor blocker. |
+| hat_us_1d | +1.039 | 1.071 | 37.0% | 33,451 | Heikin-Ashi trend. Closest to clearing (37.0% vs 40% — 3pp gap). WR floor blocker. |
+
+---
+
+## Pending Full-Universe Re-Validation (PART B Step 4 — CEO directive 2026-05-21 eve)
+
+Holding section per PART B remediation queue. PARTIAL sweeps and
+universe gaps below MUST be resolved before Phase-1 exit-criteria
+tallies (Obj 3/4/5) can be claimed final.
+
+### Universe gaps
+
+| Market | Current file | Full halal target | Missing | Source |
+|--------|-------------:|------------------:|--------:|--------|
+| US     | 1603 | 1621 | 18 | Ahmed authoritative list (not yet merged) |
+| UAE    | 64 | 80 | 16 | DFM/ADX names not retrievable via yfinance — need TV-MCP cache |
+| Crypto | 150 | 140 | 0 | universe already complete |
+
+### UAE PARTIAL sweeps awaiting re-run on expanded UAE-80 universe
+
+- [ ] `ema200_uae_1d` — re-run via `staged_validate.py --enroll-market` (after UAE-80 expansion)
+- [ ] `divergence_uae_1d` — re-run via `staged_validate.py --enroll-market` (after UAE-80 expansion)
+- [ ] `mbv_uae_1d` — re-run via `staged_validate.py --enroll-market` (after UAE-80 expansion)
+- [ ] `dbo_uae_1d` — re-run via `staged_validate.py --enroll-market` (after UAE-80 expansion)
+- [ ] `roc_uae_1d` — re-run via `staged_validate.py --enroll-market` (after UAE-80 expansion)
+- [ ] `vcb_uae_1d` — re-run via `staged_validate.py --enroll-market` (after UAE-80 expansion)
+- [ ] `hat_uae_1d` — re-run via `staged_validate.py --enroll-market` (after UAE-80 expansion)
+
+### US priority-1 verifications (cleared strategies — confirm clearance holds on 1,621)
+
+- [ ] `divergence_us_1d` — re-run on expanded US-1,621 universe; confirm dSharpe still clears
+- [ ] `mbv_us_1d` — re-run on expanded US-1,621 universe; confirm dSharpe still clears
+- [ ] `pmr_us_1d` — re-run on expanded US-1,621 universe; confirm dSharpe still clears
+
+### US priority-2 verifications (near-miss strategies — confirm near-miss profile holds)
+
+- [ ] `dbo_us_1d` — re-run on expanded US-1,621; confirm near-miss profile holds
+- [ ] `roc_us_1d` — re-run on expanded US-1,621; confirm near-miss profile holds
+- [ ] `vcb_us_1d` — re-run on expanded US-1,621; confirm near-miss profile holds
+
+---
+
 ## TV Strategy Tester Watchlist (NOT paper-forward — research only)
 
 Per audit Concern 2 + Path A: TV-only winners whose engine-gate Sharpe
