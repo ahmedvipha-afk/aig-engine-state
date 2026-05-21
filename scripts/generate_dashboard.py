@@ -172,6 +172,204 @@ def _telegram_sent_log() -> list[dict]:
         return []
 
 
+# ---- Sprint Roadmap data extractors (CEO directive 2026-05-22) -----------
+
+_DNNN_HEADER_RE = re.compile(
+    r"^- (?P<ts>\d{4}-\d{2}-\d{2} \d{2}:\d{2}) (?P<id>D-\d{3}) — (?P<body>.+?)(?=^- \d{4}-\d{2}-\d{2} \d{2}:\d{2} D-\d{3} —|\Z)",
+    re.MULTILINE | re.DOTALL,
+)
+
+
+def _classify_dnnn_body(body: str) -> str:
+    """Return PASS / FAIL / NEAR_MISS / INFO based on body keywords."""
+    bu = body.upper()
+    if "PORTFOLIO_CLEARED" in bu or "CLEARED FOR PAPER" in bu:
+        return "PASS"
+    near_signals = ("NEAR-MISS", "NEAR MISS", "WR-FLOOR ONLY", "WR FLOOR ONLY")
+    if any(s in bu for s in near_signals):
+        return "NEAR_MISS"
+    fail_signals = ("PORTFOLIO_FAIL", "HONEST FAIL", "HONEST-FAIL", "VERDICT: FAIL")
+    if any(s in bu for s in fail_signals):
+        return "FAIL"
+    return "INFO"
+
+
+def _derive_purpose(body: str, dnnn_id: str) -> str:
+    """Short plain-English purpose from body — first clause before period."""
+    # Strip markdown bold markers and trim
+    clean = re.sub(r"\*\*([^*]+)\*\*", r"\1", body)
+    clean = clean.replace("\n", " ").strip()
+    first = clean.split(".")[0].strip()
+    if len(first) > 180:
+        first = first[:177] + "..."
+    return first or f"Sprint {dnnn_id} — see ceo_brain.md"
+
+
+def _derive_actual(body: str) -> str:
+    """Trim body to a single readable summary line."""
+    clean = re.sub(r"\*\*([^*]+)\*\*", r"\1", body)
+    clean = clean.replace("\n", " ").strip()
+    # Grab up to first 2 sentences or 280 chars
+    parts = clean.split(". ")
+    short = ". ".join(parts[:2]).strip()
+    if len(short) > 280:
+        short = short[:277] + "..."
+    if not short.endswith("."):
+        short += "."
+    return short
+
+
+def _extract_past_sprints() -> list[dict]:
+    brain = ROOT / "ceo_brain.md"
+    if not brain.exists():
+        return []
+    text = brain.read_text(encoding="utf-8")
+    if "DECISION CONTINUITY" in text:
+        text = text.split("DECISION CONTINUITY", 1)[1]
+    out: list[dict] = []
+    for m in _DNNN_HEADER_RE.finditer(text):
+        body = m.group("body").strip()
+        status = _classify_dnnn_body(body)
+        out.append({
+            "id": f"{m.group('id')} ({m.group('ts')[5:]})",
+            "ts": m.group("ts"),
+            "status": status,
+            "purpose": _derive_purpose(body, m.group("id")),
+            "expected": (
+                "Strategy verdict (PASS/FAIL/NEAR-MISS) with trades, expectancy, dSharpe, WR."
+                if status in ("PASS", "FAIL", "NEAR_MISS")
+                else "Advance ≥1 Phase 1 objective by one concrete step."
+            ),
+            "actual": _derive_actual(body),
+        })
+    # Newest first
+    out.sort(key=lambda r: r["ts"], reverse=True)
+    return out
+
+
+def _extract_missed_fires() -> list[dict]:
+    log = ROOT / "missed_sprints.log"
+    if not log.exists():
+        return []
+    out = []
+    for line in log.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or "REPL_BUSY" not in line:
+            continue
+        parts = line.split(" ", 1)
+        ts = parts[0]
+        out.append({
+            "id": f"MISSED {ts[:16]}",
+            "ts": ts,
+            "status": "MISSED",
+            "purpose": "Scheduled cron fire skipped — REPL was busy at the scheduled minute.",
+            "expected": "One sprint iteration on schedule.",
+            "actual": f"REPL_BUSY at {ts} — caught up on the next available fire.",
+        })
+    out.sort(key=lambda r: r["ts"], reverse=True)
+    return out
+
+
+def _extract_future_sprints() -> list[dict]:
+    out: list[dict] = []
+    # Active staged-batch validation(s)
+    queue = _safe_read_json(ROOT / "staged_validation_queue.json")
+    if queue:
+        for p in queue.get("plans", []):
+            trial = p.get("trial_id", "?")
+            tickers = p.get("tickers") or []
+            total = len(tickers)
+            stage_dir = ROOT / "staging" / trial
+            batches = sorted(stage_dir.glob("batch_*.json")) if stage_dir.exists() else []
+            done = min(len(batches) * 200, total) if total else len(batches) * 200
+            pct = (100 * done / total) if total else 0
+            remaining_fires = max(1, (total - done + 199) // 200) if total else 1
+            market = trial.split("_")[1].upper() if "_" in trial else "?"
+            out.append({
+                "id": f"In-flight {trial}",
+                "ts": "",
+                "status": "IN_PROGRESS",
+                "purpose": (
+                    f"Validate the {trial.split('_')[0].upper()} strategy on the full "
+                    f"{market} halal universe in 200-ticker batches per fire."
+                ),
+                "expected": (
+                    f"PASS / FAIL / NEAR-MISS verdict for {trial} with trades, "
+                    f"expectancy, dSharpe, win rate; coverage stat."
+                ),
+                "actual": (
+                    f"In progress — {done:,}/{total:,} tickers processed ({pct:.0f}%). "
+                    f"ETA ~{remaining_fires} more fires."
+                ),
+            })
+    # PART B priority-1 US verifications
+    for s in ("divergence_us_1d", "mbv_us_1d"):
+        out.append({
+            "id": f"Planned re-verify {s}",
+            "ts": "",
+            "status": "PLANNED",
+            "purpose": (
+                f"Re-run the previously cleared {s} on the full 1,621-ticker US halal "
+                f"universe (currently 1,603 — 18 tickers pending append) to confirm "
+                f"clearance holds under the corrected sweep rule."
+            ),
+            "expected": "Confirm prior PORTFOLIO_CLEARED holds on the full universe.",
+            "actual": "Scheduled / Pending — blocked on US universe expansion to 1,621.",
+        })
+    # PART B priority-2 US near-miss verifications
+    for s in ("dbo_us_1d", "roc_us_1d", "vcb_us_1d", "hat_us_1d"):
+        out.append({
+            "id": f"Planned re-verify {s}",
+            "ts": "",
+            "status": "PLANNED",
+            "purpose": (
+                f"Re-run the near-miss {s} on the full 1,621-ticker US halal universe "
+                f"to verify the WR-floor-only failure pattern holds."
+            ),
+            "expected": "Confirm near-miss profile persists; positive dSharpe + expectancy, WR < 40%.",
+            "actual": "Scheduled / Pending — blocked on US universe expansion to 1,621.",
+        })
+    # PART B UAE PARTIAL re-runs (7 trials × UAE)
+    for s in ("ema200", "divergence", "mbv", "dbo", "roc", "vcb", "hat"):
+        out.append({
+            "id": f"Planned re-run {s}_uae_1d",
+            "ts": "",
+            "status": "PLANNED",
+            "purpose": (
+                f"Re-validate {s.upper()} UAE on the expanded UAE-80 universe (currently "
+                f"64 retrievable; 16 DFM/ADX names pending TV-MCP cache)."
+            ),
+            "expected": "Confirm prior PORTFOLIO_FAIL on 64-ticker sweep holds on full 80.",
+            "actual": "Scheduled / Pending — blocked on UAE universe expansion to ~80.",
+        })
+    return out
+
+
+def _build_sprint_roadmap_state() -> dict:
+    past = _extract_past_sprints()
+    missed = _extract_missed_fires()
+    future = _extract_future_sprints()
+    in_prog = [f for f in future if f["status"] == "IN_PROGRESS"]
+    planned = [f for f in future if f["status"] == "PLANNED"]
+    return {
+        "past": past,
+        "missed": missed,
+        "in_progress": in_prog,
+        "planned": planned,
+        "summary": {
+            "total": len(past) + len(missed) + len(in_prog) + len(planned),
+            "completed": len(past),
+            "pass": sum(1 for p in past if p["status"] == "PASS"),
+            "fail": sum(1 for p in past if p["status"] == "FAIL"),
+            "near": sum(1 for p in past if p["status"] == "NEAR_MISS"),
+            "info": sum(1 for p in past if p["status"] == "INFO"),
+            "in_progress": len(in_prog),
+            "planned": len(planned),
+            "missed": len(missed),
+        },
+    }
+
+
 def _latest_validation_results() -> dict:
     """Return latest validation per (strategy, market) plus the raw `results`
     array so we can compute winners/losers downstream."""
@@ -757,6 +955,63 @@ tr:last-child td { border-bottom: none; }
                       align-items: center; font-size: 11px; }
 .ticker-link { font-family: 'SF Mono', Menlo, monospace; color: var(--gold);
                font-weight: 700; }
+
+/* ---- Sprint Roadmap (CEO directive 2026-05-22) ---- */
+.roadmap-cards { display: grid; grid-template-columns: repeat(5, 1fr);
+                 gap: 10px; margin: 10px 0 12px 0; }
+.roadmap-cards .tile { background: var(--bg2, #0a1428); border: 1px solid var(--bd);
+                       border-radius: 8px; padding: 10px 12px; }
+.roadmap-cards .tile-label { font-size: 10px; color: var(--t3); }
+.roadmap-cards .tile-value { font-size: 22px; font-weight: 700; margin-top: 4px; }
+.roadmap-cards .tile-sub { font-size: 10px; font-weight: 400; }
+.roadmap-controls { display: flex; gap: 10px; margin: 8px 0;
+                    flex-wrap: wrap; align-items: center; }
+.roadmap-controls select, .roadmap-controls input {
+    background: var(--bg); border: 1px solid var(--bd); color: var(--t1);
+    padding: 6px 10px; border-radius: 6px; font-size: 11px; }
+.roadmap-controls input { flex: 1; min-width: 200px; }
+.roadmap-table { width: 100%; border-collapse: collapse; margin-top: 6px;
+                 table-layout: fixed; }
+.roadmap-table th, .roadmap-table td {
+    padding: 8px 10px; text-align: left; vertical-align: top;
+    font-size: 11px; border-bottom: 1px solid var(--bd); word-wrap: break-word; }
+.roadmap-table th { background: rgba(201,168,76,0.04); font-weight: 700;
+                    color: var(--t1); position: sticky; top: 0; }
+.roadmap-table th:nth-child(1), .roadmap-table td:nth-child(1) { width: 18%; }
+.roadmap-table th:nth-child(2), .roadmap-table td:nth-child(2) { width: 28%; }
+.roadmap-table th:nth-child(3), .roadmap-table td:nth-child(3) { width: 24%; }
+.roadmap-table th:nth-child(4), .roadmap-table td:nth-child(4) { width: 30%; }
+.roadmap-row td:first-child { border-left: 4px solid transparent; padding-left: 12px; }
+.roadmap-row.rm-pass    td:first-child { border-left-color: var(--gn); }
+.roadmap-row.rm-fail    td:first-child { border-left-color: var(--rd); }
+.roadmap-row.rm-near    td:first-child { border-left-color: var(--or); }
+.roadmap-row.rm-current td:first-child { border-left-color: var(--gold);
+                                         animation: rm-pulse 1.8s ease-in-out infinite; }
+.roadmap-row.rm-planned td:first-child { border-left-color: #4b6584; }
+.roadmap-row.rm-missed  td:first-child { border-left-color: #555; }
+.roadmap-row.rm-missed { opacity: 0.7; }
+.roadmap-row.rm-info    td:first-child { border-left-color: #4b6584; }
+@keyframes rm-pulse {
+    0%, 100% { box-shadow: -4px 0 0 var(--gold); }
+    50%      { box-shadow: -4px 0 0 transparent; }
+}
+.rm-id { font-family: 'SF Mono', Menlo, monospace; font-weight: 700;
+         font-size: 10px; white-space: nowrap; color: var(--gold); }
+.rm-status-badge { display: inline-block; padding: 1px 6px; border-radius: 3px;
+                   font-size: 9px; font-weight: 700; text-transform: uppercase;
+                   margin-left: 4px; }
+.rm-status-badge.b-pass    { background: rgba(34,197,94,0.15); color: var(--gn); }
+.rm-status-badge.b-fail    { background: rgba(239,68,68,0.15); color: var(--rd); }
+.rm-status-badge.b-near    { background: rgba(245,158,11,0.15); color: var(--or); }
+.rm-status-badge.b-current { background: rgba(201,168,76,0.18); color: var(--gold); }
+.rm-status-badge.b-planned { background: rgba(75,101,132,0.18); color: #94A3B8; }
+.rm-status-badge.b-missed  { background: rgba(120,120,120,0.18); color: #94A3B8; }
+.rm-status-badge.b-info    { background: rgba(75,101,132,0.18); color: #94A3B8; }
+@media (max-width: 900px) {
+    .roadmap-cards { grid-template-columns: repeat(2, 1fr); }
+    .roadmap-table { font-size: 10px; }
+    .roadmap-table th, .roadmap-table td { padding: 6px 6px; }
+}
 """
 
 
@@ -813,6 +1068,26 @@ JS = """
     'sec_paper_history': '📋 صفقات مغلقة (آخر ٢٠)',
     'sec_kpi': '🎯 أهداف التفويض — هل نحققها؟',
     'sec_live': '🟢 صحة النظام الحي',
+    'sec_roadmap': '📋 خريطة الطريق الكاملة للسباقات',
+    'rm_total': 'إجمالي السباقات',
+    'rm_completed': 'مكتملة',
+    'rm_inprogress': 'جارية',
+    'rm_planned': 'مخططة',
+    'rm_avg_eta': 'متوسط الوقت',
+    'rm_filter_all': 'الكل',
+    'rm_filter_pass': 'ناجحة سابقاً',
+    'rm_filter_fail': 'فاشلة سابقاً',
+    'rm_filter_near': 'قريبة من النجاح',
+    'rm_filter_current': 'الحالية',
+    'rm_filter_planned': 'المخططة',
+    'rm_filter_missed': 'الفائتة (REPL_BUSY)',
+    'rm_filter_info': 'بنية تحتية',
+    'rm_col_id': 'معرّف السباق',
+    'rm_col_purpose': 'الغرض المعلن',
+    'rm_col_expected': 'النتيجة المتوقعة',
+    'rm_col_actual': 'النتيجة الفعلية',
+    'rm_search_placeholder': 'فلتر بالمعرّف أو الإستراتيجية أو السوق...',
+    'rm_pass_rate': 'نسبة النجاح',
     'sec_vix': '📊 تذبذب السوق (VIX)',
     'sec_drawdown': '📉 الخسارة الورقية من القمة',
     'sec_corr': '🔗 تداخل المراكز',
@@ -1114,6 +1389,24 @@ JS = """
       });
     });
   }
+
+  // ----- SPRINT ROADMAP FILTER + SEARCH (CEO directive 2026-05-22) -----
+  window.rmFilter = function() {
+    const fEl = document.getElementById('roadmap-filter');
+    const sEl = document.getElementById('roadmap-search');
+    if (!fEl) return;
+    const f = fEl.value || 'all';
+    const q = (sEl && sEl.value || '').toLowerCase();
+    document.querySelectorAll('.roadmap-row').forEach(function(r) {
+      const matchF = (f === 'all') || (r.dataset.status === f);
+      const matchS = (!q) || ((r.dataset.search || '').indexOf(q) !== -1);
+      r.style.display = (matchF && matchS) ? '' : 'none';
+    });
+    const total = document.querySelectorAll('.roadmap-row').length;
+    const visible = document.querySelectorAll('.roadmap-row:not([style*="display: none"])').length;
+    const ctr = document.getElementById('roadmap-counter');
+    if (ctr) ctr.textContent = visible + ' / ' + total;
+  };
 })();
 """
 
@@ -1760,6 +2053,135 @@ def _render_kpis(state):
     </div>"""
 
 
+_RM_BADGE_LABELS = {
+    "PASS": ("PASS", "b-pass"),
+    "FAIL": ("FAIL", "b-fail"),
+    "NEAR_MISS": ("NEAR-MISS", "b-near"),
+    "IN_PROGRESS": ("IN PROGRESS", "b-current"),
+    "PLANNED": ("PLANNED", "b-planned"),
+    "MISSED": ("MISSED", "b-missed"),
+    "INFO": ("INFRA", "b-info"),
+}
+
+_RM_ROW_CLASS = {
+    "PASS": "rm-pass",
+    "FAIL": "rm-fail",
+    "NEAR_MISS": "rm-near",
+    "IN_PROGRESS": "rm-current",
+    "PLANNED": "rm-planned",
+    "MISSED": "rm-missed",
+    "INFO": "rm-info",
+}
+
+
+def _render_roadmap_row(entry: dict) -> str:
+    status = entry.get("status", "INFO")
+    badge_label, badge_class = _RM_BADGE_LABELS.get(status, ("—", "b-info"))
+    row_class = _RM_ROW_CLASS.get(status, "rm-info")
+    rid = entry.get("id", "?")
+    purpose = entry.get("purpose", "—")
+    expected = entry.get("expected", "—")
+    actual = entry.get("actual", "—")
+    search_blob = " ".join([rid, purpose, expected, actual]).lower()
+    return (
+        f'<tr class="roadmap-row {row_class}" data-status="{esc(status)}" '
+        f'data-search="{esc(search_blob)}">'
+        f'<td><span class="rm-id">{esc(rid)}</span>'
+        f'<span class="rm-status-badge {badge_class}">{esc(badge_label)}</span></td>'
+        f'<td>{esc(purpose)}</td>'
+        f'<td>{esc(expected)}</td>'
+        f'<td>{esc(actual)}</td>'
+        f'</tr>'
+    )
+
+
+def _render_sprint_roadmap_section() -> str:
+    rm = _build_sprint_roadmap_state()
+    s = rm["summary"]
+    pass_rate = (100 * s["pass"] / s["completed"]) if s["completed"] else 0
+
+    # Row order: in-progress first, then past (newest), then planned, then missed
+    body_rows = []
+    for e in rm["in_progress"]:
+        body_rows.append(_render_roadmap_row(e))
+    for e in rm["past"]:  # already newest-first
+        body_rows.append(_render_roadmap_row(e))
+    for e in rm["planned"]:
+        body_rows.append(_render_roadmap_row(e))
+    for e in rm["missed"]:
+        body_rows.append(_render_roadmap_row(e))
+    rows_html = "".join(body_rows) or (
+        '<tr><td colspan="4" class="muted">No sprints recorded yet.</td></tr>'
+    )
+
+    cards = f"""
+      <div class="roadmap-cards">
+        <div class="tile">
+          <div class="tile-label" data-i18n="rm_total">Total Sprints</div>
+          <div class="tile-value">{s["total"]}</div>
+        </div>
+        <div class="tile">
+          <div class="tile-label" data-i18n="rm_completed">Completed</div>
+          <div class="tile-value">{s["completed"]}
+            <span class="tile-sub muted">({pass_rate:.0f}% <span data-i18n="rm_pass_rate">pass rate</span>)</span>
+          </div>
+        </div>
+        <div class="tile">
+          <div class="tile-label" data-i18n="rm_inprogress">In Progress</div>
+          <div class="tile-value" style="color:var(--gold);">{s["in_progress"]}</div>
+        </div>
+        <div class="tile">
+          <div class="tile-label" data-i18n="rm_planned">Planned</div>
+          <div class="tile-value muted">{s["planned"] + s["missed"]}</div>
+        </div>
+        <div class="tile">
+          <div class="tile-label" data-i18n="rm_avg_eta">Avg ETA</div>
+          <div class="tile-value">~12 <span class="tile-sub muted">min</span></div>
+        </div>
+      </div>"""
+
+    controls = """
+      <div class="roadmap-controls">
+        <select id="roadmap-filter" onchange="rmFilter()">
+          <option value="all"         data-i18n="rm_filter_all">All</option>
+          <option value="PASS"        data-i18n="rm_filter_pass">Past Pass</option>
+          <option value="FAIL"        data-i18n="rm_filter_fail">Past Fail</option>
+          <option value="NEAR_MISS"   data-i18n="rm_filter_near">Past Near-Miss</option>
+          <option value="IN_PROGRESS" data-i18n="rm_filter_current">Current</option>
+          <option value="PLANNED"     data-i18n="rm_filter_planned">Planned</option>
+          <option value="MISSED"      data-i18n="rm_filter_missed">Missed (REPL_BUSY)</option>
+          <option value="INFO"        data-i18n="rm_filter_info">Infrastructure</option>
+        </select>
+        <input id="roadmap-search" placeholder="Filter by id / strategy / market…"
+               data-i18n-placeholder="rm_search_placeholder"
+               oninput="rmFilter()" />
+        <span class="muted" id="roadmap-counter" style="font-size:11px;">"""
+    controls += f'{s["total"]} / {s["total"]}</span></div>'
+
+    return f"""
+      <div class="section" data-search="sprint roadmap complete past current future planned missed">
+        <h3 data-i18n="sec_roadmap">📋 Complete Sprint Roadmap</h3>
+        {cards}
+        {controls}
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th data-i18n="rm_col_id">Sprint / Fire ID</th>
+              <th data-i18n="rm_col_purpose">What It's Supposed To Do</th>
+              <th data-i18n="rm_col_expected">Expected Outcome</th>
+              <th data-i18n="rm_col_actual">Actual Result</th>
+            </tr>
+          </thead>
+          <tbody>{rows_html}</tbody>
+        </table>
+        <div class="muted" style="margin-top:8px; font-size:10px;">
+          Past sprints parsed from ceo_brain.md DECISION CONTINUITY. Missed fires from missed_sprints.log.
+          In-progress from staged_validation_queue.json + staging/. Planned from PART B audit re-runs.
+          Nothing hidden — green = past pass, red = past fail, orange = near-miss, gold (pulsing) = current, gray = planned/missed.
+        </div>
+      </div>"""
+
+
 def _render_live_status(state):
     tg = state["tg"]
     n_val_files = len(list(ROOT.glob('validation_*.json')))
@@ -1779,6 +2201,7 @@ def _render_live_status(state):
         st = "online" if ok else "DOWN"
         cls = "gn" if ok else "rd"
         rows += f"<tr data-search='{esc(name + detail)}'><td><span class='dot {dot}'></span><b>{esc(name)}</b></td><td><span class='badge {cls}'>{esc(st)}</span></td><td class='muted'>{esc(detail)}</td></tr>"
+    roadmap_html = _render_sprint_roadmap_section()
     return f"""
     <div id="panel-live" class="tab-panel">
       <div class="section">
@@ -1789,6 +2212,7 @@ def _render_live_status(state):
         </table>
         <div class="muted" style="margin-top:8px;">Sampled at dashboard generation. Sprint routine regenerates every 2h.</div>
       </div>
+      {roadmap_html}
     </div>"""
 
 
