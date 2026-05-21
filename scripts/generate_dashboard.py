@@ -517,6 +517,16 @@ a:hover { text-decoration: underline; }
 .brand-sub { font-size: 9px; color: var(--t3); }
 .refresh-countdown { font-size: 9px; color: var(--t3); margin-top: 2px; }
 .right-tools { display: flex; gap: 10px; align-items: center; }
+.lang-toggle { display: flex; border: 1px solid var(--bd); border-radius: 6px;
+               overflow: hidden; background: #060a14aa; }
+.lang-btn { background: none; border: none; padding: 5px 9px; color: var(--t3);
+            font-size: 11px; font-weight: 700; cursor: pointer;
+            font-family: inherit; }
+.lang-btn:hover { color: var(--t1); }
+.lang-btn.active { background: var(--gold); color: #0b1020; }
+html[dir="rtl"] body { font-family: 'Segoe UI', Tahoma, 'Cairo', sans-serif; }
+html[dir="rtl"] .brand .ar { margin-left: 0; margin-right: 8px; }
+html[dir="rtl"] .tab-bar-inner, html[dir="rtl"] .header-row { direction: rtl; }
 .search-box { background: #060a14cc; border: 1px solid var(--bd);
               border-radius: 6px; padding: 5px 10px; color: var(--t1);
               font-size: 12px; width: 240px; outline: none; }
@@ -703,6 +713,137 @@ tr:last-child td { border-bottom: none; }
 
 JS = """
 (function() {
+  // ----- LANGUAGE SWITCH (English / Arabic) -----
+  const AR = {
+    // Header
+    'refresh_label': 'تحديث الصفحة بعد ',
+    'search_placeholder': 'ابحث في جميع التبويبات…',
+    // Tabs
+    'tab_overview': '📊 لوحة عامة',
+    'tab_markets': '🌍 الأسواق',
+    'tab_agents': '🤖 الوكلاء',
+    'tab_kpis': '🎯 الأهداف',
+    'tab_live': '🟢 الحالة الحية',
+    'tab_paper': '📈 المحفظة الورقية',
+    'tab_risk': '🛡️ المخاطر',
+    'tab_telegram': '📱 إشعارات تيليجرام',
+    'tab_commits': '📜 تغييرات الكود',
+    'tab_history': '🗂 القرارات',
+    'tab_glossary': '📖 شرح المصطلحات',
+    'tab_ceo': '💬 ملاحظات المدير',
+    // Common labels
+    'verdict_passed': 'نجح',
+    'verdict_failed': 'فشل',
+    'verdict_running': 'قيد التشغيل',
+    'verdict_cleared': 'معتمد',
+    'label_nav': 'القيمة (ورقي)',
+    'label_mode': 'النمط',
+    'label_strategy': 'الإستراتيجية',
+    'label_market': 'السوق',
+    'label_timeframe': 'الإطار الزمني',
+    'label_trades': 'الصفقات',
+    'label_expectancy': 'التوقع',
+    'label_winrate': 'نسبة الفوز',
+    'label_sharpe': 'نقاط الجودة',
+    'label_coverage': 'التغطية',
+    'label_verdict': 'الحكم',
+    'label_since_deploy': 'منذ التشغيل',
+    // Section titles
+    'sec_winners': '🏆 أفضل الإستراتيجيات — نقاط الجودة (الأعلى أفضل)',
+    'sec_losers': 'الإستراتيجيات الفاشلة',
+    'sec_trial_budget': '📋 التجارب المنفذة — ٩ مجموع (مع تطبيق العقوبة الإحصائية)',
+    'sec_sprint': '🚀 تقدم السباق',
+    'sec_pipeline': '📡 مسار الإشارة — من البيانات إلى الصفقة',
+    'sec_next_events': '⏱ القادم في الجدول',
+    'sec_circuit': '🛡 نقاط الإيقاف الآمنة',
+    'sec_decisions_short': '📝 قرارات المدير الأخيرة',
+    'sec_paper': '📈 محفظة الورق — اختبار حي',
+    'sec_paper_fwd': '📈 اختبار حي — Divergence الأمريكية اليومية',
+    'sec_paper_positions': '🟢 صفقات مفتوحة',
+    'sec_paper_history': '📋 صفقات مغلقة (آخر ٢٠)',
+    'sec_kpi': '🎯 أهداف التفويض — هل نحققها؟',
+    'sec_live': '🟢 صحة النظام الحي',
+    'sec_vix': '📊 تذبذب السوق (VIX)',
+    'sec_drawdown': '📉 الخسارة الورقية من القمة',
+    'sec_corr': '🔗 تداخل المراكز',
+    'sec_sizing': '📏 حدود حجم الصفقة',
+    'sec_telegram_log': '📱 الرسائل المرسلة (آخر ١٠٠)',
+    'sec_commits': '📜 تاريخ الكود (آخر ٦٠ تغيير)',
+    'sec_history': '📜 الجلسات السابقة',
+    'sec_audit': '🔍 المراجع الخارجي (Cowork)',
+    'sec_glossary': '📖 دليل المصطلحات — بالعربية البسيطة',
+    'sec_ceo_all': '💬 جميع قرارات المدير (مع المبررات)',
+    'sec_how_it_works': '🗺️ كيف يعمل النظام — جولة بالعربية البسيطة',
+    'how_step1': '1. كتاب القواعد المجمد. ثلاث إستراتيجيات (EMA-200, Divergence, MBV) مع كل الإعدادات مغلقة داخل config.py. القفل = رمز هاش (6ce4b38242d54771). أي تعديل في القاعدة يغير الهاش وينتهي كل ما سبق.',
+    'how_step2': '2. اختبار على التاريخ. المحرك يعيد تشغيل ١٥ سنة من بيانات الأسواق الأمريكية والإماراتية والكريبتو، محاكياً صفقات حقيقية بتكاليف حقيقية (عمولات، فروق سعر، انزلاق). يقسم التاريخ نصفين: نصف للتعلم يتجاهله، ونصف خارج العينة يقيم نفسه عليه.',
+    'how_step3': '3. بوابتان للحكم. البوابة لكل سهم تسأل: "هل لهذا السهم حافة؟". وبوابة المحفظة تسأل: "هل لهذه الإستراتيجية حافة عبر السوق كاملاً؟" كلتاهما تتطلب اجتياز عتبات صارمة. التجارب الفاشلة محفوظة (لا انتقاء)، وعقوبة الاختبارات المتعددة تنمو مع كل اختبار جديد.',
+    'how_step4': '4. مراقب الإشارات الحي. الإستراتيجيات التي اجتازت بوابة المحفظة تحصل على كاشف بايثون يعمل كل ساعتين. يتحقق هل أعطى مؤشر اليوم إشارة دخول أو خروج على الأسهم المراقبة (DY, EXPGY, PSX, ARW, ROL).',
+    'how_step5': '5. تنبيهات الهاتف. عندما تشتعل إشارة، يصل Telegram إلى أحمد (AIV_Fund_Bot@) بسعر الدخول والخروج. أول ١٠ إشارات حقيقية تقارن بتوقعات الاختبار الخلفي.',
+    'how_step6': '6. كل إجراء مسجل. كل تشغيل اختبار يكتب إلى audit_trail.md مع رمز الهاش. مراجع خارجي (Cowork) يستطيع إعادة تشغيل نفس الهاش والحصول على نفس الحكم — هذه ضمانة التدقيق.',
+    // Buttons / misc
+    'btn_no_alerts': 'لا توجد تنبيهات',
+    'mode_sprint': 'النمط ١ — سباق نشط',
+    'mode_steady': 'النمط ٢ — تشغيل ثابت',
+  };
+
+  function applyLang(lang) {
+    const html = document.documentElement;
+    html.setAttribute('lang', lang);
+    html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+    document.querySelectorAll('.lang-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      const attrName = el.dataset.i18nAttr;
+      // Preserve children (countdown span, etc.) by stashing on first run
+      if (!el.dataset.i18nEn && !attrName) {
+        // For countdown label: stash only the text-before-span portion
+        const first = el.firstChild;
+        if (first && first.nodeType === Node.TEXT_NODE) {
+          el.dataset.i18nEn = first.textContent;
+        } else {
+          el.dataset.i18nEn = el.textContent;
+        }
+      }
+      if (attrName && !el.dataset.i18nEnAttr) {
+        el.dataset.i18nEnAttr = el.getAttribute(attrName) || '';
+      }
+      if (lang === 'ar' && AR[key]) {
+        if (attrName) {
+          el.setAttribute(attrName, AR[key]);
+        } else {
+          // If el has a child element (e.g., countdown span), only replace leading text node
+          const first = el.firstChild;
+          if (first && first.nodeType === Node.TEXT_NODE && el.children.length > 0) {
+            first.textContent = AR[key];
+          } else {
+            el.textContent = AR[key];
+          }
+        }
+      } else {
+        if (attrName) {
+          el.setAttribute(attrName, el.dataset.i18nEnAttr || '');
+        } else {
+          const first = el.firstChild;
+          if (first && first.nodeType === Node.TEXT_NODE && el.children.length > 0) {
+            first.textContent = el.dataset.i18nEn || '';
+          } else {
+            el.textContent = el.dataset.i18nEn || '';
+          }
+        }
+      }
+    });
+    try { localStorage.setItem('aig_lang', lang); } catch (e) {}
+  }
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.addEventListener('click', () => applyLang(b.dataset.lang));
+  });
+  try {
+    const savedLang = localStorage.getItem('aig_lang');
+    if (savedLang === 'ar') applyLang('ar');
+  } catch (e) {}
+
   // ----- TABS -----
   function setTab(id) {
     document.querySelectorAll('.tab').forEach(t => {
@@ -1058,45 +1199,57 @@ def _render_overview(state):
     return f"""
     <div id="panel-overview" class="tab-panel active">
 
+      <div class="section" data-search="how it works mental map plain english arabic">
+        <h3 data-i18n="sec_how_it_works">🗺️ How It Works — Plain English Tour</h3>
+        <div style="font-size:12px; line-height:1.8; color:var(--t2);">
+          <div data-i18n="how_step1"><b style="color:var(--gold);">1. Frozen rulebook.</b> Three strategies (EMA-200, Divergence, MBV) plus all settings are locked into <span class="mono">config.py</span>. The lock = a hash code (<span class="mono">6ce4b38242d54771</span>). If anyone changes a rule, the hash changes and all previous results expire.</div>
+          <div data-i18n="how_step2"><b style="color:var(--gold);">2. Test on history.</b> The engine replays 15 years of US, UAE, and crypto data, simulating real trades with real costs (commissions, spreads, slippage). It splits history into a "training" half it ignores and an "out-of-sample" half it scores against.</div>
+          <div data-i18n="how_step3"><b style="color:var(--gold);">3. Two gates judge.</b> The per-ticker gate asks "does this single stock have edge?" The portfolio gate asks "does this whole strategy have edge across the market?" Both must pass strict thresholds. Failed tests are kept (no cherry-picking) and the haircut penalty grows with each test tried.</div>
+          <div data-i18n="how_step4"><b style="color:var(--gold);">4. Live signal watcher.</b> Strategies that cleared the portfolio gate get a Python detector that runs every 2 hours. It checks if today's bar triggered an entry or exit on the watched tickers (DY, EXPGY, PSX, ARW, ROL).</div>
+          <div data-i18n="how_step5"><b style="color:var(--gold);">5. Phone alerts.</b> When a signal fires, Telegram pings Ahmed (@AIV_Fund_Bot) with the entry/exit price. The first 10 real signals get compared against backtest expectations.</div>
+          <div data-i18n="how_step6"><b style="color:var(--gold);">6. Every action is logged.</b> Every test run writes to <span class="mono">audit_trail.md</span> with the config hash. An outside reviewer (Cowork) can re-run the same hash and get the same verdict — that's the audit guarantee.</div>
+        </div>
+      </div>
+
       <div class="section glow" data-search="sprint tracker targets">
-        <h3>🚀 Sprint Tracker — {sprint_done}/8</h3>
+        <h3 data-i18n="sec_sprint">🚀 Sprint Progress — {sprint_done}/8 done</h3>
         <div class="bar"><div class="bar-fill" style="width:{(sprint_done/8)*100:.0f}%;"></div></div>
         <div style="margin-top:10px;">{''.join(sprint_rows) or '<div class="muted">No tracker rows parsed.</div>'}</div>
       </div>
 
       <div class="section" data-search="strategy leaderboard sharpe">
-        <h3>🏆 Strategy Leaderboard (deflated Sharpe, N=6 trials)</h3>
+        <h3 data-i18n="sec_winners">🏆 Best Strategies — Quality Score (higher = better)</h3>
         {lb_html}
       </div>
 
       <div class="section" data-search="pipeline flow data strategies gate paper telegram">
-        <h3>📡 Signal Pipeline</h3>
+        <h3 data-i18n="sec_pipeline">📡 Signal Flow — From Data to Trade</h3>
         {pipeline}
       </div>
 
       <div class="grid-2">
         <div class="section" data-search="countdown timers next event routines">
-          <h3>⏱ Next Events & Routine Heartbeat</h3>
+          <h3 data-i18n="sec_next_events">⏱ What's Coming Next</h3>
           <div class="grid-2" style="gap:8px;">{''.join(cd_blocks) or '<div class="muted">No active routines.</div>'}</div>
         </div>
         <div class="section" data-search="circuit breakers safety">
-          <h3>🛡 Circuit Breakers</h3>
+          <h3 data-i18n="sec_circuit">🛡 Safety Stops</h3>
           {cb_html}
         </div>
       </div>
 
       <div class="section" data-search="trial budget pre-registered strategy register">
-        <h3>📋 Trial Budget (multi-test haircut N={len(trial_budget) or 6})</h3>
+        <h3 data-i18n="sec_trial_budget">📋 Tested Combinations — {len(trial_budget) or 9} total (statistical penalty applied)</h3>
         {tb_html}
       </div>
 
       <div class="grid-2">
         <div class="section" data-search="ceo decisions log">
-          <h3>📝 Decision Log (last 10)</h3>
+          <h3 data-i18n="sec_decisions_short">📝 Recent CEO Decisions</h3>
           {dec_html}
         </div>
         <div class="section" data-search="audit findings auditor cowork">
-          <h3>🔍 Auditor — Cowork</h3>
+          <h3 data-i18n="sec_audit">🔍 Outside Reviewer (Cowork)</h3>
           {audit_html}
         </div>
       </div>
@@ -1246,7 +1399,7 @@ def _render_kpis(state):
     return f"""
     <div id="panel-kpis" class="tab-panel">
       <div class="section">
-        <h3>🎯 KPI Scorecard (v7.0 §24)</h3>
+        <h3 data-i18n="sec_kpi">🎯 Mandate Targets — Are We Meeting Them?</h3>
         <table>
           <thead><tr><th>KPI</th><th>Current</th><th>Target</th><th>Status</th><th>Note</th></tr></thead>
           <tbody>{rows}</tbody>
@@ -1277,7 +1430,7 @@ def _render_live_status(state):
     return f"""
     <div id="panel-live" class="tab-panel">
       <div class="section">
-        <h3>🟢 Live Service Status</h3>
+        <h3 data-i18n="sec_live">🟢 Live System Health</h3>
         <table>
           <thead><tr><th>Service</th><th>State</th><th>Detail</th></tr></thead>
           <tbody>{rows}</tbody>
@@ -1291,7 +1444,7 @@ def _render_paper_pnl(state):
     paper = state["paper"]
     if not paper:
         body = '<div class="muted">No paper-forward state yet. Item 2 deployment writes <code>paper_forward_positions.json</code>.</div>'
-        return f'<div id="panel-paper" class="tab-panel"><div class="section"><h3>📈 Paper P&L</h3>{body}</div></div>'
+        return f'<div id="panel-paper" class="tab-panel"><div class="section"><h3 data-i18n="sec_paper">📈 Paper Money — Live Test</h3>{body}</div></div>'
     deployed_at = paper.get("deployed_at", "—")
     history = paper.get("history", [])
     open_pos = paper.get("open_positions", {})
@@ -1342,7 +1495,7 @@ def _render_paper_pnl(state):
     return f"""
     <div id="panel-paper" class="tab-panel">
       <div class="section glow">
-        <h3>📈 Paper Forward — US Divergence Daily</h3>
+        <h3 data-i18n="sec_paper_fwd">📈 Live Test — US Divergence Daily</h3>
         <div class="grid-4">
           <div class="tile"><div class="tile-label">NAV (paper)</div><div class="tile-value" style="color:var(--gold)">${nav:,.0f}</div><div class="tile-sub">{total_pnl_pct:+.2f}% since deploy</div></div>
           <div class="tile"><div class="tile-label">Open</div><div class="tile-value">{len(open_pos)}</div></div>
@@ -1354,7 +1507,7 @@ def _render_paper_pnl(state):
       </div>
 
       <div class="section" data-search="open positions">
-        <h3>🟢 Open positions</h3>
+        <h3 data-i18n="sec_paper_positions">🟢 Open Positions</h3>
         <table>
           <thead><tr><th>Ticker</th><th>Entry date</th><th>Entry price</th><th>Stop</th><th>RSI</th></tr></thead>
           <tbody>{open_rows}</tbody>
@@ -1362,7 +1515,7 @@ def _render_paper_pnl(state):
       </div>
 
       <div class="section" data-search="closed paper trades history">
-        <h3>📋 Closed trades (last 20)</h3>
+        <h3 data-i18n="sec_paper_history">📋 Closed Trades (last 20)</h3>
         <table>
           <thead><tr><th>Ticker</th><th>Period</th><th>Price</th><th>P&L</th><th>Reason</th></tr></thead>
           <tbody>{hist_rows}</tbody>
@@ -1395,7 +1548,7 @@ def _render_risk(state):
       <div class="grid-2">
 
         <div class="section" data-search="vix volatility regime">
-          <h3>📊 VIX Regime</h3>
+          <h3 data-i18n="sec_vix">📊 Market Volatility (VIX)</h3>
           <div class="gauge">
             <div class="gauge-bg"></div>
             <div class="gauge-needle" style="transform: translateX(-50%) rotate({needle_rotation:.1f}deg);"></div>
@@ -1415,7 +1568,7 @@ def _render_risk(state):
         </div>
 
         <div class="section" data-search="drawdown paper portfolio risk">
-          <h3>📉 Paper Drawdown</h3>
+          <h3 data-i18n="sec_drawdown">📉 Paper Loss From Peak</h3>
           <div class="tile" style="margin-bottom:10px;">
             <div class="tile-label">Max DD since deploy</div>
             <div class="tile-value" style="color:{'var(--gn)' if dd_pct >= -5 else 'var(--rd)'}">{dd_pct:+.2f}%</div>
@@ -1426,7 +1579,7 @@ def _render_risk(state):
         </div>
 
         <div class="section" data-search="correlation correlations btc spy">
-          <h3>🔗 Correlation</h3>
+          <h3 data-i18n="sec_corr">🔗 Position Overlap</h3>
           <div class="muted">Activates when paper positions exist. Alert &gt;0.70 (v7.0 §10.1). Tier 1 &gt;0.85.</div>
           <table style="margin-top:10px;">
             <tr><td>BTC vs SPY</td><td class="muted">—</td><td><span class="badge gy">pending</span></td></tr>
@@ -1436,7 +1589,7 @@ def _render_risk(state):
         </div>
 
         <div class="section" data-search="sizing kelly cap position limits">
-          <h3>📏 Sizing limits</h3>
+          <h3 data-i18n="sec_sizing">📏 Bet Size Limits</h3>
           <table style="font-size:11px;">
             <tr><td>Kelly cap (equity)</td><td class='mono'>1.5%</td></tr>
             <tr><td>Kelly cap (crypto)</td><td class='mono'>0.75%</td></tr>
@@ -1480,7 +1633,7 @@ def _render_telegram(state):
     return f"""
     <div id="panel-telegram" class="tab-panel">
       <div class="section">
-        <h3>📱 Telegram send log (latest 100)</h3>
+        <h3 data-i18n="sec_telegram_log">📱 Phone Messages Sent (last 100)</h3>
         {rows}
       </div>
     </div>"""
@@ -1504,7 +1657,7 @@ def _render_commits(state):
     return f"""
     <div id="panel-commits" class="tab-panel">
       <div class="section">
-        <h3>📜 Commit timeline (last 60)</h3>
+        <h3 data-i18n="sec_commits">📜 Code History (last 60 changes)</h3>
         {rows}
         <div class="muted" style="margin-top:10px;">Remote: <a href="{esc(remote)}" target="_blank">{esc(remote)}</a></div>
       </div>
@@ -1547,7 +1700,7 @@ def _render_history(state):
     return f"""
     <div id="panel-history" class="tab-panel">
       <div class="section">
-        <h3>📜 Session History (auto-extracted)</h3>
+        <h3 data-i18n="sec_history">📜 Past Sessions</h3>
         <input id="history-filter" placeholder="Filter history…" class="search-box" style="width:100%; margin-bottom:12px;">
         {rows}
       </div>
@@ -1576,7 +1729,7 @@ def _render_glossary(state):
     return f"""
     <div id="panel-glossary" class="tab-panel">
       <div class="section">
-        <h3>📖 Glossary</h3>
+        <h3 data-i18n="sec_glossary">📖 Words Guide — Plain English</h3>
         {rows}
       </div>
     </div>"""
@@ -1599,7 +1752,7 @@ def _render_ceo(state):
     return f"""
     <div id="panel-ceo" class="tab-panel">
       <div class="section">
-        <h3>💬 CEO Decisions — all-time (with reasoning)</h3>
+        <h3 data-i18n="sec_ceo_all">💬 All CEO Decisions (with reasoning)</h3>
         <input id="ceo-filter" placeholder="Search decisions…" class="search-box" style="width:100%; margin-bottom:12px;">
         {rows}
       </div>
@@ -1707,22 +1860,22 @@ def render() -> str:
     alert_items = "".join(f'<div style="padding:6px 0; border-bottom:1px solid var(--bd); font-size:11px;">{esc(a)}</div>' for a in alerts) or '<div class="muted">No alerts.</div>'
 
     tabs_def = [
-        ("overview", "📊", "Overview"),
-        ("markets", "🌍", "Markets"),
-        ("agents", "🤖", "Agents"),
-        ("kpis", "🎯", "KPIs"),
-        ("live", "🟢", "Live Status"),
-        ("paper", "📈", "Paper P&L"),
-        ("risk", "📊", "Risk"),
-        ("telegram", "📱", "Telegram"),
-        ("commits", "📜", "Commits"),
-        ("history", "🗂", "History"),
-        ("glossary", "📖", "Glossary"),
-        ("ceo", "💬", "CEO"),
+        ("overview", "📊", "Overview", "tab_overview"),
+        ("markets", "🌍", "Markets", "tab_markets"),
+        ("agents", "🤖", "Agents", "tab_agents"),
+        ("kpis", "🎯", "Targets", "tab_kpis"),
+        ("live", "🟢", "Live Status", "tab_live"),
+        ("paper", "📈", "Paper Money", "tab_paper"),
+        ("risk", "🛡️", "Risk", "tab_risk"),
+        ("telegram", "📱", "Phone Alerts", "tab_telegram"),
+        ("commits", "📜", "Code Changes", "tab_commits"),
+        ("history", "🗂", "Decisions", "tab_history"),
+        ("glossary", "📖", "Words Guide", "tab_glossary"),
+        ("ceo", "💬", "CEO Notes", "tab_ceo"),
     ]
     tab_buttons = "".join(
-        f'<button class="tab" data-tab="{tid}">{ti} {tl}</button>'
-        for tid, ti, tl in tabs_def
+        f'<button class="tab" data-tab="{tid}" data-i18n="{key}">{ti} {tl}</button>'
+        for tid, ti, tl, key in tabs_def
     )
 
     panels = "".join([
@@ -1748,7 +1901,7 @@ def render() -> str:
 <html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta http-equiv="refresh" content="900">
+<meta http-equiv="refresh" content="120">
 <title>AIG Cockpit v3 — Ahmed Investment Group</title>
 <style>{CSS}</style>
 </head>
@@ -1759,10 +1912,14 @@ def render() -> str:
     <div>
       <div class="brand">AHMED INVESTMENT GROUP <span class="ar">مجموعة أحمد للاستثمار</span></div>
       <div class="brand-sub">v7.0 · بسم الله الرحمن الرحيم · refreshed {esc(now_gst)}</div>
-      <div class="refresh-countdown">page auto-refresh in <span id="refresh-countdown-val" data-remain="900">15:00</span></div>
+      <div class="refresh-countdown" data-i18n="refresh_label">page auto-refresh in <span id="refresh-countdown-val" data-remain="120">02:00</span></div>
     </div>
     <div class="right-tools">
-      <input id="global-search" class="search-box" placeholder="Search across all tabs…" autocomplete="off">
+      <div class="lang-toggle" id="lang-toggle">
+        <button class="lang-btn active" data-lang="en" type="button">EN</button>
+        <button class="lang-btn" data-lang="ar" type="button">عربي</button>
+      </div>
+      <input id="global-search" class="search-box" placeholder="Search across all tabs…" autocomplete="off" data-i18n="search_placeholder" data-i18n-attr="placeholder">
       <div class="bell" id="alert-bell" data-count="{alert_count}">
         🔔
         {f'<span class="bell-count">{alert_count}</span>' if alert_count else ''}
