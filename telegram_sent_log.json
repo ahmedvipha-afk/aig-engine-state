@@ -1,0 +1,10 @@
+[
+  {
+    "ts_utc": "2026-05-21T09:36:11+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 15,
+    "preview": "\ud83c\udfaf Sprint Item 5 \u2192 DONE \u2014 MBV strategy validated across 3 markets\n\nconfig_hash: 6ce4b38242d54771\nN_trials_registered: 9 (3 strategies \u00d7 3 markets \u00d7 1D)\n\nUS MBV PORTFOLIO_CLEARED under N=9 haircut:\n\u2022 Tr"
+  }
+]

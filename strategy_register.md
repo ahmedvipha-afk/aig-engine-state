@@ -117,9 +117,9 @@ trial means appending a row here BEFORE the run; the haircut recomputes.
 | 4 | `divergence_us_1d`    | divergence | US     | 1D | yfinance        | 2026-05-20            | 2026-05-20 (re-confirmed 2026-05-21 under N=6 haircut) | **PORTFOLIO_CLEARED** — dSharpe 2.606, exp 1.227, WR 44.78%, 10,715 trades |
 | 5 | `divergence_uae_1d`   | divergence | UAE    | 1D | yfinance+cache  | 2026-05-20            | 2026-05-20 | PORTFOLIO_FAIL (trades) |
 | 6 | `divergence_crypto_1d`| divergence | CRYPTO | 1D | yfinance        | 2026-05-20            | 2026-05-20 | PORTFOLIO_FAIL |
-| 7 | `mbv_us_1d`           | mbv        | US     | 1D | yfinance        | 2026-05-21            | TBD        | TBD (running) |
-| 8 | `mbv_uae_1d`          | mbv        | UAE    | 1D | yfinance+cache  | 2026-05-21            | TBD        | TBD (running) |
-| 9 | `mbv_crypto_1d`       | mbv        | CRYPTO | 1D | yfinance        | 2026-05-21            | TBD        | TBD (running) |
+| 7 | `mbv_us_1d`           | mbv        | US     | 1D | yfinance        | 2026-05-21            | 2026-05-21 | **PORTFOLIO_CLEARED** — dSharpe 4.365, exp 1.302, WR 53.06%, 10,833 trades, 96.0% coverage |
+| 8 | `mbv_uae_1d`          | mbv        | UAE    | 1D | yfinance+cache  | 2026-05-21            | 2026-05-21 | PORTFOLIO_FAIL (36 trades < 1000; CI lo<0) |
+| 9 | `mbv_crypto_1d`       | mbv        | CRYPTO | 1D | yfinance        | 2026-05-21            | 2026-05-21 | PORTFOLIO_FAIL (WR 35.9% < 40%, dSharpe -0.175) |
 
 **`config.PORTFOLIO_GATE.n_trials_registered` must equal the row count above.**
 Current value: **9** (bumped from 6 → 9 when MBV registered 2026-05-21,
