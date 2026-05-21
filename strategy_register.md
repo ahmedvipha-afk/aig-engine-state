@@ -115,6 +115,53 @@ breakdown — OR ATR stop hit. Tighter exit window than entry window
 
 ---
 
+## STRATEGY 5 — ROC: Rate-of-Change Momentum (long only) — NEW 2026-05-21 Fire 1.5
+
+| Field | Value |
+|-------|-------|
+| Strategy id | `roc` |
+| Module | `aig/strategy_roc.py` |
+| Timeframes registered | **1D** |
+| Long only | YES (Rule 15) |
+| Pre-registered | 2026-05-21 Fire 1.5 (BEFORE seeing any ROC data — Phase 1 directive F1) |
+
+**Concept**: long-only **velocity-based momentum**. Buys when the rate of
+price change over the lookback window exceeds a positive threshold AND
+that velocity is itself accelerating AND the broader regime is bullish.
+Methodologically distinct from the four prior strategies:
+
+- **EMA-200** (trend-confirm): position-based — close > long EMA, volume confirm.
+- **Divergence** (mean-rev-on-low): RSI hookup at lows in bullish regime.
+- **MBV** (mean-rev-in-uptrend): low-range pullback inside trend + volume.
+- **DBO** (breakout): close crosses ABOVE a level (Donchian high).
+- **ROC** (momentum-velocity): NOT level-based and NOT mean-rev — buys VELOCITY
+  of price change. Two stocks at the same EMA distance can have very different
+  ROC; ROC captures *how fast* price is moving, not where it stands.
+
+**Hypothesis**: markets that don't show mean-reversion edge or pure breakout edge
+may show momentum-velocity edge. Velocity captures regime states that pure
+level-crossing misses. Frozen BEFORE seeing data — failure is acceptable.
+
+**Entry** (all three must hold on the entry bar):
+1. `ROC(ROC_PERIOD=20) > ROC_THRESHOLD=0.05` (5% over the lookback window) —
+   strong positive momentum.
+2. `ROC(20) > ROC(20).shift(1)` — velocity is RISING (acceleration), not
+   decelerating off a recent peak.
+3. `close > SMA(ROC_TREND_SMA=50)` — broader regime is bullish, no
+   long-side trades in confirmed downtrends.
+
+**Stop**: entry − `ROC_STOP_ATR_MULT=2.0` × ATR(14).
+
+**Exit**: `ROC(20) < 0` (momentum has reversed) OR ATR stop hit OR
+`close < SMA(50)` (regime broke).
+
+Entry is edge-triggered: the bar must be the FIRST to meet all three
+conditions (yesterday at least one was false). Prevents continuous re-entry
+during sustained momentum runs — those are already captured by the initial
+entry.
+
+---
+
 ## STRATEGY 2 — Bullish RSI Divergence (long only, regime-filtered)
 
 | Field | Value |
@@ -162,9 +209,12 @@ trial means appending a row here BEFORE the run; the haircut recomputes.
 | 10 | `dbo_us_1d`           | dbo        | US     | 1D | yfinance        | 2026-05-21 (Fire 1)   | 2026-05-21 | **PORTFOLIO_FAIL on WR-floor only** — 11,910 trades, exp 1.298, WR 34.1% (< 40% floor), raw Sharpe 3.498, **dSharpe 2.941** (above 0.5 floor), 99.5% coverage. Math is strong (Calmar-like breakout signature: low WR, big winners). Honest FAIL retained per audit Concern 2. Research-grade only. |
 | 11 | `dbo_uae_1d`          | dbo        | UAE    | 1D | yfinance+cache  | 2026-05-21 (Fire 1)   | 2026-05-21 | PORTFOLIO_FAIL (104 trades < 1000; exp 0.93 < 1.0; dSharpe -0.78) |
 | 12 | `dbo_crypto_1d`       | dbo        | CRYPTO | 1D | yfinance        | 2026-05-21 (Fire 1)   | 2026-05-21 | PORTFOLIO_FAIL (exp 0.98 < 1.0; WR 23.6% < 40%; dSharpe -0.61; CI lo<0) |
+| 13 | `roc_us_1d`           | roc        | US     | 1D | yfinance        | 2026-05-21 (Fire 1.5) | TBD        | TBD (queued) |
+| 14 | `roc_uae_1d`          | roc        | UAE    | 1D | yfinance+cache  | 2026-05-21 (Fire 1.5) | TBD        | TBD (queued) |
+| 15 | `roc_crypto_1d`       | roc        | CRYPTO | 1D | yfinance        | 2026-05-21 (Fire 1.5) | TBD        | TBD (queued) |
 
 **`config.PORTFOLIO_GATE.n_trials_registered` must equal the row count above.**
-Current value: **12** (bumped 9 → 12 when DBO registered Fire 1 2026-05-21,
+Current value: **15** (bumped 12 → 15 when ROC registered Fire 1.5 2026-05-21,
 in the same commit that added the trial budget rows above).
 
 ### How to add a trial (procedure)

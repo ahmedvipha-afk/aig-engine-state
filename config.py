@@ -48,6 +48,17 @@ DBO_VOLUME_PERIOD  = 20    # SMA window for volume
 DBO_VOLUME_MULT    = 1.5   # entry-bar volume >= mult x SMA
 DBO_STOP_ATR_MULT  = 2.0   # stop = entry - mult x ATR(14)
 
+# ---- ROC strategy (frozen 2026-05-21 Fire 1.5) --------------------------
+# Rate-of-Change Momentum. Long-only velocity-based momentum.
+# Pre-registered before any ROC test data was seen, per v7.0 §19 (5th
+# strategy in the pipeline). Methodologically distinct: NOT level-based
+# (EMA/Donchian) and NOT mean-reversion — buys velocity of price change.
+# Trial budget extended to 15 to cover ROC × {US, UAE, CRYPTO}.
+ROC_PERIOD         = 20    # bars in rate-of-change calculation
+ROC_THRESHOLD      = 0.05  # entry threshold: ROC must exceed 5% over window
+ROC_TREND_SMA      = 50    # bullish-regime filter
+ROC_STOP_ATR_MULT  = 2.0   # stop = entry - mult x ATR(14)
+
 # ---- Divergence strategy (frozen 2026-05-20, daily) ----------------------
 # Bullish RSI divergence on swing lows, long-only, with EMA-200 trend filter.
 DIV_RSI_PERIOD = 14
@@ -108,8 +119,8 @@ PORTFOLIO_GATE = {
     "min_universe_coverage": 0.05, # at least 5% of universe must contribute trades
     "bootstrap_iters": 2000,
     "bootstrap_conf": 0.95,
-    "n_trials_registered": 12,   # 4 strategies (ema200, divergence, mbv, dbo) × 3 markets × 1 timeframe (1D).
-                                 # DBO added 2026-05-21 Fire 1 — trial budget bumped 9 -> 12.
+    "n_trials_registered": 15,   # 5 strategies (ema200, divergence, mbv, dbo, roc) × 3 markets × 1 timeframe (1D).
+                                 # ROC added 2026-05-21 Fire 1.5 — trial budget bumped 12 -> 15.
                                  # Adding a 4H variant or new strategy -> +N. Pre-register in strategy_register.md
                                  # before running.
 }

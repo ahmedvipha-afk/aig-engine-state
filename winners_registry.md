@@ -127,6 +127,32 @@ clears its market's portfolio gate.
 
 ---
 
+## Near-Miss Research Strategies (NOT paper-forward — gate-failed but flagged)
+
+Strategies that produced a strong mathematical edge signature but failed
+one binding gate criterion. Logged here so the finding is preserved without
+lowering the gate. If the gate is later formally amended (e.g., per auditor
+Warning 4 — "allow low-WR strategies under fully-systematic execution"),
+these become the first candidates to revisit.
+
+| Trial id | Strategy | Market | Failed criterion | Strong metrics |
+|----------|----------|--------|------------------|----------------|
+| `dbo_us_1d` | dbo | US | **WR 34.1% < 40% floor** (single failure) | trades 11,910 · exp 1.298 · raw Sharpe 3.498 · **dSharpe 2.941** (5.9× the 0.5 floor) · contributors 1,115/1,121 (99.5% coverage) · 95% CI lo positive |
+
+**Note on DBO US (logged 2026-05-21 Fire 1.5, CEO Path A confirmed):** Strong
+math edge (dSharpe 2.94, exp 1.30, 11,910 trades) blocked only by WR floor.
+If we later formally amend the gate to allow low-WR strategies under
+fully-systematic execution (per auditor Warning 4), DBO US becomes the
+**first candidate** to revisit. The breakout signature (low WR, big winners
+covering losses) is the canonical pattern that the per-trade WR floor was
+never designed for — the floor was a deployability shorthand for "is this
+psychologically tradable by a human?" Under fully-systematic execution,
+psychological barriers don't apply. Audit Warning 4 acknowledges this
+tension; today's CEO decision is to preserve the floor as written and log
+the finding rather than amend mid-Phase-1.
+
+---
+
 ## TV Strategy Tester Watchlist (NOT paper-forward — research only)
 
 Per audit Concern 2 + Path A: TV-only winners whose engine-gate Sharpe
