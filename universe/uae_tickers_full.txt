@@ -1,9 +1,9 @@
-# UAE halal universe — UNIFIED (cache + yfinance hybrid, 2026-05-20).
+# UAE halal universe — UNIFIED (cache + yfinance hybrid, 2026-05-21 sprint Item 3).
 # Engine routes .AD/.DU tickers via data_cache/ (TV MCP sourced).
 # .AE/.AB tickers route via yfinance.
-# 44 total retrievable (6 illiquid ADX/DFM names dropped — MCP couldn't extract).
+# 50 total retrievable. Target ≥60. Adding more via sprint routine fires.
 
-# --- ADX tickers (via data_cache/ from TradingView MCP, 500 bars each) ---
+# --- ADX tickers via data_cache/ (TradingView MCP, 500 bars each) ---
 ADIB.AD
 ADNOCDIST.AD
 ADNOCDRILL.AD
@@ -27,6 +27,16 @@ RAKWCT.AD
 RAPCO.AD
 SPACE42.AD
 TAQA.AD
+# New 2026-05-21 sprint fire:
+METHAQ.AD
+TKFL.AD
+
+# --- DFM tickers (via data_cache/ from TradingView MCP) ---
+# New 2026-05-21 sprint fire:
+AJMANBANK.DU
+ORIENTTKAFUL.DU
+TAKAFUL_EM.DU
+UNIONCOOP.DU
 
 # --- DFM tickers (via yfinance .AE/.AB) ---
 AGTHIA.AB
