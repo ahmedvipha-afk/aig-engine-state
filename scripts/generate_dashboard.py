@@ -1323,6 +1323,15 @@ def _render_overview(state):
     return f"""
     <div id="panel-overview" class="tab-panel active">
 
+      <div class="section" style="border:1px solid #F59E0B66; background:#F59E0B14;" data-search="coverage re-validation banner phase 1">
+        <div style="font-size:11px; font-weight:800; color:#F59E0B; margin-bottom:4px;" data-i18n="banner_revalidation">⚠ Coverage recalculating — full-universe re-validation in progress</div>
+        <div style="font-size:11px; color:var(--t2);" data-i18n="banner_revalidation_body">
+          Phase 1 exit criteria corrected 2026-05-21 evening to use FULL halal universe per market (≥75% target).
+          Old partial-sweep verdicts are flagged in <code>sweep_coverage_audit.md</code> and require re-runs against the full universe.
+          Coverage % may temporarily drop until re-runs complete — this is honest, not regression.
+        </div>
+      </div>
+
       <div class="section" data-search="how it works mental map plain english arabic">
         <h3 data-i18n="sec_how_it_works">🗺️ How It Works — Plain English Tour</h3>
         <div style="font-size:12px; line-height:1.8; color:var(--t2);">
@@ -1383,13 +1392,28 @@ def _render_overview(state):
 def _render_markets(state):
     runs = state["runs"]
     market_blocks = []
+    # Ahmed authoritative full halal universe per market (Phase 1 coverage rule)
     market_meta = {
-        "US": ("🇺🇸", "US Equities", "us_halal_full.txt"),
-        "UAE": ("🇦🇪", "UAE Equities", "uae_tickers_full.txt"),
-        "CRYPTO": ("₿", "Crypto", "halal_crypto_150_USD.txt"),
+        "US": ("🇺🇸", "US Equities", "us_halal_full.txt", 1621, 1216),  # full_halal, 75% target
+        "UAE": ("🇦🇪", "UAE Equities", "uae_tickers_full.txt", 80, 60),
+        "CRYPTO": ("₿", "Crypto", "halal_crypto_150_USD.txt", 140, 105),
     }
-    for mkt_key, (emoji, name, uni_file) in market_meta.items():
+    # Coverage union per market (tickers in winners_assignment whose market matches)
+    asn = (state.get("winners_data") or {}).get("assignments") or {}
+    cov_count_by_market = {"US": 0, "UAE": 0, "CRYPTO": 0}
+    for tk, a in asn.items():
+        m = (a or {}).get("market")
+        if m in cov_count_by_market:
+            cov_count_by_market[m] += 1
+
+    for mkt_key, (emoji, name, uni_file, full_halal, target) in market_meta.items():
         uni_count = _count_universe(UNIVERSE_DIR / uni_file)
+        covered = cov_count_by_market.get(mkt_key, 0)
+        cov_pct = (covered / full_halal * 100) if full_halal else 0
+        target_pct = 75.0
+        cov_status = "✅" if cov_pct >= target_pct else ("⏳" if cov_pct > 0 else "❌")
+        gap_text = (f"{target - covered} to go" if covered < target
+                    else f"+{covered - target} above target")
         rows = [v for (s, m), v in runs.items() if m == mkt_key]
         cleared_any = any(r["passed"] for r in rows)
         if rows:
@@ -1429,12 +1453,15 @@ def _render_markets(state):
             <span class="badge {verdict_class}">{esc(verdict_text)}</span>
           </div>
           <div class="grid-4" style="margin-bottom:10px;">
-            <div class="tile"><div class="tile-label">Universe</div><div class="tile-value">{uni_count:,}</div></div>
+            <div class="tile"><div class="tile-label">Halal universe</div><div class="tile-value">{full_halal:,}</div></div>
+            <div class="tile"><div class="tile-label">Phase 1 coverage</div><div class="tile-value" style="color:{('var(--gn)' if cov_pct >= target_pct else 'var(--gold)') if cov_pct > 0 else 'var(--rd)'};">{cov_status} {cov_pct:.1f}%</div></div>
             <div class="tile"><div class="tile-label">Best dSharpe</div><div class="tile-value">{sr:.2f}</div></div>
             <div class="tile"><div class="tile-label">Best Exp</div><div class="tile-value">{ex:.2f}</div></div>
-            <div class="tile"><div class="tile-label">Best WR</div><div class="tile-value">{wr:.0f}%</div></div>
           </div>
-          <div class="muted">Trades {trades:,} · Contributors {cov}/{uni_sz} {'· <a href=\"' + esc(file_link) + '\" target=\"_blank\">latest JSON</a>' if file_link else ''}</div>
+          <div class="muted" style="font-size:11px; margin-bottom:6px;">
+            <b>{covered:,} / {full_halal:,} covered ({cov_pct:.1f}%)</b> — target {target_pct:.0f}% (~{target}); <span style="color:var(--gold);">{esc(gap_text)}</span>
+          </div>
+          <div class="muted">File universe {uni_count:,} · Trades {trades:,} · Contributors {cov}/{uni_sz} {'· <a href=\"' + esc(file_link) + '\" target=\"_blank\">latest JSON</a>' if file_link else ''}</div>
           <div class="grid-2" style="margin-top:14px;">
             <div>
               <div style="font-size:10px; font-weight:700; color:var(--gn); margin-bottom:4px;">🏆 WINNERS (top expectancy)</div>

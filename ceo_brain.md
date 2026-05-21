@@ -31,22 +31,32 @@ operational routines (`aig-morning-scan`, `aig-weekly-full-universe`,
 
 ---
 
-## PHASE 1 TRACKER (8 OBJECTIVES — directive 2026-05-21)
+## PHASE 1 TRACKER — CORRECTED 10 EXIT CRITERIA (directive 2026-05-21 evening)
+
+**CEO correction received 2026-05-21:** prior coverage targets (60/100/100 raw) were wrong. Coverage is PERCENT of FULL halal universe per market. Phase 1 exits when ≥75% of each market's full halal universe is "covered" (passes under ANY one strategy; union, no double-counting). Every strategy must sweep the FULL halal universe — partial sweeps require re-run before counting.
+
+**Definition of "covered":** ticker contributes to a PORTFOLIO-CLEARED strategy with positive expectancy (appears in `winners_assignment.json`). Per-ticker gate clearance not required — portfolio clearance is the binding edge evidence; contributors inherit deployability.
 
 | # | Objective | Status | Concrete completion criteria | Notes |
 |---|-----------|--------|------------------------------|-------|
-| 1 | Multi-strategy universe built — every strategy on every market | ✅ **DONE** | 3 strategies × 3 markets × 1D = 9 trials all enumerated + run | ema200/divergence/mbv × US/UAE/Crypto. New strategies added via Obj 4 work continue to ratchet this up. |
-| 2 | All historical winners recovered into `winners_registry.md` | ✅ **DONE** | TV winners (AAPL/GOOG/TSM/NVDA/GOOGL/ORCL) preserved as research watchlist (NOT paper-forward, Path A); 1,101 unique contributors (516 → divergence, 585 → mbv) registered with best-per-ticker strategy assignment | `scripts/reassign_best_strategy.py` produces `winners_assignment.json` (446KB) + `winners_registry.md`. Re-runs on every new strategy clearance per F2. Closed Fire 1 2026-05-21. |
-| 3 | Coverage targets per strategy per market | ✅ **DONE** | US ≥100 / strategy ✅ (1,603 universe ran on all 3 strats) · UAE ≥60 / strategy ✅ (64 tickers gate-evaluated by ema200/divergence/mbv = 192 trials) · Crypto ≥100 / strategy ✅ (140 universe ran on all 3 strats = 420 trials) | All three markets meet coverage floor across all 3 registered strategies. New strategies added under Obj 4 will inherit the coverage requirement (each new strategy must run on all 3 markets). |
-| 4 | ≥1 strategy cleared per market | ⏳ **IN PROGRESS** | US ✅ (Divergence + MBV both cleared) · UAE ❌ · Crypto ❌. Pursued via GENUINE new prospective strategies. Stop condition: 60% per-market coverage (US ~970, UAE ~48, Crypto ~84) OR 50+ genuine strategy attempts | Per directive F1 — develop new methodologies (different hypothesis, different timeframe, different family). Each pre-registered frozen BEFORE seeing data. Iterating same strategy on failing dataset = forbidden (audit Concern 2). |
-| 5 | Paper-forward on FULL cleared universe (not top-5) | ⏳ **IN PROGRESS** | Detector watches every ticker in Divergence + MBV cleared rosters; Telegram capped to top 10 per session by per-ticker dSharpe; full list visible on dashboard | Currently top-5 only (DY/EXPGY/PSX/ARW/ROL). Fire 1-2 builds `paper_forward_full_universe.py`. |
-| 6 | All audit findings resolved | ✅ **DONE** | All 3 BLOCKING (Concerns 1, 2, 5) resolved Session 5; Path A re-confirmed under Phase 1 directive (no post-hoc loosening). | Continues to be checked every fire. New BLOCKING findings get immediate priority. |
-| 7 | 3+ strategies in active pipeline | ✅ **DONE** | ema200, divergence, mbv all registered + frozen + tested ×3 markets | Ratchets upward as Obj 4 work adds new strategies. |
-| 8 | All infrastructure operational + verified each fire | ⏳ **IN PROGRESS** | Telegram bot live ✅ · GitHub auto-push working ✅ · Dashboard auto-updating ✅ (2-min refresh) · Cloud routine firing ✅ (15-min cadence) · 4h-quiet watchdog ⏳ (needs server.ts extension) · Reassignment script ⏳ (Fire 0 builds it) | Verified each fire via `last_sprint_fire.txt` touch + smoke tests in Obj 8 step. |
+| 1 | Multi-strategy ticker groups exist for US, UAE, Crypto | ✅ **DONE** | 7 strategies × 3 markets × 1D = 21+ trials enumerated + run | ema200/divergence/mbv/dbo/roc/vcb/hat × US/UAE/Crypto |
+| 2 | All historical proven winners recovered + preserved | ⏳ **PROVISIONAL** | TV winners preserved as research watchlist; 1,101 contributors registered (from partial-sweep verdicts — subject to revalidation per PART B) | `winners_assignment.json` + `winners_registry.md`. Pending Full-Universe Re-Validation section will be added in Step 4 of PART B |
+| 3 | ≥75% of US halal universe covered (~1,216 of 1,621) | ⏳ **IN PROGRESS** | Current US coverage: **1,101 / 1,621 = 67.9%** (need +115 to hit 1,216) | Union of Divergence US (1,030 contrib) + MBV US (1,079) = 1,101 unique. New strategies clearing US would expand union. Near-miss DBO/ROC/VCB do NOT count (failed gate). |
+| 4 | ≥75% of UAE halal universe covered (~60 of 80) | ❌ **NOT STARTED** | Current UAE coverage: **0 / 80 = 0%** | No UAE strategy has cleared. Also UAE universe is partial (64 retrievable vs 80 full halal — 16 missing). PARTIAL flag per PART B audit. |
+| 5 | ≥75% of Crypto halal universe covered (~105 of 140) | ❌ **NOT STARTED** | Current Crypto coverage: **0 / 140 = 0%** | No Crypto strategy has cleared. 150 in file ≥ 140 target — universe sweep is full; gating problem only. |
+| 6 | At least one strategy cleared gate per market | ⏳ **IN PROGRESS** | US ✅ (Divergence dSharpe 2.61 + MBV dSharpe 4.37) · UAE ❌ · Crypto ❌. Pursued via GENUINE new prospective strategies (Path A). Stop: 60% per-market coverage OR 50+ attempts. | Currently 7 strategies registered. Each new genuine strategy adds 3 trials to haircut. |
+| 7 | Paper-forward deployed on FULL cleared universe | ⏳ **IN PROGRESS** | `scripts/paper_forward_full_universe.py` running; 4 open paper positions (CAH, FLNC, GSK, PEN); Telegram cap 10; full list on dashboard | Sentinel touched 21:00 UAE; detector firing every fire |
+| 8 | All BLOCKING audit findings resolved | ✅ **DONE** | All 3 (Concerns 1, 2, 5) resolved Session 5; Path A re-confirmed | Continuously checked. |
+| 9 | 3+ strategies in active pipeline | ✅ **DONE** | 7 strategies registered + frozen + tested × 3 markets | Ratchets via Obj 6 work |
+| 10 | All infrastructure operational + verified each fire | ⏳ **IN PROGRESS** | Telegram ✅ · GitHub ✅ · Dashboard ✅ (2-min refresh) · Cron ✅ (15-min) · Sprint-start Telegram ✅ · Catch-up ✅ · Staged-batch ✅ · 4h-quiet watchdog ⏳ | Verified each fire |
 
-**Currently working:** Objectives 4, 5, 8 (in priority order each fire). Score = **6/8 ✅** at Fire 1 (Obj 2 + Obj 3 closed this fire; Obj 4 advanced via DBO pre-registration; Obj 5 awaits full-universe detector run; Obj 8 awaits 4h-watchdog server.ts extension).
+**Currently working:** Objectives 3, 4, 5, 6, 7, 10 (priority order each fire). Score = **5/10 ✅** under corrected criteria (was 6/8 under old criteria — drop is HONEST recount, not regression).
 
-**Mode 2 unlock:** all 8 ✅ DONE. Stop condition for Obj 4 = 60% per-market coverage OR 50+ genuine strategy attempts per market.
+**Mode 2 unlock:** all 10 ✅ DONE simultaneously.
+
+**Coverage rule:** Union across strategies, no double-counting. Re-runs may temporarily lower coverage — honest.
+
+**Sweep rule:** every strategy MUST sweep FULL halal universe. Staged batches OK for execution; verdict final ONLY after full universe. Partial sweeps flagged in `sweep_coverage_audit.md` for re-run.
 
 ---
 
