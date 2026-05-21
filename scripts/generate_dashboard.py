@@ -127,7 +127,7 @@ def _scheduled_tasks() -> list[dict]:
             "cron": fm.get("cron", fm.get("schedule", "—")),
             "description": fm.get("description", ""),
             "enabled": fm.get("enabled", "true"),
-            "last_touch": last_mtime.strftime("%Y-%m-%d %H:%M GST"),
+            "last_touch": last_mtime.strftime("%Y-%m-%d %H:%M UAE"),
         })
     return rows
 
@@ -159,7 +159,7 @@ def _telegram_status() -> dict:
     if log.exists():
         status["last_log_mtime"] = datetime.fromtimestamp(
             log.stat().st_mtime, tz=GST
-        ).strftime("%Y-%m-%d %H:%M GST")
+        ).strftime("%Y-%m-%d %H:%M UAE")
     return status
 
 
@@ -311,6 +311,50 @@ def _paper_nav() -> tuple[float, float]:
     cum_pct = sum(t.get("pnl_pct", 0) for t in (p.get("history") or []))
     nav = 100000 * (1 + cum_pct / 100)
     return nav, cum_pct
+
+
+def _load_winners_for_dashboard() -> dict:
+    """Aggregates winners data for the Markets tab.
+
+    Returns dict with:
+      assignments    : ticker -> {strategy, market, dsharpe, expectancy, ...}
+                       (from winners_assignment.json — only portfolio-cleared strategies)
+      open_positions : ticker -> {entry_date, entry_price, strategy, ...}
+                       (from paper_forward_positions[_full].json — currently traded)
+      tv_watchlist   : TV-only research watchlist entries (NOT paper-forward)
+      near_miss      : strong-but-WR-floor-failing strategy/market entries
+    """
+    asn = _safe_read_json(ROOT / "winners_assignment.json") or {}
+    assignments = asn.get("assignments", {}) or {}
+    pf_full = _safe_read_json(ROOT / "paper_forward_positions_full.json") or {}
+    pf_top = _safe_read_json(PAPER_STATE) or {}
+    open_positions = {}
+    for tk, pos in (pf_full.get("open_positions") or {}).items():
+        open_positions[tk] = pos
+    for tk, pos in (pf_top.get("open_positions") or {}).items():
+        if tk not in open_positions:
+            d = dict(pos)
+            d.setdefault("strategy", "divergence")
+            open_positions[tk] = d
+    tv_watchlist = [
+        {"ticker": "AAPL",  "strategy_tv": "ema200_1h_tv", "tv_verdict": "CLEAN_EDGE", "market": "US", "validated": "2026-05-20 (TV)"},
+        {"ticker": "GOOG",  "strategy_tv": "ema200_1h_tv", "tv_verdict": "CLEAN_EDGE", "market": "US", "validated": "2026-05-20 (TV)"},
+        {"ticker": "TSM",   "strategy_tv": "ema200_1h_tv", "tv_verdict": "CLEAN_EDGE", "market": "US", "validated": "2026-05-20 (TV)"},
+        {"ticker": "NVDA",  "strategy_tv": "ema200_1h_tv", "tv_verdict": "near_miss",  "market": "US", "validated": "2026-05-20 (TV)"},
+        {"ticker": "GOOGL", "strategy_tv": "ema200_1h_tv", "tv_verdict": "near_miss",  "market": "US", "validated": "2026-05-20 (TV)"},
+        {"ticker": "ORCL",  "strategy_tv": "ema200_1h_tv", "tv_verdict": "near_miss",  "market": "US", "validated": "2026-05-20 (TV)"},
+    ]
+    near_miss = [
+        {"trial": "dbo_us_1d", "strategy": "dbo", "market": "US",
+         "metrics": "trades 11,910 · exp 1.298 · dSharpe 2.941 · WR 34.1% (< 40% floor)",
+         "note": "Strong math edge blocked only by WR floor. First candidate if Warning-4 amendment adopted."},
+    ]
+    return {
+        "assignments": assignments,
+        "open_positions": open_positions,
+        "tv_watchlist": tv_watchlist,
+        "near_miss": near_miss,
+    }
 
 
 def _trial_budget() -> list[dict]:
@@ -811,6 +855,26 @@ JS = """
     'pb_caveat_mtm': 'التقييم اللحظي تقريبي. المراكز المفتوحة قيمتها سعر الدخول حتى الخروج — يخفّض التذبذب اليومي. اقتصاديات الصفقة في حدود الدخول/الخروج دقيقة.',
     'pb_caveat_selection': 'تأثير الاصطفاء. عند التشغيل على أفضل N حسب dSharpe، النتائج تعكس فائزي التاريخ. التشغيل الكامل على ١١٠١ رمز يعكس التطبيق الحقيقي.',
     'pb_caveat_mandate': 'مقارنة بتفويض v7.0. العائد السنوي أقل بكثير من حد ٣× السنوي. الشراء فقط وعدم الرفع المالي يضع سقفاً على العائد الهندسي لسلة أسهم متنوعة. حد ٣× طموحي وليس قابلاً للوصول حسابياً.',
+    // Markets — Winners Visibility (FIX 2)
+    'mkt_active_pf': '🟢 أ) صفقات ورقية مفتوحة الآن',
+    'mkt_full_registry': '📚 ب) سجل الفائزين المعتمدين',
+    'mkt_active_empty': 'لا توجد صفقات مفتوحة في هذا السوق. الكاشف يطلق عند ظهور إشارات دخول مقابل config_hash المجمد.',
+    'mkt_registry_empty': 'لا فائزين معتمدين في هذا السوق بعد. تظهر الأسماء هنا عند نجاح أي إستراتيجية في عبور بوابة المحفظة لهذا السوق أو عند تسجيل اسم في قائمة مراقبة TV.',
+    'mkt_th_ticker': 'الرمز',
+    'mkt_th_strategy': 'الإستراتيجية',
+    'mkt_th_entry_date': 'تاريخ الدخول',
+    'mkt_th_entry': 'الدخول $',
+    'mkt_th_stop': 'الوقف $',
+    'mkt_th_best_strategy': 'أفضل إستراتيجية',
+    'mkt_th_dsharpe': 'نقاط الجودة',
+    'mkt_th_expectancy': 'التوقع',
+    'mkt_th_validated': 'تاريخ الاعتماد',
+    'mkt_th_status': 'الحالة',
+    'mkt_search_placeholder': 'ابحث عن رمز…',
+    'mkt_all_strategies': 'كل الإستراتيجيات',
+    'mkt_all_statuses': 'كل الحالات',
+    'mkt_of': ' من ',
+    'mkt_winners_label': ' فائز',
     // Buttons / misc
     'btn_no_alerts': 'لا توجد تنبيهات',
     'mode_sprint': 'النمط ١ — سباق نشط',
@@ -1009,6 +1073,32 @@ JS = """
       });
     });
   }
+
+  // ----- MARKET-WINNERS FILTERS (per-market) -----
+  function applyWinnersFilter(targetId) {
+    const wrap = document.getElementById(targetId);
+    if (!wrap) return;
+    const q = (document.querySelector('input.winners-search[data-target="' + targetId + '"]')?.value || '').trim().toLowerCase();
+    const strat = document.querySelector('select.winners-strategy[data-target="' + targetId + '"]')?.value || '';
+    const stat = document.querySelector('select.winners-status[data-target="' + targetId + '"]')?.value || '';
+    let shown = 0;
+    wrap.querySelectorAll('tbody tr').forEach(tr => {
+      const tk = (tr.dataset.search || '').toLowerCase();
+      const s = tr.dataset.strategy || '';
+      const st = tr.dataset.status || '';
+      const ok = (!q || tk.includes(q)) && (!strat || s === strat) && (!stat || st === stat);
+      tr.style.display = ok ? '' : 'none';
+      if (ok) shown++;
+    });
+    const counter = document.querySelector('.winners-count[data-target-count="' + targetId + '"]');
+    if (counter) counter.textContent = shown;
+  }
+  document.querySelectorAll('input.winners-search').forEach(i => {
+    i.addEventListener('input', () => applyWinnersFilter(i.dataset.target));
+  });
+  document.querySelectorAll('select.winners-strategy, select.winners-status').forEach(s => {
+    s.addEventListener('change', () => applyWinnersFilter(s.dataset.target));
+  });
 
   // ----- CEO DECISION FILTER -----
   const ceoFilter = document.getElementById('ceo-filter');
@@ -1325,6 +1415,10 @@ def _render_markets(state):
 
         verdict_class = "gn" if cleared_any else "or"
         verdict_text = "GATE PASSED" if cleared_any else ("ITERATING" if rows else "—")
+
+        # Build the two new sections per directive: Active Paper-Forward + Full Validated Winners Registry
+        active_html, registry_html = _render_market_winners_sections(mkt_key, state.get("winners_data") or {})
+
         market_blocks.append(f"""
         <div class="section" data-search="{esc(name + ' ' + mkt_key)}">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
@@ -1348,8 +1442,205 @@ def _render_markets(state):
               {lose_html}
             </div>
           </div>
+          <div style="margin-top:18px; border-top:1px solid var(--bd); padding-top:14px;">
+            <div style="font-size:11px; font-weight:800; color:var(--gold); margin-bottom:6px;" data-i18n="mkt_active_pf">🟢 A) Active Paper-Forward (currently traded on paper)</div>
+            {active_html}
+          </div>
+          <div style="margin-top:14px;">
+            <div style="font-size:11px; font-weight:800; color:var(--gold); margin-bottom:6px;" data-i18n="mkt_full_registry">📚 B) Full Validated Winners Registry</div>
+            {registry_html}
+          </div>
         </div>""")
     return f'<div id="panel-markets" class="tab-panel">{"".join(market_blocks)}</div>'
+
+
+def _render_market_winners_sections(mkt_key: str, winners_data: dict) -> tuple[str, str]:
+    """Build the per-market Active Paper-Forward + Full Validated Winners Registry HTML.
+
+    Returns (active_html, registry_html)."""
+    assignments = winners_data.get("assignments") or {}
+    open_pos = winners_data.get("open_positions") or {}
+    tv_watchlist = winners_data.get("tv_watchlist") or []
+
+    # Filter assignments to this market
+    mkt_tickers = {tk: a for tk, a in assignments.items()
+                   if (a or {}).get("market") == mkt_key}
+
+    # ----- Section A: Active Paper-Forward -----
+    # Active positions whose ticker belongs to this market (via assignment or simple ticker pattern)
+    def _ticker_market(tk):
+        if tk in assignments:
+            return assignments[tk].get("market")
+        # Fallback: rough classification
+        if tk.endswith("-USD") or tk.endswith("USDT"): return "CRYPTO"
+        if tk.endswith(".AD") or tk.endswith(".DU") or tk.endswith(".DFM") or tk.endswith(".AE") or tk.endswith(".AB"): return "UAE"
+        return "US"
+
+    active = []
+    for tk, pos in open_pos.items():
+        if _ticker_market(tk) != mkt_key:
+            continue
+        active.append({
+            "ticker": tk,
+            "strategy": pos.get("strategy") or assignments.get(tk, {}).get("strategy") or "—",
+            "entry_date": pos.get("entry_date") or "—",
+            "entry_price": pos.get("entry_price"),
+            "stop_price": pos.get("stop_price"),
+        })
+
+    if active:
+        rows_a = []
+        for r in active:
+            ep = f"${r['entry_price']:.2f}" if isinstance(r.get("entry_price"), (int, float)) else "—"
+            sp = f"${r['stop_price']:.2f}" if isinstance(r.get("stop_price"), (int, float)) else "—"
+            rows_a.append(
+                f"<tr><td class='mono'><a href='{esc(_ticker_link(r['ticker']))}' target='_blank'>{esc(r['ticker'])}</a></td>"
+                f"<td>{esc(r['strategy'])}</td><td>{esc(r['entry_date'])}</td>"
+                f"<td class='mono'>{ep}</td><td class='mono'>{sp}</td></tr>"
+            )
+        active_html = (
+            '<table style="width:100%; font-size:11px; border-collapse:collapse;">'
+            '<thead><tr style="border-bottom:1px solid var(--bd);">'
+            '<th style="text-align:left; padding:3px;" data-i18n="mkt_th_ticker">Ticker</th>'
+            '<th style="text-align:left;" data-i18n="mkt_th_strategy">Strategy</th>'
+            '<th style="text-align:left;" data-i18n="mkt_th_entry_date">Entry Date</th>'
+            '<th style="text-align:right;" data-i18n="mkt_th_entry">Entry $</th>'
+            '<th style="text-align:right;" data-i18n="mkt_th_stop">Stop $</th>'
+            '</tr></thead><tbody>'
+            + "".join(rows_a)
+            + '</tbody></table>'
+        )
+    else:
+        active_html = ('<div class="muted" style="font-size:11px;" data-i18n="mkt_active_empty">'
+                       'No open positions in this market. Detector will fire when entry signals occur '
+                       'against the frozen config_hash.</div>')
+
+    # ----- Section B: Full Validated Winners Registry -----
+    rows = []
+    # Cleared-portfolio contributors (best-strategy-per-ticker assignments)
+    for tk, a in mkt_tickers.items():
+        ds = a.get("dsharpe")
+        ex = a.get("expectancy")
+        status = "Paper-forward" if tk in open_pos else "Eligible"
+        rows.append({
+            "ticker": tk,
+            "strategy": a.get("strategy") or "—",
+            "dsharpe": ds,
+            "expectancy": ex,
+            "validated": "2026-05-21",
+            "status": status,
+            "verdict_source": "PORTFOLIO_CLEARED",
+        })
+    # TV watchlist (US-only)
+    for w in tv_watchlist:
+        if w["market"] != mkt_key:
+            continue
+        rows.append({
+            "ticker": w["ticker"],
+            "strategy": w["strategy_tv"],
+            "dsharpe": None,
+            "expectancy": None,
+            "validated": w.get("validated", "—"),
+            "status": "Watchlist" if w.get("tv_verdict") == "CLEAN_EDGE" else "Near-miss",
+            "verdict_source": "TV-only (sub-engine-gate)",
+        })
+
+    # Sort: dSharpe descending, with None entries last
+    def _sort_key(r):
+        d = r["dsharpe"]
+        if isinstance(d, (int, float)):
+            return (0, -d)
+        return (1, r["ticker"])
+
+    rows.sort(key=_sort_key)
+
+    if not rows:
+        registry_html = ('<div class="muted" style="font-size:11px;" data-i18n="mkt_registry_empty">'
+                         'No validated winners yet in this market. Entries appear here once any '
+                         'strategy clears the portfolio gate on this market, or after a TV cross-check '
+                         'logs a research-watchlist name.</div>')
+        return active_html, registry_html
+
+    # Unique strategies in this market for dropdown
+    strategies_present = sorted({r["strategy"] for r in rows})
+    statuses_present = sorted({r["status"] for r in rows})
+
+    # Filter UI
+    market_lower = mkt_key.lower()
+    strat_options = "".join(
+        f'<option value="{esc(s)}">{esc(s)}</option>' for s in strategies_present
+    )
+    status_options = "".join(
+        f'<option value="{esc(s)}">{esc(s)}</option>' for s in statuses_present
+    )
+    filter_bar = f"""
+      <div class="winners-filter" style="display:flex; gap:8px; margin-bottom:8px; flex-wrap:wrap;">
+        <input type="text" class="winners-search" data-target="winners-{market_lower}"
+               placeholder="Search ticker…" data-i18n-attr="placeholder" data-i18n="mkt_search_placeholder"
+               style="background:#060a14cc; border:1px solid var(--bd); border-radius:5px; padding:4px 8px; color:var(--t1); font-size:11px; width:140px;">
+        <select class="winners-strategy" data-target="winners-{market_lower}"
+                style="background:#060a14cc; border:1px solid var(--bd); border-radius:5px; padding:4px 8px; color:var(--t1); font-size:11px;">
+          <option value="" data-i18n="mkt_all_strategies">All strategies</option>
+          {strat_options}
+        </select>
+        <select class="winners-status" data-target="winners-{market_lower}"
+                style="background:#060a14cc; border:1px solid var(--bd); border-radius:5px; padding:4px 8px; color:var(--t1); font-size:11px;">
+          <option value="" data-i18n="mkt_all_statuses">All statuses</option>
+          {status_options}
+        </select>
+        <div class="muted" style="font-size:11px; align-self:center; margin-left:auto;">
+          <span class="winners-count" data-target-count="winners-{market_lower}">{len(rows)}</span>
+          <span data-i18n="mkt_of"> of </span>
+          <span>{len(rows)}</span>
+          <span data-i18n="mkt_winners_label">winners</span>
+        </div>
+      </div>"""
+
+    # Build the table (full list, scrollable)
+    body_rows = []
+    for r in rows:
+        ds_txt = f"{r['dsharpe']:+.3f}" if isinstance(r["dsharpe"], (int, float)) else "—"
+        ex_txt = f"{r['expectancy']:.3f}" if isinstance(r["expectancy"], (int, float)) else "—"
+        ds_color = ("var(--gn)" if (isinstance(r["dsharpe"], (int, float)) and r["dsharpe"] > 0)
+                    else "var(--rd)" if (isinstance(r["dsharpe"], (int, float)) and r["dsharpe"] < 0)
+                    else "var(--t3)")
+        status_color = {
+            "Paper-forward": "var(--gold)",
+            "Eligible": "var(--gn)",
+            "Watchlist": "var(--t2)",
+            "Near-miss": "var(--or)",
+        }.get(r["status"], "var(--t3)")
+        body_rows.append(
+            f"<tr data-strategy='{esc(r['strategy'])}' data-status='{esc(r['status'])}' "
+            f"data-search='{esc(r['ticker'])}'>"
+            f"<td class='mono' style='padding:2px 4px;'><a href='{esc(_ticker_link(r['ticker']))}' target='_blank'>{esc(r['ticker'])}</a></td>"
+            f"<td style='padding:2px 4px;'>{esc(r['strategy'])}</td>"
+            f"<td class='mono' style='padding:2px 4px; color:{ds_color}; text-align:right;'>{ds_txt}</td>"
+            f"<td class='mono' style='padding:2px 4px; text-align:right;'>{ex_txt}</td>"
+            f"<td class='mono' style='padding:2px 4px; color:var(--t3);'>{esc(r['validated'])}</td>"
+            f"<td style='padding:2px 4px; color:{status_color}; font-weight:700;'>{esc(r['status'])}</td>"
+            f"</tr>"
+        )
+
+    registry_html = (
+        filter_bar
+        + f'<div class="winners-table-wrap" id="winners-{market_lower}" '
+          'style="max-height:340px; overflow:auto; border:1px solid var(--bd); border-radius:6px;">'
+        + '<table style="width:100%; font-size:11px; border-collapse:collapse;">'
+        + '<thead style="position:sticky; top:0; background:var(--cd); z-index:1;">'
+        + '<tr style="border-bottom:1px solid var(--bd);">'
+        + '<th style="text-align:left; padding:5px 4px;" data-i18n="mkt_th_ticker">Ticker</th>'
+        + '<th style="text-align:left; padding:5px 4px;" data-i18n="mkt_th_best_strategy">Best Strategy</th>'
+        + '<th style="text-align:right; padding:5px 4px;" data-i18n="mkt_th_dsharpe">dSharpe</th>'
+        + '<th style="text-align:right; padding:5px 4px;" data-i18n="mkt_th_expectancy">Expectancy</th>'
+        + '<th style="text-align:left; padding:5px 4px;" data-i18n="mkt_th_validated">When Validated</th>'
+        + '<th style="text-align:left; padding:5px 4px;" data-i18n="mkt_th_status">Status</th>'
+        + '</tr></thead><tbody>'
+        + "".join(body_rows)
+        + '</tbody></table></div>'
+    )
+
+    return active_html, registry_html
 
 
 def _render_agents(state):
@@ -1931,7 +2222,7 @@ def _render_glossary(state):
         ("Circuit Breaker", "Tier 1 = no override (CEO/CIO cannot bypass). Tier 2 = CIO 6-field override."),
         ("Shariah Screen", "5-point AAOIFI check on every signal. Hardwired; cannot be disabled."),
         ("Mode 1 / Sprint", "Sprint until all 8 targets met. Routine every 2h. No live signals until verified."),
-        ("Mode 2 / Steady State", "UAE 10AM GST, US 5:30PM GST signals. Monthly auditor cycle. Continuous improvement."),
+        ("Mode 2 / Steady State", "UAE 10AM UAE Time, US 5:30PM UAE Time signals. Monthly auditor cycle. Continuous improvement."),
         ("ceo_brain.md", "Persistent CEO memory. Read at start of every session. Updated at end."),
         ("Audit (Cowork)", "Independent read-only auditor. Cannot block deployment but flags BLOCKING/WARNING/NOTE."),
     ]
@@ -2033,7 +2324,7 @@ def _detect_alerts(state) -> list[str]:
 # ---- main render ----------------------------------------------------------
 
 def render() -> str:
-    now_gst = datetime.now(GST).strftime("%Y-%m-%d %H:%M GST")
+    now_gst = datetime.now(GST).strftime("%Y-%m-%d %H:%M UAE")
     universes = {
         "US halal":     (_count_universe(UNIVERSE_DIR / "us_halal_full.txt"), 100),
         "UAE halal":    (_count_universe(UNIVERSE_DIR / "uae_tickers_full.txt"), 60),
@@ -2055,6 +2346,7 @@ def render() -> str:
     trial_budget = _trial_budget()
     nav_val, nav_pct = _paper_nav()
     agent_state = _agent_state_map(brain["sprint_tracker"])
+    winners_data = _load_winners_for_dashboard()
 
     state = {
         "now_gst": now_gst, "universes": universes, "runs": runs,
@@ -2065,6 +2357,7 @@ def render() -> str:
         "trial_budget": trial_budget,
         "nav_val": nav_val, "nav_pct": nav_pct,
         "agent_state": agent_state,
+        "winners_data": winners_data,
     }
 
     alerts = _detect_alerts(state)

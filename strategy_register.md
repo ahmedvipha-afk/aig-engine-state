@@ -210,8 +210,8 @@ trial means appending a row here BEFORE the run; the haircut recomputes.
 | 11 | `dbo_uae_1d`          | dbo        | UAE    | 1D | yfinance+cache  | 2026-05-21 (Fire 1)   | 2026-05-21 | PORTFOLIO_FAIL (104 trades < 1000; exp 0.93 < 1.0; dSharpe -0.78) |
 | 12 | `dbo_crypto_1d`       | dbo        | CRYPTO | 1D | yfinance        | 2026-05-21 (Fire 1)   | 2026-05-21 | PORTFOLIO_FAIL (exp 0.98 < 1.0; WR 23.6% < 40%; dSharpe -0.61; CI lo<0) |
 | 13 | `roc_us_1d`           | roc        | US     | 1D | yfinance        | 2026-05-21 (Fire 1.5) | TBD        | TBD (queued) |
-| 14 | `roc_uae_1d`          | roc        | UAE    | 1D | yfinance+cache  | 2026-05-21 (Fire 1.5) | TBD        | TBD (queued) |
-| 15 | `roc_crypto_1d`       | roc        | CRYPTO | 1D | yfinance        | 2026-05-21 (Fire 1.5) | TBD        | TBD (queued) |
+| 14 | `roc_uae_1d`          | roc        | UAE    | 1D | yfinance+cache  | 2026-05-21 (Fire 1.5) | 2026-05-21 | PORTFOLIO_FAIL (178 trades < 1000; exp 0.58 < 1.0; WR 24.2% < 40%; dSharpe -3.01) |
+| 15 | `roc_crypto_1d`       | roc        | CRYPTO | 1D | yfinance        | 2026-05-21 (Fire 1.5) | 2026-05-21 | PORTFOLIO_FAIL (exp 0.84 < 1.0; WR 20.3% < 40%; dSharpe -1.64; CI lo<0) |
 
 **`config.PORTFOLIO_GATE.n_trials_registered` must equal the row count above.**
 Current value: **15** (bumped 12 → 15 when ROC registered Fire 1.5 2026-05-21,
