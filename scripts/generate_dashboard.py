@@ -348,6 +348,9 @@ def _load_winners_for_dashboard() -> dict:
         {"trial": "dbo_us_1d", "strategy": "dbo", "market": "US",
          "metrics": "trades 11,910 · exp 1.298 · dSharpe 2.941 · WR 34.1% (< 40% floor)",
          "note": "Strong math edge blocked only by WR floor. First candidate if Warning-4 amendment adopted."},
+        {"trial": "roc_us_1d", "strategy": "roc", "market": "US",
+         "metrics": "trades 34,612 · exp 1.217 · dSharpe 3.724 · WR 29.9% (< 40% floor)",
+         "note": "Second momentum-family near-miss (same WR-floor wall as DBO). Methodologically signals an entire edge class blocked by current gate design."},
     ]
     return {
         "assignments": assignments,

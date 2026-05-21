@@ -209,7 +209,7 @@ trial means appending a row here BEFORE the run; the haircut recomputes.
 | 10 | `dbo_us_1d`           | dbo        | US     | 1D | yfinance        | 2026-05-21 (Fire 1)   | 2026-05-21 | **PORTFOLIO_FAIL on WR-floor only** — 11,910 trades, exp 1.298, WR 34.1% (< 40% floor), raw Sharpe 3.498, **dSharpe 2.941** (above 0.5 floor), 99.5% coverage. Math is strong (Calmar-like breakout signature: low WR, big winners). Honest FAIL retained per audit Concern 2. Research-grade only. |
 | 11 | `dbo_uae_1d`          | dbo        | UAE    | 1D | yfinance+cache  | 2026-05-21 (Fire 1)   | 2026-05-21 | PORTFOLIO_FAIL (104 trades < 1000; exp 0.93 < 1.0; dSharpe -0.78) |
 | 12 | `dbo_crypto_1d`       | dbo        | CRYPTO | 1D | yfinance        | 2026-05-21 (Fire 1)   | 2026-05-21 | PORTFOLIO_FAIL (exp 0.98 < 1.0; WR 23.6% < 40%; dSharpe -0.61; CI lo<0) |
-| 13 | `roc_us_1d`           | roc        | US     | 1D | yfinance        | 2026-05-21 (Fire 1.5) | TBD        | TBD (queued) |
+| 13 | `roc_us_1d`           | roc        | US     | 1D | yfinance        | 2026-05-21 (Fire 1.5) | 2026-05-21 | **PORTFOLIO_FAIL on WR-floor only** — 34,612 trades, exp 1.217, WR 29.9% (< 40% floor), raw Sharpe 4.306, **dSharpe 3.724** (7.4× the 0.5 floor), 99.7% coverage. Second momentum-family near-miss (after DBO US). |
 | 14 | `roc_uae_1d`          | roc        | UAE    | 1D | yfinance+cache  | 2026-05-21 (Fire 1.5) | 2026-05-21 | PORTFOLIO_FAIL (178 trades < 1000; exp 0.58 < 1.0; WR 24.2% < 40%; dSharpe -3.01) |
 | 15 | `roc_crypto_1d`       | roc        | CRYPTO | 1D | yfinance        | 2026-05-21 (Fire 1.5) | 2026-05-21 | PORTFOLIO_FAIL (exp 0.84 < 1.0; WR 20.3% < 40%; dSharpe -1.64; CI lo<0) |
 

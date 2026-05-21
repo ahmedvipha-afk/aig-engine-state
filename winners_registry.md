@@ -138,6 +138,17 @@ these become the first candidates to revisit.
 | Trial id | Strategy | Market | Failed criterion | Strong metrics |
 |----------|----------|--------|------------------|----------------|
 | `dbo_us_1d` | dbo | US | **WR 34.1% < 40% floor** (single failure) | trades 11,910 · exp 1.298 · raw Sharpe 3.498 · **dSharpe 2.941** (5.9× the 0.5 floor) · contributors 1,115/1,121 (99.5% coverage) · 95% CI lo positive |
+| `roc_us_1d` | roc | US | **WR 29.9% < 40% floor** (single failure) | trades 34,612 · exp 1.217 · raw Sharpe 4.306 · **dSharpe 3.724** (7.4× the 0.5 floor) · contributors 1,116/1,119 (99.7% coverage) |
+
+**Pattern note (2026-05-21 Fire 1.5):** Both DBO and ROC on US show the same
+signature — strong dSharpe (2.94 / 3.72) and positive expectancy, blocked
+*only* by the WR floor. This is the canonical momentum-family profile:
+low WR, big winners covering small losers. Two independent strategies
+hitting this identical wall is methodologically significant — the WR floor
+filter is excluding an entire class of edge that *is* mathematically present.
+**Recommendation logged for future CEO discussion:** the gate may need a
+non-WR-floor track for fully-systematic momentum strategies (per auditor
+Warning 4). Today: both stay as honest FAIL, preserved here as research-grade.
 
 **Note on DBO US (logged 2026-05-21 Fire 1.5, CEO Path A confirmed):** Strong
 math edge (dSharpe 2.94, exp 1.30, 11,910 trades) blocked only by WR floor.
