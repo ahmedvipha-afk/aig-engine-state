@@ -31,6 +31,7 @@ os.chdir(ROOT)
 CLEARED_SOURCES = {
     ("divergence", "US"): "validation_divergence_1d_full_haircut6.json",
     ("mbv",        "US"): "validation_mbv_us_1d.json",
+    ("pmr",        "US"): "validation_pmr_us_1d.json",
     # Add new (strategy, market) here as they clear portfolio gate.
 }
 
@@ -112,7 +113,7 @@ def reassign():
 
 def write_assignment_json(assignments: dict, by_strat: dict, per_ticker: dict):
     out = {
-        "generated_at": "2026-05-21",
+        "generated_at": "2026-05-22",
         "criterion": "highest_oos_sharpe_deflated_then_expectancy_within_cleared_portfolios",
         "cleared_sources": {f"{s}/{m}": fn for (s, m), fn in CLEARED_SOURCES.items()},
         "tally": {s: len(tks) for s, tks in by_strat.items()},

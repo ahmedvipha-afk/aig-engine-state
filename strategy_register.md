@@ -387,7 +387,7 @@ trial means appending a row here BEFORE the run; the haircut recomputes.
 | 21 | `hat_us_1d`           | hat        | US     | 1D | yfinance        | 2026-05-21 (Fire 14:55 UTC) | pending (staged) | pending |
 | 22 | `pmr_uae_1d`          | pmr        | UAE    | 1D | yfinance+cache  | 2026-05-21 (Fire 15:05 UTC) | pending (staged) | pending |
 | 23 | `pmr_crypto_1d`       | pmr        | CRYPTO | 1D | yfinance        | 2026-05-21 (Fire 15:05 UTC) | pending (staged) | pending |
-| 24 | `pmr_us_1d`           | pmr        | US     | 1D | yfinance        | 2026-05-21 (Fire 15:05 UTC) | pending (staged) | pending |
+| 24 | `pmr_us_1d`           | pmr        | US     | 1D | yfinance        | 2026-05-21 (Fire 15:05 UTC) | 2026-05-22 | **PORTFOLIO_CLEARED_FOR_PAPER_FORWARD** — 4,759 trades, exp 1.268, WR 47.3%, **dSharpe 2.263**, 986/1,121 contributors (87.96% strategy coverage). Third US-cleared strategy alongside Divergence + MBV. Reassignment ran; union US contributors still 1,101 (PMR overlaps existing union). |
 
 **`config.PORTFOLIO_GATE.n_trials_registered` must equal the row count above.**
 Current value: **24** (bumped 21 → 24 when PMR registered Fire 15:05 UTC 2026-05-21,
