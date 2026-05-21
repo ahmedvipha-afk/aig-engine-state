@@ -159,9 +159,9 @@ trial means appending a row here BEFORE the run; the haircut recomputes.
 | 7 | `mbv_us_1d`           | mbv        | US     | 1D | yfinance        | 2026-05-21            | 2026-05-21 | **PORTFOLIO_CLEARED** — dSharpe 4.365, exp 1.302, WR 53.06%, 10,833 trades, 96.0% coverage |
 | 8 | `mbv_uae_1d`          | mbv        | UAE    | 1D | yfinance+cache  | 2026-05-21            | 2026-05-21 | PORTFOLIO_FAIL (36 trades < 1000; CI lo<0) |
 | 9  | `mbv_crypto_1d`       | mbv        | CRYPTO | 1D | yfinance        | 2026-05-21            | 2026-05-21 | PORTFOLIO_FAIL (WR 35.9% < 40%, dSharpe -0.175) |
-| 10 | `dbo_us_1d`           | dbo        | US     | 1D | yfinance        | 2026-05-21 (Fire 1)   | TBD        | TBD (queued) |
-| 11 | `dbo_uae_1d`          | dbo        | UAE    | 1D | yfinance+cache  | 2026-05-21 (Fire 1)   | TBD        | TBD (queued) |
-| 12 | `dbo_crypto_1d`       | dbo        | CRYPTO | 1D | yfinance        | 2026-05-21 (Fire 1)   | TBD        | TBD (queued) |
+| 10 | `dbo_us_1d`           | dbo        | US     | 1D | yfinance        | 2026-05-21 (Fire 1)   | 2026-05-21 | **PORTFOLIO_FAIL on WR-floor only** — 11,910 trades, exp 1.298, WR 34.1% (< 40% floor), raw Sharpe 3.498, **dSharpe 2.941** (above 0.5 floor), 99.5% coverage. Math is strong (Calmar-like breakout signature: low WR, big winners). Honest FAIL retained per audit Concern 2. Research-grade only. |
+| 11 | `dbo_uae_1d`          | dbo        | UAE    | 1D | yfinance+cache  | 2026-05-21 (Fire 1)   | 2026-05-21 | PORTFOLIO_FAIL (104 trades < 1000; exp 0.93 < 1.0; dSharpe -0.78) |
+| 12 | `dbo_crypto_1d`       | dbo        | CRYPTO | 1D | yfinance        | 2026-05-21 (Fire 1)   | 2026-05-21 | PORTFOLIO_FAIL (exp 0.98 < 1.0; WR 23.6% < 40%; dSharpe -0.61; CI lo<0) |
 
 **`config.PORTFOLIO_GATE.n_trials_registered` must equal the row count above.**
 Current value: **12** (bumped 9 → 12 when DBO registered Fire 1 2026-05-21,
