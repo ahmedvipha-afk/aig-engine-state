@@ -49,6 +49,34 @@ def _recipients() -> list[int]:
     return out
 
 
+def _log_send(kind: str, target: int, text: str, result: dict):
+    """Append every Telegram send (text or document) to telegram_sent_log.json
+    so the dashboard can show a recent-messages log."""
+    try:
+        import datetime
+        log = Path(__file__).resolve().parent.parent / "telegram_sent_log.json"
+        existing = []
+        if log.exists():
+            try:
+                existing = json.loads(log.read_text(encoding="utf-8"))
+            except Exception:
+                existing = []
+        entry = {
+            "ts_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"),
+            "kind": kind,
+            "to": target,
+            "ok": bool(result.get("ok")),
+            "message_id": result.get("result", {}).get("message_id") if result.get("ok") else None,
+            "preview": (text or "")[:200],
+        }
+        existing.append(entry)
+        # keep last 200 entries
+        existing = existing[-200:]
+        log.write_text(json.dumps(existing, indent=2), encoding="utf-8")
+    except Exception:
+        pass
+
+
 def send_message(text: str, parse_mode: str | None = None,
                  chat_id: int | None = None,
                  disable_preview: bool = True) -> dict:
@@ -76,6 +104,7 @@ def send_message(text: str, parse_mode: str | None = None,
                 last = json.loads(r.read().decode("utf-8"))
         except Exception as e:
             last = {"ok": False, "err": str(e)}
+        _log_send("text", tid, text, last)
     return last
 
 
@@ -121,6 +150,7 @@ def send_document(path: str | Path, caption: str = "",
                 last = json.loads(r.read().decode("utf-8"))
         except Exception as e:
             last = {"ok": False, "err": str(e)}
+        _log_send("document", tid, f"[{p.name}] {caption}", last)
     return last
 
 
