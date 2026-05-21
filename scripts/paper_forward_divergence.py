@@ -9,8 +9,10 @@ Used by the sprint routine (Mode 1) and by aig-morning-scan (Mode 2)
 once Mode 2 activates. Idempotent: re-running the same day doesn't
 duplicate signals (deduped by (ticker, signal_date) key).
 
-Default watch list: top-5 US Divergence contributors from the latest
-PORTFOLIO_CLEARED run (DY, EXPGY, PSX, ARW, ROL).
+Watch list: pre-registered random sample (seed=42, N=50) drawn from
+the cleared US Divergence universe (1,030 contributing tickers).
+Loaded from universe/divergence_us_paperforward_watchlist.txt — frozen
+at deployment per audit finding NEW-1 (resolves cherry-pick concern).
 
 Output files:
   - paper_forward_positions.json  (state: open positions, history)
@@ -44,8 +46,24 @@ except Exception:
 GST = timezone(timedelta(hours=4))
 STATE_FILE = ROOT / "paper_forward_positions.json"
 SIGNALS_LOG = ROOT / "signals_log.md"
+WATCHLIST_FILE = ROOT / "universe" / "divergence_us_paperforward_watchlist.txt"
 
-DEFAULT_WATCH = ["DY", "EXPGY", "PSX", "ARW", "ROL"]
+WATCH_LIST_METHOD = "random_sample_seed42_n50_from_cleared_universe_2026-05-21"
+
+
+def _load_default_watch() -> list[str]:
+    """Pre-registered random sample (seed=42, n=50) from cleared US Divergence
+    universe. Frozen at file at deployment to resolve audit finding NEW-1."""
+    if WATCHLIST_FILE.exists():
+        lines = WATCHLIST_FILE.read_text(encoding="utf-8").splitlines()
+        return [ln.strip() for ln in lines
+                if ln.strip() and not ln.strip().startswith("#")]
+    # Defensive fallback so the routine never crashes if the file is missing —
+    # but this path means selection-method audit trail is broken.
+    return ["DY", "EXPGY", "PSX", "ARW", "ROL"]
+
+
+DEFAULT_WATCH = _load_default_watch()
 
 
 def _load_state() -> dict:
@@ -95,6 +113,8 @@ def detect(watch_list: list[str] | None = None) -> dict:
     watch = watch_list or DEFAULT_WATCH
     state = _load_state()
     state["watch_list"] = watch
+    state["watch_list_method"] = WATCH_LIST_METHOD
+    state["watch_list_size"] = len(watch)
     if state["deployed_at"] is None:
         try:
             from aig.provenance import provenance

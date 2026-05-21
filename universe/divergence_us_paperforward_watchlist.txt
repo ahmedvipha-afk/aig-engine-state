@@ -1,0 +1,55 @@
+# AIG paper-forward watch list — US Divergence Daily
+# Selection method: random.sample(seed=42, n=50) from divergence_us_cleared_universe.txt (1,030 contributing tickers from PORTFOLIO_CLEARED run)
+# Frozen at deployment 2026-05-21 to resolve auditor finding NEW-1 (cherry-picked top-5)
+# Source validation run: validation_divergence_1d_full_haircut6.json (config_hash 6ce4b38242d54771)
+# DO NOT modify after deployment without bumping config_hash and re-pre-registering in strategy_register.md
+ADBE
+ANET
+ANGPY
+APP
+ARCO
+ATRC
+AVT
+BWA
+CDNS
+CDXS
+CIG
+CLX
+CMCO
+COHU
+COYA
+CPNG
+CSW
+DHI
+EGY
+EXPGY
+FDX
+FIX
+GWW
+HLIT
+HYSNY
+ICLR
+IESC
+IIIV
+INTA
+IT
+KE
+LKQ
+LTRX
+LZB
+MGRC
+MKKGY
+ODFL
+OMAB
+OPK
+PHR
+PKX
+PNTG
+RDNT
+RELY
+SPSC
+SSLZY
+SSTI
+TRI
+TTAM
+TWST
