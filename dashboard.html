@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta http-equiv="refresh" content="900">
-<title>AIG Cockpit v2 — Ahmed Investment Group</title>
+<title>AIG Cockpit v3 — Ahmed Investment Group</title>
 <style>
 :root { color-scheme: dark; --bg:#060a14; --cd:#0d1525; --nv:#1B2A4A;
         --bd:#1a2744; --gold:#C9A84C; --gn:#10B981; --rd:#EF4444;
@@ -25,26 +25,35 @@ a:hover { text-decoration: underline; }
 .brand { font-size: 18px; font-weight: 900; }
 .brand .ar { font-size: 11px; color: var(--gold); margin-left: 8px; }
 .brand-sub { font-size: 9px; color: var(--t3); }
+.refresh-countdown { font-size: 9px; color: var(--t3); margin-top: 2px; }
 .right-tools { display: flex; gap: 10px; align-items: center; }
 .search-box { background: #060a14cc; border: 1px solid var(--bd);
               border-radius: 6px; padding: 5px 10px; color: var(--t1);
-              font-size: 12px; width: 200px; outline: none; }
+              font-size: 12px; width: 240px; outline: none; }
 .search-box:focus { border-color: var(--gold); }
 .bell { position: relative; cursor: pointer; padding: 4px 8px;
         border-radius: 6px; background: #060a14aa; border: 1px solid var(--bd); }
 .bell-count { position: absolute; top: -4px; right: -4px;
               background: var(--rd); color: #fff; font-size: 9px;
               font-weight: 800; border-radius: 9px; padding: 1px 5px; }
-.nav-pill { padding: 4px 10px; background: #C9A84C20; border-radius: 8px;
-            border: 1px solid #C9A84C44; text-align: right; }
-.nav-pill .label { font-size: 8px; color: var(--gold); font-weight: 700; }
-.nav-pill .val { font-size: 11px; font-weight: 900; color: var(--gold); }
+.nav-pill { padding: 4px 10px; border-radius: 8px; text-align: right; }
+.nav-pill.mode1 { background: #C9A84C20; border: 1px solid #C9A84C44; }
+.nav-pill.mode2 { background: #10B98120; border: 1px solid #10B98144; }
+.nav-pill .label { font-size: 8px; font-weight: 700; }
+.nav-pill.mode1 .label { color: var(--gold); }
+.nav-pill.mode2 .label { color: var(--gn); }
+.nav-pill .val { font-size: 11px; font-weight: 900; }
+.nav-pill.mode1 .val { color: var(--gold); }
+.nav-pill.mode2 .val { color: var(--gn); }
 .nav-display .label { font-size: 8px; color: var(--t3); }
 .nav-display .val { font-size: 18px; font-weight: 900; color: var(--gold); }
+.nav-display .delta { font-size: 9px; }
+.nav-display .delta.up { color: var(--gn); }
+.nav-display .delta.dn { color: var(--rd); }
 
 .tab-bar { display: flex; overflow-x: auto; background: var(--cd);
            border-bottom: 1px solid var(--bd); padding: 0 20px;
-           position: sticky; top: 64px; z-index: 99; }
+           position: sticky; top: 76px; z-index: 99; }
 .tab-bar-inner { display: flex; max-width: 1280px; margin: 0 auto; width: 100%; }
 .tab { padding: 10px 14px; background: none; border: none;
        border-bottom: 2px solid transparent; color: var(--t3);
@@ -54,11 +63,15 @@ a:hover { text-decoration: underline; }
 .tab.active { border-bottom-color: var(--gold); color: var(--gold); }
 .tab-count { display: inline-block; padding: 1px 5px; margin-left: 4px;
              font-size: 9px; font-weight: 800; border-radius: 8px;
-             background: #ffffff15; }
+             background: #C9A84C30; color: var(--gold); }
 
 .wrap { padding: 16px 20px; max-width: 1280px; margin: 0 auto; }
 .tab-panel { display: none; }
 .tab-panel.active { display: block; }
+
+.search-empty-hint { display:none; background: #1B2A4A55; border: 1px solid var(--gold);
+                     border-radius: 6px; padding: 10px; margin-bottom: 12px;
+                     font-size: 11px; color: var(--t2); }
 
 .section { background: var(--cd); border: 1px solid var(--bd);
            border-radius: 12px; padding: 14px 16px; margin-bottom: 12px; }
@@ -88,7 +101,7 @@ a:hover { text-decoration: underline; }
 .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
 @media (max-width: 960px) {
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
-  .search-box { width: 140px; }
+  .search-box { width: 160px; }
 }
 
 table { width: 100%; border-collapse: collapse; font-size: 12px; }
@@ -100,14 +113,12 @@ tr:last-child td { border-bottom: none; }
 .mono { font-family: 'SF Mono', Menlo, Consolas, monospace; font-size: 11px; }
 .muted { color: var(--t2); font-size: 11px; }
 
-/* Status dots */
 .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%;
        margin-right: 6px; vertical-align: middle; }
 .dot.on { background: var(--gn); box-shadow: 0 0 8px var(--gn); }
 .dot.off { background: var(--rd); }
 .dot.warn { background: var(--or); }
 
-/* KPI / metric tiles */
 .tile { background: var(--bg); border-radius: 8px; padding: 10px 12px;
         border: 1px solid var(--bd); }
 .tile-label { font-size: 10px; color: var(--t3); text-transform: uppercase;
@@ -115,7 +126,6 @@ tr:last-child td { border-bottom: none; }
 .tile-value { font-size: 22px; font-weight: 800; margin-top: 4px; }
 .tile-sub { font-size: 10px; color: var(--t2); margin-top: 2px; }
 
-/* Sprint row */
 .sprint-row { display: flex; gap: 10px; padding: 8px 0;
               border-bottom: 1px solid var(--bd); align-items: flex-start; }
 .sprint-id { width: 26px; height: 26px; border-radius: 13px; flex-shrink: 0;
@@ -125,7 +135,6 @@ tr:last-child td { border-bottom: none; }
 .sprint-id.active { background: #C9A84C22; color: var(--gold); }
 .sprint-id.pending { background: #47556922; color: var(--t3); }
 
-/* Pipeline flow */
 .flow { display: flex; align-items: center; gap: 0; overflow-x: auto;
         padding: 12px 4px; }
 .flow-node { background: var(--bg); border: 1px solid var(--bd);
@@ -136,7 +145,6 @@ tr:last-child td { border-bottom: none; }
 .flow-node-value { font-size: 14px; font-weight: 800; margin-top: 2px; }
 .flow-arrow { color: var(--t3); font-size: 16px; margin: 0 6px; flex-shrink: 0; }
 
-/* Countdown */
 .countdown { display: flex; flex-direction: column; padding: 10px 12px;
              background: #1B2A4A55; border-radius: 8px;
              border-left: 3px solid var(--gold); }
@@ -146,7 +154,6 @@ tr:last-child td { border-bottom: none; }
                   font-weight: 800; margin-top: 2px; }
 .countdown-event { font-size: 10px; color: var(--t2); margin-top: 2px; }
 
-/* VIX gauge */
 .gauge { position: relative; width: 200px; height: 110px; margin: 8px auto; }
 .gauge-bg { position: absolute; inset: 0; border-radius: 200px 200px 0 0 / 110px 110px 0 0;
             background: conic-gradient(from 270deg at 50% 100%,
@@ -161,38 +168,46 @@ tr:last-child td { border-bottom: none; }
 .gauge-regime { position: absolute; bottom: -50px; left: 0; right: 0;
                 text-align: center; font-size: 10px; color: var(--t2); }
 
-/* Equity chart */
 .eq-chart-svg { width: 100%; height: 200px; background: var(--bg);
                 border-radius: 8px; border: 1px solid var(--bd); }
 
-/* Telegram log entry */
 .tg-entry { padding: 8px 10px; border-bottom: 1px solid var(--bd);
             display: flex; gap: 10px; align-items: flex-start; }
 .tg-entry .ts { font-family: 'SF Mono', Menlo, monospace; font-size: 10px;
                 color: var(--t3); flex-shrink: 0; width: 130px; }
 .tg-entry .body { flex: 1; font-size: 11px; color: var(--t2); }
 
-/* Commit row */
 .commit-row { display: grid; grid-template-columns: 90px 130px 1fr;
               gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--bd);
               font-size: 11px; align-items: center; }
 .commit-row .sha { font-family: 'SF Mono', Menlo, monospace; color: var(--gold);
                    font-weight: 700; }
 
-/* History entry */
 .history-row { padding: 10px 0; border-bottom: 1px solid var(--bd); }
 .history-row .date { font-size: 11px; color: var(--gold); font-weight: 700;
                      margin-bottom: 4px; }
 .history-row ul { margin: 4px 0 0 0; padding-left: 18px; }
 .history-row li { font-size: 11px; margin: 2px 0; color: var(--t2); }
 
-/* Footer */
+.lboard-row { display: grid; grid-template-columns: 120px 1fr 60px 60px;
+              gap: 10px; padding: 6px 0; align-items: center;
+              font-size: 11px; }
+.lboard-bar { background: var(--bd); height: 8px; border-radius: 999px;
+              position: relative; overflow: hidden; }
+.lboard-bar-fill { height: 100%; border-radius: 999px; }
+.lboard-bar-fill.pos { background: linear-gradient(90deg, var(--gold), var(--gn)); }
+.lboard-bar-fill.neg { background: linear-gradient(90deg, var(--rd), var(--or)); }
+
 .footer { padding: 14px 20px; max-width: 1280px; margin: 0 auto;
           border-top: 1px solid var(--bd); color: var(--t3); font-size: 10px;
           margin-top: 24px; }
 
-/* Hidden by search */
 .search-hidden { display: none !important; }
+.win-row, .lose-row { display: flex; justify-content: space-between;
+                      padding: 4px 0; border-bottom: 1px solid var(--bd);
+                      align-items: center; font-size: 11px; }
+.ticker-link { font-family: 'SF Mono', Menlo, monospace; color: var(--gold);
+               font-weight: 700; }
 </style>
 </head>
 <body>
@@ -201,23 +216,25 @@ tr:last-child td { border-bottom: none; }
   <div class="header-row">
     <div>
       <div class="brand">AHMED INVESTMENT GROUP <span class="ar">مجموعة أحمد للاستثمار</span></div>
-      <div class="brand-sub">v7.0 · بسم الله الرحمن الرحيم · refreshed 2026-05-21 12:24 GST</div>
+      <div class="brand-sub">v7.0 · بسم الله الرحمن الرحيم · refreshed 2026-05-21 12:26 GST</div>
+      <div class="refresh-countdown">page auto-refresh in <span id="refresh-countdown-val" data-remain="900">15:00</span></div>
     </div>
     <div class="right-tools">
-      <input id="global-search" class="search-box" placeholder="Search this tab…" autocomplete="off">
-      <div class="bell" id="alert-bell" data-count="0">
+      <input id="global-search" class="search-box" placeholder="Search across all tabs…" autocomplete="off">
+      <div class="bell" id="alert-bell" data-count="7">
         🔔
-        
-        <div id="alert-drop" style="display:none; position:absolute; right:0; top:36px; background:var(--cd); border:1px solid var(--bd); border-radius:8px; padding:10px; width:320px; box-shadow: 0 8px 32px #00000060; z-index: 200;">
-          <div style="font-size:11px; font-weight:700; color:var(--gold); margin-bottom:6px;">Alerts (0)</div>
-          <div class="muted">No alerts.</div>
+        <span class="bell-count">7</span>
+        <div id="alert-drop" style="display:none; position:absolute; right:0; top:36px; background:var(--cd); border:1px solid var(--bd); border-radius:8px; padding:10px; width:380px; box-shadow: 0 8px 32px #00000060; z-index: 200;">
+          <div style="font-size:11px; font-weight:700; color:var(--gold); margin-bottom:6px;">Alerts (7)</div>
+          <div style="padding:6px 0; border-bottom:1px solid var(--bd); font-size:11px;">divergence/CRYPTO FAIL: portfolio trades 644 &lt; 1000</div><div style="padding:6px 0; border-bottom:1px solid var(--bd); font-size:11px;">ema200/CRYPTO FAIL: portfolio trades 550 &lt; 1000</div><div style="padding:6px 0; border-bottom:1px solid var(--bd); font-size:11px;">divergence/UAE FAIL: portfolio trades 54 &lt; 1000</div><div style="padding:6px 0; border-bottom:1px solid var(--bd); font-size:11px;">ema200/UAE FAIL: portfolio trades 40 &lt; 1000</div><div style="padding:6px 0; border-bottom:1px solid var(--bd); font-size:11px;">ema200/US FAIL: portfolio win rate 0.186 &lt; 0.4</div><div style="padding:6px 0; border-bottom:1px solid var(--bd); font-size:11px;">divergence/US: 479 tickers blocked on data integrity</div><div style="padding:6px 0; border-bottom:1px solid var(--bd); font-size:11px;">ema200/US: 479 tickers blocked on data integrity</div>
         </div>
       </div>
       <div class="nav-display">
         <div class="label">NAV (paper)</div>
         <div class="val">$100,000</div>
+        <div class="delta up">▲ +0.00% since deploy</div>
       </div>
-      <div class="nav-pill">
+      <div class="nav-pill mode1">
         <div class="label">MODE 1</div>
         <div class="val">FULL SPRINT</div>
       </div>
@@ -230,11 +247,12 @@ tr:last-child td { border-bottom: none; }
 </div>
 
 <div class="wrap">
+  <div id="search-empty-hint" class="search-empty-hint"></div>
   
     <div id="panel-overview" class="tab-panel active">
 
-      <div class="section glow" data-search="goals targets">
-        <h3>🏆 Sprint Tracker — 6/8</h3>
+      <div class="section glow" data-search="sprint tracker targets">
+        <h3>🚀 Sprint Tracker — 6/8</h3>
         <div class="bar"><div class="bar-fill" style="width:75%;"></div></div>
         <div style="margin-top:10px;">
         <div class="sprint-row" data-search="Audit BLOCKING items resolved ✅ **DONE** See AUDIT RESPONSE section below">
@@ -303,6 +321,59 @@ tr:last-child td { border-bottom: none; }
         </div></div>
       </div>
 
+      <div class="section" data-search="strategy leaderboard sharpe">
+        <h3>🏆 Strategy Leaderboard (deflated Sharpe, N=6 trials)</h3>
+        
+            <div class="lboard-row" data-search="divergence/US PORTFOLIO_CLEARED_FOR_PAPER_FORWARD">
+              <div class='mono'>divergence/US</div>
+              <div class="lboard-bar">
+                <div class="lboard-bar-fill pos" style="position:absolute; top:0; height:100%; left:50%; width:45.5%;"></div>
+              </div>
+              <div class='mono' style='color:var(--gn); text-align:right;'>+2.61</div>
+              <span class="badge gn">PASS</span>
+            </div>
+            <div class="lboard-row" data-search="ema200/US PORTFOLIO_FAIL">
+              <div class='mono'>ema200/US</div>
+              <div class="lboard-bar">
+                <div class="lboard-bar-fill pos" style="position:absolute; top:0; height:100%; left:50%; width:34.3%;"></div>
+              </div>
+              <div class='mono' style='color:var(--gn); text-align:right;'>+1.96</div>
+              <span class="badge rd">FAIL</span>
+            </div>
+            <div class="lboard-row" data-search="divergence/CRYPTO PORTFOLIO_FAIL">
+              <div class='mono'>divergence/CRYPTO</div>
+              <div class="lboard-bar">
+                <div class="lboard-bar-fill pos" style="position:absolute; top:0; height:100%; left:50%; width:4.0%;"></div>
+              </div>
+              <div class='mono' style='color:var(--gn); text-align:right;'>+0.23</div>
+              <span class="badge rd">FAIL</span>
+            </div>
+            <div class="lboard-row" data-search="ema200/CRYPTO PORTFOLIO_FAIL">
+              <div class='mono'>ema200/CRYPTO</div>
+              <div class="lboard-bar">
+                <div class="lboard-bar-fill neg" style="position:absolute; top:0; height:100%; right:50%; width:7.3%;"></div>
+              </div>
+              <div class='mono' style='color:var(--rd); text-align:right;'>-0.42</div>
+              <span class="badge rd">FAIL</span>
+            </div>
+            <div class="lboard-row" data-search="divergence/UAE PORTFOLIO_FAIL">
+              <div class='mono'>divergence/UAE</div>
+              <div class="lboard-bar">
+                <div class="lboard-bar-fill neg" style="position:absolute; top:0; height:100%; right:50%; width:24.6%;"></div>
+              </div>
+              <div class='mono' style='color:var(--rd); text-align:right;'>-1.41</div>
+              <span class="badge rd">FAIL</span>
+            </div>
+            <div class="lboard-row" data-search="ema200/UAE PORTFOLIO_FAIL">
+              <div class='mono'>ema200/UAE</div>
+              <div class="lboard-bar">
+                <div class="lboard-bar-fill neg" style="position:absolute; top:0; height:100%; right:50%; width:50.0%;"></div>
+              </div>
+              <div class='mono' style='color:var(--rd); text-align:right;'>-2.86</div>
+              <span class="badge rd">FAIL</span>
+            </div>
+      </div>
+
       <div class="section" data-search="pipeline flow data strategies gate paper telegram">
         <h3>📡 Signal Pipeline</h3>
         
@@ -340,79 +411,134 @@ tr:last-child td { border-bottom: none; }
       </div>
 
       <div class="grid-2">
-        <div class="section" data-search="countdown timers next event">
-          <h3>⏱ Next Events</h3>
+        <div class="section" data-search="countdown timers next event routines">
+          <h3>⏱ Next Events & Routine Heartbeat</h3>
           <div class="grid-2" style="gap:8px;">
         <div class="countdown" data-search="aig-mode1-sprint">
           <div class="countdown-label">aig-mode1-sprint</div>
           <div class="countdown-time" data-target-ts="0">—</div>
-          <div class="countdown-event">—</div>
+          <div class="countdown-event">next · —</div>
+          <div class="muted" style="margin-top:4px;">last touch: 2026-05-21 02:43 GST</div>
         </div>
         <div class="countdown" data-search="aig-monthly-report">
           <div class="countdown-label">aig-monthly-report</div>
           <div class="countdown-time" data-target-ts="0">—</div>
-          <div class="countdown-event">—</div>
+          <div class="countdown-event">next · —</div>
+          <div class="muted" style="margin-top:4px;">last touch: 2026-05-21 01:23 GST</div>
         </div>
         <div class="countdown" data-search="aig-morning-scan">
           <div class="countdown-label">aig-morning-scan</div>
           <div class="countdown-time" data-target-ts="0">—</div>
-          <div class="countdown-event">—</div>
+          <div class="countdown-event">next · —</div>
+          <div class="muted" style="margin-top:4px;">last touch: 2026-05-21 01:23 GST</div>
         </div>
         <div class="countdown" data-search="aig-weekly-full-universe">
           <div class="countdown-label">aig-weekly-full-universe</div>
           <div class="countdown-time" data-target-ts="0">—</div>
-          <div class="countdown-event">—</div>
+          <div class="countdown-event">next · —</div>
+          <div class="muted" style="margin-top:4px;">last touch: 2026-05-21 01:23 GST</div>
         </div></div>
         </div>
         <div class="section" data-search="circuit breakers safety">
           <h3>🛡 Circuit Breakers</h3>
-          <table><thead><tr><th>Trigger</th><th>Tier</th><th>Action</th><th>Status</th></tr></thead><tbody><tr data-search='Portfolio &gt;8%/dayTier 1ARMED'><td>Portfolio &gt;8%/day</td><td class='muted'>Tier 1</td><td class='muted'>Halt all. No override.</td><td><span class='badge gn'>ARMED</span></td></tr><tr data-search='Position &gt;15% lossTier 1ARMED'><td>Position &gt;15% loss</td><td class='muted'>Tier 1</td><td class='muted'>Hard exit. No override.</td><td><span class='badge gn'>ARMED</span></td></tr><tr data-search='VIX &gt; 40Tier 1ARMED'><td>VIX &gt; 40</td><td class='muted'>Tier 1</td><td class='muted'>100% cash. Resume when VIX&lt;35.</td><td><span class='badge gn'>ARMED</span></td></tr><tr data-search='Correlation &gt; 0.85Tier 1ARMED'><td>Correlation &gt; 0.85</td><td class='muted'>Tier 1</td><td class='muted'>No new entries. Rebalance.</td><td><span class='badge gn'>ARMED</span></td></tr><tr data-search='Drawdown &gt; 20%Tier 1ARMED'><td>Drawdown &gt; 20%</td><td class='muted'>Tier 1</td><td class='muted'>100% cash. Full R&amp;D review.</td><td><span class='badge gn'>ARMED</span></td></tr><tr data-search='All feeds failTier 1ARMED'><td>All feeds fail</td><td class='muted'>Tier 1</td><td class='muted'>Zero trading.</td><td><span class='badge gn'>ARMED</span></td></tr><tr data-search='Shariah breachTier 1ARMED'><td>Shariah breach</td><td class='muted'>Tier 1</td><td class='muted'>Exit non-compliant.</td><td><span class='badge gn'>ARMED</span></td></tr><tr data-search='Crypto -30%Tier 1 (crypto)ARMED'><td>Crypto -30%</td><td class='muted'>Tier 1 (crypto)</td><td class='muted'>Halt crypto only.</td><td><span class='badge gn'>ARMED</span></td></tr><tr data-search='Portfolio &gt;5%/dayTier 2ARMED'><td>Portfolio &gt;5%/day</td><td class='muted'>Tier 2</td><td class='muted'>CIO 6-field override.</td><td><span class='badge gn'>ARMED</span></td></tr><tr data-search='Position -8%Tier 2ARMED'><td>Position -8%</td><td class='muted'>Tier 2</td><td class='muted'>CIO override possible.</td><td><span class='badge gn'>ARMED</span></td></tr></tbody></table>
+          <table><thead><tr><th>Trigger</th><th>Tier</th><th>Status</th></tr></thead><tbody><tr data-search='Portfolio &gt;8%/dayTier 1'><td>Portfolio &gt;8%/day</td><td class='muted'>Tier 1</td><td><span class='badge gn'>ARMED</span></td></tr><tr data-search='Position &gt;15% lossTier 1'><td>Position &gt;15% loss</td><td class='muted'>Tier 1</td><td><span class='badge gn'>ARMED</span></td></tr><tr data-search='VIX &gt; 40Tier 1'><td>VIX &gt; 40</td><td class='muted'>Tier 1</td><td><span class='badge gn'>ARMED</span></td></tr><tr data-search='Correlation &gt; 0.85Tier 1'><td>Correlation &gt; 0.85</td><td class='muted'>Tier 1</td><td><span class='badge gn'>ARMED</span></td></tr><tr data-search='Drawdown &gt; 20%Tier 1'><td>Drawdown &gt; 20%</td><td class='muted'>Tier 1</td><td><span class='badge gn'>ARMED</span></td></tr><tr data-search='All feeds failTier 1'><td>All feeds fail</td><td class='muted'>Tier 1</td><td><span class='badge gn'>ARMED</span></td></tr><tr data-search='Shariah breachTier 1'><td>Shariah breach</td><td class='muted'>Tier 1</td><td><span class='badge gn'>ARMED</span></td></tr><tr data-search='Crypto -30%Tier 1 (crypto)'><td>Crypto -30%</td><td class='muted'>Tier 1 (crypto)</td><td><span class='badge gn'>ARMED</span></td></tr><tr data-search='Portfolio &gt;5%/dayTier 2'><td>Portfolio &gt;5%/day</td><td class='muted'>Tier 2</td><td><span class='badge gn'>ARMED</span></td></tr><tr data-search='Position -8%Tier 2'><td>Position -8%</td><td class='muted'>Tier 2</td><td><span class='badge gn'>ARMED</span></td></tr></tbody></table>
         </div>
+      </div>
+
+      <div class="section" data-search="trial budget pre-registered strategy register">
+        <h3>📋 Trial Budget (multi-test haircut N=6)</h3>
+        <table><thead><tr><th>#</th><th>Trial</th><th>Strategy</th><th>Market</th><th>TF</th><th>Verdict</th></tr></thead><tbody>
+        <tr data-search="ema200_us_1d PORTFOLIO_FAIL (WR floor)">
+          <td class='mono'>1</td>
+          <td class='mono' style='color:var(--gold)'>ema200_us_1d</td>
+          <td>ema200</td>
+          <td>US</td>
+          <td class='mono'>1D</td>
+          <td><span class='badge rd'>PORTFOLIO_FAIL </span></td>
+        </tr>
+        <tr data-search="ema200_uae_1d PORTFOLIO_FAIL">
+          <td class='mono'>2</td>
+          <td class='mono' style='color:var(--gold)'>ema200_uae_1d</td>
+          <td>ema200</td>
+          <td>UAE</td>
+          <td class='mono'>1D</td>
+          <td><span class='badge rd'>PORTFOLIO_FAIL</span></td>
+        </tr>
+        <tr data-search="ema200_crypto_1d PORTFOLIO_FAIL">
+          <td class='mono'>3</td>
+          <td class='mono' style='color:var(--gold)'>ema200_crypto_1d</td>
+          <td>ema200</td>
+          <td>CRYPTO</td>
+          <td class='mono'>1D</td>
+          <td><span class='badge rd'>PORTFOLIO_FAIL</span></td>
+        </tr>
+        <tr data-search="divergence_us_1d **PORTFOLIO_CLEARED** — dSharpe 2.606, exp 1.227, WR 44.78%, 10,715 trades">
+          <td class='mono'>4</td>
+          <td class='mono' style='color:var(--gold)'>divergence_us_1d</td>
+          <td>divergence</td>
+          <td>US</td>
+          <td class='mono'>1D</td>
+          <td><span class='badge gn'>**PORTFOLIO_CLEARED** — dSharpe 2.606, exp 1.227, </span></td>
+        </tr>
+        <tr data-search="divergence_uae_1d PORTFOLIO_FAIL (trades)">
+          <td class='mono'>5</td>
+          <td class='mono' style='color:var(--gold)'>divergence_uae_1d</td>
+          <td>divergence</td>
+          <td>UAE</td>
+          <td class='mono'>1D</td>
+          <td><span class='badge or'>PORTFOLIO_FAIL </span></td>
+        </tr>
+        <tr data-search="divergence_crypto_1d PORTFOLIO_FAIL">
+          <td class='mono'>6</td>
+          <td class='mono' style='color:var(--gold)'>divergence_crypto_1d</td>
+          <td>divergence</td>
+          <td>CRYPTO</td>
+          <td class='mono'>1D</td>
+          <td><span class='badge rd'>PORTFOLIO_FAIL</span></td>
+        </tr></tbody></table>
       </div>
 
       <div class="grid-2">
         <div class="section" data-search="ceo decisions log">
           <h3>📝 Decision Log (last 10)</h3>
-          <div class="muted">No decisions parsed from ceo_brain.md yet.</div>
+          <div class="muted">No decisions parsed.</div>
         </div>
         <div class="section" data-search="audit findings auditor cowork">
           <h3>🔍 Auditor — Cowork</h3>
           
         <div style="display:flex; gap:8px; padding:6px 0; border-bottom:1px solid var(--bd); align-items:center;" data-search="Multi-testing haircut undercounts trialsBLOCKING">
           <span class="badge rd">BLOCKING</span>
-          <div style="flex:1; font-size:11px;">Multi-testing haircut undercounts trials</div>
+          <a href="https://raw.githubusercontent.com/ahmedvipha-afk/aig-engine-state/main/auditor_report.md" target="_blank" style="flex:1; font-size:11px; color:var(--t1);">Multi-testing haircut undercounts trials</a>
           <span class="badge gn">RESOLVED</span>
         </div>
         <div style="display:flex; gap:8px; padding:6px 0; border-bottom:1px solid var(--bd); align-items:center;" data-search="Path-3 amendment is post-hoc threshold adjustmentBLOCKING">
           <span class="badge rd">BLOCKING</span>
-          <div style="flex:1; font-size:11px;">Path-3 amendment is post-hoc threshold adjustment</div>
+          <a href="https://raw.githubusercontent.com/ahmedvipha-afk/aig-engine-state/main/auditor_report.md" target="_blank" style="flex:1; font-size:11px; color:var(--t1);">Path-3 amendment is post-hoc threshold adjustment</a>
           <span class="badge gn">RESOLVED</span>
         </div>
         <div style="display:flex; gap:8px; padding:6px 0; border-bottom:1px solid var(--bd); align-items:center;" data-search="&quot;Edge confirmed real across all three markets&quot; is overconfidentWARNING">
           <span class="badge or">WARNING</span>
-          <div style="flex:1; font-size:11px;">&quot;Edge confirmed real across all three markets&quot; is overconfident</div>
+          <a href="https://raw.githubusercontent.com/ahmedvipha-afk/aig-engine-state/main/auditor_report.md" target="_blank" style="flex:1; font-size:11px; color:var(--t1);">&quot;Edge confirmed real across all three markets&quot; is overconfident</a>
           <span class="badge gn">RESOLVED</span>
         </div>
         <div style="display:flex; gap:8px; padding:6px 0; border-bottom:1px solid var(--bd); align-items:center;" data-search="Removing the win-rate floor crosses a math/deployability boundaryWARNING">
           <span class="badge or">WARNING</span>
-          <div style="flex:1; font-size:11px;">Removing the win-rate floor crosses a math/deployability boundary</div>
+          <a href="https://raw.githubusercontent.com/ahmedvipha-afk/aig-engine-state/main/auditor_report.md" target="_blank" style="flex:1; font-size:11px; color:var(--t1);">Removing the win-rate floor crosses a math/deployability boundary</a>
           <span class="badge gn">RESOLVED</span>
         </div>
         <div style="display:flex; gap:8px; padding:6px 0; border-bottom:1px solid var(--bd); align-items:center;" data-search="Strategy register drift (provenance integrity)BLOCKING">
           <span class="badge rd">BLOCKING</span>
-          <div style="flex:1; font-size:11px;">Strategy register drift (provenance integrity)</div>
+          <a href="https://raw.githubusercontent.com/ahmedvipha-afk/aig-engine-state/main/auditor_report.md" target="_blank" style="flex:1; font-size:11px; color:var(--t1);">Strategy register drift (provenance integrity)</a>
           <span class="badge gn">RESOLVED</span>
         </div>
         <div style="display:flex; gap:8px; padding:6px 0; border-bottom:1px solid var(--bd); align-items:center;" data-search="UAE TV-MCP cache pipeline is brittleNOTE">
           <span class="badge gy">NOTE</span>
-          <div style="flex:1; font-size:11px;">UAE TV-MCP cache pipeline is brittle</div>
+          <a href="https://raw.githubusercontent.com/ahmedvipha-afk/aig-engine-state/main/auditor_report.md" target="_blank" style="flex:1; font-size:11px; color:var(--t1);">UAE TV-MCP cache pipeline is brittle</a>
           <span class="badge gn">RESOLVED</span>
         </div>
         </div>
       </div>
-    </div>
-    <div id="panel-markets" class="tab-panel">
-      
+    </div><div id="panel-markets" class="tab-panel">
         <div class="section" data-search="US Equities US">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
             <h3 style="margin:0;">🇺🇸 US Equities</h3>
@@ -424,7 +550,65 @@ tr:last-child td { border-bottom: none; }
             <div class="tile"><div class="tile-label">Best Exp</div><div class="tile-value">1.23</div></div>
             <div class="tile"><div class="tile-label">Best WR</div><div class="tile-value">45%</div></div>
           </div>
-          <div class="muted">Trades 10,715 · Contributors 1030/1124</div>
+          <div class="muted">Trades 10,715 · Contributors 1030/1124 · <a href="https://raw.githubusercontent.com/ahmedvipha-afk/aig-engine-state/main/validation_divergence_1d_full_haircut6.json" target="_blank">latest JSON</a></div>
+          <div class="grid-2" style="margin-top:14px;">
+            <div>
+              <div style="font-size:10px; font-weight:700; color:var(--gn); margin-bottom:4px;">🏆 WINNERS (top expectancy)</div>
+              <div class='win-row' data-search='DXCM'>
+              <a class='ticker-link' href='https://www.tradingview.com/symbols/DXCM/' target='_blank'>DXCM</a>
+              <div class='muted'>divergence · n=14</div>
+              <span style='color:var(--gn); font-weight:800;'>inf</span>
+            </div><div class='win-row' data-search='ZWS'>
+              <a class='ticker-link' href='https://www.tradingview.com/symbols/ZWS/' target='_blank'>ZWS</a>
+              <div class='muted'>divergence · n=12</div>
+              <span style='color:var(--gn); font-weight:800;'>43.92</span>
+            </div><div class='win-row' data-search='PEP'>
+              <a class='ticker-link' href='https://www.tradingview.com/symbols/PEP/' target='_blank'>PEP</a>
+              <div class='muted'>divergence · n=10</div>
+              <span style='color:var(--gn); font-weight:800;'>17.81</span>
+            </div><div class='win-row' data-search='TOL'>
+              <a class='ticker-link' href='https://www.tradingview.com/symbols/TOL/' target='_blank'>TOL</a>
+              <div class='muted'>divergence · n=15</div>
+              <span style='color:var(--gn); font-weight:800;'>17.12</span>
+            </div><div class='win-row' data-search='ADUS'>
+              <a class='ticker-link' href='https://www.tradingview.com/symbols/ADUS/' target='_blank'>ADUS</a>
+              <div class='muted'>divergence · n=14</div>
+              <span style='color:var(--gn); font-weight:800;'>14.84</span>
+            </div><div class='win-row' data-search='EXP'>
+              <a class='ticker-link' href='https://www.tradingview.com/symbols/EXP/' target='_blank'>EXP</a>
+              <div class='muted'>divergence · n=15</div>
+              <span style='color:var(--gn); font-weight:800;'>13.15</span>
+            </div>
+            </div>
+            <div>
+              <div style="font-size:10px; font-weight:700; color:var(--rd); margin-bottom:4px;">📉 LOSERS</div>
+              <div class='lose-row' data-search='TLF'>
+              <a class='ticker-link' href='https://www.tradingview.com/symbols/TLF/' target='_blank'>TLF</a>
+              <div class='muted'>ema200 · n=12</div>
+              <span style='color:var(--rd); font-weight:800;'>0.00</span>
+            </div><div class='lose-row' data-search='ACFN'>
+              <a class='ticker-link' href='https://www.tradingview.com/symbols/ACFN/' target='_blank'>ACFN</a>
+              <div class='muted'>ema200 · n=10</div>
+              <span style='color:var(--rd); font-weight:800;'>0.00</span>
+            </div><div class='lose-row' data-search='RSSS'>
+              <a class='ticker-link' href='https://www.tradingview.com/symbols/RSSS/' target='_blank'>RSSS</a>
+              <div class='muted'>ema200 · n=12</div>
+              <span style='color:var(--rd); font-weight:800;'>0.00</span>
+            </div><div class='lose-row' data-search='LND'>
+              <a class='ticker-link' href='https://www.tradingview.com/symbols/LND/' target='_blank'>LND</a>
+              <div class='muted'>ema200 · n=10</div>
+              <span style='color:var(--rd); font-weight:800;'>0.00</span>
+            </div><div class='lose-row' data-search='VTKLY'>
+              <a class='ticker-link' href='https://www.tradingview.com/symbols/VTKLY/' target='_blank'>VTKLY</a>
+              <div class='muted'>ema200 · n=12</div>
+              <span style='color:var(--rd); font-weight:800;'>0.00</span>
+            </div><div class='lose-row' data-search='FIZZ'>
+              <a class='ticker-link' href='https://www.tradingview.com/symbols/FIZZ/' target='_blank'>FIZZ</a>
+              <div class='muted'>ema200 · n=13</div>
+              <span style='color:var(--rd); font-weight:800;'>0.00</span>
+            </div>
+            </div>
+          </div>
         </div>
         <div class="section" data-search="UAE Equities UAE">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
@@ -437,7 +621,17 @@ tr:last-child td { border-bottom: none; }
             <div class="tile"><div class="tile-label">Best Exp</div><div class="tile-value">0.71</div></div>
             <div class="tile"><div class="tile-label">Best WR</div><div class="tile-value">41%</div></div>
           </div>
-          <div class="muted">Trades 54 · Contributors 21/45</div>
+          <div class="muted">Trades 54 · Contributors 21/45 · <a href="https://raw.githubusercontent.com/ahmedvipha-afk/aig-engine-state/main/validation_uae_divergence_1d_v5.json" target="_blank">latest JSON</a></div>
+          <div class="grid-2" style="margin-top:14px;">
+            <div>
+              <div style="font-size:10px; font-weight:700; color:var(--gn); margin-bottom:4px;">🏆 WINNERS (top expectancy)</div>
+              <div class="muted">No qualifying tickers (n≥10).</div>
+            </div>
+            <div>
+              <div style="font-size:10px; font-weight:700; color:var(--rd); margin-bottom:4px;">📉 LOSERS</div>
+              <div class="muted">—</div>
+            </div>
+          </div>
         </div>
         <div class="section" data-search="Crypto CRYPTO">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
@@ -450,47 +644,104 @@ tr:last-child td { border-bottom: none; }
             <div class="tile"><div class="tile-label">Best Exp</div><div class="tile-value">3.54</div></div>
             <div class="tile"><div class="tile-label">Best WR</div><div class="tile-value">37%</div></div>
           </div>
-          <div class="muted">Trades 644 · Contributors 107/140</div>
-        </div>
-    </div><div id="panel-agents" class="tab-panel">
+          <div class="muted">Trades 644 · Contributors 107/140 · <a href="https://raw.githubusercontent.com/ahmedvipha-afk/aig-engine-state/main/validation_crypto150_divergence_1d_v3.json" target="_blank">latest JSON</a></div>
+          <div class="grid-2" style="margin-top:14px;">
+            <div>
+              <div style="font-size:10px; font-weight:700; color:var(--gn); margin-bottom:4px;">🏆 WINNERS (top expectancy)</div>
+              <div class='win-row' data-search='ANKR-USD'>
+              <a class='ticker-link' href='https://www.tradingview.com/symbols/ANKR-USD/' target='_blank'>ANKR-USD</a>
+              <div class='muted'>divergence · n=14</div>
+              <span style='color:var(--gn); font-weight:800;'>3.10</span>
+            </div><div class='win-row' data-search='FTM-USD'>
+              <a class='ticker-link' href='https://www.tradingview.com/symbols/FTM-USD/' target='_blank'>FTM-USD</a>
+              <div class='muted'>divergence · n=13</div>
+              <span style='color:var(--gn); font-weight:800;'>3.04</span>
+            </div><div class='win-row' data-search='RIF-USD'>
+              <a class='ticker-link' href='https://www.tradingview.com/symbols/RIF-USD/' target='_blank'>RIF-USD</a>
+              <div class='muted'>divergence · n=10</div>
+              <span style='color:var(--gn); font-weight:800;'>2.16</span>
+            </div><div class='win-row' data-search='BNB-USD'>
+              <a class='ticker-link' href='https://www.tradingview.com/symbols/BNB-USD/' target='_blank'>BNB-USD</a>
+              <div class='muted'>divergence · n=20</div>
+              <span style='color:var(--gn); font-weight:800;'>2.07</span>
+            </div><div class='win-row' data-search='FIL-USD'>
+              <a class='ticker-link' href='https://www.tradingview.com/symbols/FIL-USD/' target='_blank'>FIL-USD</a>
+              <div class='muted'>divergence · n=10</div>
+              <span style='color:var(--gn); font-weight:800;'>1.75</span>
+            </div><div class='win-row' data-search='CKB-USD'>
+              <a class='ticker-link' href='https://www.tradingview.com/symbols/CKB-USD/' target='_blank'>CKB-USD</a>
+              <div class='muted'>divergence · n=14</div>
+              <span style='color:var(--gn); font-weight:800;'>1.34</span>
+            </div>
+            </div>
+            <div>
+              <div style="font-size:10px; font-weight:700; color:var(--rd); margin-bottom:4px;">📉 LOSERS</div>
+              <div class='lose-row' data-search='QNT-USD'>
+              <a class='ticker-link' href='https://www.tradingview.com/symbols/QNT-USD/' target='_blank'>QNT-USD</a>
+              <div class='muted'>divergence · n=11</div>
+              <span style='color:var(--rd); font-weight:800;'>0.00</span>
+            </div><div class='lose-row' data-search='QNT-USD'>
+              <a class='ticker-link' href='https://www.tradingview.com/symbols/QNT-USD/' target='_blank'>QNT-USD</a>
+              <div class='muted'>ema200 · n=10</div>
+              <span style='color:var(--rd); font-weight:800;'>0.23</span>
+            </div><div class='lose-row' data-search='DCR-USD'>
+              <a class='ticker-link' href='https://www.tradingview.com/symbols/DCR-USD/' target='_blank'>DCR-USD</a>
+              <div class='muted'>ema200 · n=12</div>
+              <span style='color:var(--rd); font-weight:800;'>0.25</span>
+            </div><div class='lose-row' data-search='ZEN-USD'>
+              <a class='ticker-link' href='https://www.tradingview.com/symbols/ZEN-USD/' target='_blank'>ZEN-USD</a>
+              <div class='muted'>ema200 · n=10</div>
+              <span style='color:var(--rd); font-weight:800;'>0.28</span>
+            </div><div class='lose-row' data-search='ATOM-USD'>
+              <a class='ticker-link' href='https://www.tradingview.com/symbols/ATOM-USD/' target='_blank'>ATOM-USD</a>
+              <div class='muted'>divergence · n=11</div>
+              <span style='color:var(--rd); font-weight:800;'>0.37</span>
+            </div><div class='lose-row' data-search='KMD-USD'>
+              <a class='ticker-link' href='https://www.tradingview.com/symbols/KMD-USD/' target='_blank'>KMD-USD</a>
+              <div class='muted'>divergence · n=15</div>
+              <span style='color:var(--rd); font-weight:800;'>0.55</span>
+            </div>
+            </div>
+          </div>
+        </div></div><div id="panel-agents" class="tab-panel">
         <div class="section" data-search="layer L0">
           <h3>Layer L0</h3>
-          <table><tr data-search='CEOAutonomous, recursive self-improvement'><td class='mono' style='color:var(--gold)'>CEO</td><td>Autonomous, recursive self-improvement</td><td><span class='badge gn'>active</span></td></tr></table>
+          <table><tr data-search='CEOAutonomous, recursive self-improvementactive'><td class='mono' style='color:var(--gold)'>CEO</td><td>Autonomous, recursive self-improvement</td><td><span class='badge or'>active</span></td></tr></table>
         </div>
         <div class="section" data-search="layer L1">
           <h3>Layer L1</h3>
-          <table><tr data-search='CIOCapital allocation, signal approval'><td class='mono' style='color:var(--gold)'>CIO</td><td>Capital allocation, signal approval</td><td><span class='badge gn'>active</span></td></tr><tr data-search='CFOCost control, quality monitoring'><td class='mono' style='color:var(--gold)'>CFO</td><td>Cost control, quality monitoring</td><td><span class='badge gn'>active</span></td></tr></table>
+          <table><tr data-search='CIOCapital allocation, signal approvalactive'><td class='mono' style='color:var(--gold)'>CIO</td><td>Capital allocation, signal approval</td><td><span class='badge or'>active</span></td></tr><tr data-search='CFOCost control, quality monitoringactive'><td class='mono' style='color:var(--gold)'>CFO</td><td>Cost control, quality monitoring</td><td><span class='badge or'>active</span></td></tr></table>
         </div>
         <div class="section" data-search="layer L2">
           <h3>Layer L2</h3>
-          <table><tr data-search='RD-AResearch — strategy registration'><td class='mono' style='color:var(--gold)'>RD-A</td><td>Research — strategy registration</td><td><span class='badge gn'>active</span></td></tr><tr data-search='RD-BBacktest engine'><td class='mono' style='color:var(--gold)'>RD-B</td><td>Backtest engine</td><td><span class='badge gn'>active</span></td></tr><tr data-search='RD-CPaper simulator'><td class='mono' style='color:var(--gold)'>RD-C</td><td>Paper simulator</td><td><span class='badge gn'>active</span></td></tr><tr data-search='RD-DApproval committee (gate)'><td class='mono' style='color:var(--gold)'>RD-D</td><td>Approval committee (gate)</td><td><span class='badge gn'>active</span></td></tr></table>
+          <table><tr data-search='RD-AResearch — strategy registrationactive'><td class='mono' style='color:var(--gold)'>RD-A</td><td>Research — strategy registration</td><td><span class='badge or'>active</span></td></tr><tr data-search='RD-BBacktest engineactive'><td class='mono' style='color:var(--gold)'>RD-B</td><td>Backtest engine</td><td><span class='badge or'>active</span></td></tr><tr data-search='RD-CPaper simulator (paper-forward detector)active'><td class='mono' style='color:var(--gold)'>RD-C</td><td>Paper simulator (paper-forward detector)</td><td><span class='badge or'>active</span></td></tr><tr data-search='RD-DApproval committee (gate)active'><td class='mono' style='color:var(--gold)'>RD-D</td><td>Approval committee (gate)</td><td><span class='badge or'>active</span></td></tr></table>
         </div>
         <div class="section" data-search="layer L3">
           <h3>Layer L3</h3>
-          <table><tr data-search='EX-ATrend (daily+weekly)'><td class='mono' style='color:var(--gold)'>EX-A</td><td>Trend (daily+weekly)</td><td><span class='badge gn'>active</span></td></tr><tr data-search='EX-BMean reversion (1H+4H)'><td class='mono' style='color:var(--gold)'>EX-B</td><td>Mean reversion (1H+4H)</td><td><span class='badge gn'>active</span></td></tr><tr data-search='EX-CFactor (weekly)'><td class='mono' style='color:var(--gold)'>EX-C</td><td>Factor (weekly)</td><td><span class='badge gn'>active</span></td></tr><tr data-search='EX-DPortfolio construction + correlation'><td class='mono' style='color:var(--gold)'>EX-D</td><td>Portfolio construction + correlation</td><td><span class='badge gn'>active</span></td></tr><tr data-search='EX-EFill intake'><td class='mono' style='color:var(--gold)'>EX-E</td><td>Fill intake</td><td><span class='badge gn'>active</span></td></tr><tr data-search='EX-FCrypto (spot, halal)'><td class='mono' style='color:var(--gold)'>EX-F</td><td>Crypto (spot, halal)</td><td><span class='badge gn'>active</span></td></tr></table>
+          <table><tr data-search='EX-ATrend (daily+weekly)active'><td class='mono' style='color:var(--gold)'>EX-A</td><td>Trend (daily+weekly)</td><td><span class='badge or'>active</span></td></tr><tr data-search='EX-BMean reversion (1H+4H)waiting'><td class='mono' style='color:var(--gold)'>EX-B</td><td>Mean reversion (1H+4H)</td><td><span class='badge gy'>waiting</span></td></tr><tr data-search='EX-CFactor (weekly)waiting'><td class='mono' style='color:var(--gold)'>EX-C</td><td>Factor (weekly)</td><td><span class='badge gy'>waiting</span></td></tr><tr data-search='EX-DPortfolio construction + correlationactive'><td class='mono' style='color:var(--gold)'>EX-D</td><td>Portfolio construction + correlation</td><td><span class='badge or'>active</span></td></tr><tr data-search='EX-EFill intakewaiting'><td class='mono' style='color:var(--gold)'>EX-E</td><td>Fill intake</td><td><span class='badge gy'>waiting</span></td></tr><tr data-search='EX-FCrypto (spot, halal)active'><td class='mono' style='color:var(--gold)'>EX-F</td><td>Crypto (spot, halal)</td><td><span class='badge or'>active</span></td></tr></table>
         </div>
         <div class="section" data-search="layer L4">
           <h3>Layer L4</h3>
-          <table><tr data-search='RI-FRisk manager — sizing, loss ladder'><td class='mono' style='color:var(--gold)'>RI-F</td><td>Risk manager — sizing, loss ladder</td><td><span class='badge gn'>active</span></td></tr><tr data-search='RI-GIntraday monitor'><td class='mono' style='color:var(--gold)'>RI-G</td><td>Intraday monitor</td><td><span class='badge gn'>active</span></td></tr><tr data-search='RI-HShariah compliance'><td class='mono' style='color:var(--gold)'>RI-H</td><td>Shariah compliance</td><td><span class='badge gn'>active</span></td></tr><tr data-search='RI-IMacro regime'><td class='mono' style='color:var(--gold)'>RI-I</td><td>Macro regime</td><td><span class='badge gn'>active</span></td></tr><tr data-search='RI-JAlt data'><td class='mono' style='color:var(--gold)'>RI-J</td><td>Alt data</td><td><span class='badge gn'>active</span></td></tr><tr data-search='RI-KMarket intel'><td class='mono' style='color:var(--gold)'>RI-K</td><td>Market intel</td><td><span class='badge gn'>active</span></td></tr></table>
+          <table><tr data-search='RI-FRisk manager — sizing, loss ladderactive'><td class='mono' style='color:var(--gold)'>RI-F</td><td>Risk manager — sizing, loss ladder</td><td><span class='badge or'>active</span></td></tr><tr data-search='RI-GIntraday monitoractive'><td class='mono' style='color:var(--gold)'>RI-G</td><td>Intraday monitor</td><td><span class='badge or'>active</span></td></tr><tr data-search='RI-HShariah complianceactive'><td class='mono' style='color:var(--gold)'>RI-H</td><td>Shariah compliance</td><td><span class='badge or'>active</span></td></tr><tr data-search='RI-IMacro regimeactive'><td class='mono' style='color:var(--gold)'>RI-I</td><td>Macro regime</td><td><span class='badge or'>active</span></td></tr><tr data-search='RI-JAlt datawaiting'><td class='mono' style='color:var(--gold)'>RI-J</td><td>Alt data</td><td><span class='badge gy'>waiting</span></td></tr><tr data-search='RI-KMarket intelactive'><td class='mono' style='color:var(--gold)'>RI-K</td><td>Market intel</td><td><span class='badge or'>active</span></td></tr></table>
         </div>
         <div class="section" data-search="layer L5">
           <h3>Layer L5</h3>
-          <table><tr data-search='IN-LSystems — feed health'><td class='mono' style='color:var(--gold)'>IN-L</td><td>Systems — feed health</td><td><span class='badge gn'>active</span></td></tr><tr data-search='IN-MOrchestrator — schedules'><td class='mono' style='color:var(--gold)'>IN-M</td><td>Orchestrator — schedules</td><td><span class='badge gn'>active</span></td></tr><tr data-search='IN-NNotification — Telegram'><td class='mono' style='color:var(--gold)'>IN-N</td><td>Notification — Telegram</td><td><span class='badge gn'>active</span></td></tr><tr data-search='IN-OAudit trail'><td class='mono' style='color:var(--gold)'>IN-O</td><td>Audit trail</td><td><span class='badge gn'>active</span></td></tr></table>
+          <table><tr data-search='IN-LSystems — feed healthactive'><td class='mono' style='color:var(--gold)'>IN-L</td><td>Systems — feed health</td><td><span class='badge or'>active</span></td></tr><tr data-search='IN-MOrchestrator — schedulesactive'><td class='mono' style='color:var(--gold)'>IN-M</td><td>Orchestrator — schedules</td><td><span class='badge or'>active</span></td></tr><tr data-search='IN-NNotification — Telegramactive'><td class='mono' style='color:var(--gold)'>IN-N</td><td>Notification — Telegram</td><td><span class='badge or'>active</span></td></tr><tr data-search='IN-OAudit trailactive'><td class='mono' style='color:var(--gold)'>IN-O</td><td>Audit trail</td><td><span class='badge or'>active</span></td></tr></table>
         </div>
         <div class="section" data-search="layer L6">
           <h3>Layer L6</h3>
-          <table><tr data-search='LM-PSelf-learning'><td class='mono' style='color:var(--gold)'>LM-P</td><td>Self-learning</td><td><span class='badge gn'>active</span></td></tr><tr data-search='LM-QPersistent memory'><td class='mono' style='color:var(--gold)'>LM-Q</td><td>Persistent memory</td><td><span class='badge gn'>active</span></td></tr></table>
+          <table><tr data-search='LM-PSelf-learningactive'><td class='mono' style='color:var(--gold)'>LM-P</td><td>Self-learning</td><td><span class='badge or'>active</span></td></tr><tr data-search='LM-QPersistent memoryactive'><td class='mono' style='color:var(--gold)'>LM-Q</td><td>Persistent memory</td><td><span class='badge or'>active</span></td></tr></table>
         </div>
         <div class="section" data-search="layer L7">
           <h3>Layer L7</h3>
-          <table><tr data-search='PR-RPerformance'><td class='mono' style='color:var(--gold)'>PR-R</td><td>Performance</td><td><span class='badge gn'>active</span></td></tr><tr data-search='PR-SInvestor relations'><td class='mono' style='color:var(--gold)'>PR-S</td><td>Investor relations</td><td><span class='badge gn'>active</span></td></tr></table>
+          <table><tr data-search='PR-RPerformanceactive'><td class='mono' style='color:var(--gold)'>PR-R</td><td>Performance</td><td><span class='badge or'>active</span></td></tr><tr data-search='PR-SInvestor relationswaiting'><td class='mono' style='color:var(--gold)'>PR-S</td><td>Investor relations</td><td><span class='badge gy'>waiting</span></td></tr></table>
         </div></div>
     <div id="panel-kpis" class="tab-panel">
       <div class="section">
-        <h3>🎯 KPI Scorecard (v7.0 §24, 14 KPIs)</h3>
+        <h3>🎯 KPI Scorecard (v7.0 §24)</h3>
         <table>
           <thead><tr><th>KPI</th><th>Current</th><th>Target</th><th>Status</th><th>Note</th></tr></thead>
-          <tbody><tr data-search='Annual ReturnpendingPaper not started'><td><b>Annual Return</b></td><td class='mono'>—</td><td class='muted'>≥3x / 10x asp</td><td><span class='badge gy'>pending</span></td><td class='muted'>Paper not started</td></tr><tr data-search='Sharpe (best portfolio)passDeflated under N=6'><td><b>Sharpe (best portfolio)</b></td><td class='mono'>2.61</td><td class='muted'>≥1.5</td><td><span class='badge gn'>pass</span></td><td class='muted'>Deflated under N=6</td></tr><tr data-search='Max DrawdownpendingPaper not started'><td><b>Max Drawdown</b></td><td class='mono'>—</td><td class='muted'>&lt;20%</td><td><span class='badge gy'>pending</span></td><td class='muted'>Paper not started</td></tr><tr data-search='Alpha vs S&amp;P 500pendingPaper not started'><td><b>Alpha vs S&amp;P 500</b></td><td class='mono'>—</td><td class='muted'>&gt;0</td><td><span class='badge gy'>pending</span></td><td class='muted'>Paper not started</td></tr><tr data-search='Win Rate ★★★★+pendingRolling 30 trades'><td><b>Win Rate ★★★★+</b></td><td class='mono'>—</td><td class='muted'>&gt;50%</td><td><span class='badge gy'>pending</span></td><td class='muted'>Rolling 30 trades</td></tr><tr data-search='Halal CompliancepassUniverses pre-screened'><td><b>Halal Compliance</b></td><td class='mono'>100%</td><td class='muted'>100%</td><td><span class='badge gn'>pass</span></td><td class='muted'>Universes pre-screened</td></tr><tr data-search='Max Eq PositionspassPaper, no positions'><td><b>Max Eq Positions</b></td><td class='mono'>0</td><td class='muted'>8</td><td><span class='badge gn'>pass</span></td><td class='muted'>Paper, no positions</td></tr><tr data-search='Max Crypto PositionspassPaper, no positions'><td><b>Max Crypto Positions</b></td><td class='mono'>0</td><td class='muted'>3</td><td><span class='badge gn'>pass</span></td><td class='muted'>Paper, no positions</td></tr><tr data-search='Crypto Allocationpass—'><td><b>Crypto Allocation</b></td><td class='mono'>0%</td><td class='muted'>≤10% NAV</td><td><span class='badge gn'>pass</span></td><td class='muted'>—</td></tr><tr data-search='BTC-SPY CorrelationpendingMonitored once positions open'><td><b>BTC-SPY Correlation</b></td><td class='mono'>—</td><td class='muted'>alert &gt;0.70</td><td><span class='badge gy'>pending</span></td><td class='muted'>Monitored once positions open</td></tr><tr data-search='Strategy PipelinewarnNeed MBV as 3rd'><td><b>Strategy Pipeline</b></td><td class='mono'>2</td><td class='muted'>≥3</td><td><span class='badge or'>warn</span></td><td class='muted'>Need MBV as 3rd</td></tr><tr data-search='Data UptimewarnUAE yf gap mitigated by TV cache'><td><b>Data Uptime</b></td><td class='mono'>~95%</td><td class='muted'>&gt;99.5%</td><td><span class='badge or'>warn</span></td><td class='muted'>UAE yf gap mitigated by TV cache</td></tr><tr data-search='Audit CoveragepassEvery run logs to audit_trail.md'><td><b>Audit Coverage</b></td><td class='mono'>100%</td><td class='muted'>100%</td><td><span class='badge gn'>pass</span></td><td class='muted'>Every run logs to audit_trail.md</td></tr><tr data-search='Notification LatencypassTelegram pushes immediate'><td><b>Notification Latency</b></td><td class='mono'>&lt;1s</td><td class='muted'>&lt;60s</td><td><span class='badge gn'>pass</span></td><td class='muted'>Telegram pushes immediate</td></tr></tbody>
+          <tbody><tr data-search='Annual ReturnpendingPaper accumulating'><td><b>Annual Return</b></td><td class='mono'>+0.00%</td><td class='muted'>≥3x / 10x asp</td><td><span class='badge gy'>pending</span></td><td class='muted'>Paper accumulating</td></tr><tr data-search='Sharpe (best portfolio)passDeflated under N=6'><td><b>Sharpe (best portfolio)</b></td><td class='mono'>2.61</td><td class='muted'>≥1.5</td><td><span class='badge gn'>pass</span></td><td class='muted'>Deflated under N=6</td></tr><tr data-search='Max DrawdownpassNo closed losing trades'><td><b>Max Drawdown</b></td><td class='mono'>0%</td><td class='muted'>&lt;20%</td><td><span class='badge gn'>pass</span></td><td class='muted'>No closed losing trades</td></tr><tr data-search='Alpha vs S&amp;P 500pendingTracking after paper accumulates'><td><b>Alpha vs S&amp;P 500</b></td><td class='mono'>—</td><td class='muted'>&gt;0</td><td><span class='badge gy'>pending</span></td><td class='muted'>Tracking after paper accumulates</td></tr><tr data-search='Win Rate ★★★★+pendingRolling 30 trades'><td><b>Win Rate ★★★★+</b></td><td class='mono'>—</td><td class='muted'>&gt;50%</td><td><span class='badge gy'>pending</span></td><td class='muted'>Rolling 30 trades</td></tr><tr data-search='Halal CompliancepassUniverses pre-screened'><td><b>Halal Compliance</b></td><td class='mono'>100%</td><td class='muted'>100%</td><td><span class='badge gn'>pass</span></td><td class='muted'>Universes pre-screened</td></tr><tr data-search='Max Eq PositionspassPaper-fwd state'><td><b>Max Eq Positions</b></td><td class='mono'>0</td><td class='muted'>8</td><td><span class='badge gn'>pass</span></td><td class='muted'>Paper-fwd state</td></tr><tr data-search='Max Crypto Positionspass—'><td><b>Max Crypto Positions</b></td><td class='mono'>0</td><td class='muted'>3</td><td><span class='badge gn'>pass</span></td><td class='muted'>—</td></tr><tr data-search='Crypto Allocationpass—'><td><b>Crypto Allocation</b></td><td class='mono'>0%</td><td class='muted'>≤10% NAV</td><td><span class='badge gn'>pass</span></td><td class='muted'>—</td></tr><tr data-search='BTC-SPY CorrelationpendingMonitored once positions open'><td><b>BTC-SPY Correlation</b></td><td class='mono'>—</td><td class='muted'>alert &gt;0.70</td><td><span class='badge gy'>pending</span></td><td class='muted'>Monitored once positions open</td></tr><tr data-search='Strategy PipelinewarnNeed MBV as 3rd'><td><b>Strategy Pipeline</b></td><td class='mono'>2</td><td class='muted'>≥3</td><td><span class='badge or'>warn</span></td><td class='muted'>Need MBV as 3rd</td></tr><tr data-search='Data UptimewarnUAE yf gap mitigated by TV cache'><td><b>Data Uptime</b></td><td class='mono'>~95%</td><td class='muted'>&gt;99.5%</td><td><span class='badge or'>warn</span></td><td class='muted'>UAE yf gap mitigated by TV cache</td></tr><tr data-search='Audit CoveragepassEvery run logs to audit_trail.md'><td><b>Audit Coverage</b></td><td class='mono'>100%</td><td class='muted'>100%</td><td><span class='badge gn'>pass</span></td><td class='muted'>Every run logs to audit_trail.md</td></tr><tr data-search='Notification LatencypassTelegram pushes immediate'><td><b>Notification Latency</b></td><td class='mono'>&lt;1s</td><td class='muted'>&lt;60s</td><td><span class='badge gn'>pass</span></td><td class='muted'>Telegram pushes immediate</td></tr></tbody>
         </table>
       </div>
     </div>
@@ -499,9 +750,9 @@ tr:last-child td { border-bottom: none; }
         <h3>🟢 Live Service Status</h3>
         <table>
           <thead><tr><th>Service</th><th>State</th><th>Detail</th></tr></thead>
-          <tbody><tr data-search='Engine (Python+yfinance)validation_*.json files present: 26'><td><span class='dot on'></span><b>Engine (Python+yfinance)</b></td><td><span class='badge gn'>online</span></td><td class='muted'>validation_*.json files present: 26</td></tr><tr data-search='TradingView MCPLast chart access via dashboard generator'><td><span class='dot on'></span><b>TradingView MCP</b></td><td><span class='badge gn'>online</span></td><td class='muted'>Last chart access via dashboard generator</td></tr><tr data-search='Telegram Bot (@AIV_Fund_Bot)pid=39368 · policy=allowlist · last log 2026-05-20 21:55 GST'><td><span class='dot on'></span><b>Telegram Bot (@AIV_Fund_Bot)</b></td><td><span class='badge gn'>online</span></td><td class='muted'>pid=39368 · policy=allowlist · last log 2026-05-20 21:55 GST</td></tr><tr data-search='GitHub Backuphttps://github.com/ahmedvipha-afk/aig-engine-state'><td><span class='dot on'></span><b>GitHub Backup</b></td><td><span class='badge gn'>online</span></td><td class='muted'>https://github.com/ahmedvipha-afk/aig-engine-state</td></tr><tr data-search='Paper-Forward DetectorWatch list: DY, EXPGY, PSX, ARW, ROL'><td><span class='dot on'></span><b>Paper-Forward Detector</b></td><td><span class='badge gn'>online</span></td><td class='muted'>Watch list: DY, EXPGY, PSX, ARW, ROL</td></tr><tr data-search='Cloud Routines4 active / 4 total'><td><span class='dot on'></span><b>Cloud Routines</b></td><td><span class='badge gn'>online</span></td><td class='muted'>4 active / 4 total</td></tr><tr data-search='Universe FilesUS 1603 · UAE 64 · Crypto 150'><td><span class='dot on'></span><b>Universe Files</b></td><td><span class='badge gn'>online</span></td><td class='muted'>US 1603 · UAE 64 · Crypto 150</td></tr></tbody>
+          <tbody><tr data-search='Engine (Python+yfinance)validation_*.json files present: 26'><td><span class='dot on'></span><b>Engine (Python+yfinance)</b></td><td><span class='badge gn'>online</span></td><td class='muted'>validation_*.json files present: 26</td></tr><tr data-search='TradingView MCPLast successful chart access via dashboard generator'><td><span class='dot on'></span><b>TradingView MCP</b></td><td><span class='badge gn'>online</span></td><td class='muted'>Last successful chart access via dashboard generator</td></tr><tr data-search='Telegram Bot (@AIV_Fund_Bot)pid=39368 · policy=allowlist · last log 2026-05-20 21:55 GST'><td><span class='dot on'></span><b>Telegram Bot (@AIV_Fund_Bot)</b></td><td><span class='badge gn'>online</span></td><td class='muted'>pid=39368 · policy=allowlist · last log 2026-05-20 21:55 GST</td></tr><tr data-search='GitHub Backuphttps://github.com/ahmedvipha-afk/aig-engine-state'><td><span class='dot on'></span><b>GitHub Backup</b></td><td><span class='badge gn'>online</span></td><td class='muted'>https://github.com/ahmedvipha-afk/aig-engine-state</td></tr><tr data-search='Paper-Forward DetectorWatch list: DY, EXPGY, PSX, ARW, ROL'><td><span class='dot on'></span><b>Paper-Forward Detector</b></td><td><span class='badge gn'>online</span></td><td class='muted'>Watch list: DY, EXPGY, PSX, ARW, ROL</td></tr><tr data-search='Cloud Routines4 active / 4 total'><td><span class='dot on'></span><b>Cloud Routines</b></td><td><span class='badge gn'>online</span></td><td class='muted'>4 active / 4 total</td></tr><tr data-search='Universe FilesUS 1603 · UAE 64 · Crypto 150'><td><span class='dot on'></span><b>Universe Files</b></td><td><span class='badge gn'>online</span></td><td class='muted'>US 1603 · UAE 64 · Crypto 150</td></tr></tbody>
         </table>
-        <div class="muted" style="margin-top:8px;">Status is sampled at dashboard generation time. The sprint routine regenerates every 2h.</div>
+        <div class="muted" style="margin-top:8px;">Sampled at dashboard generation. Sprint routine regenerates every 2h.</div>
       </div>
     </div>
     <div id="panel-paper" class="tab-panel">
@@ -569,7 +820,7 @@ tr:last-child td { border-bottom: none; }
 
         <div class="section" data-search="correlation correlations btc spy">
           <h3>🔗 Correlation</h3>
-          <div class="muted">BTC-SPY correlation will activate when paper positions exist. Alert threshold &gt;0.70 (per v7.0 §10.1). Tier 1 at &gt;0.85.</div>
+          <div class="muted">Activates when paper positions exist. Alert &gt;0.70 (v7.0 §10.1). Tier 1 &gt;0.85.</div>
           <table style="margin-top:10px;">
             <tr><td>BTC vs SPY</td><td class="muted">—</td><td><span class="badge gy">pending</span></td></tr>
             <tr><td>Crypto vs US Eq</td><td class="muted">—</td><td><span class="badge gy">pending</span></td></tr>
@@ -595,21 +846,21 @@ tr:last-child td { border-bottom: none; }
     <div id="panel-telegram" class="tab-panel">
       <div class="section">
         <h3>📱 Telegram send log (latest 100)</h3>
-        <div class="muted">No Telegram sends logged. Helper logs to telegram_sent_log.json on every send.</div>
+        <div class="muted">No Telegram sends logged yet. Helper writes to telegram_sent_log.json on every send (sends prior to this patch are not captured).</div>
       </div>
     </div>
     <div id="panel-commits" class="tab-panel">
       <div class="section">
-        <h3>📜 Commit timeline (last 30)</h3>
-        <div class='commit-row' data-search='b0d16c7Sprint 2026-05-21_12-19: fire â€” passive wait (D-004); detector clean on top-5, Items 5+6 still pending per audit sequencing'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/b0d16c7d54fb084d20aea15beb2cb36be5b742e6" target="_blank">b0d16c7</a></div><div class='muted mono'>2026-05-21 12:24</div><div>Sprint 2026-05-21_12-19: fire â€” passive wait (D-004); detector clean on top-5, Items 5+6 still pending per audit sequencing</div></div><div class='commit-row' data-search='72b2505Add .nojekyll to bypass Jekyll processing on GitHub Pages (we serve raw HTML, not Jekyll site)'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/72b25054f642aef1a626eb2f0651fbe3bf14684b" target="_blank">72b2505</a></div><div class='muted mono'>2026-05-21 12:00</div><div>Add .nojekyll to bypass Jekyll processing on GitHub Pages (we serve raw HTML, not Jekyll site)</div></div><div class='commit-row' data-search='aabf3b8GitHub Pages enabled for browser-rendered dashboard. URL: https://ahmedvipha-afk.github.io/aig-engine-state/dashboard.html (raw URL serves text/plain - source code; Pages serves text/html - rendered).'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/aabf3b89c2358f5f9e5e3b74d584aba49c75a15c" target="_blank">aabf3b8</a></div><div class='muted mono'>2026-05-21 12:00</div><div>GitHub Pages enabled for browser-rendered dashboard. URL: https://ahmedvipha-afk.github.io/aig-engine-state/dashboard.html (raw URL serves text/plain - source code; Pages serves text/html - rendered).</div></div><div class='commit-row' data-search='48a0f6dDashboard v2: 12 tabs (Overview, Markets, Agents, KPIs, Live Status, Paper P&amp;L, Risk, Telegram, Commits, History, Glossary, CEO). Header: global search + alert bell with unread count + NAV + Mode pill. Overview adds: Signal Pipeline flow, Countdown timers, Decision Log, Circuit Breakers. Risk: VIX gauge + drawdown + correlation. Paper P&amp;L: NAV chart + open/closed positions. Telegram tab logs every send. Vanilla JS - self-contained, no external deps. Updated by every routine fire.'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/48a0f6d6ba5ea773108a1cb4224e8560f10d4fb4" target="_blank">48a0f6d</a></div><div class='muted mono'>2026-05-21 11:47</div><div>Dashboard v2: 12 tabs (Overview, Markets, Agents, KPIs, Live Status, Paper P&amp;L, Risk, Telegram, Commits, History, Glossary, CEO). Header: global search + alert bell with unread count + NAV + Mode pill. Overview adds: Signal Pipeline flow, Countdown timers, Decision Log, Circuit Breakers. Risk: VIX gauge + drawdown + correlation. Paper P&amp;L: NAV chart + open/closed positions. Telegram tab logs every send. Vanilla JS - self-contained, no external deps. Updated by every routine fire.</div></div><div class='commit-row' data-search='5253fd8Sprint 2026-05-21_11-37: dashboard refresh post items 4+8 close'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/5253fd8600a9713380bb616bdd4e5959f66a99d1" target="_blank">5253fd8</a></div><div class='muted mono'>2026-05-21 11:37</div><div>Sprint 2026-05-21_11-37: dashboard refresh post items 4+8 close</div></div><div class='commit-row' data-search='c44e7c2Sprint 2026-05-21_11-37: items 4 + 8 â€” CEO logs no-edge crypto verdict; honest-FAIL acceptance closes Item 8'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/c44e7c24fa1d90d4e5105218c734e7f15b97f9af" target="_blank">c44e7c2</a></div><div class='muted mono'>2026-05-21 11:37</div><div>Sprint 2026-05-21_11-37: items 4 + 8 â€” CEO logs no-edge crypto verdict; honest-FAIL acceptance closes Item 8</div></div><div class='commit-row' data-search='c59b1f2Sprint 2026-05-21_11-32: item 3 â€” UAE +4 (ADAVIATION/ADSB/ADNH/BILDCO ADX mid-caps) â†’ 64 retrievable, tracker reconciled, Items 3 + 7 â†’ DONE'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/c59b1f2a7eef8e4e751ff00f58b35e0d88d9d526" target="_blank">c59b1f2</a></div><div class='muted mono'>2026-05-21 11:32</div><div>Sprint 2026-05-21_11-32: item 3 â€” UAE +4 (ADAVIATION/ADSB/ADNH/BILDCO ADX mid-caps) â†’ 64 retrievable, tracker reconciled, Items 3 + 7 â†’ DONE</div></div><div class='commit-row' data-search='aab6458Sprint fire 1 complete: UAE v5 validation on 60-ticker universe (45 valid, 54 trades, PORTFOLIO_FAIL as expected at this universe size). Items 1,2,3,7 done; 4,5,6,8 queued for next fires.'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/aab64589c5d91244529553282ae672247b508450" target="_blank">aab6458</a></div><div class='muted mono'>2026-05-21 10:14</div><div>Sprint fire 1 complete: UAE v5 validation on 60-ticker universe (45 valid, 54 trades, PORTFOLIO_FAIL as expected at this universe size). Items 1,2,3,7 done; 4,5,6,8 queued for next fires.</div></div><div class='commit-row' data-search='d33d460Sprint Item 3 + 7 DONE: UAE universe 44 -&gt; 60 retrievable via TV-MCP cache (16 new tickers). Coverage targets hit on all 3 markets (US 1027, UAE 60, Crypto 140). Item 4 (crypto gate) and 5 (MBV) next.'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/d33d460c3c0e6070c9b0c0132b6d82b907ac6907" target="_blank">d33d460</a></div><div class='muted mono'>2026-05-21 10:13</div><div>Sprint Item 3 + 7 DONE: UAE universe 44 -&gt; 60 retrievable via TV-MCP cache (16 new tickers). Coverage targets hit on all 3 markets (US 1027, UAE 60, Crypto 140). Item 4 (crypto gate) and 5 (MBV) next.</div></div><div class='commit-row' data-search='5502656Sprint 2026-05-21_10-07: item 2 â€” DONE (Python detector deployed, Telegram confirmation sent, Pine slot deferred per routine)'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/5502656bec63ba5ef858778ac88ff8628aa863f6" target="_blank">5502656</a></div><div class='muted mono'>2026-05-21 10:07</div><div>Sprint 2026-05-21_10-07: item 2 â€” DONE (Python detector deployed, Telegram confirmation sent, Pine slot deferred per routine)</div></div><div class='commit-row' data-search='65e4910Sprint Item 3 advance: UAE +6 tickers (AJMANBANK, METHAQ, ORIENTTKAFUL, TAKAFUL_EM, TKFL, UNIONCOOP). Universe 44 -&gt; 50. Need 10 more to hit 60. Validation re-run launched.'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/65e491049e0f1022efe3857427a51910adb5f872" target="_blank">65e4910</a></div><div class='muted mono'>2026-05-21 10:05</div><div>Sprint Item 3 advance: UAE +6 tickers (AJMANBANK, METHAQ, ORIENTTKAFUL, TAKAFUL_EM, TKFL, UNIONCOOP). Universe 44 -&gt; 50. Need 10 more to hit 60. Validation re-run launched.</div></div><div class='commit-row' data-search='01ec282Sprint Item 2 DONE: US Divergence paper-forward LIVE via Python detector + Telegram alerts. TV slot deferred (DOM friction). Detector watches DY/EXPGY/PSX/ARW/ROL, idempotent, fires every 2h via sprint routine. Item 3 (UAE +16 tickers) next.'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/01ec28239de8f22967e3218a7957848e8268226a" target="_blank">01ec282</a></div><div class='muted mono'>2026-05-21 10:02</div><div>Sprint Item 2 DONE: US Divergence paper-forward LIVE via Python detector + Telegram alerts. TV slot deferred (DOM friction). Detector watches DY/EXPGY/PSX/ARW/ROL, idempotent, fires every 2h via sprint routine. Item 3 (UAE +16 tickers) next.</div></div><div class='commit-row' data-search='e4fbf97Add URLS_FOR_COWORK.md - canonical raw endpoints + cache-bust + commit-pinned URL pattern for Cowork ingestion'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/e4fbf97ffb4d6c9eaa4836190eabe0ea85d5b9a5" target="_blank">e4fbf97</a></div><div class='muted mono'>2026-05-21 02:27</div><div>Add URLS_FOR_COWORK.md - canonical raw endpoints + cache-bust + commit-pinned URL pattern for Cowork ingestion</div></div><div class='commit-row' data-search='4632dc5Track previously-untracked files: auditor_report.md, dashboard.html, reports/, data_cache/. Update commit_session.ps1 allowlist.'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/4632dc5b09421d9d6acb21d6125efb80df3a8d9c" target="_blank">4632dc5</a></div><div class='muted mono'>2026-05-21 02:25</div><div>Track previously-untracked files: auditor_report.md, dashboard.html, reports/, data_cache/. Update commit_session.ps1 allowlist.</div></div><div class='commit-row' data-search='840ae9cAudit: BLOCKING 1 closed - US Divergence re-confirmed PORTFOLIO_CLEARED under N=6 haircut (dSharpe 2.606, raw 3.08). Path 1 deployment unblocked.'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/840ae9c7c62682a858417a456c6c1b8b20d14ed6" target="_blank">840ae9c</a></div><div class='muted mono'>2026-05-21 02:11</div><div>Audit: BLOCKING 1 closed - US Divergence re-confirmed PORTFOLIO_CLEARED under N=6 haircut (dSharpe 2.606, raw 3.08). Path 1 deployment unblocked.</div></div><div class='commit-row' data-search='ac99474Audit response: BLOCKING 1 (n_trials_registered=6), BLOCKING 5 (register reconciled, EMA-200 TF-agnostic + Trial Budget), BLOCKING 2 (Path 3 withdrawn), WARNING 3 (edge claim restated). Hash daafa5c1b0b18de7.'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/ac99474545484db2db7f77e928275b8c5c4b2658" target="_blank">ac99474</a></div><div class='muted mono'>2026-05-21 01:42</div><div>Audit response: BLOCKING 1 (n_trials_registered=6), BLOCKING 5 (register reconciled, EMA-200 TF-agnostic + Trial Budget), BLOCKING 2 (Path 3 withdrawn), WARNING 3 (edge claim restated). Hash daafa5c1b0b18de7.</div></div><div class='commit-row' data-search='c45515cCockpit live: dashboard + Telegram daily/weekly/monthly senders + monthly routine + Cloud Routines wired'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/c45515c273d0824fa47c509679da67e8610cb8d4" target="_blank">c45515c</a></div><div class='muted mono'>2026-05-21 01:24</div><div>Cockpit live: dashboard + Telegram daily/weekly/monthly senders + monthly routine + Cloud Routines wired</div></div><div class='commit-row' data-search='70dee37Repo visibility: private -&gt; PUBLIC for Cowork raw-URL read access. Audit clean: zero secret-shaped tracked content.'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/70dee377bab292ac7d6c7bde2b719478e5e3cc05" target="_blank">70dee37</a></div><div class='muted mono'>2026-05-21 01:18</div><div>Repo visibility: private -&gt; PUBLIC for Cowork raw-URL read access. Audit clean: zero secret-shaped tracked content.</div></div><div class='commit-row' data-search='1222c38Session 4: UAE TV-MCP cache (23 ADX tickers), crypto 150 universe, market-aware integrity gates'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/1222c3854a81cba7d235506405942408efa8c393" target="_blank">1222c38</a></div><div class='muted mono'>2026-05-20 22:44</div><div>Session 4: UAE TV-MCP cache (23 ADX tickers), crypto 150 universe, market-aware integrity gates</div></div><div class='commit-row' data-search='d8f4948Telegram bot persistence: launcher script + Windows scheduled task (login + 15min health check)'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/d8f4948cba026ed20e5535c7baa5639a4f937ee6" target="_blank">d8f4948</a></div><div class='muted mono'>2026-05-20 21:57</div><div>Telegram bot persistence: launcher script + Windows scheduled task (login + 15min health check)</div></div><div class='commit-row' data-search='be7408bceo_brain: document GitHub backup workflow'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/be7408b40c22adf9f170ff0836fa8ab36c1be43d" target="_blank">be7408b</a></div><div class='muted mono'>2026-05-20 21:44</div><div>ceo_brain: document GitHub backup workflow</div></div><div class='commit-row' data-search='4cac56cWire GitHub backup into Cloud Routines + auto-load GH_TOKEN'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/4cac56cd9bcb2a58497b66ce8b95c017c504d784" target="_blank">4cac56c</a></div><div class='muted mono'>2026-05-20 21:43</div><div>Wire GitHub backup into Cloud Routines + auto-load GH_TOKEN</div></div><div class='commit-row' data-search='b88dff8Initial commit: aig_engine state, sessions 1-3 (US Divergence portfolio cleared)'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/b88dff8dc50e8893d4b647a78190e26d440b9d79" target="_blank">b88dff8</a></div><div class='muted mono'>2026-05-20 21:36</div><div>Initial commit: aig_engine state, sessions 1-3 (US Divergence portfolio cleared)</div></div>
+        <h3>📜 Commit timeline (last 60)</h3>
+        <div class='commit-row' data-search='57977ddSprint 2026-05-21_12-19: dashboard refresh post D-004 passive-wait log'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/57977dd83598cb4a5bae186170e704959b067078" target="_blank">57977dd</a></div><div class='muted mono'>2026-05-21 12:25</div><div>Sprint 2026-05-21_12-19: dashboard refresh post D-004 passive-wait log</div></div><div class='commit-row' data-search='b0d16c7Sprint 2026-05-21_12-19: fire â€” passive wait (D-004); detector clean on top-5, Items 5+6 still pending per audit sequencing'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/b0d16c7d54fb084d20aea15beb2cb36be5b742e6" target="_blank">b0d16c7</a></div><div class='muted mono'>2026-05-21 12:24</div><div>Sprint 2026-05-21_12-19: fire â€” passive wait (D-004); detector clean on top-5, Items 5+6 still pending per audit sequencing</div></div><div class='commit-row' data-search='72b2505Add .nojekyll to bypass Jekyll processing on GitHub Pages (we serve raw HTML, not Jekyll site)'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/72b25054f642aef1a626eb2f0651fbe3bf14684b" target="_blank">72b2505</a></div><div class='muted mono'>2026-05-21 12:00</div><div>Add .nojekyll to bypass Jekyll processing on GitHub Pages (we serve raw HTML, not Jekyll site)</div></div><div class='commit-row' data-search='aabf3b8GitHub Pages enabled for browser-rendered dashboard. URL: https://ahmedvipha-afk.github.io/aig-engine-state/dashboard.html (raw URL serves text/plain - source code; Pages serves text/html - rendered).'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/aabf3b89c2358f5f9e5e3b74d584aba49c75a15c" target="_blank">aabf3b8</a></div><div class='muted mono'>2026-05-21 12:00</div><div>GitHub Pages enabled for browser-rendered dashboard. URL: https://ahmedvipha-afk.github.io/aig-engine-state/dashboard.html (raw URL serves text/plain - source code; Pages serves text/html - rendered).</div></div><div class='commit-row' data-search='48a0f6dDashboard v2: 12 tabs (Overview, Markets, Agents, KPIs, Live Status, Paper P&amp;L, Risk, Telegram, Commits, History, Glossary, CEO). Header: global search + alert bell with unread count + NAV + Mode pill. Overview adds: Signal Pipeline flow, Countdown timers, Decision Log, Circuit Breakers. Risk: VIX gauge + drawdown + correlation. Paper P&amp;L: NAV chart + open/closed positions. Telegram tab logs every send. Vanilla JS - self-contained, no external deps. Updated by every routine fire.'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/48a0f6d6ba5ea773108a1cb4224e8560f10d4fb4" target="_blank">48a0f6d</a></div><div class='muted mono'>2026-05-21 11:47</div><div>Dashboard v2: 12 tabs (Overview, Markets, Agents, KPIs, Live Status, Paper P&amp;L, Risk, Telegram, Commits, History, Glossary, CEO). Header: global search + alert bell with unread count + NAV + Mode pill. Overview adds: Signal Pipeline flow, Countdown timers, Decision Log, Circuit Breakers. Risk: VIX gauge + drawdown + correlation. Paper P&amp;L: NAV chart + open/closed positions. Telegram tab logs every send. Vanilla JS - self-contained, no external deps. Updated by every routine fire.</div></div><div class='commit-row' data-search='5253fd8Sprint 2026-05-21_11-37: dashboard refresh post items 4+8 close'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/5253fd8600a9713380bb616bdd4e5959f66a99d1" target="_blank">5253fd8</a></div><div class='muted mono'>2026-05-21 11:37</div><div>Sprint 2026-05-21_11-37: dashboard refresh post items 4+8 close</div></div><div class='commit-row' data-search='c44e7c2Sprint 2026-05-21_11-37: items 4 + 8 â€” CEO logs no-edge crypto verdict; honest-FAIL acceptance closes Item 8'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/c44e7c24fa1d90d4e5105218c734e7f15b97f9af" target="_blank">c44e7c2</a></div><div class='muted mono'>2026-05-21 11:37</div><div>Sprint 2026-05-21_11-37: items 4 + 8 â€” CEO logs no-edge crypto verdict; honest-FAIL acceptance closes Item 8</div></div><div class='commit-row' data-search='c59b1f2Sprint 2026-05-21_11-32: item 3 â€” UAE +4 (ADAVIATION/ADSB/ADNH/BILDCO ADX mid-caps) â†’ 64 retrievable, tracker reconciled, Items 3 + 7 â†’ DONE'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/c59b1f2a7eef8e4e751ff00f58b35e0d88d9d526" target="_blank">c59b1f2</a></div><div class='muted mono'>2026-05-21 11:32</div><div>Sprint 2026-05-21_11-32: item 3 â€” UAE +4 (ADAVIATION/ADSB/ADNH/BILDCO ADX mid-caps) â†’ 64 retrievable, tracker reconciled, Items 3 + 7 â†’ DONE</div></div><div class='commit-row' data-search='aab6458Sprint fire 1 complete: UAE v5 validation on 60-ticker universe (45 valid, 54 trades, PORTFOLIO_FAIL as expected at this universe size). Items 1,2,3,7 done; 4,5,6,8 queued for next fires.'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/aab64589c5d91244529553282ae672247b508450" target="_blank">aab6458</a></div><div class='muted mono'>2026-05-21 10:14</div><div>Sprint fire 1 complete: UAE v5 validation on 60-ticker universe (45 valid, 54 trades, PORTFOLIO_FAIL as expected at this universe size). Items 1,2,3,7 done; 4,5,6,8 queued for next fires.</div></div><div class='commit-row' data-search='d33d460Sprint Item 3 + 7 DONE: UAE universe 44 -&gt; 60 retrievable via TV-MCP cache (16 new tickers). Coverage targets hit on all 3 markets (US 1027, UAE 60, Crypto 140). Item 4 (crypto gate) and 5 (MBV) next.'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/d33d460c3c0e6070c9b0c0132b6d82b907ac6907" target="_blank">d33d460</a></div><div class='muted mono'>2026-05-21 10:13</div><div>Sprint Item 3 + 7 DONE: UAE universe 44 -&gt; 60 retrievable via TV-MCP cache (16 new tickers). Coverage targets hit on all 3 markets (US 1027, UAE 60, Crypto 140). Item 4 (crypto gate) and 5 (MBV) next.</div></div><div class='commit-row' data-search='5502656Sprint 2026-05-21_10-07: item 2 â€” DONE (Python detector deployed, Telegram confirmation sent, Pine slot deferred per routine)'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/5502656bec63ba5ef858778ac88ff8628aa863f6" target="_blank">5502656</a></div><div class='muted mono'>2026-05-21 10:07</div><div>Sprint 2026-05-21_10-07: item 2 â€” DONE (Python detector deployed, Telegram confirmation sent, Pine slot deferred per routine)</div></div><div class='commit-row' data-search='65e4910Sprint Item 3 advance: UAE +6 tickers (AJMANBANK, METHAQ, ORIENTTKAFUL, TAKAFUL_EM, TKFL, UNIONCOOP). Universe 44 -&gt; 50. Need 10 more to hit 60. Validation re-run launched.'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/65e491049e0f1022efe3857427a51910adb5f872" target="_blank">65e4910</a></div><div class='muted mono'>2026-05-21 10:05</div><div>Sprint Item 3 advance: UAE +6 tickers (AJMANBANK, METHAQ, ORIENTTKAFUL, TAKAFUL_EM, TKFL, UNIONCOOP). Universe 44 -&gt; 50. Need 10 more to hit 60. Validation re-run launched.</div></div><div class='commit-row' data-search='01ec282Sprint Item 2 DONE: US Divergence paper-forward LIVE via Python detector + Telegram alerts. TV slot deferred (DOM friction). Detector watches DY/EXPGY/PSX/ARW/ROL, idempotent, fires every 2h via sprint routine. Item 3 (UAE +16 tickers) next.'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/01ec28239de8f22967e3218a7957848e8268226a" target="_blank">01ec282</a></div><div class='muted mono'>2026-05-21 10:02</div><div>Sprint Item 2 DONE: US Divergence paper-forward LIVE via Python detector + Telegram alerts. TV slot deferred (DOM friction). Detector watches DY/EXPGY/PSX/ARW/ROL, idempotent, fires every 2h via sprint routine. Item 3 (UAE +16 tickers) next.</div></div><div class='commit-row' data-search='e4fbf97Add URLS_FOR_COWORK.md - canonical raw endpoints + cache-bust + commit-pinned URL pattern for Cowork ingestion'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/e4fbf97ffb4d6c9eaa4836190eabe0ea85d5b9a5" target="_blank">e4fbf97</a></div><div class='muted mono'>2026-05-21 02:27</div><div>Add URLS_FOR_COWORK.md - canonical raw endpoints + cache-bust + commit-pinned URL pattern for Cowork ingestion</div></div><div class='commit-row' data-search='4632dc5Track previously-untracked files: auditor_report.md, dashboard.html, reports/, data_cache/. Update commit_session.ps1 allowlist.'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/4632dc5b09421d9d6acb21d6125efb80df3a8d9c" target="_blank">4632dc5</a></div><div class='muted mono'>2026-05-21 02:25</div><div>Track previously-untracked files: auditor_report.md, dashboard.html, reports/, data_cache/. Update commit_session.ps1 allowlist.</div></div><div class='commit-row' data-search='840ae9cAudit: BLOCKING 1 closed - US Divergence re-confirmed PORTFOLIO_CLEARED under N=6 haircut (dSharpe 2.606, raw 3.08). Path 1 deployment unblocked.'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/840ae9c7c62682a858417a456c6c1b8b20d14ed6" target="_blank">840ae9c</a></div><div class='muted mono'>2026-05-21 02:11</div><div>Audit: BLOCKING 1 closed - US Divergence re-confirmed PORTFOLIO_CLEARED under N=6 haircut (dSharpe 2.606, raw 3.08). Path 1 deployment unblocked.</div></div><div class='commit-row' data-search='ac99474Audit response: BLOCKING 1 (n_trials_registered=6), BLOCKING 5 (register reconciled, EMA-200 TF-agnostic + Trial Budget), BLOCKING 2 (Path 3 withdrawn), WARNING 3 (edge claim restated). Hash daafa5c1b0b18de7.'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/ac99474545484db2db7f77e928275b8c5c4b2658" target="_blank">ac99474</a></div><div class='muted mono'>2026-05-21 01:42</div><div>Audit response: BLOCKING 1 (n_trials_registered=6), BLOCKING 5 (register reconciled, EMA-200 TF-agnostic + Trial Budget), BLOCKING 2 (Path 3 withdrawn), WARNING 3 (edge claim restated). Hash daafa5c1b0b18de7.</div></div><div class='commit-row' data-search='c45515cCockpit live: dashboard + Telegram daily/weekly/monthly senders + monthly routine + Cloud Routines wired'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/c45515c273d0824fa47c509679da67e8610cb8d4" target="_blank">c45515c</a></div><div class='muted mono'>2026-05-21 01:24</div><div>Cockpit live: dashboard + Telegram daily/weekly/monthly senders + monthly routine + Cloud Routines wired</div></div><div class='commit-row' data-search='70dee37Repo visibility: private -&gt; PUBLIC for Cowork raw-URL read access. Audit clean: zero secret-shaped tracked content.'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/70dee377bab292ac7d6c7bde2b719478e5e3cc05" target="_blank">70dee37</a></div><div class='muted mono'>2026-05-21 01:18</div><div>Repo visibility: private -&gt; PUBLIC for Cowork raw-URL read access. Audit clean: zero secret-shaped tracked content.</div></div><div class='commit-row' data-search='1222c38Session 4: UAE TV-MCP cache (23 ADX tickers), crypto 150 universe, market-aware integrity gates'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/1222c3854a81cba7d235506405942408efa8c393" target="_blank">1222c38</a></div><div class='muted mono'>2026-05-20 22:44</div><div>Session 4: UAE TV-MCP cache (23 ADX tickers), crypto 150 universe, market-aware integrity gates</div></div><div class='commit-row' data-search='d8f4948Telegram bot persistence: launcher script + Windows scheduled task (login + 15min health check)'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/d8f4948cba026ed20e5535c7baa5639a4f937ee6" target="_blank">d8f4948</a></div><div class='muted mono'>2026-05-20 21:57</div><div>Telegram bot persistence: launcher script + Windows scheduled task (login + 15min health check)</div></div><div class='commit-row' data-search='be7408bceo_brain: document GitHub backup workflow'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/be7408b40c22adf9f170ff0836fa8ab36c1be43d" target="_blank">be7408b</a></div><div class='muted mono'>2026-05-20 21:44</div><div>ceo_brain: document GitHub backup workflow</div></div><div class='commit-row' data-search='4cac56cWire GitHub backup into Cloud Routines + auto-load GH_TOKEN'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/4cac56cd9bcb2a58497b66ce8b95c017c504d784" target="_blank">4cac56c</a></div><div class='muted mono'>2026-05-20 21:43</div><div>Wire GitHub backup into Cloud Routines + auto-load GH_TOKEN</div></div><div class='commit-row' data-search='b88dff8Initial commit: aig_engine state, sessions 1-3 (US Divergence portfolio cleared)'><div class='sha'><a href="https://github.com/ahmedvipha-afk/aig-engine-state/commit/b88dff8dc50e8893d4b647a78190e26d440b9d79" target="_blank">b88dff8</a></div><div class='muted mono'>2026-05-20 21:36</div><div>Initial commit: aig_engine state, sessions 1-3 (US Divergence portfolio cleared)</div></div>
         <div class="muted" style="margin-top:10px;">Remote: <a href="https://github.com/ahmedvipha-afk/aig-engine-state" target="_blank">https://github.com/ahmedvipha-afk/aig-engine-state</a></div>
       </div>
     </div>
     <div id="panel-history" class="tab-panel">
       <div class="section">
-        <h3>📜 Session History</h3>
+        <h3>📜 Session History (auto-extracted)</h3>
         <input id="history-filter" placeholder="Filter history…" class="search-box" style="width:100%; margin-bottom:12px;">
-        <div class='history-row' data-search='May 20 · S1 Ingested v7.0 docs Connected TV MCP Built strategy modules US top-30: 0/30 (yfinance 1H too short) Created ceo_brain.md'><div class='date'>May 20 · S1</div><ul><li>Ingested v7.0 docs</li><li>Connected TV MCP</li><li>Built strategy modules</li><li>US top-30: 0/30 (yfinance 1H too short)</li><li>Created ceo_brain.md</li></ul></div><div class='history-row' data-search='May 20 · S2 Authoritative 1,603-ticker US extracted Portfolio-level gate built TV Strategy Tester: 3 CLEAN_EDGE Cloud Routines + Telegram configured Weekly + Monthly reports delivered'><div class='date'>May 20 · S2</div><ul><li>Authoritative 1,603-ticker US extracted</li><li>Portfolio-level gate built</li><li>TV Strategy Tester: 3 CLEAN_EDGE</li><li>Cloud Routines + Telegram configured</li><li>Weekly + Monthly reports delivered</li></ul></div><div class='history-row' data-search='May 20 · S3 US Divergence: PORTFOLIO_CLEARED (dSharpe 2.72 → corrected 2.61 under N=6) UAE 44 tickers wired via TV-MCP cache Crypto 140 valid, gate FAIL First validated strategy ever'><div class='date'>May 20 · S3</div><ul><li>US Divergence: PORTFOLIO_CLEARED (dSharpe 2.72 → corrected 2.61 under N=6)</li><li>UAE 44 tickers wired via TV-MCP cache</li><li>Crypto 140 valid, gate FAIL</li><li>First validated strategy ever</li></ul></div><div class='history-row' data-search='May 21 · S4 Audit 3 BLOCKINGs resolved Paper-forward deployed (top 5) UAE 44 → 60 retrievable Coverage targets all hit Mode 1 Sprint activated (2h cadence) GitHub auto-commit wired Sprint Fire 1: 4/8 done'><div class='date'>May 21 · S4</div><ul><li>Audit 3 BLOCKINGs resolved</li><li>Paper-forward deployed (top 5)</li><li>UAE 44 → 60 retrievable</li><li>Coverage targets all hit</li><li>Mode 1 Sprint activated (2h cadence)</li><li>GitHub auto-commit wired</li><li>Sprint Fire 1: 4/8 done</li></ul></div>
+        <div class='history-row' data-search='Session 5 Artifacts `config.py` — `n_trials_registered=6` (was `n_strategies_registered=2`) `aig/validation_gate.py` — `n_trials` parameter; back-compat alias `strategy_register.md` — Trial Budget table; EMA-200 timeframe-agnostic; `validation_divergence_1d_full_haircut6.json` — pending background `b384nkuu9` `auditor_report.md` — incoming Cowork audit (read-only)'><div class='date'>Session 5 Artifacts</div><ul><li>`config.py` — `n_trials_registered=6` (was `n_strategies_registered=2`)</li><li>`aig/validation_gate.py` — `n_trials` parameter; back-compat alias</li><li>`strategy_register.md` — Trial Budget table; EMA-200 timeframe-agnostic;</li><li>`validation_divergence_1d_full_haircut6.json` — pending background `b384nkuu9`</li><li>`auditor_report.md` — incoming Cowork audit (read-only)</li></ul></div><div class='history-row' data-search='2026-05-21 Sprint 2026-05-21_12-19: dashboard refresh post D-004 passive-wait log Sprint 2026-05-21_12-19: fire â€” passive wait (D-004); detector clean on top-5, Items 5+6 still pending per audit sequencing Add .nojekyll to bypass Jekyll processing on GitHub Pages (we serve raw HTML, not Jekyll site) GitHub Pages enabled for browser-rendered dashboard. URL: https://ahmedvipha-afk.github.io/aig-engine-state/dashboard.html (raw URL serves text/plain - source code; Pages serves text/html - rendered). Dashboard v2: 12 tabs (Overview, Markets, Agents, KPIs, Live Status, Paper P&amp;L, Risk, Telegram, Commits, History, Glossary, CEO). Header: global search + alert bell with unread count + NAV + Mode pill. Overview adds: Signal Pipeline flow, Countdown timers, Decision Log, Circuit Breakers. Risk: VIX gauge + drawdown + correlation. Paper P&amp;L: NAV chart + open/closed positions. Telegram tab logs every send. Vanilla JS - self-contained, no external deps. Updated by every routine fire. Sprint 2026-05-21_11-37: dashboard refresh post items 4+8 close Sprint 2026-05-21_11-37: items 4 + 8 â€” CEO logs no-edge crypto verdict; honest-FAIL acceptance closes Item 8 Sprint 2026-05-21_11-32: item 3 â€” UAE +4 (ADAVIATION/ADSB/ADNH/BILDCO ADX mid-caps) â†’ 64 retrievable, tracker reconciled, Items 3 + 7 â†’ DONE Sprint fire 1 complete: UAE v5 validation on 60-ticker universe (45 valid, 54 trades, PORTFOLIO_FAIL as expected at this universe size). Items 1,2,3,7 done; 4,5,6,8 queued for next fires. Sprint Item 3 + 7 DONE: UAE universe 44 -&gt; 60 retrievable via TV-MCP cache (16 new tickers). Coverage targets hit on all 3 markets (US 1027, UAE 60, Crypto 140). Item 4 (crypto gate) and 5 (MBV) next. Sprint 2026-05-21_10-07: item 2 â€” DONE (Python detector deployed, Telegram confirmation sent, Pine slot deferred per routine) Sprint Item 3 advance: UAE +6 tickers (AJMANBANK, METHAQ, ORIENTTKAFUL, TAKAFUL_EM, TKFL, UNIONCOOP). Universe 44 -&gt; 50. Need 10 more to hit 60. Validation re-run launched. Sprint Item 2 DONE: US Divergence paper-forward LIVE via Python detector + Telegram alerts. TV slot deferred (DOM friction). Detector watches DY/EXPGY/PSX/ARW/ROL, idempotent, fires every 2h via sprint routine. Item 3 (UAE +16 tickers) next. Add URLS_FOR_COWORK.md - canonical raw endpoints + cache-bust + commit-pinned URL pattern for Cowork ingestion Track previously-untracked files: auditor_report.md, dashboard.html, reports/, data_cache/. Update commit_session.ps1 allowlist. Audit: BLOCKING 1 closed - US Divergence re-confirmed PORTFOLIO_CLEARED under N=6 haircut (dSharpe 2.606, raw 3.08). Path 1 deployment unblocked. Audit response: BLOCKING 1 (n_trials_registered=6), BLOCKING 5 (register reconciled, EMA-200 TF-agnostic + Trial Budget), BLOCKING 2 (Path 3 withdrawn), WARNING 3 (edge claim restated). Hash daafa5c1b0b18de7. Cockpit live: dashboard + Telegram daily/weekly/monthly senders + monthly routine + Cloud Routines wired Repo visibility: private -&gt; PUBLIC for Cowork raw-URL read access. Audit clean: zero secret-shaped tracked content.'><div class='date'>📅 2026-05-21 · 19 commits</div><ul><li>Sprint 2026-05-21_12-19: dashboard refresh post D-004 passive-wait log</li><li>Sprint 2026-05-21_12-19: fire â€” passive wait (D-004); detector clean on top-5, Items 5+6 still pending per audit sequencing</li><li>Add .nojekyll to bypass Jekyll processing on GitHub Pages (we serve raw HTML, not Jekyll site)</li><li>GitHub Pages enabled for browser-rendered dashboard. URL: https://ahmedvipha-afk.github.io/aig-engine-state/dashboard.html (raw URL serves text/plain - source c</li><li>Dashboard v2: 12 tabs (Overview, Markets, Agents, KPIs, Live Status, Paper P&amp;L, Risk, Telegram, Commits, History, Glossary, CEO). Header: global search + alert </li><li>Sprint 2026-05-21_11-37: dashboard refresh post items 4+8 close</li><li>Sprint 2026-05-21_11-37: items 4 + 8 â€” CEO logs no-edge crypto verdict; honest-FAIL acceptance closes Item 8</li><li>Sprint 2026-05-21_11-32: item 3 â€” UAE +4 (ADAVIATION/ADSB/ADNH/BILDCO ADX mid-caps) â†’ 64 retrievable, tracker reconciled, Items 3 + 7 â†’ DONE</li><li>Sprint fire 1 complete: UAE v5 validation on 60-ticker universe (45 valid, 54 trades, PORTFOLIO_FAIL as expected at this universe size). Items 1,2,3,7 done; 4,5</li><li>Sprint Item 3 + 7 DONE: UAE universe 44 -&gt; 60 retrievable via TV-MCP cache (16 new tickers). Coverage targets hit on all 3 markets (US 1027, UAE 60, Crypto 140)</li><li>Sprint 2026-05-21_10-07: item 2 â€” DONE (Python detector deployed, Telegram confirmation sent, Pine slot deferred per routine)</li><li>Sprint Item 3 advance: UAE +6 tickers (AJMANBANK, METHAQ, ORIENTTKAFUL, TAKAFUL_EM, TKFL, UNIONCOOP). Universe 44 -&gt; 50. Need 10 more to hit 60. Validation re-r</li><li>Sprint Item 2 DONE: US Divergence paper-forward LIVE via Python detector + Telegram alerts. TV slot deferred (DOM friction). Detector watches DY/EXPGY/PSX/ARW/R</li><li>Add URLS_FOR_COWORK.md - canonical raw endpoints + cache-bust + commit-pinned URL pattern for Cowork ingestion</li><li>Track previously-untracked files: auditor_report.md, dashboard.html, reports/, data_cache/. Update commit_session.ps1 allowlist.</li></ul></div><div class='history-row' data-search='2026-05-20 Session 4: UAE TV-MCP cache (23 ADX tickers), crypto 150 universe, market-aware integrity gates Telegram bot persistence: launcher script + Windows scheduled task (login + 15min health check) ceo_brain: document GitHub backup workflow Wire GitHub backup into Cloud Routines + auto-load GH_TOKEN Initial commit: aig_engine state, sessions 1-3 (US Divergence portfolio cleared)'><div class='date'>📅 2026-05-20 · 5 commits</div><ul><li>Session 4: UAE TV-MCP cache (23 ADX tickers), crypto 150 universe, market-aware integrity gates</li><li>Telegram bot persistence: launcher script + Windows scheduled task (login + 15min health check)</li><li>ceo_brain: document GitHub backup workflow</li><li>Wire GitHub backup into Cloud Routines + auto-load GH_TOKEN</li><li>Initial commit: aig_engine state, sessions 1-3 (US Divergence portfolio cleared)</li></ul></div>
       </div>
     </div>
     <div id="panel-glossary" class="tab-panel">
@@ -628,7 +879,8 @@ tr:last-child td { border-bottom: none; }
 </div>
 
 <div class="footer">
-  AIG v7.0 · engine + cockpit unified · backup repo <a href="https://github.com/ahmedvipha-afk/aig-engine-state" target="_blank">https://github.com/ahmedvipha-afk/aig-engine-state</a> ·
+  AIG v7.0 · engine + cockpit unified · repo <a href="https://github.com/ahmedvipha-afk/aig-engine-state" target="_blank">https://github.com/ahmedvipha-afk/aig-engine-state</a> ·
+  page <a href="https://ahmedvipha-afk.github.io/aig-engine-state/dashboard.html" target="_blank">https://ahmedvipha-afk.github.io/aig-engine-state/dashboard.html</a> ·
   Rule 01 paper · Rule 15 long only · Rule 16 no leverage · بسم الله
 </div>
 
@@ -653,17 +905,60 @@ tr:last-child td { border-bottom: none; }
     if (saved && document.getElementById('panel-' + saved)) setTab(saved);
   } catch (e) {}
 
-  // ----- GLOBAL SEARCH -----
+  // ----- CROSS-TAB SEARCH WITH PER-TAB COUNTS -----
   function applySearch() {
     const q = (document.getElementById('global-search').value || '').trim().toLowerCase();
-    const panel = document.querySelector('.tab-panel.active');
-    if (!panel) return;
-    // search-scope items are .section + their descendants
-    panel.querySelectorAll('[data-search]').forEach(el => {
-      if (!q) { el.classList.remove('search-hidden'); return; }
-      const haystack = (el.dataset.search || el.textContent).toLowerCase();
-      el.classList.toggle('search-hidden', !haystack.includes(q));
+    // Clear all tab badges
+    document.querySelectorAll('.tab .tab-count').forEach(b => b.remove());
+    document.getElementById('search-empty-hint').style.display = 'none';
+
+    if (!q) {
+      // Show everything in active tab
+      const panel = document.querySelector('.tab-panel.active');
+      if (panel) panel.querySelectorAll('[data-search]').forEach(el => el.classList.remove('search-hidden'));
+      return;
+    }
+
+    // Count matches in every panel
+    const counts = {};
+    document.querySelectorAll('.tab-panel').forEach(panel => {
+      let count = 0;
+      panel.querySelectorAll('[data-search]').forEach(el => {
+        const haystack = (el.dataset.search || el.textContent).toLowerCase();
+        const hit = haystack.includes(q);
+        if (panel.classList.contains('active')) {
+          el.classList.toggle('search-hidden', !hit);
+        }
+        if (hit) count++;
+      });
+      counts[panel.id.replace('panel-', '')] = count;
     });
+
+    // Add tab badges + show jump-to hint if active tab has 0 hits
+    let activeTabHasHits = false;
+    document.querySelectorAll('.tab').forEach(t => {
+      const id = t.dataset.tab;
+      const n = counts[id] || 0;
+      if (n) {
+        const b = document.createElement('span');
+        b.className = 'tab-count';
+        b.textContent = n;
+        t.appendChild(b);
+      }
+      if (t.classList.contains('active') && n > 0) activeTabHasHits = true;
+    });
+    const empty = document.getElementById('search-empty-hint');
+    if (!activeTabHasHits) {
+      const others = Object.entries(counts).filter(([k, v]) => v > 0);
+      if (others.length) {
+        empty.innerHTML = 'No matches in this tab. Found in: ' +
+          others.map(([k, v]) => '<a href="#" data-jump="' + k + '">' + k + ' (' + v + ')</a>').join(' · ');
+        empty.style.display = 'block';
+        empty.querySelectorAll('[data-jump]').forEach(a => {
+          a.addEventListener('click', (e) => { e.preventDefault(); setTab(a.dataset.jump); });
+        });
+      }
+    }
   }
   const search = document.getElementById('global-search');
   if (search) {
@@ -674,7 +969,6 @@ tr:last-child td { border-bottom: none; }
   }
 
   // ----- ALERT BELL -----
-  // count is server-injected as data-count on .bell — toggle dropdown
   const bell = document.getElementById('alert-bell');
   const bellDrop = document.getElementById('alert-drop');
   if (bell && bellDrop) {
@@ -703,6 +997,14 @@ tr:last-child td { border-bottom: none; }
       parts.push(pad(h) + ':' + pad(m) + ':' + pad(s));
       el.textContent = parts.join(' ');
     });
+    // Visible refresh countdown
+    const rc = document.getElementById('refresh-countdown-val');
+    if (rc) {
+      const remain = parseInt(rc.dataset.remain, 10) - 1;
+      rc.dataset.remain = String(Math.max(0, remain));
+      const mm = Math.floor(remain / 60), ss = remain % 60;
+      rc.textContent = pad(mm) + ':' + pad(ss);
+    }
   }
   tick();
   setInterval(tick, 1000);
