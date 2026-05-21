@@ -205,6 +205,54 @@ direction long. Frozen BEFORE seeing data per audit Concern 2.
 
 ---
 
+## STRATEGY 7 — HAT: Heikin-Ashi Trend Continuation (long only) — NEW 2026-05-21 Fire 14:55 UTC
+
+| Field | Value |
+|-------|-------|
+| Strategy id | `hat` |
+| Module | `aig/strategy_hat.py` |
+| Timeframes registered | **1D** |
+| Long only | YES (Rule 15) |
+| Pre-registered | 2026-05-21 Fire 14:55 UTC (BEFORE seeing any HAT data — Phase 1 directive F1) |
+
+**Concept**: long-only signal derived from SMOOTHED (Heikin-Ashi) candles
+rather than raw OHLC. Methodologically distinct from the six prior strategies
+— every prior strategy operates on RAW bars (close > EMA, close > Donchian
+high, range_pct on raw high/low, ROC on raw close, ATR-min on raw ATR). HAT
+replaces the raw OHLC input with a recursive filtered representation:
+HA_close = (O+H+L+C)/4, HA_open = (prev_HA_open + prev_HA_close)/2. The
+recursive filter dampens individual-bar noise and surfaces multi-bar trend
+regimes that raw-bar strategies miss.
+
+- **EMA-200** (trend-confirm), **Divergence** (mean-rev-on-low),
+  **MBV** (mean-rev-in-uptrend), **DBO** (breakout), **ROC** (velocity-momentum),
+  **VCB** (vol-cycle): all RAW-bar inputs.
+- **HAT** (smoothed-trend): SMOOTHED-bar input. Two stocks with identical raw
+  OHLC but different smoothing trajectories (because HA is recursive — depends
+  on prior HA_open) can have different entries. Captures the multi-bar
+  cleanliness of a trend that raw-bar strategies see as a single bullish bar.
+
+**Hypothesis**: noisy markets (UAE / Crypto) where raw-bar strategies fail on
+WR floor may show edge under noise-smoothed entry/exit signals. The HA filter
+is a different functional form than any of the six prior strategies' filters,
+not a parameter retune. Frozen BEFORE seeing data per audit Concern 2.
+
+**Entry** (all three must hold on the entry bar, edge-triggered):
+1. `HAT_BULLISH_BARS=3` consecutive bullish HA candles ending today
+   (HA_close > HA_open for the last 3 bars).
+2. raw `close > EMA(HAT_TREND_EMA=200)` — regime filter on raw price.
+3. `volume >= HAT_VOLUME_MULT=1.2 * SMA(HAT_VOLUME_PERIOD=20)` of volume.
+
+Edge-triggered: yesterday at least one of (1) or (3) was false. Prevents
+continuous re-entry while a sustained bullish HA run persists.
+
+**Stop**: entry − `HAT_STOP_ATR_MULT=2.0` × ATR(14).
+
+**Exit**: HA candle turns bearish (`HA_close <= HA_open`) OR
+raw `close < EMA(200)` (regime broke) OR ATR stop hit.
+
+---
+
 ## STRATEGY 2 — Bullish RSI Divergence (long only, regime-filtered)
 
 | Field | Value |
@@ -255,12 +303,15 @@ trial means appending a row here BEFORE the run; the haircut recomputes.
 | 13 | `roc_us_1d`           | roc        | US     | 1D | yfinance        | 2026-05-21 (Fire 1.5) | 2026-05-21 | **PORTFOLIO_FAIL on WR-floor only** — 34,612 trades, exp 1.217, WR 29.9% (< 40% floor), raw Sharpe 4.306, **dSharpe 3.724** (7.4× the 0.5 floor), 99.7% coverage. Second momentum-family near-miss (after DBO US). |
 | 14 | `roc_uae_1d`          | roc        | UAE    | 1D | yfinance+cache  | 2026-05-21 (Fire 1.5) | 2026-05-21 | PORTFOLIO_FAIL (178 trades < 1000; exp 0.58 < 1.0; WR 24.2% < 40%; dSharpe -3.01) |
 | 15 | `roc_crypto_1d`       | roc        | CRYPTO | 1D | yfinance        | 2026-05-21 (Fire 1.5) | 2026-05-21 | PORTFOLIO_FAIL (exp 0.84 < 1.0; WR 20.3% < 40%; dSharpe -1.64; CI lo<0) |
-| 16 | `vcb_us_1d`           | vcb        | US     | 1D | yfinance        | 2026-05-21 (Fire 2)   | pending    | _validation pending — frozen rules in this commit before any VCB data seen_ |
-| 17 | `vcb_uae_1d`          | vcb        | UAE    | 1D | yfinance+cache  | 2026-05-21 (Fire 2)   | pending    | _validation pending_ |
-| 18 | `vcb_crypto_1d`       | vcb        | CRYPTO | 1D | yfinance        | 2026-05-21 (Fire 2)   | pending    | _validation pending_ |
+| 16 | `vcb_us_1d`           | vcb        | US     | 1D | yfinance        | 2026-05-21 (Fire 2)   | 2026-05-21 | **PORTFOLIO_FAIL on WR-floor only** — 18,221 trades, exp 1.187, WR 23.4% (< 40% floor), **dSharpe 1.924** (3.8× the 0.5 floor), 99.2% coverage. Third near-miss; trend-family WR-pattern consistent (DBO 34.1%, ROC 29.9%, VCB 23.4%). Research-grade only — honest FAIL per audit Concern 2. |
+| 17 | `vcb_uae_1d`          | vcb        | UAE    | 1D | yfinance+cache  | 2026-05-21 (Fire 2)   | 2026-05-21 | PORTFOLIO_FAIL (84 trades < 1000; exp 0.56 < 1.0; WR 20.2% < 40%; dSharpe -2.57; CI lo<0) |
+| 18 | `vcb_crypto_1d`       | vcb        | CRYPTO | 1D | yfinance        | 2026-05-21 (Fire 2)   | 2026-05-21 | PORTFOLIO_FAIL (1,290 trades; WR 15.8% < 40%; dSharpe -0.07; raw 0.53; CI lo<0). exp 9.54 high but driven by long-tail outliers — WR floor binding. |
+| 19 | `hat_uae_1d`          | hat        | UAE    | 1D | yfinance+cache  | 2026-05-21 (Fire 14:55 UTC) | pending (staged) | pending |
+| 20 | `hat_crypto_1d`       | hat        | CRYPTO | 1D | yfinance        | 2026-05-21 (Fire 14:55 UTC) | pending (staged) | pending |
+| 21 | `hat_us_1d`           | hat        | US     | 1D | yfinance        | 2026-05-21 (Fire 14:55 UTC) | pending (staged) | pending |
 
 **`config.PORTFOLIO_GATE.n_trials_registered` must equal the row count above.**
-Current value: **18** (bumped 15 → 18 when VCB registered Fire 2 2026-05-21,
+Current value: **21** (bumped 18 → 21 when HAT registered Fire 14:55 UTC 2026-05-21,
 in the same commit that added the trial budget rows above).
 
 ### How to add a trial (procedure)

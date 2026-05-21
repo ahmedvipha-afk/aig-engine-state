@@ -71,6 +71,26 @@ VCB_TREND_SMA      = 50    # bullish-regime filter (no longs in downtrends)
 VCB_EXPANSION_MULT = 1.5   # exit when ATR(14) > VCB_EXPANSION_MULT * mean(ATR over lookback)
 VCB_STOP_ATR_MULT  = 2.0   # stop = entry - mult x ATR(14)
 
+# ---- HAT strategy (frozen 2026-05-21 Fire 14:55 UTC) --------------------
+# Heikin-Ashi Trend Continuation. Long-only signal derived from SMOOTHED
+# (Heikin-Ashi) candles rather than raw OHLC. Pre-registered BEFORE any
+# HAT data was seen, per v7.0 §19 (7th strategy in the pipeline).
+# Methodologically distinct from the six prior strategies — every prior
+# strategy operates on RAW bars (close > EMA, close > Donchian high,
+# range_pct on raw high/low, ROC on close, ATR-min on raw ATR). HAT
+# replaces the raw OHLC input with a recursive filtered representation
+# (HA_close = (O+H+L+C)/4, HA_open = (prev_HA_open + prev_HA_close)/2).
+# The filter dampens individual-bar noise and surfaces multi-bar trend
+# regimes that raw-bar strategies miss. Hypothesis: noisy markets
+# (UAE / Crypto) where raw-bar strategies fail on WR floor may show edge
+# under noise-smoothed entry/exit signals. Trial budget extended to 21
+# to cover HAT × {US, UAE, CRYPTO}.
+HAT_BULLISH_BARS   = 3     # entry: N consecutive bullish HA candles (HA_close > HA_open)
+HAT_TREND_EMA      = 200   # regime filter (no longs unless raw close > EMA(200))
+HAT_VOLUME_PERIOD  = 20    # SMA window for volume confirmation
+HAT_VOLUME_MULT    = 1.2   # entry-bar volume >= mult x SMA(VOLUME_PERIOD)
+HAT_STOP_ATR_MULT  = 2.0   # stop = entry - mult x ATR(14)
+
 # ---- Divergence strategy (frozen 2026-05-20, daily) ----------------------
 # Bullish RSI divergence on swing lows, long-only, with EMA-200 trend filter.
 DIV_RSI_PERIOD = 14
@@ -131,8 +151,8 @@ PORTFOLIO_GATE = {
     "min_universe_coverage": 0.05, # at least 5% of universe must contribute trades
     "bootstrap_iters": 2000,
     "bootstrap_conf": 0.95,
-    "n_trials_registered": 18,   # 6 strategies (ema200, divergence, mbv, dbo, roc, vcb) × 3 markets × 1 timeframe (1D).
-                                 # VCB added 2026-05-21 Fire 2 — trial budget bumped 15 -> 18.
+    "n_trials_registered": 21,   # 7 strategies (ema200, divergence, mbv, dbo, roc, vcb, hat) × 3 markets × 1 timeframe (1D).
+                                 # HAT added 2026-05-21 Fire 14:55 UTC — trial budget bumped 18 -> 21.
                                  # Adding a 4H variant or new strategy -> +N. Pre-register in strategy_register.md
                                  # before running.
 }

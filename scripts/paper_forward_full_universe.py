@@ -308,13 +308,17 @@ def detect():
 
 def main():
     r = detect()
-    print(f"Paper-forward full: {r.get('summary')}")
-    if r.get("new_entries"):
-        print(f"  NEW ENTRIES: {len(r['new_entries'])} → top 5: "
-              f"{[e['ticker'] for e in r['new_entries'][:5]]}")
-    if r.get("new_exits"):
-        print(f"  NEW EXITS:   {len(r['new_exits'])} → top 5: "
-              f"{[e['ticker'] for e in r['new_exits'][:5]]}")
+    try:
+        print(f"Paper-forward full: {r.get('summary')}")
+        if r.get("new_entries"):
+            print(f"  NEW ENTRIES: {len(r['new_entries'])} -> top 5: "
+                  f"{[e['ticker'] for e in r['new_entries'][:5]]}")
+        if r.get("new_exits"):
+            print(f"  NEW EXITS:   {len(r['new_exits'])} -> top 5: "
+                  f"{[e['ticker'] for e in r['new_exits'][:5]]}")
+    except UnicodeEncodeError:
+        # console codec can't encode unicode in summary; state was already written
+        print(f"Paper-forward full: detection complete (summary contains non-ascii)")
 
 
 if __name__ == "__main__":

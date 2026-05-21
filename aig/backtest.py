@@ -40,6 +40,9 @@ def _strategy_signals(name: str, df: pd.DataFrame) -> pd.DataFrame:
     if name == "vcb":
         from aig.strategy_vcb import signals
         return signals(df)
+    if name == "hat":
+        from aig.strategy_hat import signals
+        return signals(df)
     raise ValueError(f"unknown strategy: {name}")
 
 
@@ -64,6 +67,9 @@ def _stop_distance(name: str, row) -> float:
     if name == "vcb":
         from config import VCB_STOP_ATR_MULT
         return VCB_STOP_ATR_MULT * row["atr"]
+    if name == "hat":
+        from config import HAT_STOP_ATR_MULT
+        return HAT_STOP_ATR_MULT * row["atr"]
     raise ValueError(name)
 
 
