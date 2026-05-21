@@ -35,6 +35,39 @@ CLEARED_SOURCES = {
     # Add new (strategy, market) here as they clear portfolio gate.
 }
 
+# Near-miss research strategies (positive dSharpe + positive expectancy,
+# blocked only by 40% WR floor — preserved per CEO D-011 for future
+# auditor-Warning-4 reconsideration; NOT paper-forward).
+NEAR_MISS_RESEARCH = [
+    {"trial": "dbo_us_1d",  "dsharpe": 2.941, "expectancy": 1.298, "wr": 0.341, "trades": 11910,
+     "note": "Donchian breakout. Math edge; WR floor blocker. First Warning-4 candidate if WR rule amends."},
+    {"trial": "roc_us_1d",  "dsharpe": 3.72,  "expectancy": 1.27,  "wr": 0.36,  "trades": 10500,
+     "note": "Rate-of-Change momentum. Strong dSharpe; WR floor blocker."},
+    {"trial": "vcb_us_1d",  "dsharpe": 1.92,  "expectancy": 1.21,  "wr": 0.37,  "trades": 9100,
+     "note": "Volatility contraction breakout. Positive Sharpe; WR floor blocker."},
+    {"trial": "hat_us_1d",  "dsharpe": 1.039, "expectancy": 1.071, "wr": 0.3703, "trades": 33451,
+     "note": "Heikin-Ashi trend. Closest to clearing (37.0% vs 40% — 3pp gap). WR floor blocker."},
+]
+
+# Pending full-universe re-validation (PART B Step 4 — CEO directive 2026-05-21
+# evening). PARTIAL sweeps awaiting re-run on expanded universe before counting
+# toward Phase-1 coverage tallies.
+PENDING_REVALIDATION = {
+    "us_gap": {"current": 1603, "target": 1621, "missing": 18,
+               "source": "Ahmed authoritative list (not yet merged)"},
+    "uae_gap": {"current": 64, "target": 80, "missing": 16,
+                "source": "DFM/ADX names not retrievable via yfinance — need TV-MCP cache"},
+    "crypto_gap": {"current": 150, "target": 140, "missing": 0,
+                   "source": "universe already complete"},
+    "uae_partial_reruns": [
+        "ema200_uae_1d", "divergence_uae_1d", "mbv_uae_1d", "dbo_uae_1d",
+        "roc_uae_1d", "vcb_uae_1d", "hat_uae_1d",
+    ],
+    "us_priority1_verifications": ["divergence_us_1d", "mbv_us_1d", "pmr_us_1d"],
+    "us_priority2_verifications": ["dbo_us_1d", "roc_us_1d", "vcb_us_1d"],
+}
+
+
 # TV Strategy Tester winners (research watchlist — NOT paper-forward)
 TV_WATCHLIST = [
     {"ticker": "AAPL", "strategy_tv": "ema200_1h_tv", "tv_verdict": "CLEAN_EDGE",
@@ -162,7 +195,77 @@ def write_registry_md(assignments: dict, by_strat: dict):
             lines.append(f"| _...{len(tks_sorted)-50} more (see `winners_assignment.json`)_ | | | | | |")
         lines.append("")
 
+    # --- Near-Miss Research Strategies section ---
     lines.extend([
+        "---",
+        "",
+        "## Near-Miss Research Strategies (NOT paper-forward — math edge, WR floor blocked)",
+        "",
+        "Per CEO D-011 (2026-05-21): strategies with positive dSharpe + positive",
+        "expectancy + sufficient trades but failing the 40% WR floor are preserved",
+        "here as research watchlist. They do NOT enter the paper-forward detector.",
+        "If auditor Warning-4 is later formally addressed (e.g. fully-systematic",
+        "execution track without WR floor), these become the first candidates.",
+        "",
+        "| Trial | dSharpe | Expectancy | WR | Trades | Note |",
+        "|-------|--------:|-----------:|---:|-------:|------|",
+    ])
+    for nm in NEAR_MISS_RESEARCH:
+        lines.append(
+            f"| {nm['trial']} | {nm['dsharpe']:+.3f} | {nm['expectancy']:.3f} | "
+            f"{nm['wr']*100:.1f}% | {nm['trades']:,} | {nm['note']} |"
+        )
+
+    # --- Pending Full-Universe Re-Validation section (PART B Step 4) ---
+    lines.extend([
+        "",
+        "---",
+        "",
+        "## Pending Full-Universe Re-Validation (PART B Step 4 — CEO directive 2026-05-21 eve)",
+        "",
+        "Holding section per PART B remediation queue. PARTIAL sweeps and",
+        "universe gaps below MUST be resolved before Phase-1 exit-criteria",
+        "tallies (Obj 3/4/5) can be claimed final.",
+        "",
+        "### Universe gaps",
+        "",
+        "| Market | Current file | Full halal target | Missing | Source |",
+        "|--------|-------------:|------------------:|--------:|--------|",
+        f"| US     | {PENDING_REVALIDATION['us_gap']['current']} | "
+        f"{PENDING_REVALIDATION['us_gap']['target']} | "
+        f"{PENDING_REVALIDATION['us_gap']['missing']} | "
+        f"{PENDING_REVALIDATION['us_gap']['source']} |",
+        f"| UAE    | {PENDING_REVALIDATION['uae_gap']['current']} | "
+        f"{PENDING_REVALIDATION['uae_gap']['target']} | "
+        f"{PENDING_REVALIDATION['uae_gap']['missing']} | "
+        f"{PENDING_REVALIDATION['uae_gap']['source']} |",
+        f"| Crypto | {PENDING_REVALIDATION['crypto_gap']['current']} | "
+        f"{PENDING_REVALIDATION['crypto_gap']['target']} | "
+        f"{PENDING_REVALIDATION['crypto_gap']['missing']} | "
+        f"{PENDING_REVALIDATION['crypto_gap']['source']} |",
+        "",
+        "### UAE PARTIAL sweeps awaiting re-run on expanded UAE-80 universe",
+        "",
+    ])
+    for trial in PENDING_REVALIDATION["uae_partial_reruns"]:
+        lines.append(f"- [ ] `{trial}` — re-run via `staged_validate.py --enroll-market` (after UAE-80 expansion)")
+    lines.extend([
+        "",
+        "### US priority-1 verifications (cleared strategies — confirm clearance holds on 1,621)",
+        "",
+    ])
+    for trial in PENDING_REVALIDATION["us_priority1_verifications"]:
+        lines.append(f"- [ ] `{trial}` — re-run on expanded US-1,621 universe; confirm dSharpe still clears")
+    lines.extend([
+        "",
+        "### US priority-2 verifications (near-miss strategies — confirm near-miss profile holds)",
+        "",
+    ])
+    for trial in PENDING_REVALIDATION["us_priority2_verifications"]:
+        lines.append(f"- [ ] `{trial}` — re-run on expanded US-1,621; confirm near-miss profile holds")
+
+    lines.extend([
+        "",
         "---",
         "",
         "## TV Strategy Tester Watchlist (NOT paper-forward — research only)",
