@@ -35,6 +35,8 @@ SCHEDULED_TASKS_DIR = HOME / ".claude" / "scheduled-tasks"
 TELEGRAM_DIR = HOME / ".claude" / "channels" / "telegram"
 TELEGRAM_LOG = ROOT / "telegram_sent_log.json"
 PAPER_STATE = ROOT / "paper_forward_positions.json"
+PAPER_BACKWARD_FULL = ROOT / "paper_backward_full.json"
+PAPER_BACKWARD_TOP100 = ROOT / "paper_backward_top100.json"
 GST = timezone(timedelta(hours=4))
 PAGES_BASE = "https://ahmedvipha-afk.github.io/aig-engine-state"
 RAW_BASE = "https://raw.githubusercontent.com/ahmedvipha-afk/aig-engine-state/main"
@@ -725,6 +727,7 @@ JS = """
     'tab_kpis': '🎯 الأهداف',
     'tab_live': '🟢 الحالة الحية',
     'tab_paper': '📈 المحفظة الورقية',
+    'tab_paperback': '📉 المحاكاة التاريخية',
     'tab_risk': '🛡️ المخاطر',
     'tab_telegram': '📱 إشعارات تيليجرام',
     'tab_commits': '📜 تغييرات الكود',
@@ -780,6 +783,34 @@ JS = """
     'how_step4': '4. مراقب الإشارات الحي. الإستراتيجيات التي اجتازت بوابة المحفظة تحصل على كاشف بايثون يعمل كل ساعتين. يتحقق هل أعطى مؤشر اليوم إشارة دخول أو خروج على الأسهم المراقبة (DY, EXPGY, PSX, ARW, ROL).',
     'how_step5': '5. تنبيهات الهاتف. عندما تشتعل إشارة، يصل Telegram إلى أحمد (AIV_Fund_Bot@) بسعر الدخول والخروج. أول ١٠ إشارات حقيقية تقارن بتوقعات الاختبار الخلفي.',
     'how_step6': '6. كل إجراء مسجل. كل تشغيل اختبار يكتب إلى audit_trail.md مع رمز الهاش. مراجع خارجي (Cowork) يستطيع إعادة تشغيل نفس الهاش والحصول على نفس الحكم — هذه ضمانة التدقيق.',
+    'sec_paperback': '📉 المحاكاة التاريخية — حساب ورقي ١٠٠ ألف دولار',
+    'pb_desc': 'كيف سيبدو حسابك الورقي البالغ ١٠٠ ألف دولار اليوم لو كنت تتداول ورقياً الإستراتيجيات الناجحة منذ تاريخ البداية.',
+    'pb_starting_nav': 'القيمة الإفتتاحية',
+    'pb_ending_nav': 'القيمة النهائية',
+    'pb_cagr': 'العائد السنوي المركب',
+    'pb_max_dd': 'أعلى تراجع',
+    'pb_sharpe': 'شارب (يومي ممحَّض سنويًّا)',
+    'pb_sortino': 'سورتينو',
+    'pb_calmar': 'كالمار',
+    'pb_trades': 'الصفقات المغلقة',
+    'sec_pb_equity': '📈 منحنى القيمة',
+    'sec_pb_dd': '📉 منحنى التراجع',
+    'sec_pb_trades': '📋 آخر ٢٥ صفقة مغلقة',
+    'sec_pb_notes': '⚠ تحفظات شفّافة',
+    'pb_th_exit_date': 'الخروج',
+    'pb_th_ticker': 'الرمز',
+    'pb_th_strategy': 'الإستراتيجية',
+    'pb_th_entry_date': 'الدخول',
+    'pb_th_entry_px': 'سعر الدخول',
+    'pb_th_exit_px': 'سعر الخروج',
+    'pb_th_alloc': 'حجم الصفقة',
+    'pb_th_ret': 'العائد',
+    'pb_th_pnl': 'الربح/الخسارة',
+    'pb_th_reason': 'السبب',
+    'pb_trades_note': 'سجل الصفقات الكامل في paper_backward_full.json.',
+    'pb_caveat_mtm': 'التقييم اللحظي تقريبي. المراكز المفتوحة قيمتها سعر الدخول حتى الخروج — يخفّض التذبذب اليومي. اقتصاديات الصفقة في حدود الدخول/الخروج دقيقة.',
+    'pb_caveat_selection': 'تأثير الاصطفاء. عند التشغيل على أفضل N حسب dSharpe، النتائج تعكس فائزي التاريخ. التشغيل الكامل على ١١٠١ رمز يعكس التطبيق الحقيقي.',
+    'pb_caveat_mandate': 'مقارنة بتفويض v7.0. العائد السنوي أقل بكثير من حد ٣× السنوي. الشراء فقط وعدم الرفع المالي يضع سقفاً على العائد الهندسي لسلة أسهم متنوعة. حد ٣× طموحي وليس قابلاً للوصول حسابياً.',
     // Buttons / misc
     'btn_no_alerts': 'لا توجد تنبيهات',
     'mode_sprint': 'النمط ١ — سباق نشط',
@@ -1524,6 +1555,187 @@ def _render_paper_pnl(state):
     </div>"""
 
 
+def _render_paper_backward(state):
+    # Prefer the full-universe result; fall back to top-100 while full is still cooking
+    pb = _safe_read_json(PAPER_BACKWARD_FULL) or _safe_read_json(PAPER_BACKWARD_TOP100)
+    if not pb or "summary" not in pb:
+        return ('<div id="panel-paperback" class="tab-panel"><div class="section">'
+                '<h3 data-i18n="sec_paperback">📉 Paper-Backward — Historical $100K Simulator</h3>'
+                '<div class="muted">No paper-backward result yet. '
+                'Run <code>python scripts/paper_backward_simulator.py</code> to populate.</div>'
+                '</div></div>')
+
+    src = "full universe (1,101 tickers)" if PAPER_BACKWARD_FULL.exists() else "top-100 by dSharpe (full universe still running)"
+    s = pb["summary"]
+    p = pb["params"]
+    nav = pb.get("nav_series", [])
+    trades = pb.get("closed_trades", [])
+
+    # Build a simple SVG equity curve. Sample down to ~400 points so it's lightweight.
+    svg_eq = ""
+    svg_dd = ""
+    if nav:
+        step = max(1, len(nav) // 400)
+        sampled = nav[::step]
+        if sampled[-1] != nav[-1]:
+            sampled.append(nav[-1])
+        navs = [n["nav"] for n in sampled]
+        dates = [n["date"] for n in sampled]
+        lo = min(navs); hi = max(navs); rng = max(hi - lo, 1)
+        W, H = 800, 200
+        # Equity points
+        pts_eq = " ".join(
+            f"{i*W/(len(navs)-1):.1f},{H - (navs[i]-lo)/rng*(H-10) - 5:.1f}"
+            for i in range(len(navs))
+        )
+        # Drawdown points
+        peak = navs[0]; dds = []
+        for n in navs:
+            peak = max(peak, n)
+            dds.append((n - peak) / peak * 100)
+        dd_min = min(dds); dd_rng = max(abs(dd_min), 1e-6)
+        pts_dd = " ".join(
+            f"{i*W/(len(dds)-1):.1f},{(dds[i]/dd_min)*(H-10) + 5:.1f}"
+            for i in range(len(dds))
+        )
+        # Build SVG strings
+        first_date = esc(dates[0]); last_date = esc(dates[-1])
+        first_nav = navs[0]; last_nav = navs[-1]
+        svg_eq = (
+            f'<svg viewBox="0 0 {W} {H+30}" style="width:100%; height:auto; max-height:260px;">'
+            f'<defs><linearGradient id="eqfill" x1="0" x2="0" y1="0" y2="1">'
+            f'<stop offset="0%" stop-color="#10B981" stop-opacity="0.4"/>'
+            f'<stop offset="100%" stop-color="#10B981" stop-opacity="0"/></linearGradient></defs>'
+            f'<polygon points="0,{H} {pts_eq} {W},{H}" fill="url(#eqfill)" stroke="none"/>'
+            f'<polyline points="{pts_eq}" fill="none" stroke="#10B981" stroke-width="1.5"/>'
+            f'<text x="0" y="{H+22}" font-size="9" fill="#7d8898">{first_date} (${first_nav:,.0f})</text>'
+            f'<text x="{W}" y="{H+22}" font-size="9" fill="#7d8898" text-anchor="end">{last_date} (${last_nav:,.0f})</text>'
+            f'</svg>'
+        )
+        svg_dd = (
+            f'<svg viewBox="0 0 {W} {H+20}" style="width:100%; height:auto; max-height:140px;">'
+            f'<polyline points="{pts_dd}" fill="none" stroke="#EF4444" stroke-width="1.2"/>'
+            f'<line x1="0" y1="5" x2="{W}" y2="5" stroke="#7d889855" stroke-dasharray="3,3"/>'
+            f'<text x="2" y="14" font-size="9" fill="#EF4444">{dd_min:.2f}% max DD</text>'
+            f'</svg>'
+        )
+
+    # Headline KPIs
+    cagr_color = "var(--gn)" if s["cagr_pct"] >= 0 else "var(--rd)"
+    dd_color = "var(--rd)" if s["max_drawdown_pct"] < -10 else "var(--gold)"
+    kpi_cards = f"""
+      <div class="grid-4" style="gap:10px;">
+        <div class="section" style="margin:0;">
+          <div class="muted" style="font-size:10px;" data-i18n="pb_starting_nav">Starting NAV</div>
+          <div style="font-size:18px; font-weight:800; color:var(--gold);">${s['starting_nav']:,.0f}</div>
+        </div>
+        <div class="section" style="margin:0;">
+          <div class="muted" style="font-size:10px;" data-i18n="pb_ending_nav">Ending NAV</div>
+          <div style="font-size:18px; font-weight:800; color:var(--gn);">${s['ending_nav']:,.0f}</div>
+        </div>
+        <div class="section" style="margin:0;">
+          <div class="muted" style="font-size:10px;" data-i18n="pb_cagr">CAGR (annualised)</div>
+          <div style="font-size:18px; font-weight:800; color:{cagr_color};">{s['cagr_pct']:+.2f}%</div>
+        </div>
+        <div class="section" style="margin:0;">
+          <div class="muted" style="font-size:10px;" data-i18n="pb_max_dd">Max Drawdown</div>
+          <div style="font-size:18px; font-weight:800; color:{dd_color};">{s['max_drawdown_pct']:.2f}%</div>
+        </div>
+        <div class="section" style="margin:0;">
+          <div class="muted" style="font-size:10px;" data-i18n="pb_sharpe">Sharpe (daily-ann.)</div>
+          <div style="font-size:16px; font-weight:700; color:var(--t1);">{s['sharpe_daily']:.2f}</div>
+        </div>
+        <div class="section" style="margin:0;">
+          <div class="muted" style="font-size:10px;" data-i18n="pb_sortino">Sortino</div>
+          <div style="font-size:16px; font-weight:700; color:var(--t1);">{s['sortino_daily']:.2f}</div>
+        </div>
+        <div class="section" style="margin:0;">
+          <div class="muted" style="font-size:10px;" data-i18n="pb_calmar">Calmar</div>
+          <div style="font-size:16px; font-weight:700; color:var(--t1);">{s['calmar']:.2f}</div>
+        </div>
+        <div class="section" style="margin:0;">
+          <div class="muted" style="font-size:10px;" data-i18n="pb_trades">Trades Closed</div>
+          <div style="font-size:16px; font-weight:700; color:var(--t1);">{s['total_trades_closed']:,}</div>
+        </div>
+      </div>"""
+
+    # Last 25 closed trades
+    trade_rows = []
+    for t in trades[-25:][::-1]:
+        pnl_cls = "gn" if (t.get("net_return") or 0) > 0 else "rd"
+        trade_rows.append(
+            f"<tr><td>{esc(t.get('exit_date'))}</td>"
+            f"<td class='mono'>{esc(t.get('ticker'))}</td>"
+            f"<td>{esc(t.get('strategy'))}</td>"
+            f"<td>{esc(t.get('entry_date'))}</td>"
+            f"<td class='mono'>${t.get('entry_price'):.2f}</td>"
+            f"<td class='mono'>${t.get('exit_price'):.2f}</td>"
+            f"<td class='mono'>${t.get('alloc_at_entry'):.0f}</td>"
+            f"<td class='mono' style='color:var(--{pnl_cls});'>{t.get('net_return')*100:+.2f}%</td>"
+            f"<td class='mono' style='color:var(--{pnl_cls});'>${t.get('pnl_dollars'):+.2f}</td>"
+            f"<td>{esc(t.get('exit_reason'))}</td></tr>"
+        )
+
+    trades_table = (
+        '<table style="width:100%; font-size:11px; border-collapse:collapse;">'
+        '<thead><tr style="border-bottom:1px solid var(--bd);">'
+        '<th style="text-align:left; padding:4px;" data-i18n="pb_th_exit_date">Exit</th>'
+        '<th style="text-align:left;" data-i18n="pb_th_ticker">Ticker</th>'
+        '<th style="text-align:left;" data-i18n="pb_th_strategy">Strategy</th>'
+        '<th style="text-align:left;" data-i18n="pb_th_entry_date">Entry</th>'
+        '<th style="text-align:right;" data-i18n="pb_th_entry_px">Entry $</th>'
+        '<th style="text-align:right;" data-i18n="pb_th_exit_px">Exit $</th>'
+        '<th style="text-align:right;" data-i18n="pb_th_alloc">Alloc $</th>'
+        '<th style="text-align:right;" data-i18n="pb_th_ret">Return</th>'
+        '<th style="text-align:right;" data-i18n="pb_th_pnl">P&L $</th>'
+        '<th style="text-align:left;" data-i18n="pb_th_reason">Reason</th>'
+        '</tr></thead><tbody>' + "".join(trade_rows) + '</tbody></table>'
+    )
+
+    return f"""
+    <div id="panel-paperback" class="tab-panel">
+
+      <div class="section" data-search="paper backward historical simulator equity">
+        <h3 data-i18n="sec_paperback">📉 Paper-Backward — Historical $100K Simulator</h3>
+        <div class="muted" style="font-size:11px; margin-bottom:8px;" data-i18n="pb_desc">
+          What your $100K paper account would look like today if you'd been paper-trading
+          the cleared strategies since {esc(p['start_date'])}. Source: {esc(src)}.
+          Position sizing {p['pos_fraction']*100:.0f}% of equity, up to {p['max_concurrent']} concurrent positions.
+          Same costs as the validation backtest.
+        </div>
+        {kpi_cards}
+      </div>
+
+      <div class="section" data-search="equity curve nav backward">
+        <h3 data-i18n="sec_pb_equity">📈 Equity Curve ({esc(p['start_date'])} → {esc(p['end_date'])})</h3>
+        {svg_eq or '<div class="muted">No NAV series.</div>'}
+      </div>
+
+      <div class="section" data-search="drawdown backward">
+        <h3 data-i18n="sec_pb_dd">📉 Drawdown Profile</h3>
+        {svg_dd or '<div class="muted">No drawdown data.</div>'}
+      </div>
+
+      <div class="section" data-search="paper backward trades journal closed">
+        <h3 data-i18n="sec_pb_trades">📋 Last 25 Closed Trades</h3>
+        {trades_table}
+        <div class="muted" style="font-size:10px; margin-top:6px;" data-i18n="pb_trades_note">
+          Full trade journal in <code>paper_backward_full.json</code> (or top100.json while full is running).
+        </div>
+      </div>
+
+      <div class="section" data-search="paper backward caveats notes">
+        <h3 data-i18n="sec_pb_notes">⚠ Honest Caveats</h3>
+        <ul style="font-size:11px; line-height:1.7; color:var(--t2); padding-left:18px;">
+          <li data-i18n="pb_caveat_mtm"><b>Mark-to-market is approximated.</b> Open positions are valued at entry price between entry and exit. Intraday volatility is suppressed → Sharpe/MaxDD are best-case-bounded. Trade economics at boundaries are exact.</li>
+          <li data-i18n="pb_caveat_selection"><b>Selection effect.</b> If running on top-N by dSharpe, results filter to historical winners. Full 1,101-ticker run reflects true deployment.</li>
+          <li data-i18n="pb_caveat_mandate"><b>vs v7.0 mandate.</b> CAGR is far below the 3× annual hard floor. Long-only + no-leverage caps the geometric return on a diversified equity basket. The mandate's 3× floor is aspirational, not arithmetically reachable on pure paper-equity. CEO-level conversation needed about target revision vs north-star framing.</li>
+        </ul>
+      </div>
+
+    </div>"""
+
+
 def _render_risk(state):
     vix = state["vix"]
     v = vix.get("value")
@@ -1866,6 +2078,7 @@ def render() -> str:
         ("kpis", "🎯", "Targets", "tab_kpis"),
         ("live", "🟢", "Live Status", "tab_live"),
         ("paper", "📈", "Paper Money", "tab_paper"),
+        ("paperback", "📉", "Paper Backward", "tab_paperback"),
         ("risk", "🛡️", "Risk", "tab_risk"),
         ("telegram", "📱", "Phone Alerts", "tab_telegram"),
         ("commits", "📜", "Code Changes", "tab_commits"),
@@ -1885,6 +2098,7 @@ def render() -> str:
         _render_kpis(state),
         _render_live_status(state),
         _render_paper_pnl(state),
+        _render_paper_backward(state),
         _render_risk(state),
         _render_telegram(state),
         _render_commits(state),
