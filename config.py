@@ -24,6 +24,18 @@ LONG_ONLY = True          # Rule 15 — no shorts, ever
 VOLUME_PERIOD = 20        # SMA window for average volume
 VOLUME_MULT = 1.2         # entry-bar volume must be >= VOLUME_MULT * SMA(VOLUME_PERIOD)
 
+# ---- MBV strategy (frozen 2026-05-21, daily) ----------------------------
+# Market Bias + Range + Volume. Long-only mean-reversion inside bullish trend.
+# Pre-registered before any test data was seen, per v7.0 §19 (third strategy
+# in the pipeline). Trial budget extended to 9 to cover MBV × {US, UAE, CRYPTO}.
+MBV_TREND_EMA      = 200    # bullish bias filter
+MBV_RANGE_BARS     = 20     # trailing range window (high/low)
+MBV_RANGE_FLOOR    = 0.33   # entry: range_pct ≤ floor (lower third)
+MBV_RANGE_MID      = 0.50   # exit: range_pct ≥ mid (mean reversion target)
+MBV_VOLUME_PERIOD  = 20     # SMA window for volume
+MBV_VOLUME_MULT    = 1.2    # entry-bar volume ≥ mult × SMA
+MBV_STOP_ATR_MULT  = 1.5    # stop distance = mult × ATR(14)
+
 # ---- Divergence strategy (frozen 2026-05-20, daily) ----------------------
 # Bullish RSI divergence on swing lows, long-only, with EMA-200 trend filter.
 DIV_RSI_PERIOD = 14
@@ -84,9 +96,9 @@ PORTFOLIO_GATE = {
     "min_universe_coverage": 0.05, # at least 5% of universe must contribute trades
     "bootstrap_iters": 2000,
     "bootstrap_conf": 0.95,
-    "n_trials_registered": 6,    # 2 strategies × 3 markets × 1 timeframe (1D) run so far.
-                                 # Adding MBV → +3 trials. Adding a 4H variant → +N.
-                                 # Pre-register in strategy_register.md before running.
+    "n_trials_registered": 9,    # 3 strategies (ema200, divergence, mbv) × 3 markets × 1 timeframe (1D).
+                                 # MBV added 2026-05-21 — trial budget bumped accordingly.
+                                 # Adding a 4H variant → +N. Pre-register in strategy_register.md before running.
 }
 
 # ---- Reproducibility -----------------------------------------------------

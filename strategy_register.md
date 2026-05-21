@@ -38,6 +38,44 @@ The TF is part of the trial identifier, not the spec.
 
 ---
 
+## STRATEGY 3 — MBV: Market Bias + Range + Volume (long only)
+
+| Field | Value |
+|-------|-------|
+| Strategy id | `mbv` |
+| Module | `aig/strategy_mbv.py` |
+| Timeframes registered | **1D** |
+| Long only | YES (Rule 15) |
+| Pre-registered | 2026-05-21 by CEO (before any MBV test data was seen) |
+
+**Concept**: long-only mean-reversion *inside* an established bullish trend.
+Three independent filters must align on the entry bar:
+
+1. **Market Bias** — `close > EMA(MBV_TREND_EMA=200)`. Bullish trend intact.
+2. **Range** — close sits in the lower third of the trailing
+   `MBV_RANGE_BARS=20` high/low range (`range_pct ≤ MBV_RANGE_FLOOR=0.33`),
+   computed on bars shifted by 1 so the current bar's high/low never
+   contaminates the range it's tested against.
+3. **Volume confirmation** — `volume ≥ MBV_VOLUME_MULT=1.2 × SMA(MBV_VOLUME_PERIOD=20)`.
+
+Entry is edge-triggered: the bar must be the FIRST to enter the lower
+third (yesterday's `range_pct` must have been above floor). Prevents
+re-entry during a sustained decline.
+
+**Stop**: entry − `MBV_STOP_ATR_MULT=1.5` × ATR(14).
+
+**Exit**: `range_pct ≥ MBV_RANGE_MID=0.50` (mean reversion completed) OR
+`close < EMA(200)` (trend breakdown) OR ATR stop hit.
+
+**Hypothesis**: in a confirmed uptrend, brief pullbacks to the lower third
+of recent range — confirmed by elevated volume — offer asymmetric
+risk/reward as institutional buyers step in. v7.0 §19 quoted backtest
+estimate: ~112% / -4.65% DD / 52% WR on 1H. AIG registration is on 1D
+to match engine-side data depth; 1H variant can be added later as a
+separate trial.
+
+---
+
 ## STRATEGY 2 — Bullish RSI Divergence (long only, regime-filtered)
 
 | Field | Value |
@@ -79,9 +117,13 @@ trial means appending a row here BEFORE the run; the haircut recomputes.
 | 4 | `divergence_us_1d`    | divergence | US     | 1D | yfinance        | 2026-05-20            | 2026-05-20 (re-confirmed 2026-05-21 under N=6 haircut) | **PORTFOLIO_CLEARED** — dSharpe 2.606, exp 1.227, WR 44.78%, 10,715 trades |
 | 5 | `divergence_uae_1d`   | divergence | UAE    | 1D | yfinance+cache  | 2026-05-20            | 2026-05-20 | PORTFOLIO_FAIL (trades) |
 | 6 | `divergence_crypto_1d`| divergence | CRYPTO | 1D | yfinance        | 2026-05-20            | 2026-05-20 | PORTFOLIO_FAIL |
+| 7 | `mbv_us_1d`           | mbv        | US     | 1D | yfinance        | 2026-05-21            | TBD        | TBD (running) |
+| 8 | `mbv_uae_1d`          | mbv        | UAE    | 1D | yfinance+cache  | 2026-05-21            | TBD        | TBD (running) |
+| 9 | `mbv_crypto_1d`       | mbv        | CRYPTO | 1D | yfinance        | 2026-05-21            | TBD        | TBD (running) |
 
 **`config.PORTFOLIO_GATE.n_trials_registered` must equal the row count above.**
-Current value: **6**.
+Current value: **9** (bumped from 6 → 9 when MBV registered 2026-05-21,
+in the same commit that added the trial budget rows above).
 
 ### How to add a trial (procedure)
 

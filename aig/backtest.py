@@ -28,6 +28,9 @@ def _strategy_signals(name: str, df: pd.DataFrame) -> pd.DataFrame:
     if name == "divergence":
         from aig.strategy_divergence import signals
         return signals(df)
+    if name == "mbv":
+        from aig.strategy_mbv import signals
+        return signals(df)
     raise ValueError(f"unknown strategy: {name}")
 
 
@@ -40,6 +43,9 @@ def _stop_distance(name: str, row) -> float:
         # Divergence stop is (entry - swing_low_buffer) but the strategy fills
         # row["stop_dist"] with the precomputed distance.
         return float(row.get("stop_dist", DIV_STOP_ATR_MULT * row["atr"]))
+    if name == "mbv":
+        from config import MBV_STOP_ATR_MULT
+        return MBV_STOP_ATR_MULT * row["atr"]
     raise ValueError(name)
 
 

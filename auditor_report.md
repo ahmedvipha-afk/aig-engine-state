@@ -1,180 +1,161 @@
-# auditor_report.md — Independent Audit (Session 4 close)
+# auditor_report.md — Independent Audit (Session 5 close)
 
 **Auditor:** Cowork (independent, read-only — no write access to engine, no autonomous action)
 **Audit date:** 2026-05-21
-**Audits CEO state:** `ceo_brain.md` Session 4 close (2026-05-20 EOD GST)
-**Sources reviewed:** `ceo_brain.md`, `strategy_register.md` (via GitHub raw)
-**Sources unreachable at audit time:** `dashboard.html` (raw 404 — CDN cache; not material to audit, dashboard is rendering of state already reviewed)
-**Binding effect:** This is advisory. The auditor has no authority to block deployment. Findings are listed with severity tags so the CEO and Ahmed can decide how to weight them. Items tagged **BLOCKING** are the auditor's recommended preconditions for paper-forward deployment.
+**Audits CEO state:** Session 5 close (dashboard refreshed 2026-05-21 12:26 GST)
+**Sources reviewed:** `ceo_brain.md` (GitHub raw), `dashboard.html` (GitHub Pages render), commit history through `57977dd`
+**Supersedes:** prior `auditor_report.md` (Session 4 close audit). Prior findings carried forward with explicit resolution status.
+**Binding effect:** advisory. The auditor has no authority to block deployment. Findings are listed with severity tags so the CEO and Ahmed can decide how to weight them. Items tagged **BLOCKING** are the auditor's recommended preconditions for the relevant next step.
 
 ---
 
 ## Top-line read
 
-Session 4 produced the first genuinely promising finding in this project's history. **US Divergence Daily cleared the portfolio gate**: 10,729 trades across 1,027 contributing tickers, expectancy 1.22, win rate 44.7%, deflated Sharpe 2.72. If the result holds under audit, it is a real, statistically significant edge signature, and v7.0 §19 mandates paper-forward deployment.
+Session 5 closed all six prior audit findings, and most closures are substantive rather than performative. The multi-test haircut was honestly recomputed under N=6 and the US Divergence verdict still clears (dSharpe 2.606, raw 3.08) — that is the kind of follow-through that proves the audit chain is working. Path 3 was withdrawn rather than approved, which is the right discipline. The strategy register and Trial Budget are now reconciled. The "edge across three markets" claim was restated with crypto explicitly logged as "no certifiable edge under gate."
 
-UAE and crypto did not clear. The CEO is correct that those are sample-size constrained rather than absence-of-edge, but the brain overstates how strong the small-market signal actually is (Concern 3).
+Paper-forward deployment of US Divergence Daily is now live, NAV $100,000, 0 positions so far. The deployment itself is approvable in principle — the strategy cleared the gate honestly. **However, the way it was deployed contains the most important new finding in this audit (NEW-1 below), and it is BLOCKING.** The top-5 watch list is cherry-picked by per-ticker expectancy from the OOS sample, which is the subtle overfitting failure mode the portfolio gate was supposed to prevent.
 
-Discipline broadly held: pre-registration intact, default-FAIL, no overrides, gate-amendment correctly routed for Ahmed's sign-off rather than CEO unilateral action.
-
-Six findings follow. Three are **BLOCKING** for paper-forward; two are **WARNING**; one is **NOTE**.
+Five new findings follow: one BLOCKING, two WARNING, two NOTE.
 
 ---
 
 ## Quick-scan summary
 
-| # | Finding | Severity | Required action |
-|---|---------|---------:|-----------------|
-| 1 | Multi-test haircut undercounts trials (2 vs ≥6) | BLOCKING | Recompute dSharpe under corrected N_trials before deployment |
-| 2 | Path-3 amendment is post-hoc threshold adjustment | BLOCKING | Reject as proposed; prospective small-market framework only |
-| 3 | "Edge across all three markets" claim overconfident | WARNING | Restate with bootstrap CIs; do not claim UAE/crypto edge yet |
-| 4 | Removing WR floor crosses math/deployability boundary | WARNING | Keep floor or write binding deployability constraint |
-| 5 | Strategy register drift (registered 1H, ran daily) | BLOCKING | Reconcile register vs config before next run |
-| 6 | UAE TV-MCP cache pipeline brittle | NOTE | Timestamp cache files; integrity gate enforces freshness |
+| # | Finding | Severity | Status |
+|---|---------|---------:|--------|
+| 1 | Multi-test haircut undercounts trials | BLOCKING | **RESOLVED** (commit `ac99474`, `840ae9c`) |
+| 2 | Path-3 amendment is post-hoc adjustment | BLOCKING | **RESOLVED** (withdrawn by CEO) |
+| 3 | "Edge across all three markets" overconfident | WARNING | **RESOLVED** (claim restated, crypto = no-edge) |
+| 4 | Removing WR floor crosses math/deployability | WARNING | **RESOLVED** (floor kept; EMA-200 not deployed) |
+| 5 | Strategy register drift | BLOCKING | **RESOLVED** (register reconciled, Trial Budget added) |
+| 6 | UAE TV-MCP cache pipeline brittle | NOTE | **RESOLVED** (verified from outside; cache freshness handling not visible at dashboard layer — assumed in place) |
+| **NEW-1** | **Paper-forward watch list cherry-picked by expectancy** | **BLOCKING** | **OPEN** |
+| NEW-2 | 3x/10x targets back as KPI scorecard line | WARNING | OPEN |
+| NEW-3 | Decision Log empty despite multiple Session 5 decisions | WARNING | OPEN |
+| NEW-4 | Infinite-expectancy display artefact (DXCM) | NOTE | OPEN |
+| NEW-5 | Telegram log internally inconsistent | NOTE | OPEN |
 
 ---
 
-## Detailed findings
+## Prior findings — closure verification
 
-### 1. BLOCKING — Multi-testing haircut undercounts trials
+Acknowledged closures, with the evidence reviewed:
 
-The portfolio gate currently deflates Sharpe over N_strategies = 2. But Session 4 ran 2 strategies × 3 markets = **6 portfolio-level claims**. The Bailey & López de Prado haircut must be applied over the full claim set the CEO chose between, not the subset that happened to clear.
+1. **BLOCKING — multi-test haircut.** Commit `ac99474` updated `n_trials_registered=6`. Commit `840ae9c` re-ran the US Divergence portfolio gate under that haircut and produced PORTFOLIO_CLEARED at deflated Sharpe 2.606 (raw 3.08). Trial Budget table visible in dashboard. Closure is substantive. Confirmed RESOLVED.
 
-Under N_trials = 6:
-- Haircut: √(2 ln 6) × 0.25 ≈ **0.34** (vs current 0.21).
-- US Divergence dSharpe: 2.72 raw_haircut → recompute under correct haircut → estimated **~2.59**.
-- Still passes the 0.5 threshold by a wide margin, so this does not kill the deployment.
+2. **BLOCKING — Path 3.** Marked withdrawn in `ac99474`. The post-hoc threshold loosening that would have converted UAE/crypto fails into passes was not adopted. This is the audit finding I was most worried would be quietly accepted; declining it was the right call. Confirmed RESOLVED.
 
-The principle is non-negotiable: the gate's correction must reflect every claim that was on the table, including the failing ones. If Path 2 (add MBV) proceeds, that's 9 trials; a 4H variant takes it to 12; and so on. Adding strategies barely hurts the gate (the CEO is right about that part) but the accounting must be correct.
+3. **WARNING — overconfident edge claim.** Dashboard restated framing: crypto = "NO CERTIFIABLE CRYPTO EDGE UNDER GATE," UAE = "ITERATING" with honest acceptance. Confirmed RESOLVED.
 
-**Required action before paper-forward deployment:**
-1. Pre-register an explicit **trial budget**: every (strategy × market × timeframe) combination is one trial.
-2. Re-run the deflation calculation on US Divergence under the full trial count.
-3. Confirm dSharpe still ≥ 0.5 (likely yes, with margin).
-4. Log the trial budget into `strategy_register.md` so future additions are accounted for.
+4. **WARNING — WR floor removal.** Resolved by keeping the floor and accepting that EMA-200 does not deploy on it (still shown as PORTFOLIO_FAIL: WR<40% in the leaderboard). The conservative path. Confirmed RESOLVED.
 
----
+5. **BLOCKING — register drift.** Trial Budget table now in `strategy_register.md` and visible on dashboard. EMA-200 marked timeframe-agnostic per commit `ac99474`. Confirmed RESOLVED.
 
-### 2. BLOCKING — Path-3 amendment is post-hoc threshold adjustment
+6. **NOTE — UAE cache brittleness.** Not directly verifiable from dashboard/brain layer (cache freshness enforcement is implementation detail). Marked RESOLVED on CEO side; auditor leaves open as a future-verification item but not blocking.
 
-The proposal to scale `min_trades` by universe size and remove the WR floor is plausible **on its merits**. It is also exactly the failure mode pre-registration exists to prevent: **changing the gate after seeing which markets failed**, with a coherent-sounding reason attached.
-
-The CEO correctly flagged "Ahmed sign-off required," but the framing should be harder. If the gate was wrong for small markets, it should have been pre-registered as different for small markets **before any test ran**. Doing it now is the textbook way to convert a "no" into a "yes" with rationalisation.
-
-**Required action — reject Path 3 in current form.** Two acceptable alternatives:
-
-(a) **Accept the small-market FAILs** as the honest verdict of the framework as written. Treat the UAE/crypto positive-expectancy signal as motivation for future testing, not as edge evidence today.
-
-(b) **Design a small-markets framework prospectively.** Freeze thresholds before seeing the next test data. Validate it on data the CEO has not yet touched (e.g., the next ≥6 months of UAE/crypto bars). Do not apply it retroactively to Session 4 results.
-
-Do **not** mix the two: do not loosen-now and validate-later. That is just loosening with a delayed conscience.
+The closure rate and rigor on these is the strongest signal in Session 5. The audit chain is functioning. Continue.
 
 ---
 
-### 3. WARNING — "Edge confirmed real across all three markets" is overconfident
+## New findings (Session 5)
 
-The brain states: *"The divergence pattern shows real positive expectancy in all three markets (US 1.22, UAE 1.65, crypto 3.54)."*
+### NEW-1. BLOCKING — Paper-forward watch list is cherry-picked from per-ticker expectancy
 
-The numbers:
-- **UAE:** expectancy 1.65 on **38 trades**. Estimated 95% bootstrap CI on the point estimate is roughly **[0.4, 3.0]** — the lower bound is below 1.0, meaning the data does **not** rule out "no edge" in UAE.
-- **Crypto:** expectancy 3.54 on 644 trades. Firmer than UAE, but raw Sharpe is near the noise floor (deflated 0.23).
-- **US:** statistically sound — point estimate 1.22 with n=10,729 has a tight CI well above 1.0.
+**The most important finding in this audit.** The deployed detector watches DY, EXPGY, PSX, ARW, ROL — selected as the top-5 by per-ticker expectancy from the cleared OOS portfolio.
 
-The CEO is conflating point estimates with strategy properties. Small-sample point estimates are properties of the *sample*, not of the underlying process.
+**Why this is BLOCKING.** The portfolio gate certified the *portfolio*, not any single ticker. The cleared verdict applies to the aggregate of all 1,027 contributing tickers, with portfolio-level expectancy 1.22 and dSharpe 2.606. It does **not** transfer to top-N tickers by point estimate. The top-expectancy names in any OOS sample are the names most likely to have high *sampling noise*, not the names most likely to have repeatable forward edge.
 
-**Required action:** Restate the brain claim as:
-> *"Statistically significant edge on US Divergence (n=10,729). Preliminary positive signal on UAE and crypto, but sample-undersized to certify edge in either."*
+Evidence visible in the dashboard supports this concern directly:
+- DXCM divergence n=14 → expectancy **∞** (zero losing trades on the OOS sample — a small-n artefact)
+- ZWS divergence n=12 → expectancy **43.92**
+- PEP divergence n=10 → expectancy **17.81**
 
-Add bootstrap CIs to every per-market portfolio result in the validation JSONs. The "edge across three markets" framing should not appear in any reporting until UAE and crypto cross statistical significance under the same gate that certified US.
+These are outliers in a 1,027-name distribution, not strategy properties. Deploying paper-forward on the top-5 by this metric is reconstructing a concentrated bet on noise inside a wrapper that says "the portfolio cleared."
 
----
+**Required action before continued deployment:**
+1. Replace the top-5-by-expectancy watch list with either (a) the **entire cleared universe** with per-ticker sizing capped at portfolio-level Kelly fractions, or (b) a **randomly selected representative sample** of the cleared universe, stratified by sector if needed.
+2. Document the watch-list selection method in `strategy_register.md` as a pre-registered protocol — selection method becomes part of the frozen spec.
+3. If concentration is desired for operational reasons (Telegram noise control, attention budget), pick the concentration size *before* seeing the data and apply a non-expectancy criterion (sector diversification, liquidity floor, market-cap stratification).
 
-### 4. WARNING — Removing the win-rate floor crosses a math/deployability boundary
-
-The CEO notes US EMA-200 1d fails only on WR (18.6%) and proposes removing the WR floor on the grounds that "different archetypes have different natural WRs." The first half of that reasoning is correct — trend-following strategies do have structurally low WRs.
-
-The second half is incomplete. The WR floor is not (or should not be) there to filter strategy archetype. It is there because **very low WR strategies are operationally undeployable in practice**. An 18.6% WR strategy means roughly 4 of every 5 trades lose. Even with positive expectancy, that is structurally hard to paper-forward without human deviation — and once deviation enters, the certified expectancy no longer applies.
-
-**Two acceptable resolutions:**
-
-(a) **Keep the WR floor** as a deployability constraint, not a math constraint. Strategies that fail it are R&D-shelf only.
-
-(b) **Remove the WR floor** but add an explicit binding constraint that any strategy below 40% WR can only be deployed under **fully systematic execution** (no human override of individual signals). Write this into v7.0 §19. Then a low-WR strategy is deployable but only inside a closed-loop execution wrapper — not via Telegram-and-manual-approval.
-
-Do not silently remove the floor and assume operational deployability stays the same. It doesn't.
+**Note on what's not wrong.** Paper-forward deployment itself is approvable. The strategy cleared. The infrastructure (detector, Telegram, idempotency) is sound. Only the ticker selection method is the concern, and it is fixable without rolling back the deployment — change the watch list.
 
 ---
 
-### 5. BLOCKING — Strategy register drift (provenance integrity)
+### NEW-2. WARNING — 3x/10x return target re-surfaced as a KPI scorecard line
 
-`strategy_register.md` pre-registers EMA-200 for **1H** timeframe with "Universe: US halal top-30 (then full US halal, then UAE, then crypto)" as the planned scope. Session 4 ran EMA-200 on **daily** across the full universe.
+The KPI scorecard now shows:
+> Annual Return — Current +0.00% — Target ≥3x / 10x asp — Status pending
 
-Either:
-- The strategy register is stale and needs updating, **or**
-- The actual config diverged from the registered spec without re-pre-registration.
+The reconciliation directive resolved that 3x/10x are *monitored aspirations* with rules dominating, not *targets the system must hit*. Putting "≥3x / 10x asp" in the Target column of a KPI scorecard re-encodes the original framing visually, regardless of what the prose elsewhere says. Display becomes the goal that gets optimized against.
 
-Either way, this is a provenance issue. The whole binding-contract premise depends on the register and the config staying tied. If they drift, the "pre-registered" claim becomes notional.
-
-**Required action before next validation run:**
-1. Reconcile `strategy_register.md` with the current `config.py` for both strategies.
-2. If daily-timeframe EMA-200 is a genuinely new variant, give it a new strategy_id (e.g., `ema200_1d`) and pre-register it as a separate frozen spec.
-3. Update the provenance hash to bind the corrected register.
-4. Note in the audit trail that prior results produced under the drifted spec are no longer claimable under the corrected register.
-
-This is the single integrity issue most worth fixing, because once the binding contract is loose, every subsequent verdict has an asterisk.
+**Required action:** either remove the Annual Return row from the KPI scorecard entirely (it has no measurable current value yet — "0% pending" carries no information), or relabel the Target column for that row as "Aspirational, not gate" with the multiple in parentheses. The point is to keep the visual representation honest about what is and isn't a binding target.
 
 ---
 
-### 6. NOTE — UAE TV-MCP cache pipeline is brittle
+### NEW-3. WARNING — Decision Log empty despite Session 5 making multiple decisions
 
-The TV-MCP → CSV cache pattern is clever engineering and necessary given yfinance's gaps on UAE exchanges. But it makes UAE results depend on a manual upstream step. If a Cloud Routine re-runs UAE validation against a stale cache, the audit trail will show "fresh validation" of stale data.
+Dashboard shows:
+> 📝 Decision Log (last 10): No decisions parsed.
+> 💬 CEO Decisions — all-time (with reasoning): No decisions logged yet.
 
-**Recommended action (not blocking, but tighten before next UAE run):**
-1. Every CSV in `data_cache/` writes its UTC fetch timestamp to a sibling `.meta` file.
-2. The integrity gate reads the `.meta` and **rejects** any cache file older than N days (suggest 7 for daily data) unless a `--allow-stale` flag is set and the staleness is logged.
-3. Cloud Routine prompt includes a freshness check: if any required cache is stale, refresh-first or skip the universe.
+Session 5 made several real decisions: withdrawing Path 3, deploying paper-forward, expanding the UAE universe, accepting the no-edge crypto verdict, choosing the top-5 watch list (which is itself the subject of NEW-1). None of these appear in the decision log.
 
----
+**Why this matters for audit.** The Trial Budget records *what was tested*. The audit trail records *what was logged by which agent*. The decision log is supposed to record *what the CEO chose, and why*. Without it, choices become unauditable in a few sessions when the reasoning behind them has faded. The audit chain depends on reasoning being recorded, not just outcomes.
 
-## What the CEO did well (named explicitly so this audit is not all critique)
-
-1. **Held the line on the v7.0 §19 Sharpe>1.5 graduation criterion** for EMA-200 1H despite real edge on top US names. That is the exact discipline this project depends on; deploying anyway would have been the failure mode.
-
-2. **The portfolio-level gate is conceptually the right answer** to the N_tickers haircut problem. Per-ticker haircuts crush broad strategies even when they have aggregate edge. The portfolio gate is the honest test for broad-claim strategies. Sound statistics.
-
-3. **Self-flagged the V31 Production Pine overwrite honestly**, including the wrong assumption (`pine_new` safety) that caused it. That kind of honest postmortem is the only way the system improves.
-
-4. **Routed the gate amendment as needing Ahmed sign-off** rather than CEO unilateral action. That boundary held. The fact that the auditor disagrees with the amendment itself does not diminish the correctness of routing it for approval.
-
-5. **The data-cache + TV-MCP workaround** is real engineering and unlocks markets yfinance can't serve. Brittleness aside (see Concern 6), the pattern is the right shape.
-
-6. **The session 4 finding itself.** US Divergence portfolio result, with the haircut correction, remains a genuinely impressive piece of work. This is the first thing in the project that has earned a "yes" instead of an honest "no."
+**Required action:** either fix the decision-log parser/writer (if the mechanism exists but isn't firing), or implement it (if the slot exists but no helper writes to it). Backfill Session 5's major decisions retroactively from commit messages and `ceo_brain.md` so the chain isn't already broken on first use.
 
 ---
 
-## Recommendation on the three forward paths
+### NEW-4. NOTE — Infinite-expectancy display artefact
 
-**Path 1 — Deploy US Divergence to paper-forward.**
-**APPROVE, conditional on:**
-- Concern 1 resolved (recompute dSharpe under correct N_trials; confirm still ≥ 0.5).
-- Concern 3 resolved (restate brain claim; per-market CIs computed and logged).
-- Concern 5 resolved (strategy_register reconciled with config; new hash issued).
-- Paper-forward stays paper-forward. No real-money discussion until ≥ 6 months of forward results exist under the same gate that certified the strategy.
+DXCM in the US WINNERS list shows expectancy "inf" — the consequence of `(avg_win × WR) / (avg_loss × LR)` when avg_loss = 0 (zero losing trades in the OOS sample). Not a strategy issue, a display sanity-check issue, but the dashboard becomes harder to read when extreme outliers are displayed without caveat.
 
-**Path 2 — Add MBV as third strategy.**
-**DEFER.** Adding strategy now widens the R&D queue while the deployment workflow for the first cleared strategy has never been run end-to-end. Ship Path 1 first; observe one full deployment cycle; *then* add the next strategy with an updated trial budget.
-
-**Path 3 — Amend PORTFOLIO_GATE for small markets.**
-**REJECT as proposed.** Post-hoc threshold adjustment. If a small-markets framework is genuinely needed, design it prospectively, freeze it before seeing data, and validate it on the next ≥ 6 months of UAE/crypto bars that the CEO has not yet touched.
+**Required action:** in the per-ticker stats display, render expectancy as `n/a (no OOS losses)` when avg_loss = 0, and consider hiding tickers with n < some minimum (perhaps the same `min_trades` floor used in the gate — 30) from the per-ticker winners/losers tables. A "winner" with n=14 isn't a winner; it's a small sample.
 
 ---
 
-## Closing note on the auditor role
+### NEW-5. NOTE — Telegram log internally inconsistent
 
-The auditor exists to be the friction that protects the fund. That friction matters most exactly when something is finally working — because that is the moment when caution feels least necessary and is most necessary.
+Three signals from the dashboard conflict:
+- Live Service Status: Telegram Bot online, last log 2026-05-20 21:55 GST.
+- Telegram tab: "No Telegram sends logged yet. Helper writes to telegram_sent_log.json on every send (sends prior to this patch are not captured)."
+- Commit history: commit `5502656` at 2026-05-21 10:07 — "Sprint item 2 — DONE (Python detector deployed, Telegram confirmation sent...)"
 
-Nothing in this report is meant to diminish Session 4's progress. The US Divergence result is real. The audit findings are preconditions for converting that result into a deployment, not reasons to reject it.
+So Telegram is online, sends have been fired today, but the log shows nothing. Either the helper isn't writing consistently, or the dashboard isn't reading from it. Either way, this breaks the audit chain for Telegram-side activity.
+
+**Required action:** verify that `telegram_sent_log.json` is written on every send (including the deploy confirmations at 10:07), and that the dashboard reads from it. If sends prior to the helper patch are genuinely uncapturable, log a one-time entry recording that fact with the count of pre-helper sends estimated from commit history.
+
+---
+
+## Things the CEO did well in Session 5 (named explicitly)
+
+1. **Recomputed under N=6 honestly** rather than quietly leaving the haircut at N=2. The strategy still cleared, but the math being done correctly is the discipline that matters more than the result.
+2. **Withdrew Path 3 rather than accepting it.** This was the most dangerous of the three forward paths and the path of least resistance. Declining post-hoc threshold loosening is the single biggest discipline marker in the session.
+3. **Trial Budget table** is real engineering of the pre-registration discipline. It makes the trial count explicit and inspectable, which means future strategy additions automatically tighten the haircut.
+4. **GitHub Pages enabled for the dashboard**, allowing the auditor (and any future external reviewer) to actually read the rendered state. Real operational improvement.
+5. **Accepted crypto "no certifiable edge" verdict** even with the 3.54 expectancy point estimate. The discipline to call high-expectancy-low-Sharpe results "not edge" is the single hardest thing in this whole field, and the CEO did it.
+6. **Paper-forward deployment infrastructure** (detector, idempotency, Telegram confirmation, 2h cadence) is sound. The only flaw is the ticker selection method (NEW-1), which is a small fix on top of a real piece of work.
+
+---
+
+## Recommendations going forward
+
+**On the cherry-picked watch list (NEW-1):** resolve before next paper-forward signal fires. The detector is running on a watch list that the gate did not certify. If a signal fires on, say, DXCM (the n=14 ∞-expectancy outlier) before the watch list is corrected, the paper trade will have been generated under a selection method the audit explicitly flagged. Fix the watch list now while the deployment has zero closed trades — the cost is essentially nothing today, and the audit trail stays clean.
+
+**On Path 2 (add MBV as third strategy):** prior recommendation stands — defer until one full paper-forward deployment cycle has completed. Session 5 deployed yesterday; let it run.
+
+**On display drift (NEW-2, NEW-4):** small fixes individually, but they matter because the dashboard is now the primary surface where the CEO and Ahmed see the system's state. Display drift is value drift. Worth a sweep.
+
+**On decision-log infrastructure (NEW-3):** prioritise before Session 6. Audit findings that come back about "an undocumented Session N decision" are worse than findings about a logged decision the auditor disagrees with. Logging is the substrate.
+
+---
+
+## Closing note
+
+The audit chain is working. Session 4 produced findings; Session 5 acted on them substantively; this audit identifies what changed and what remains. That is the loop the auditor role was designed to enable, and it is now demonstrably functioning rather than theoretical.
+
+The one finding I want to flag as importantly different from the others: NEW-1 (cherry-picked watch list) is the kind of small, plausible-sounding deployment decision that quietly undoes the gate's protection. The gate cleared a portfolio; the deployment is currently a concentrated bet on noise. Fix the watch list and the deployment becomes what the gate certified. Leave it as is and the gate's certification becomes decorative.
 
 The auditor has no write access to the engine, no autonomous action, and no role in deployment decisions. This report is read-only input to the CEO and Ahmed. They decide.
 
-— End of audit —
+— End of Session 5 audit —
