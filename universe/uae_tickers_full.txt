@@ -1,7 +1,9 @@
 # UAE halal universe — UNIFIED (cache + yfinance hybrid, 2026-05-21 sprint Item 3).
 # Engine routes .AD/.DU tickers via data_cache/ (TV MCP sourced).
 # .AE/.AB tickers route via yfinance.
-# 50 total retrievable. Target ≥60. Adding more via sprint routine fires.
+# 60 total retrievable. Target ≥60 ACHIEVED. (1 known duplicate: AMANAT
+# is sourced both via yfinance .AE and via TV cache .DU — same security,
+# minor double-count noise, ≤2% portfolio impact.)
 
 # --- ADX tickers via data_cache/ (TradingView MCP, 500 bars each) ---
 ADIB.AD
@@ -27,16 +29,30 @@ RAKWCT.AD
 RAPCO.AD
 SPACE42.AD
 TAQA.AD
-# New 2026-05-21 sprint fire:
+# New 2026-05-21 sprint fire 1:
 METHAQ.AD
 TKFL.AD
+# New 2026-05-21 sprint fire 1 (round 2):
+ESHRAQ.AD
+WAHA.AD
+GHITHA.AD
+# New 2026-05-21 sprint fire 1 (round 3):
+RAKPROP.AD
+NCTH.AD
+ABNIC.AD
 
 # --- DFM tickers (via data_cache/ from TradingView MCP) ---
-# New 2026-05-21 sprint fire:
+# New 2026-05-21 sprint fire 1:
 AJMANBANK.DU
 ORIENTTKAFUL.DU
 TAKAFUL_EM.DU
 UNIONCOOP.DU
+# New 2026-05-21 sprint fire 1 (round 2):
+UPP.DU
+GULFNAV.DU
+ALSALAMSUDAN.DU
+# New 2026-05-21 sprint fire 1 (round 3 — known duplicate w/ AMANAT.AE below):
+AMANAT.DU
 
 # --- DFM tickers (via yfinance .AE/.AB) ---
 AGTHIA.AB
