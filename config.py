@@ -71,6 +71,26 @@ VCB_TREND_SMA      = 50    # bullish-regime filter (no longs in downtrends)
 VCB_EXPANSION_MULT = 1.5   # exit when ATR(14) > VCB_EXPANSION_MULT * mean(ATR over lookback)
 VCB_STOP_ATR_MULT  = 2.0   # stop = entry - mult x ATR(14)
 
+# ---- PMR strategy (frozen 2026-05-21 Fire 15:05 UTC) --------------------
+# Price-Mean Z-score Reversion. Long-only statistical mean-reversion.
+# Pre-registered BEFORE any PMR data was seen, per v7.0 §19 (8th strategy
+# in the pipeline). Methodologically distinct from the seven prior strategies
+# -- uses standardized z-score (close - SMA_N) / std_N as the entry filter.
+# MBV uses range_pct (bounded [0,1] from raw high/low); PMR uses standardized
+# deviation that AUTOMATICALLY adapts to per-ticker volatility. Two stocks
+# with identical range_pct but different historical std have very different
+# z-scores; PMR sees the statistical extremity raw-range strategies miss.
+# Hypothesis: noisy markets (UAE / Crypto) where raw range / RSI-based mean-rev
+# fails on WR floor may show edge under z-score-normalized entry signals.
+# Trial budget extended to 24 to cover PMR x {US, UAE, CRYPTO}.
+PMR_PERIOD         = 20    # rolling window for mean + std of close
+PMR_Z_FLOOR        = 1.5   # entry: z <= -PMR_Z_FLOOR (1.5 stddev below mean)
+PMR_Z_EXIT         = 0.0   # exit:  z >= PMR_Z_EXIT (mean reverted)
+PMR_TREND_SMA      = 200   # bullish-regime filter (no longs below SMA(200))
+PMR_VOLUME_PERIOD  = 20    # SMA window for volume confirmation
+PMR_VOLUME_MULT    = 1.2   # entry-bar volume >= mult * SMA(VOLUME_PERIOD)
+PMR_STOP_ATR_MULT  = 1.5   # stop = entry - mult * ATR(14)
+
 # ---- HAT strategy (frozen 2026-05-21 Fire 14:55 UTC) --------------------
 # Heikin-Ashi Trend Continuation. Long-only signal derived from SMOOTHED
 # (Heikin-Ashi) candles rather than raw OHLC. Pre-registered BEFORE any
@@ -151,8 +171,8 @@ PORTFOLIO_GATE = {
     "min_universe_coverage": 0.05, # at least 5% of universe must contribute trades
     "bootstrap_iters": 2000,
     "bootstrap_conf": 0.95,
-    "n_trials_registered": 21,   # 7 strategies (ema200, divergence, mbv, dbo, roc, vcb, hat) × 3 markets × 1 timeframe (1D).
-                                 # HAT added 2026-05-21 Fire 14:55 UTC — trial budget bumped 18 -> 21.
+    "n_trials_registered": 24,   # 8 strategies (ema200, divergence, mbv, dbo, roc, vcb, hat, pmr) × 3 markets × 1 timeframe (1D).
+                                 # PMR added 2026-05-21 Fire 15:05 UTC — trial budget bumped 21 -> 24.
                                  # Adding a 4H variant or new strategy -> +N. Pre-register in strategy_register.md
                                  # before running.
 }

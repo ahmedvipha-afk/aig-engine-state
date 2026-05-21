@@ -205,6 +205,60 @@ direction long. Frozen BEFORE seeing data per audit Concern 2.
 
 ---
 
+## STRATEGY 8 — PMR: Price-Mean Z-score Reversion (long only) — NEW 2026-05-21 Fire 15:05 UTC
+
+| Field | Value |
+|-------|-------|
+| Strategy id | `pmr` |
+| Module | `aig/strategy_pmr.py` |
+| Timeframes registered | **1D** |
+| Long only | YES (Rule 15) |
+| Pre-registered | 2026-05-21 Fire 15:05 UTC (BEFORE seeing any PMR data — Phase 1 directive F1) |
+
+**Concept**: long-only **statistical mean-reversion** driven by the
+**z-score** of close vs its rolling mean/std. Methodologically distinct
+from the seven prior strategies:
+
+- **EMA-200** (trend-confirm): close > long EMA.
+- **Divergence** (mean-rev-on-low): RSI hookup on swing-low structure.
+- **MBV** (mean-rev-in-uptrend): range_pct in lower third of trailing high/low — RAW range, not statistical.
+- **DBO** (breakout): close crosses Donchian high.
+- **ROC** (velocity-momentum): rate of price change.
+- **VCB** (vol-cycle): ATR-minimum compression.
+- **HAT** (smoothed-trend): N consecutive bullish Heikin-Ashi candles.
+- **PMR** (statistical-zscore-mean-rev): `z = (close - SMA_N) / std_N`.
+  Unlike MBV (range_pct is BOUNDED [0,1] from raw high/low), PMR uses
+  STANDARDIZED deviation that auto-adapts to per-ticker volatility. Two
+  stocks with identical range_pct but different historical std will have
+  very different z-scores; PMR sees the statistical extremity raw-range
+  strategies treat as identical.
+
+**Hypothesis**: noisy markets (UAE / Crypto) where raw range or RSI-based
+mean-rev rules fail on the WR floor may show edge under z-score-normalized
+entry signals, because z-score self-adapts to per-ticker volatility and
+flags genuine statistical outliers rather than relative-range outliers.
+Frozen BEFORE seeing data per audit Concern 2 — failure is acceptable.
+
+**Entry** (all four must hold on the entry bar, edge-triggered):
+1. `z(PMR_PERIOD=20) <= -PMR_Z_FLOOR=1.5` (close is ≥1.5 stddev BELOW
+   its 20-day mean — statistical extreme low).
+2. `z(20) > z(20).shift(1)` (z is RISING — recovery has begun, do not
+   try to catch a falling knife mid-decline).
+3. `close > SMA(PMR_TREND_SMA=200)` (bullish regime; no longs in
+   confirmed downtrends).
+4. `volume >= PMR_VOLUME_MULT=1.2 * SMA(PMR_VOLUME_PERIOD=20)`
+   (institutional participation confirms the reversion).
+
+Rolling mean/std use `.shift(1)` so today's close never contaminates
+the mean/std it is tested against — look-ahead-free.
+
+**Stop**: entry − `PMR_STOP_ATR_MULT=1.5` × ATR(14).
+
+**Exit**: `z(20) >= PMR_Z_EXIT=0.0` (mean reversion completed) OR
+`close < SMA(PMR_TREND_SMA)` (regime broke) OR ATR stop hit.
+
+---
+
 ## STRATEGY 7 — HAT: Heikin-Ashi Trend Continuation (long only) — NEW 2026-05-21 Fire 14:55 UTC
 
 | Field | Value |
@@ -306,12 +360,15 @@ trial means appending a row here BEFORE the run; the haircut recomputes.
 | 16 | `vcb_us_1d`           | vcb        | US     | 1D | yfinance        | 2026-05-21 (Fire 2)   | 2026-05-21 | **PORTFOLIO_FAIL on WR-floor only** — 18,221 trades, exp 1.187, WR 23.4% (< 40% floor), **dSharpe 1.924** (3.8× the 0.5 floor), 99.2% coverage. Third near-miss; trend-family WR-pattern consistent (DBO 34.1%, ROC 29.9%, VCB 23.4%). Research-grade only — honest FAIL per audit Concern 2. |
 | 17 | `vcb_uae_1d`          | vcb        | UAE    | 1D | yfinance+cache  | 2026-05-21 (Fire 2)   | 2026-05-21 | PORTFOLIO_FAIL (84 trades < 1000; exp 0.56 < 1.0; WR 20.2% < 40%; dSharpe -2.57; CI lo<0) |
 | 18 | `vcb_crypto_1d`       | vcb        | CRYPTO | 1D | yfinance        | 2026-05-21 (Fire 2)   | 2026-05-21 | PORTFOLIO_FAIL (1,290 trades; WR 15.8% < 40%; dSharpe -0.07; raw 0.53; CI lo<0). exp 9.54 high but driven by long-tail outliers — WR floor binding. |
-| 19 | `hat_uae_1d`          | hat        | UAE    | 1D | yfinance+cache  | 2026-05-21 (Fire 14:55 UTC) | pending (staged) | pending |
+| 19 | `hat_uae_1d`          | hat        | UAE    | 1D | yfinance+cache  | 2026-05-21 (Fire 14:55 UTC) | 2026-05-21 | PORTFOLIO_FAIL (255 trades < 1000; exp 0.96 < 1.0; dSharpe -0.83) |
 | 20 | `hat_crypto_1d`       | hat        | CRYPTO | 1D | yfinance        | 2026-05-21 (Fire 14:55 UTC) | pending (staged) | pending |
 | 21 | `hat_us_1d`           | hat        | US     | 1D | yfinance        | 2026-05-21 (Fire 14:55 UTC) | pending (staged) | pending |
+| 22 | `pmr_uae_1d`          | pmr        | UAE    | 1D | yfinance+cache  | 2026-05-21 (Fire 15:05 UTC) | pending (staged) | pending |
+| 23 | `pmr_crypto_1d`       | pmr        | CRYPTO | 1D | yfinance        | 2026-05-21 (Fire 15:05 UTC) | pending (staged) | pending |
+| 24 | `pmr_us_1d`           | pmr        | US     | 1D | yfinance        | 2026-05-21 (Fire 15:05 UTC) | pending (staged) | pending |
 
 **`config.PORTFOLIO_GATE.n_trials_registered` must equal the row count above.**
-Current value: **21** (bumped 18 → 21 when HAT registered Fire 14:55 UTC 2026-05-21,
+Current value: **24** (bumped 21 → 24 when PMR registered Fire 15:05 UTC 2026-05-21,
 in the same commit that added the trial budget rows above).
 
 ### How to add a trial (procedure)

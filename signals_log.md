@@ -17,3 +17,8 @@ _Batch: 250/1101 (offset 500)_
 _Batch: 250/1101 (offset 500)_
 - 🟢 ENTRY **CAH** [divergence] @ $199.93 on 2026-05-21 · stop $190.33 · dSharpe -0.64
 - 🟢 ENTRY **FLNC** [divergence] @ $19.69 on 2026-05-21 · stop $7.84 · dSharpe -0.76
+
+## 2026-05-21 19:18 GST — Paper-Forward Full Universe
+_Batch: 250/1101 (offset 750)_
+- 🟢 ENTRY **GSK** [divergence] @ $51.28 on 2026-05-21 · stop $48.53 · dSharpe -0.90
+- 🟢 ENTRY **PEN** [divergence] @ $327.40 on 2026-05-21 · stop $319.45 · dSharpe -1.04
