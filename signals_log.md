@@ -31,3 +31,7 @@ _Batch: 250/1101 (offset 1000)_
 _Batch: 250/1101 (offset 149)_
 - 🟢 ENTRY **TTDKY** [divergence] @ $19.75 on 2026-05-21 · stop $12.57 · dSharpe -0.47
 - 🔴 EXIT **TTDKY** [divergence] @ $19.75 · P&L +0.00% · exit signal
+
+## 2026-05-21 20:23 GST — Paper-Forward Full Universe
+_Batch: 250/1101 (offset 399)_
+- 🟢 ENTRY **ZUMZ** [divergence] @ $22.93 on 2026-05-21 · stop $20.95 · dSharpe -0.74
