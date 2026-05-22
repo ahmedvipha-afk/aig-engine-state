@@ -113,6 +113,26 @@ STR_VOLUME_PERIOD  = 20    # SMA window for volume confirmation
 STR_VOLUME_MULT    = 1.2   # entry-bar volume >= mult * SMA(VOLUME_PERIOD)
 STR_STOP_ATR_MULT  = 1.5   # tight stop -- mean-rev thesis breaks fast
 
+# ---- ART strategy (frozen 2026-05-22 Sprint) ----------------------------
+# Aroon Time-Trend Strength. Long-only TIME-DOMAIN trend-strength strategy.
+# Pre-registered BEFORE any ART data was seen, per v7.0 §19 (10th strategy
+# in the pipeline). Methodologically distinct: Aroon measures BAR-COUNT-
+# SINCE-EXTREME (time domain), while every prior strategy is magnitude-domain
+# (levels, derivatives, oscillator values, range positions, std deviations).
+# AroonUp(N) = 100*(N - bars_since_N_high)/N; AroonDown(N) symmetric on lows.
+# AroonOsc = AroonUp - AroonDown. Cross-up of Osc above +50 fires entry.
+# Hypothesis: noisy UAE / Crypto markets failing on the 40% WR floor may
+# show edge under time-since-extreme dominance, which only flips when a
+# structural new-high cluster appears -- more selective than magnitude
+# signals that fire on chop. Trial budget extended 27 -> 30 to cover
+# ART x {US, UAE, CRYPTO}.
+ART_AROON_PERIOD         = 14   # lookback for Aroon Up / Down (Chande default)
+ART_AROON_OSC_THRESHOLD  = 50.0 # cross-up of (AroonUp - AroonDown) above this fires entry
+ART_TREND_SMA            = 50   # regime filter (no longs below SMA(50))
+ART_VOLUME_PERIOD        = 20   # SMA window for volume confirmation
+ART_VOLUME_MULT          = 1.2  # entry-bar volume >= mult * SMA(VOLUME_PERIOD)
+ART_STOP_ATR_MULT        = 2.0  # wider stop -- trend-continuation thesis
+
 # ---- HAT strategy (frozen 2026-05-21 Fire 14:55 UTC) --------------------
 # Heikin-Ashi Trend Continuation. Long-only signal derived from SMOOTHED
 # (Heikin-Ashi) candles rather than raw OHLC. Pre-registered BEFORE any
@@ -193,8 +213,8 @@ PORTFOLIO_GATE = {
     "min_universe_coverage": 0.05, # at least 5% of universe must contribute trades
     "bootstrap_iters": 2000,
     "bootstrap_conf": 0.95,
-    "n_trials_registered": 27,   # 9 strategies (ema200, divergence, mbv, dbo, roc, vcb, hat, pmr, str) × 3 markets × 1 timeframe (1D).
-                                 # STR added 2026-05-22 Sprint Catch-up — trial budget bumped 24 -> 27.
+    "n_trials_registered": 30,   # 10 strategies (ema200, divergence, mbv, dbo, roc, vcb, hat, pmr, str, art) × 3 markets × 1 timeframe (1D).
+                                 # ART added 2026-05-22 Sprint — trial budget bumped 27 -> 30.
                                  # Adding a 4H variant or new strategy -> +N. Pre-register in strategy_register.md
                                  # before running.
 }

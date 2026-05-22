@@ -387,6 +387,61 @@ raw `close < EMA(200)` (regime broke) OR ATR stop hit.
 
 ---
 
+## STRATEGY 10 — ART: Aroon Time-Trend Strength (long only) — NEW 2026-05-22 Sprint
+
+| Field | Value |
+|-------|-------|
+| Strategy id | `art` |
+| Module | `aig/strategy_art.py` |
+| Timeframes registered | **1D** |
+| Long only | YES (Rule 15) |
+| Pre-registered | 2026-05-22 Sprint (BEFORE seeing any ART data — Phase 1 directive F1) |
+
+**Concept**: long-only **TIME-DOMAIN trend-strength** strategy. Aroon
+measures BAR-COUNT-SINCE-EXTREME — how recently price made its 14-period
+high vs its 14-period low. Methodologically distinct from the nine prior
+strategies — every prior strategy is magnitude-domain (levels, derivatives,
+oscillator values, range positions, std deviations); ART is time-domain.
+
+- **EMA-200 / MBV / PMR / Divergence / STR**: magnitude (level / std / range / RSI).
+- **DBO**: level crossing (magnitude).
+- **ROC**: derivative of price (magnitude).
+- **VCB**: ATR-min (magnitude of volatility).
+- **HAT**: smoothed bar (magnitude of HA-close vs HA-open).
+- **ART**: bar-count-since-extreme (TIME). Two stocks with identical price
+  series over 14 bars but different EXACT-DAY structure of when the
+  highs/lows landed will have very different Aroon values. ART captures
+  a regime property no other indicator family measures.
+
+**Hypothesis**: noisy markets (UAE / Crypto) where price-magnitude signals
+fail on the 40% WR floor may show edge under time-since-extreme dominance.
+Magnitude signals fire on chop and reverse; time-since-extreme dominance
+only flips when a structural new-high cluster appears, which is more
+selective and may yield higher WR. Frozen BEFORE seeing data per audit
+Concern 2 — failure acceptable.
+
+**Aroon definitions** (Tushar Chande, 1995):
+- `AroonUp(N)   = 100 * (N - bars_since_N_high) / N`
+- `AroonDown(N) = 100 * (N - bars_since_N_low)  / N`
+- `AroonOsc(N)  = AroonUp(N) - AroonDown(N)` (range -100 to +100)
+
+**Entry** (all must hold on the entry bar, cross-up edge-triggered):
+1. `AroonOsc(ART_AROON_PERIOD=14) > +ART_AROON_OSC_THRESHOLD=50.0` today
+   AND `AroonOsc.shift(1) <= 50.0` — cross-up event from <=50 to >50.
+2. `close > SMA(ART_TREND_SMA=50)` — bullish regime.
+3. `volume >= ART_VOLUME_MULT=1.2 × SMA(ART_VOLUME_PERIOD=20)`.
+
+Cross-up is naturally edge-triggered (yesterday's Osc was <=50; today's > 50;
+exactly one bar fires).
+
+**Stop**: entry − `ART_STOP_ATR_MULT=2.0` × ATR(14). Wider than mean-rev
+strategies because the thesis is trend-continuation.
+
+**Exit**: `AroonOsc(14) <= 0` (time-domain dominance flipped) OR
+`close < SMA(50)` (regime broke) OR ATR stop hit.
+
+---
+
 ## STRATEGY 2 — Bullish RSI Divergence (long only, regime-filtered)
 
 | Field | Value |
@@ -449,9 +504,12 @@ trial means appending a row here BEFORE the run; the haircut recomputes.
 | 25 | `str_uae_1d`          | str        | UAE    | 1D | yfinance+cache  | 2026-05-22 (Sprint Catch-up) | 2026-05-22 | PORTFOLIO_FAIL (13 trades < 1000; exp 0.11 < 1.0; dSharpe -3.19) |
 | 26 | `str_crypto_1d`       | str        | CRYPTO | 1D | yfinance        | 2026-05-22 (Sprint Catch-up) | 2026-05-22 | PORTFOLIO_FAIL (268 trades < 1000; exp 0.47 < 1.0; dSharpe -2.70) |
 | 27 | `str_us_1d`           | str        | US     | 1D | yfinance        | 2026-05-22 (Sprint Catch-up) | 2026-05-22 | **PORTFOLIO_CLEARED_FOR_PAPER_FORWARD** — 9,358 trades, exp 1.103, **WR 55.55%** (highest of all cleared strategies — hypothesis CONFIRMED: quick midpoint exit yields higher WR than full-mean-reversal exits), **dSharpe 0.902**, raw Sharpe 1.544, 1,038/1,124 contributors (92.35% strategy coverage), CI [+0.000796, +0.002583]. Fourth US-cleared strategy alongside Divergence + MBV + PMR. Reassignment ran; union US contributors grew 1,101 → 1,107 (STR added 6 unique). |
+| 28 | `art_uae_1d`          | art        | UAE    | 1D | yfinance+cache  | 2026-05-22 (Sprint Obj-6 advance) | pending (staged) | pending |
+| 29 | `art_crypto_1d`       | art        | CRYPTO | 1D | yfinance        | 2026-05-22 (Sprint Obj-6 advance) | pending (staged) | pending |
+| 30 | `art_us_1d`           | art        | US     | 1D | yfinance        | 2026-05-22 (Sprint Obj-6 advance) | pending (staged) | pending |
 
 **`config.PORTFOLIO_GATE.n_trials_registered` must equal the row count above.**
-Current value: **27** (bumped 24 → 27 when STR registered Sprint Catch-up 2026-05-22,
+Current value: **30** (bumped 27 → 30 when ART registered 2026-05-22 Sprint,
 in the same commit that added the trial budget rows above).
 
 ### How to add a trial (procedure)
