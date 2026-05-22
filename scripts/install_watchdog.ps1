@@ -1,4 +1,4 @@
-# install_watchdog.ps1 — register the AIG-CC-Watchdog Windows Scheduled Task.
+# install_watchdog.ps1 -- register the AIG-CC-Watchdog Windows Scheduled Task.
 #
 # One-time setup. Idempotent: re-running replaces an existing task with the
 # same name. Mirrors a reference SKILL.md into ~/.claude/scheduled-tasks/
@@ -72,7 +72,7 @@ $Principal = New-ScheduledTaskPrincipal `
     -RunLevel Limited
 
 if (Get-ScheduledTask -TaskName $TaskName -ErrorAction SilentlyContinue) {
-    Write-Output "Existing task found — replacing."
+    Write-Output "Existing task found -- replacing."
     Unregister-ScheduledTask -TaskName $TaskName -Confirm:$false
 }
 
@@ -82,7 +82,7 @@ Register-ScheduledTask `
     -Trigger @($TrigLogon, $TrigEvery) `
     -Settings $Settings `
     -Principal $Principal `
-    -Description 'AIG Claude Code crash watchdog — 60s polling, sentinel + process detection, headless claude -p recovery.' | Out-Null
+    -Description 'AIG Claude Code crash watchdog -- 60s polling, sentinel + process detection, headless claude -p recovery.' | Out-Null
 
 Write-Output "Task registered. Verifying..."
 $task = Get-ScheduledTask -TaskName $TaskName
@@ -141,5 +141,5 @@ Set-Content -Path $RefSkill -Value $refContent -Encoding utf8
 Write-Output "Reference SKILL.md written: $RefSkill"
 
 Write-Output ""
-Write-Output "OK — $TaskName installed."
+Write-Output "OK -- $TaskName installed."
 Write-Output "Note: task only runs while $env:USERNAME is logged on (LogonType=Interactive)."
