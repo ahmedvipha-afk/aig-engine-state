@@ -446,9 +446,9 @@ trial means appending a row here BEFORE the run; the haircut recomputes.
 | 22 | `pmr_uae_1d`          | pmr        | UAE    | 1D | yfinance+cache  | 2026-05-21 (Fire 15:05 UTC) | pending (staged) | pending |
 | 23 | `pmr_crypto_1d`       | pmr        | CRYPTO | 1D | yfinance        | 2026-05-21 (Fire 15:05 UTC) | pending (staged) | pending |
 | 24 | `pmr_us_1d`           | pmr        | US     | 1D | yfinance        | 2026-05-21 (Fire 15:05 UTC) | 2026-05-22 | **PORTFOLIO_CLEARED_FOR_PAPER_FORWARD** — 4,759 trades, exp 1.268, WR 47.3%, **dSharpe 2.263**, 986/1,121 contributors (87.96% strategy coverage). Third US-cleared strategy alongside Divergence + MBV. Reassignment ran; union US contributors still 1,101 (PMR overlaps existing union). |
-| 25 | `str_uae_1d`          | str        | UAE    | 1D | yfinance+cache  | 2026-05-22 (Sprint Catch-up) | pending (staged) | pending |
-| 26 | `str_crypto_1d`       | str        | CRYPTO | 1D | yfinance        | 2026-05-22 (Sprint Catch-up) | pending (staged) | pending |
-| 27 | `str_us_1d`           | str        | US     | 1D | yfinance        | 2026-05-22 (Sprint Catch-up) | pending (staged) | pending |
+| 25 | `str_uae_1d`          | str        | UAE    | 1D | yfinance+cache  | 2026-05-22 (Sprint Catch-up) | 2026-05-22 | PORTFOLIO_FAIL (13 trades < 1000; exp 0.11 < 1.0; dSharpe -3.19) |
+| 26 | `str_crypto_1d`       | str        | CRYPTO | 1D | yfinance        | 2026-05-22 (Sprint Catch-up) | 2026-05-22 | PORTFOLIO_FAIL (268 trades < 1000; exp 0.47 < 1.0; dSharpe -2.70) |
+| 27 | `str_us_1d`           | str        | US     | 1D | yfinance        | 2026-05-22 (Sprint Catch-up) | 2026-05-22 | **PORTFOLIO_CLEARED_FOR_PAPER_FORWARD** — 9,358 trades, exp 1.103, **WR 55.55%** (highest of all cleared strategies — hypothesis CONFIRMED: quick midpoint exit yields higher WR than full-mean-reversal exits), **dSharpe 0.902**, raw Sharpe 1.544, 1,038/1,124 contributors (92.35% strategy coverage), CI [+0.000796, +0.002583]. Fourth US-cleared strategy alongside Divergence + MBV + PMR. Reassignment ran; union US contributors grew 1,101 → 1,107 (STR added 6 unique). |
 
 **`config.PORTFOLIO_GATE.n_trials_registered` must equal the row count above.**
 Current value: **27** (bumped 24 → 27 when STR registered Sprint Catch-up 2026-05-22,

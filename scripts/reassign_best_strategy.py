@@ -32,6 +32,7 @@ CLEARED_SOURCES = {
     ("divergence", "US"): "validation_divergence_1d_full_haircut6.json",
     ("mbv",        "US"): "validation_mbv_us_1d.json",
     ("pmr",        "US"): "validation_pmr_us_1d.json",
+    ("str",        "US"): "validation_str_us_1d.json",
     # Add new (strategy, market) here as they clear portfolio gate.
 }
 
