@@ -48,6 +48,8 @@ NEAR_MISS_RESEARCH = [
      "note": "Volatility contraction breakout. Positive Sharpe; WR floor blocker."},
     {"trial": "hat_us_1d",  "dsharpe": 1.039, "expectancy": 1.071, "wr": 0.3703, "trades": 33451,
      "note": "Heikin-Ashi trend. Closest to clearing (37.0% vs 40% — 3pp gap). WR floor blocker."},
+    {"trial": "cmf_us_1d",  "dsharpe": 5.872, "expectancy": 1.396, "wr": 0.3396, "trades": 17646,
+     "note": "Chaikin Money Flow mean-rev in bullish regime. STRONGEST dSharpe of any near-miss (11.7x floor); 1108/1123 contributors (98.7% coverage). Volume-flow domain (1st of its kind). WR floor blocker."},
 ]
 
 # Pending full-universe re-validation (PART B Step 4 — CEO directive 2026-05-21
