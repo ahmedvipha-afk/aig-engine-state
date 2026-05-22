@@ -34,7 +34,13 @@ $ResumePrompt  = Join-Path $ScriptsDir 'session_resume_prompt.txt'
 $CrashLogMd    = Join-Path $ProjectRoot 'crash_log.md'
 $CrashLogJson  = Join-Path $ProjectRoot 'crash_log.json'
 $TelegramHelper = Join-Path $ScriptsDir 'cc_watchdog_telegram.py'
-$ClaudeExe     = "$env:USERPROFILE\AppData\Roaming\npm\claude.cmd"
+# Use the direct .exe rather than the .cmd wrapper so Process.Start handles
+# argv reliably (.cmd routes through cmd.exe with its own quoting quirks).
+$ClaudeExe     = "$env:USERPROFILE\AppData\Roaming\npm\node_modules\@anthropic-ai\claude-code\bin\claude.exe"
+if (-not (Test-Path $ClaudeExe)) {
+    # Fallback to the .cmd wrapper if the unwrapped binary ever moves.
+    $ClaudeExe = "$env:USERPROFILE\AppData\Roaming\npm\claude.cmd"
+}
 
 # --- Thresholds (mirror these in CRASH_RECOVERY.md if you change them) -------
 $SentinelStaleSecondsHard = 1800   # 30 min: primary crash signal

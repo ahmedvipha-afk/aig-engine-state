@@ -34,3 +34,8 @@
 2026-05-22T09:11:32.8558157Z recovery attempt 2/3
 2026-05-22T09:12:43.2884227Z recovery attempt 2 FAILED exit= stderr=Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
 
+2026-05-22T09:13:13.2894404Z recovery attempt 3/3
+2026-05-22T09:15:12.0387643Z recovery attempt 3 FAILED exit= stderr=Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+
+2026-05-22T09:15:12.0568824Z RECOVERY FAILED after 3 attempts duration=274s
+2026-05-22T09:16:09.3319832Z all-clear (was 3). sentinel_age=628s claude_alive=True

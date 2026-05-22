@@ -7,12 +7,12 @@
     "recoveries_today":  0,
     "last_recovery_ts":  null,
     "last_crash_cause":  "sentinel-stale-35min",
-    "last_check_ts":  "2026-05-22T09:10:22.7856268Z",
+    "last_check_ts":  "2026-05-22T09:21:09.3842845Z",
     "watchdog_version":  "1.0",
-    "consecutive_stale_checks":  3,
-    "mode":  "recovering",
+    "consecutive_stale_checks":  0,
+    "mode":  "normal",
     "total_recoveries":  0,
     "recoveries_today_date":  "2026-05-22",
-    "total_recovery_failures":  0,
+    "total_recovery_failures":  1,
     "last_crash_ts":  "2026-05-22T09:10:22.8238149Z"
 }

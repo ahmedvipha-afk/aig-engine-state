@@ -1,1 +1,1 @@
-﻿Watchdog sacrificial test. Reply only with: WATCHDOG TEST RECOVERY OK
+﻿Session resume. Read ceo_brain.md to see where we left off. The previous session crashed mid-turn. Verify: (1) what was the last sprint fire that completed, (2) what was the last commit pushed to GitHub, (3) are Cloud Routines still active, (4) is the Telegram bot still running, (5) has any work been lost. Report status before continuing.
