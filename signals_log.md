@@ -159,3 +159,10 @@ _Batch: 250/1107 (offset 460)_
 _Batch: 250/1107 (offset 103)_
 - 🟢 ENTRY **IFNNY** [divergence] @ $80.49 on 2026-05-21 · stop $37.96 · dSharpe -0.07
 - 🔴 EXIT **IFNNY** [divergence] @ $80.49 · P&L -0.00% · exit signal
+
+## 2026-05-22 17:33 GST — Paper-Forward Full Universe
+_Batch: 250/1107 (offset 353)_
+- 🟢 ENTRY **SYNA** [divergence] @ $134.63 on 2026-05-22 · stop $56.78 · dSharpe -0.46
+- 🟢 EXIT **SYNA** [divergence] @ $134.63 · P&L +0.00% · exit signal
+- 🟢 ENTRY **TTDKY** [divergence] @ $20.03 on 2026-05-21 · stop $12.54 · dSharpe -0.47
+- 🟢 EXIT **TTDKY** [divergence] @ $20.03 · P&L +0.00% · exit signal
