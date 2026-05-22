@@ -1,0 +1,2812 @@
+{
+  "provenance": {
+    "utc": "2026-05-22T07:09:01+00:00",
+    "file_hashes": {
+      "config.py": "2e13974ae5b90c6b",
+      "aig/strategy_ema200.py": "53b58f8a447b09d9",
+      "aig/backtest.py": "46c2f0d995d289e4",
+      "aig/validation_gate.py": "5667054d2407e5b5",
+      "aig/stats.py": "23715e456732ed73",
+      "aig/costs.py": "aab2cafc67d08ba2"
+    },
+    "config_hash": "d7d3afe6ba2ddf87"
+  },
+  "args": {
+    "strategy": "art",
+    "timeframe": "1d",
+    "universe": "universe/halal_crypto_150_USD.txt",
+    "live": true,
+    "staged": true,
+    "batches": 1
+  },
+  "portfolio": {
+    "strategy": "art",
+    "timeframe": "1d",
+    "verdict": "PORTFOLIO_FAIL",
+    "passed": false,
+    "portfolio_trades": 1024,
+    "contributing_tickers": 129,
+    "universe_size": 132,
+    "universe_coverage": 0.9773,
+    "portfolio_expectancy": 1.6672,
+    "portfolio_win_rate": 0.2744,
+    "portfolio_sharpe_raw": 0.9656,
+    "portfolio_sharpe_deflated": 0.3135,
+    "portfolio_ci_low": 0.004088,
+    "portfolio_ci_high": 0.104329,
+    "n_trials_haircut": 30,
+    "n_strategies_haircut": 30,
+    "reasons": [
+      "portfolio win rate 0.274 < 0.4",
+      "portfolio deflated Sharpe 0.314 < 0.5 (raw 0.966, 30 strategies)"
+    ]
+  },
+  "results": [
+    {
+      "ticker": "BTC-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 15,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 3.69,
+      "oos_expectancy": 1.753,
+      "oos_sharpe_raw": 0.335,
+      "oos_sharpe_deflated": -0.456,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 15 < 30",
+        "deflated OOS Sharpe -0.46 < 0.5 (raw 0.34, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "ETH-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 12,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.95,
+      "oos_expectancy": 1.466,
+      "oos_sharpe_raw": 0.256,
+      "oos_sharpe_deflated": -0.536,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 12 < 30",
+        "deflated OOS Sharpe -0.54 < 0.5 (raw 0.26, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "BNB-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 9,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.21,
+      "oos_expectancy": 2.47,
+      "oos_sharpe_raw": 0.308,
+      "oos_sharpe_deflated": -0.483,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 9 < 30",
+        "deflated OOS Sharpe -0.48 < 0.5 (raw 0.31, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "SOL-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 11,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 3.1,
+      "oos_expectancy": 2.141,
+      "oos_sharpe_raw": 0.36,
+      "oos_sharpe_deflated": -0.432,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 11 < 30",
+        "deflated OOS Sharpe -0.43 < 0.5 (raw 0.36, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "XRP-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 12,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.95,
+      "oos_expectancy": 10.084,
+      "oos_sharpe_raw": 0.517,
+      "oos_sharpe_deflated": -0.274,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 12 < 30",
+        "deflated OOS Sharpe -0.27 < 0.5 (raw 0.52, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "ADA-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 12,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.95,
+      "oos_expectancy": 2.893,
+      "oos_sharpe_raw": 0.377,
+      "oos_sharpe_deflated": -0.415,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 12 < 30",
+        "deflated OOS Sharpe -0.41 < 0.5 (raw 0.38, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "AVAX-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 9,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.74,
+      "oos_expectancy": 0.793,
+      "oos_sharpe_raw": -0.144,
+      "oos_sharpe_deflated": -0.935,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 9 < 30",
+        "OOS expectancy 0.79 < 1.0",
+        "deflated OOS Sharpe -0.94 < 0.5 (raw -0.14, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "DOT-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 9,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.7,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -2.487,
+      "oos_sharpe_deflated": -3.279,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 9 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -3.28 < 0.5 (raw -2.49, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.39 < 1.0"
+      ]
+    },
+    {
+      "ticker": "NEAR-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 11,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 3.38,
+      "oos_expectancy": 0.813,
+      "oos_sharpe_raw": -0.162,
+      "oos_sharpe_deflated": -0.953,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 11 < 30",
+        "OOS expectancy 0.81 < 1.0",
+        "deflated OOS Sharpe -0.95 < 0.5 (raw -0.16, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "ATOM-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 8,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.97,
+      "oos_expectancy": 1.575,
+      "oos_sharpe_raw": 0.174,
+      "oos_sharpe_deflated": -0.618,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 8 < 30",
+        "deflated OOS Sharpe -0.62 < 0.5 (raw 0.17, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "ALGO-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 9,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.24,
+      "oos_expectancy": 3.731,
+      "oos_sharpe_raw": 0.42,
+      "oos_sharpe_deflated": -0.372,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 9 < 30",
+        "deflated OOS Sharpe -0.37 < 0.5 (raw 0.42, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "EGLD-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 5,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.51,
+      "oos_expectancy": 0.895,
+      "oos_sharpe_raw": -0.048,
+      "oos_sharpe_deflated": -0.84,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 5 < 30",
+        "OOS expectancy 0.90 < 1.0",
+        "deflated OOS Sharpe -0.84 < 0.5 (raw -0.05, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.94 < 1.0"
+      ]
+    },
+    {
+      "ticker": "HBAR-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 7,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.81,
+      "oos_expectancy": 16.536,
+      "oos_sharpe_raw": 0.611,
+      "oos_sharpe_deflated": -0.18,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 7 < 30",
+        "deflated OOS Sharpe -0.18 < 0.5 (raw 0.61, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "XLM-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 11,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.71,
+      "oos_expectancy": 6.168,
+      "oos_sharpe_raw": 0.465,
+      "oos_sharpe_deflated": -0.326,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 11 < 30",
+        "deflated OOS Sharpe -0.33 < 0.5 (raw 0.47, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "TRX-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 9,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.21,
+      "oos_expectancy": 0.519,
+      "oos_sharpe_raw": -0.264,
+      "oos_sharpe_deflated": -1.055,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 9 < 30",
+        "OOS expectancy 0.52 < 1.0",
+        "deflated OOS Sharpe -1.06 < 0.5 (raw -0.26, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.42 < 1.0"
+      ]
+    },
+    {
+      "ticker": "VET-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 5,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.23,
+      "oos_expectancy": 2.425,
+      "oos_sharpe_raw": 0.372,
+      "oos_sharpe_deflated": -0.42,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 5 < 30",
+        "deflated OOS Sharpe -0.42 < 0.5 (raw 0.37, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "ICP-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 10,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 3.42,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -3.846,
+      "oos_sharpe_deflated": -4.638,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 10 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -4.64 < 0.5 (raw -3.85, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.03 < 1.0"
+      ]
+    },
+    {
+      "ticker": "FTM-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 10,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 3.05,
+      "oos_expectancy": 4.593,
+      "oos_sharpe_raw": 0.876,
+      "oos_sharpe_deflated": 0.085,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 10 < 30",
+        "deflated OOS Sharpe 0.08 < 0.5 (raw 0.88, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "ZIL-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 5,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.23,
+      "oos_expectancy": 1.619,
+      "oos_sharpe_raw": 0.163,
+      "oos_sharpe_deflated": -0.628,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 5 < 30",
+        "deflated OOS Sharpe -0.63 < 0.5 (raw 0.16, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "TON-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 4,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.2,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -1.068,
+      "oos_sharpe_deflated": -1.86,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 4 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -1.86 < 0.5 (raw -1.07, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.00 < 1.0"
+      ]
+    },
+    {
+      "ticker": "APT-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 1,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 0.48,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.791,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 1 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -0.79 < 0.5 (raw 0.00, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "SUI-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 3,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.33,
+      "oos_expectancy": 0.045,
+      "oos_sharpe_raw": -1.428,
+      "oos_sharpe_deflated": -2.219,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 3 < 30",
+        "OOS expectancy 0.05 < 1.0",
+        "deflated OOS Sharpe -2.22 < 0.5 (raw -1.43, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.79 < 1.0"
+      ]
+    },
+    {
+      "ticker": "SEI-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 4,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.5,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -3.791,
+      "oos_sharpe_deflated": -4.582,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 4 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -4.58 < 0.5 (raw -3.79, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.00 < 1.0"
+      ]
+    },
+    {
+      "ticker": "TIA-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 9,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 3.67,
+      "oos_expectancy": 0.349,
+      "oos_sharpe_raw": -0.864,
+      "oos_sharpe_deflated": -1.655,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 9 < 30",
+        "OOS expectancy 0.35 < 1.0",
+        "deflated OOS Sharpe -1.66 < 0.5 (raw -0.86, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.15 < 1.0"
+      ]
+    },
+    {
+      "ticker": "INJ-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 9,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.78,
+      "oos_expectancy": 0.221,
+      "oos_sharpe_raw": -1.099,
+      "oos_sharpe_deflated": -1.891,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 9 < 30",
+        "OOS expectancy 0.22 < 1.0",
+        "deflated OOS Sharpe -1.89 < 0.5 (raw -1.10, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "DYM-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 0,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 0.0,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.791,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 0 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -0.79 < 0.5 (raw 0.00, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.00 < 1.0"
+      ]
+    },
+    {
+      "ticker": "KAS-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 4,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.73,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -4.665,
+      "oos_sharpe_deflated": -5.456,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 4 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -5.46 < 0.5 (raw -4.66, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "IOTA-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 2,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.3,
+      "oos_expectancy": 1.611,
+      "oos_sharpe_raw": 0.189,
+      "oos_sharpe_deflated": -0.603,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 2 < 30",
+        "deflated OOS Sharpe -0.60 < 0.5 (raw 0.19, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "MATIC-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 8,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.36,
+      "oos_expectancy": 1.081,
+      "oos_sharpe_raw": 0.048,
+      "oos_sharpe_deflated": -0.743,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 8 < 30",
+        "deflated OOS Sharpe -0.74 < 0.5 (raw 0.05, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "POL-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 0,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 0.0,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.791,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 0 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -0.79 < 0.5 (raw 0.00, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.00 < 1.0"
+      ]
+    },
+    {
+      "ticker": "ARB-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 8,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.97,
+      "oos_expectancy": 1.752,
+      "oos_sharpe_raw": 0.243,
+      "oos_sharpe_deflated": -0.548,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 8 < 30",
+        "deflated OOS Sharpe -0.55 < 0.5 (raw 0.24, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.79 < 1.0"
+      ]
+    },
+    {
+      "ticker": "OP-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 6,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.47,
+      "oos_expectancy": 0.03,
+      "oos_sharpe_raw": -2.243,
+      "oos_sharpe_deflated": -3.035,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 6 < 30",
+        "OOS expectancy 0.03 < 1.0",
+        "deflated OOS Sharpe -3.03 < 0.5 (raw -2.24, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "STRK-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 6,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.01,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -2.599,
+      "oos_sharpe_deflated": -3.391,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 6 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -3.39 < 0.5 (raw -2.60, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.08 < 1.0"
+      ]
+    },
+    {
+      "ticker": "IMX-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 0,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 0.0,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.791,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 0 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -0.79 < 0.5 (raw 0.00, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "MNT-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 4,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 5.36,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -3.868,
+      "oos_sharpe_deflated": -4.66,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 4 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -4.66 < 0.5 (raw -3.87, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "MANTA-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 2,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.47,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -2.281,
+      "oos_sharpe_deflated": -3.073,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 2 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -3.07 < 0.5 (raw -2.28, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.00 < 1.0"
+      ]
+    },
+    {
+      "ticker": "METIS-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 7,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.4,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -3.042,
+      "oos_sharpe_deflated": -3.833,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 7 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -3.83 < 0.5 (raw -3.04, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.69 < 1.0"
+      ]
+    },
+    {
+      "ticker": "LRC-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 10,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.46,
+      "oos_expectancy": 1.21,
+      "oos_sharpe_raw": 0.083,
+      "oos_sharpe_deflated": -0.708,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 10 < 30",
+        "deflated OOS Sharpe -0.71 < 0.5 (raw 0.08, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "ASTR-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 6,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.38,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -3.321,
+      "oos_sharpe_deflated": -4.112,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 6 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -4.11 < 0.5 (raw -3.32, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.09 < 1.0"
+      ]
+    },
+    {
+      "ticker": "GLMR-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 6,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.37,
+      "oos_expectancy": 0.269,
+      "oos_sharpe_raw": -0.875,
+      "oos_sharpe_deflated": -1.667,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 6 < 30",
+        "OOS expectancy 0.27 < 1.0",
+        "deflated OOS Sharpe -1.67 < 0.5 (raw -0.88, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.42 < 1.0"
+      ]
+    },
+    {
+      "ticker": "MOVR-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 6,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.18,
+      "oos_expectancy": 1.048,
+      "oos_sharpe_raw": 0.023,
+      "oos_sharpe_deflated": -0.768,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 6 < 30",
+        "deflated OOS Sharpe -0.77 < 0.5 (raw 0.02, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "EVMOS-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 4,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.7,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -1.996,
+      "oos_sharpe_deflated": -2.787,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 4 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -2.79 < 0.5 (raw -2.00, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.23 < 1.0"
+      ]
+    },
+    {
+      "ticker": "CFX-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 7,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.18,
+      "oos_expectancy": 3.14,
+      "oos_sharpe_raw": 0.366,
+      "oos_sharpe_deflated": -0.425,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 7 < 30",
+        "deflated OOS Sharpe -0.43 < 0.5 (raw 0.37, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.80 < 1.0"
+      ]
+    },
+    {
+      "ticker": "CELO-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 8,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.3,
+      "oos_expectancy": 0.164,
+      "oos_sharpe_raw": -1.257,
+      "oos_sharpe_deflated": -2.049,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 8 < 30",
+        "OOS expectancy 0.16 < 1.0",
+        "deflated OOS Sharpe -2.05 < 0.5 (raw -1.26, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.96 < 1.0"
+      ]
+    },
+    {
+      "ticker": "ROSE-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 10,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 3.13,
+      "oos_expectancy": 0.579,
+      "oos_sharpe_raw": -0.389,
+      "oos_sharpe_deflated": -1.18,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 10 < 30",
+        "OOS expectancy 0.58 < 1.0",
+        "deflated OOS Sharpe -1.18 < 0.5 (raw -0.39, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.73 < 1.0"
+      ]
+    },
+    {
+      "ticker": "KDA-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 6,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.73,
+      "oos_expectancy": 2.799,
+      "oos_sharpe_raw": 0.356,
+      "oos_sharpe_deflated": -0.436,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 6 < 30",
+        "deflated OOS Sharpe -0.44 < 0.5 (raw 0.36, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "CKB-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 13,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 3.44,
+      "oos_expectancy": 3.104,
+      "oos_sharpe_raw": 0.385,
+      "oos_sharpe_deflated": -0.406,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 13 < 30",
+        "deflated OOS Sharpe -0.41 < 0.5 (raw 0.38, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "MINA-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 7,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.43,
+      "oos_expectancy": 0.247,
+      "oos_sharpe_raw": -0.927,
+      "oos_sharpe_deflated": -1.718,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 7 < 30",
+        "OOS expectancy 0.25 < 1.0",
+        "deflated OOS Sharpe -1.72 < 0.5 (raw -0.93, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.28 < 1.0"
+      ]
+    },
+    {
+      "ticker": "FLOW-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 5,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.62,
+      "oos_expectancy": 1.785,
+      "oos_sharpe_raw": 0.232,
+      "oos_sharpe_deflated": -0.559,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 5 < 30",
+        "deflated OOS Sharpe -0.56 < 0.5 (raw 0.23, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.46 < 1.0"
+      ]
+    },
+    {
+      "ticker": "FIL-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 9,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.21,
+      "oos_expectancy": 2.003,
+      "oos_sharpe_raw": 0.346,
+      "oos_sharpe_deflated": -0.445,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 9 < 30",
+        "deflated OOS Sharpe -0.45 < 0.5 (raw 0.35, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.79 < 1.0"
+      ]
+    },
+    {
+      "ticker": "AR-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 9,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.59,
+      "oos_expectancy": 0.255,
+      "oos_sharpe_raw": -0.991,
+      "oos_sharpe_deflated": -1.782,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 9 < 30",
+        "OOS expectancy 0.26 < 1.0",
+        "deflated OOS Sharpe -1.78 < 0.5 (raw -0.99, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "STORJ-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 12,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.95,
+      "oos_expectancy": 0.186,
+      "oos_sharpe_raw": -1.232,
+      "oos_sharpe_deflated": -2.023,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 12 < 30",
+        "OOS expectancy 0.19 < 1.0",
+        "deflated OOS Sharpe -2.02 < 0.5 (raw -1.23, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.50 < 1.0"
+      ]
+    },
+    {
+      "ticker": "SC-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 8,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.97,
+      "oos_expectancy": 0.841,
+      "oos_sharpe_raw": -0.08,
+      "oos_sharpe_deflated": -0.871,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 8 < 30",
+        "OOS expectancy 0.84 < 1.0",
+        "deflated OOS Sharpe -0.87 < 0.5 (raw -0.08, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "HOT-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 10,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.46,
+      "oos_expectancy": 30.056,
+      "oos_sharpe_raw": 0.489,
+      "oos_sharpe_deflated": -0.302,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 10 < 30",
+        "deflated OOS Sharpe -0.30 < 0.5 (raw 0.49, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "BTT-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "NaN in OHLC",
+        "non-positive close prices"
+      ]
+    },
+    {
+      "ticker": "RNDR-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 5,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.1,
+      "oos_expectancy": 15.113,
+      "oos_sharpe_raw": 0.979,
+      "oos_sharpe_deflated": 0.188,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 5 < 30",
+        "deflated OOS Sharpe 0.19 < 0.5 (raw 0.98, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "AKT-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 9,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.78,
+      "oos_expectancy": 0.142,
+      "oos_sharpe_raw": -1.671,
+      "oos_sharpe_deflated": -2.462,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 9 < 30",
+        "OOS expectancy 0.14 < 1.0",
+        "deflated OOS Sharpe -2.46 < 0.5 (raw -1.67, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "IO-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "insufficient history (204 rows < 300)"
+      ]
+    },
+    {
+      "ticker": "RLC-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 16,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 3.94,
+      "oos_expectancy": 0.598,
+      "oos_sharpe_raw": -0.404,
+      "oos_sharpe_deflated": -1.196,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 16 < 30",
+        "OOS expectancy 0.60 < 1.0",
+        "deflated OOS Sharpe -1.20 < 0.5 (raw -0.40, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.88 < 1.0"
+      ]
+    },
+    {
+      "ticker": "TFUEL-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 10,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.46,
+      "oos_expectancy": 0.156,
+      "oos_sharpe_raw": -1.246,
+      "oos_sharpe_deflated": -2.037,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 10 < 30",
+        "OOS expectancy 0.16 < 1.0",
+        "deflated OOS Sharpe -2.04 < 0.5 (raw -1.25, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "THETA-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 12,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.95,
+      "oos_expectancy": 5.321,
+      "oos_sharpe_raw": 0.62,
+      "oos_sharpe_deflated": -0.172,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 12 < 30",
+        "deflated OOS Sharpe -0.17 < 0.5 (raw 0.62, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "LINK-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 16,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 3.94,
+      "oos_expectancy": 1.632,
+      "oos_sharpe_raw": 0.285,
+      "oos_sharpe_deflated": -0.507,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 16 < 30",
+        "deflated OOS Sharpe -0.51 < 0.5 (raw 0.28, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "GRT-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 3,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.9,
+      "oos_expectancy": 1.627,
+      "oos_sharpe_raw": 0.288,
+      "oos_sharpe_deflated": -0.504,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 3 < 30",
+        "deflated OOS Sharpe -0.50 < 0.5 (raw 0.29, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "BAND-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 7,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.81,
+      "oos_expectancy": 0.973,
+      "oos_sharpe_raw": -0.014,
+      "oos_sharpe_deflated": -0.805,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 7 < 30",
+        "OOS expectancy 0.97 < 1.0",
+        "deflated OOS Sharpe -0.81 < 0.5 (raw -0.01, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.93 < 1.0"
+      ]
+    },
+    {
+      "ticker": "API3-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 8,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.52,
+      "oos_expectancy": 2.689,
+      "oos_sharpe_raw": 0.486,
+      "oos_sharpe_deflated": -0.306,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 8 < 30",
+        "deflated OOS Sharpe -0.31 < 0.5 (raw 0.49, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "TRB-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 10,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.65,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -5.065,
+      "oos_sharpe_deflated": -5.857,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 10 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -5.86 < 0.5 (raw -5.07, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "PYTH-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 4,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.75,
+      "oos_expectancy": 0.177,
+      "oos_sharpe_raw": -1.325,
+      "oos_sharpe_deflated": -2.117,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 4 < 30",
+        "OOS expectancy 0.18 < 1.0",
+        "deflated OOS Sharpe -2.12 < 0.5 (raw -1.33, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.13 < 1.0"
+      ]
+    },
+    {
+      "ticker": "NMR-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 13,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 3.2,
+      "oos_expectancy": 1.046,
+      "oos_sharpe_raw": 0.027,
+      "oos_sharpe_deflated": -0.764,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 13 < 30",
+        "deflated OOS Sharpe -0.76 < 0.5 (raw 0.03, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.90 < 1.0"
+      ]
+    },
+    {
+      "ticker": "FET-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 11,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.71,
+      "oos_expectancy": 5.459,
+      "oos_sharpe_raw": 0.478,
+      "oos_sharpe_deflated": -0.313,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 11 < 30",
+        "deflated OOS Sharpe -0.31 < 0.5 (raw 0.48, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "AGIX-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 8,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.97,
+      "oos_expectancy": 0.389,
+      "oos_sharpe_raw": -0.539,
+      "oos_sharpe_deflated": -1.331,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 8 < 30",
+        "OOS expectancy 0.39 < 1.0",
+        "deflated OOS Sharpe -1.33 < 0.5 (raw -0.54, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "TAO-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "insufficient history (1 rows < 300)"
+      ]
+    },
+    {
+      "ticker": "OCEAN-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency"
+      ]
+    },
+    {
+      "ticker": "VIRTUAL-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 4,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 3.04,
+      "oos_expectancy": 0.335,
+      "oos_sharpe_raw": -0.863,
+      "oos_sharpe_deflated": -1.654,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 4 < 30",
+        "OOS expectancy 0.34 < 1.0",
+        "deflated OOS Sharpe -1.65 < 0.5 (raw -0.86, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "WLD-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 6,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.47,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -3.174,
+      "oos_sharpe_deflated": -3.965,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 6 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -3.96 < 0.5 (raw -3.17, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "ARKM-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 4,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.43,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -4.565,
+      "oos_sharpe_deflated": -5.356,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 4 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -5.36 < 0.5 (raw -4.56, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.60 < 1.0"
+      ]
+    },
+    {
+      "ticker": "QNT-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 13,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 3.2,
+      "oos_expectancy": 0.444,
+      "oos_sharpe_raw": -0.589,
+      "oos_sharpe_deflated": -1.381,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 13 < 30",
+        "OOS expectancy 0.44 < 1.0",
+        "deflated OOS Sharpe -1.38 < 0.5 (raw -0.59, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "ICX-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 9,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.21,
+      "oos_expectancy": 1.718,
+      "oos_sharpe_raw": 0.266,
+      "oos_sharpe_deflated": -0.525,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 9 < 30",
+        "deflated OOS Sharpe -0.53 < 0.5 (raw 0.27, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "IOTX-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency"
+      ]
+    },
+    {
+      "ticker": "ANKR-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 5,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.23,
+      "oos_expectancy": 0.095,
+      "oos_sharpe_raw": -0.86,
+      "oos_sharpe_deflated": -1.652,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 5 < 30",
+        "OOS expectancy 0.10 < 1.0",
+        "deflated OOS Sharpe -1.65 < 0.5 (raw -0.86, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.83 < 1.0"
+      ]
+    },
+    {
+      "ticker": "NKN-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency"
+      ]
+    },
+    {
+      "ticker": "JASMY-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 9,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.94,
+      "oos_expectancy": 0.724,
+      "oos_sharpe_raw": -0.2,
+      "oos_sharpe_deflated": -0.992,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 9 < 30",
+        "OOS expectancy 0.72 < 1.0",
+        "deflated OOS Sharpe -0.99 < 0.5 (raw -0.20, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "RIF-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 14,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 3.45,
+      "oos_expectancy": 1.406,
+      "oos_sharpe_raw": 0.234,
+      "oos_sharpe_deflated": -0.557,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 14 < 30",
+        "deflated OOS Sharpe -0.56 < 0.5 (raw 0.23, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "SAND-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 10,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.99,
+      "oos_expectancy": 0.029,
+      "oos_sharpe_raw": -2.902,
+      "oos_sharpe_deflated": -3.694,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 10 < 30",
+        "OOS expectancy 0.03 < 1.0",
+        "deflated OOS Sharpe -3.69 < 0.5 (raw -2.90, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.75 < 1.0"
+      ]
+    },
+    {
+      "ticker": "MANA-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 14,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 3.45,
+      "oos_expectancy": 0.342,
+      "oos_sharpe_raw": -0.795,
+      "oos_sharpe_deflated": -1.587,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 14 < 30",
+        "OOS expectancy 0.34 < 1.0",
+        "deflated OOS Sharpe -1.59 < 0.5 (raw -0.80, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.76 < 1.0"
+      ]
+    },
+    {
+      "ticker": "AXS-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 11,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 3.42,
+      "oos_expectancy": 0.836,
+      "oos_sharpe_raw": -0.104,
+      "oos_sharpe_deflated": -0.895,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 11 < 30",
+        "OOS expectancy 0.84 < 1.0",
+        "deflated OOS Sharpe -0.90 < 0.5 (raw -0.10, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.60 < 1.0"
+      ]
+    },
+    {
+      "ticker": "GALA-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 5,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.56,
+      "oos_expectancy": 1.478,
+      "oos_sharpe_raw": 0.153,
+      "oos_sharpe_deflated": -0.638,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 5 < 30",
+        "deflated OOS Sharpe -0.64 < 0.5 (raw 0.15, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "ENJ-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 8,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.97,
+      "oos_expectancy": 1.369,
+      "oos_sharpe_raw": 0.155,
+      "oos_sharpe_deflated": -0.636,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 8 < 30",
+        "deflated OOS Sharpe -0.64 < 0.5 (raw 0.16, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "MAGIC-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "NaN in OHLC",
+        "non-positive close prices"
+      ]
+    },
+    {
+      "ticker": "RON-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "insufficient history (187 rows < 300)"
+      ]
+    },
+    {
+      "ticker": "BEAM-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 8,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.97,
+      "oos_expectancy": 3.504,
+      "oos_sharpe_raw": 0.4,
+      "oos_sharpe_deflated": -0.392,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 8 < 30",
+        "deflated OOS Sharpe -0.39 < 0.5 (raw 0.40, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "ILV-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 8,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.68,
+      "oos_expectancy": 1.727,
+      "oos_sharpe_raw": 0.26,
+      "oos_sharpe_deflated": -0.531,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 8 < 30",
+        "deflated OOS Sharpe -0.53 < 0.5 (raw 0.26, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "PIXEL-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 2,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.31,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -3.03,
+      "oos_sharpe_deflated": -3.822,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 2 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -3.82 < 0.5 (raw -3.03, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.15 < 1.0"
+      ]
+    },
+    {
+      "ticker": "PRIME-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 3,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.49,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -5.051,
+      "oos_sharpe_deflated": -5.842,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 3 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -5.84 < 0.5 (raw -5.05, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.00 < 1.0"
+      ]
+    },
+    {
+      "ticker": "APE-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 7,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.15,
+      "oos_expectancy": 0.791,
+      "oos_sharpe_raw": -0.114,
+      "oos_sharpe_deflated": -0.906,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 7 < 30",
+        "OOS expectancy 0.79 < 1.0",
+        "deflated OOS Sharpe -0.91 < 0.5 (raw -0.11, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.44 < 1.0"
+      ]
+    },
+    {
+      "ticker": "ENS-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 12,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 4.56,
+      "oos_expectancy": 1.942,
+      "oos_sharpe_raw": 0.441,
+      "oos_sharpe_deflated": -0.351,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 12 < 30",
+        "deflated OOS Sharpe -0.35 < 0.5 (raw 0.44, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.55 < 1.0"
+      ]
+    },
+    {
+      "ticker": "CVC-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 10,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.46,
+      "oos_expectancy": 0.869,
+      "oos_sharpe_raw": -0.083,
+      "oos_sharpe_deflated": -0.875,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 10 < 30",
+        "OOS expectancy 0.87 < 1.0",
+        "deflated OOS Sharpe -0.87 < 0.5 (raw -0.08, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "ONT-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 9,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.21,
+      "oos_expectancy": 1.098,
+      "oos_sharpe_raw": 0.052,
+      "oos_sharpe_deflated": -0.74,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 9 < 30",
+        "deflated OOS Sharpe -0.74 < 0.5 (raw 0.05, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.93 < 1.0"
+      ]
+    },
+    {
+      "ticker": "LIT-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 4,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.14,
+      "oos_expectancy": 66.186,
+      "oos_sharpe_raw": 0.523,
+      "oos_sharpe_deflated": -0.268,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 4 < 30",
+        "deflated OOS Sharpe -0.27 < 0.5 (raw 0.52, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "HIVE-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 6,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.68,
+      "oos_expectancy": 1.429,
+      "oos_sharpe_raw": 0.134,
+      "oos_sharpe_deflated": -0.658,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 6 < 30",
+        "deflated OOS Sharpe -0.66 < 0.5 (raw 0.13, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "STEEM-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 9,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.21,
+      "oos_expectancy": 0.585,
+      "oos_sharpe_raw": -0.321,
+      "oos_sharpe_deflated": -1.112,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 9 < 30",
+        "OOS expectancy 0.58 < 1.0",
+        "deflated OOS Sharpe -1.11 < 0.5 (raw -0.32, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.32 < 1.0"
+      ]
+    },
+    {
+      "ticker": "UNI-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 1,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 0.31,
+      "oos_expectancy": Infinity,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.791,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 1 < 30",
+        "deflated OOS Sharpe -0.79 < 0.5 (raw 0.00, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.15 < 1.0"
+      ]
+    },
+    {
+      "ticker": "SUSHI-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 9,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.71,
+      "oos_expectancy": 0.662,
+      "oos_sharpe_raw": -0.246,
+      "oos_sharpe_deflated": -1.038,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 9 < 30",
+        "OOS expectancy 0.66 < 1.0",
+        "deflated OOS Sharpe -1.04 < 0.5 (raw -0.25, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.84 < 1.0"
+      ]
+    },
+    {
+      "ticker": "JUP-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 7,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.77,
+      "oos_expectancy": 0.324,
+      "oos_sharpe_raw": -0.447,
+      "oos_sharpe_deflated": -1.238,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 7 < 30",
+        "OOS expectancy 0.32 < 1.0",
+        "deflated OOS Sharpe -1.24 < 0.5 (raw -0.45, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "RAY-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 10,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 3.29,
+      "oos_expectancy": 2.883,
+      "oos_sharpe_raw": 0.454,
+      "oos_sharpe_deflated": -0.337,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 10 < 30",
+        "deflated OOS Sharpe -0.34 < 0.5 (raw 0.45, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "CAKE-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency"
+      ]
+    },
+    {
+      "ticker": "1INCH-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency"
+      ]
+    },
+    {
+      "ticker": "ZRX-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency"
+      ]
+    },
+    {
+      "ticker": "KNC-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 5,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.79,
+      "oos_expectancy": 0.774,
+      "oos_sharpe_raw": -0.129,
+      "oos_sharpe_deflated": -0.921,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 5 < 30",
+        "OOS expectancy 0.77 < 1.0",
+        "deflated OOS Sharpe -0.92 < 0.5 (raw -0.13, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.25 < 1.0"
+      ]
+    },
+    {
+      "ticker": "BLUR-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 2,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.05,
+      "oos_expectancy": 0.231,
+      "oos_sharpe_raw": -0.453,
+      "oos_sharpe_deflated": -1.244,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 2 < 30",
+        "OOS expectancy 0.23 < 1.0",
+        "deflated OOS Sharpe -1.24 < 0.5 (raw -0.45, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "PAXG-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 16,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 4.14,
+      "oos_expectancy": 1.182,
+      "oos_sharpe_raw": 0.105,
+      "oos_sharpe_deflated": -0.686,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 16 < 30",
+        "deflated OOS Sharpe -0.69 < 0.5 (raw 0.11, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.96 < 1.0"
+      ]
+    },
+    {
+      "ticker": "XAUT-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 11,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 3.02,
+      "oos_expectancy": 0.092,
+      "oos_sharpe_raw": -1.975,
+      "oos_sharpe_deflated": -2.767,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 11 < 30",
+        "OOS expectancy 0.09 < 1.0",
+        "deflated OOS Sharpe -2.77 < 0.5 (raw -1.98, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.40 < 1.0"
+      ]
+    },
+    {
+      "ticker": "WBTC-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 12,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.95,
+      "oos_expectancy": 3.077,
+      "oos_sharpe_raw": 0.538,
+      "oos_sharpe_deflated": -0.254,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 12 < 30",
+        "deflated OOS Sharpe -0.25 < 0.5 (raw 0.54, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "DGB-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 12,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.95,
+      "oos_expectancy": 1.184,
+      "oos_sharpe_raw": 0.071,
+      "oos_sharpe_deflated": -0.72,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 12 < 30",
+        "deflated OOS Sharpe -0.72 < 0.5 (raw 0.07, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.80 < 1.0"
+      ]
+    },
+    {
+      "ticker": "DCR-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 10,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.46,
+      "oos_expectancy": 4.855,
+      "oos_sharpe_raw": 0.694,
+      "oos_sharpe_deflated": -0.097,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 10 < 30",
+        "deflated OOS Sharpe -0.10 < 0.5 (raw 0.69, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "ETC-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 11,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.71,
+      "oos_expectancy": 1.039,
+      "oos_sharpe_raw": 0.021,
+      "oos_sharpe_deflated": -0.77,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 11 < 30",
+        "deflated OOS Sharpe -0.77 < 0.5 (raw 0.02, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "BCH-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 19,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 4.68,
+      "oos_expectancy": 1.217,
+      "oos_sharpe_raw": 0.156,
+      "oos_sharpe_deflated": -0.635,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 19 < 30",
+        "deflated OOS Sharpe -0.63 < 0.5 (raw 0.16, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "LTC-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency"
+      ]
+    },
+    {
+      "ticker": "XTZ-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 5,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.23,
+      "oos_expectancy": 3.509,
+      "oos_sharpe_raw": 0.33,
+      "oos_sharpe_deflated": -0.461,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 5 < 30",
+        "deflated OOS Sharpe -0.46 < 0.5 (raw 0.33, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "NEO-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 11,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.71,
+      "oos_expectancy": 1.797,
+      "oos_sharpe_raw": 0.285,
+      "oos_sharpe_deflated": -0.506,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 11 < 30",
+        "deflated OOS Sharpe -0.51 < 0.5 (raw 0.29, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "EOS-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 8,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.97,
+      "oos_expectancy": 2.542,
+      "oos_sharpe_raw": 0.386,
+      "oos_sharpe_deflated": -0.405,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 8 < 30",
+        "deflated OOS Sharpe -0.41 < 0.5 (raw 0.39, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.77 < 1.0"
+      ]
+    },
+    {
+      "ticker": "WAVES-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 14,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 3.45,
+      "oos_expectancy": 1.181,
+      "oos_sharpe_raw": 0.107,
+      "oos_sharpe_deflated": -0.684,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 14 < 30",
+        "deflated OOS Sharpe -0.68 < 0.5 (raw 0.11, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "WAX-USD",
+      "verdict": "DATA_ERROR",
+      "reasons": [
+        "yfinance returned empty frame for WAX-USD @ 1d"
+      ]
+    },
+    {
+      "ticker": "STX-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 4,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.26,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -2.331,
+      "oos_sharpe_deflated": -3.122,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 4 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -3.12 < 0.5 (raw -2.33, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.57 < 1.0"
+      ]
+    },
+    {
+      "ticker": "ELF-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 6,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.48,
+      "oos_expectancy": 3.26,
+      "oos_sharpe_raw": 0.358,
+      "oos_sharpe_deflated": -0.433,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 6 < 30",
+        "deflated OOS Sharpe -0.43 < 0.5 (raw 0.36, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "GLM-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 10,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.46,
+      "oos_expectancy": 1.577,
+      "oos_sharpe_raw": 0.184,
+      "oos_sharpe_deflated": -0.607,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 10 < 30",
+        "deflated OOS Sharpe -0.61 < 0.5 (raw 0.18, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.85 < 1.0"
+      ]
+    },
+    {
+      "ticker": "POWR-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 12,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.95,
+      "oos_expectancy": 0.456,
+      "oos_sharpe_raw": -0.578,
+      "oos_sharpe_deflated": -1.369,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 12 < 30",
+        "OOS expectancy 0.46 < 1.0",
+        "deflated OOS Sharpe -1.37 < 0.5 (raw -0.58, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.63 < 1.0"
+      ]
+    },
+    {
+      "ticker": "VRA-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 9,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.21,
+      "oos_expectancy": 1.962,
+      "oos_sharpe_raw": 0.36,
+      "oos_sharpe_deflated": -0.432,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 9 < 30",
+        "deflated OOS Sharpe -0.43 < 0.5 (raw 0.36, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "COTI-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 12,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.97,
+      "oos_expectancy": 0.358,
+      "oos_sharpe_raw": -0.757,
+      "oos_sharpe_deflated": -1.549,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 12 < 30",
+        "OOS expectancy 0.36 < 1.0",
+        "deflated OOS Sharpe -1.55 < 0.5 (raw -0.76, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "TWT-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 7,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.08,
+      "oos_expectancy": 0.292,
+      "oos_sharpe_raw": -0.738,
+      "oos_sharpe_deflated": -1.53,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 7 < 30",
+        "OOS expectancy 0.29 < 1.0",
+        "deflated OOS Sharpe -1.53 < 0.5 (raw -0.74, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.16 < 1.0"
+      ]
+    },
+    {
+      "ticker": "CHZ-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency"
+      ]
+    },
+    {
+      "ticker": "LSK-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 7,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.72,
+      "oos_expectancy": 0.889,
+      "oos_sharpe_raw": -0.056,
+      "oos_sharpe_deflated": -0.847,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 7 < 30",
+        "OOS expectancy 0.89 < 1.0",
+        "deflated OOS Sharpe -0.85 < 0.5 (raw -0.06, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.88 < 1.0"
+      ]
+    },
+    {
+      "ticker": "ARK-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 9,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.21,
+      "oos_expectancy": 2.257,
+      "oos_sharpe_raw": 0.336,
+      "oos_sharpe_deflated": -0.455,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 9 < 30",
+        "deflated OOS Sharpe -0.46 < 0.5 (raw 0.34, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "ZEN-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency"
+      ]
+    },
+    {
+      "ticker": "CRO-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency"
+      ]
+    },
+    {
+      "ticker": "KSM-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 7,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.87,
+      "oos_expectancy": 0.206,
+      "oos_sharpe_raw": -0.924,
+      "oos_sharpe_deflated": -1.716,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 7 < 30",
+        "OOS expectancy 0.21 < 1.0",
+        "deflated OOS Sharpe -1.72 < 0.5 (raw -0.92, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "NAV-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 3,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 0.74,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -0.874,
+      "oos_sharpe_deflated": -1.665,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 3 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -1.67 < 0.5 (raw -0.87, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.64 < 1.0"
+      ]
+    },
+    {
+      "ticker": "WAN-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 8,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.97,
+      "oos_expectancy": 0.874,
+      "oos_sharpe_raw": -0.073,
+      "oos_sharpe_deflated": -0.864,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 8 < 30",
+        "OOS expectancy 0.87 < 1.0",
+        "deflated OOS Sharpe -0.86 < 0.5 (raw -0.07, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.57 < 1.0"
+      ]
+    },
+    {
+      "ticker": "KMD-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 6,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.48,
+      "oos_expectancy": 0.127,
+      "oos_sharpe_raw": -0.689,
+      "oos_sharpe_deflated": -1.481,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 6 < 30",
+        "OOS expectancy 0.13 < 1.0",
+        "deflated OOS Sharpe -1.48 < 0.5 (raw -0.69, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.73 < 1.0"
+      ]
+    },
+    {
+      "ticker": "ATA-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 3,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.04,
+      "oos_expectancy": 1.031,
+      "oos_sharpe_raw": 0.012,
+      "oos_sharpe_deflated": -0.78,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 3 < 30",
+        "deflated OOS Sharpe -0.78 < 0.5 (raw 0.01, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.33 < 1.0"
+      ]
+    },
+    {
+      "ticker": "BICO-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 5,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.93,
+      "oos_expectancy": 0.909,
+      "oos_sharpe_raw": -0.048,
+      "oos_sharpe_deflated": -0.839,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 5 < 30",
+        "OOS expectancy 0.91 < 1.0",
+        "deflated OOS Sharpe -0.84 < 0.5 (raw -0.05, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.52 < 1.0"
+      ]
+    },
+    {
+      "ticker": "CTSI-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 6,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.7,
+      "oos_expectancy": 1.117,
+      "oos_sharpe_raw": 0.06,
+      "oos_sharpe_deflated": -0.731,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 6 < 30",
+        "deflated OOS Sharpe -0.73 < 0.5 (raw 0.06, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "AXL-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 1,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 0.63,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": 0.0,
+      "oos_sharpe_deflated": -0.791,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 1 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -0.79 < 0.5 (raw 0.00, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "ROUTE-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 3,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.37,
+      "oos_expectancy": 5.517,
+      "oos_sharpe_raw": 0.589,
+      "oos_sharpe_deflated": -0.203,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 3 < 30",
+        "deflated OOS Sharpe -0.20 < 0.5 (raw 0.59, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "SKL-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency"
+      ]
+    },
+    {
+      "ticker": "ORN-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 6,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.77,
+      "oos_expectancy": 0.24,
+      "oos_sharpe_raw": -0.721,
+      "oos_sharpe_deflated": -1.513,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 6 < 30",
+        "OOS expectancy 0.24 < 1.0",
+        "deflated OOS Sharpe -1.51 < 0.5 (raw -0.72, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.17 < 1.0"
+      ]
+    },
+    {
+      "ticker": "PROM-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 10,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.52,
+      "oos_expectancy": 2.036,
+      "oos_sharpe_raw": 0.353,
+      "oos_sharpe_deflated": -0.439,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 10 < 30",
+        "deflated OOS Sharpe -0.44 < 0.5 (raw 0.35, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "SUPER-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 4,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 2.08,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -2.199,
+      "oos_sharpe_deflated": -2.99,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 4 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -2.99 < 0.5 (raw -2.20, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.00 < 1.0"
+      ]
+    },
+    {
+      "ticker": "ALEPH-USD",
+      "verdict": "BLOCKED_DATA",
+      "reasons": [
+        "high/low/close inconsistency"
+      ]
+    },
+    {
+      "ticker": "RIO-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 5,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.46,
+      "oos_expectancy": 0.054,
+      "oos_sharpe_raw": -1.127,
+      "oos_sharpe_deflated": -1.918,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 5 < 30",
+        "OOS expectancy 0.05 < 1.0",
+        "deflated OOS Sharpe -1.92 < 0.5 (raw -1.13, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)"
+      ]
+    },
+    {
+      "ticker": "POND-USD",
+      "market": "CRYPTO",
+      "verdict": "FAIL",
+      "passed": false,
+      "oos_n": 4,
+      "timeframe": "1d",
+      "strategy": "art",
+      "oos_trades_per_year": 1.27,
+      "oos_expectancy": 0.0,
+      "oos_sharpe_raw": -1.107,
+      "oos_sharpe_deflated": -1.898,
+      "ci_low": null,
+      "reasons": [
+        "OOS trades 4 < 30",
+        "OOS expectancy 0.00 < 1.0",
+        "deflated OOS Sharpe -1.90 < 0.5 (raw -1.11, 150 trials)",
+        "95% CI lower bound on mean trade not > 0 (lo=nan)",
+        "walk-forward expectancy 0.96 < 1.0"
+      ]
+    }
+  ]
+}
