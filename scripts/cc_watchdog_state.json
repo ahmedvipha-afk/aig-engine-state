@@ -1,18 +1,18 @@
 ﻿{
-    "recoveries_today_date":  "2026-05-22",
-    "longest_gap_seconds":  1400,
-    "last_recovery_ts":  null,
-    "recoveries_today":  0,
-    "last_crash_ts":  null,
-    "last_check_ts":  "2026-05-22T09:05:08.4856780Z",
-    "total_recovery_failures":  0,
-    "watchdog_version":  "1.0",
-    "consecutive_stale_checks":  0,
-    "mode":  "normal",
     "last_recovery_duration_seconds":  null,
-    "last_crash_cause":  null,
+    "longest_gap_seconds":  2101,
     "recent_recovery_durations":  [
 
                                   ],
-    "total_recoveries":  0
+    "recoveries_today":  0,
+    "last_recovery_ts":  null,
+    "last_crash_cause":  "sentinel-stale-35min",
+    "last_check_ts":  "2026-05-22T09:10:22.7856268Z",
+    "watchdog_version":  "1.0",
+    "consecutive_stale_checks":  3,
+    "mode":  "recovering",
+    "total_recoveries":  0,
+    "recoveries_today_date":  "2026-05-22",
+    "total_recovery_failures":  0,
+    "last_crash_ts":  "2026-05-22T09:10:22.8238149Z"
 }

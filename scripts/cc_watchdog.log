@@ -17,3 +17,20 @@
 2026-05-22T09:03:08.4503812Z state load failed: Collection was modified; enumeration operation may not execute.
 2026-05-22T09:04:08.4536010Z state load failed: Collection was modified; enumeration operation may not execute.
 2026-05-22T09:05:08.4736578Z state load failed: Collection was modified; enumeration operation may not execute.
+2026-05-22T09:05:54.6956851Z state load failed: Collection was modified; enumeration operation may not execute.
+2026-05-22T09:05:54.7908879Z stale-check 0/3 cause=sentinel-stale-35min sentinel_age=2100s claude_alive=True
+2026-05-22T09:05:55.1057663Z state load failed: Collection was modified; enumeration operation may not execute.
+2026-05-22T09:05:55.2185299Z stale-check 0/3 cause=sentinel-stale-35min sentinel_age=2101s claude_alive=True
+2026-05-22T09:05:55.5375352Z state load failed: Collection was modified; enumeration operation may not execute.
+2026-05-22T09:05:55.6228961Z stale-check 0/3 cause=sentinel-stale-35min sentinel_age=2101s claude_alive=True
+2026-05-22T09:06:09.1266952Z state load failed: Collection was modified; enumeration operation may not execute.
+2026-05-22T09:10:22.1167558Z stale-check 1/3 cause=sentinel-stale-35min sentinel_age=2100s claude_alive=True
+2026-05-22T09:10:22.4673593Z stale-check 2/3 cause=sentinel-stale-35min sentinel_age=2101s claude_alive=True
+2026-05-22T09:10:22.8177626Z stale-check 3/3 cause=sentinel-stale-35min sentinel_age=2101s claude_alive=True
+2026-05-22T09:10:22.8238149Z CRASH CONFIRMED cause=sentinel-stale-35min sentinel_age=2101s
+2026-05-22T09:10:38.5166403Z recovery attempt 1/3
+2026-05-22T09:11:02.8373765Z recovery attempt 1 FAILED exit= stderr=Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+
+2026-05-22T09:11:32.8558157Z recovery attempt 2/3
+2026-05-22T09:12:43.2884227Z recovery attempt 2 FAILED exit= stderr=Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+

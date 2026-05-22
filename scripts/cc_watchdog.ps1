@@ -87,7 +87,10 @@ function Append-CrashLogJson([hashtable]$entry) {
 }
 
 function Load-State {
-    $default = [ordered]@{
+    # Plain hashtable so $state.key access works (OrderedDictionary doesn't
+    # expose property-style access; we trade key ordering in the JSON output
+    # for the simpler $state.foo syntax everywhere else).
+    $default = @{
         consecutive_stale_checks       = 0
         mode                           = 'normal'
         last_check_ts                  = $null
@@ -106,7 +109,7 @@ function Load-State {
     if (Test-Path $StateFile) {
         try {
             $loaded = Get-Content $StateFile -Raw | ConvertFrom-Json
-            foreach ($k in $default.Keys) {
+            foreach ($k in @($default.Keys)) {
                 if ($loaded.PSObject.Properties.Name -contains $k) {
                     $default[$k] = $loaded.$k
                 }
@@ -116,7 +119,7 @@ function Load-State {
     return $default
 }
 
-function Save-State([hashtable]$state) {
+function Save-State($state) {
     try {
         $state | ConvertTo-Json -Depth 4 | Set-Content -Path $StateFile -Encoding utf8
     } catch { Write-WD "state save failed: $_" }
