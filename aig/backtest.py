@@ -58,6 +58,9 @@ def _strategy_signals(name: str, df: pd.DataFrame) -> pd.DataFrame:
     if name == "gap":
         from aig.strategy_gap import signals
         return signals(df)
+    if name == "wck":
+        from aig.strategy_wck import signals
+        return signals(df)
     raise ValueError(f"unknown strategy: {name}")
 
 
@@ -100,6 +103,9 @@ def _stop_distance(name: str, row) -> float:
     if name == "gap":
         from config import GAP_STOP_ATR_MULT
         return GAP_STOP_ATR_MULT * row["atr"]
+    if name == "wck":
+        from config import WCK_STOP_ATR_MULT
+        return WCK_STOP_ATR_MULT * row["atr"]
     raise ValueError(name)
 
 

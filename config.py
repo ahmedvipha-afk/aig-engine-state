@@ -194,6 +194,38 @@ GAP_VOLUME_PERIOD   = 20    # SMA window for volume confirmation
 GAP_VOLUME_MULT     = 1.5   # entry-bar volume >= mult * SMA -- elevated volume confirms gap
 GAP_STOP_ATR_MULT   = 1.5   # stop = entry - mult * ATR(14); tight -- mean-rev fast if thesis fails
 
+# ---- WCK strategy (frozen 2026-05-22 Sprint Obj-6 advance, post-GAP) ----
+# Lower-Wick Rejection Mean-Reversion in bullish regime. Long-only.
+# Pre-registered BEFORE any WCK data was seen, per v7.0 §19 (13th strategy
+# in the pipeline). Methodologically distinct: WCK is the FIRST strategy
+# whose PRIMARY signal is the INTRA-BAR SHAPE RATIO of a single candle --
+# specifically the lower-wick-to-range ratio (min(O,C) - L) / (H - L). Every
+# prior strategy reads either between-bar (GAP open-vs-prior-close), rolling-
+# window (EMA200/MBV/DBO/ROC/VCB/PMR/STR/ART), recursive smoothed (HAT HA
+# bars), volume-integrated (CMF), or swing-pivot (Divergence) primitives.
+# CMF uses ((C-L)-(H-C))/(H-L) (close-position within range) BUT then
+# integrates over N bars with volume weighting -- the SINGLE-BAR shape
+# primitive itself is unused as a primary signal. WCK reads the unaggregated
+# single-bar wick anatomy. Hypothesis (frozen pre-data): in a bullish regime
+# (close > SMA(200)), a single bar with lower wick >= 50% of bar range AND
+# body <= 35% of range -- the canonical hammer / long-lower-wick pattern --
+# is intra-bar evidence of buyers rejecting a tested lower price. Coupled
+# with elevated volume, this signals institutional accumulation at a
+# perceived low. Quick exit when close exceeds prior 5-bar high (small
+# bounce captured) targets a higher-WR small-target trade. Long-only by
+# construction (long-lower-wick pattern is asymmetrically bullish; the
+# inverse "shooting-star" pattern would be the short equivalent under
+# Rule 15, which forbids shorts). Trial budget extended 36 -> 39 to
+# cover WCK x {US, UAE, CRYPTO}.
+WCK_WICK_RATIO_FLOOR     = 0.5    # lower wick must be >= this fraction of bar range
+WCK_BODY_RATIO_CEIL      = 0.35   # body must be <= this fraction of bar range
+WCK_MIN_RANGE_ATR_RATIO  = 0.5    # bar range must be >= mult * ATR(14) -- skip dojis/microscopic bars
+WCK_TREND_SMA            = 200    # bullish regime filter
+WCK_VOLUME_PERIOD        = 20     # SMA window for volume confirmation
+WCK_VOLUME_MULT          = 1.2    # entry-bar volume >= mult * SMA(VOLUME_PERIOD)
+WCK_EXIT_LOOKBACK        = 5      # exit when close >= rolling max of prior N closes
+WCK_STOP_ATR_MULT        = 1.0    # tight stop -- wick rejection thesis breaks fast
+
 # ---- HAT strategy (frozen 2026-05-21 Fire 14:55 UTC) --------------------
 # Heikin-Ashi Trend Continuation. Long-only signal derived from SMOOTHED
 # (Heikin-Ashi) candles rather than raw OHLC. Pre-registered BEFORE any
@@ -274,8 +306,8 @@ PORTFOLIO_GATE = {
     "min_universe_coverage": 0.05, # at least 5% of universe must contribute trades
     "bootstrap_iters": 2000,
     "bootstrap_conf": 0.95,
-    "n_trials_registered": 36,   # 12 strategies (ema200, divergence, mbv, dbo, roc, vcb, hat, pmr, str, art, cmf, gap) × 3 markets × 1 timeframe (1D).
-                                 # GAP added 2026-05-22 Sprint Obj-6 advance 11:48 UTC — trial budget bumped 33 -> 36.
+    "n_trials_registered": 39,   # 13 strategies (ema200, divergence, mbv, dbo, roc, vcb, hat, pmr, str, art, cmf, gap, wck) × 3 markets × 1 timeframe (1D).
+                                 # WCK added 2026-05-22 Sprint Obj-6 advance (post-GAP-finalize) — trial budget bumped 36 -> 39.
                                  # Adding a 4H variant or new strategy -> +N. Pre-register in strategy_register.md
                                  # before running.
 }

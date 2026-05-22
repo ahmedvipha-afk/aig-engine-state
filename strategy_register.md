@@ -554,6 +554,63 @@ mean-reversion (gap-fade) thesis breaks fast if price retraces.
 
 ---
 
+## STRATEGY 13 — WCK: Lower-Wick Rejection Mean-Reversion (long only) — NEW 2026-05-22 Sprint Obj-6 advance post-GAP
+
+| Field | Value |
+|-------|-------|
+| Strategy id | `wck` |
+| Module | `aig/strategy_wck.py` |
+| Timeframes registered | **1D** |
+| Long only | YES (Rule 15) |
+| Pre-registered | 2026-05-22 Sprint Obj-6 advance post-GAP-finalize (BEFORE any WCK data was seen — Phase 1 directive F1) |
+
+**Concept**: long-only **INTRA-BAR SHAPE-DOMAIN mean-reversion**. WCK is
+the FIRST strategy whose primary signal is the SHAPE RATIO of a SINGLE
+candle — specifically the lower-wick-to-range ratio. Every prior
+strategy reads one of: between-bar (GAP), rolling-window (EMA200/MBV/
+DBO/ROC/VCB/PMR/STR/ART), recursive smoothed (HAT), volume-integrated
+(CMF), or swing-pivot (Divergence) primitives. The intra-bar single-bar
+wick anatomy is unused in any of them.
+
+- **EMA-200 / MBV / PMR / Divergence / STR / DBO / ROC / VCB / HAT /
+  ART / CMF / GAP**: rolling-window or between-bar primitives — none
+  read the single-bar wick-to-range ratio.
+- **WCK**: `lower_wick = min(open, close) - low`; `bar_range = high - low`;
+  `lower_wick / bar_range >= 0.5` AND `body / bar_range <= 0.35` —
+  the canonical hammer / long-lower-wick pattern. Distinct from CMF
+  which uses the close-position-in-range multiplier `((C-L)-(H-C))/(H-L)`
+  but immediately integrates it over N bars with volume weighting.
+  WCK reads the unaggregated single-bar shape primitive.
+
+**Hypothesis** (frozen pre-data): in a bullish regime (close > SMA(200)),
+a single bar with lower wick ≥50% of range AND body ≤35% of range is
+intra-bar evidence of buyers rejecting a tested lower price. Volume
+confirmation (≥1.2× SMA-20) filters thin-trade fake wicks. Quick exit
+when close exceeds prior 5-bar high (small bounce captured) targets a
+higher-WR small-target trade than statistical-mean exits (PMR z=0) or
+oscillator midpoints (STR %K=50). Failure acceptable per audit Concern 2.
+
+**Entry** (all must hold on the entry bar):
+1. `(min(open, close) - low) / (high - low) >= WCK_WICK_RATIO_FLOOR=0.5`
+2. `abs(close - open) / (high - low) <= WCK_BODY_RATIO_CEIL=0.35`
+3. `(high - low) >= WCK_MIN_RANGE_ATR_RATIO=0.5 × ATR(14)` — skip dojis/
+   microscopic bars where wick ratios are unreliable.
+4. `close > SMA(WCK_TREND_SMA=200)` — bullish regime filter.
+5. `volume >= WCK_VOLUME_MULT=1.2 × SMA(WCK_VOLUME_PERIOD=20)` — volume
+   confirms institutional commitment.
+
+**Stop**: entry − `WCK_STOP_ATR_MULT=1.0 × ATR(14)`. Tight stop because
+the intra-bar rejection thesis breaks fast if the wick's low is taken
+out within a couple bars.
+
+**Exit**:
+- `close >= rolling_max(close.shift(1), WCK_EXIT_LOOKBACK=5)` — close
+  exceeds prior 5-bar high (small bounce captured).
+- `close < SMA(WCK_TREND_SMA)` — regime broke.
+- ATR stop hit.
+
+---
+
 ## STRATEGY 2 — Bullish RSI Divergence (long only, regime-filtered)
 
 | Field | Value |
@@ -624,11 +681,15 @@ trial means appending a row here BEFORE the run; the haircut recomputes.
 | 33 | `cmf_us_1d`           | cmf        | US     | 1D | yfinance        | 2026-05-22 (Sprint Obj-6 advance) | 2026-05-22 | **PORTFOLIO_FAIL on WR-floor only** — 17,646 trades, exp 1.396, WR 33.96% (< 40% floor), raw Sharpe 6.5332, **dSharpe 5.872** under N=33 haircut (11.7× the 0.5 floor — HIGHEST near-miss dSharpe to date), 1,108/1,123 contributors (98.66% coverage). Fifth WR-floor near-miss; first volume-flow-domain near-miss (prior 4 are trend/momentum). |
 | 34 | `gap_uae_1d`          | gap        | UAE    | 1D | yfinance+cache  | 2026-05-22 (Sprint Obj-6 advance 11:48 UTC) | pending (staged) | pending |
 | 35 | `gap_crypto_1d`       | gap        | CRYPTO | 1D | yfinance        | 2026-05-22 (Sprint Obj-6 advance 11:48 UTC) | pending (staged) | pending |
-| 36 | `gap_us_1d`           | gap        | US     | 1D | yfinance        | 2026-05-22 (Sprint Obj-6 advance 11:48 UTC) | pending (staged) | pending |
+| 36 | `gap_us_1d`           | gap        | US     | 1D | yfinance        | 2026-05-22 (Sprint Obj-6 advance 11:48 UTC) | 2026-05-22 | **PORTFOLIO_FAIL on WR-floor only** — 7,421 trades, exp 1.1812, WR 38.09% (< 40% floor — TIGHTEST gap-to-clearance at 1.91pp), raw Sharpe 2.1313, **dSharpe 1.462** under N=36 haircut (clears 0.5 floor by 192%), 1,077/1,118 contributors (96.33% coverage), CI lower bound positive (+0.0030). Sixth WR-floor near-miss; first between-bar-discontinuity-domain near-miss. |
+| 37 | `wck_uae_1d`          | wck        | UAE    | 1D | yfinance+cache  | 2026-05-22 (Sprint Obj-6 advance post-GAP) | pending (staged) | pending |
+| 38 | `wck_crypto_1d`       | wck        | CRYPTO | 1D | yfinance        | 2026-05-22 (Sprint Obj-6 advance post-GAP) | pending (staged) | pending |
+| 39 | `wck_us_1d`           | wck        | US     | 1D | yfinance        | 2026-05-22 (Sprint Obj-6 advance post-GAP) | pending (staged) | pending |
 
 **`config.PORTFOLIO_GATE.n_trials_registered` must equal the row count above.**
-Current value: **36** (bumped 33 → 36 when GAP registered 2026-05-22 Sprint
-11:48 UTC, in the same commit that added the three trial-budget rows above).
+Current value: **39** (bumped 36 → 39 when WCK registered 2026-05-22 Sprint
+Obj-6 advance post-GAP, in the same commit that added the three trial-budget
+rows above).
 
 ### How to add a trial (procedure)
 
