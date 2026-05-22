@@ -164,6 +164,36 @@ CMF_VOLUME_PERIOD   = 20    # SMA window for volume sanity check
 CMF_VOLUME_MIN_MULT = 1.0   # entry-bar volume >= mult * SMA(VOLUME_PERIOD); 1.0 = at-or-above-average
 CMF_STOP_ATR_MULT   = 1.5   # tight stop -- mean-rev thesis breaks fast
 
+# ---- GAP strategy (frozen 2026-05-22 Sprint Obj-6 advance, 11:48 UTC) ---
+# Overnight Gap Continuation in Uptrend. Long-only between-bar discontinuity
+# strategy. Pre-registered BEFORE any GAP data was seen, per v7.0 §19 (12th
+# strategy in the pipeline). Methodologically distinct from the eleven prior
+# strategies: every prior strategy reads WITHIN-BAR or ROLLING-WINDOW
+# primitives -- close vs EMA, close vs Donchian, range_pct, z-score, %K,
+# Aroon bars-since-extreme, Heikin-Ashi smoothed bars, CMF integrated money
+# flow. GAP reads the BETWEEN-BAR price discontinuity: today's open versus
+# yesterday's close. The gap event exists only at the open print and is not
+# captured by any rolling-window aggregator. Hypothesis (frozen pre-data):
+# an overnight gap up of >= 2% in an established uptrend that does NOT fade
+# intraday (close > open) and is confirmed by elevated volume (>= 1.5x
+# average) represents an institutional commitment; price tends to continue
+# in the gap direction for several bars before mean-reverting. The exit
+# logic targets both continuation profits (close < SMA(10) -> short-term
+# momentum lost) and gap-fade protection (close < entry-bar open -> the
+# gap filled, hypothesis broken). Distinct from EMA-200 (trend confirm,
+# not gap event), DBO (rolling-window high breakout, not open print), VCB
+# (volatility compression, not directional price discontinuity). May trade
+# rarely on continuous-quote markets (crypto via yfinance 1D bars have
+# defined opens but small gaps -- if too rare, FAIL is honest verdict per
+# audit Concern 2, no parameter loosening). Trial budget extended 33 -> 36
+# to cover GAP x {US, UAE, CRYPTO}.
+GAP_THRESHOLD       = 0.02  # entry: open >= prior_close * (1 + threshold) -- 2% overnight gap up
+GAP_TREND_SMA       = 50    # regime filter (no longs unless close > SMA(50))
+GAP_EXIT_SMA        = 10    # exit when close < SMA(GAP_EXIT_SMA) -- short-term momentum lost
+GAP_VOLUME_PERIOD   = 20    # SMA window for volume confirmation
+GAP_VOLUME_MULT     = 1.5   # entry-bar volume >= mult * SMA -- elevated volume confirms gap
+GAP_STOP_ATR_MULT   = 1.5   # stop = entry - mult * ATR(14); tight -- mean-rev fast if thesis fails
+
 # ---- HAT strategy (frozen 2026-05-21 Fire 14:55 UTC) --------------------
 # Heikin-Ashi Trend Continuation. Long-only signal derived from SMOOTHED
 # (Heikin-Ashi) candles rather than raw OHLC. Pre-registered BEFORE any
@@ -244,8 +274,8 @@ PORTFOLIO_GATE = {
     "min_universe_coverage": 0.05, # at least 5% of universe must contribute trades
     "bootstrap_iters": 2000,
     "bootstrap_conf": 0.95,
-    "n_trials_registered": 33,   # 11 strategies (ema200, divergence, mbv, dbo, roc, vcb, hat, pmr, str, art, cmf) × 3 markets × 1 timeframe (1D).
-                                 # CMF added 2026-05-22 Sprint Obj-6 advance — trial budget bumped 30 -> 33.
+    "n_trials_registered": 36,   # 12 strategies (ema200, divergence, mbv, dbo, roc, vcb, hat, pmr, str, art, cmf, gap) × 3 markets × 1 timeframe (1D).
+                                 # GAP added 2026-05-22 Sprint Obj-6 advance 11:48 UTC — trial budget bumped 33 -> 36.
                                  # Adding a 4H variant or new strategy -> +N. Pre-register in strategy_register.md
                                  # before running.
 }

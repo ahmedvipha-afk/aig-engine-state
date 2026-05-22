@@ -503,6 +503,57 @@ mean-reversion thesis breaks fast if price falls further.
 
 ---
 
+## STRATEGY 12 — GAP: Overnight Gap Continuation in Uptrend (long only) — NEW 2026-05-22 Sprint Obj-6 advance 11:48 UTC
+
+| Field | Value |
+|-------|-------|
+| Strategy id | `gap` |
+| Module | `aig/strategy_gap.py` |
+| Timeframes registered | **1D** |
+| Long only | YES (Rule 15) |
+| Pre-registered | 2026-05-22 Sprint Obj-6 advance 11:48 UTC (BEFORE any GAP data was seen — Phase 1 directive F1) |
+
+**Concept**: long-only **BETWEEN-BAR DISCONTINUITY** strategy. GAP reads the
+overnight gap event — today's open versus yesterday's close — a price
+discontinuity that exists only at the open print and is NOT captured by any
+rolling-window aggregator. Every prior strategy in the pipeline reads
+WITHIN-BAR or ROLLING-WINDOW primitives:
+
+- EMA-200 / Divergence / MBV / PMR / STR: rolling levels, RSI, range_pct,
+  z-score, %K — all within-bar or rolling-window.
+- DBO / VCB: Donchian rolling-window high, ATR-min rolling-window compression.
+- ROC / HAT / ART: rate-of-change / smoothed bar / time-since-extreme — all
+  rolling-window or recursive.
+- CMF: integrated money-flow over N bars — rolling-window.
+- **GAP**: between-bar **discontinuity event** at the open print. No prior
+  strategy reads this primitive.
+
+**Hypothesis** (frozen pre-data): An overnight gap up of ≥2% in an established
+uptrend (close > SMA(50)) that does NOT fade intraday (close > open) and is
+confirmed by elevated volume (≥1.5× average) represents an institutional
+commitment. Price tends to continue in the gap direction for several bars
+before mean-reverting. Failure modes acceptable per audit Concern 2: (a) on
+continuous-quote markets (crypto via yfinance 1D bars), gaps are rare —
+trade count may fail the 1000 floor — honest FAIL; (b) on noisy small markets
+(UAE), gap quality may be too low to clear WR floor — also honest FAIL.
+
+**Entry** (all must hold on the entry bar):
+1. `open >= prior_close × (1 + GAP_THRESHOLD=0.02)` — overnight gap up of
+   2%+ exists at today's open.
+2. `close > open` — the gap held intraday (did NOT fade to a fill).
+3. `close > SMA(GAP_TREND_SMA=50)` — bullish regime filter.
+4. `volume >= GAP_VOLUME_MULT=1.5 × SMA(GAP_VOLUME_PERIOD=20)` — elevated
+   volume confirms institutional commitment.
+
+**Stop**: entry − `GAP_STOP_ATR_MULT=1.5 × ATR(14)`. Tight stop because the
+mean-reversion (gap-fade) thesis breaks fast if price retraces.
+
+**Exit**:
+- `close < SMA(GAP_EXIT_SMA=10)` — short-term momentum lost.
+- ATR stop hit.
+
+---
+
 ## STRATEGY 2 — Bullish RSI Divergence (long only, regime-filtered)
 
 | Field | Value |
@@ -568,13 +619,16 @@ trial means appending a row here BEFORE the run; the haircut recomputes.
 | 28 | `art_uae_1d`          | art        | UAE    | 1D | yfinance+cache  | 2026-05-22 (Sprint Obj-6 advance) | 2026-05-22 | PORTFOLIO_FAIL (98 trades < 1000; exp 0.697 < 1.0; WR 27.6% < 40%; dSharpe -1.926; CI lo<0) |
 | 29 | `art_crypto_1d`       | art        | CRYPTO | 1D | yfinance        | 2026-05-22 (Sprint Obj-6 advance) | 2026-05-22 | PORTFOLIO_FAIL (1,024 trades; WR 27.4% < 40%; dSharpe 0.314 < 0.5; exp 1.667 driven by long-tail outliers — WR floor binding) |
 | 30 | `art_us_1d`           | art        | US     | 1D | yfinance        | 2026-05-22 (Sprint Obj-6 advance) | 2026-05-22 | **PORTFOLIO_FAIL on WR-floor only** — 11,733 trades, exp 1.209, WR 34.87% (< 40% floor), raw Sharpe 2.693, **dSharpe 2.041** (4.1× the 0.5 floor), 1,108/1,124 contributors (98.58% strategy coverage). Fourth near-miss in the trend/momentum family (DBO 34.1%, ROC 29.9%, VCB 23.4%, ART 34.87%). Time-domain (Aroon) didn't break the WR-floor pattern. Honest FAIL per audit Concern 2. Reassignment ran; union US contributors unchanged at 1,107. |
-| 31 | `cmf_uae_1d`          | cmf        | UAE    | 1D | yfinance+cache  | 2026-05-22 (Sprint Obj-6 advance) | pending (staged) | pending |
-| 32 | `cmf_crypto_1d`       | cmf        | CRYPTO | 1D | yfinance        | 2026-05-22 (Sprint Obj-6 advance) | pending (staged) | pending |
-| 33 | `cmf_us_1d`           | cmf        | US     | 1D | yfinance        | 2026-05-22 (Sprint Obj-6 advance) | pending (staged) | pending |
+| 31 | `cmf_uae_1d`          | cmf        | UAE    | 1D | yfinance+cache  | 2026-05-22 (Sprint Obj-6 advance) | 2026-05-22 | PORTFOLIO_FAIL (93 trades < 1000; exp 0.764 < 1.0; dSharpe -1.54) |
+| 32 | `cmf_crypto_1d`       | cmf        | CRYPTO | 1D | yfinance        | 2026-05-22 (Sprint Obj-6 advance) | 2026-05-22 | PORTFOLIO_FAIL (566 trades < 1000; exp 0.482 < 1.0; dSharpe -3.62) |
+| 33 | `cmf_us_1d`           | cmf        | US     | 1D | yfinance        | 2026-05-22 (Sprint Obj-6 advance) | 2026-05-22 | **PORTFOLIO_FAIL on WR-floor only** — 17,646 trades, exp 1.396, WR 33.96% (< 40% floor), raw Sharpe 6.5332, **dSharpe 5.872** under N=33 haircut (11.7× the 0.5 floor — HIGHEST near-miss dSharpe to date), 1,108/1,123 contributors (98.66% coverage). Fifth WR-floor near-miss; first volume-flow-domain near-miss (prior 4 are trend/momentum). |
+| 34 | `gap_uae_1d`          | gap        | UAE    | 1D | yfinance+cache  | 2026-05-22 (Sprint Obj-6 advance 11:48 UTC) | pending (staged) | pending |
+| 35 | `gap_crypto_1d`       | gap        | CRYPTO | 1D | yfinance        | 2026-05-22 (Sprint Obj-6 advance 11:48 UTC) | pending (staged) | pending |
+| 36 | `gap_us_1d`           | gap        | US     | 1D | yfinance        | 2026-05-22 (Sprint Obj-6 advance 11:48 UTC) | pending (staged) | pending |
 
 **`config.PORTFOLIO_GATE.n_trials_registered` must equal the row count above.**
-Current value: **30** (bumped 27 → 30 when ART registered 2026-05-22 Sprint,
-in the same commit that added the trial budget rows above).
+Current value: **36** (bumped 33 → 36 when GAP registered 2026-05-22 Sprint
+11:48 UTC, in the same commit that added the three trial-budget rows above).
 
 ### How to add a trial (procedure)
 
