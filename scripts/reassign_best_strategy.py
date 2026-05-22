@@ -50,6 +50,8 @@ NEAR_MISS_RESEARCH = [
      "note": "Heikin-Ashi trend. Closest to clearing (37.0% vs 40% — 3pp gap). WR floor blocker."},
     {"trial": "cmf_us_1d",  "dsharpe": 5.872, "expectancy": 1.396, "wr": 0.3396, "trades": 17646,
      "note": "Chaikin Money Flow mean-rev in bullish regime. STRONGEST dSharpe of any near-miss (11.7x floor); 1108/1123 contributors (98.7% coverage). Volume-flow domain (1st of its kind). WR floor blocker."},
+    {"trial": "gap_us_1d",  "dsharpe": 1.462, "expectancy": 1.1812, "wr": 0.3809, "trades": 7421,
+     "note": "Overnight gap continuation in uptrend (>=2% gap, close>open, vol>=1.5x). 1077/1118 contributors (96.3% coverage). Between-bar discontinuity domain (1st of its kind). WR 38.1% closest-to-clearing in WR-floor wall (1.9pp gap, tighter than HAT's 3pp)."},
 ]
 
 # Pending full-universe re-validation (PART B Step 4 — CEO directive 2026-05-21
