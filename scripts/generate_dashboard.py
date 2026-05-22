@@ -2182,6 +2182,91 @@ def _render_sprint_roadmap_section() -> str:
       </div>"""
 
 
+def _crash_watchdog_metrics():
+    """Read cc_watchdog_state.json + crash_log.json for the dashboard widget.
+
+    Returns None if the watchdog has never run (state file absent), so the
+    renderer can show a "not installed" hint instead of zeroes."""
+    wd = _safe_read_json(ROOT / "scripts" / "cc_watchdog_state.json")
+    if not wd:
+        return None
+    log = _safe_read_json(ROOT / "crash_log.json") or []
+    durs = wd.get("recent_recovery_durations") or []
+    avg_sec = (sum(durs) / len(durs)) if durs else None
+    return {
+        "recoveries_today": wd.get("recoveries_today", 0),
+        "total_recoveries": wd.get("total_recoveries", 0),
+        "total_failures": wd.get("total_recovery_failures", 0),
+        "avg_recovery_sec": avg_sec,
+        "longest_gap_sec": wd.get("longest_gap_seconds", 0),
+        "last_cause": wd.get("last_crash_cause") or "—",
+        "last_crash_ts": wd.get("last_crash_ts") or "—",
+        "last_recovery_ts": wd.get("last_recovery_ts") or "—",
+        "mode": wd.get("mode", "normal"),
+        "last_check_ts": wd.get("last_check_ts") or "—",
+        "history": log[-5:],
+    }
+
+
+def _render_crash_watchdog_card():
+    m = _crash_watchdog_metrics()
+    if m is None:
+        return (
+            '<div class="section">'
+            '<h3>🛡️ CC Crash Watchdog</h3>'
+            '<div class="muted">Watchdog not yet installed. Run '
+            '<code>pwsh -File scripts/install_watchdog.ps1</code> to register '
+            'the Windows Scheduled Task.</div>'
+            '</div>'
+        )
+    mode_color = {
+        "normal": "gn", "detecting": "ye",
+        "recovering": "ye", "failed": "rd",
+    }.get(m["mode"], "")
+    avg_str = f"{m['avg_recovery_sec']:.0f}s" if m["avg_recovery_sec"] else "—"
+    longest_min = m["longest_gap_sec"] // 60 if m["longest_gap_sec"] else 0
+    longest_str = f"{longest_min} min" if longest_min else f"{m['longest_gap_sec']}s"
+    hist_rows = ""
+    for h in reversed(m["history"]):
+        status = h.get("status", "?")
+        cls = "gn" if status == "OK" else "rd"
+        hist_rows += (
+            f"<tr><td class='mono'>{esc(h.get('crash_ts','—'))}</td>"
+            f"<td>{esc(h.get('cause','—'))}</td>"
+            f"<td class='mono'>{h.get('duration_seconds','—')}s</td>"
+            f"<td><span class='badge {cls}'>{esc(status)}</span></td></tr>"
+        )
+    if not hist_rows:
+        hist_rows = "<tr><td colspan='4' class='muted'>No incidents recorded — quiet is good.</td></tr>"
+    return f"""
+      <div class="section">
+        <h3>🛡️ CC Crash Watchdog</h3>
+        <table>
+          <tbody>
+            <tr><td><b>Mode</b></td><td><span class='badge {mode_color}'>{esc(m['mode'])}</span></td>
+                <td><b>Crashes today</b></td><td>{m['recoveries_today']}</td></tr>
+            <tr><td><b>Total recoveries</b></td><td>{m['total_recoveries']}</td>
+                <td><b>Total failures</b></td><td>{m['total_failures']}</td></tr>
+            <tr><td><b>Avg recovery</b></td><td>{avg_str}</td>
+                <td><b>Longest sprint gap</b></td><td>{longest_str}</td></tr>
+            <tr><td><b>Last crash cause</b></td><td colspan='3' class='mono'>{esc(m['last_cause'])}</td></tr>
+            <tr><td><b>Last crash ts (UTC)</b></td><td class='mono'>{esc(m['last_crash_ts'])}</td>
+                <td><b>Last recovery ts (UTC)</b></td><td class='mono'>{esc(m['last_recovery_ts'])}</td></tr>
+            <tr><td><b>Last watchdog tick</b></td><td colspan='3' class='mono'>{esc(m['last_check_ts'])}</td></tr>
+          </tbody>
+        </table>
+        <h4 style="margin-top:12px;">Recent incidents</h4>
+        <table>
+          <thead><tr><th>Detected (UTC)</th><th>Cause</th><th>Duration</th><th>Status</th></tr></thead>
+          <tbody>{hist_rows}</tbody>
+        </table>
+        <div class="muted" style="margin-top:8px;">
+          Polls every 60s via Windows Scheduled Task <code>AIG-CC-Watchdog</code>.
+          See <code>CRASH_RECOVERY.md</code> for design notes.
+        </div>
+      </div>"""
+
+
 def _render_live_status(state):
     tg = state["tg"]
     n_val_files = len(list(ROOT.glob('validation_*.json')))
@@ -2202,6 +2287,7 @@ def _render_live_status(state):
         cls = "gn" if ok else "rd"
         rows += f"<tr data-search='{esc(name + detail)}'><td><span class='dot {dot}'></span><b>{esc(name)}</b></td><td><span class='badge {cls}'>{esc(st)}</span></td><td class='muted'>{esc(detail)}</td></tr>"
     roadmap_html = _render_sprint_roadmap_section()
+    watchdog_html = _render_crash_watchdog_card()
     return f"""
     <div id="panel-live" class="tab-panel">
       <div class="section">
@@ -2212,6 +2298,7 @@ def _render_live_status(state):
         </table>
         <div class="muted" style="margin-top:8px;">Sampled at dashboard generation. Sprint routine regenerates every 2h.</div>
       </div>
+      {watchdog_html}
       {roadmap_html}
     </div>"""
 

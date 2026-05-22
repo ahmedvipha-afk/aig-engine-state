@@ -158,6 +158,7 @@ def cmd_enroll(strategy: str, batch_size: int = BATCH_SIZE_DEFAULT):
 
 def _run_batch(plan: dict) -> dict:
     """Run the next batch for this plan. Returns the batch dict written to partial JSON."""
+    import gc
     from aig.data import get_history, integrity_check
     from aig.backtest import split_backtest
     from aig.validation_gate import evaluate
@@ -187,10 +188,15 @@ def _run_batch(plan: dict) -> dict:
         ok, fails = integrity_check(tk, df, timeframe=timeframe)
         if not ok:
             results.append({"ticker": tk, "verdict": "BLOCKED_DATA", "reasons": fails})
+            del df
             continue
         bt = split_backtest(tk, df, timeframe=timeframe, strategy=strategy)
         r = evaluate(bt, n_trials_universe)
         results.append(r)
+        del df, bt
+    # Memory hygiene: force collection at end of batch so the next sprint
+    # fire starts with a clean working set.
+    gc.collect()
 
     out = {
         "batch": batch_n,

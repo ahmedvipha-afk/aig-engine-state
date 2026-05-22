@@ -22,6 +22,7 @@ Examples:
 
 from __future__ import annotations
 import argparse
+import gc
 import json
 import os
 import sys
@@ -93,7 +94,8 @@ def main():
 
     n_trials = len(tickers)
     results = []
-    for tk in tickers:
+    GC_EVERY = 100
+    for i, tk in enumerate(tickers):
         try:
             df = get_history(tk, offline=offline, timeframe=args.timeframe)
         except Exception as e:
@@ -106,6 +108,9 @@ def main():
             print(f"  {tk:<10} BLOCKED (data integrity): {fails}")
             results.append({"ticker": tk, "verdict": "BLOCKED_DATA",
                             "reasons": fails})
+            del df
+            if (i + 1) % GC_EVERY == 0:
+                gc.collect()
             continue
         bt = split_backtest(tk, df, timeframe=args.timeframe,
                             strategy=args.strategy)
@@ -118,6 +123,12 @@ def main():
               f"tpy={r['oos_trades_per_year']:>5}")
         if not r["passed"]:
             print(f"             reason: {r['reasons'][0]}")
+        # Memory hygiene: bound peak memory on 1,600-ticker sweeps. Drop the
+        # per-ticker DataFrame + backtest object explicitly and force a
+        # collection every GC_EVERY tickers.
+        del df, bt
+        if (i + 1) % GC_EVERY == 0:
+            gc.collect()
 
     cleared = [r for r in results if r.get("passed")]
     print(f"\nPer-ticker cleared: {len(cleared)} / {len(tickers)}")
