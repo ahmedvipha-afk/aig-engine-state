@@ -154,3 +154,22 @@ _Written by `scripts/decision_log_append.py`. Sync mirror: `decision_log.json`._
   - Option B stratified sample with sector/liquidity caps (kept available; can switch later if Telegram noise becomes operationally unworkable)
   - Maintain n=50 random sample (rejected — directive prefers full universe)
 - **audit_finding_refs:** `Session 5 NEW-1`
+### Fix watchdog false-fire loop — add cron_paused.flag intentional-pause check
+
+- **ts_utc:** `2026-05-22T18:33:47+00:00`
+- **methodology_source:** `infrastructure_decision`
+- **decision:** cc_watchdog.ps1 now checks scripts/cron_paused.flag at the top of every tick. If present, watchdog skips all crash detection, updates last_check_ts, sets mode=monitoring_paused, and exits cleanly. Created the flag with paused_at_utc 2026-05-22T16:00:00+00:00 reason phase1_directive_pending_candidate_2.
+- **rationale:** Cron disabled at 16:00 UTC per Q2=A. Sentinel naturally aged because nothing was touching it. Watchdog interpreted silence as crash and fired 18 false recoveries between 16:11 and 17:57 UTC (sentinel age 32->105 min, recoveries cycling every 3-5 min, each completing exit=0 but never touching the sentinel). Root cause: watchdog had no signal source to distinguish off-by-design from broken.
+- **alternatives_considered:**
+  - Disable watchdog entirely while cron paused (rejected — loses safety net for true crashes)
+  - Make watchdog query Cloud Routines state directly (rejected — MCP not accessible from Windows scheduled task)
+  - Heuristic on missed_sprints.log absence (rejected — overlaps with successful normal operation)
+### Fix crash_log.json JSON-via-argv encoding bug
+
+- **ts_utc:** `2026-05-22T18:33:47+00:00`
+- **methodology_source:** `infrastructure_decision`
+- **decision:** cc_watchdog.ps1 Append-CrashLogJson now writes the JSON to a temp file and passes --file to crash_log_append.py instead of argv. Eliminates the every-recovery JSON parse failure observed today.
+- **rationale:** PowerShell argv handling of strings with curly braces and embedded quotes mangled the JSON in transit (error: Expecting property name enclosed in double quotes line 1 column 2). Result: crash_log.md got appended but crash_log.json did not for every recovery since the watchdog was installed.
+- **alternatives_considered:**
+  - Use stdin pipe to Python helper (rejected — works but temp file is simpler and the helper already supported --file)
+  - Manually quote the JSON in PowerShell (rejected — fragile across PS versions)

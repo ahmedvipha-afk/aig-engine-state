@@ -28,6 +28,7 @@ $ProjectRoot   = 'C:\Users\ahmed\OneDrive\Documents\Projects\stocks\Ahmed group\
 $ScriptsDir    = Join-Path $ProjectRoot 'scripts'
 $StateFile     = Join-Path $ScriptsDir 'cc_watchdog_state.json'
 $LockFile      = Join-Path $ScriptsDir 'cc_watchdog_recovery.lock'
+$CronPausedFlag = Join-Path $ScriptsDir 'cron_paused.flag'
 $WatchdogLog   = Join-Path $ScriptsDir 'cc_watchdog.log'
 $SentinelFile  = Join-Path $ProjectRoot 'last_sprint_fire.txt'
 $ResumePrompt  = Join-Path $ScriptsDir 'session_resume_prompt.txt'
@@ -86,11 +87,24 @@ function Append-CrashLogJson([hashtable]$entry) {
     # 5.1 ConvertTo-Json on a mixed Hashtable/PSCustomObject pipeline tends
     # to emit a wrapped {value, Count} object which the dashboard widget
     # can't parse.
+    #
+    # Pass via TEMP FILE not argv: PowerShell argv handling of strings with
+    # curly braces / quotes mangles the JSON in transit (the failure mode
+    # observed 2026-05-22 was "Expecting property name enclosed in double
+    # quotes: line 1 column 2" on every recovery's crash_log.json append).
     $json = $entry | ConvertTo-Json -Depth 4 -Compress
+    $tmp = [System.IO.Path]::GetTempFileName()
     try {
-        & python "$ScriptsDir\crash_log_append.py" $json 2>&1 | ForEach-Object { Write-WD "crash_log: $_" }
+        [System.IO.File]::WriteAllText(
+            $tmp, $json, [System.Text.UTF8Encoding]::new($false)
+        )
+        & python "$ScriptsDir\crash_log_append.py" --file $tmp 2>&1 | ForEach-Object {
+            Write-WD "crash_log: $_"
+        }
     } catch {
         Write-WD "crash_log append exception: $_"
+    } finally {
+        Remove-Item $tmp -Force -ErrorAction SilentlyContinue
     }
 }
 
@@ -131,6 +145,31 @@ function Save-State($state) {
     try {
         $state | ConvertTo-Json -Depth 4 | Set-Content -Path $StateFile -Encoding utf8
     } catch { Write-WD "state save failed: $_" }
+}
+
+# --- Intentional-pause check (root-cause fix for false-fire loop) ------------
+# When the operator intentionally pauses the sprint cron (e.g., during a
+# framework directive transition), the sentinel naturally ages because nothing
+# is touching it. Without this check, the watchdog interprets the silence as
+# a crash and runs costly `claude -p` recoveries on a 3-5 minute cycle that
+# don't actually fix anything (the recovery completes "successfully" but the
+# cron is still paused, sentinel still ages, loop repeats).
+#
+# Workflow:
+#   - Pause cron: create scripts/cron_paused.flag with an explanation
+#   - Re-enable cron: delete the flag (operator action; no auto-resume)
+if (Test-Path $CronPausedFlag) {
+    $reason = (Get-Content $CronPausedFlag -Raw -ErrorAction SilentlyContinue) -replace "`r?`n", ' / '
+    if (-not $reason) { $reason = '(no reason text)' }
+    Write-WD "skip: cron intentionally paused (flag exists). reason=$reason"
+    # Update last_check_ts so the dashboard widget shows the watchdog is alive,
+    # but don't advance crash counters and don't run recovery.
+    $state = Load-State
+    $state.last_check_ts = (Get-Date).ToUniversalTime().ToString('o')
+    $state.mode = 'monitoring_paused'
+    $state.consecutive_stale_checks = 0
+    Save-State $state
+    exit 0
 }
 
 # --- Recovery in progress? ---------------------------------------------------

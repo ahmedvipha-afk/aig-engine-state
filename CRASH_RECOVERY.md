@@ -173,6 +173,35 @@ Get-Content scripts\cc_watchdog_state.json
 Start-ScheduledTask -TaskName AIG-CC-Watchdog
 ```
 
+### Pausing the watchdog when the sprint cron is intentionally off
+
+If you disable `aig-mode1-sprint` (Cloud Routine) for any reason — e.g.,
+during a framework directive transition, a manual catch-up, or operator
+review — the watchdog will otherwise interpret the resulting sentinel
+silence as a crash and fire false recoveries every 3–5 minutes. This
+happened on 2026-05-22 between 16:11 and 17:57 UTC (18 false recoveries
+in 1h 46m) and is the canonical example of the failure mode.
+
+**Workflow:** before disabling the cron, create the flag file:
+
+```powershell
+Set-Content -Path "<aig>\scripts\cron_paused.flag" -Value @'
+paused_at_utc: <ISO timestamp>
+paused_by: <who/why>
+reason: <one-line>
+remove_when: cron re-enabled
+'@ -Encoding utf8
+```
+
+The watchdog checks for this file at the top of every tick. If present,
+it skips crash detection entirely, sets `mode=monitoring_paused` in
+`scripts/cc_watchdog_state.json`, updates `last_check_ts`, and exits
+cleanly. No recovery, no Telegram, no crash log entry.
+
+**To resume:** re-enable the Cloud Routine via `mcp__scheduled-tasks__update_scheduled_task`
+or the schedule MCP UI, then delete `scripts/cron_paused.flag`. The
+watchdog returns to active crash detection on its next tick.
+
 ### Dashboard widget
 
 The Live Status tab of `dashboard.html` renders a small "Crash Watchdog"

@@ -1,0 +1,4 @@
+paused_at_utc: 2026-05-22T16:00:00+00:00
+paused_by: cc_session_implementing_ahmed_response_2026-05-22
+reason: Phase 1 framework directive received. Cron aig-mode1-sprint disabled until Phase 1 candidate #2 is pre-registered via the three-filter methodology and the rewritten SKILL.md flow has been exercised manually. Watchdog must respect this intentional pause to avoid the false-fire loop observed 2026-05-22 16:11 -> 17:57 UTC (18 false recoveries).
+remove_when: Cron aig-mode1-sprint is re-enabled (operator deletes this file as part of the re-enable workflow).
