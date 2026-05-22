@@ -115,3 +115,12 @@ projects safe.
 
 Initial setup: 2026-05-22. Test ops (post-apply) summarised in the commit log and
 in ceo_brain.md under PHASE 1 TRACKER infrastructure row.
+
+**2026-05-22 first verification run:** 5 representative AIG ops executed
+back-to-back from this CC session — Python read (validation_runs_metadata.json),
+git rev-list HEAD count, dashboard.html size inspection, validation_*.json
+enumeration, git fetch + log. All returned cleanly with no interactive prompts
+observed in this session (caveat: project rules load fully in sessions whose
+root is inside aig_engine; this session is rooted at C:\Users\ahmed). Outcome
+in cron-launched sprint sessions will be silent because their root IS inside
+the project.

@@ -254,5 +254,173 @@
     "ok": true,
     "message_id": 42,
     "preview": "\ud83d\udce1 <b>AIG Paper-Forward (full universe) \u2014 2026-05-21</b>\n<i>1 entries \u00b7 1 exits \u2014 showing top 2 by dSharpe (cap=10)</i>\n\n\ud83d\udfe2 ENTRY <b>IFNNY</b> [divergence] $80.47 (stop $37.97) \u00b7 dSh -0.07\n\ud83d\udd34 EXIT <b>IFN"
+  },
+  {
+    "ts_utc": "2026-05-21T18:34:00+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 43,
+    "preview": "\ud83d\ude80 Sprint fire 22:33 UAE \u2014 1 iteration"
+  },
+  {
+    "ts_utc": "2026-05-21T18:37:46+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward (full universe) \u2014 2026-05-21</b>\n<i>2 entries \u00b7 2 exits \u2014 showing top 4 by dSharpe (cap=10)</i>\n\n\ud83d\udfe2 ENTRY <b>SYNA</b> [divergence] $129.88 (stop $56.52) \u00b7 dSh -0.46\n\ud83d\udfe2 ENTRY <b>TT"
+  },
+  {
+    "ts_utc": "2026-05-21T18:48:48+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 44,
+    "preview": "\ud83d\ude80 Sprint fire 22:48 UAE \u2014 catching up 1 missed \u2192 2 iterations back-to-back"
+  },
+  {
+    "ts_utc": "2026-05-21T19:03:23+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 45,
+    "preview": "\ud83d\ude80 Sprint fire 23:03 UAE \u2014 1 iteration"
+  },
+  {
+    "ts_utc": "2026-05-21T19:33:37+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 46,
+    "preview": "\ud83d\ude80 Sprint fire 23:33 UAE \u2014 1 iteration"
+  },
+  {
+    "ts_utc": "2026-05-21T19:53:36+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 47,
+    "preview": "\ud83d\ude80 Sprint fire 23:53 UAE \u2014 1 iteration"
+  },
+  {
+    "ts_utc": "2026-05-21T19:59:11+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 48,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward (full universe) \u2014 2026-05-21</b>\n<i>3 entries \u00b7 1 exits \u2014 showing top 4 by dSharpe (cap=10)</i>\n\n\ud83d\udfe2 ENTRY <b>IFNNY</b> [divergence] $80.25 (stop $37.96) \u00b7 dSh -0.07\n\ud83d\udfe2 ENTRY <b>CA"
+  },
+  {
+    "ts_utc": "2026-05-21T20:11:39+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 49,
+    "preview": "\ud83d\ude80 Sprint fire 00:11 UAE \u2014 1 iteration"
+  },
+  {
+    "ts_utc": "2026-05-21T20:15:00+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward (full universe) \u2014 2026-05-22</b>\n<i>2 entries \u00b7 2 exits \u2014 showing top 4 by dSharpe (cap=10)</i>\n\n\ud83d\udfe2 ENTRY <b>SYNA</b> [divergence] $132.33 (stop $56.52) \u00b7 dSh -0.46\n\ud83d\udfe2 ENTRY <b>TT"
+  },
+  {
+    "ts_utc": "2026-05-21T20:18:36+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 51,
+    "preview": "\ud83d\ude80 Sprint fire 00:18 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-05-21T20:33:27+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 52,
+    "preview": "\ud83d\ude80 Sprint fire 00:33 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-05-21T20:46:26+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 54,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward (full universe) \u2014 2026-05-22</b>\n<i>1 entries \u00b7 0 exits \u2014 showing top 1 by dSharpe (cap=10)</i>\n\n\ud83d\udfe2 ENTRY <b>ADI</b> [mbv] $384.21 (stop $362.99) \u00b7 dSh -1.07\n\nOpen: 10 \u00b7 Closed-t"
+  },
+  {
+    "ts_utc": "2026-05-21T20:50:36+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\ude80 Sprint fire 00:50 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-05-21T20:55:15+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 55,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward (full universe) \u2014 2026-05-22</b>\n<i>1 entries \u00b7 1 exits \u2014 showing top 2 by dSharpe (cap=10)</i>\n\n\ud83d\udfe2 ENTRY <b>IFNNY</b> [divergence] $80.20 (stop $37.96) \u00b7 dSh -0.07\n\ud83d\udd34 EXIT <b>IFN"
+  },
+  {
+    "ts_utc": "2026-05-21T21:06:36+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 56,
+    "preview": "Sprint 2026-05-22 20:50 UTC: PMR US 1D *CLEARED* portfolio gate. dSharpe 2.26, exp 1.27, WR 47.3%, 4759 trades, 986/1121 contrib (87.96%). Third US-cleared strategy. Obj 6 ratchets: US triple-cleared."
+  },
+  {
+    "ts_utc": "2026-05-21T21:07:43+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 57,
+    "preview": "\ud83d\ude80 Sprint fire 01:07 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-05-21T21:11:41+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 58,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward (full universe) \u2014 2026-05-22</b>\n<i>3 entries \u00b7 2 exits \u2014 showing top 5 by dSharpe (cap=10)</i>\n\n\ud83d\udfe2 ENTRY <b>MUR</b> [mbv] $37.77 (stop $35.26) \u00b7 dSh -0.38\n\ud83d\udfe2 ENTRY <b>SYNA</b> [d"
+  },
+  {
+    "ts_utc": "2026-05-21T21:31:44+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 59,
+    "preview": "\ud83d\ude80 Sprint fire 01:31 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-05-22T05:10:34+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 60,
+    "preview": "\u26a0 Phase 1 sprint: 29 fires missed in a row.\n\nCron windows were skipped because the REPL was busy. Catching up all 29 fires now back-to-back, then resuming normal 15-min cadence.\n\nTo reduce missed fire"
+  },
+  {
+    "ts_utc": "2026-05-22T05:18:34+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 61,
+    "preview": "\u26a0 Phase 1 sprint: 30 fires missed in a row.\n\nCron windows were skipped because the REPL was busy. Catching up all 30 fires now back-to-back, then resuming normal 15-min cadence.\n\nTo reduce missed fire"
+  },
+  {
+    "ts_utc": "2026-05-22T05:18:35+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 62,
+    "preview": "\ud83d\ude80 Sprint fire 09:18 UAE \u2014 catching up 30 missed \u2192 31 iterations back-to-back\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exit"
   }
 ]
