@@ -227,6 +227,64 @@ direction long. Frozen BEFORE seeing data per audit Concern 2.
 
 ---
 
+## STRATEGY 9 — STR: Stochastic %K Reversal in Trend (long only) — NEW 2026-05-22 Sprint Catch-up
+
+| Field | Value |
+|-------|-------|
+| Strategy id | `str` |
+| Module | `aig/strategy_str.py` |
+| Timeframes registered | **1D** |
+| Long only | YES (Rule 15) |
+| Pre-registered | 2026-05-22 Sprint Catch-up (BEFORE seeing any STR data — Phase 1 directive F1) |
+
+**Concept**: long-only **stochastic mean-reversion** triggered by the **cross-up
+event** of Stochastic %K through an oversold floor in a bullish regime, with
+volume confirmation. Quick midpoint exit (%K>=50). Methodologically distinct
+from the eight prior strategies:
+
+- **EMA-200** (trend-confirm): position-based — close > long EMA.
+- **Divergence** (mean-rev-on-low): RSI higher-low against price lower-low swing-pivot structure.
+- **MBV** (mean-rev-in-uptrend): range_pct lower-third **level** condition.
+- **DBO** (breakout): close crosses Donchian high (level).
+- **ROC** (velocity-momentum): rate of price change (derivative).
+- **VCB** (vol-cycle): ATR-minimum compression (volatility input).
+- **HAT** (smoothed-trend): N consecutive bullish Heikin-Ashi candles.
+- **PMR** (statistical-zscore-mean-rev): continuous z = (close - SMA_N) / std_N.
+- **STR** (stochastic-cross-up-mean-rev): %K = 100 × (close − LL_N) / (HH_N − LL_N).
+  EVENT-driven (cross-up from oversold), NOT continuous level — fires only on
+  the bar %K transitions from <=20 to >20. Quick midpoint exit captures
+  small bounces; **higher WR by construction** than PMR/Divergence full-mean-rev
+  exits because the target is closer to entry than the SMA mean is in noisy
+  markets.
+
+**Hypothesis**: noisy UAE / Crypto markets where prior mean-rev strategies
+fail on the 40% WR floor may show edge under faster-target mean-rev that
+exits at range midpoint (%K=50) rather than statistical mean (PMR z=0 / RSI=65).
+The small fixed target is more reliably hit in choppy markets where the
+SMA mean keeps drifting away. Frozen BEFORE seeing data per audit Concern 2 —
+failure is acceptable.
+
+**Entry** (all must hold on the entry bar):
+1. `%K(STR_PERIOD=14)` > `STR_OS_LEVEL=20.0` today AND `%K(14).shift(1)` <= 20.0
+   — the **cross-up event** from oversold zone.
+2. `close > SMA(STR_TREND_SMA=200)` — bullish regime; no longs in confirmed
+   downtrends.
+3. `volume >= STR_VOLUME_MULT=1.2 × SMA(STR_VOLUME_PERIOD=20)` — participation
+   confirms the recovery.
+
+The cross condition is inherently edge-triggered (exactly one bar fires per
+recovery from oversold).
+
+**Stop**: entry − `STR_STOP_ATR_MULT=1.5` × ATR(14). Tight stop because the
+thesis is small-bounce; deeper drawdowns invalidate it.
+
+**Exit**:
+- `%K(14) >= STR_EXIT_LEVEL=50.0` (midpoint reached — small bounce captured)
+- `close < SMA(STR_TREND_SMA)` (regime broke)
+- ATR stop hit.
+
+---
+
 ## STRATEGY 8 — PMR: Price-Mean Z-score Reversion (long only) — NEW 2026-05-21 Fire 15:05 UTC
 
 | Field | Value |
@@ -388,9 +446,12 @@ trial means appending a row here BEFORE the run; the haircut recomputes.
 | 22 | `pmr_uae_1d`          | pmr        | UAE    | 1D | yfinance+cache  | 2026-05-21 (Fire 15:05 UTC) | pending (staged) | pending |
 | 23 | `pmr_crypto_1d`       | pmr        | CRYPTO | 1D | yfinance        | 2026-05-21 (Fire 15:05 UTC) | pending (staged) | pending |
 | 24 | `pmr_us_1d`           | pmr        | US     | 1D | yfinance        | 2026-05-21 (Fire 15:05 UTC) | 2026-05-22 | **PORTFOLIO_CLEARED_FOR_PAPER_FORWARD** — 4,759 trades, exp 1.268, WR 47.3%, **dSharpe 2.263**, 986/1,121 contributors (87.96% strategy coverage). Third US-cleared strategy alongside Divergence + MBV. Reassignment ran; union US contributors still 1,101 (PMR overlaps existing union). |
+| 25 | `str_uae_1d`          | str        | UAE    | 1D | yfinance+cache  | 2026-05-22 (Sprint Catch-up) | pending (staged) | pending |
+| 26 | `str_crypto_1d`       | str        | CRYPTO | 1D | yfinance        | 2026-05-22 (Sprint Catch-up) | pending (staged) | pending |
+| 27 | `str_us_1d`           | str        | US     | 1D | yfinance        | 2026-05-22 (Sprint Catch-up) | pending (staged) | pending |
 
 **`config.PORTFOLIO_GATE.n_trials_registered` must equal the row count above.**
-Current value: **24** (bumped 21 → 24 when PMR registered Fire 15:05 UTC 2026-05-21,
+Current value: **27** (bumped 24 → 27 when STR registered Sprint Catch-up 2026-05-22,
 in the same commit that added the trial budget rows above).
 
 ### How to add a trial (procedure)

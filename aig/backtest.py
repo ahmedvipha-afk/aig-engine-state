@@ -46,6 +46,9 @@ def _strategy_signals(name: str, df: pd.DataFrame) -> pd.DataFrame:
     if name == "pmr":
         from aig.strategy_pmr import signals
         return signals(df)
+    if name == "str":
+        from aig.strategy_str import signals
+        return signals(df)
     raise ValueError(f"unknown strategy: {name}")
 
 
@@ -76,6 +79,9 @@ def _stop_distance(name: str, row) -> float:
     if name == "pmr":
         from config import PMR_STOP_ATR_MULT
         return PMR_STOP_ATR_MULT * row["atr"]
+    if name == "str":
+        from config import STR_STOP_ATR_MULT
+        return STR_STOP_ATR_MULT * row["atr"]
     raise ValueError(name)
 
 

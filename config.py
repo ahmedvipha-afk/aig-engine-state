@@ -91,6 +91,28 @@ PMR_VOLUME_PERIOD  = 20    # SMA window for volume confirmation
 PMR_VOLUME_MULT    = 1.2   # entry-bar volume >= mult * SMA(VOLUME_PERIOD)
 PMR_STOP_ATR_MULT  = 1.5   # stop = entry - mult * ATR(14)
 
+# ---- STR strategy (frozen 2026-05-22 Sprint Catch-up) -------------------
+# Stochastic %K Reversal in Trend. Long-only mean-reversion driven by the
+# Stochastic %K oscillator cross-up event from oversold zone in bullish
+# regime, with volume confirmation. Pre-registered BEFORE any STR data was
+# seen, per v7.0 §19 (9th strategy in the pipeline). Methodologically
+# distinct: %K = 100 * (close - LL_N) / (HH_N - LL_N) uses high-low RANGE
+# normalization, NOT RSI gain/loss (Divergence), NOT z-score std (PMR),
+# NOT range_pct lower-third bucket (MBV). Cross-up EVENT (yesterday <=20,
+# today >20) is a discrete recovery confirmation, NOT a continuous level
+# condition. Quick midpoint exit (%K>=50) targets small bounces -- higher
+# WR by construction than full-mean-reversal exits. Hypothesis: noisy
+# UAE / Crypto markets failing on the 40% WR floor may show edge with
+# faster-target mean-rev that exits at range midpoint not statistical mean.
+# Trial budget extended to 27 to cover STR x {US, UAE, CRYPTO}.
+STR_PERIOD         = 14    # lookback for stochastic high/low range
+STR_OS_LEVEL       = 20.0  # cross-up from <= this level fires entry
+STR_EXIT_LEVEL     = 50.0  # midpoint exit -- captures small bounce
+STR_TREND_SMA      = 200   # regime filter (no longs below SMA(200))
+STR_VOLUME_PERIOD  = 20    # SMA window for volume confirmation
+STR_VOLUME_MULT    = 1.2   # entry-bar volume >= mult * SMA(VOLUME_PERIOD)
+STR_STOP_ATR_MULT  = 1.5   # tight stop -- mean-rev thesis breaks fast
+
 # ---- HAT strategy (frozen 2026-05-21 Fire 14:55 UTC) --------------------
 # Heikin-Ashi Trend Continuation. Long-only signal derived from SMOOTHED
 # (Heikin-Ashi) candles rather than raw OHLC. Pre-registered BEFORE any
@@ -171,8 +193,8 @@ PORTFOLIO_GATE = {
     "min_universe_coverage": 0.05, # at least 5% of universe must contribute trades
     "bootstrap_iters": 2000,
     "bootstrap_conf": 0.95,
-    "n_trials_registered": 24,   # 8 strategies (ema200, divergence, mbv, dbo, roc, vcb, hat, pmr) × 3 markets × 1 timeframe (1D).
-                                 # PMR added 2026-05-21 Fire 15:05 UTC — trial budget bumped 21 -> 24.
+    "n_trials_registered": 27,   # 9 strategies (ema200, divergence, mbv, dbo, roc, vcb, hat, pmr, str) × 3 markets × 1 timeframe (1D).
+                                 # STR added 2026-05-22 Sprint Catch-up — trial budget bumped 24 -> 27.
                                  # Adding a 4H variant or new strategy -> +N. Pre-register in strategy_register.md
                                  # before running.
 }
