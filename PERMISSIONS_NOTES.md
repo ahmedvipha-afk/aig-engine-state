@@ -124,3 +124,25 @@ observed in this session (caveat: project rules load fully in sessions whose
 root is inside aig_engine; this session is rooted at C:\Users\ahmed). Outcome
 in cron-launched sprint sessions will be silent because their root IS inside
 the project.
+
+## CC crash auto-recovery (2026-05-22)
+
+The Windows Scheduled Task `AIG-CC-Watchdog` (registered by
+`scripts/install_watchdog.ps1`) polls every 60 seconds in this user's
+INTERACTIVE session and runs `claude -p` headless when it detects a crash
+or REPL hang. The recovery session loads the project's zero-prompt
+permission config because its working directory is inside `aig_engine`.
+
+Watchdog itself runs as the current user with `RunLevel=Limited`, so it
+inherits the same permissions Ahmed has when running CC manually — no
+elevation, no SYSTEM context. The claude.exe child process the watchdog
+spawns is fully sandboxed inside the project rules.
+
+Design notes + day-to-day operation: see `CRASH_RECOVERY.md`.
+
+**Verification (2026-05-22):** Sacrificial test
+(`scripts/cc_watchdog_test.ps1`) backdated the sentinel by 35 minutes,
+drove the watchdog 3 ticks, observed CRASH_CONFIRMED → headless `claude -p`
+recovery in 7 seconds, exit code 0. Telegram detect/recover/tested
+messages all delivered. Crash log entries tagged `[TEST sacrificial]` /
+`test=true` so they don't pollute real-incident metrics.

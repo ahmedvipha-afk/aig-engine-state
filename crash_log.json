@@ -1,0 +1,20 @@
+[
+  {
+    "cause": "sentinel-stale-35min",
+    "attempts": 3,
+    "crash_ts": "2026-05-22T09:10:22.8238149Z",
+    "duration_seconds": 274,
+    "status": "FAILED",
+    "recovered_ts": null,
+    "test": true
+  },
+  {
+    "cause": "sentinel-stale-35min",
+    "attempts": 1,
+    "crash_ts": "2026-05-22T09:28:08.9081248Z",
+    "duration_seconds": 7,
+    "status": "OK",
+    "recovered_ts": "2026-05-22T09:28:16.2414662Z",
+    "test": true
+  }
+]

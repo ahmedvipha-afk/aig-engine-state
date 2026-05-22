@@ -48,7 +48,10 @@ $paths = @(
     'dashboard.html', 'auditor_report.md', 'reports',
     'data_cache', 'URLS_FOR_COWORK.md',
     # Paper-forward state (sprint Item 2 deployment, 2026-05-21)
-    'paper_forward_positions.json'
+    'paper_forward_positions.json',
+    # Permissions + crash-recovery (2026-05-22)
+    'PERMISSIONS_NOTES.md', 'CRASH_RECOVERY.md',
+    'crash_log.md', 'crash_log.json'
 )
 foreach ($p in $paths) {
     if (Test-Path $p) { git add $p 2>$null | Out-Null }

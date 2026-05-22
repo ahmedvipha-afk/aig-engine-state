@@ -39,3 +39,10 @@
 
 2026-05-22T09:15:12.0568824Z RECOVERY FAILED after 3 attempts duration=274s
 2026-05-22T09:16:09.3319832Z all-clear (was 3). sentinel_age=628s claude_alive=True
+2026-05-22T09:28:08.1959680Z stale-check 1/3 cause=sentinel-stale-35min sentinel_age=2100s claude_alive=True
+2026-05-22T09:28:08.5599766Z stale-check 2/3 cause=sentinel-stale-35min sentinel_age=2101s claude_alive=True
+2026-05-22T09:28:08.9003231Z stale-check 3/3 cause=sentinel-stale-35min sentinel_age=2101s claude_alive=True
+2026-05-22T09:28:08.9161536Z CRASH CONFIRMED cause=sentinel-stale-35min sentinel_age=2101s
+2026-05-22T09:28:09.5427747Z recovery attempt 1/3
+2026-05-22T09:28:16.2173488Z recovery attempt 1 SUCCESS exit=0 stdout_bytes=0
+2026-05-22T09:28:16.2502348Z RECOVERED duration=7s attempts=1

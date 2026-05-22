@@ -82,14 +82,16 @@ function Append-CrashLogMd([string]$ts, [string]$cause, [string]$recoveredTs, [i
 }
 
 function Append-CrashLogJson([hashtable]$entry) {
-    $arr = @()
-    if (Test-Path $CrashLogJson) {
-        try { $arr = @(Get-Content $CrashLogJson -Raw | ConvertFrom-Json) } catch { $arr = @() }
+    # Use the Python helper so the file stays a clean JSON array. PowerShell
+    # 5.1 ConvertTo-Json on a mixed Hashtable/PSCustomObject pipeline tends
+    # to emit a wrapped {value, Count} object which the dashboard widget
+    # can't parse.
+    $json = $entry | ConvertTo-Json -Depth 4 -Compress
+    try {
+        & python "$ScriptsDir\crash_log_append.py" $json 2>&1 | ForEach-Object { Write-WD "crash_log: $_" }
+    } catch {
+        Write-WD "crash_log append exception: $_"
     }
-    $arr = @($arr) + @([pscustomobject]$entry)
-    # Keep last 200 entries
-    if ($arr.Count -gt 200) { $arr = $arr[($arr.Count - 200)..($arr.Count - 1)] }
-    $arr | ConvertTo-Json -Depth 4 | Set-Content -Path $CrashLogJson -Encoding utf8
 }
 
 function Load-State {
@@ -243,25 +245,51 @@ for ($attempt = 1; $attempt -le $RecoveryMaxRetries; $attempt++) {
     $stdoutFile = [System.IO.Path]::GetTempFileName()
     $stderrFile = [System.IO.Path]::GetTempFileName()
     try {
-        $proc = Start-Process -FilePath $ClaudeExe `
-                              -ArgumentList "-p", $resumeText `
-                              -WorkingDirectory $ProjectRoot `
-                              -NoNewWindow `
-                              -PassThru `
-                              -RedirectStandardOutput $stdoutFile `
-                              -RedirectStandardError $stderrFile
+        # Build ProcessStartInfo directly to (a) explicitly redirect stdin
+        # to silence claude's 3s "no stdin received" warning, (b) pass the
+        # prompt as a single argv element, and (c) get a reliable ExitCode
+        # via the .exe path (the .cmd wrapper hides the real process).
+        $psi = New-Object System.Diagnostics.ProcessStartInfo
+        $psi.FileName = $ClaudeExe
+        # Manual argv quoting: wrap prompt in double quotes, backslash-escape
+        # any embedded double quotes. PowerShell 5.1 ProcessStartInfo only
+        # supports the .Arguments single-string form.
+        $escaped = $resumeText.Replace('"', '\"')
+        $psi.Arguments = "-p `"$escaped`""
+        $psi.WorkingDirectory = $ProjectRoot
+        $psi.UseShellExecute = $false
+        $psi.CreateNoWindow = $true
+        $psi.RedirectStandardInput = $true
+        $psi.RedirectStandardOutput = $true
+        $psi.RedirectStandardError = $true
+
+        $proc = [System.Diagnostics.Process]::Start($psi)
+        # Close stdin immediately so claude doesn't wait the 3s grace period
+        # for piped input.
+        $proc.StandardInput.Close()
+
+        $stdoutBuilder = [System.Text.StringBuilder]::new()
+        $stderrBuilder = [System.Text.StringBuilder]::new()
+        $proc.add_OutputDataReceived({ if ($EventArgs.Data) { [void]$stdoutBuilder.AppendLine($EventArgs.Data) } })
+        $proc.add_ErrorDataReceived({ if ($EventArgs.Data) { [void]$stderrBuilder.AppendLine($EventArgs.Data) } })
+        $proc.BeginOutputReadLine()
+        $proc.BeginErrorReadLine()
+
         $exited = $proc.WaitForExit($RecoveryTimeoutSeconds * 1000)
         if (-not $exited) {
-            try { $proc.Kill() } catch {}
+            try { $proc.Kill($true) } catch {}
             Write-WD "recovery attempt $attempt TIMEOUT after $RecoveryTimeoutSeconds s"
-        } elseif ($proc.ExitCode -eq 0) {
-            $recovered = $true
-            $stdoutLen = (Get-Item $stdoutFile).Length
-            Write-WD "recovery attempt $attempt SUCCESS exit=0 stdout_bytes=$stdoutLen"
         } else {
-            $stderrTail = Get-Content $stderrFile -Raw -ErrorAction SilentlyContinue
-            $stderrTail = if ($stderrTail) { $stderrTail.Substring(0, [Math]::Min(500, $stderrTail.Length)) } else { '' }
-            Write-WD "recovery attempt $attempt FAILED exit=$($proc.ExitCode) stderr=$stderrTail"
+            $exitCode = $proc.ExitCode
+            $stdoutLen = $stdoutBuilder.Length
+            if ($exitCode -eq 0) {
+                $recovered = $true
+                Write-WD "recovery attempt $attempt SUCCESS exit=0 stdout_bytes=$stdoutLen"
+            } else {
+                $stderrTail = $stderrBuilder.ToString()
+                $stderrTail = if ($stderrTail) { $stderrTail.Substring(0, [Math]::Min(500, $stderrTail.Length)) } else { '' }
+                Write-WD "recovery attempt $attempt FAILED exit=$exitCode stderr=$stderrTail"
+            }
         }
     } catch {
         Write-WD "recovery attempt $attempt EXCEPTION: $_"

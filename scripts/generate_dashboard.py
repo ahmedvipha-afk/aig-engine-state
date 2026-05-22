@@ -49,8 +49,10 @@ def esc(x) -> str:
 
 
 def _safe_read_json(path: Path):
+    # utf-8-sig tolerates the BOM that PowerShell's Set-Content -Encoding utf8
+    # writes on Windows; the watchdog state file goes through that path.
     try:
-        return json.loads(path.read_text(encoding="utf-8"))
+        return json.loads(path.read_text(encoding="utf-8-sig"))
     except Exception:
         return None
 

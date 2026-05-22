@@ -133,6 +133,37 @@ ART_VOLUME_PERIOD        = 20   # SMA window for volume confirmation
 ART_VOLUME_MULT          = 1.2  # entry-bar volume >= mult * SMA(VOLUME_PERIOD)
 ART_STOP_ATR_MULT        = 2.0  # wider stop -- trend-continuation thesis
 
+# ---- CMF strategy (frozen 2026-05-22 Sprint Obj-6 advance) --------------
+# Chaikin Money Flow mean-reversion in bullish regime. Long-only.
+# Pre-registered BEFORE any CMF data was seen, per v7.0 §19 (11th strategy
+# in the pipeline). Methodologically distinct: CMF is the FIRST strategy
+# whose PRIMARY signal is volume-weighted money-flow INTEGRATED over a
+# rolling window. Every prior strategy uses volume only as a confirmation
+# (>= 1.2 * SMA(20)). CMF is a different domain altogether:
+#   CMF(N) = sum_{i=t-N+1..t}( MFV_i ) / sum_{i=t-N+1..t}( volume_i )
+#   where MFV_i = ((close_i - low_i) - (high_i - close_i)) / (high_i - low_i) * volume_i.
+# The per-bar money-flow multiplier ((C-L)-(H-C))/(H-L) records WHERE in
+# its range each bar closed, weighted by volume. CMF integrates this over
+# N bars -- positive means accumulation dominated, negative means
+# distribution dominated. No prior strategy reads this signal.
+# Hypothesis: short-term distribution (CMF < -0.05) inside an intact
+# long-term bullish regime (close > EMA-200) is an oversold-in-trend
+# setup -- price is being sold into in the near term while the macro
+# trend is up. Mean-reversion to neutral/positive money flow likely.
+# Higher-probability target than full-trend retrace; quick exit at
+# CMF > +0.10 (accumulation flip) targets a small reversion, similar in
+# spirit to STR's midpoint exit. Long-only by construction (CMF acts on
+# the close-position-in-range signal -- inherently directional).
+# Trial budget extended 30 -> 33 to cover CMF x {US, UAE, CRYPTO}.
+CMF_PERIOD          = 20    # lookback bars for money-flow accumulation
+CMF_OS_LEVEL        = -0.05 # entry threshold: CMF below this is distribution
+CMF_EXIT_LEVEL      = 0.10  # exit threshold: CMF above this is accumulation flip
+CMF_TREND_EMA       = 200   # regime filter (no longs unless close > EMA(200))
+CMF_TURNAROUND_BARS = 1     # require today's close > yesterday's close (turnaround)
+CMF_VOLUME_PERIOD   = 20    # SMA window for volume sanity check
+CMF_VOLUME_MIN_MULT = 1.0   # entry-bar volume >= mult * SMA(VOLUME_PERIOD); 1.0 = at-or-above-average
+CMF_STOP_ATR_MULT   = 1.5   # tight stop -- mean-rev thesis breaks fast
+
 # ---- HAT strategy (frozen 2026-05-21 Fire 14:55 UTC) --------------------
 # Heikin-Ashi Trend Continuation. Long-only signal derived from SMOOTHED
 # (Heikin-Ashi) candles rather than raw OHLC. Pre-registered BEFORE any
