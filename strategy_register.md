@@ -442,6 +442,67 @@ strategies because the thesis is trend-continuation.
 
 ---
 
+## STRATEGY 11 — CMF: Chaikin Money Flow Mean-Reversion in Bullish Regime (long only) — NEW 2026-05-22 Sprint Obj-6 advance
+
+| Field | Value |
+|-------|-------|
+| Strategy id | `cmf` |
+| Module | `aig/strategy_cmf.py` |
+| Timeframes registered | **1D** |
+| Long only | YES (Rule 15) |
+| Pre-registered | 2026-05-22 Sprint Obj-6 advance (BEFORE any CMF data was seen — Phase 1 directive F1) |
+
+**Concept**: long-only **VOLUME-FLOW-DOMAIN mean-reversion** strategy.
+Chaikin Money Flow integrates the per-bar money-flow multiplier
+`((C-L)-(H-C))/(H-L)` (close-position-within-range in [-1, +1]) weighted
+by volume, summed over N bars:
+
+  `CMF(N) = sum( ((C-L)-(H-C))/(H-L) * volume ) / sum( volume )` over N bars.
+
+Methodologically distinct from the ten prior strategies — every prior
+strategy uses VOLUME only as a CONFIRMATION (>= 1.2 × SMA(20)) layered on
+top of a price-derived primary signal. CMF is the first strategy whose
+PRIMARY signal IS the integrated volume-weighted money flow. The per-bar
+"where did the close land within today's range, weighted by today's
+volume" primitive is a different domain altogether — an intra-bar
+buying-pressure surrogate, not a between-bar price/momentum/structure
+signal.
+
+- **EMA-200 / MBV / PMR / Divergence / STR / DBO / ROC / VCB / HAT / ART**:
+  primary signal = price level / RSI / range_pct / z-score / %K cross /
+  Donchian high / ROC / ATR-min / HA candle / Aroon. Volume only confirms.
+- **CMF**: primary signal IS volume-weighted money-flow integration.
+
+**Hypothesis**: short-term distribution (CMF < -0.05) inside an intact
+long-term bullish regime (close > EMA-200) is an oversold-in-trend
+setup — the macro trend is up but near-term close-within-range weighting
+is bearish, often weak hands selling into strong hands. Mean-reversion to
+neutral/positive money flow likely. Quick exit at CMF > +0.10 (accumulation
+flip) captures the small reversion; higher-probability target than full
+trend retracement. Frozen BEFORE seeing data per audit Concern 2 — failure
+acceptable.
+
+**Entry** (all must hold on the entry bar):
+1. `CMF(CMF_PERIOD=20) < CMF_OS_LEVEL=-0.05` — distribution dominates
+   near-term money flow.
+2. `close > EMA(CMF_TREND_EMA=200)` — long-term bullish regime intact.
+3. `close > close.shift(CMF_TURNAROUND_BARS=1)` — today's close above
+   yesterday's (one-bar turnaround; prevents catching a free-fall).
+4. `volume >= CMF_VOLUME_MIN_MULT=1.0 × SMA(CMF_VOLUME_PERIOD=20)` —
+   at-or-above average volume sanity check (no signal on near-zero-volume
+   distribution).
+
+**Stop**: entry − `CMF_STOP_ATR_MULT=1.5 × ATR(14)`. Tight stop because the
+mean-reversion thesis breaks fast if price falls further.
+
+**Exit**:
+- `CMF(CMF_PERIOD) > CMF_EXIT_LEVEL=+0.10` (accumulation flipped dominant
+  — reversion thesis played out).
+- `close < EMA(CMF_TREND_EMA)` (long-term regime broke).
+- ATR stop hit.
+
+---
+
 ## STRATEGY 2 — Bullish RSI Divergence (long only, regime-filtered)
 
 | Field | Value |
@@ -507,6 +568,9 @@ trial means appending a row here BEFORE the run; the haircut recomputes.
 | 28 | `art_uae_1d`          | art        | UAE    | 1D | yfinance+cache  | 2026-05-22 (Sprint Obj-6 advance) | 2026-05-22 | PORTFOLIO_FAIL (98 trades < 1000; exp 0.697 < 1.0; WR 27.6% < 40%; dSharpe -1.926; CI lo<0) |
 | 29 | `art_crypto_1d`       | art        | CRYPTO | 1D | yfinance        | 2026-05-22 (Sprint Obj-6 advance) | 2026-05-22 | PORTFOLIO_FAIL (1,024 trades; WR 27.4% < 40%; dSharpe 0.314 < 0.5; exp 1.667 driven by long-tail outliers — WR floor binding) |
 | 30 | `art_us_1d`           | art        | US     | 1D | yfinance        | 2026-05-22 (Sprint Obj-6 advance) | 2026-05-22 | **PORTFOLIO_FAIL on WR-floor only** — 11,733 trades, exp 1.209, WR 34.87% (< 40% floor), raw Sharpe 2.693, **dSharpe 2.041** (4.1× the 0.5 floor), 1,108/1,124 contributors (98.58% strategy coverage). Fourth near-miss in the trend/momentum family (DBO 34.1%, ROC 29.9%, VCB 23.4%, ART 34.87%). Time-domain (Aroon) didn't break the WR-floor pattern. Honest FAIL per audit Concern 2. Reassignment ran; union US contributors unchanged at 1,107. |
+| 31 | `cmf_uae_1d`          | cmf        | UAE    | 1D | yfinance+cache  | 2026-05-22 (Sprint Obj-6 advance) | pending (staged) | pending |
+| 32 | `cmf_crypto_1d`       | cmf        | CRYPTO | 1D | yfinance        | 2026-05-22 (Sprint Obj-6 advance) | pending (staged) | pending |
+| 33 | `cmf_us_1d`           | cmf        | US     | 1D | yfinance        | 2026-05-22 (Sprint Obj-6 advance) | pending (staged) | pending |
 
 **`config.PORTFOLIO_GATE.n_trials_registered` must equal the row count above.**
 Current value: **30** (bumped 27 → 30 when ART registered 2026-05-22 Sprint,

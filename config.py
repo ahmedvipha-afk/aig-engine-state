@@ -244,8 +244,8 @@ PORTFOLIO_GATE = {
     "min_universe_coverage": 0.05, # at least 5% of universe must contribute trades
     "bootstrap_iters": 2000,
     "bootstrap_conf": 0.95,
-    "n_trials_registered": 30,   # 10 strategies (ema200, divergence, mbv, dbo, roc, vcb, hat, pmr, str, art) × 3 markets × 1 timeframe (1D).
-                                 # ART added 2026-05-22 Sprint — trial budget bumped 27 -> 30.
+    "n_trials_registered": 33,   # 11 strategies (ema200, divergence, mbv, dbo, roc, vcb, hat, pmr, str, art, cmf) × 3 markets × 1 timeframe (1D).
+                                 # CMF added 2026-05-22 Sprint Obj-6 advance — trial budget bumped 30 -> 33.
                                  # Adding a 4H variant or new strategy -> +N. Pre-register in strategy_register.md
                                  # before running.
 }
