@@ -97,42 +97,46 @@ Write-Output "  Last result:     $($info.LastTaskResult)"
 if (-not (Test-Path $RefDir)) {
     New-Item -ItemType Directory -Path $RefDir -Force | Out-Null
 }
-$refContent = @'
----
-name: aig-cc-watchdog
-description: AIG CC crash watchdog reference (the actual scheduler is Windows Task Scheduler, not Cloud Routines). Detects REPL hangs + true crashes; spawns headless `claude -p` recovery.
----
-
-# AIG CC Crash Watchdog (Windows Scheduled Task)
-
-This folder is a *reference* only. The watchdog is registered as a Windows
-Scheduled Task named `__TASKNAME__`, NOT a Cloud Routine.
-
-## What it does
-
-- Runs every 60 seconds (Windows Task Scheduler minimum) in the user session.
-- Checks `last_sprint_fire.txt` age + `claude.exe` presence.
-- After 3 consecutive crash signals (3 min), spawns `claude -p` headless
-  recovery with the prompt in `scripts/session_resume_prompt.txt`.
-- Logs to `crash_log.md` / `crash_log.json`; Telegrams on detect / recover / fail.
-
-## Files
-
-- `scripts/cc_watchdog.ps1`         : the watchdog (this task invokes it)
-- `scripts/cc_watchdog_telegram.py` : Telegram message helper
-- `scripts/session_resume_prompt.txt`: prompt sent to the recovery session
-- `scripts/cc_watchdog_state.json`  : counters + mode
-- `scripts/cc_watchdog.log`         : invocation log
-- `crash_log.md` / `crash_log.json` : per-incident history
-
-## Managing the task
-
-- Inspect:   `Get-ScheduledTask -TaskName __TASKNAME__`
-- Run now:   `Start-ScheduledTask -TaskName __TASKNAME__`
-- History:   Task Scheduler GUI > task > History tab
-- Uninstall: `pwsh -File scripts\install_watchdog.ps1 -Uninstall`
-'@
-$refContent = $refContent.Replace('__TASKNAME__', $TaskName)
+# Build reference SKILL.md line by line to dodge here-string interaction with
+# backticks and PowerShell parsing rules. The file is small; readability of
+# the writer is fine.
+$nl = "`r`n"
+$lines = @(
+    "---",
+    "name: aig-cc-watchdog",
+    "description: AIG CC crash watchdog reference (the actual scheduler is Windows Task Scheduler, not Cloud Routines). Detects REPL hangs and true crashes; spawns headless ``claude -p`` recovery.",
+    "---",
+    "",
+    "# AIG CC Crash Watchdog (Windows Scheduled Task)",
+    "",
+    "This folder is a *reference* only. The watchdog is registered as a Windows",
+    "Scheduled Task named ``$TaskName``, NOT a Cloud Routine.",
+    "",
+    "## What it does",
+    "",
+    "- Runs every 60 seconds (Task Scheduler minimum) in the user session.",
+    "- Checks last_sprint_fire.txt age + claude.exe presence.",
+    "- After 3 consecutive crash signals (3 min), spawns ``claude -p`` headless",
+    "  recovery with the prompt in scripts/session_resume_prompt.txt.",
+    "- Logs to crash_log.md / crash_log.json; Telegrams on detect / recover / fail.",
+    "",
+    "## Files",
+    "",
+    "- scripts/cc_watchdog.ps1         : the watchdog (this task invokes it)",
+    "- scripts/cc_watchdog_telegram.py : Telegram message helper",
+    "- scripts/session_resume_prompt.txt: prompt sent to the recovery session",
+    "- scripts/cc_watchdog_state.json  : counters + mode",
+    "- scripts/cc_watchdog.log         : invocation log",
+    "- crash_log.md / crash_log.json   : per-incident history",
+    "",
+    "## Managing the task",
+    "",
+    "- Inspect:   Get-ScheduledTask -TaskName $TaskName",
+    "- Run now:   Start-ScheduledTask -TaskName $TaskName",
+    "- History:   Task Scheduler GUI > task > History tab",
+    "- Uninstall: pwsh -File scripts\install_watchdog.ps1 -Uninstall"
+)
+$refContent = ($lines -join $nl) + $nl
 Set-Content -Path $RefSkill -Value $refContent -Encoding utf8
 Write-Output "Reference SKILL.md written: $RefSkill"
 
