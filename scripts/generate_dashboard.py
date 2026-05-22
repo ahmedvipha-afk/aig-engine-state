@@ -598,7 +598,12 @@ def _winners_losers(market: str, runs: dict, top_n: int = 5) -> tuple[list, list
                 continue
             if r.get("verdict") in ("BLOCKED_DATA", "DATA_ERROR"):
                 continue
-            if (r.get("oos_n") or 0) < 10:
+            # Per Phase 1 directive Part 2 Improvement 5: exclude tickers with
+            # OOS n < 30 from every per-ticker display. n<30 estimates of
+            # expectancy are dominated by sampling noise (DXCM ∞ at n=14, ZWS
+            # 43.92 at n=12, etc.) — removing them is the right fix, not
+            # formatting them better. Portfolio verdict remains binding.
+            if (r.get("oos_n") or 0) < 30:
                 continue
             all_rows.append({
                 "ticker": r.get("ticker"),

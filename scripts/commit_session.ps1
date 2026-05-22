@@ -51,7 +51,9 @@ $paths = @(
     'paper_forward_positions.json',
     # Permissions + crash-recovery (2026-05-22)
     'PERMISSIONS_NOTES.md', 'CRASH_RECOVERY.md',
-    'crash_log.md', 'crash_log.json'
+    'crash_log.md', 'crash_log.json',
+    # Phase 1 framework directive — Decision Log (2026-05-22)
+    'decision_log.md', 'decision_log.json'
 )
 foreach ($p in $paths) {
     if (Test-Path $p) { git add $p 2>$null | Out-Null }

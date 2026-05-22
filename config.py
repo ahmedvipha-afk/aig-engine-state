@@ -274,6 +274,98 @@ MARKET_COSTS = {
     "CRYPTO": {"commission_bps": 10.0, "spread_bps": 6.0,  "slippage_bps": 15.0},
 }
 
+# ---- Phase 1 framework directive amendments (frozen 2026-05-22) ---------
+# Six amendments to the validation gate per Ahmed's Phase 1 framework
+# directive 2026-05-22 (ahmed_response_2026-05-22.md). Pre-registered
+# atomically in the commit that introduces them; the new config_hash binds
+# them to all future runs. Apply PROSPECTIVELY only -- existing Session 5
+# verdicts under the OLD hash are NOT re-evaluated retroactively (per
+# directive Part 3). Re-evaluation requires Method A (fresh OOS window) or
+# Method B (forward data accumulation, ~Nov 2026+).
+#
+# Framework finality: these amendments + the three-filter methodology in
+# strategy_register.md are FROZEN for 6 months from this commit date.
+
+# Amendment 1 -- archetype-based WR floor (DORMANT until auto-execution exists)
+# Mean-reversion + pullback strategies keep the 0.40 floor unchanged.
+# Trend-following / breakout / momentum strategies may use a relaxed floor
+# IF AND ONLY IF dSharpe >= 1.5 AND PF >= 2.0 AND bootstrap CI lower bound
+# on mean trade return > 0 AND auto-execution layer exists. None of these
+# qualifying conditions hold today -- AUTO_EXECUTION_LAYER_EXISTS = False.
+WR_FLOOR_BY_ARCHETYPE = {
+    "pullback":         0.40,
+    "mean_reversion":   0.40,
+    "trend_following":  None,   # relaxation eligible (gated by auto-execution)
+    "breakout":         None,   # relaxation eligible
+    "momentum":         None,   # relaxation eligible
+    "volatility_cycle": 0.40,   # not explicitly named in Amendment 1 -- strict
+    "statistical_arb":  0.40,   # long-only constraint limits these
+    "event_driven":     0.40,   # not explicitly named in Amendment 1 -- strict
+}
+
+WR_FLOOR_RELAXATION_THRESHOLDS = {
+    "min_dsharpe":             1.5,    # 3x the standard 0.5 floor
+    "min_profit_factor":       2.0,
+    "min_bootstrap_ci_lower":  0.0,    # mean trade return CI strictly > 0
+    "requires_auto_execution": True,
+}
+
+# Auto-execution layer is a Phase 2 infrastructure build. Until True, the
+# relaxed WR floor cannot activate; ALL strategies use the strict floor
+# regardless of archetype. Set this to True only after the auto-execution
+# layer is implemented AND passes its own validation (idempotency, slippage
+# modeling, fail-safe halt).
+AUTO_EXECUTION_LAYER_EXISTS = False
+
+# Amendment 2 -- per-market trade-count floor
+# Replaces a single global min_trades with a fixed table keyed by market.
+# New markets pre-register the floor at universe-onboarding time, BEFORE
+# any test runs on that market. The formula
+# `max(100, sqrt(universe * years * signal_freq))` proposed earlier is
+# explicitly rejected (signal_freq is a tuning backdoor).
+MIN_TRADES_BY_MARKET = {
+    "US":     1000,
+    "UAE":    200,
+    "CRYPTO": 400,
+    "GCC":    None,   # Phase 2 infrastructure -- set at GCC onboarding
+}
+
+# Amendment 3 -- profit factor floor
+# OOS PF >= 1.5. Bootstrap CI lower bound on PF >= 1.0 (even at the pessimistic
+# end of the bootstrap distribution, the strategy must be break-even on a
+# profit-factor basis). Only evaluated when n >= 30 trades.
+MIN_PROFIT_FACTOR = 1.5
+MIN_PROFIT_FACTOR_CI_LOWER = 1.0
+PROFIT_FACTOR_MIN_N = 30
+
+# Amendment 4 -- multi-timeframe as separate pre-registered trials
+# Process amendment, not a config knob. Each (strategy x market x timeframe)
+# is one trial in strategy_register.md TRIAL_BUDGET. Adding a TF tightens
+# the multi-test haircut. No config flag needed.
+
+# Amendment 5 -- GCC universe (DEFERRED TO PHASE 2 INFRASTRUCTURE)
+# Trading scope remains UAE-only. GCC (Saudi + Kuwait + Qatar + Bahrain)
+# halal aggregate ~400-500 tickers is a discovery-and-validation tool, NOT
+# a deployment market. Any strategy that clears the GCC-wide gate must ALSO
+# pass a separate UAE-only certification (hard gate, same status as Shariah).
+# Strategies clearing GCC but failing UAE-only are tagged
+# GCC_only_edge_not_UAE_deployable in strategy_register and shelved.
+# Phase 2 infrastructure -- does NOT exist yet, does NOT consume Phase 1 slots.
+GCC_UNIVERSE_ENABLED = False
+
+# Amendment 6 -- OOS calendar time-span floor
+# OOS trades must span at least 24 calendar months. A strategy with sufficient
+# trades but temporally narrow OOS sample (e.g., last 18 months only) could
+# be a regime artifact. Verdict INSUFFICIENT_OOS_SPAN when sufficient trades
+# but insufficient calendar span. This applies on top of trade-count floors.
+MIN_OOS_CALENDAR_MONTHS = 24
+
+# OOS-to-IS Sharpe ratio robustness check (paired with Amendment 6)
+# A strategy that aces in-sample and barely passes OOS is suspect for
+# overfitting even if both nominally clear gates. Require OOS Sharpe >= 0.7 x
+# IS Sharpe at minimum (the lower-noise version Amendment 2 invokes).
+MIN_OOS_TO_IS_SHARPE_RATIO = 0.7
+
 # ---- Validation gate thresholds (frozen) ---------------------------------
 # Per-ticker gate: certifies "ticker X with strategy S has edge". Strict
 # n>=30 with multi-test haircut over N_tickers — appropriate for narrow
@@ -299,17 +391,35 @@ GATE = {
 # trial the CEO chose between, including the failing ones, not just the
 # winning subset. n_trials_registered is the binding count.
 PORTFOLIO_GATE = {
-    "min_trades": 1000,          # certifying a strategy, not a ticker — demand mass
+    # Legacy keys (preserved for back-compat with existing validation_gate.py)
+    "min_trades": 1000,          # US default; per-market table is binding via min_trades_by_market
     "min_oos_sharpe": 0.5,       # deflated, with sqrt(2 ln N_trials) haircut
     "min_expectancy": 1.0,       # aggregate expectancy > 1.0
-    "min_win_rate": 0.40,        # broad strategies survive on positive expectancy + WR floor
+    "min_win_rate": 0.40,        # legacy strict floor; superseded by wr_floor_by_archetype when archetype set
     "min_universe_coverage": 0.05, # at least 5% of universe must contribute trades
     "bootstrap_iters": 2000,
     "bootstrap_conf": 0.95,
-    "n_trials_registered": 39,   # 13 strategies (ema200, divergence, mbv, dbo, roc, vcb, hat, pmr, str, art, cmf, gap, wck) × 3 markets × 1 timeframe (1D).
-                                 # WCK added 2026-05-22 Sprint Obj-6 advance (post-GAP-finalize) — trial budget bumped 36 -> 39.
-                                 # Adding a 4H variant or new strategy -> +N. Pre-register in strategy_register.md
-                                 # before running.
+    "n_trials_registered": 39,   # 13 sprint-loop strategies (ema200..wck) x 3 markets x 1D.
+                                 # WCK added 2026-05-22 (post-GAP). Phase 1 framework directive 2026-05-22
+                                 # tags all 13 as Pre-Framework, sprint-loop-tested. Phase 1 candidates
+                                 # under the new three-filter methodology will add NEW trials on top of
+                                 # this count -- n_trials_registered will grow, the haircut tightens.
+
+    # ---- Phase 1 directive amendments (2026-05-22) -----------------------
+    "min_trades_by_market":              MIN_TRADES_BY_MARKET,             # Amendment 2
+    "min_profit_factor":                 MIN_PROFIT_FACTOR,                # Amendment 3
+    "min_profit_factor_ci_lower":        MIN_PROFIT_FACTOR_CI_LOWER,       # Amendment 3
+    "profit_factor_min_n":               PROFIT_FACTOR_MIN_N,              # Amendment 3
+    "min_oos_calendar_months":           MIN_OOS_CALENDAR_MONTHS,          # Amendment 6
+    "min_oos_to_is_sharpe_ratio":        MIN_OOS_TO_IS_SHARPE_RATIO,       # Amendment 2 extension
+    "wr_floor_by_archetype":             WR_FLOOR_BY_ARCHETYPE,            # Amendment 1
+    "wr_floor_relaxation_thresholds":    WR_FLOOR_RELAXATION_THRESHOLDS,   # Amendment 1
+    "auto_execution_layer_exists":       AUTO_EXECUTION_LAYER_EXISTS,      # Amendment 1 gate
+    "gcc_universe_enabled":              GCC_UNIVERSE_ENABLED,             # Amendment 5
+
+    # Framework finality (binding): freeze begins on this commit's date.
+    "framework_freeze_start":            "2026-05-22",
+    "framework_freeze_months":           6,
 }
 
 # ---- Reproducibility -----------------------------------------------------

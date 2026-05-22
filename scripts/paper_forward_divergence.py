@@ -48,12 +48,13 @@ STATE_FILE = ROOT / "paper_forward_positions.json"
 SIGNALS_LOG = ROOT / "signals_log.md"
 WATCHLIST_FILE = ROOT / "universe" / "divergence_us_paperforward_watchlist.txt"
 
-WATCH_LIST_METHOD = "random_sample_seed42_n50_from_cleared_universe_2026-05-21"
+WATCH_LIST_METHOD = "full_cleared_universe_1030_pre-registered_phase1_directive_2026-05-22"
 
 
 def _load_default_watch() -> list[str]:
-    """Pre-registered random sample (seed=42, n=50) from cleared US Divergence
-    universe. Frozen at file at deployment to resolve audit finding NEW-1."""
+    """Full cleared US Divergence universe (1,030 contributing tickers) per
+    Phase 1 directive Part 2 Improvement 1 Option A (2026-05-22). Supersedes
+    the earlier random-sample seed=42 n=50 selection."""
     if WATCHLIST_FILE.exists():
         lines = WATCHLIST_FILE.read_text(encoding="utf-8").splitlines()
         return [ln.strip() for ln in lines

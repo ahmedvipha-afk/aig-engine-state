@@ -12,3 +12,5 @@ One line per detected crash. Auto-appended by cc_watchdog.ps1.
 - 2026-05-22T14:27:09.3380579Z cause=sentinel-stale-32min | OK | recovered_at=2026-05-22T14:29:31.6126606Z | duration=141s
 - 2026-05-22T14:32:09.3466996Z cause=sentinel-stale-37min | OK | recovered_at=2026-05-22T14:34:26.5865314Z | duration=130s
 - 2026-05-22T14:37:09.5148267Z cause=sentinel-stale-42min | OK | recovered_at=2026-05-22T14:40:50.0920792Z | duration=220s
+- 2026-05-22T16:44:09.3833316Z cause=sentinel-stale-32min | OK | recovered_at=2026-05-22T16:46:04.9896823Z | duration=114s
+- 2026-05-22T16:53:09.4187515Z cause=sentinel-stale-41min | OK | recovered_at=2026-05-22T16:55:22.6690085Z | duration=130s

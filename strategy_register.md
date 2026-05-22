@@ -38,6 +38,220 @@ strategy. Same-strategy iteration on a failing dataset is forbidden.
 
 ---
 
+## PHASE 1 FRAMEWORK DIRECTIVE (2026-05-22) — Six Amendments
+
+Per `ahmed_response_2026-05-22.md`. Pre-registered atomically with the
+commit that introduces them; the new `config_hash` binds these amendments
+to all future runs. **Framework finality:** these amendments are FROZEN
+for 6 months from the commit date (~2026-11-22). All amendments apply
+PROSPECTIVELY only — existing Session 5 verdicts under the OLD hash are
+NOT retroactively re-evaluated (per directive Part 3). Re-evaluation
+requires Method A (fresh OOS window) or Method B (forward data ≥ 6 mo).
+
+### Amendment 1 — Archetype-based WR floor (CONDITIONAL, DORMANT)
+
+- `mean_reversion` / `pullback`: WR floor = **0.40 unchanged**.
+- `trend_following` / `breakout` / `momentum`: WR floor REMOVED iff
+  dSharpe ≥ 1.5 AND profit factor ≥ 2.0 AND bootstrap CI lower bound on
+  mean trade return > 0 AND **auto-execution layer exists**.
+- `volatility_cycle` / `statistical_arb` / `event_driven`: WR floor = 0.40
+  (not explicitly named in Amendment 1 — default strict).
+- **Auto-execution layer:** Phase 2 infrastructure build. Does NOT exist
+  today. Until `AUTO_EXECUTION_LAYER_EXISTS=True` AND its own validation
+  passes, Amendment 1 is DORMANT and all strategies use the strict floor.
+- Every strategy gets an `archetype` field at registration. Frozen.
+
+### Amendment 2 — Trade-count floor by universe size
+
+- US: min OOS trades = 1,000 (unchanged)
+- UAE: min OOS trades = 200
+- Crypto: min OOS trades = 400
+- GCC: pre-register at onboarding (Phase 2)
+
+The formula `max(100, sqrt(universe × years × signal_freq))` is **rejected**
+— `signal_freq` is a free parameter and creates a tuning backdoor.
+
+Tightening that REMAINS strict regardless of universe:
+- Bootstrap CI lower bound on mean trade return strictly > 0
+- dSharpe ≥ 0.5 after N-trial multi-test haircut
+- **OOS Sharpe ≥ 0.7 × IS Sharpe** (overfitting robustness; new)
+- OOS time span ≥ 24 months (see Amendment 6)
+
+### Amendment 3 — Profit factor floor
+
+- OOS PF ≥ 1.5
+- Bootstrap CI lower bound on PF ≥ 1.0 (even at the pessimistic end of
+  the bootstrap distribution, must be break-even)
+- Only evaluated when n ≥ 30 trades
+
+### Amendment 4 — Multi-timeframe testing as separate pre-registered trials
+
+Each (strategy × market × timeframe) is a separate trial in the TRIAL
+BUDGET. Adding a TF tightens the multi-test haircut. **Process amendment
+— no config knob.** Discipline lives in the TRIAL_BUDGET table below.
+
+### Amendment 5 — GCC universe as discovery-and-validation tool (PHASE 2)
+
+- Trading scope = **UAE only**. GCC is NOT a deployment market.
+- GCC (Saudi + Kuwait + Qatar + Bahrain) halal aggregate ~400-500 tickers
+  serves as a discovery-and-validation source where UAE alone lacks power.
+- Any strategy clearing the GCC-wide gate must ALSO pass a separate
+  UAE-only certification (hard gate, same status as Shariah).
+- Strategies clearing GCC but failing UAE-only are tagged
+  `GCC_only_edge_not_UAE_deployable` and shelved.
+- Phase 2 infrastructure build — does NOT exist today, does NOT consume
+  Phase 1 slots.
+
+### Amendment 6 — OOS calendar time-span floor
+
+- OOS trades must span ≥ 24 calendar months
+- Verdict `INSUFFICIENT_OOS_SPAN` when trade count sufficient but calendar
+  span insufficient
+
+---
+
+## PHASE 1 THREE-FILTER SELECTION METHODOLOGY (frozen 2026-05-22)
+
+Per directive Part 4. Replaces the Version-B autonomous strategy-enrollment
+loop. CEO runs this methodology automatically; CEO does NOT improvise or
+deviate without Ahmed approval logged in `decision_log`.
+
+### Phase 1 strategy cap: 4 candidates total
+
+| Slot | Status | Strategy | Notes |
+|------|--------|----------|-------|
+| 1 | FILLED | Divergence Daily | Grandfathered from Session 5 framework selection |
+| 2 | OPEN | — | Pending methodology output |
+| 3 | OPEN | — | Pending methodology output |
+| 4 | OPEN | — | Pending methodology output |
+
+After 4 candidates complete (cleared OR failed) under the amended gate,
+**Phase 1 testing CLOSES** until Phase 2 review post-6-month freeze.
+
+### Filter 1 — Archetype diversity from cleared strategies
+
+Currently cleared (Phase 1): Divergence (pullback). Next candidate MUST
+be from a different archetype. Priority order:
+
+1. `trend_following`
+2. `breakout`
+3. `momentum`
+4. `volatility_cycle`
+5. `statistical_arb`
+
+Testing a second `pullback` strategy is disallowed until at least one
+strategy from another archetype has cleared OR failed honestly.
+
+### Filter 2 — Evidence tier
+
+- **T1** (highest priority): peer-reviewed academic, multiple markets and
+  decades. Trend-following (Moskowitz/Ooi/Pedersen 2012), momentum
+  (Jegadeesh & Titman 1993), value-tilted breakout.
+- **T2**: practitioner consensus / multiple independent published backtests
+  with consistent direction.
+- **T3**: single-source claim, blog backtest, single Pine script.
+
+Test T1 BEFORE T2 BEFORE T3. T3 only when T1+T2 queues exhausted for the
+relevant archetype.
+
+### Filter 3 — Data and infrastructure readiness
+
+Disqualify (move to deferred queue, not test queue):
+- Requires intraday tick data (only daily/1H available)
+- Requires short-selling (long-only mandate — Rule 15)
+- Requires options/futures/fundamentals not yet wired
+- Requires leverage (Rule 16)
+- Violates Shariah on instrument level
+
+### Source priority for candidate strategies
+
+1. **López de Prado / Advances in Financial Machine Learning** — explicit
+   archetype taxonomy with peer-reviewed evidence + overfitting warnings.
+2. **Replication of published results BEFORE building variants** —
+   reproduce the original on its original universe first. If you can't
+   reproduce, the original was overfit.
+3. **Ahmed's Tareq research as a CONSTRAINED source** — prior backtests
+   and signal logs are NOT evidence of edge (pre-pre-registration
+   discipline). Tareq rules get frozen, then tested through the amended
+   gate on data not previously evaluated.
+
+### Explicitly forbidden
+
+- Scanning Pine forum top-returns lists
+- Parameter optimization across the universe
+- Iterating on failed strategies
+- CEO scanning past results to spot patterns and seed new candidates
+- Treating Ahmed intuitions as inputs (except via Ahmed-input exception)
+
+### Ahmed-input exception
+
+Ahmed may explicitly request a specific strategy enter the queue. It
+receives the standard tier classification and tests in order. It does
+NOT jump the queue. Same gate applies.
+
+### Data reuse policy
+
+- Previously collected **DATA** (universe lists, OHLCV caches) = reusable.
+- Previously collected **RESULTS / VERDICTS** = NOT reusable as edge
+  evidence (pre-pre-registration discipline).
+
+### Autonomous-execution scope
+
+CEO can WITHOUT asking Ahmed:
+- Run the three filters against current state and produce next-candidate.
+- Pre-register the candidate's full spec BEFORE testing.
+- Run the test through the amended gate.
+- Log results.
+- Move to the next candidate until cap is reached.
+
+CEO MUST ASK AHMED for:
+- Modifying any filter in the methodology
+- Skipping queue order
+- Adding archetypes not in the original list
+- Adding a strategy that triggers the deferred queue
+- Exceeding the Phase 1 cap of 4 candidates
+
+---
+
+## PRE-FRAMEWORK STRATEGIES (sprint-loop-tested, 2026-05-21 → 2026-05-22)
+
+The 13 strategies registered before the Phase 1 framework directive
+(Divergence + EMA-200 + MBV + DBO + ROC + VCB + HAT + PMR + STR + ART +
+CMF + GAP + WCK) were enrolled under the autonomous sprint loop's
+Version-B methodology that the directive Part 4 forbids. Their verdicts
+stand as honest historical record. They are **NOT Phase 1 candidates**
+EXCEPT Divergence (grandfathered to Phase 1 slot 1 by Session 5 framework
+discipline, pre-autonomous-loop).
+
+If the three-filter methodology selects a Pre-Framework strategy (e.g.,
+MBV via the trend_following / pullback filter), the strategy enters
+Phase 1 by virtue of selection — but its existing test data is reusable
+only as INITIAL evidence; it MUST re-validate under the amended gate on
+data not previously evaluated under those amendments (Method A: fresh
+OOS window; Method B: post-2026-05-22 forward data).
+
+Pre-Framework strategies retain their `archetype` tag. `n_trials_registered`
+remains **39** (cannot selectively reduce N without invalidating the
+multi-test haircut discipline).
+
+| # | Strategy | Archetype | Pre-Framework | Phase 1 status |
+|---|----------|-----------|---------------|----------------|
+| 1 | ema200 | trend_following | YES | Pre-Framework FAIL |
+| 2 | divergence | pullback | NO (grandfathered) | **Phase 1 slot 1 CLEARED** |
+| 3 | mbv | pullback | YES | Pre-Framework CLEARED (US); Phase 1 only if methodology selects + re-validates |
+| 4 | dbo | breakout | YES | Pre-Framework near-miss (WR floor only) |
+| 5 | roc | momentum | YES | Pre-Framework near-miss (WR floor only) |
+| 6 | vcb | volatility_cycle | YES | Pre-Framework near-miss (WR floor only) |
+| 7 | hat | trend_following | YES | Pre-Framework near-miss (WR floor only) |
+| 8 | pmr | mean_reversion | YES | Pre-Framework CLEARED (US); Phase 1 only if methodology selects + re-validates |
+| 9 | str | mean_reversion | YES | Pre-Framework CLEARED (US); Phase 1 only if methodology selects + re-validates |
+| 10 | art | trend_following | YES | Pre-Framework near-miss (WR floor only) |
+| 11 | cmf | mean_reversion | YES | Pre-Framework near-miss (WR floor only) |
+| 12 | gap | event_driven | YES | Pre-Framework FAIL (small markets); US drain finalized |
+| 13 | wck | mean_reversion | YES | Pre-Framework drain in progress (50%); finalize as historical |
+
+---
+
 ## STRATEGY 1 — EMA-200 + Volume Confirmation (long only)
 
 | Field | Value |
