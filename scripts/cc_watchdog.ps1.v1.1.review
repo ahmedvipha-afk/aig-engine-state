@@ -1,4 +1,4 @@
-# cc_watchdog.ps1 -- AIG Claude Code crash watchdog.
+# cc_watchdog.ps1 — AIG Claude Code crash watchdog.
 #
 # One check per invocation; meant to be triggered by Windows Task Scheduler
 # every 60 seconds. Detects:
@@ -15,72 +15,30 @@
 # Runs in user session (Task Scheduler configured INTERACTIVE) so the
 # spawned claude.cmd has access to ~/.claude config + auto-memory.
 #
-# v1.2 (2026-05-23): five correctness fixes + two testing affordances after
-# the 25-recovery cascade on 2026-05-22 left a 49-process claude.exe orphan
-# pile overnight. See diff vs. v1.0:
-#   1. Pre-spawn Stop-StaleClaudeSessions: kill any existing claude.exe +
+# v1.1 (2026-05-23): five fixes after the 25-recovery cascade on 2026-05-22
+# left a 49-process claude.exe orphan pile overnight. See diff vs. v1.0:
+#   1. Pre-spawn Stop-StaleClaudeSessions — kill any existing claude.exe +
 #      descendants before launching a recovery (root cause: prior recoveries
 #      stacked on top of the hung REPL instead of replacing it).
 #   2. Cause-string distinguishes hung-repl-* (claude alive) from
 #      sentinel-stale-* (claude absent) for crash-log clarity. Recovery
-#      kills existing claude.exe in either case -- there is no "claude alive
+#      kills existing claude.exe in either case — there is no "claude alive
 #      but skip recovery" branch.
 #   3. $RecoveriesMaxPerDay cascade brake (5/UTC-day). Trips state.mode =
 #      'capped' until the next UTC day or operator clears it.
-#   4. Post-recovery descendant reap: claude.exe forks Node workers/MCP
+#   4. Post-recovery descendant reap — claude.exe forks Node workers/MCP
 #      children that do not die with the parent (no Job Object binding).
 #      Kill anything started since $recoveryStart at the end of the run.
-#   5. Stop-ProcessTree replaces $proc.Kill($true): PS 5.1 / .NET Framework
+#   5. Stop-ProcessTree replaces $proc.Kill($true) — PS 5.1 / .NET Framework
 #      has no Kill(bool entireProcessTree) overload; the old call threw
 #      MethodNotFoundException that the empty catch{} silently swallowed.
-# Testing affordances (v1.2):
-#   - -IgnorePause: bypass cron_paused.flag for dry-runs / manual recovery
-#   - -PreserveForegroundParent <PID>: exclude PID + its descendants from
-#     pre-spawn kill AND post-recovery reap. Used by supervised live runs so
-#     we don't terminate the operator's foreground CC session that's
-#     watching us. The crash-log entry inherits the same exclude flagging.
-#   - [DRYRUN] cause-string prefix when -DryRun is set, so crash_log.md /
-#     crash_log.json end-to-end exercise is distinguishable from real
-#     incidents (operator filters/moves these after testing).
-#
-# v1.3 (2026-05-23): command-line scoping. Stop-StaleClaudeSessions and the
-# process check now use Get-ClaudeCodeCliProcesses, which filters
-# Get-Process claude by CommandLine substring 'claude-code' or the explicit
-# npm path '\@anthropic-ai\claude-code\'. Excludes Claude Desktop (the
-# consumer chat client, MSIX install) from kill/reap. Without this, v1.2's
-# Get-Process -Name claude matched both `claude.exe` (CC CLI) and
-# `Claude.exe` (Desktop) case-insensitively, so a real recovery would
-# terminate the user's Desktop conversation alongside the CC CLI.
-#
-# v1.4 (2026-05-23): two-part correctness fix to v1.3's preserve-set
-# wiring. Observed in v1.3 supervised live run 2026-05-23T08:58Z and
-# isolated in v1.4 Phase D direct-binder test.
-#   Root cause: Get-ProcessDescendants returned `,$descendants` to "prevent
-#     single-element unwrapping". The wrapping caused
-#     @(Get-ProcessDescendants ...) at call sites to produce a NESTED
-#     Object[] (one element of which was itself an Object[]). The nested
-#     Object[] could not be cast to Int32, surfacing as either
-#     ParameterArgumentTransformationError (when bound to [int[]]
-#     $PreservePids) or InvalidCastException (when explicitly cast via
-#     [int[]] at construction).
-#   Fix 1 (the actual fix): Get-ProcessDescendants now uses a strongly-typed
-#     List[int], returns [int[]]$descendants.ToArray(), and lets the
-#     pipeline unroll naturally.
-#   Fix 2 (defense in depth): preserve-set construction explicitly casts to
-#     [int[]] so binding remains robust if a future helper regresses.
-# Bug only manifested in the live (non-DryRun) branch where
-# Stop-StaleClaudeSessions is invoked; the dry-run path branches around it.
-#
-# Encoding note: this file is ASCII-only on purpose. PowerShell 5.1 reads
-# no-BOM .ps1 files as Windows-1252; em-dashes (U+2014) inside string
-# literals corrupt under that decode and break parsing. Stick to ASCII.
+# Also adds -IgnorePause for safe dry-run / manual recovery.
 
 [CmdletBinding()]
 param(
     [switch]$VerboseLog,
     [switch]$DryRun,
-    [switch]$IgnorePause,
-    [int]$PreserveForegroundParent = 0
+    [switch]$IgnorePause
 )
 
 $ErrorActionPreference = 'Continue'
@@ -143,18 +101,7 @@ function Send-Telegram([string]$kind, [hashtable]$extra) {
 # MethodNotFoundException and the empty catch{} swallowed it silently.
 function Get-ProcessDescendants {
     param([int]$ParentId)
-    # v1.4: return as [int[]] and let the pipeline unroll. The v1.1-v1.3
-    # `return ,$descendants` wrapped the result in an outer 1-element array
-    # to "prevent single-element unwrapping" -- but it caused
-    # @(Get-ProcessDescendants ...) at call sites to produce a NESTED
-    # Object[] (one element of which was itself an Object[]), which then
-    # broke [int[]] casts upstream with a Object[]->Int32 conversion error
-    # (observed in v1.3 supervised live run 2026-05-23T08:58Z and in v1.4
-    # Phase D when the cast was moved earlier). Pipeline-unroll is the
-    # natural PowerShell idiom; both call sites (Stop-ProcessTree's
-    # `$descendants | Sort-Object` foreach, and the preserve-set builder's
-    # `@(Get-ProcessDescendants ...)` + cast) handle empty/1/many uniformly.
-    [System.Collections.Generic.List[int]]$descendants = New-Object 'System.Collections.Generic.List[int]'
+    $descendants = @()
     $stack = New-Object System.Collections.Generic.Stack[int]
     $stack.Push($ParentId)
     $seen = @{ $ParentId = $true }
@@ -165,11 +112,11 @@ function Get-ProcessDescendants {
             $childPid = [int]$child.ProcessId
             if ($seen.ContainsKey($childPid)) { continue }
             $seen[$childPid] = $true
-            $descendants.Add($childPid)
+            $descendants += $childPid
             $stack.Push($childPid)
         }
     }
-    return [int[]]$descendants.ToArray()
+    return ,$descendants
 }
 
 function Stop-ProcessTree {
@@ -177,8 +124,8 @@ function Stop-ProcessTree {
         [int]$ProcessId,
         [string]$Reason = ''
     )
-    # Snapshot before killing: once the parent exits, ParentProcessId rows on
-    # children become a stale PID that Windows may have recycled.
+    # Snapshot before killing — once the parent exits, ParentProcessId rows
+    # on children become a stale PID that Windows may have recycled.
     $descendants = Get-ProcessDescendants -ParentId $ProcessId
     foreach ($descPid in ($descendants | Sort-Object -Unique -Descending)) {
         try {
@@ -196,47 +143,18 @@ function Stop-ProcessTree {
     }
 }
 
-function Get-ClaudeCodeCliProcesses {
-    # v1.3: filter claude.exe processes down to Claude Code CLI instances,
-    # excluding Claude Desktop (the consumer chat client, MSIX install).
-    # Match by CommandLine substring: 'claude-code' OR the explicit npm path
-    # '\@anthropic-ai\claude-code\'. PowerShell -match is regex,
-    # case-insensitive by default. Returns Process objects (possibly empty).
-    $all = @(Get-Process -Name claude -ErrorAction SilentlyContinue)
-    $cli = @()
-    foreach ($p in $all) {
-        $cl = (Get-CimInstance Win32_Process -Filter "ProcessId=$($p.Id)" -ErrorAction SilentlyContinue).CommandLine
-        if ($cl -and $cl -match 'claude-code|\\@anthropic-ai\\claude-code\\') {
-            $cli += $p
-        }
-    }
-    return ,$cli
-}
-
 function Stop-StaleClaudeSessions {
-    param(
-        [string]$Reason = 'pre-recovery cleanup',
-        [int[]]$PreservePids = @()
-    )
-    $stale = @(Get-ClaudeCodeCliProcesses)
+    param([string]$Reason = 'pre-recovery cleanup')
+    $stale = @(Get-Process -Name claude -ErrorAction SilentlyContinue)
     if ($stale.Count -eq 0) {
         Write-WD "stale-cleanup: no claude.exe present ($Reason)"
         return 0
     }
-    $killing = @($stale | Where-Object { $PreservePids -notcontains $_.Id })
-    $preserved = @($stale | Where-Object { $PreservePids -contains $_.Id })
-    if ($preserved.Count -gt 0) {
-        Write-WD "stale-cleanup: preserving pids=$(($preserved | Select-Object -ExpandProperty Id) -join ',') ($Reason)"
-    }
-    if ($killing.Count -eq 0) {
-        Write-WD "stale-cleanup: nothing to terminate after preserve filter ($Reason)"
-        return 0
-    }
-    Write-WD "stale-cleanup: terminating $($killing.Count) claude.exe + descendants ($Reason)"
-    foreach ($p in $killing) {
+    Write-WD "stale-cleanup: terminating $($stale.Count) claude.exe + descendants ($Reason)"
+    foreach ($p in $stale) {
         Stop-ProcessTree -ProcessId $p.Id -Reason $Reason
     }
-    return $killing.Count
+    return $stale.Count
 }
 
 function Append-CrashLogMd([string]$ts, [string]$cause, [string]$recoveredTs, [int]$durationSec, [string]$status) {
@@ -292,7 +210,7 @@ function Load-State {
         total_recovery_failures        = 0
         longest_gap_seconds            = 0
         recent_recovery_durations      = @()
-        watchdog_version               = '1.4'
+        watchdog_version               = '1.1'
     }
     if (Test-Path $StateFile) {
         try {
@@ -361,7 +279,7 @@ $todayUtc = (Get-Date).ToUniversalTime().ToString('yyyy-MM-dd')
 if ($state.recoveries_today_date -ne $todayUtc) {
     $state.recoveries_today = 0
     $state.recoveries_today_date = $todayUtc
-    # New UTC day: release any 'capped' mode so we start fresh.
+    # New UTC day — release any 'capped' mode so we start fresh.
     if ($state.mode -eq 'capped') { $state.mode = 'normal' }
 }
 $state.last_check_ts = (Get-Date).ToUniversalTime().ToString('o')
@@ -373,7 +291,7 @@ $state.last_check_ts = (Get-Date).ToUniversalTime().ToString('o')
 # (operator deletes the flag / resets counter / or waits for UTC midnight).
 if ($state.recoveries_today -ge $RecoveriesMaxPerDay) {
     if ($state.mode -ne 'capped') {
-        Write-WD "DAILY-CAP REACHED ($($state.recoveries_today)/$RecoveriesMaxPerDay): refusing further recoveries today. Operator must intervene."
+        Write-WD "DAILY-CAP REACHED ($($state.recoveries_today)/$RecoveriesMaxPerDay) — refusing further recoveries today. Operator must intervene."
         # Reuse the existing 'failed' Telegram kind so the helper schema is unchanged.
         Send-Telegram failed @{ attempts = 0 }
     } else {
@@ -396,9 +314,7 @@ if (Test-Path $SentinelFile) {
 }
 
 # --- Process check ----------------------------------------------------------
-# Use Get-ClaudeCodeCliProcesses so "claude alive?" reflects CC CLI presence
-# only; Claude Desktop running alongside doesn't count for sprint-cron purposes.
-$claudeProcs = @(Get-ClaudeCodeCliProcesses)
+$claudeProcs = @(Get-Process -Name claude -ErrorAction SilentlyContinue)
 $claudeAlive = $claudeProcs.Count -gt 0
 
 # --- Classify ---------------------------------------------------------------
@@ -446,7 +362,7 @@ if ($state.consecutive_stale_checks -lt $ConsecutiveChecksRequired) {
     exit 0
 }
 
-# --- CRASH CONFIRMED -- RECOVERY --------------------------------------------
+# --- CRASH CONFIRMED — RECOVERY ---------------------------------------------
 $state.mode = 'recovering'
 $state.last_crash_cause = $cause
 $crashTs = (Get-Date).ToUniversalTime().ToString('o')
@@ -474,19 +390,6 @@ $recovered = $false
 $recoveryStart = Get-Date
 $attemptsUsed = 0
 
-# --- Build preserve set -----------------------------------------------------
-# -PreserveForegroundParent + all its descendants are excluded from both the
-# pre-spawn kill and the post-recovery reap. Used by supervised live runs so
-# we don't terminate the operator's foreground CC session that's watching us.
-$preservePids = [int[]]@()
-if ($PreserveForegroundParent -gt 0) {
-    # v1.4: explicit [int[]] cast. Without it, @(int) + @(Get-ProcessDescendants)
-    # gives Object[] which fails PS 5.1's binder to [int[]]$PreservePids on
-    # Stop-StaleClaudeSessions. See v1.3 supervised-live-run bug 2026-05-23T08:58Z.
-    $preservePids = [int[]](@($PreserveForegroundParent) + @(Get-ProcessDescendants -ParentId $PreserveForegroundParent))
-    Write-WD "preserve-foreground: PID $PreserveForegroundParent + $($preservePids.Count - 1) descendant(s) excluded from kill/reap"
-}
-
 # --- Pre-spawn cleanup ------------------------------------------------------
 # Kill any existing claude.exe + descendants BEFORE spawning the recovery
 # instance. Without this, a hung REPL keeps running while the recovery
@@ -497,10 +400,10 @@ if ($PreserveForegroundParent -gt 0) {
 # In DryRun, log what we *would* terminate but don't actually kill anything
 # (the dry-run must be safe to invoke with a live foreground REPL).
 if ($DryRun) {
-    $would = @(Get-ClaudeCodeCliProcesses | Where-Object { $preservePids -notcontains $_.Id })
-    Write-WD "DRYRUN pre-spawn cleanup would terminate $($would.Count) claude-code CLI process(es) + descendants (preserve=$($preservePids.Count) pids)"
+    $would = @(Get-Process -Name claude -ErrorAction SilentlyContinue)
+    Write-WD "DRYRUN pre-spawn cleanup would terminate $($would.Count) claude.exe + descendants"
 } else {
-    $killed = Stop-StaleClaudeSessions -Reason 'pre-recovery' -PreservePids $preservePids
+    $killed = Stop-StaleClaudeSessions -Reason 'pre-recovery'
     if ($killed -gt 0) {
         # Give Windows ~2s to release handles before respawning.
         Start-Sleep -Seconds 2
@@ -555,10 +458,10 @@ for ($attempt = 1; $attempt -le $RecoveryMaxRetries; $attempt++) {
 
         $exited = $proc.WaitForExit($RecoveryTimeoutSeconds * 1000)
         if (-not $exited) {
-            # PS 5.1 / .NET Framework has no Kill(bool) overload: use the
+            # PS 5.1 / .NET Framework has no Kill(bool) overload — use the
             # process-tree helper. The old $proc.Kill($true) threw
             # MethodNotFoundException, silently swallowed.
-            Write-WD "recovery attempt $attempt TIMEOUT after $RecoveryTimeoutSeconds s; killing tree pid=$recoveryPid"
+            Write-WD "recovery attempt $attempt TIMEOUT after $RecoveryTimeoutSeconds s — killing tree pid=$recoveryPid"
             Stop-ProcessTree -ProcessId $recoveryPid -Reason 'recovery-timeout'
         } else {
             $exitCode = $proc.ExitCode
@@ -588,15 +491,13 @@ for ($attempt = 1; $attempt -le $RecoveryMaxRetries; $attempt++) {
 # processes do not terminate with the parent (no Win32 Job Object binding
 # in v1.0). Enumerate any claude.exe that started at or after $recoveryStart
 # and kill its tree. Filtering by StartTime avoids ever touching a foreground
-# REPL the operator might have launched in the meantime. -PreserveForegroundParent
-# adds an explicit PID exclude (belt-and-suspenders: foreground starts before
-# $recoveryStart anyway).
+# REPL the operator might have launched in the meantime.
 if (-not $DryRun) {
-    $leaked = @(Get-ClaudeCodeCliProcesses | Where-Object {
-        try { ($_.StartTime -ge $recoveryStart) -and ($preservePids -notcontains $_.Id) } catch { $false }
+    $leaked = @(Get-Process -Name claude -ErrorAction SilentlyContinue | Where-Object {
+        try { $_.StartTime -ge $recoveryStart } catch { $false }
     })
     if ($leaked.Count -gt 0) {
-        Write-WD "post-recovery reap: $($leaked.Count) claude.exe started since recovery; terminating tree(s)"
+        Write-WD "post-recovery reap: $($leaked.Count) claude.exe started since recovery — terminating tree(s)"
         foreach ($leak in $leaked) {
             Stop-ProcessTree -ProcessId $leak.Id -Reason 'post-recovery-reap'
         }
@@ -610,12 +511,6 @@ if (-not $DryRun) {
 $recoveryEnd = Get-Date
 $durationSec = [int]($recoveryEnd - $recoveryStart).TotalSeconds
 Remove-Item $LockFile -Force -ErrorAction SilentlyContinue
-
-# Tag crash-log entries with [DRYRUN] prefix when running under -DryRun so
-# the end-to-end test entries are distinguishable from real incidents.
-# Operator moves these to crash_log_dryrun.md / crash_log_dryrun.json after
-# testing (cleanup is operator-side; the script never auto-strips).
-$loggedCause = if ($DryRun) { "[DRYRUN] $cause" } else { $cause }
 
 if ($recovered) {
     $recoveredTs = (Get-Date).ToUniversalTime().ToString('o')
@@ -632,10 +527,10 @@ if ($recovered) {
 
     Write-WD "RECOVERED duration=${durationSec}s attempts=$attemptsUsed"
     Send-Telegram recovered @{ "duration-seconds" = $durationSec }
-    Append-CrashLogMd $crashTs $loggedCause $recoveredTs $durationSec 'OK'
+    Append-CrashLogMd $crashTs $cause $recoveredTs $durationSec 'OK'
     Append-CrashLogJson @{
         crash_ts = $crashTs
-        cause = $loggedCause
+        cause = $cause
         recovered_ts = $recoveredTs
         duration_seconds = $durationSec
         attempts = $attemptsUsed
@@ -646,10 +541,10 @@ if ($recovered) {
     $state.mode = 'failed'
     Write-WD "RECOVERY FAILED after $RecoveryMaxRetries attempts duration=${durationSec}s"
     Send-Telegram failed @{ attempts = $RecoveryMaxRetries }
-    Append-CrashLogMd $crashTs $loggedCause '' $durationSec "MANUAL after $RecoveryMaxRetries attempts"
+    Append-CrashLogMd $crashTs $cause '' $durationSec "MANUAL after $RecoveryMaxRetries attempts"
     Append-CrashLogJson @{
         crash_ts = $crashTs
-        cause = $loggedCause
+        cause = $cause
         recovered_ts = $null
         duration_seconds = $durationSec
         attempts = $RecoveryMaxRetries

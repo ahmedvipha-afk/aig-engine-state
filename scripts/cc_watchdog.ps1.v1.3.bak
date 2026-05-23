@@ -52,25 +52,6 @@
 # `Claude.exe` (Desktop) case-insensitively, so a real recovery would
 # terminate the user's Desktop conversation alongside the CC CLI.
 #
-# v1.4 (2026-05-23): two-part correctness fix to v1.3's preserve-set
-# wiring. Observed in v1.3 supervised live run 2026-05-23T08:58Z and
-# isolated in v1.4 Phase D direct-binder test.
-#   Root cause: Get-ProcessDescendants returned `,$descendants` to "prevent
-#     single-element unwrapping". The wrapping caused
-#     @(Get-ProcessDescendants ...) at call sites to produce a NESTED
-#     Object[] (one element of which was itself an Object[]). The nested
-#     Object[] could not be cast to Int32, surfacing as either
-#     ParameterArgumentTransformationError (when bound to [int[]]
-#     $PreservePids) or InvalidCastException (when explicitly cast via
-#     [int[]] at construction).
-#   Fix 1 (the actual fix): Get-ProcessDescendants now uses a strongly-typed
-#     List[int], returns [int[]]$descendants.ToArray(), and lets the
-#     pipeline unroll naturally.
-#   Fix 2 (defense in depth): preserve-set construction explicitly casts to
-#     [int[]] so binding remains robust if a future helper regresses.
-# Bug only manifested in the live (non-DryRun) branch where
-# Stop-StaleClaudeSessions is invoked; the dry-run path branches around it.
-#
 # Encoding note: this file is ASCII-only on purpose. PowerShell 5.1 reads
 # no-BOM .ps1 files as Windows-1252; em-dashes (U+2014) inside string
 # literals corrupt under that decode and break parsing. Stick to ASCII.
@@ -143,18 +124,7 @@ function Send-Telegram([string]$kind, [hashtable]$extra) {
 # MethodNotFoundException and the empty catch{} swallowed it silently.
 function Get-ProcessDescendants {
     param([int]$ParentId)
-    # v1.4: return as [int[]] and let the pipeline unroll. The v1.1-v1.3
-    # `return ,$descendants` wrapped the result in an outer 1-element array
-    # to "prevent single-element unwrapping" -- but it caused
-    # @(Get-ProcessDescendants ...) at call sites to produce a NESTED
-    # Object[] (one element of which was itself an Object[]), which then
-    # broke [int[]] casts upstream with a Object[]->Int32 conversion error
-    # (observed in v1.3 supervised live run 2026-05-23T08:58Z and in v1.4
-    # Phase D when the cast was moved earlier). Pipeline-unroll is the
-    # natural PowerShell idiom; both call sites (Stop-ProcessTree's
-    # `$descendants | Sort-Object` foreach, and the preserve-set builder's
-    # `@(Get-ProcessDescendants ...)` + cast) handle empty/1/many uniformly.
-    [System.Collections.Generic.List[int]]$descendants = New-Object 'System.Collections.Generic.List[int]'
+    $descendants = @()
     $stack = New-Object System.Collections.Generic.Stack[int]
     $stack.Push($ParentId)
     $seen = @{ $ParentId = $true }
@@ -165,11 +135,11 @@ function Get-ProcessDescendants {
             $childPid = [int]$child.ProcessId
             if ($seen.ContainsKey($childPid)) { continue }
             $seen[$childPid] = $true
-            $descendants.Add($childPid)
+            $descendants += $childPid
             $stack.Push($childPid)
         }
     }
-    return [int[]]$descendants.ToArray()
+    return ,$descendants
 }
 
 function Stop-ProcessTree {
@@ -292,7 +262,7 @@ function Load-State {
         total_recovery_failures        = 0
         longest_gap_seconds            = 0
         recent_recovery_durations      = @()
-        watchdog_version               = '1.4'
+        watchdog_version               = '1.3'
     }
     if (Test-Path $StateFile) {
         try {
@@ -478,12 +448,9 @@ $attemptsUsed = 0
 # -PreserveForegroundParent + all its descendants are excluded from both the
 # pre-spawn kill and the post-recovery reap. Used by supervised live runs so
 # we don't terminate the operator's foreground CC session that's watching us.
-$preservePids = [int[]]@()
+$preservePids = @()
 if ($PreserveForegroundParent -gt 0) {
-    # v1.4: explicit [int[]] cast. Without it, @(int) + @(Get-ProcessDescendants)
-    # gives Object[] which fails PS 5.1's binder to [int[]]$PreservePids on
-    # Stop-StaleClaudeSessions. See v1.3 supervised-live-run bug 2026-05-23T08:58Z.
-    $preservePids = [int[]](@($PreserveForegroundParent) + @(Get-ProcessDescendants -ParentId $PreserveForegroundParent))
+    $preservePids = @($PreserveForegroundParent) + @(Get-ProcessDescendants -ParentId $PreserveForegroundParent)
     Write-WD "preserve-foreground: PID $PreserveForegroundParent + $($preservePids.Count - 1) descendant(s) excluded from kill/reap"
 }
 

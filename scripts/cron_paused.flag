@@ -1,4 +1,4 @@
-paused_at_utc: 2026-05-22T16:00:00+00:00
-paused_by: cc_session_implementing_ahmed_response_2026-05-22
-reason: Phase 1 framework directive received. Cron aig-mode1-sprint disabled until Phase 1 candidate #2 is pre-registered via the three-filter methodology and the rewritten SKILL.md flow has been exercised manually. Watchdog must respect this intentional pause to avoid the false-fire loop observed 2026-05-22 16:11 -> 17:57 UTC (18 false recoveries).
-remove_when: Cron aig-mode1-sprint is re-enabled (operator deletes this file as part of the re-enable workflow).
+paused_at_utc: 2026-05-23T10:29:40+00:00
+paused_by: cc_session_recreating_flag_after_v14_cap_incident_2026-05-23
+reason: phase1_directive_pending; flag recreated after v1.4 cap-incident 2026-05-23 (3 false-fire recoveries at 10:04/10:09/10:16 UTC after previous CC removed flag without re-enabling Cloud Routine aig-mode1-sprint; daily cap stopped runaway at 5/5; sentinel still perma-stale at 2026-05-22T18:32Z). v1.4 CommandLine filter correctly excluded Claude Desktop from all cleanups. No user-foreground CC processes killed.
+remove_when: Cron aig-mode1-sprint is re-enabled (operator deletes this file as part of the re-enable workflow, AFTER SKILL.md has been rewritten to enforce Part 4 three-filter methodology per Phase 1 framework directive).

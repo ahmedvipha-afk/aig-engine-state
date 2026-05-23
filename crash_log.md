@@ -28,3 +28,8 @@ One line per detected crash. Auto-appended by cc_watchdog.ps1.
 - 2026-05-22T18:03:08.9544423Z cause=sentinel-stale-111min | OK | recovered_at=2026-05-22T18:05:58.2479092Z | duration=163s
 - 2026-05-22T18:15:09.0266835Z cause=sentinel-stale-123min | OK | recovered_at=2026-05-22T18:18:50.4596655Z | duration=206s
 - 2026-05-22T18:21:09.0665663Z cause=sentinel-stale-129min | OK | recovered_at=2026-05-22T18:23:54.0447954Z | duration=164s
+- 2026-05-23T08:58:33.4224442Z cause=hung-repl-sentinel-120min-procs-1 | OK | recovered_at=2026-05-23T09:02:40.2804767Z | duration=245s
+- 2026-05-23T09:41:08.8311847Z cause=hung-repl-sentinel-120min-procs-1 | OK | recovered_at=2026-05-23T09:46:17.4234048Z | duration=305s
+- 2026-05-23T10:04:09.9455878Z cause=hung-repl-sentinel-932min-procs-1 | OK | recovered_at=2026-05-23T10:06:32.8654088Z | duration=142s
+- 2026-05-23T10:09:10.9276888Z cause=hung-repl-sentinel-937min-procs-1 | OK | recovered_at=2026-05-23T10:13:10.5012529Z | duration=239s
+- 2026-05-23T10:16:10.8510046Z cause=hung-repl-sentinel-944min-procs-1 | OK | recovered_at=2026-05-23T10:19:08.6858842Z | duration=175s

@@ -173,3 +173,20 @@ _Written by `scripts/decision_log_append.py`. Sync mirror: `decision_log.json`._
 - **alternatives_considered:**
   - Use stdin pipe to Python helper (rejected — works but temp file is simpler and the helper already supported --file)
   - Manually quote the JSON in PowerShell (rejected — fragile across PS versions)
+### Flag-removal sequencing — retrospective on coordination gap
+
+- **ts_utc:** `2026-05-23T10:29:40+00:00`
+- **methodology_source:** `audit_finding_resolution`
+- **decision:** Retrospective on cron_paused.flag removal at 2026-05-23T09:58:42Z by prior CC session. Flag and Cloud Routine aig-mode1-sprint are independent guards: removing the flag while the routine itself remains disabled leaves the watchdog blind to an intentional pause with no sentinel-refresher behind it. Resulting v1.4 behavior: 3 false-fire recoveries at 10:04/10:09/10:16 UTC, capped at 5/5 by Fix 3 daily-cap. No user-foreground CC processes killed — kill-event analysis: 10:04 cleanup reached only Access-Denied kernel processes (edge-case PID-0 identification bug worth tracking but harmless because Windows refused), 10:09 cleanup reaped a 12-PID claude-code process tree (parent pid=18152 + 11 descendants) spawned in the 37-second inter-recovery window, 10:16 cleanup produced no descendant kill lines. v1.4 CommandLine filter at scripts/cc_watchdog.ps1:200-209 correctly excluded Claude Desktop from all three cleanups.
+- **rationale:** Surface the coordination requirement explicitly so future flag-removal workflows pair flag-delete with Cloud Routine re-enable verification. v1.4 daily cap working as designed prevented v1.0-style runaway — without it this would have replayed the 2026-05-22 18-fire incident at larger scale. Cap operation is the only piece of v1.4 that got a real-world unsupervised test today, and it held.
+- **alternatives_considered:**
+  - Leave the 2026-05-22T18:33 decision as the only record (rejected — that entry's design-intent is correct but does not capture today's failure-mode demonstration that the coordination is load-bearing)
+### Recreate cron_paused.flag (Option A) restoring coordinated pause
+
+- **ts_utc:** `2026-05-23T10:29:41+00:00`
+- **methodology_source:** `infrastructure_decision`
+- **decision:** scripts/cron_paused.flag recreated with paused_at_utc=2026-05-23T10:29:40Z. Watchdog v1.4 will see flag on next 60s tick and transition effective mode to monitoring_paused. Daily cap (5/5) remains in state.json until UTC midnight reset but is now redundant — flag short-circuits stale detection before cap evaluation. Cron re-enable remains a SEPARATE pending decision contingent on SKILL.md rewrite completing Part 4 three-filter methodology enforcement per Phase 1 framework directive.
+- **rationale:** Smallest reversible action that restores design-intent from 2026-05-22T18:33 decision. Defers the deeper cron re-enable question as a separate deliberate choice after SKILL.md rewrite is complete. Option B (re-enable cron now) rejected because next fire could enroll Strategy 14 under forbidden Version-B methodology. Option C (do nothing, wait for cap reset at UTC midnight) rejected because it leaves a 9.5h window with no real-crash recovery and the same false-fire loop would recur tomorrow at cap reset.
+- **alternatives_considered:**
+  - Option B: re-enable Cloud Routine aig-mode1-sprint (rejected — SKILL.md rewrite not complete; cron firing now could enroll Strategy 14 under forbidden Version-B methodology per Phase 1 directive Part 4)
+  - Option C: do nothing, let daily cap expire at 2026-05-24T00:00 UTC (rejected — 9.5h window with no crash protection; same loop recurs tomorrow at cap reset)
