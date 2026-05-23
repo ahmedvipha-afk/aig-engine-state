@@ -289,5 +289,19 @@
     ],
     "audit_finding_refs": [],
     "commit_sha": null
+  },
+  {
+    "title": "Correction to entry 21 -- SKILL.md DOES exist at user-scoped scheduled-tasks path; prior conclusion was scope error",
+    "ts_utc": "2026-05-23T11:58:57+00:00",
+    "methodology_source": "audit_finding_resolution",
+    "decision": "Retract entry 21's central conclusion. Entry 21 (committed 2026-05-23 in commit 2bfa0af, ts_utc 2026-05-23T10:59:28Z) stated that 'no SKILL.md was ever added, modified, or deleted in any commit in this repo's history' and concluded that 33d93ae's commit message therefore overstated completion. The premise was true; the conclusion was wrong. The SKILL.md exists at C:\\\\Users\\\\ahmed\\\\.claude\\\\scheduled-tasks\\\\aig-mode1-sprint\\\\SKILL.md (outside the AIG git repo, by Claude Code's scheduling-system design -- scheduled-task definitions are user-scoped, not project-scoped). MCP scheduled-tasks listing confirms the canonical path, cron 12,27,42,57 * * * *, enabled=false, lastRunAt 2026-05-22T16:03:28.671Z. The SKILL.md body line 6-11 explicitly identifies itself as 'AIG Phase 1 directive-compliant sprint ... Replaces the prior Version-B autonomous strategy-enrollment SKILL after Ahmed's 2026-05-22 framework directive.' The 33d93ae commit message assertion 'aig-mode1-sprint SKILL.md rewritten directive-compliant' was TRUE -- the rewrite landed into a file outside the AIG repo's tracking. No commit-message-vs-actual-contents drift exists for SKILL.md.",
+    "rationale": "Faithful audit chain requires correcting wrong conclusions, not only logging new ones. Entry 21 was based on a path-scope error: prior session's 'git log --all -- SKILL.md' and recursive search under aig_engine/ both correctly returned zero, but those searches were the wrong scope for scheduled-task definitions, which Claude Code stores in ~/.claude/scheduled-tasks/<taskId>/SKILL.md (user scope, not project scope). Cowork reading entry 21 on raw GitHub would form the wrong picture of system state (would conclude 'SKILL.md never landed, cron re-enable blocked indefinitely on a non-existent task'). This entry supersedes entry 21's conclusion. Append-only discipline preserves entry 21 as historical record; this entry is the authoritative current state on the SKILL.md question.",
+    "alternatives_considered": [
+      "amend entry 21 in place (rejected -- violates append-only discipline; future readers would not know the original conclusion existed and was corrected)",
+      "amend the 2bfa0af commit (rejected -- same history-rewriting hazard flagged in entry 21 itself for the 33d93ae case; consistency with the discipline that entry 21 invoked)",
+      "leave entry 21 standing and update only the next SKILL.md-related entry (rejected -- entry 21 is the canonical-looking record on this topic; without explicit retraction downstream readers will treat its conclusion as truth)"
+    ],
+    "audit_finding_refs": [],
+    "commit_sha": null
   }
 ]
