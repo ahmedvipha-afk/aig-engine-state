@@ -303,5 +303,19 @@
     ],
     "audit_finding_refs": [],
     "commit_sha": null
+  },
+  {
+    "title": "Cron re-enable -- Cloud Routine aig-mode1-sprint resumed after SKILL.md verification",
+    "ts_utc": "2026-05-23T12:14:42+00:00",
+    "methodology_source": "ahmed_override",
+    "decision": "Cloud Routine aig-mode1-sprint re-enabled after Ahmed's explicit approval of the 6-step unpause sequence. Preconditions verified this session: (1) SKILL.md at ~/.claude/scheduled-tasks/aig-mode1-sprint/SKILL.md exists and is directive-compliant per Q2 structured verification (7 items + 6 prohibitions all COVERED); (2) MCP-side description in sync with SKILL.md frontmatter (byte-identical); (3) sprint scripts do not enroll new strategies at runtime (grep of strategy_register references shows zero enforcement reads in sprint_catchup/paper_forward_divergence/staged_validate; single read in generate_dashboard for display rendering only); (4) sprint_catchup.py confirmed absorbed-by-pause semantics -- MISSED_FIRES count is reported but cap-at-4 lives in SKILL prompt, no replay queue, missed marks just logged. Sequence executed: step 0 this decision_log entry, step 1 last_sprint_fire.txt refreshed to current UTC, step 2 watchdog state.json reset (recoveries_today=0, mode=normal, recoveries_today_date=2026-05-23), step 3 cron_paused.flag renamed to cron_paused.flag.removed-20260523T121442 for evidence preservation, step 4 MCP scheduled task enabled=true (next turn, after this commit lands cleanly).",
+    "rationale": "SKILL.md rewrite (stated precondition for cron re-enable per 2026-05-22T16:00:00Z pause decision) has been verified complete this session. Entry 22 retracted entry 21's incorrect 'SKILL.md never landed' conclusion based on path-scope error; the file has been in place at the user-scoped Claude Code scheduled-tasks path since 33d93ae. The 6-step sequence accounts for the latent state from the v1.4 cap-incident (sentinel stale ~17.5h, recoveries_today=5/5, mode=capped) by manually refreshing each piece rather than waiting for UTC-midnight auto-reset; 12h vulnerability window with no crash recovery declined when manual reset is one JSON edit.",
+    "alternatives_considered": [
+      "Wait for UTC midnight (~12h from now) for watchdog cap auto-reset (rejected -- 12h with no crash recovery is unnecessary exposure when manual reset is one JSON edit)",
+      "Re-enable without sentinel refresh (rejected -- watchdog would fire recovery in the gap between flag removal and first cron tick, contradicting the deliberate unpause)",
+      "Defer cron re-enable until after watching one sprint fire under flag-still-present mode (impossible -- sprint cannot fire while paused on MCP side)"
+    ],
+    "audit_finding_refs": [],
+    "commit_sha": null
   }
 ]
