@@ -190,3 +190,12 @@ _Written by `scripts/decision_log_append.py`. Sync mirror: `decision_log.json`._
 - **alternatives_considered:**
   - Option B: re-enable Cloud Routine aig-mode1-sprint (rejected — SKILL.md rewrite not complete; cron firing now could enroll Strategy 14 under forbidden Version-B methodology per Phase 1 directive Part 4)
   - Option C: do nothing, let daily cap expire at 2026-05-24T00:00 UTC (rejected — 9.5h window with no crash protection; same loop recurs tomorrow at cap reset)
+### 33d93ae commit message overstated completion -- SKILL.md never landed in code
+
+- **ts_utc:** `2026-05-23T10:59:28+00:00`
+- **methodology_source:** `audit_finding_resolution`
+- **decision:** Record that commit 33d93ae's message asserted "aig-mode1-sprint SKILL.md rewritten directive-compliant" as part of the Phase 1 directive landing, but git evidence shows no SKILL.md was ever added, modified, or deleted in any commit in this repo's history. Phase 1 directive Part 8 actual status was 4/10 implemented in code at commit time, not 5/10 as the message implied.
+- **rationale:** Cowork audit cycle reads commit messages on raw GitHub and would treat the assertion as fact. Capturing the drift in decision_log makes the audit chain self-correcting rather than self-reinforcing. The pause + decision-log infrastructure + Improvement 1 + Improvement 5 all landed honestly; the SKILL.md rewrite was asserted in prose but never implemented. SKILL.md rewrite (Task 2 this session) closes the actual gap.
+- **alternatives_considered:**
+  - amend the original commit (rejected -- rewriting history breaks audit chain integrity)
+  - ignore and rewrite SKILL.md silently (rejected -- drift goes unrecorded, future audits cannot distinguish 'never done' from 'done but undocumented')
