@@ -360,5 +360,19 @@
     "audit_finding_refs": [],
     "methodology_source": "audit_finding_resolution",
     "commit_sha": null
+  },
+  {
+    "ts_utc": "2026-05-24T06:33:00+00:00",
+    "title": "Append to entry 24 (2026-05-23T13:20:16Z) -- catch-up cap x iteration budget exceeds stale threshold by design",
+    "decision": "Add to entry 24's analysis the explicit arithmetic that makes the SKILL gap binding regardless of agent discretion. Catch-up cap = 4 iterations; per-iteration sprint budget = ~10 min; max catch-up window = 4 x 10 = ~40 min. Watchdog stale-sentinel threshold = 30 min. 40 > 30 by 33%. A fully-utilizing cap-bound catch-up burst will exceed the stale threshold even if every iteration is healthy and progressing. Entry 24 framed the missing `--mark-done` as 'agent discretion' (sprint_catchup.py:247 docstring leaves the question to the agent); this entry sharpens that to: agent discretion CANNOT resolve the timing conflict -- the budget math forecloses any safe choice that does not refresh the sentinel mid-burst. Therefore the SKILL.md patch in Task C is necessary, not optional. Without explicit `sprint_catchup.py --mark-done` between iterations, the SKILL race-loses to the watchdog by design on long catch-up windows.",
+    "rationale": "Entry 24 documents the WHAT (sprint killed because sentinel went stale during burst); this entry documents the WHY in arithmetic the next reader can verify without re-deriving. Existence-proof analysis ('one incident occurred') is weaker evidence for patch necessity than design-proof analysis ('math forecloses any non-patching choice'). Cowork reading the chain would see entry 24 say 'agent did not refresh sentinel between iterations' and could reasonably ask 'why didn't the agent just refresh?'. This entry answers: the agent COULD have refreshed; the patch makes that the default instead of leaving it as discretion. Both entries together close the question.",
+    "alternatives_considered": [
+      "Edit entry 24 in-place to add the math (rejected -- append-only discipline; entry 24 is in commit c92d080 on origin/main; rewriting would violate the same discipline invoked at entries 21/22)",
+      "Skip the entry and put the math only into the SKILL.md patch commit message (rejected -- the decision log is the canonical Cowork audit surface; commit messages are downstream documentation, not primary audit chain)",
+      "Wait until Task C lands and write both entries together (rejected -- decision log is append-only and timestamps are monotonic; backdating to align with the patch commit would obscure temporal order)"
+    ],
+    "audit_finding_refs": [],
+    "methodology_source": "audit_finding_resolution",
+    "commit_sha": null
   }
 ]
