@@ -409,5 +409,21 @@
     ],
     "methodology_source": "audit_finding_resolution",
     "commit_sha": null
+  },
+  {
+    "ts_utc": "2026-05-24T07:30:00+00:00",
+    "title": "Correction to entry 29 -- MCP description field reflects SKILL.md frontmatter, not body; entry 29's verification mechanism was structurally flawed",
+    "decision": "On 2026-05-24 (post-Task-C entry 29 commit, this session), called MCP `list_scheduled_tasks` to perform the cache-verification step queued in entry 29. The returned description field for `aig-mode1-sprint` was: \"AIG Phase 1 directive-compliant sprint -- drains existing queue, runs paper-forward detector, regenerates dashboard, commits. No autonomous strategy enrollment. Strategy slots driven by the three-filter methodology in strategy_register.md, not by queue-emptiness.\" This is byte-identical to the SKILL.md YAML frontmatter `description:` line (a fact already established in entry 23, 'MCP-side description in sync with SKILL.md frontmatter (byte-identical)'). The patch in entry 29 modified the BODY of SKILL.md (the iteration-structure block inside step 1), not the frontmatter. Therefore the MCP description field could never reflect the patched body content, regardless of whether the MCP scheduled-tasks subsystem caches SKILL.md body between fires. The verification mechanism proposed in entry 29 ('inspect MCP list_scheduled_tasks output for aig-mode1-sprint -- if the description field reflects the updated text, the harness has loaded the new SKILL') was structurally unable to verify what it claimed. This is the same class of audit-chain drift as the 33d93ae lesson (entries 21/22): a load-bearing audit-surface claim that does not match the underlying reality. **Authoritative correction.** Any future SKILL.md patch verification that aims to test cache state must either (a) include a frontmatter `description:` bump so the MCP-exposed field changes visibly, (b) restart Claude Code to force MCP runtime cache invalidation, or (c) observe first-fire behavior directly. The MCP description-field-changed criterion alone is insufficient for body-only patches. **What IS verified about the entry 29 patch.** The Edit tool's success message confirms the patch landed on disk in SKILL.md ('The file ... has been updated successfully'). The on-disk SKILL.md file content is the patched version. What remains unverified at the MCP layer is whether the scheduled-tasks subsystem will read that on-disk version at the next fire, or use a stale in-memory cached version. Entry 31 (next entry below, this commit chain) records the operational decision on how to proceed despite the unresolved cache question.",
+    "rationale": "Same audit-chain self-correction discipline invoked at entries 21/22: when a load-bearing claim in a prior entry turns out to be wrong, the correction is recorded as a new entry rather than by editing the original. Entry 29's verification step was clear enough that a future Cowork audit would have followed it literally and reached a wrong conclusion -- either 'description unchanged, cache OK, proceed' (optimistic misread) or 'description unchanged, cache stale, halt re-unpause indefinitely' (pessimistic misread). Either outcome would be based on a misunderstanding of what the MCP description field actually represents. Naming the flaw explicitly prevents that downstream error.",
+    "alternatives_considered": [
+      "Edit entry 29 in-place to fix the verification step (rejected -- violates append-only discipline established at entries 21/22)",
+      "Skip the correction and just proceed with first-fire verification (rejected -- entry 29's verification step would remain a future-audit hazard; correcting it explicitly maintains audit-chain integrity)",
+      "Bump SKILL.md frontmatter description as part of this correction so the verification mechanism becomes usable retroactively (deferred -- if a body-only patch verification is needed in the future, the frontmatter-bump pattern can be considered as part of THAT patch's design; not retrofitting entry 29's patch this session)"
+    ],
+    "audit_finding_refs": [
+      "entry 29 (2026-05-24T07:05:00+00:00)"
+    ],
+    "methodology_source": "audit_finding_resolution",
+    "commit_sha": null
   }
 ]
