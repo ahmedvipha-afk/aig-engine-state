@@ -1,0 +1,15 @@
+PAUSED 2026-05-24T12:52Z by session-resume recovery agent.
+
+Reason: watchdog kill-respawn loop detected. last_sprint_fire.txt stale since
+2026-05-24T09:29:05Z (~201 min). The watchdog (v1.4) was confirming a hung-REPL
+crash every ~11 min, killing claude.exe, and respawning a session_resume agent.
+Recovery sessions run status/verification — they never run the sprint, so the
+sentinel never refreshes, so the watchdog re-fires indefinitely. This is the
+recovery-spawn architecture gap (decision_log entries 26/28/29, f05d85c).
+
+This flag halts the loop per the entry-31 (Option D) documented failure remedy.
+consecutive_stale_checks had reached 19; total_recoveries 29.
+
+TO RESUME: delete this flag AFTER (a) confirming why the sprint cron stopped
+firing after ~09:36Z, and (b) deciding whether the recovery-spawn gap is fixed
+or accepted. Do NOT delete blindly — the loop will resume.
