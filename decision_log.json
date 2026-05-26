@@ -527,5 +527,19 @@
       "entry 35 (2026-05-25 Track 1 restart, supervised-bursts mode)"
     ],
     "commit_sha": null
+  },
+  {
+    "title": "Sprint iter 4/5 yfinance flap halt",
+    "decision": "Aborted iteration 5 of catch-up burst after iters 2/3/4 produced 9/12/11 entries and 6/9/9 exits on overlapping tickers (AA, AMBA, IFNNY, SYNA, TTDKY flipping in/out each run) with no new daily bar in between.",
+    "rationale": "Catch-up assumes each missed fire had distinct market data, but 16 missed fires all landed mid-day on the same trading session. Re-running paper_forward_divergence against intraday yfinance polls produced spurious churn inflating signals_log + paper_forward_positions.json by ~32 fake transitions. Iter 5 would extend churn. Time budget (~49 min elapsed, 50-min cap) also effectively exhausted.",
+    "alternatives_considered": [
+      "Complete iter 5 per SKILL letter",
+      "Roll back iter 3+4 state churn",
+      "Switch detector to gate on new daily bar before processing"
+    ],
+    "audit_finding_refs": [],
+    "methodology_source": "infrastructure_decision",
+    "ts_utc": "2026-05-26T14:07:50+00:00",
+    "commit_sha": null
   }
 ]

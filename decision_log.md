@@ -361,3 +361,13 @@ _Written by `scripts/decision_log_append.py`. Sync mirror: `decision_log.json`._
   - Skip the detector to avoid Telegram noise (rejected -- detector is idempotent and produced 0 entries/0 exits with market closed; running it keeps state and dashboard current with no spurious alerts)
   - Edit ceo_brain.md PHASE 1 TRACKER numbers directly this fire (deferred -- the corrected coverage depends on the re-validation outcomes which have not been run; flagging the staleness in the append-only decision log is the honest record without fabricating new numbers)
 - **audit_finding_refs:** `entry 32 (2026-05-24 framework amendment -- per-market caps, divergence grandfathered)`, `entry 35 (2026-05-25 Track 1 restart, supervised-bursts mode)`
+### Sprint iter 4/5 yfinance flap halt
+
+- **ts_utc:** `2026-05-26T14:07:50+00:00`
+- **methodology_source:** `infrastructure_decision`
+- **decision:** Aborted iteration 5 of catch-up burst after iters 2/3/4 produced 9/12/11 entries and 6/9/9 exits on overlapping tickers (AA, AMBA, IFNNY, SYNA, TTDKY flipping in/out each run) with no new daily bar in between.
+- **rationale:** Catch-up assumes each missed fire had distinct market data, but 16 missed fires all landed mid-day on the same trading session. Re-running paper_forward_divergence against intraday yfinance polls produced spurious churn inflating signals_log + paper_forward_positions.json by ~32 fake transitions. Iter 5 would extend churn. Time budget (~49 min elapsed, 50-min cap) also effectively exhausted.
+- **alternatives_considered:**
+  - Complete iter 5 per SKILL letter
+  - Roll back iter 3+4 state churn
+  - Switch detector to gate on new daily bar before processing
