@@ -34,3 +34,10 @@ One line per detected crash. Auto-appended by cc_watchdog.ps1.
 - 2026-05-23T10:09:10.9276888Z cause=hung-repl-sentinel-937min-procs-1 | OK | recovered_at=2026-05-23T10:13:10.5012529Z | duration=239s
 - 2026-05-23T10:16:10.8510046Z cause=hung-repl-sentinel-944min-procs-1 | OK | recovered_at=2026-05-23T10:19:08.6858842Z | duration=175s
 - 2026-05-24T10:01:13.5023445Z cause=hung-repl-sentinel-32min-procs-1 | OK | recovered_at=2026-05-24T10:04:07.5457631Z | duration=172s
+- 2026-05-25T09:58:13.0709333Z cause=hung-repl-sentinel-56min-procs-1 | OK | recovered_at=2026-05-25T10:01:26.7915012Z | duration=171s
+- 2026-05-25T10:28:13.8217172Z cause=hung-repl-sentinel-86min-procs-1 | OK | recovered_at=2026-05-25T10:31:06.8963019Z | duration=169s
+- 2026-05-25T10:37:13.7609304Z cause=hung-repl-sentinel-95min-procs-1 | OK | recovered_at=2026-05-25T10:39:37.4654900Z | duration=143s
+- 2026-05-25T10:42:13.9166900Z cause=hung-repl-sentinel-100min-procs-1 | OK | recovered_at=2026-05-25T10:45:06.9432142Z | duration=169s
+- 2026-05-25T10:51:14.4084970Z cause=hung-repl-sentinel-109min-procs-1 | OK | recovered_at=2026-05-25T10:54:13.2033440Z | duration=178s
+- 2026-05-26T00:26:13.3311637Z cause=hung-repl-sentinel-924min-procs-1 | OK | recovered_at=2026-05-26T00:29:10.8984874Z | duration=177s
+- 2026-05-26T00:40:13.8552772Z cause=hung-repl-sentinel-938min-procs-1 | OK | recovered_at=2026-05-26T00:43:59.9265847Z | duration=221s

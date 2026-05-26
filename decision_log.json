@@ -509,5 +509,23 @@
     ],
     "methodology_source": "infrastructure_decision",
     "commit_sha": null
+  },
+  {
+    "title": "Maintenance fire 2026-05-26 02:27Z after ~17h Track 1 gap -- sentinel touched, paper-forward detector idempotent (0/0), dashboard regen; coverage/PHASE-1-TRACKER flagged STALE vs Track 2 amendment",
+    "ts_utc": "2026-05-26T02:30:00+00:00",
+    "methodology_source": "infrastructure_decision",
+    "decision": "Executed one routine sprint fire as a MAINTENANCE fire (no new strategy enrolled, no validation run). Steps completed: (1) last_sprint_fire.txt touched 2026-05-26T02:26:54Z, resetting the 4h-quiet watchdog after a ~17h gap since the prior touch 2026-05-25T09:02:20Z -- consistent with the documented supervised-bursts failure mode (Track 1 restart entry, 2026-05-25T08:00Z). (2) paper_forward_full_universe.py ran idempotently: batch 250/1107 (offset 639->889), 0 new entries, 0 exits, 12 open positions (cap-saturated), 37 history, 119 fetch errors (yfinance long-tail delisted/renamed misses + US market closed at 22:26 EDT -- no new daily bar). (3) dashboard.html regenerated (1,043,030 bytes). No new strategy enrolled and no validation run: the staged queue is empty and new-slot work requires three-filter selection plus a frozen config_hash BEFORE data, which cannot be honestly compressed into a single ~12-min fire. FLAG FOR OPERATOR RECONCILIATION: winners_assignment.json (generated 2026-05-22) still routes paper-forward through FOUR cleared_sources (divergence/mbv/pmr/str US = 1,107 tickers), but the Track 2 framework amendment (entry 2026-05-24T09:00Z, commit 7f05546) grandfathers ONLY divergence into US slot 1; mbv/pmr/str are Pre-Framework and do NOT fill slots or count toward the 75% per-market coverage target until re-validated under the amended gate via Method A (fresh OOS) or Method B (post-2026-05-22 forward data). Therefore the ceo_brain.md PHASE 1 TRACKER (US coverage 1,107/1,621 = 68.3%, score 6/10) is STALE under the amended framework -- the legitimate amendment-grandfathered coverage is divergence-only until re-validation lands. The 807-ticker routing change (mbv 323 + pmr 232 + str 252) was NOT applied this fire: stripping those tickers from paper-forward is a deliberate re-validation-sprint decision for the operator, not a maintenance-fire action, and the amendment says Pre-Framework strategies MAY be re-tested, not that they must be immediately purged from the existing paper-forward roster.",
+    "rationale": "A routine fire after a multi-hour Track 1 stoppage should restore the watchdog sentinel and run the value-producing idempotent detector (operator wants paper-forward signals for cleared positions even when intermittent, per the Track 1 restart entry) without manufacturing strategy progress that pre-registration discipline forbids in a single fire. The most useful honest output of this fire is surfacing the coverage/tracker staleness introduced by the Track 2 amendment so the operator can schedule the Method A/B re-validation sprint that the amendment requires, rather than letting the dashboard and brain keep asserting a 1,107-ticker union coverage number that the amended framework no longer recognizes.",
+    "alternatives_considered": [
+      "Rewrite winners_assignment.json to divergence-only now (rejected -- an ~807-ticker paper-forward routing change is a re-validation-sprint decision for the operator, not a maintenance-fire action; amendment Change 1 says Pre-Framework strategies MAY be re-tested, not that they must be purged immediately)",
+      "Enroll a new strategy / select a new slot this fire (rejected -- three-filter methodology selection + frozen config_hash-before-data cannot be honestly done in one ~12-min fire; doing it fast would violate the pre-registration discipline the framework exists to protect)",
+      "Skip the detector to avoid Telegram noise (rejected -- detector is idempotent and produced 0 entries/0 exits with market closed; running it keeps state and dashboard current with no spurious alerts)",
+      "Edit ceo_brain.md PHASE 1 TRACKER numbers directly this fire (deferred -- the corrected coverage depends on the re-validation outcomes which have not been run; flagging the staleness in the append-only decision log is the honest record without fabricating new numbers)"
+    ],
+    "audit_finding_refs": [
+      "entry 32 (2026-05-24 framework amendment -- per-market caps, divergence grandfathered)",
+      "entry 35 (2026-05-25 Track 1 restart, supervised-bursts mode)"
+    ],
+    "commit_sha": null
   }
 ]
