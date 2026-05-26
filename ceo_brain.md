@@ -38,6 +38,8 @@ operational routines (`aig-morning-scan`, `aig-weekly-full-universe`,
 
 ## PHASE 1 TRACKER — CORRECTED 10 EXIT CRITERIA (directive 2026-05-21 evening)
 
+> ⚠️ **STALE UNDER TRACK 2 AMENDMENT (flagged 2026-05-26 02:27Z fire; see decision_log entry of same date).** The coverage figures and 6/10 score below predate the 2026-05-24 framework amendment (commit 7f05546, decision_log "framework amendment" entry), which grandfathers ONLY Divergence into US slot 1. The 1,107-ticker US union (divergence/mbv/pmr/str) is NOT valid amendment coverage — mbv/pmr/str are Pre-Framework and count toward the 75% per-market target only after re-validation via Method A (fresh OOS) or Method B (post-2026-05-22 forward data). DO NOT treat Obj 3/4/5 numbers below as current. Corrected numbers await a deliberate re-validation sprint; they were not fabricated here. paper_forward routing still uses the 4-source winners_assignment.json by design (not purged in a maintenance fire).
+
 **CEO correction received 2026-05-21:** prior coverage targets (60/100/100 raw) were wrong. Coverage is PERCENT of FULL halal universe per market. Phase 1 exits when ≥75% of each market's full halal universe is "covered" (passes under ANY one strategy; union, no double-counting). Every strategy must sweep the FULL halal universe — partial sweeps require re-run before counting.
 
 **Definition of "covered":** ticker contributes to a PORTFOLIO-CLEARED strategy with positive expectancy (appears in `winners_assignment.json`). Per-ticker gate clearance not required — portfolio clearance is the binding edge evidence; contributors inherit deployability.
