@@ -200,6 +200,20 @@
       "stop_price": 428.11,
       "rsi_at_entry": 60.17,
       "ema_at_entry": 526.1431
+    },
+    "CNR": {
+      "entry_date": "2026-05-26",
+      "entry_price": 88.25,
+      "stop_price": 77.32,
+      "rsi_at_entry": 52.5,
+      "ema_at_entry": 88.2102
+    },
+    "GCO": {
+      "entry_date": "2026-05-26",
+      "entry_price": 37.08,
+      "stop_price": 29.64,
+      "rsi_at_entry": 64.9,
+      "ema_at_entry": 29.9104
     }
   },
   "history": [
@@ -922,10 +936,82 @@
       "exit_price": 23.16,
       "exit_reason": "rsi_or_trend_exit",
       "pnl_pct": -0.0
+    },
+    {
+      "ticker": "AA",
+      "entry_date": "2026-05-26",
+      "entry_price": 73.9146,
+      "exit_date": "2026-05-26",
+      "exit_price": 73.9146,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": -0.0
+    },
+    {
+      "ticker": "AESI",
+      "entry_date": "2026-05-26",
+      "entry_price": 19.235,
+      "exit_date": "2026-05-26",
+      "exit_price": 19.235,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": 0.0
+    },
+    {
+      "ticker": "AMBA",
+      "entry_date": "2026-05-26",
+      "entry_price": 93.51,
+      "exit_date": "2026-05-26",
+      "exit_price": 93.51,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": 0.0
+    },
+    {
+      "ticker": "BRZE",
+      "entry_date": "2026-05-26",
+      "entry_price": 25.515,
+      "exit_date": "2026-05-26",
+      "exit_price": 25.515,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": -0.0
+    },
+    {
+      "ticker": "IFNNY",
+      "entry_date": "2026-05-26",
+      "entry_price": 89.6,
+      "exit_date": "2026-05-26",
+      "exit_price": 89.6,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": -0.0
+    },
+    {
+      "ticker": "RS",
+      "entry_date": "2026-05-26",
+      "entry_price": 376.5,
+      "exit_date": "2026-05-26",
+      "exit_price": 376.5,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": 0.0
+    },
+    {
+      "ticker": "SYNA",
+      "entry_date": "2026-05-26",
+      "entry_price": 145.1,
+      "exit_date": "2026-05-26",
+      "exit_price": 145.1,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": 0.0
+    },
+    {
+      "ticker": "TTDKY",
+      "entry_date": "2026-05-26",
+      "entry_price": 23.1,
+      "exit_date": "2026-05-26",
+      "exit_price": 23.1,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": 0.0
     }
   ],
-  "last_run": "2026-05-26T23:10:19+04:00",
-  "last_run_summary": "watched 1030 tickers \u00b7 11 new entries \u00b7 9 exits \u00b7 open positions 28 \u00b7 history 80",
+  "last_run": "2026-05-26T23:23:14+04:00",
+  "last_run_summary": "watched 1030 tickers \u00b7 10 new entries \u00b7 8 exits \u00b7 open positions 30 \u00b7 history 88",
   "watch_list": [
     "A",
     "AA",
