@@ -1,426 +1,1602 @@
 [
   {
-    "ts_utc": "2026-05-21T09:36:11+00:00",
+    "ts_utc": "2026-05-24T10:49:18+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": true,
-    "message_id": 15,
-    "preview": "\ud83c\udfaf Sprint Item 5 \u2192 DONE \u2014 MBV strategy validated across 3 markets\n\nconfig_hash: 6ce4b38242d54771\nN_trials_registered: 9 (3 strategies \u00d7 3 markets \u00d7 1D)\n\nUS MBV PORTFOLIO_CLEARED under N=9 haircut:\n\u2022 Tr"
+    "message_id": 206,
+    "preview": "\ud83d\udea8 CC crash detected at 14:49 UAE 2026-05-24.\nCause: hung-repl-sentinel-80min-procs-1.\nRecovery initiated."
   },
   {
-    "ts_utc": "2026-05-21T11:54:20+00:00",
+    "ts_utc": "2026-05-24T11:00:16+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": true,
-    "message_id": 16,
-    "preview": "\ud83d\ude80 AIG PHASE 1 \u2014 Fire 0 complete\n\nCEO directive received and acknowledged. Sprint cadence ratcheted: 2h \u2192 15min, 24/7.\nCron */15 * * * * active.\n\nPHASE 1 TRACKER (8 objectives):\n\u2705 1. Multi-strategy uni"
+    "message_id": 207,
+    "preview": "\ud83d\udea8 CC crash detected at 15:00 UAE 2026-05-24.\nCause: hung-repl-sentinel-91min-procs-1.\nRecovery initiated."
   },
   {
-    "ts_utc": "2026-05-21T12:17:03+00:00",
+    "ts_utc": "2026-05-24T11:11:16+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": true,
-    "message_id": 17,
-    "preview": "\ud83d\udcc9 Paper-Backward tab shipped on dashboard\n\nA new tab between 'Paper Money' and 'Risk' shows the historical 100K simulator:\n\nTop-100 by dSharpe (2016-01-04 \u2192 today, 10.37 yrs):\n\u2022 100,000 \u2192 393,688.63\n\u2022"
+    "message_id": 209,
+    "preview": "\ud83d\udea8 CC crash detected at 15:11 UAE 2026-05-24.\nCause: hung-repl-sentinel-102min-procs-1.\nRecovery initiated."
   },
   {
-    "ts_utc": "2026-05-21T12:34:02+00:00",
+    "ts_utc": "2026-05-24T11:22:15+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": true,
-    "message_id": 18,
-    "preview": "\ud83d\ude80 PHASE 1 \u2014 Fire 1 complete (manual)\n\nPHASE 1 SCORE: 6/8 \u2705 (was 4/8)\n\u2705 2. Historical winners recovered (1,101 tickers + 6 TV watchlist)\n\u2705 3. Coverage targets all 3 markets x all 3 registered strats\n\u23f3 "
+    "message_id": 210,
+    "preview": "\ud83d\udea8 CC crash detected at 15:22 UAE 2026-05-24.\nCause: hung-repl-sentinel-113min-procs-1.\nRecovery initiated."
   },
   {
-    "ts_utc": "2026-05-21T12:49:42+00:00",
+    "ts_utc": "2026-05-24T11:33:31+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": true,
-    "message_id": 19,
-    "preview": "\ud83d\udcca DBO US verdict landed: FAIL on WR floor ONLY (near-miss)\n\nDBO US 1603-universe under N=12 haircut:\n\u2022 Trades: 11,910 (huge sample) \u2705\n\u2022 Expectancy: 1.298 \u2705\n\u2022 Raw Sharpe: 3.498 \u2705\n\u2022 Deflated Sharpe: 2.9"
+    "message_id": 211,
+    "preview": "\ud83d\udea8 CC crash detected at 15:33 UAE 2026-05-24.\nCause: hung-repl-sentinel-124min-procs-1.\nRecovery initiated."
   },
   {
-    "ts_utc": "2026-05-21T13:12:42+00:00",
+    "ts_utc": "2026-05-24T11:44:17+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": true,
-    "message_id": 20,
-    "preview": "\u2705 Path A confirmed + ROC Momentum pre-registered\n\nDBO US near-miss logged in winners_registry.md with CEO's verbatim note (research-grade only; first candidate if WR-floor gate is later amended per Wa"
+    "message_id": 212,
+    "preview": "\ud83d\udea8 CC crash detected at 15:44 UAE 2026-05-24.\nCause: hung-repl-sentinel-135min-procs-1.\nRecovery initiated."
   },
   {
-    "ts_utc": "2026-05-21T13:37:54+00:00",
+    "ts_utc": "2026-05-24T11:55:19+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 213,
+    "preview": "\ud83d\udea8 CC crash detected at 15:55 UAE 2026-05-24.\nCause: hung-repl-sentinel-146min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-24T12:06:17+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 214,
+    "preview": "\ud83d\udea8 CC crash detected at 16:06 UAE 2026-05-24.\nCause: hung-repl-sentinel-157min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-24T12:17:33+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": false,
     "message_id": null,
-    "preview": "\ud83d\udcca Two dashboard fixes shipped + ROC US near-miss landed\n\nFIX 1: All user-facing GST \u2192 UAE / 'UAE Time' across dashboard (timestamps, schedule strings, mode-2 cron description). Arabic version uses '\u0628\u062a"
+    "preview": "\ud83d\udea8 CC crash detected at 16:17 UAE 2026-05-24.\nCause: hung-repl-sentinel-168min-procs-1.\nRecovery initiated."
   },
   {
-    "ts_utc": "2026-05-21T13:38:07+00:00",
+    "ts_utc": "2026-05-24T12:28:18+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": true,
-    "message_id": 21,
-    "preview": "\ud83d\udcca Dashboard FIX 1+2 shipped (commits c151047, f54e00b)\n\nFIX 1: GST \u2192 UAE throughout\nFIX 2: Per-market winners visibility \u2014 Active Paper-Forward + Full Validated Winners Registry (1,107 rows for US, fi"
+    "message_id": 215,
+    "preview": "\ud83d\udea8 CC crash detected at 16:28 UAE 2026-05-24.\nCause: hung-repl-sentinel-179min-procs-1.\nRecovery initiated."
   },
   {
-    "ts_utc": "2026-05-21T13:48:34+00:00",
+    "ts_utc": "2026-05-24T12:39:18+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": true,
-    "message_id": 22,
-    "preview": "\u26a0 Phase 1 sprint: 5 fires missed in a row.\n\nCron windows were skipped because the REPL was busy. Catching up all 5 fires now back-to-back, then resuming normal 15-min cadence.\n\nTo reduce missed fires,"
+    "message_id": 216,
+    "preview": "\ud83d\udea8 CC crash detected at 16:39 UAE 2026-05-24.\nCause: hung-repl-sentinel-190min-procs-1.\nRecovery initiated."
   },
   {
-    "ts_utc": "2026-05-21T13:52:03+00:00",
+    "ts_utc": "2026-05-24T12:50:22+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 217,
+    "preview": "\ud83d\udea8 CC crash detected at 16:50 UAE 2026-05-24.\nCause: hung-repl-sentinel-201min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-25T08:26:13+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 218,
+    "preview": "\u26a0 Phase 1 sprint: 90 fires missed in a row.\n\nCron windows were skipped because the REPL was busy. Catching up all 90 fires now back-to-back, then resuming normal 15-min cadence.\n\nTo reduce missed fire"
+  },
+  {
+    "ts_utc": "2026-05-25T08:26:13+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": false,
     "message_id": null,
-    "preview": "\u2699\ufe0f Sprint catch-up policy implemented\n\nPer directive: messages no longer block scheduled sprints. Missed cron windows queue up and drain back-to-back when REPL goes idle.\n\nNew script: scripts/sprint_c"
+    "preview": "\ud83d\ude80 Sprint fire 12:25 UAE \u2014 catching up 90 missed \u2192 91 iterations back-to-back\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exit"
   },
   {
-    "ts_utc": "2026-05-21T13:52:10+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 23,
-    "preview": "\u2699 Sprint catch-up policy live (commit e8cc7da). missed_sprints.log + Telegram alert at 4+. SKILL loops N+1 iterations. Going quiet so cron can fire."
-  },
-  {
-    "ts_utc": "2026-05-21T14:17:52+00:00",
+    "ts_utc": "2026-05-25T08:39:12+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": false,
     "message_id": null,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward (full universe) \u2014 2026-05-21</b>\n<i>2 entries \u00b7 2 exits \u2014 showing top 4 by dSharpe (cap=10)</i>\n\n\ud83d\udfe2 ENTRY <b>SYNA</b> [divergence] $130.91 (stop $56.52) \u00b7 dSh -0.46\n\ud83d\udfe2 ENTRY <b>TT"
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-05-25</b>\n\n\ud83d\udfe2 ENTRY <b>AMBA</b> $87.55 (stop $43.14)\n\ud83d\udfe2 ENTRY <b>CTRN</b> $42.61 (stop $39.53)\n\ud83d\udfe2 ENTRY <b>IFNNY</b> $84.80 (stop $37.63)\n\ud83d\udfe2 ENTRY <b>SYNA</b> $143.69 (stop $"
   },
   {
-    "ts_utc": "2026-05-21T14:28:07+00:00",
+    "ts_utc": "2026-05-25T09:02:15+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": true,
-    "message_id": 24,
-    "preview": "\u2705 Staged-batch validation live (Path a)\n\nNew strategies validate 200 tickers per fire over ~10 fires:\n\u2022 Fire 1: enroll + UAE (~60 tickers)\n\u2022 Fire 2: Crypto (~140 tickers)\n\u2022 Fires 3-9: US in 200-batch "
+    "message_id": 219,
+    "preview": "\ud83d\ude80 Sprint fire 13:02 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
   },
   {
-    "ts_utc": "2026-05-21T14:58:28+00:00",
+    "ts_utc": "2026-05-25T09:03:53+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 220,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-05-25</b>\n\n\ud83d\udfe2 ENTRY <b>AMBA</b> $87.55 (stop $43.14)\n\ud83d\udfe2 ENTRY <b>CTRN</b> $42.61 (stop $39.53)\n\ud83d\udfe2 ENTRY <b>IFNNY</b> $84.80 (stop $37.63)\n\ud83d\udfe2 ENTRY <b>SYNA</b> $143.69 (stop $"
+  },
+  {
+    "ts_utc": "2026-05-25T09:14:57+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 221,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-05-25</b>\n\n\ud83d\udfe2 ENTRY <b>AMBA</b> $87.55 (stop $43.14)\n\ud83d\udfe2 ENTRY <b>CTRN</b> $42.61 (stop $39.53)\n\ud83d\udfe2 ENTRY <b>IFNNY</b> $84.80 (stop $37.63)\n\ud83d\udfe2 ENTRY <b>SYNA</b> $143.69 (stop $"
+  },
+  {
+    "ts_utc": "2026-05-25T09:35:15+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": false,
     "message_id": null,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward (full universe) \u2014 2026-05-21</b>\n<i>2 entries \u00b7 0 exits \u2014 showing top 2 by dSharpe (cap=10)</i>\n\n\ud83d\udfe2 ENTRY <b>CAH</b> [divergence] $199.85 (stop $190.33) \u00b7 dSh -0.64\n\ud83d\udfe2 ENTRY <b>FL"
+    "preview": "\ud83d\udea8 CC crash detected at 13:35 UAE 2026-05-25.\nCause: hung-repl-sentinel-33min-procs-1.\nRecovery initiated."
   },
   {
-    "ts_utc": "2026-05-21T15:00:49+00:00",
+    "ts_utc": "2026-05-25T09:38:23+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": true,
-    "message_id": 25,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward (full universe) \u2014 2026-05-21</b>\n<i>2 entries \u00b7 0 exits \u2014 showing top 2 by dSharpe (cap=10)</i>\n\n\ud83d\udfe2 ENTRY <b>CAH</b> [divergence] $199.93 (stop $190.33) \u00b7 dSh -0.64\n\ud83d\udfe2 ENTRY <b>FL"
+    "message_id": 222,
+    "preview": "\u2705 CC recovered at 13:38 UAE 2026-05-25.\nSession resumed via headless `claude -p`.\nLag: ~3 min (184s wall-clock)."
   },
   {
-    "ts_utc": "2026-05-21T15:18:18+00:00",
+    "ts_utc": "2026-05-25T09:50:17+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": true,
-    "message_id": 26,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward (full universe) \u2014 2026-05-21</b>\n<i>2 entries \u00b7 0 exits \u2014 showing top 2 by dSharpe (cap=10)</i>\n\n\ud83d\udfe2 ENTRY <b>GSK</b> [divergence] $51.28 (stop $48.53) \u00b7 dSh -0.90\n\ud83d\udfe2 ENTRY <b>PEN<"
+    "message_id": 223,
+    "preview": "\ud83d\udea8 CC crash detected at 13:50 UAE 2026-05-25.\nCause: hung-repl-sentinel-48min-procs-1.\nRecovery initiated."
   },
   {
-    "ts_utc": "2026-05-21T15:43:46+00:00",
+    "ts_utc": "2026-05-25T09:54:08+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": true,
-    "message_id": 27,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward (full universe) \u2014 2026-05-21</b>\n<i>1 entries \u00b7 0 exits \u2014 showing top 1 by dSharpe (cap=10)</i>\n\n\ud83d\udfe2 ENTRY <b>AS</b> [divergence] $34.89 (stop $30.59) \u00b7 dSh +0.85\n\nOpen: 5 \u00b7 Close"
+    "message_id": 224,
+    "preview": "\u2705 CC recovered at 13:54 UAE 2026-05-25.\nSession resumed via headless `claude -p`.\nLag: ~3 min (229s wall-clock)."
   },
   {
-    "ts_utc": "2026-05-21T15:57:55+00:00",
+    "ts_utc": "2026-05-25T09:55:16+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": true,
-    "message_id": 28,
-    "preview": "\ud83d\ude80 Sprint fire 19:57 UAE \u2014 1 iteration"
+    "message_id": 225,
+    "preview": "\ud83d\udea8 CC crash detected at 13:55 UAE 2026-05-25.\nCause: hung-repl-sentinel-53min-procs-1.\nRecovery initiated."
   },
   {
-    "ts_utc": "2026-05-21T15:58:23+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 29,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward (full universe) \u2014 2026-05-21</b>\n<i>1 entries \u00b7 1 exits \u2014 showing top 2 by dSharpe (cap=10)</i>\n\n\ud83d\udfe2 ENTRY <b>TTDKY</b> [divergence] $19.75 (stop $12.57) \u00b7 dSh -0.47\n\ud83d\udd34 EXIT <b>TTD"
-  },
-  {
-    "ts_utc": "2026-05-21T16:18:55+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 30,
-    "preview": "\ud83d\ude80 Sprint fire 20:18 UAE \u2014 1 iteration"
-  },
-  {
-    "ts_utc": "2026-05-21T16:23:55+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 31,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward (full universe) \u2014 2026-05-21</b>\n<i>1 entries \u00b7 0 exits \u2014 showing top 1 by dSharpe (cap=10)</i>\n\n\ud83d\udfe2 ENTRY <b>ZUMZ</b> [divergence] $22.93 (stop $20.95) \u00b7 dSh -0.74\n\nOpen: 6 \u00b7 Clo"
-  },
-  {
-    "ts_utc": "2026-05-21T16:34:53+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 32,
-    "preview": "\ud83d\ude80 Sprint fire 20:34 UAE \u2014 1 iteration"
-  },
-  {
-    "ts_utc": "2026-05-21T16:49:05+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 33,
-    "preview": "\ud83d\ude80 Sprint fire 20:48 UAE \u2014 1 iteration"
-  },
-  {
-    "ts_utc": "2026-05-21T17:00:54+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 34,
-    "preview": "\ud83d\ude80 Sprint fire 21:00 UAE \u2014 1 iteration"
-  },
-  {
-    "ts_utc": "2026-05-21T17:18:47+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 35,
-    "preview": "\ud83d\ude80 Sprint fire 21:18 UAE \u2014 1 iteration"
-  },
-  {
-    "ts_utc": "2026-05-21T17:22:44+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 36,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward (full universe) \u2014 2026-05-21</b>\n<i>1 entries \u00b7 1 exits \u2014 showing top 2 by dSharpe (cap=10)</i>\n\n\ud83d\udfe2 ENTRY <b>TTDKY</b> [divergence] $19.78 (stop $12.57) \u00b7 dSh -0.47\n\ud83d\udd34 EXIT <b>TTD"
-  },
-  {
-    "ts_utc": "2026-05-21T17:33:41+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 37,
-    "preview": "\ud83d\ude80 Sprint fire 21:33 UAE \u2014 1 iteration"
-  },
-  {
-    "ts_utc": "2026-05-21T17:37:34+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 38,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward (full universe) \u2014 2026-05-21</b>\n<i>1 entries \u00b7 0 exits \u2014 showing top 1 by dSharpe (cap=10)</i>\n\n\ud83d\udfe2 ENTRY <b>BIIB</b> [divergence] $188.63 (stop $163.05) \u00b7 dSh -0.68\n\nOpen: 7 \u00b7 C"
-  },
-  {
-    "ts_utc": "2026-05-21T17:48:43+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 39,
-    "preview": "\ud83d\ude80 Sprint fire 21:48 UAE \u2014 1 iteration"
-  },
-  {
-    "ts_utc": "2026-05-21T18:18:31+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 40,
-    "preview": "\ud83d\udccb Phase 1 coverage correction applied + audit complete\n\nPART A (CEO directive 2026-05-21 evening):\n\u2022 10 exit criteria now (was 8) \u2014 coverage as % of FULL halal universe\n\u2022 US 1,621 target \u2192 1,216 (75%)"
-  },
-  {
-    "ts_utc": "2026-05-21T18:18:43+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 41,
-    "preview": "\ud83d\ude80 Sprint fire 22:18 UAE \u2014 1 iteration"
-  },
-  {
-    "ts_utc": "2026-05-21T18:22:29+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 42,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward (full universe) \u2014 2026-05-21</b>\n<i>1 entries \u00b7 1 exits \u2014 showing top 2 by dSharpe (cap=10)</i>\n\n\ud83d\udfe2 ENTRY <b>IFNNY</b> [divergence] $80.47 (stop $37.97) \u00b7 dSh -0.07\n\ud83d\udd34 EXIT <b>IFN"
-  },
-  {
-    "ts_utc": "2026-05-21T18:34:00+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 43,
-    "preview": "\ud83d\ude80 Sprint fire 22:33 UAE \u2014 1 iteration"
-  },
-  {
-    "ts_utc": "2026-05-21T18:37:46+00:00",
+    "ts_utc": "2026-05-25T09:58:17+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": false,
     "message_id": null,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward (full universe) \u2014 2026-05-21</b>\n<i>2 entries \u00b7 2 exits \u2014 showing top 4 by dSharpe (cap=10)</i>\n\n\ud83d\udfe2 ENTRY <b>SYNA</b> [divergence] $129.88 (stop $56.52) \u00b7 dSh -0.46\n\ud83d\udfe2 ENTRY <b>TT"
+    "preview": "\u2705 CC recovered at 13:58 UAE 2026-05-25.\nSession resumed via headless `claude -p`.\nLag: ~2 min (165s wall-clock)."
   },
   {
-    "ts_utc": "2026-05-21T18:48:48+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 44,
-    "preview": "\ud83d\ude80 Sprint fire 22:48 UAE \u2014 catching up 1 missed \u2192 2 iterations back-to-back"
-  },
-  {
-    "ts_utc": "2026-05-21T19:03:23+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 45,
-    "preview": "\ud83d\ude80 Sprint fire 23:03 UAE \u2014 1 iteration"
-  },
-  {
-    "ts_utc": "2026-05-21T19:33:37+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 46,
-    "preview": "\ud83d\ude80 Sprint fire 23:33 UAE \u2014 1 iteration"
-  },
-  {
-    "ts_utc": "2026-05-21T19:53:36+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 47,
-    "preview": "\ud83d\ude80 Sprint fire 23:53 UAE \u2014 1 iteration"
-  },
-  {
-    "ts_utc": "2026-05-21T19:59:11+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 48,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward (full universe) \u2014 2026-05-21</b>\n<i>3 entries \u00b7 1 exits \u2014 showing top 4 by dSharpe (cap=10)</i>\n\n\ud83d\udfe2 ENTRY <b>IFNNY</b> [divergence] $80.25 (stop $37.96) \u00b7 dSh -0.07\n\ud83d\udfe2 ENTRY <b>CA"
-  },
-  {
-    "ts_utc": "2026-05-21T20:11:39+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 49,
-    "preview": "\ud83d\ude80 Sprint fire 00:11 UAE \u2014 1 iteration"
-  },
-  {
-    "ts_utc": "2026-05-21T20:15:00+00:00",
+    "ts_utc": "2026-05-25T09:58:35+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": false,
     "message_id": null,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward (full universe) \u2014 2026-05-22</b>\n<i>2 entries \u00b7 2 exits \u2014 showing top 4 by dSharpe (cap=10)</i>\n\n\ud83d\udfe2 ENTRY <b>SYNA</b> [divergence] $132.33 (stop $56.52) \u00b7 dSh -0.46\n\ud83d\udfe2 ENTRY <b>TT"
+    "preview": "\ud83d\udea8 CC crash detected at 13:58 UAE 2026-05-25.\nCause: hung-repl-sentinel-56min-procs-1.\nRecovery initiated."
   },
   {
-    "ts_utc": "2026-05-21T20:18:36+00:00",
+    "ts_utc": "2026-05-25T10:01:27+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": true,
-    "message_id": 51,
-    "preview": "\ud83d\ude80 Sprint fire 00:18 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+    "message_id": 226,
+    "preview": "\u2705 CC recovered at 14:01 UAE 2026-05-25.\nSession resumed via headless `claude -p`.\nLag: ~2 min (171s wall-clock)."
   },
   {
-    "ts_utc": "2026-05-21T20:33:27+00:00",
+    "ts_utc": "2026-05-25T10:04:14+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": true,
-    "message_id": 52,
-    "preview": "\ud83d\ude80 Sprint fire 00:33 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+    "message_id": 227,
+    "preview": "\ud83d\udea8 CC crash detected at 14:04 UAE 2026-05-25.\nCause: hung-repl-sentinel-62min-procs-1.\nRecovery initiated."
   },
   {
-    "ts_utc": "2026-05-21T20:46:26+00:00",
+    "ts_utc": "2026-05-25T10:08:20+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": true,
-    "message_id": 54,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward (full universe) \u2014 2026-05-22</b>\n<i>1 entries \u00b7 0 exits \u2014 showing top 1 by dSharpe (cap=10)</i>\n\n\ud83d\udfe2 ENTRY <b>ADI</b> [mbv] $384.21 (stop $362.99) \u00b7 dSh -1.07\n\nOpen: 10 \u00b7 Closed-t"
+    "message_id": 228,
+    "preview": "\u2705 CC recovered at 14:08 UAE 2026-05-25.\nSession resumed via headless `claude -p`.\nLag: ~3 min (230s wall-clock)."
   },
   {
-    "ts_utc": "2026-05-21T20:50:36+00:00",
+    "ts_utc": "2026-05-25T10:09:29+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 229,
+    "preview": "\ud83d\udea8 CC crash detected at 14:09 UAE 2026-05-25.\nCause: hung-repl-sentinel-67min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-25T10:12:40+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 230,
+    "preview": "\u2705 CC recovered at 14:12 UAE 2026-05-25.\nSession resumed via headless `claude -p`.\nLag: ~3 min (186s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-25T10:13:36+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": false,
     "message_id": null,
-    "preview": "\ud83d\ude80 Sprint fire 00:50 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+    "preview": "\ud83d\udea8 CC crash detected at 14:13 UAE 2026-05-25.\nCause: hung-repl-sentinel-71min-procs-1.\nRecovery initiated."
   },
   {
-    "ts_utc": "2026-05-21T20:55:15+00:00",
+    "ts_utc": "2026-05-25T10:17:23+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": true,
-    "message_id": 55,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward (full universe) \u2014 2026-05-22</b>\n<i>1 entries \u00b7 1 exits \u2014 showing top 2 by dSharpe (cap=10)</i>\n\n\ud83d\udfe2 ENTRY <b>IFNNY</b> [divergence] $80.20 (stop $37.96) \u00b7 dSh -0.07\n\ud83d\udd34 EXIT <b>IFN"
+    "message_id": 231,
+    "preview": "\u2705 CC recovered at 14:17 UAE 2026-05-25.\nSession resumed via headless `claude -p`.\nLag: ~3 min (217s wall-clock)."
   },
   {
-    "ts_utc": "2026-05-21T21:06:36+00:00",
+    "ts_utc": "2026-05-25T10:18:29+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": true,
-    "message_id": 56,
-    "preview": "Sprint 2026-05-22 20:50 UTC: PMR US 1D *CLEARED* portfolio gate. dSharpe 2.26, exp 1.27, WR 47.3%, 4759 trades, 986/1121 contrib (87.96%). Third US-cleared strategy. Obj 6 ratchets: US triple-cleared."
+    "message_id": 232,
+    "preview": "\ud83d\udea8 CC crash detected at 14:18 UAE 2026-05-25.\nCause: hung-repl-sentinel-76min-procs-1.\nRecovery initiated."
   },
   {
-    "ts_utc": "2026-05-21T21:07:43+00:00",
+    "ts_utc": "2026-05-25T10:20:12+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": true,
-    "message_id": 57,
-    "preview": "\ud83d\ude80 Sprint fire 01:07 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+    "message_id": 233,
+    "preview": "\u2705 CC recovered at 14:20 UAE 2026-05-25.\nSession resumed via headless `claude -p`.\nLag: ~1 min (99s wall-clock)."
   },
   {
-    "ts_utc": "2026-05-21T21:11:41+00:00",
+    "ts_utc": "2026-05-25T10:21:29+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": true,
-    "message_id": 58,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward (full universe) \u2014 2026-05-22</b>\n<i>3 entries \u00b7 2 exits \u2014 showing top 5 by dSharpe (cap=10)</i>\n\n\ud83d\udfe2 ENTRY <b>MUR</b> [mbv] $37.77 (stop $35.26) \u00b7 dSh -0.38\n\ud83d\udfe2 ENTRY <b>SYNA</b> [d"
+    "message_id": 234,
+    "preview": "\ud83d\udea8 CC crash detected at 14:21 UAE 2026-05-25.\nCause: hung-repl-sentinel-79min-procs-1.\nRecovery initiated."
   },
   {
-    "ts_utc": "2026-05-21T21:31:44+00:00",
+    "ts_utc": "2026-05-25T10:24:10+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": true,
-    "message_id": 59,
-    "preview": "\ud83d\ude80 Sprint fire 01:31 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+    "message_id": 235,
+    "preview": "\u2705 CC recovered at 14:23 UAE 2026-05-25.\nSession resumed via headless `claude -p`.\nLag: ~2 min (146s wall-clock)."
   },
   {
-    "ts_utc": "2026-05-22T05:10:34+00:00",
+    "ts_utc": "2026-05-25T10:24:28+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": true,
-    "message_id": 60,
-    "preview": "\u26a0 Phase 1 sprint: 29 fires missed in a row.\n\nCron windows were skipped because the REPL was busy. Catching up all 29 fires now back-to-back, then resuming normal 15-min cadence.\n\nTo reduce missed fire"
+    "message_id": 236,
+    "preview": "\ud83d\udea8 CC crash detected at 14:24 UAE 2026-05-25.\nCause: hung-repl-sentinel-82min-procs-1.\nRecovery initiated."
   },
   {
-    "ts_utc": "2026-05-22T05:18:34+00:00",
+    "ts_utc": "2026-05-25T10:27:48+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": true,
-    "message_id": 61,
-    "preview": "\u26a0 Phase 1 sprint: 30 fires missed in a row.\n\nCron windows were skipped because the REPL was busy. Catching up all 30 fires now back-to-back, then resuming normal 15-min cadence.\n\nTo reduce missed fire"
+    "message_id": 237,
+    "preview": "\u2705 CC recovered at 14:27 UAE 2026-05-25.\nSession resumed via headless `claude -p`.\nLag: ~3 min (184s wall-clock)."
   },
   {
-    "ts_utc": "2026-05-22T05:18:35+00:00",
+    "ts_utc": "2026-05-25T10:28:17+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": true,
-    "message_id": 62,
-    "preview": "\ud83d\ude80 Sprint fire 09:18 UAE \u2014 catching up 30 missed \u2192 31 iterations back-to-back\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exit"
+    "message_id": 238,
+    "preview": "\ud83d\udea8 CC crash detected at 14:28 UAE 2026-05-25.\nCause: hung-repl-sentinel-86min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-25T10:31:07+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 239,
+    "preview": "\u2705 CC recovered at 14:31 UAE 2026-05-25.\nSession resumed via headless `claude -p`.\nLag: ~2 min (169s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-25T10:33:14+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 240,
+    "preview": "\ud83d\udea8 CC crash detected at 14:33 UAE 2026-05-25.\nCause: hung-repl-sentinel-91min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-25T10:37:02+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 241,
+    "preview": "\u2705 CC recovered at 14:36 UAE 2026-05-25.\nSession resumed via headless `claude -p`.\nLag: ~3 min (212s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-25T10:37:14+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 242,
+    "preview": "\ud83d\udea8 CC crash detected at 14:37 UAE 2026-05-25.\nCause: hung-repl-sentinel-95min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-25T10:39:38+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 243,
+    "preview": "\u2705 CC recovered at 14:39 UAE 2026-05-25.\nSession resumed via headless `claude -p`.\nLag: ~2 min (143s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-25T10:42:17+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 244,
+    "preview": "\ud83d\udea8 CC crash detected at 14:42 UAE 2026-05-25.\nCause: hung-repl-sentinel-100min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-25T10:45:07+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 245,
+    "preview": "\u2705 CC recovered at 14:45 UAE 2026-05-25.\nSession resumed via headless `claude -p`.\nLag: ~2 min (169s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-25T10:47:14+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 246,
+    "preview": "\ud83d\udea8 CC crash detected at 14:47 UAE 2026-05-25.\nCause: hung-repl-sentinel-105min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-25T10:50:19+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 247,
+    "preview": "\u2705 CC recovered at 14:50 UAE 2026-05-25.\nSession resumed via headless `claude -p`.\nLag: ~3 min (183s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-25T10:51:15+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 248,
+    "preview": "\ud83d\udea8 CC crash detected at 14:51 UAE 2026-05-25.\nCause: hung-repl-sentinel-109min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-25T10:54:13+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 249,
+    "preview": "\u2705 CC recovered at 14:54 UAE 2026-05-25.\nSession resumed via headless `claude -p`.\nLag: ~2 min (178s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-25T10:55:10+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 250,
+    "preview": "\u274c CC recovery failed at 14:55 UAE 2026-05-25.\nAll 0 attempts exhausted.\nManual intervention needed."
+  },
+  {
+    "ts_utc": "2026-05-26T00:02:19+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 251,
+    "preview": "\ud83d\udea8 CC crash detected at 04:02 UAE 2026-05-26.\nCause: hung-repl-sentinel-900min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T00:06:40+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 252,
+    "preview": "\u2705 CC recovered at 04:06 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~4 min (259s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-26T00:07:30+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udea8 CC crash detected at 04:07 UAE 2026-05-26.\nCause: hung-repl-sentinel-905min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T00:18:19+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 253,
+    "preview": "\ud83d\udea8 CC crash detected at 04:18 UAE 2026-05-26.\nCause: hung-repl-sentinel-916min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T00:21:37+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 254,
+    "preview": "\u2705 CC recovered at 04:21 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~3 min (191s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-26T00:22:30+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 255,
+    "preview": "\ud83d\udea8 CC crash detected at 04:22 UAE 2026-05-26.\nCause: hung-repl-sentinel-920min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T00:25:19+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 256,
+    "preview": "\u2705 CC recovered at 04:25 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~2 min (166s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-26T00:26:13+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 257,
+    "preview": "\ud83d\udea8 CC crash detected at 04:26 UAE 2026-05-26.\nCause: hung-repl-sentinel-924min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T00:29:11+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 258,
+    "preview": "\u2705 CC recovered at 04:29 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~2 min (177s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-26T00:32:14+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 259,
+    "preview": "\ud83d\udea8 CC crash detected at 04:32 UAE 2026-05-26.\nCause: hung-repl-sentinel-930min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T00:35:32+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 260,
+    "preview": "\u2705 CC recovered at 04:35 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~3 min (191s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-26T00:36:25+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 261,
+    "preview": "\ud83d\udea8 CC crash detected at 04:36 UAE 2026-05-26.\nCause: hung-repl-sentinel-934min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T00:39:49+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 262,
+    "preview": "\u2705 CC recovered at 04:39 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~3 min (188s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-26T00:40:18+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 263,
+    "preview": "\ud83d\udea8 CC crash detected at 04:40 UAE 2026-05-26.\nCause: hung-repl-sentinel-938min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T00:44:00+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 264,
+    "preview": "\u2705 CC recovered at 04:44 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~3 min (221s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-26T00:46:29+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udea8 CC crash detected at 04:46 UAE 2026-05-26.\nCause: hung-repl-sentinel-944min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T00:49:31+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 265,
+    "preview": "\u2705 CC recovered at 04:49 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~3 min (181s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-26T00:50:14+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 266,
+    "preview": "\ud83d\udea8 CC crash detected at 04:50 UAE 2026-05-26.\nCause: hung-repl-sentinel-948min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T00:53:02+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 267,
+    "preview": "\u2705 CC recovered at 04:53 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~2 min (167s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-26T00:53:15+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 268,
+    "preview": "\ud83d\udea8 CC crash detected at 04:53 UAE 2026-05-26.\nCause: hung-repl-sentinel-951min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T01:04:16+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 269,
+    "preview": "\ud83d\udea8 CC crash detected at 05:04 UAE 2026-05-26.\nCause: hung-repl-sentinel-962min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T01:08:03+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 270,
+    "preview": "\u2705 CC recovered at 05:07 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~3 min (211s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-26T01:08:18+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 271,
+    "preview": "\ud83d\udea8 CC crash detected at 05:08 UAE 2026-05-26.\nCause: hung-repl-sentinel-966min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T01:19:16+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 272,
+    "preview": "\ud83d\udea8 CC crash detected at 05:19 UAE 2026-05-26.\nCause: hung-repl-sentinel-977min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T01:22:24+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 273,
+    "preview": "\u2705 CC recovered at 05:22 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~3 min (186s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-26T01:23:14+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 274,
+    "preview": "\ud83d\udea8 CC crash detected at 05:23 UAE 2026-05-26.\nCause: hung-repl-sentinel-981min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T01:26:15+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\u2705 CC recovered at 05:26 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~3 min (180s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-26T01:27:14+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 275,
+    "preview": "\ud83d\udea8 CC crash detected at 05:27 UAE 2026-05-26.\nCause: hung-repl-sentinel-985min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T01:30:29+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 276,
+    "preview": "\u2705 CC recovered at 05:30 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~3 min (194s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-26T01:31:17+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 277,
+    "preview": "\ud83d\udea8 CC crash detected at 05:31 UAE 2026-05-26.\nCause: hung-repl-sentinel-989min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T01:34:04+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 278,
+    "preview": "\u2705 CC recovered at 05:34 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~2 min (164s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-26T01:34:22+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 279,
+    "preview": "\ud83d\udea8 CC crash detected at 05:34 UAE 2026-05-26.\nCause: hung-repl-sentinel-992min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T01:45:25+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 280,
+    "preview": "\ud83d\udea8 CC crash detected at 05:45 UAE 2026-05-26.\nCause: hung-repl-sentinel-1003min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T01:56:22+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 281,
+    "preview": "\ud83d\udea8 CC crash detected at 05:56 UAE 2026-05-26.\nCause: hung-repl-sentinel-1014min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T02:00:18+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 282,
+    "preview": "\ud83d\udea8 CC crash detected at 06:00 UAE 2026-05-26.\nCause: hung-repl-sentinel-1018min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T02:11:15+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 283,
+    "preview": "\ud83d\udea8 CC crash detected at 06:11 UAE 2026-05-26.\nCause: hung-repl-sentinel-1029min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T02:22:30+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 284,
+    "preview": "\ud83d\udea8 CC crash detected at 06:22 UAE 2026-05-26.\nCause: hung-repl-sentinel-1040min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T02:59:18+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 285,
+    "preview": "\ud83d\udea8 CC crash detected at 06:59 UAE 2026-05-26.\nCause: hung-repl-sentinel-32min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T03:10:15+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 286,
+    "preview": "\ud83d\udea8 CC crash detected at 07:10 UAE 2026-05-26.\nCause: hung-repl-sentinel-43min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T03:21:15+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 287,
+    "preview": "\ud83d\udea8 CC crash detected at 07:21 UAE 2026-05-26.\nCause: hung-repl-sentinel-54min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T03:32:15+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 288,
+    "preview": "\ud83d\udea8 CC crash detected at 07:32 UAE 2026-05-26.\nCause: hung-repl-sentinel-65min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T03:36:18+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 289,
+    "preview": "\u2705 CC recovered at 07:36 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~3 min (238s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-26T03:37:18+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 290,
+    "preview": "\ud83d\udea8 CC crash detected at 07:37 UAE 2026-05-26.\nCause: hung-repl-sentinel-70min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T03:48:16+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 291,
+    "preview": "\ud83d\udea8 CC crash detected at 07:48 UAE 2026-05-26.\nCause: hung-repl-sentinel-81min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T03:59:16+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 292,
+    "preview": "\ud83d\udea8 CC crash detected at 07:59 UAE 2026-05-26.\nCause: hung-repl-sentinel-92min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T04:03:06+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 293,
+    "preview": "\u2705 CC recovered at 08:02 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~3 min (214s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-26T04:03:15+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 294,
+    "preview": "\ud83d\udea8 CC crash detected at 08:03 UAE 2026-05-26.\nCause: hung-repl-sentinel-96min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T04:14:16+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udea8 CC crash detected at 08:14 UAE 2026-05-26.\nCause: hung-repl-sentinel-107min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T04:19:09+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 295,
+    "preview": "\u2705 CC recovered at 08:19 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~4 min (293s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-26T04:22:16+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 296,
+    "preview": "\ud83d\udea8 CC crash detected at 08:22 UAE 2026-05-26.\nCause: hung-repl-sentinel-115min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T04:24:58+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\u2705 CC recovered at 08:24 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~2 min (145s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-26T04:25:30+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 297,
+    "preview": "\ud83d\udea8 CC crash detected at 08:25 UAE 2026-05-26.\nCause: hung-repl-sentinel-118min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T04:29:08+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 298,
+    "preview": "\u2705 CC recovered at 08:29 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~3 min (217s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-26T04:30:19+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 299,
+    "preview": "\ud83d\udea8 CC crash detected at 08:30 UAE 2026-05-26.\nCause: hung-repl-sentinel-123min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T04:33:04+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\u2705 CC recovered at 08:33 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~2 min (165s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-26T04:33:32+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udea8 CC crash detected at 08:33 UAE 2026-05-26.\nCause: hung-repl-sentinel-126min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T04:37:18+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\u2705 CC recovered at 08:37 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~3 min (223s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-26T04:38:31+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 300,
+    "preview": "\ud83d\udea8 CC crash detected at 08:38 UAE 2026-05-26.\nCause: hung-repl-sentinel-131min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T04:42:11+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 301,
+    "preview": "\u2705 CC recovered at 08:42 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~3 min (216s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-26T04:43:30+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 302,
+    "preview": "\ud83d\udea8 CC crash detected at 08:43 UAE 2026-05-26.\nCause: hung-repl-sentinel-136min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T04:46:58+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 303,
+    "preview": "\u2705 CC recovered at 08:46 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~3 min (207s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-26T04:47:15+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 304,
+    "preview": "\ud83d\udea8 CC crash detected at 08:47 UAE 2026-05-26.\nCause: hung-repl-sentinel-140min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T04:51:30+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 305,
+    "preview": "\ud83d\udea8 CC crash detected at 08:51 UAE 2026-05-26.\nCause: hung-repl-sentinel-144min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T05:02:17+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 306,
+    "preview": "\ud83d\udea8 CC crash detected at 09:02 UAE 2026-05-26.\nCause: hung-repl-sentinel-155min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T05:05:53+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 307,
+    "preview": "\u2705 CC recovered at 09:05 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~3 min (208s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-26T05:06:16+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 308,
+    "preview": "\ud83d\udea8 CC crash detected at 09:06 UAE 2026-05-26.\nCause: hung-repl-sentinel-159min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T05:09:29+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\u2705 CC recovered at 09:09 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~2 min (178s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-26T05:10:24+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 309,
+    "preview": "\ud83d\udea8 CC crash detected at 09:10 UAE 2026-05-26.\nCause: hung-repl-sentinel-163min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T05:21:30+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udea8 CC crash detected at 09:21 UAE 2026-05-26.\nCause: hung-repl-sentinel-174min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T05:32:16+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 310,
+    "preview": "\ud83d\udea8 CC crash detected at 09:32 UAE 2026-05-26.\nCause: hung-repl-sentinel-185min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T05:43:18+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 311,
+    "preview": "\ud83d\udea8 CC crash detected at 09:43 UAE 2026-05-26.\nCause: hung-repl-sentinel-196min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T05:54:31+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 312,
+    "preview": "\ud83d\udea8 CC crash detected at 09:54 UAE 2026-05-26.\nCause: hung-repl-sentinel-207min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T06:05:30+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udea8 CC crash detected at 10:05 UAE 2026-05-26.\nCause: hung-repl-sentinel-218min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T06:16:16+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 313,
+    "preview": "\ud83d\udea8 CC crash detected at 10:16 UAE 2026-05-26.\nCause: hung-repl-sentinel-229min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T06:27:16+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 314,
+    "preview": "\ud83d\udea8 CC crash detected at 10:27 UAE 2026-05-26.\nCause: hung-repl-sentinel-240min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T06:38:29+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 315,
+    "preview": "\ud83d\udea8 CC crash detected at 10:38 UAE 2026-05-26.\nCause: hung-repl-sentinel-251min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T06:41:43+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 316,
+    "preview": "\u2705 CC recovered at 10:41 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~3 min (191s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-26T06:42:14+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 317,
+    "preview": "\ud83d\udea8 CC crash detected at 10:42 UAE 2026-05-26.\nCause: hung-repl-sentinel-255min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T06:53:15+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 318,
+    "preview": "\ud83d\udea8 CC crash detected at 10:53 UAE 2026-05-26.\nCause: hung-repl-sentinel-266min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T06:56:59+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 319,
+    "preview": "\u2705 CC recovered at 10:56 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~3 min (219s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-26T07:00:14+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 320,
+    "preview": "\ud83d\udea8 CC crash detected at 11:00 UAE 2026-05-26.\nCause: hung-repl-sentinel-273min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T07:11:18+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 321,
+    "preview": "\ud83d\udea8 CC crash detected at 11:11 UAE 2026-05-26.\nCause: hung-repl-sentinel-284min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T07:22:30+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 322,
+    "preview": "\ud83d\udea8 CC crash detected at 11:22 UAE 2026-05-26.\nCause: hung-repl-sentinel-295min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T07:33:30+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 323,
+    "preview": "\ud83d\udea8 CC crash detected at 11:33 UAE 2026-05-26.\nCause: hung-repl-sentinel-306min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T07:44:17+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 324,
+    "preview": "\ud83d\udea8 CC crash detected at 11:44 UAE 2026-05-26.\nCause: hung-repl-sentinel-317min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T07:55:15+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udea8 CC crash detected at 11:55 UAE 2026-05-26.\nCause: hung-repl-sentinel-328min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T08:06:15+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 325,
+    "preview": "\ud83d\udea8 CC crash detected at 12:06 UAE 2026-05-26.\nCause: hung-repl-sentinel-339min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T08:17:17+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 326,
+    "preview": "\ud83d\udea8 CC crash detected at 12:17 UAE 2026-05-26.\nCause: hung-repl-sentinel-350min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T08:28:21+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 327,
+    "preview": "\ud83d\udea8 CC crash detected at 12:28 UAE 2026-05-26.\nCause: hung-repl-sentinel-361min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T08:39:15+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 328,
+    "preview": "\ud83d\udea8 CC crash detected at 12:39 UAE 2026-05-26.\nCause: hung-repl-sentinel-372min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T08:50:30+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udea8 CC crash detected at 12:50 UAE 2026-05-26.\nCause: hung-repl-sentinel-383min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T09:01:22+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 329,
+    "preview": "\ud83d\udea8 CC crash detected at 13:01 UAE 2026-05-26.\nCause: hung-repl-sentinel-394min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T09:38:30+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 330,
+    "preview": "\ud83d\udea8 CC crash detected at 13:38 UAE 2026-05-26.\nCause: hung-repl-sentinel-33min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T09:43:33+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udea8 CC crash detected at 13:43 UAE 2026-05-26.\nCause: hung-repl-sentinel-38min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T09:54:30+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udea8 CC crash detected at 13:54 UAE 2026-05-26.\nCause: hung-repl-sentinel-49min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T09:58:13+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 331,
+    "preview": "\u2705 CC recovered at 13:57 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~3 min (209s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-26T09:58:17+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 332,
+    "preview": "\ud83d\udea8 CC crash detected at 13:58 UAE 2026-05-26.\nCause: hung-repl-sentinel-53min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T10:09:31+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udea8 CC crash detected at 14:09 UAE 2026-05-26.\nCause: hung-repl-sentinel-64min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T10:13:17+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 333,
+    "preview": "\u2705 CC recovered at 14:13 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~3 min (215s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-26T10:14:30+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 334,
+    "preview": "\ud83d\udea8 CC crash detected at 14:14 UAE 2026-05-26.\nCause: hung-repl-sentinel-69min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T10:25:17+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 335,
+    "preview": "\ud83d\udea8 CC crash detected at 14:25 UAE 2026-05-26.\nCause: hung-repl-sentinel-80min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T10:36:30+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udea8 CC crash detected at 14:36 UAE 2026-05-26.\nCause: hung-repl-sentinel-91min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T10:47:16+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 336,
+    "preview": "\ud83d\udea8 CC crash detected at 14:47 UAE 2026-05-26.\nCause: hung-repl-sentinel-102min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T10:58:25+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 337,
+    "preview": "\ud83d\udea8 CC crash detected at 14:58 UAE 2026-05-26.\nCause: hung-repl-sentinel-113min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T11:09:15+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 338,
+    "preview": "\ud83d\udea8 CC crash detected at 15:09 UAE 2026-05-26.\nCause: hung-repl-sentinel-124min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T11:11:40+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 339,
+    "preview": "\u2705 CC recovered at 15:11 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~2 min (144s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-26T11:12:19+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 340,
+    "preview": "\ud83d\udea8 CC crash detected at 15:12 UAE 2026-05-26.\nCause: hung-repl-sentinel-127min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T11:23:19+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 341,
+    "preview": "\ud83d\udea8 CC crash detected at 15:23 UAE 2026-05-26.\nCause: hung-repl-sentinel-138min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T11:27:23+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 342,
+    "preview": "\u2705 CC recovered at 15:27 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~3 min (237s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-26T11:28:31+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udea8 CC crash detected at 15:28 UAE 2026-05-26.\nCause: hung-repl-sentinel-143min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T11:39:25+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 343,
+    "preview": "\ud83d\udea8 CC crash detected at 15:39 UAE 2026-05-26.\nCause: hung-repl-sentinel-154min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T11:50:33+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udea8 CC crash detected at 15:50 UAE 2026-05-26.\nCause: hung-repl-sentinel-165min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T11:53:42+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 344,
+    "preview": "\u2705 CC recovered at 15:53 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~3 min (185s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-26T11:54:18+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 345,
+    "preview": "\ud83d\udea8 CC crash detected at 15:54 UAE 2026-05-26.\nCause: hung-repl-sentinel-169min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T11:56:39+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 346,
+    "preview": "\u2705 CC recovered at 15:56 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~2 min (139s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-26T11:57:18+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 347,
+    "preview": "\ud83d\udea8 CC crash detected at 15:57 UAE 2026-05-26.\nCause: hung-repl-sentinel-172min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T12:08:16+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udea8 CC crash detected at 16:08 UAE 2026-05-26.\nCause: hung-repl-sentinel-183min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T12:19:22+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 348,
+    "preview": "\ud83d\udea8 CC crash detected at 16:19 UAE 2026-05-26.\nCause: hung-repl-sentinel-194min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T12:30:17+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udea8 CC crash detected at 16:30 UAE 2026-05-26.\nCause: hung-repl-sentinel-205min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T12:41:15+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 349,
+    "preview": "\ud83d\udea8 CC crash detected at 16:41 UAE 2026-05-26.\nCause: hung-repl-sentinel-216min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T12:52:19+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 350,
+    "preview": "\ud83d\udea8 CC crash detected at 16:52 UAE 2026-05-26.\nCause: hung-repl-sentinel-227min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T13:03:27+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udea8 CC crash detected at 17:03 UAE 2026-05-26.\nCause: hung-repl-sentinel-238min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T13:14:18+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udea8 CC crash detected at 17:14 UAE 2026-05-26.\nCause: hung-repl-sentinel-249min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-26T13:16:56+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\u26a0 Phase 1 sprint: 16 fires missed in a row.\n\nCron windows were skipped because the REPL was busy. Catching up all 16 fires now back-to-back, then resuming normal 15-min cadence.\n\nTo reduce missed fire"
+  },
+  {
+    "ts_utc": "2026-05-26T13:16:56+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 351,
+    "preview": "\ud83d\ude80 Sprint fire 17:16 UAE \u2014 catching up 16 missed \u2192 17 iterations back-to-back\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exit"
+  },
+  {
+    "ts_utc": "2026-05-26T13:17:27+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 352,
+    "preview": "\u2705 CC recovered at 17:17 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~3 min (189s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-26T13:18:24+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\u274c CC recovery failed at 17:18 UAE 2026-05-26.\nAll 0 attempts exhausted.\nManual intervention needed."
+  },
+  {
+    "ts_utc": "2026-05-26T13:28:55+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-05-26</b>\n\n\ud83d\udfe2 ENTRY <b>AMBA</b> $87.55 (stop $43.14)\n\ud83d\udfe2 ENTRY <b>CTRN</b> $42.61 (stop $39.53)\n\ud83d\udfe2 ENTRY <b>IFNNY</b> $84.80 (stop $37.63)\n\ud83d\udfe2 ENTRY <b>SYNA</b> $143.69 (stop $"
+  },
+  {
+    "ts_utc": "2026-05-26T13:40:28+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 353,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-05-26</b>\n\n\ud83d\udfe2 ENTRY <b>AMBA</b> $87.55 (stop $43.14)\n\ud83d\udfe2 ENTRY <b>CRI</b> $37.56 (stop $31.66)\n\ud83d\udfe2 ENTRY <b>CTRN</b> $42.61 (stop $39.53)\n\ud83d\udfe2 ENTRY <b>DECK</b> $107.89 (stop $91"
+  },
+  {
+    "ts_utc": "2026-05-26T13:53:01+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 354,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-05-26</b>\n\n\ud83d\udfe2 ENTRY <b>AESI</b> $19.22 (stop $11.0)\n\ud83d\udfe2 ENTRY <b>AG</b> $19.84 (stop $18.13)\n\ud83d\udfe2 ENTRY <b>AGCO</b> $113.54 (stop $111.44)\n\ud83d\udfe2 ENTRY <b>AMBA</b> $91.17 (stop $43."
+  },
+  {
+    "ts_utc": "2026-05-26T14:07:21+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-05-26</b>\n\n\ud83d\udfe2 ENTRY <b>AA</b> $74.77 (stop $59.11)\n\ud83d\udfe2 ENTRY <b>AESI</b> $19.72 (stop $10.95)\n\ud83d\udfe2 ENTRY <b>AMBA</b> $91.71 (stop $43.01)\n\ud83d\udfe2 ENTRY <b>BSM</b> $13.84 (stop $13.11"
+  },
+  {
+    "ts_utc": "2026-05-26T14:09:34+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 355,
+    "preview": "\ud83d\ude80 Sprint fire 18:09 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-05-26T14:26:47+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 356,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-05-26</b>\n\n\ud83d\udfe2 ENTRY <b>AA</b> $74.59 (stop $59.04)\n\ud83d\udfe2 ENTRY <b>AESI</b> $19.49 (stop $10.95)\n\ud83d\udfe2 ENTRY <b>AMBA</b> $93.70 (stop $42.88)\n\ud83d\udfe2 ENTRY <b>GCO</b> $37.22 (stop $29.66"
+  },
+  {
+    "ts_utc": "2026-05-26T18:38:50+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 357,
+    "preview": "\u26a0 Phase 1 sprint: 17 fires missed in a row.\n\nCron windows were skipped because the REPL was busy. Catching up all 17 fires now back-to-back, then resuming normal 15-min cadence.\n\nTo reduce missed fire"
+  },
+  {
+    "ts_utc": "2026-05-26T18:38:51+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 358,
+    "preview": "\ud83d\ude80 Sprint fire 22:38 UAE \u2014 catching up 17 missed \u2192 18 iterations back-to-back\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exit"
+  },
+  {
+    "ts_utc": "2026-05-26T18:50:21+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 359,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-05-26</b>\n\n\ud83d\udfe2 ENTRY <b>AA</b> $74.61 (stop $59.04)\n\ud83d\udfe2 ENTRY <b>AESI</b> $19.34 (stop $10.95)\n\ud83d\udfe2 ENTRY <b>AGCO</b> $114.01 (stop $111.38)\n\ud83d\udfe2 ENTRY <b>AMBA</b> $93.48 (stop $42"
+  },
+  {
+    "ts_utc": "2026-05-26T18:55:02+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 360,
+    "preview": "\ud83d\ude80 Sprint fire 22:54 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-05-26T18:56:38+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 361,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-05-26</b>\n\n\ud83d\udfe2 ENTRY <b>AA</b> $74.46 (stop $59.04)\n\ud83d\udfe2 ENTRY <b>AESI</b> $19.34 (stop $10.95)\n\ud83d\udfe2 ENTRY <b>AGCO</b> $114.11 (stop $111.38)\n\ud83d\udfe2 ENTRY <b>AMBA</b> $93.63 (stop $42"
+  },
+  {
+    "ts_utc": "2026-05-26T19:01:48+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 362,
+    "preview": "\ud83d\ude80 Sprint fire 23:01 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-05-26T19:08:14+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 363,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-05-26</b>\n\n\ud83d\udfe2 ENTRY <b>AA</b> $74.22 (stop $59.04)\n\ud83d\udfe2 ENTRY <b>ADPT</b> $14.13 (stop $12.52)\n\ud83d\udfe2 ENTRY <b>AESI</b> $19.29 (stop $10.95)\n\ud83d\udfe2 ENTRY <b>AMBA</b> $93.61 (stop $42.6"
+  },
+  {
+    "ts_utc": "2026-05-26T19:10:34+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 364,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-05-26</b>\n\n\ud83d\udfe2 ENTRY <b>AA</b> $74.19 (stop $59.04)\n\ud83d\udfe2 ENTRY <b>ADPT</b> $14.11 (stop $12.52)\n\ud83d\udfe2 ENTRY <b>AESI</b> $19.28 (stop $10.95)\n\ud83d\udfe2 ENTRY <b>AMBA</b> $93.62 (stop $42.6"
+  },
+  {
+    "ts_utc": "2026-05-26T19:23:32+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-05-26</b>\n\n\ud83d\udfe2 ENTRY <b>AA</b> $73.91 (stop $59.04)\n\ud83d\udfe2 ENTRY <b>AESI</b> $19.24 (stop $10.95)\n\ud83d\udfe2 ENTRY <b>AMBA</b> $93.51 (stop $42.62)\n\ud83d\udfe2 ENTRY <b>BRZE</b> $25.51 (stop $18.6"
+  },
+  {
+    "ts_utc": "2026-05-26T19:37:40+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 365,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-05-26</b>\n\n\ud83d\udfe2 ENTRY <b>AA</b> $74.25 (stop $59.04)\n\ud83d\udfe2 ENTRY <b>AESI</b> $19.26 (stop $10.95)\n\ud83d\udfe2 ENTRY <b>AMBA</b> $93.62 (stop $42.62)\n\ud83d\udfe2 ENTRY <b>BRZE</b> $25.62 (stop $18.6"
+  },
+  {
+    "ts_utc": "2026-05-27T00:02:17+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 366,
+    "preview": "\ud83d\udea8 CC crash detected at 04:02 UAE 2026-05-27.\nCause: hung-repl-sentinel-278min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-27T00:13:20+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 367,
+    "preview": "\ud83d\udea8 CC crash detected at 04:13 UAE 2026-05-27.\nCause: hung-repl-sentinel-289min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-27T00:24:32+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 368,
+    "preview": "\ud83d\udea8 CC crash detected at 04:24 UAE 2026-05-27.\nCause: hung-repl-sentinel-300min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-27T00:35:16+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 369,
+    "preview": "\ud83d\udea8 CC crash detected at 04:35 UAE 2026-05-27.\nCause: hung-repl-sentinel-311min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-27T00:46:16+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 370,
+    "preview": "\ud83d\udea8 CC crash detected at 04:46 UAE 2026-05-27.\nCause: hung-repl-sentinel-322min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-27T01:22:38+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udea8 CC crash detected at 05:22 UAE 2026-05-27.\nCause: hung-repl-sentinel-32min-procs-1.\nRecovery initiated."
   }
 ]
