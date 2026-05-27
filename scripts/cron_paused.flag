@@ -1,0 +1,20 @@
+PAUSED 2026-05-27T04:05Z by session-resume recovery (PID 31588).
+
+REASON: Watchdog recovery runaway. 17 hung claude.exe orphans accumulated;
+pre-spawn Stop-StaleClaudeSessions reaps only 4/17 (v1.3 CommandLine filter
+'claude-code|\@anthropic-ai\claude-code\' misses 13: 9 readable-non-matching +
+4 unreadable cmdline). Daily-cap brake defeated because cc_watchdog_state.json
+is MISSING -> recoveries_today resets to 0 each tick -> unbounded respawn.
+crash_log.json shows 0 completed recoveries today; sentinel stuck at 03:03Z.
+
+This flag halts the watchdog at the intentional-pause check (before lock/spawn),
+stopping new orphan spawns. MANUAL MODE per CRASH_RECOVERY.md section 9.
+
+TO RESUME (operator, after remediation): delete this file.
+REMEDIATION REQUIRED BEFORE RESUME:
+  1. Kill the 13 orphan claude.exe (exclude any live foreground/Desktop session).
+  2. Restore/recreate scripts/cc_watchdog_state.json so the 5/day cap works.
+  3. Fix Get-ClaudeCodeCliProcesses: cmdline-filter silently spares
+     unreadable-cmdline + non-matching CC orphans. Fall back to PID-tree /
+     StartTime reap when CommandLine is null, or widen the match.
+  4. Verify the cloud routine aig-mode1-sprint state (separate from watchdog).
