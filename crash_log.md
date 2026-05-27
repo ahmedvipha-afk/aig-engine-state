@@ -44,3 +44,4 @@ One line per detected crash. Auto-appended by cc_watchdog.ps1.
 - 2026-05-26T04:14:15.3263726Z cause=hung-repl-sentinel-107min-procs-1 | OK | recovered_at=2026-05-26T04:19:09.1896411Z | duration=293s
 - 2026-05-26T06:53:14.5866942Z cause=hung-repl-sentinel-266min-procs-1 | OK | recovered_at=2026-05-26T06:56:54.3466786Z | duration=219s
 - 2026-05-26T13:14:12.4895041Z cause=hung-repl-sentinel-249min-procs-1 | OK | recovered_at=2026-05-26T13:17:26.8874185Z | duration=189s
+- 2026-05-27T02:55:15.5188639Z cause=hung-repl-sentinel-77min-procs-1 | OK | recovered_at=2026-05-27T03:05:13.4415022Z | duration=596s
