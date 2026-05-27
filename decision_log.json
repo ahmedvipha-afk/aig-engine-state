@@ -541,5 +541,19 @@
     "methodology_source": "infrastructure_decision",
     "ts_utc": "2026-05-26T14:07:50+00:00",
     "commit_sha": null
+  },
+  {
+    "title": "Recovery 2026-05-27 03:00Z: watchdog false-loop broken, orphan-spawn gap flagged for manual intervention",
+    "methodology_source": "infrastructure_decision",
+    "decision": "Headless recovery session (watchdog spawn, lock 02:55:15Z) verified state per session_resume_prompt and took the minimal safe corrective action: marked the sentinel fresh to break the watchdog false-recovery loop, committed, and pushed. Deliberately SKIPPED the full-universe paper-forward scan this turn (staged queue empty; scan is the most likely P-001 hang site and re-running it in a timeout-bounded headless turn risks reproducing the hang that is accumulating orphans). Next real cron fire or a supervised manual fire should run the scan.",
+    "rationale": "State verification found the recovery mechanism itself has been failing since 2026-05-26T13:17Z (cc_watchdog_state.json last_recovery_ts), recoveries_today=0 despite mode=recovering and 5 spawn attempts 02:11-02:55Z with sentinel-staleness growing 33->77min. 16 claude.exe processes are alive = accumulated hung recovery/sprint spawns (the known unsolved 'in-flight orphans' architecture gap from 2026-05-24 decision_log). These orphans likely hold REPL_BUSY locks, which is why fresh spawns do no productive work. The 02:55Z crash-detect Telegram FAILED to send (ok:false, msg_id null) - first send failure observed. Last productive committed fire was the 00:49Z STR/US reassignment, recovered+pushed as 869af80 at 01:27Z; the 01:38Z sentinel touch produced no commit. No substantive work lost. Orphan cleanup requires killing other claude.exe PIDs - hard to reverse, not authorized for an unattended headless turn, and the system is one step from manual-mode per CRASH_RECOVERY.md section 9; flagged for Ahmed.",
+    "alternatives_considered": [
+      "Run the full paper-forward scan + dashboard regen (rejected this turn - highest hang/timeout risk, likely the orphan-producing step)",
+      "Kill the 16 orphaned claude.exe processes to clear REPL_BUSY (rejected - destructive, unauthorized for unattended headless session, risk of killing legitimate sessions; left for operator)",
+      "Do nothing / report only (rejected - would leave the watchdog screaming every ~11min with growing staleness)"
+    ],
+    "audit_finding_refs": [],
+    "ts_utc": "2026-05-27T03:03:42+00:00",
+    "commit_sha": null
   }
 ]
