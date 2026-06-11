@@ -555,5 +555,19 @@
     "audit_finding_refs": [],
     "ts_utc": "2026-05-27T03:03:42+00:00",
     "commit_sha": null
+  },
+  {
+    "title": "Recovery 2026-05-27 04:05Z: watchdog runaway HALTED via cron_paused.flag (manual mode); orphan root-cause isolated",
+    "decision": "Session-resume recovery (PID 31588, the 07:58 UAE watchdog spawn) verified state and created `scripts/cron_paused.flag`, halting the watchdog at its intentional-pause check (evaluated before the lock/spawn logic) so no further recovery spawns occur. Did NOT kill orphans (destructive, risks a live Desktop/foreground session; left for operator). Committed + pushed.",
+    "rationale": "The orphan-spawn gap the 03:03Z entry flagged is now isolated to TWO compounding bugs: (1) `Get-ClaudeCodeCliProcesses` (v1.3 cmdline filter `claude-code|\\@anthropic-ai\\claude-code\\`) matches only 4 of 17 live claude.exe -- 9 are readable-but-non-matching and 4 have null/unreadable CommandLine, so pre-spawn `Stop-StaleClaudeSessions` spares 13 hung orphans that keep holding REPL_BUSY; (2) `cc_watchdog_state.json` is MISSING, so `recoveries_today` reloads as 0 every tick and the 5/UTC-day cascade brake (added after the 2026-05-22 49-orphan incident) never trips -> unbounded respawn. crash_log.json shows 0 completed recoveries today (all hang, neither OK nor FAILED logged) while detect-Telegrams fired 07:36/47/58. last_sprint_fire.txt frozen at 03:03Z; last productive committed fire remains the 00:49Z STR/US reassignment (869af80, 01:27Z). No NEW substantive work lost since 03:03Z -- recoveries produced no commits, only orphans. Remote (origin/main) == local at a83d88e; nothing unpushed.",
+    "alternatives_considered": [
+      "Kill the 13 orphan claude.exe now (rejected - destructive, may include a live foreground/Desktop session; unauthorized for an unattended recovery turn; pause flag stops growth so the kill is no longer time-critical)",
+      "Touch sentinel again like the 03:03Z fire (rejected - a false 'sprint fired' signal that only delays the loop ~30min; the pause flag is the honest designed mechanism and stops it for good)",
+      "Leave running and only report (rejected - orphan pile actively growing ~1 per watchdog cycle)"
+    ],
+    "audit_finding_refs": [],
+    "methodology_source": "infrastructure_decision",
+    "ts_utc": "2026-05-27T04:05:00+00:00",
+    "commit_sha": null
   }
 ]
