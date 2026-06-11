@@ -71,6 +71,22 @@
 # Bug only manifested in the live (non-DryRun) branch where
 # Stop-StaleClaudeSessions is invoked; the dry-run path branches around it.
 #
+# v1.5 (2026-06-11): post-mortem fixes for the 2026-05-27 runaway (17 hung
+# orphans; cron_paused.flag MANUAL MODE). Two changes:
+#   1. Get-ClaudeCodeCliProcesses: v1.3's CommandLine substring match
+#      ('claude-code' / npm path) matched NOTHING once the CLI moved to the
+#      native installer (~\.local\bin\claude.exe), and silently spared
+#      processes with unreadable command lines -- 13/17 orphans escaped the
+#      pre-spawn reap on 2026-05-27. Now classifies by ExecutablePath
+#      (Desktop excluded by its \WindowsApps\ install path), always spares
+#      the --remote-control listener, includes headless -p/--print spawns
+#      (what this watchdog launches), and for bare/unreadable command lines
+#      falls back to PID-tree state: reap only if the parent process is dead
+#      (a live interactive session keeps its powershell parent and is
+#      spared; a watchdog spawn whose tick exited is a true orphan).
+#   2. $ClaudeExe: prefer the native installer path. Both v1.3 npm paths are
+#      gone from disk, so every real recovery spawn would have failed.
+#
 # Encoding note: this file is ASCII-only on purpose. PowerShell 5.1 reads
 # no-BOM .ps1 files as Windows-1252; em-dashes (U+2014) inside string
 # literals corrupt under that decode and break parsing. Stick to ASCII.
@@ -99,7 +115,12 @@ $CrashLogJson  = Join-Path $ProjectRoot 'crash_log.json'
 $TelegramHelper = Join-Path $ScriptsDir 'cc_watchdog_telegram.py'
 # Use the direct .exe rather than the .cmd wrapper so Process.Start handles
 # argv reliably (.cmd routes through cmd.exe with its own quoting quirks).
-$ClaudeExe     = "$env:USERPROFILE\AppData\Roaming\npm\node_modules\@anthropic-ai\claude-code\bin\claude.exe"
+# v1.5: native installer path first -- the npm install was removed when the
+# CLI migrated to the native installer, leaving both legacy paths dangling.
+$ClaudeExe     = "$env:USERPROFILE\.local\bin\claude.exe"
+if (-not (Test-Path $ClaudeExe)) {
+    $ClaudeExe = "$env:USERPROFILE\AppData\Roaming\npm\node_modules\@anthropic-ai\claude-code\bin\claude.exe"
+}
 if (-not (Test-Path $ClaudeExe)) {
     # Fallback to the .cmd wrapper if the unwrapped binary ever moves.
     $ClaudeExe = "$env:USERPROFILE\AppData\Roaming\npm\claude.cmd"
@@ -197,20 +218,59 @@ function Stop-ProcessTree {
 }
 
 function Get-ClaudeCodeCliProcesses {
-    # v1.3: filter claude.exe processes down to Claude Code CLI instances,
-    # excluding Claude Desktop (the consumer chat client, MSIX install).
-    # Match by CommandLine substring: 'claude-code' OR the explicit npm path
-    # '\@anthropic-ai\claude-code\'. PowerShell -match is regex,
-    # case-insensitive by default. Returns Process objects (possibly empty).
+    # v1.5: classify by ExecutablePath + orphan state, not CommandLine
+    # substring. The v1.3 match spared every native-install CLI process and
+    # every unreadable command line (13/17 orphans escaped on 2026-05-27).
+    # Returns reap-candidate Process objects (possibly empty):
+    #   EXCLUDE Claude Desktop (MSIX): path under \WindowsApps\Claude...;
+    #     its Electron helpers also carry --type=.
+    #   EXCLUDE the always-on remote-control listener (--remote-control).
+    #   INCLUDE explicit CC CLI spawns: legacy npm-path match, or headless
+    #     -p/--print invocations (what this watchdog launches).
+    #   Bare or unreadable command line: fall back to PID-tree state --
+    #     INCLUDE only if the parent process is dead or provably recycled
+    #     (parent younger than child). A live interactive session keeps its
+    #     powershell/terminal parent and is spared.
     $all = @(Get-Process -Name claude -ErrorAction SilentlyContinue)
     $cli = @()
     foreach ($p in $all) {
-        $cl = (Get-CimInstance Win32_Process -Filter "ProcessId=$($p.Id)" -ErrorAction SilentlyContinue).CommandLine
-        if ($cl -and $cl -match 'claude-code|\\@anthropic-ai\\claude-code\\') {
+        $wmi = Get-CimInstance Win32_Process -Filter "ProcessId=$($p.Id)" -ErrorAction SilentlyContinue
+        if (-not $wmi) { continue }
+        $cl = $wmi.CommandLine
+        $exePath = $wmi.ExecutablePath
+        if ($exePath -match '\\WindowsApps\\Claude' -or
+            $cl -match '\\WindowsApps\\Claude' -or
+            $cl -match '--type=') { continue }
+        if ($cl -match '--remote-control') { continue }
+        # NOTE: do NOT match the bare substring 'claude-code' here. Claude
+        # Desktop's local-agent-mode sessions run from
+        # Roaming\Claude\claude-code\<ver>\claude.exe with Desktop as their
+        # live parent; the broad substring would mark them for reaping. They
+        # are governed by the parent-alive fallback below instead (reaped
+        # only if Desktop itself died and orphaned them).
+        if ($cl -match '\\@anthropic-ai\\claude-code\\' -or
+            $cl -match '(^|\s)-p(\s|$)|--print') {
             $cli += $p
+            continue
         }
+        # Bare/unreadable command line: orphan iff parent is gone. Bias to
+        # sparing -- only flag recycling when both CreationDates are readable.
+        $parentAlive = $false
+        try {
+            $par = Get-CimInstance Win32_Process -Filter "ProcessId=$($wmi.ParentProcessId)" -ErrorAction SilentlyContinue
+            if ($par) {
+                $parentAlive = $true
+                if ($par.CreationDate -and $wmi.CreationDate -and
+                    $par.CreationDate -gt $wmi.CreationDate) { $parentAlive = $false }
+            }
+        } catch {}
+        if (-not $parentAlive) { $cli += $p }
     }
-    return ,$cli
+    # v1.5: plain return + pipeline unroll, same fix v1.4 applied to
+    # Get-ProcessDescendants. `return ,$cli` handed callers a 1-element
+    # array CONTAINING the result array, so @(...).Count at every call
+    # site was 1 regardless of how many processes matched.
+    return $cli
 }
 
 function Stop-StaleClaudeSessions {
@@ -292,7 +352,7 @@ function Load-State {
         total_recovery_failures        = 0
         longest_gap_seconds            = 0
         recent_recovery_durations      = @()
-        watchdog_version               = '1.4'
+        watchdog_version               = '1.5'
     }
     if (Test-Path $StateFile) {
         try {
@@ -304,6 +364,8 @@ function Load-State {
             }
         } catch { Write-WD "state load failed: $_" }
     }
+    # Script version wins over whatever the state file recorded.
+    $default.watchdog_version = '1.5'
     return $default
 }
 
