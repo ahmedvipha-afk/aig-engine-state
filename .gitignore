@@ -41,6 +41,9 @@ staged_validation_queue.json
 paper_forward_positions_full.json
 logs_*.txt
 
+# --- Sprint driver runtime log (Task Scheduler launcher; grows per fire) ---
+scripts/sprint_task.log
+
 # --- Crash-watchdog runtime files (state churns every minute, log grows) ---
 # crash_log.md / crash_log.json ARE tracked — they're the incident history.
 # These two are minute-by-minute internals.

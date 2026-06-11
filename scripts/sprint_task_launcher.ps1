@@ -1,0 +1,108 @@
+# sprint_task_launcher.ps1 -- Task Scheduler entry point for the AIG Mode-1
+# sprint (Windows scheduled task "AIG-Mode1-Sprint", cron-equivalent
+# 12,27,42,57 * * * * with RandomDelay PT347S).
+#
+# Driver history (decision_log entry 43, 2026-06-11): the original
+# aig-mode1-sprint ran as a Claude scheduled routine; a platform change split
+# routines into cloud (1-hour minimum, no local filesystem) and Desktop-local
+# (registration lost; requires the Desktop app open). This launcher is
+# Option A2: OS-level Task Scheduler -> headless `claude -p`, reboot-safe,
+# no Desktop dependency. It mirrors cc_watchdog.ps1's recovery-spawn harness:
+# hard timeout + process-tree kill + logging. `claude -p` exits when the turn
+# completes (structural fix for the stream-json zombie pattern, Bug A).
+#
+# The SKILL stays the single source of truth: this launcher only points the
+# headless session at it, so SKILL edits take effect on the next fire with no
+# task changes (same property the Desktop scheduler had).
+#
+# Encoding: ASCII-only on purpose (PS 5.1 reads no-BOM .ps1 as Windows-1252).
+
+$ErrorActionPreference = 'Continue'
+
+$ProjectRoot    = 'C:\Users\ahmed\OneDrive\Documents\Projects\stocks\Ahmed group\Working Area\aig_engine'
+$SkillFile      = "$env:USERPROFILE\.claude\scheduled-tasks\aig-mode1-sprint\SKILL.md"
+$LogFile        = Join-Path $ProjectRoot 'scripts\sprint_task.log'
+$CronPausedFlag = Join-Path $ProjectRoot 'scripts\cron_paused.flag'
+# 65 min: SKILL caps bursts at 5 x 10-min iterations; the scheduled task's
+# own ExecutionTimeLimit (PT75M) backstops THIS script, so the launcher
+# always gets to do the logging + tree-kill itself.
+$TimeoutSeconds = 3900
+
+$ClaudeExe = "$env:USERPROFILE\.local\bin\claude.exe"
+if (-not (Test-Path $ClaudeExe)) {
+    $ClaudeExe = "$env:USERPROFILE\AppData\Roaming\npm\node_modules\@anthropic-ai\claude-code\bin\claude.exe"
+}
+
+function Log([string]$msg) {
+    $ts = (Get-Date).ToUniversalTime().ToString('o')
+    try { Add-Content -Path $LogFile -Value "$ts $msg" -Encoding utf8 } catch {}
+}
+
+# Honor the same intentional-pause flag the watchdog honors, so one flag
+# stops BOTH the driver and the recovery layer (the 2026-05-23 false-fire
+# loop happened precisely because the driver paused and the watchdog didn't
+# know; see decision_log entries 16/19).
+if (Test-Path $CronPausedFlag) {
+    Log 'skip: cron_paused.flag present (intentional pause)'
+    exit 0
+}
+
+if (-not (Test-Path $SkillFile)) {
+    Log "ABORT: SKILL not found at $SkillFile"
+    exit 1
+}
+
+# F2 (2026-06-12): explicit headless preamble. The 2026-06-11 17:12Z fire
+# failed because the worker backgrounded a retry and ended its turn to
+# "wait" -- in -p mode that exits the process before steps 3-5 ran.
+$prompt = "You are headless claude -p -- the process exits when your turn ends, and background-task notifications never arrive. Complete ALL steps in this single turn. No background tasks; run every retry foreground. Execute the sprint defined in $SkillFile. Read that file first and follow it exactly."
+
+try {
+    $psi = New-Object System.Diagnostics.ProcessStartInfo
+    $psi.FileName = $ClaudeExe
+    $escaped = $prompt.Replace('"', '\"')
+    $psi.Arguments = "-p `"$escaped`""
+    $psi.WorkingDirectory = $ProjectRoot
+    $psi.UseShellExecute = $false
+    $psi.CreateNoWindow = $true
+    $psi.RedirectStandardInput = $true
+    $psi.RedirectStandardOutput = $true
+    $psi.RedirectStandardError = $true
+
+    $proc = [System.Diagnostics.Process]::Start($psi)
+    $workerPid = $proc.Id
+    Log "spawned claude -p pid=$workerPid"
+    # Close stdin immediately so claude doesn't wait the piped-input grace period.
+    $proc.StandardInput.Close()
+
+    $stdoutBuilder = [System.Text.StringBuilder]::new()
+    $stderrBuilder = [System.Text.StringBuilder]::new()
+    $proc.add_OutputDataReceived({ if ($EventArgs.Data) { [void]$stdoutBuilder.AppendLine($EventArgs.Data) } })
+    $proc.add_ErrorDataReceived({ if ($EventArgs.Data) { [void]$stderrBuilder.AppendLine($EventArgs.Data) } })
+    $proc.BeginOutputReadLine()
+    $proc.BeginErrorReadLine()
+
+    $exited = $proc.WaitForExit($TimeoutSeconds * 1000)
+    if (-not $exited) {
+        Log "TIMEOUT after $TimeoutSeconds s; killing tree pid=$workerPid"
+        # taskkill /T kills the whole descendant tree (Node workers, MCP children).
+        & taskkill /PID $workerPid /T /F 2>&1 | ForEach-Object { Log "taskkill: $_" }
+        exit 2
+    }
+
+    $exitCode = $proc.ExitCode
+    $tail = $stdoutBuilder.ToString()
+    $tail = if ($tail.Length -gt 400) { $tail.Substring($tail.Length - 400) } else { $tail }
+    $tail = $tail -replace "`r?`n", ' / '
+    if ($exitCode -eq 0) {
+        Log "fire complete pid=$workerPid exit=0 stdout_tail=$tail"
+    } else {
+        $errTail = $stderrBuilder.ToString()
+        $errTail = if ($errTail.Length -gt 400) { $errTail.Substring(0, 400) } else { $errTail }
+        Log "fire FAILED pid=$workerPid exit=$exitCode stderr=$($errTail -replace "`r?`n", ' / ')"
+    }
+    exit $exitCode
+} catch {
+    Log "EXCEPTION: $_"
+    exit 3
+}
