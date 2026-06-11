@@ -19,13 +19,6 @@
       "rsi_at_entry": 58.62,
       "ema_at_entry": 294.6214
     },
-    "CAH": {
-      "entry_date": "2026-05-22",
-      "entry_price": 200.68,
-      "stop_price": 190.74,
-      "rsi_at_entry": 53.17,
-      "ema_at_entry": 191.8406
-    },
     "CHD": {
       "entry_date": "2026-05-22",
       "entry_price": 96.25,
@@ -47,13 +40,6 @@
       "rsi_at_entry": 61.58,
       "ema_at_entry": 16.3054
     },
-    "NINOY": {
-      "entry_date": "2026-05-22",
-      "entry_price": 12.37,
-      "stop_price": 9.86,
-      "rsi_at_entry": 50.03,
-      "ema_at_entry": 11.7319
-    },
     "PEN": {
       "entry_date": "2026-05-22",
       "entry_price": 328.69,
@@ -67,20 +53,6 @@
       "stop_price": 37.01,
       "rsi_at_entry": 52.38,
       "ema_at_entry": 34.6032
-    },
-    "TJX": {
-      "entry_date": "2026-05-22",
-      "entry_price": 158.27,
-      "stop_price": 146.68,
-      "rsi_at_entry": 58.16,
-      "ema_at_entry": 148.2472
-    },
-    "TPL": {
-      "entry_date": "2026-05-22",
-      "entry_price": 402.03,
-      "stop_price": 357.23,
-      "rsi_at_entry": 43.23,
-      "ema_at_entry": 392.4973
     },
     "WDS": {
       "entry_date": "2026-05-22",
@@ -96,20 +68,6 @@
       "rsi_at_entry": 62.76,
       "ema_at_entry": 88.7277
     },
-    "ZUMZ": {
-      "entry_date": "2026-05-22",
-      "entry_price": 23.95,
-      "stop_price": 20.96,
-      "rsi_at_entry": 52.05,
-      "ema_at_entry": 22.5931
-    },
-    "CRI": {
-      "entry_date": "2026-05-26",
-      "entry_price": 37.56,
-      "stop_price": 31.66,
-      "rsi_at_entry": 57.93,
-      "ema_at_entry": 35.1525
-    },
     "GSK": {
       "entry_date": "2026-05-26",
       "entry_price": 51.715,
@@ -123,13 +81,6 @@
       "stop_price": 184.0,
       "rsi_at_entry": 49.56,
       "ema_at_entry": 171.6984
-    },
-    "AG": {
-      "entry_date": "2026-05-26",
-      "entry_price": 19.845,
-      "stop_price": 18.13,
-      "rsi_at_entry": 45.21,
-      "ema_at_entry": 17.8209
     },
     "AS": {
       "entry_date": "2026-05-26",
@@ -166,33 +117,124 @@
       "rsi_at_entry": 53.32,
       "ema_at_entry": 566.7857
     },
-    "MSA": {
-      "entry_date": "2026-05-26",
-      "entry_price": 171.4,
-      "stop_price": 161.29,
-      "rsi_at_entry": 52.64,
-      "ema_at_entry": 170.9329
+    "ALGN": {
+      "entry_date": "2026-06-11",
+      "entry_price": 176.51,
+      "stop_price": 150.05,
+      "rsi_at_entry": 56.12,
+      "ema_at_entry": 170.0565
     },
-    "AGCO": {
-      "entry_date": "2026-05-26",
-      "entry_price": 114.105,
-      "stop_price": 111.38,
-      "rsi_at_entry": 46.78,
-      "ema_at_entry": 113.3948
+    "ASTE": {
+      "entry_date": "2026-06-11",
+      "entry_price": 50.29,
+      "stop_price": 46.72,
+      "rsi_at_entry": 45.33,
+      "ema_at_entry": 50.1576
     },
-    "CVCO": {
-      "entry_date": "2026-05-26",
-      "entry_price": 527.06,
-      "stop_price": 428.11,
-      "rsi_at_entry": 60.17,
-      "ema_at_entry": 526.1431
+    "BCPC": {
+      "entry_date": "2026-06-11",
+      "entry_price": 165.34,
+      "stop_price": 153.16,
+      "rsi_at_entry": 59.09,
+      "ema_at_entry": 163.5621
     },
-    "ADPT": {
-      "entry_date": "2026-05-26",
-      "entry_price": 14.13,
-      "stop_price": 12.52,
-      "rsi_at_entry": 53.6,
-      "ema_at_entry": 14.1028
+    "BKR": {
+      "entry_date": "2026-06-11",
+      "entry_price": 63.48,
+      "stop_price": 60.37,
+      "rsi_at_entry": 47.22,
+      "ema_at_entry": 55.8451
+    },
+    "CAVA": {
+      "entry_date": "2026-06-11",
+      "entry_price": 88.25,
+      "stop_price": 70.98,
+      "rsi_at_entry": 63.86,
+      "ema_at_entry": 76.6848
+    },
+    "EXP": {
+      "entry_date": "2026-06-11",
+      "entry_price": 217.06,
+      "stop_price": 199.78,
+      "rsi_at_entry": 56.71,
+      "ema_at_entry": 213.3299
+    },
+    "FOR": {
+      "entry_date": "2026-06-11",
+      "entry_price": 28.79,
+      "stop_price": 25.28,
+      "rsi_at_entry": 62.38,
+      "ema_at_entry": 26.2716
+    },
+    "HCSG": {
+      "entry_date": "2026-06-11",
+      "entry_price": 21.58,
+      "stop_price": 19.52,
+      "rsi_at_entry": 58.97,
+      "ema_at_entry": 18.8137
+    },
+    "IBM": {
+      "entry_date": "2026-06-11",
+      "entry_price": 274.85,
+      "stop_price": 191.99,
+      "rsi_at_entry": 54.47,
+      "ema_at_entry": 259.7502
+    },
+    "IFNNY": {
+      "entry_date": "2026-06-11",
+      "entry_price": 92.97,
+      "stop_price": 35.06,
+      "rsi_at_entry": 59.54,
+      "ema_at_entry": 55.1408
+    },
+    "MAS": {
+      "entry_date": "2026-06-11",
+      "entry_price": 73.75,
+      "stop_price": 66.38,
+      "rsi_at_entry": 63.51,
+      "ema_at_entry": 67.2042
+    },
+    "NVZMF": {
+      "entry_date": "2026-06-10",
+      "entry_price": 60.08,
+      "stop_price": 55.22,
+      "rsi_at_entry": 54.96,
+      "ema_at_entry": 59.875
+    },
+    "PFE": {
+      "entry_date": "2026-06-11",
+      "entry_price": 26.17,
+      "stop_price": 24.75,
+      "rsi_at_entry": 54.39,
+      "ema_at_entry": 25.3727
+    },
+    "RNGR": {
+      "entry_date": "2026-06-11",
+      "entry_price": 15.84,
+      "stop_price": 14.88,
+      "rsi_at_entry": 46.72,
+      "ema_at_entry": 15.3497
+    },
+    "SIG": {
+      "entry_date": "2026-06-11",
+      "entry_price": 91.75,
+      "stop_price": 76.69,
+      "rsi_at_entry": 60.85,
+      "ema_at_entry": 86.9914
+    },
+    "SMGZY": {
+      "entry_date": "2026-06-11",
+      "entry_price": 34.06,
+      "stop_price": 32.56,
+      "rsi_at_entry": 52.92,
+      "ema_at_entry": 32.8348
+    },
+    "VRA": {
+      "entry_date": "2026-06-11",
+      "entry_price": 3.46,
+      "stop_price": 2.68,
+      "rsi_at_entry": 50.91,
+      "ema_at_entry": 3.0742
     }
   },
   "history": [
@@ -1536,10 +1578,163 @@
       "exit_price": 23.19,
       "exit_reason": "rsi_or_trend_exit",
       "pnl_pct": 0.0
+    },
+    {
+      "ticker": "ADPT",
+      "entry_date": "2026-05-26",
+      "entry_price": 14.13,
+      "exit_date": "2026-06-11",
+      "exit_price": 18.73,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": 32.555
+    },
+    {
+      "ticker": "AG",
+      "entry_date": "2026-05-26",
+      "entry_price": 19.845,
+      "exit_date": "2026-06-11",
+      "exit_price": 16.92,
+      "exit_reason": "stop_hit",
+      "pnl_pct": -14.739
+    },
+    {
+      "ticker": "AGCO",
+      "entry_date": "2026-05-26",
+      "entry_price": 114.105,
+      "exit_date": "2026-06-11",
+      "exit_price": 111.03,
+      "exit_reason": "stop_hit",
+      "pnl_pct": -2.695
+    },
+    {
+      "ticker": "ASBFY",
+      "entry_date": "2026-06-11",
+      "entry_price": 26.32,
+      "exit_date": "2026-06-11",
+      "exit_price": 26.32,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": -0.0
+    },
+    {
+      "ticker": "BROS",
+      "entry_date": "2026-06-11",
+      "entry_price": 65.03,
+      "exit_date": "2026-06-11",
+      "exit_price": 65.03,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": -0.0
+    },
+    {
+      "ticker": "CAH",
+      "entry_date": "2026-05-22",
+      "entry_price": 200.68,
+      "exit_date": "2026-06-11",
+      "exit_price": 221.16,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": 10.205
+    },
+    {
+      "ticker": "CRI",
+      "entry_date": "2026-05-26",
+      "entry_price": 37.56,
+      "exit_date": "2026-06-11",
+      "exit_price": 41.58,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": 10.703
+    },
+    {
+      "ticker": "CVCO",
+      "entry_date": "2026-05-26",
+      "entry_price": 527.06,
+      "exit_date": "2026-06-11",
+      "exit_price": 598.95,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": 13.64
+    },
+    {
+      "ticker": "GCO",
+      "entry_date": "2026-06-11",
+      "entry_price": 42.72,
+      "exit_date": "2026-06-11",
+      "exit_price": 42.72,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": 0.0
+    },
+    {
+      "ticker": "GIL",
+      "entry_date": "2026-06-11",
+      "entry_price": 59.7,
+      "exit_date": "2026-06-11",
+      "exit_price": 57.19,
+      "exit_reason": "stop_hit",
+      "pnl_pct": -4.204
+    },
+    {
+      "ticker": "MSA",
+      "entry_date": "2026-05-26",
+      "entry_price": 171.4,
+      "exit_date": "2026-06-11",
+      "exit_price": 159.49,
+      "exit_reason": "stop_hit",
+      "pnl_pct": -6.949
+    },
+    {
+      "ticker": "NINOY",
+      "entry_date": "2026-05-22",
+      "entry_price": 12.37,
+      "exit_date": "2026-06-10",
+      "exit_price": 11.26,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": -8.973
+    },
+    {
+      "ticker": "RGEN",
+      "entry_date": "2026-06-11",
+      "entry_price": 133.33,
+      "exit_date": "2026-06-11",
+      "exit_price": 133.33,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": 0.0
+    },
+    {
+      "ticker": "TJX",
+      "entry_date": "2026-05-22",
+      "entry_price": 158.27,
+      "exit_date": "2026-06-11",
+      "exit_price": 168.34,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": 6.363
+    },
+    {
+      "ticker": "TMHC",
+      "entry_date": "2026-06-11",
+      "entry_price": 71.91,
+      "exit_date": "2026-06-11",
+      "exit_price": 71.91,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": 0.0
+    },
+    {
+      "ticker": "TPL",
+      "entry_date": "2026-05-22",
+      "entry_price": 402.03,
+      "exit_date": "2026-06-11",
+      "exit_price": 369.55,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": -8.079
+    },
+    {
+      "ticker": "ZUMZ",
+      "entry_date": "2026-05-22",
+      "entry_price": 23.95,
+      "exit_date": "2026-06-11",
+      "exit_price": 18.51,
+      "exit_reason": "stop_hit",
+      "pnl_pct": -22.714
     }
   ],
-  "last_run": "2026-05-27T15:31:51+04:00",
-  "last_run_summary": "watched 1030 tickers \u00b7 10 new entries \u00b7 10 exits \u00b7 open positions 27 \u00b7 history 149",
+  "last_run": "2026-06-12T02:42:59+04:00",
+  "last_run_summary": "watched 1030 tickers \u00b7 23 new entries \u00b7 17 exits \u00b7 open positions 33 \u00b7 history 166",
   "watch_list": [
     "A",
     "AA",
