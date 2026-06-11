@@ -402,3 +402,13 @@ _Written by `scripts/decision_log_append.py`. Sync mirror: `decision_log.json`._
   - Lower the mandate to a still-ambitious number like 50% (rejected — 50% CAGR requires Sharpe well above 2.0 under the 1.5% cap; same category of impossibility)
   - Drop return targets entirely, pure research lab (deferred — viable framing but operator chose a stacked hybrid where Path 1 output retains a measured anchor)
 - **audit_finding_refs:** `entry 8 (Phase 1 cap and slot structure)`, `entry 32 (framework amendment)`, `External: AIG Forensic Council Verdict v2 (2026-05-29, external document, not an AIG decision_log entry)`
+### Archive v7 Scope Document as historical-aspirational reference
+
+- **ts_utc:** `2026-06-11T15:57:32+00:00`
+- **methodology_source:** `infrastructure_decision`
+- **decision:** Archive the v7 Scope Document (27 agents, 8 layers, CEO Fully Autonomous, hybrid Code+Cowork, 4-week launch checklist) as a historical-aspirational reference. It no longer describes operating reality. The current authoritative operating specification is: the framework directive (2026-05-22, commit 33d93ae) + the entry 32 amendment (per-market caps, TradingView source criteria) + Tracks 1/2/3 per entry 33 + the Kelly-bound realistic anchor per entry 39. Mark the v7 Scope file header with an "ARCHIVED — superseded, see decision_log entry 40" banner; do not delete it (evidence preservation).
+- **rationale:** The v7 Scope describes an architecture (27 autonomous agents) and a mandate (3x/10x) the project moved away from months ago and formally retired in entry 39. Leaving it un-archived means future sessions reading the scope inherit a phantom architecture and a phantom mandate. Archiving with an explicit banner preserves the historical record while preventing it from being mistaken for current spec.
+- **alternatives_considered:**
+  - Delete the v7 Scope (rejected — evidence preservation; the project keeps superseded artifacts with banners, never deletes)
+  - Leave it unmarked (rejected — risks future sessions treating it as current)
+- **audit_finding_refs:** `entry 39 (mandate retirement, same chain)`, `entry 32 (framework amendment)`, `entry 33 (three tracks)`

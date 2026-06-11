@@ -587,5 +587,22 @@
     ],
     "ts_utc": "2026-06-11T15:56:34+00:00",
     "commit_sha": null
+  },
+  {
+    "title": "Archive v7 Scope Document as historical-aspirational reference",
+    "methodology_source": "infrastructure_decision",
+    "decision": "Archive the v7 Scope Document (27 agents, 8 layers, CEO Fully Autonomous, hybrid Code+Cowork, 4-week launch checklist) as a historical-aspirational reference. It no longer describes operating reality. The current authoritative operating specification is: the framework directive (2026-05-22, commit 33d93ae) + the entry 32 amendment (per-market caps, TradingView source criteria) + Tracks 1/2/3 per entry 33 + the Kelly-bound realistic anchor per entry 39. Mark the v7 Scope file header with an \"ARCHIVED \u2014 superseded, see decision_log entry 40\" banner; do not delete it (evidence preservation).",
+    "rationale": "The v7 Scope describes an architecture (27 autonomous agents) and a mandate (3x/10x) the project moved away from months ago and formally retired in entry 39. Leaving it un-archived means future sessions reading the scope inherit a phantom architecture and a phantom mandate. Archiving with an explicit banner preserves the historical record while preventing it from being mistaken for current spec.",
+    "alternatives_considered": [
+      "Delete the v7 Scope (rejected \u2014 evidence preservation; the project keeps superseded artifacts with banners, never deletes)",
+      "Leave it unmarked (rejected \u2014 risks future sessions treating it as current)"
+    ],
+    "audit_finding_refs": [
+      "entry 39 (mandate retirement, same chain)",
+      "entry 32 (framework amendment)",
+      "entry 33 (three tracks)"
+    ],
+    "ts_utc": "2026-06-11T15:57:32+00:00",
+    "commit_sha": null
   }
 ]
