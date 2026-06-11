@@ -78,11 +78,12 @@
 - GITHUB_TRADING_PAT env var is scoped to a different repo (403 on aig-engine-state).
 
 ## How to resume right now
-1. Verify the 22:15Z restoration fire's post-exit criteria: (e) worker exited cleanly with
-   no leftover CLI processes, (f) watchdog ticks after 22:45Z spawned no false recovery
-   (check scripts/cc_watchdog.log). Steps (a)-(d) all passed in-fire (commit 5f4152f,
-   Telegram start notification sent, sentinel marked per step).
-2. If (e)+(f) pass: write decision_log entry 44 (Track 1 restoration confirmed) via
-   scripts/decision_log_append.py.
-3. Phase 1 note: WCK queue is now EMPTY. Next strategy slot requires the Ahmed-supervised
+1. DONE 2026-06-12 02:55 GST: post-exit criteria verified — (e) exit=0 at 22:47:37Z,
+   33m11s, zero leftover CLI workers; (f) watchdog quiet (mode=normal, 0 stale checks,
+   0 recoveries); (h) transcript f20c010e: zero voluntary background launches (one
+   harness auto-background, foreground-waited per contract). Entry 44 WRITTEN.
+   TRACK 1 IS LIVE — fires every 15 min (12,27,42,57 +jitter), IgnoreNew dedupes.
+2. Phase 1 note: WCK queue is now EMPTY. Next strategy slot requires the Ahmed-supervised
    three-filter methodology + pre-registration in strategy_register.md before enrollment.
+3. If Track 1 must ever be paused: create scripts/cron_paused.flag — BOTH the launcher
+   and the watchdog honor it (one flag stops driver + recovery together).
