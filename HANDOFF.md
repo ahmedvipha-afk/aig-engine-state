@@ -1,9 +1,9 @@
 # Project Handoff State
 
 **Project:** aig_engine
-**Last updated:** 2026-06-11 21:40 (GST)
-**Current phase:** Block 2 (Track 1 driver, Option A2) — supervised fire FAILED criteria (c)+(f); flag BACK UP per protocol. Driver infrastructure built and validated; SKILL/headless mismatch is the blocker.
-**Current task:** idle (scripts/cron_paused.flag recreated 2026-06-11T17:32Z; AIG-Mode1-Sprint task registered but inert behind the flag)
+**Last updated:** 2026-06-12 02:46 (GST)
+**Current phase:** Block 2 (Track 1 driver, Option A2) — RESTORATION FIRE 22:15Z ran headless end-to-end: all 5 SKILL steps completed in one turn, sprint commit 5f4152f pushed. Fixes F1/F2/F3 held (headless preamble received; foreground waits; per-step sentinel marks 22:15→22:45Z).
+**Current task:** idle between scheduled fires (cron_paused.flag DOWN since 2026-06-11T22:01:48Z; AIG-Mode1-Sprint task live)
 
 ## Supervised fire 2026-06-11 17:12Z — evidence
 - (a) PASS  spawn: PID 22860 at 17:12:01Z, parent=launcher powershell, exe=~\.local\bin\claude.exe
@@ -50,6 +50,11 @@
       design — banner is local-only). Entry "Tareq" + Step 1.3 refactor: blocked on lost text.
 
 ## Last actions
+- [02:15] restoration fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
+- [02:39] step 2 done foreground (detector ran ~20 min under yfinance flaps EXAS/HOLX; harness auto-backgrounded the call — worker blocked on a foreground wait loop instead of ending turn; mid-wait sentinel refresh at 22:35Z): 1030 watched, 23 entries, 17 exits, 33 open, 166 history
+- [02:43] step 3: staged queue EMPTY — WCK finalized; no auto-enrollment per directive
+- [02:44] steps 4-5: dashboard regenerated (1.1 MB); sprint commit 5f4152f pushed; sentinel marked after every step (last 22:45:06Z)
+- [02:46] entry 44 NOT yet written: criteria (e) clean exit and (f) watchdog behavior are only observable after this process exits — operator to verify and write entry 44
 - [19:46] pushed v1.5 as d21dee6 (root-caused push failure: logged-out gh helper shadows GCM; fix: -c credential.https://github.com.helper=manager)
 - [19:52] Step 0.4: 2e293f7 runtime sync; 930835d gitignore; _head_wa.json unreferenced -> ignored; crash_log_dryrun.md meaningful -> reported
 - [19:58] Step 0.5: entry 38 mirrored into decision_log.json, dbdc027 pushed
@@ -73,10 +78,11 @@
 - GITHUB_TRADING_PAT env var is scoped to a different repo (403 on aig-engine-state).
 
 ## How to resume right now
-1. Get the Track 1 driver decision + the lost plan tail (Tareq entry text, Step 1.3 edits)
-   from the operator.
-2. If driver = watchdog: rewrite session_resume_prompt.txt to actually fire a sprint
-   (per-iteration --mark-done per entry 29's SKILL patch), THEN delete cron_paused.flag
-   and watch scripts/cc_watchdog.log through the first recovery cycle.
-3. If driver = cloud routine: recreate it via /schedule (RemoteTrigger create), verify one
-   fire, then decide whether the watchdog flag should also come down.
+1. Verify the 22:15Z restoration fire's post-exit criteria: (e) worker exited cleanly with
+   no leftover CLI processes, (f) watchdog ticks after 22:45Z spawned no false recovery
+   (check scripts/cc_watchdog.log). Steps (a)-(d) all passed in-fire (commit 5f4152f,
+   Telegram start notification sent, sentinel marked per step).
+2. If (e)+(f) pass: write decision_log entry 44 (Track 1 restoration confirmed) via
+   scripts/decision_log_append.py.
+3. Phase 1 note: WCK queue is now EMPTY. Next strategy slot requires the Ahmed-supervised
+   three-filter methodology + pre-registration in strategy_register.md before enrollment.
