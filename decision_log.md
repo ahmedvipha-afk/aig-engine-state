@@ -423,3 +423,14 @@ _Written by `scripts/decision_log_append.py`. Sync mirror: `decision_log.json`._
   - Recreate the aig-mode1-sprint cloud routine unilaterally (rejected — restarting the sprint engine is an operator decision with API cost and Track 2/3 implications)
   - Leave the flag up with no recorded decision (rejected — Track 1 would be silently dead; this entry records the state and forces the explicit choice)
 - **audit_finding_refs:** `entry 26 (orphan-spawn architecture gap)`, `entry 28 (cron re-enable accepting the gap)`, `entry 33 (Track 1 restart; recovery agents run status-only)`, `entry 38 (runaway halt; root-cause isolation)`, `commits d21dee6 (watchdog v1.5), 2e293f7/930835d (Step 0.4 tree), dbdc027 (entry 38 json sync), 658ed8c (entry 39), 2d94f5c (entry 40)`
+### Reserve Tareq pure-price-action system as Phase B UAE candidate (lightweight hypothesis capture, not pre-registration)
+
+- **ts_utc:** `2026-06-11T16:08:55+00:00`
+- **methodology_source:** `three_filter_methodology`
+- **decision:** Reserve "Tareq pure-PA" as Phase B UAE slot candidate; full canonical pre-registration (spec_hash freeze) happens at Phase B open, NOT now. Hypothesis: expert uses zero indicators (no RSI/MACD/Fib/EMA) per 2026-05-05 Whisper analysis of 18 videos (support/دعم 81, trend 61, bottom/قاع 49). Filter-1 archetype: pure price action — support/resistance + trendlines + liquidity, zero indicators. This timestamps the insight (anti-contamination: hypothesis predates any test) without freezing a spec months before testing. No spec_hash, no TRIAL_BUDGET row, no config.py change.
+- **rationale:** spec_hash value = adjacency to testing (freeze then test, no tuning between). Freezing now, months before Phase B, locks out Phase-A learnings. β decision (separate pure-PA system, not V7 redesign) is the falsifiable choice: same three filters + gate as any candidate; clears = validated, fails = intuition doesn't codify — both are evidence. Tareq transcript is hypothesis SOURCE, not validated edge; no special treatment.
+- **alternatives_considered:**
+  - α V7 redesign (rejected — breaks working system, no head-to-head)
+  - Full pre-registration now (rejected — premature freeze)
+  - γ defer without capture (rejected — finding rots, timestamp lost)
+- **audit_finding_refs:** `entry 33 (tracks)`, `entry 32 (UAE cap 4)`

@@ -624,5 +624,22 @@
     ],
     "ts_utc": "2026-06-11T15:58:45+00:00",
     "commit_sha": null
+  },
+  {
+    "title": "Reserve Tareq pure-price-action system as Phase B UAE candidate (lightweight hypothesis capture, not pre-registration)",
+    "methodology_source": "three_filter_methodology",
+    "decision": "Reserve \"Tareq pure-PA\" as Phase B UAE slot candidate; full canonical pre-registration (spec_hash freeze) happens at Phase B open, NOT now. Hypothesis: expert uses zero indicators (no RSI/MACD/Fib/EMA) per 2026-05-05 Whisper analysis of 18 videos (support/\u062f\u0639\u0645 81, trend 61, bottom/\u0642\u0627\u0639 49). Filter-1 archetype: pure price action \u2014 support/resistance + trendlines + liquidity, zero indicators. This timestamps the insight (anti-contamination: hypothesis predates any test) without freezing a spec months before testing. No spec_hash, no TRIAL_BUDGET row, no config.py change.",
+    "rationale": "spec_hash value = adjacency to testing (freeze then test, no tuning between). Freezing now, months before Phase B, locks out Phase-A learnings. \u03b2 decision (separate pure-PA system, not V7 redesign) is the falsifiable choice: same three filters + gate as any candidate; clears = validated, fails = intuition doesn't codify \u2014 both are evidence. Tareq transcript is hypothesis SOURCE, not validated edge; no special treatment.",
+    "alternatives_considered": [
+      "\u03b1 V7 redesign (rejected \u2014 breaks working system, no head-to-head)",
+      "Full pre-registration now (rejected \u2014 premature freeze)",
+      "\u03b3 defer without capture (rejected \u2014 finding rots, timestamp lost)"
+    ],
+    "audit_finding_refs": [
+      "entry 33 (tracks)",
+      "entry 32 (UAE cap 4)"
+    ],
+    "ts_utc": "2026-06-11T16:08:55+00:00",
+    "commit_sha": null
   }
 ]
