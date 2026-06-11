@@ -641,5 +641,25 @@
     ],
     "ts_utc": "2026-06-11T16:08:55+00:00",
     "commit_sha": null
+  },
+  {
+    "title": "Track 1 driver change (Option A2, Task Scheduler + headless claude -p): first supervised fire FAILED on headless/background mismatch; fixes F1/F2/F3 applied",
+    "methodology_source": "infrastructure_decision",
+    "decision": "The Track 1 driver is being changed, not restored: the original aig-mode1-sprint registration was lost in a platform split (cloud routines: 1-hour minimum, no local filesystem; Desktop-local tasks: registration gone, requires Desktop app open). Option A2 chosen \u2014 Windows Task Scheduler task AIG-Mode1-Sprint (daily 00:12 anchor + PT15M repetition = 12,27,42,57, RandomDelay PT347S, MultipleInstances=IgnoreNew, ExecutionTimeLimit 75 min, workdir=repo root) running scripts/sprint_task_launcher.ps1 -> headless `claude -p` at the user-scoped SKILL. A2 over A1 (Desktop task) for durability: reboot-safe, no Desktop-open dependency; structural Bug-A avoidance (-p exits when the turn ends, by design); v1.5 reaper covers any hang. A1 rejected for the Desktop-open dependency; A3 (in-session cron) rejected for 7-day auto-expiry. First supervised fire (2026-06-11 17:12Z slot) FAILED criteria (c) no sprint commit and (f) watchdog stale-check (reached 2/3 before the recreated flag stopped the chain at the would-be confirm tick; no recovery spawned). Fixes applied before re-fire: F1 HEADLESS CONTRACT in SKILL.md (never background, never end turn to wait, all steps in one turn); F2 launcher preamble stating the same; F3 per-step `sprint_catchup.py --mark-done` after each SKILL step (verified timestamp-only: it writes the sentinel and returns, no catch-up accounting touched). SentinelStaleSecondsSoft NOT raised. Entry 44 reserved for a successful restoration fire.",
+    "rationale": "Failed-fire root cause (worker transcript 94c97cce): the worker hit yfinance flaps (EXAS 404/delisted), launched the detector retry as a BACKGROUND task, and ended its turn 'waiting' \u2014 in headless -p, ending the turn exits the process and background notifications never arrive, so SKILL steps 3-5 (queue drain, dashboard, commit+push) were unreachable; exit code 0 because the turn ended normally. What PASSED and stands as evidence for A2: spawn on the exact :12 slot (PID 22860, 17:12:01Z, parent=launcher, native CLI exe); T2 auth independent of Desktop (Task Scheduler probe with svchost ancestry returned AUTH_OK via CLI credentials); IgnoreNew proven (the 17:27 slot skipped while the 19-min worker ran); clean exit=0 with ZERO leftover CLI processes (structural anti-zombie claim confirmed); watchdog v1.5 conduct correct throughout (left the live worker alone, accurate claude_alive=False only after actual exit, flag honored at the next tick). The secondary failure mode \u2014 19-min single iteration with one sentinel mark outran the 15-min soft threshold AFTER the worker exited \u2014 is addressed by F3's per-step marks rather than threshold relaxation, preserving detection sensitivity.",
+    "alternatives_considered": [
+      "A1 Desktop-local scheduled task (rejected \u2014 fires only while the Desktop app is open; app close/crash silently kills Track 1)",
+      "A3 in-session durable cron (rejected \u2014 documented 7-day auto-expiry; dies with the hosting session)",
+      "Raise SentinelStaleSecondsSoft to cover long iterations (rejected \u2014 degrades crash-detection sensitivity; per-step sentinel marks achieve liveness without it)",
+      "Retry the fire without fixes (rejected \u2014 same background+turn-end mismatch would recur deterministically under yfinance flaps)"
+    ],
+    "audit_finding_refs": [
+      "decision_log position 41 (Phase 2 verdict; driver options framed)",
+      "entry 27 (per-iteration --mark-done discipline)",
+      "entry 33 (recovery agents status-only)",
+      "commits d21dee6 (watchdog v1.5), 3cd3a34 (launcher), 112e055 (failed-fire runtime state)"
+    ],
+    "ts_utc": "2026-06-11T22:01:30+00:00",
+    "commit_sha": null
   }
 ]
