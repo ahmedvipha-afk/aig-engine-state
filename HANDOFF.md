@@ -1,8 +1,8 @@
 # Project Handoff State
 
 **Project:** aig_engine
-**Last updated:** 2026-06-11 20:10 (GST)
-**Current phase:** Work block v2 complete (Phases 0 + 2 done; Phase 1 partial — plan truncation). Watchdog still in MANUAL MODE.
+**Last updated:** 2026-06-11 20:35 (GST)
+**Current phase:** Work block v2 COMPLETE (Phases 0, 1, 2 all done — lost tail re-sent and executed). Watchdog still in MANUAL MODE.
 **Current task:** idle (paused by scripts/cron_paused.flag — stays up per operator instruction)
 
 ## Pending
@@ -10,14 +10,11 @@
       (b) make watchdog recovery a real sprint driver (requires replacing the status-only
       session_resume_prompt.txt — Bug D), or (c) keep Track 1 retired. The flag stays up
       until this is decided. Recorded in decision_log position 41 (Phase 2 verdict).
-- [ ] OPERATOR: re-send the lost tail of work block v2. The plan message was truncated at
-      7,857 chars (interrupted mid-paste in session 60142804, 2026-06-11 ~16:00Z). Lost:
-      entry "Tareq reservation" full text, and Step 1.3 project-instructions refactor
-      EDIT 1..N (cuts off at: EDIT 1 — Returns mandate / FIND "RETURNS: Hard minimum 3x
-      (200%) annual. As"). No copy exists anywhere on this machine (all transcripts searched).
-- [ ] OPERATOR: crash_log_dryrun.md verdict — judged MEANINGFUL (2 DRYRUN entries moved out
-      of crash_log.md as post-test cleanup; companion to the tracked incident log). Left
-      untracked pending decision: commit it or gitignore it.
+- [x] RESOLVED 20:35: lost tail re-sent (compact) and executed — crash_log_dryrun.md
+      committed (5ce2a93); Step 1.3 refactor applied to _instructions_v7.txt (local-only,
+      gitignored — E2/E4 anchors differed, surfaced in report; backup in %TEMP%);
+      Tareq reservation appended at position 42 (4193849). Final numbering: 41 = Phase 2
+      verdict, 42 = Tareq (transposed vs original plan map; both entries self-document).
 
 ## Completed (recent)
 - [x] Phase 0 complete: 0.1 cloud routine GONE (list empty — stronger than disabled);
