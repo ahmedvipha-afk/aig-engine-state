@@ -1,8 +1,8 @@
 # Project Handoff State
 
 **Project:** aig_engine
-**Last updated:** 2026-06-12 02:46 (GST)
-**Current phase:** Block 2 (Track 1 driver, Option A2) — RESTORATION FIRE 22:15Z ran headless end-to-end: all 5 SKILL steps completed in one turn, sprint commit 5f4152f pushed. Fixes F1/F2/F3 held (headless preamble received; foreground waits; per-step sentinel marks 22:15→22:45Z).
+**Last updated:** 2026-06-12 03:19 (GST)
+**Current phase:** Block 2 (Track 1 LIVE) — routine fire 22:59Z ran headless end-to-end: all 5 SKILL steps in one turn, sprint commit ff8bf3f pushed. Second consecutive clean headless fire; contract fixes holding.
 **Current task:** idle between scheduled fires (cron_paused.flag DOWN since 2026-06-11T22:01:48Z; AIG-Mode1-Sprint task live)
 
 ## Supervised fire 2026-06-11 17:12Z — evidence
@@ -50,6 +50,9 @@
       design — banner is local-only). Entry "Tareq" + Step 1.3 refactor: blocked on lost text.
 
 ## Last actions
+- [03:00] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
+- [03:18] step 2 done foreground (detector ~19 min; harness auto-backgrounded, worker blocked on TaskOutput foreground wait per contract): 1030 watched, 7 entries, 7 exits, 33 open, 173 history; 3 fetch fails (ADI/EXAS/HOLX yfinance flaps) + 31 data-integrity skips
+- [03:19] steps 3-5: queue still EMPTY (WCK finalized, no auto-enrollment); dashboard regenerated (1.1 MB); sprint commit ff8bf3f pushed; sentinel marked after every step (last 23:19:20Z)
 - [02:15] restoration fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
 - [02:39] step 2 done foreground (detector ran ~20 min under yfinance flaps EXAS/HOLX; harness auto-backgrounded the call — worker blocked on a foreground wait loop instead of ending turn; mid-wait sentinel refresh at 22:35Z): 1030 watched, 23 entries, 17 exits, 33 open, 166 history
 - [02:43] step 3: staged queue EMPTY — WCK finalized; no auto-enrollment per directive
