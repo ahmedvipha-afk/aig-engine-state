@@ -1,13 +1,5 @@
 [
   {
-    "ts_utc": "2026-05-25T09:35:15+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": false,
-    "message_id": null,
-    "preview": "\ud83d\udea8 CC crash detected at 13:35 UAE 2026-05-25.\nCause: hung-repl-sentinel-33min-procs-1.\nRecovery initiated."
-  },
-  {
     "ts_utc": "2026-05-25T09:38:23+00:00",
     "kind": "text",
     "to": 7096306994,
@@ -1598,5 +1590,13 @@
     "ok": true,
     "message_id": 386,
     "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-05-27</b>\n\n\ud83d\udfe2 ENTRY <b>AA</b> $74.57 (stop $59.04)\n\ud83d\udfe2 ENTRY <b>AESI</b> $19.33 (stop $10.94)\n\ud83d\udfe2 ENTRY <b>AMBA</b> $93.57 (stop $42.62)\n\ud83d\udfe2 ENTRY <b>BRZE</b> $25.45 (stop $18.6"
+  },
+  {
+    "ts_utc": "2026-06-11T17:12:36+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 387,
+    "preview": "\ud83d\ude80 Sprint fire 21:12 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
   }
 ]

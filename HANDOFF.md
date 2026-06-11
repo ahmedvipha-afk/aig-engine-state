@@ -1,15 +1,35 @@
 # Project Handoff State
 
 **Project:** aig_engine
-**Last updated:** 2026-06-11 20:35 (GST)
-**Current phase:** Work block v2 COMPLETE (Phases 0, 1, 2 all done — lost tail re-sent and executed). Watchdog still in MANUAL MODE.
-**Current task:** idle (paused by scripts/cron_paused.flag — stays up per operator instruction)
+**Last updated:** 2026-06-11 21:40 (GST)
+**Current phase:** Block 2 (Track 1 driver, Option A2) — supervised fire FAILED criteria (c)+(f); flag BACK UP per protocol. Driver infrastructure built and validated; SKILL/headless mismatch is the blocker.
+**Current task:** idle (scripts/cron_paused.flag recreated 2026-06-11T17:32Z; AIG-Mode1-Sprint task registered but inert behind the flag)
+
+## Supervised fire 2026-06-11 17:12Z — evidence
+- (a) PASS  spawn: PID 22860 at 17:12:01Z, parent=launcher powershell, exe=~\.local\bin\claude.exe
+- (b) PART  sentinel advanced once at iteration start: 16:57:29 -> 17:12:43Z; never again
+- (c) FAIL  NO sprint commit (HEAD stayed 8258073); steps 3-5 of SKILL never ran
+- (d) PART  Telegram start-notification sent (17:12:36Z); no end-of-fire digest
+- (e) PASS  worker EXITED cleanly: exit=0 at 17:31:09Z (19m08s); LEFTOVER CLI WORKERS: none (T3 structural claim CONFIRMED)
+- (f) FAIL  watchdog stale-check chain started 17:31:17Z (process-absent+sentinel-18min), reached 2/3; flag recreated 17:32:31 GST; 17:33:09Z tick honored flag — NO recovery spawned
+- ROOT CAUSE (transcript 94c97cce): worker hit yfinance flaps (EXAS 404/delisted), launched the
+  detector retry as a BACKGROUND task, then ended its turn "waiting" for it. In headless
+  `claude -p`, ending the turn exits the process — background notifications never arrive.
+  Secondary: the single iteration ran 19 min with one sentinel mark; the watchdog's 15-min
+  soft threshold fired after the worker exited. v1.5 itself behaved correctly throughout
+  (no false reap during the fire, zero leftovers after).
+- Worker's uncommitted leftovers in tree: aig/audit_trail.md, telegram_sent_log.json,
+  last_sprint_fire.txt (left as-is per fail protocol).
 
 ## Pending
-- [ ] OPERATOR: Track 1 driver decision — (a) recreate aig-mode1-sprint cloud routine,
-      (b) make watchdog recovery a real sprint driver (requires replacing the status-only
-      session_resume_prompt.txt — Bug D), or (c) keep Track 1 retired. The flag stays up
-      until this is decided. Recorded in decision_log position 41 (Phase 2 verdict).
+- [ ] OPERATOR: A2 fire failed on a fixable SKILL/headless mismatch. Candidate fixes
+      (need approval, none applied): (1) SKILL hard rule for headless workers: NEVER use
+      background tasks / never end the turn to wait — run detector retries in the
+      foreground; (2) refresh sentinel mid-iteration or raise the 15-min soft threshold
+      to > iteration budget; (3) launcher could pass an explicit "you are headless,
+      finish all 5 steps in one turn" preamble before the SKILL pointer.
+      AIG-Mode1-Sprint task stays registered (inert behind the flag); entry 43 NOT
+      written (all-pass condition not met).
 - [x] RESOLVED 20:35: lost tail re-sent (compact) and executed — crash_log_dryrun.md
       committed (5ce2a93); Step 1.3 refactor applied to _instructions_v7.txt (local-only,
       gitignored — E2/E4 anchors differed, surfaced in report; backup in %TEMP%);
