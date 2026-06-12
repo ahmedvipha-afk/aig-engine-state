@@ -1,9 +1,21 @@
 # Project Handoff State
 
 **Project:** aig_engine
-**Last updated:** 2026-06-12 07:18 (GST)
-**Current phase:** Block 2 (Track 1 LIVE) — routine fire 02:59Z ran headless end-to-end: all 5 SKILL steps in one turn. Ninth consecutive clean headless fire; contract fixes holding.
-**Current task:** idle between scheduled fires (cron_paused.flag DOWN since 2026-06-11T22:01:48Z; AIG-Mode1-Sprint task live)
+**Last updated:** 2026-06-12 21:35 (GST)
+**Current phase:** Block 2 — Track 2 Session A1 CLOSED: TSM-12 (trial 40, tsm12_us_1d, spec_hash efe8ac7b47f10a0f) verdict PORTFOLIO_FAIL at 08:15Z, recorded as decision_log entry 46 (honest FAIL: 3,473 trades, expectancy 1.0537, win rate 0.299 < 0.4, Sharpe raw 0.284 / deflated -0.395 at n=40 haircut, CI lo -0.0085 not > 0). US slot 2 remains OPEN. Track 1 resuming (cron_paused.flag removed this session).
+**Current task:** verify first Track 1 catch-up fire after flag removal (sprint_catchup capped 5 iterations), then idle between scheduled fires
+
+## Track 2 status (after Session A1)
+- TSM-12 FAILED the gate — no re-run, no tuning; spec stays frozen, result stands (entry 46).
+- Universe convention documented in entry 46: spec froze 1,603 tickers; engine evaluated
+  1,122 (481 excluded by the trials 1-39 pre-backtest data-integrity convention: 63
+  DATA_ERROR yfinance fetch fail/empty, 418 BLOCKED_DATA — 394 split/spike |ret|>50%,
+  23 insufficient history <300 rows, 2 high/low/close inconsistency).
+- NEXT STEP (Session A2): select next US slot 2 candidate per Filter 1 priority order in
+  strategy_register.md; full pre-registration (spec_hash freeze before data) per entry 45
+  pattern. No candidate work inside routine fires.
+- Observation parked in entry 46 (no action): trend-following's structurally low win rate
+  vs the 0.4 floor — future framework-level discussion via proper amendment process only.
 
 ## Supervised fire 2026-06-11 17:12Z — evidence
 - (a) PASS  spawn: PID 22860 at 17:12:01Z, parent=launcher powershell, exe=~\.local\bin\claude.exe
@@ -50,25 +62,33 @@
       design — banner is local-only). Entry "Tareq" + Step 1.3 refactor: blocked on lost text.
 
 ## Last actions
+- [21:33] decision_log entry 46 written: TSM-12 PORTFOLIO_FAIL verdict, full numbers + universe convention (1,603 frozen / 1,122 evaluated, exclusion rule listed); slot 2 OPEN, Session A2 next
+- [21:35] HANDOFF updated (verdict, slot status, Track 2 next step); committing verdict + validation_tsm12_us_1d.json + validation-session leftovers, then removing cron_paused.flag (rename convention) to resume Track 1
+- [10:45] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
+- [11:12] step 2 done foreground (detector ~26 min; harness auto-backgrounded, worker blocked on TaskOutput foreground wait per contract, sentinel refreshed at 20 min): 1030 watched, 8 entries, 8 exits, 38 open, 281 history; 2 fetch fails (EXAS/HOLX yfinance flaps) + 2 data-integrity skips (MCW/VRRM)
+- [11:13] steps 3-5: queue still EMPTY (WCK finalized, no auto-enrollment); dashboard regenerated (1.1 MB); sprint commit pushed; sentinel marked after every step
+- [10:15] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
+- [10:36] step 2 done foreground (detector ~20 min; harness auto-backgrounded, worker blocked on TaskOutput foreground wait per contract, sentinel refreshed at 20 min): 1030 watched, 8 entries, 8 exits, 38 open, 273 history; 3 fetch fails (ACVA/EXAS/HOLX yfinance flaps) + 2 data-integrity skips (MCW/VRRM)
+- [10:36] steps 3-5: queue still EMPTY (WCK finalized, no auto-enrollment); dashboard regenerated (1.1 MB); sprint commit pushed; sentinel marked after every step
+- [09:30] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
+- [09:47] step 2 first attempt CRASHED ~16 min in: PermissionError writing aig/audit_trail.md (transient OneDrive lock); write access re-verified OK, retried foreground per headless contract
+- [10:05] step 2 retry done foreground (harness auto-backgrounded, worker blocked on TaskOutput foreground wait per contract, sentinel refreshed between attempts): 1030 watched, 8 entries, 8 exits, 38 open, 265 history; 2 fetch fails (EXAS/HOLX yfinance flaps) + 2 data-integrity skips (MCW/VRRM)
+- [10:06] steps 3-5: queue still EMPTY (WCK finalized, no auto-enrollment); dashboard regenerated (1.1 MB); sprint commit pushed; sentinel marked after every step
+- [09:00] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
+- [09:18] step 2 done foreground (detector ~18 min; harness auto-backgrounded, worker blocked on TaskOutput foreground wait per contract, sentinel refreshed at 10 min): 1030 watched, 8 entries, 8 exits, 38 open, 257 history; 2 fetch fails (EXAS/HOLX yfinance flaps) + 2 data-integrity skips (MCW/VRRM)
+- [09:19] steps 3-5: queue still EMPTY (WCK finalized, no auto-enrollment); dashboard regenerated (1.1 MB); sprint commit pushed; sentinel marked after every step
+- [08:30] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
+- [08:48] step 2 done foreground (detector ~18 min; harness auto-backgrounded, worker blocked on TaskOutput foreground wait per contract): 1030 watched, 8 entries, 8 exits, 38 open, 249 history; 2 fetch fails (EXAS/HOLX yfinance flaps) + 2 data-integrity skips (MCW/VRRM)
+- [08:48] steps 3-5: queue still EMPTY (WCK finalized, no auto-enrollment); dashboard regenerated (1.1 MB); sprint commit pushed; sentinel marked after every step
+- [07:59] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
+- [08:17] step 2 done foreground (detector ~17 min; harness auto-backgrounded, worker blocked on TaskOutput foreground wait per contract): 1030 watched, 11 entries, 9 exits, 38 open, 241 history; 2 fetch fails (EXAS/HOLX yfinance flaps) + 3 data-integrity skips (CNR/MCW/VRRM)
+- [08:18] steps 3-5: queue still EMPTY (WCK finalized, no auto-enrollment); dashboard regenerated (1.1 MB); sprint commit 6dbb1b6 pushed; sentinel marked after every step
+- [07:29] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
+- [07:46] step 2 done foreground (detector ~16 min; harness auto-backgrounded, worker blocked on TaskOutput foreground wait per contract): 1030 watched, 7 entries, 7 exits, 36 open, 232 history; 2 fetch fails (EXAS/HOLX yfinance flaps) + ~73 data-integrity skips
+- [07:47] steps 3-5: queue still EMPTY (WCK finalized, no auto-enrollment); dashboard regenerated (1.1 MB); sprint commit 82146ac pushed; sentinel marked after every step
 - [06:59] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
 - [07:17] step 2 done foreground (detector ~17 min; harness auto-backgrounded, worker blocked on TaskOutput foreground wait per contract, sentinel refreshed at 8 and 16 min): 1030 watched, 7 entries, 7 exits, 36 open, 225 history; 2 fetch fails (EXAS/HOLX yfinance flaps) + ~40 data-integrity skips
 - [07:18] steps 3-5: queue still EMPTY (WCK finalized, no auto-enrollment); dashboard regenerated (1.1 MB); sprint commit 62e8741 pushed; sentinel marked after every step (last 03:18:07Z)
-- [06:29] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
-- [06:47] step 2 done foreground (detector ~17 min; harness auto-backgrounded, worker blocked on TaskOutput foreground wait per contract): 1030 watched, 7 entries, 7 exits, 36 open, 218 history; 2 fetch fails (EXAS/HOLX yfinance flaps) + 31 data-integrity skips
-- [06:47] steps 3-5: queue still EMPTY (WCK finalized, no auto-enrollment); dashboard regenerated (1.1 MB); sprint commit 62cb6d8 pushed; sentinel marked after every step (last 02:47:15Z)
-- [05:59] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
-- [06:17] step 2 done foreground (detector ~17 min; harness auto-backgrounded, worker blocked on TaskOutput foreground wait per contract): 1030 watched, 7 entries, 7 exits, 36 open, 211 history; 2 fetch fails (EXAS/HOLX yfinance flaps) + 31 data-integrity skips
-- [06:18] steps 3-5: queue still EMPTY (WCK finalized, no auto-enrollment); dashboard regenerated (1.1 MB); sprint commit 2ecda93 pushed; sentinel marked after every step (last 02:17:59Z)
-- [05:29] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
-- [05:46] step 2 done foreground (detector ~16 min; harness auto-backgrounded, worker polled process-exit foreground per contract, sentinel refreshed every 30s during poll): 1030 watched, 8 entries, 7 exits, 36 open, 204 history; 2 fetch fails (EXAS/HOLX yfinance flaps) + ~30 data-integrity skips
-- [05:47] steps 3-5: queue still EMPTY (WCK finalized, no auto-enrollment); dashboard regenerated (1.1 MB); sprint commit 1d51fb0 pushed; sentinel marked after every step (last 01:47:14Z)
-- [04:59] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
-- [05:17] step 2 done foreground (detector ~17 min; harness auto-backgrounded, worker polled process-exit foreground per contract): 1030 watched, 6 entries, 6 exits, 35 open, 197 history; 2 fetch fails (EXAS/HOLX yfinance flaps) + 32 data-integrity skips
-- [05:18] steps 3-5: queue still EMPTY (WCK finalized, no auto-enrollment); dashboard regenerated (1.1 MB); sprint commit eb236fb pushed; sentinel marked after every step (last 01:18:11Z)
-- [04:29] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
-- [04:47] step 2 done foreground (detector ~17 min; harness auto-backgrounded, worker polled process-exit foreground per contract): 1030 watched, 6 entries, 6 exits, 35 open, 191 history; 2 fetch fails (EXAS/HOLX yfinance flaps) + 32 data-integrity skips
-- [04:48] steps 3-5: queue still EMPTY (WCK finalized, no auto-enrollment); dashboard regenerated (1.1 MB); sprint commit c5347fe pushed; sentinel marked after every step (last 00:48:52Z)
-- [02:15-02:46] restoration fire: clean end-to-end (detector 23 entries/17 exits; commit 5f4152f); entry 44 written 02:55 post-exit (see "How to resume")
 
 ## Gotchas / context next session needs
 - Decision-log numbering is POSITIONAL (no id field). Planned map was 39 mandate / 40 scope /
