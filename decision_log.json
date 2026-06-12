@@ -742,5 +742,28 @@
     ],
     "ts_utc": "2026-06-12T19:33:49+00:00",
     "commit_sha": null
+  },
+  {
+    "title": "Pre-register TRB-50 (trial 41, trb50_us_1d) \u2014 second Phase 1 three-filter candidate, US slot 2, spec_hash a96ccdf5c0640e4f",
+    "methodology_source": "three_filter_methodology",
+    "decision": "TRB-50 (Trading Range Breakout per Brock/Lakonishok/LeBaron 1992: resistance = max(close) over prior 50 trading days shifted 1 bar; ENTRY when close > 1.01 x resistance; fixed 10-trading-day hold, exit at the 10th day's close; no stop, no leverage, long-only, re-entry only on a fresh breakout after flat) is pre-registered as trial 41 (trb50_us_1d, US-only) with spec_hash a96ccdf5c0640e4f, frozen at operator GO 2026-06-12 (Session A2, post entry-47 adjudication) BEFORE any test data was evaluated. Universe frozen at 1,603 tickers (universe/us_halal_full.txt, universe_sha256 6dfca4bd...775e4e bound inside the spec_hash; verified live this session \u2014 identical to the TSM-12-frozen value, zero dupes, no drift). n_trials_registered bumped 40 -> 41 in the same atomic commit as the trial-budget row, the canonical spec text, and the TRB50 config params (91fad62); tests 14/14 green at commit. PRE-DATA RULE-SET DECISIONS (operator-approved at GO, recorded per ruling): window=50 \u2014 BLL's primary variant and the highest-signal-frequency of the paper's {50,150,200}, chosen for statistical power toward the 1,000-trade portfolio floor; band=1% \u2014 a published variant of the paper's {0, 1%}, suppresses marginal penetrations; hold=10 trading days \u2014 the paper's own post-signal measurement window. None invented; all fixed before any data was touched. CANDIDATE DISPOSITIONS (operator approval covers both): C2 52-week-high (George & Hwang 2004, JF) -> DEFERRED QUEUE \u2014 the published form is cross-sectional ranking, which does not fit the per-ticker engine dispatch (F3), and a per-ticker adaptation would be building a variant before replicating the original (source-priority rule 2); C3 Donchian 20/10 (Turtle) -> REJECTED \u2014 T2 evidence and a near-duplicate of Pre-Framework DBO, which already failed honestly on the WR floor (re-selecting it would be iterating on a failed strategy). Engine implementation of the frozen spec follows pre-registration and precedes the staged_validate run, with A1 guardrails: spec-exact code, zero parameters beyond spec, edge-case conventions inherited from trials 1-40 and documented in the verdict entry (entry 49). Validation isolation via cron_paused.flag per the A1 pattern.",
+    "rationale": "Three filters applied live against the register: F1 archetype diversity \u2014 Phase 1 cleared is Divergence (pullback) only; trend_following (priority 1) was tested and failed honestly (TSM-12, trial 40, entry 46), so breakout (priority 2) is next; the only prior breakout (Pre-Framework DBO) failed honestly and is not re-selectable. F2 evidence tier \u2014 T1: BLL 1992 is peer-reviewed (Journal of Finance), ~90 years of DJIA data, independently replicated across markets (Bessembinder & Chan 1995; Hudson/Dempsey/Keasey 1996); recorded pre-data for honesty: Sullivan/Timmermann/White 1999 found the BLL rules' profits fade after data-snooping adjustment post-1986 \u2014 the gate adjudicates, failure is acceptable. F3 readiness \u2014 daily bars suffice, long-only (Rule 15), no leverage (Rule 16), halal universe, per-ticker time-series form fits the engine dispatch; the no-stop convention exists from TSM-12. Structural note recorded pre-data: TRB-50 faces the strict 0.40 WR floor (entry 47 made its permanence explicit); six trend/momentum-family near-misses failed only that floor, and the fixed 10-day hold's WR is an open empirical question \u2014 this is a hypothesis test, not a promise.",
+    "alternatives_considered": [
+      "C2: 52-week-high proximity (George & Hwang 2004) \u2014 deferred queue, not test queue (cross-sectional form incompatible with per-ticker engine; adaptation = variant before replication)",
+      "C3: Donchian 20/10 Turtle-style \u2014 rejected (T2; near-duplicate of failed Pre-Framework DBO; iterating on failed strategies is forbidden)",
+      "Window 150 or 200 from the paper's rule set \u2014 rejected pre-data (fewer signals; the 1,000-trade floor at monthly-scale signal frequency already killed UAE trials; statistical power favors 50)",
+      "Band 0% variant \u2014 rejected pre-data (marginal penetrations add noise trades; 1% is equally published)",
+      "Open-ended trend exit instead of fixed hold \u2014 rejected (not in the paper's TRB measurement; would be an invented parameter)"
+    ],
+    "audit_finding_refs": [
+      "entry 46 (TSM-12 verdict \u2014 trend_following tested-and-failed, slot 2 open)",
+      "entry 47 (Amendment 1 adjudication \u2014 strict 0.40 floor permanence; provenance rule)",
+      "entry 45 (TSM-12 pre-registration \u2014 spec_hash derivation convention, Path 2d-A pattern)",
+      "entry 8 (Phase 1 cap and slot structure)",
+      "entry 32 (framework amendment)",
+      "commit 91fad62 (atomic pre-registration)"
+    ],
+    "ts_utc": "2026-06-12T19:36:38+00:00",
+    "commit_sha": null
   }
 ]
