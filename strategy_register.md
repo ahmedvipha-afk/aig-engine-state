@@ -50,6 +50,20 @@ requires Method A (fresh OOS window) or Method B (forward data ≥ 6 mo).
 
 ### Amendment 1 — Archetype-based WR floor (CONDITIONAL, DORMANT)
 
+> **SUPERSEDED — PERMANENTLY DORMANT DEAD LETTER (decision_log entry 47,
+> 2026-06-12).** The activating condition ("auto-execution infrastructure
+> exists") is permanently void under the supervised operating model
+> (entries 39-40): no such layer exists or is authorized. This provision
+> can never activate and its config knobs were removed (entry 47); the
+> gate code only ever read the strict `min_win_rate = 0.40`, which bound
+> every trial 1-40 including TSM-12. The SUBSTANTIVE archetype-WR
+> question (incl. the dSharpe ≥ 1.5 / PF ≥ 2.0 / CI > 0 thresholds
+> below) is MERGED into the entry-46 parked discussion item — merits-
+> based, deliberate amendment process, decoupled from autonomy,
+> forward-only. Source directive recovered verbatim to
+> `ahmed_response_2026-05-22.md` (provenance: entry 47). Text below is
+> preserved unmodified as historical record.
+
 - `mean_reversion` / `pullback`: WR floor = **0.40 unchanged**.
 - `trend_following` / `breakout` / `momentum`: WR floor REMOVED iff
   dSharpe ≥ 1.5 AND profit factor ≥ 2.0 AND bootstrap CI lower bound on

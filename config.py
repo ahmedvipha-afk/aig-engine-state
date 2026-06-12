@@ -302,36 +302,16 @@ MARKET_COSTS = {
 # Framework finality: these amendments + the three-filter methodology in
 # strategy_register.md are FROZEN for 6 months from this commit date.
 
-# Amendment 1 -- archetype-based WR floor (DORMANT until auto-execution exists)
-# Mean-reversion + pullback strategies keep the 0.40 floor unchanged.
-# Trend-following / breakout / momentum strategies may use a relaxed floor
-# IF AND ONLY IF dSharpe >= 1.5 AND PF >= 2.0 AND bootstrap CI lower bound
-# on mean trade return > 0 AND auto-execution layer exists. None of these
-# qualifying conditions hold today -- AUTO_EXECUTION_LAYER_EXISTS = False.
-WR_FLOOR_BY_ARCHETYPE = {
-    "pullback":         0.40,
-    "mean_reversion":   0.40,
-    "trend_following":  None,   # relaxation eligible (gated by auto-execution)
-    "breakout":         None,   # relaxation eligible
-    "momentum":         None,   # relaxation eligible
-    "volatility_cycle": 0.40,   # not explicitly named in Amendment 1 -- strict
-    "statistical_arb":  0.40,   # long-only constraint limits these
-    "event_driven":     0.40,   # not explicitly named in Amendment 1 -- strict
-}
-
-WR_FLOOR_RELAXATION_THRESHOLDS = {
-    "min_dsharpe":             1.5,    # 3x the standard 0.5 floor
-    "min_profit_factor":       2.0,
-    "min_bootstrap_ci_lower":  0.0,    # mean trade return CI strictly > 0
-    "requires_auto_execution": True,
-}
-
-# Auto-execution layer is a Phase 2 infrastructure build. Until True, the
-# relaxed WR floor cannot activate; ALL strategies use the strict floor
-# regardless of archetype. Set this to True only after the auto-execution
-# layer is implemented AND passes its own validation (idempotency, slippage
-# modeling, fail-safe halt).
-AUTO_EXECUTION_LAYER_EXISTS = False
+# Amendment 1 -- archetype-based WR floor: SUPERSEDED, permanently dormant
+# dead letter (decision_log entry 47, 2026-06-12). The activating condition
+# (auto-execution infrastructure) is permanently void under the supervised
+# operating model (entries 39-40). The former WR_FLOOR_BY_ARCHETYPE /
+# WR_FLOOR_RELAXATION_THRESHOLDS / AUTO_EXECUTION_LAYER_EXISTS knobs were
+# removed by entry 47: the gate code never read them (only min_win_rate),
+# so gate behavior is unchanged; the strict 0.40 floor bound every trial
+# 1-40. The substantive archetype-WR question is merged into the entry-46
+# parked discussion item (proper amendment process, forward-only).
+# Source directive recovered verbatim: ahmed_response_2026-05-22.md.
 
 # Amendment 2 -- per-market trade-count floor
 # Replaces a single global min_trades with a fixed table keyed by market.
@@ -411,7 +391,7 @@ PORTFOLIO_GATE = {
     "min_trades": 1000,          # US default; per-market table is binding via min_trades_by_market
     "min_oos_sharpe": 0.5,       # deflated, with sqrt(2 ln N_trials) haircut
     "min_expectancy": 1.0,       # aggregate expectancy > 1.0
-    "min_win_rate": 0.40,        # legacy strict floor; superseded by wr_floor_by_archetype when archetype set
+    "min_win_rate": 0.40,        # strict floor, binding for all archetypes -- see entries 46/47
     "min_universe_coverage": 0.05, # at least 5% of universe must contribute trades
     "bootstrap_iters": 2000,
     "bootstrap_conf": 0.95,
@@ -429,9 +409,6 @@ PORTFOLIO_GATE = {
     "profit_factor_min_n":               PROFIT_FACTOR_MIN_N,              # Amendment 3
     "min_oos_calendar_months":           MIN_OOS_CALENDAR_MONTHS,          # Amendment 6
     "min_oos_to_is_sharpe_ratio":        MIN_OOS_TO_IS_SHARPE_RATIO,       # Amendment 2 extension
-    "wr_floor_by_archetype":             WR_FLOOR_BY_ARCHETYPE,            # Amendment 1
-    "wr_floor_relaxation_thresholds":    WR_FLOOR_RELAXATION_THRESHOLDS,   # Amendment 1
-    "auto_execution_layer_exists":       AUTO_EXECUTION_LAYER_EXISTS,      # Amendment 1 gate
     "gcc_universe_enabled":              GCC_UNIVERSE_ENABLED,             # Amendment 5
 
     # Framework finality (binding): freeze begins on this commit's date.
