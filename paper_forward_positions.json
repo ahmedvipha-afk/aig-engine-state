@@ -2915,10 +2915,64 @@
       "exit_price": 133.765,
       "exit_reason": "rsi_or_trend_exit",
       "pnl_pct": -0.0
+    },
+    {
+      "ticker": "BROS",
+      "entry_date": "2026-06-12",
+      "entry_price": 66.335,
+      "exit_date": "2026-06-12",
+      "exit_price": 66.335,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": -0.0
+    },
+    {
+      "ticker": "CAVA",
+      "entry_date": "2026-06-12",
+      "entry_price": 91.065,
+      "exit_date": "2026-06-12",
+      "exit_price": 91.065,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": 0.0
+    },
+    {
+      "ticker": "FOR",
+      "entry_date": "2026-06-12",
+      "entry_price": 29.3,
+      "exit_date": "2026-06-12",
+      "exit_price": 29.3,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": -0.0
+    },
+    {
+      "ticker": "GCO",
+      "entry_date": "2026-06-12",
+      "entry_price": 43.03,
+      "exit_date": "2026-06-12",
+      "exit_price": 43.03,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": -0.0
+    },
+    {
+      "ticker": "MAS",
+      "entry_date": "2026-06-12",
+      "entry_price": 74.52,
+      "exit_date": "2026-06-12",
+      "exit_price": 74.52,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": -0.0
+    },
+    {
+      "ticker": "MTH",
+      "entry_date": "2026-06-12",
+      "entry_price": 74.64,
+      "exit_date": "2026-06-12",
+      "exit_price": 74.64,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": -0.0
     }
   ],
-  "last_run": "2026-06-12T22:08:22+04:00",
-  "last_run_summary": "watched 1030 tickers \u00b7 14 new entries \u00b7 8 exits \u00b7 open positions 44 \u00b7 history 289",
+  "last_run": "2026-06-12T22:41:04+04:00",
+  "last_run_summary": "watched 1030 tickers \u00b7 6 new entries \u00b7 6 exits \u00b7 open positions 44 \u00b7 history 295",
   "watch_list": [
     "A",
     "AA",
