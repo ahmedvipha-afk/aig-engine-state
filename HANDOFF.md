@@ -1,8 +1,8 @@
 # Project Handoff State
 
 **Project:** aig_engine
-**Last updated:** 2026-06-12 03:48 (GST)
-**Current phase:** Block 2 (Track 1 LIVE) — routine fire 23:29Z ran headless end-to-end: all 5 SKILL steps in one turn. Third consecutive clean headless fire; contract fixes holding.
+**Last updated:** 2026-06-12 04:18 (GST)
+**Current phase:** Block 2 (Track 1 LIVE) — routine fire 23:59Z ran headless end-to-end: all 5 SKILL steps in one turn. Fourth consecutive clean headless fire; contract fixes holding.
 **Current task:** idle between scheduled fires (cron_paused.flag DOWN since 2026-06-11T22:01:48Z; AIG-Mode1-Sprint task live)
 
 ## Supervised fire 2026-06-11 17:12Z — evidence
@@ -50,6 +50,9 @@
       design — banner is local-only). Entry "Tareq" + Step 1.3 refactor: blocked on lost text.
 
 ## Last actions
+- [04:00] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
+- [04:17] step 2 done foreground (detector ~17 min; harness auto-backgrounded, worker blocked on TaskOutput foreground wait per contract): 1030 watched, 6 entries, 6 exits, 35 open, 185 history; 2 fetch fails (EXAS/HOLX yfinance flaps) + 32 data-integrity skips
+- [04:18] steps 3-5: queue still EMPTY (WCK finalized, no auto-enrollment); dashboard regenerated (1.1 MB); sprint commit ee4c545 pushed; sentinel marked after every step (last 00:18:18Z)
 - [03:30] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
 - [03:47] step 2 done foreground (detector ~17 min; harness auto-backgrounded, worker blocked on TaskOutput foreground wait per contract): 1030 watched, 8 entries, 6 exits, 35 open, 179 history; 2 fetch fails (EXAS/HOLX yfinance flaps) + 31 data-integrity skips
 - [03:48] steps 3-5: queue still EMPTY (WCK finalized, no auto-enrollment); dashboard regenerated (1.1 MB); sprint commit 1dfeaf9 pushed; sentinel marked after every step
@@ -60,15 +63,7 @@
 - [02:39] step 2 done foreground (detector ran ~20 min under yfinance flaps EXAS/HOLX; harness auto-backgrounded the call — worker blocked on a foreground wait loop instead of ending turn; mid-wait sentinel refresh at 22:35Z): 1030 watched, 23 entries, 17 exits, 33 open, 166 history
 - [02:43] step 3: staged queue EMPTY — WCK finalized; no auto-enrollment per directive
 - [02:44] steps 4-5: dashboard regenerated (1.1 MB); sprint commit 5f4152f pushed; sentinel marked after every step (last 22:45:06Z)
-- [02:46] entry 44 NOT yet written: criteria (e) clean exit and (f) watchdog behavior are only observable after this process exits — operator to verify and write entry 44
-- [19:46] pushed v1.5 as d21dee6 (root-caused push failure: logged-out gh helper shadows GCM; fix: -c credential.https://github.com.helper=manager)
-- [19:52] Step 0.4: 2e293f7 runtime sync; 930835d gitignore; _head_wa.json unreferenced -> ignored; crash_log_dryrun.md meaningful -> reported
-- [19:58] Step 0.5: entry 38 mirrored into decision_log.json, dbdc027 pushed
-- [20:00] found work-block plan in transcript 60142804 line 124 — TRUNCATED at 7,857 chars mid Step 1.3; exhaustive search: no full copy exists
-- [20:03] entry 39 appended via decision_log_append.py, 658ed8c pushed (Rule 8 1.5% cap verified verbatim at _instructions_v7.txt:192)
-- [20:06] entry 40 + ARCHIVED banner on _scope_v7.txt (verified: 3x/10x line 14, CEO Fully Autonomous line 11, 27 agents line 92), 2d94f5c pushed
-- [20:08] Bug D verified: session_resume_prompt.txt is status-only (5 verify items + "Report status before continuing"; no sprint instruction)
-- [20:09] Phase 2 verdict entry appended at position 41 with numbering note, b59d851 pushed
+- [02:46] entry 44 NOT yet written: criteria (e) clean exit and (f) watchdog behavior are only observable after this process exits — operator to verify and write entry 44 (RESOLVED: written 02:55, see "How to resume")
 
 ## Gotchas / context next session needs
 - Decision-log numbering is POSITIONAL (no id field). Planned map was 39 mandate / 40 scope /
