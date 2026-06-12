@@ -913,14 +913,15 @@ trial means appending a row here BEFORE the run; the haircut recomputes.
 | 37 | `wck_uae_1d`          | wck        | UAE    | 1D | yfinance+cache  | 2026-05-22 (Sprint Obj-6 advance post-GAP) | pending (staged) | pending |
 | 38 | `wck_crypto_1d`       | wck        | CRYPTO | 1D | yfinance        | 2026-05-22 (Sprint Obj-6 advance post-GAP) | pending (staged) | pending |
 | 39 | `wck_us_1d`           | wck        | US     | 1D | yfinance        | 2026-05-22 (Sprint Obj-6 advance post-GAP) | pending (staged) | pending |
-| 40 | `tsm12_us_1d`         | tsm12      | US     | 1D | yfinance        | 2026-06-12 (Track 2 Session A1, three-filter) | pending | pending |
+| 40 | `tsm12_us_1d`         | tsm12      | US     | 1D | yfinance        | 2026-06-12 (Track 2 Session A1, three-filter) | 2026-06-12 | **PORTFOLIO_FAIL** — 3,473 trades, exp 1.0537, WR 29.9% (< 40% floor), raw Sharpe 0.284, dSharpe -0.395 (< 0.5, n=40 haircut), CI lo -0.0085 (not > 0). Honest FAIL, decision_log entry 46. Slot 2 stayed open. |
+| 41 | `trb50_us_1d`         | trb50      | US     | 1D | yfinance        | 2026-06-12 (Track 2 Session A2, three-filter) | pending | pending |
 
 **`config.PORTFOLIO_GATE.n_trials_registered` must equal the row count above.**
-Current value: **40** (bumped 39 → 40 when TSM-12 registered 2026-06-12
-Track 2 Session A1, in the same commit that added trial row 40 and the
-TSM-12 canonical spec below — first Phase 1 three-filter candidate and
-first single-market trial; the 13 Pre-Framework strategies all ran ×3
-markets).
+Current value: **41** (bumped 40 → 41 when TRB-50 registered 2026-06-12
+Track 2 Session A2, in the same commit that added trial row 41 and the
+TRB-50 canonical spec below — second Phase 1 three-filter candidate,
+second single-market trial. Previously bumped 39 → 40 for TSM-12,
+Session A1; the 13 Pre-Framework strategies all ran ×3 markets).
 
 ### How to add a trial (procedure)
 
@@ -968,6 +969,51 @@ config.py (`TSM12_LOOKBACK_DAYS`); the hash binds spec + universe content
   NOTE: this derivation convention is defined HERE (the prior session's
   convention and its hash `10d76bc7e0ee5e28` were lost with that session
   and exist nowhere on disk; not comparable).
+
+### TRB-50 canonical spec (trial 41, frozen 2026-06-12, spec_hash `a96ccdf5c0640e4f`)
+
+Approved by operator 2026-06-12 (Track 2 Session A2 GO, post entry-47
+adjudication). Params live in config.py (`TRB50_WINDOW_DAYS`, `TRB50_BAND`,
+`TRB50_HOLD_DAYS`); the hash binds spec + universe content (Path 2d-A:
+params in config.py, hash in register only — TSM-12 convention).
+
+- **Name:** TRB-50 | **Trial id:** `trb50_us_1d` | **Archetype:**
+  `breakout` | **Tier:** T1 (Brock, Lakonishok & LeBaron 1992, Journal of
+  Finance — Trading Range Breakout; replications: Bessembinder & Chan
+  1995, Hudson/Dempsey/Keasey 1996. Recorded pre-data:
+  Sullivan/Timmermann/White 1999 data-snooping critique — the gate
+  adjudicates; failure acceptable).
+- **Signal:** resistance = max(close) over the prior 50 trading days,
+  shifted 1 bar (look-ahead-free, trials 1-39 convention). ENTRY when
+  close > (1 + 0.01) × resistance — the paper's 1% band variant.
+- **Hold/exit:** fixed 10 trading days; exit at the close of the 10th
+  trading day after entry (the paper's post-signal measurement window).
+  No stop (infinite stop distance, TSM-12 convention). Long-only —
+  no signal = flat, never short. No leverage. Re-entry only on a fresh
+  breakout event after flat (edge-triggered).
+- **Pre-data rule-set choices (operator-approved, none invented):**
+  window=50 (BLL primary variant; most signals → statistical power
+  toward the 1,000-trade floor), band=1% (published variant), hold=10
+  days (the paper's measurement window). All fixed before any data.
+- **Universe:** universe/us_halal_full.txt, 1,603 tickers, FROZEN at
+  pre-registration. universe_sha256 =
+  `6dfca4bd8ddafb0c33a42ced44452157c4108b7e60e768016db09f7aad775e4e`
+  (verified live 2026-06-12 Session A2: 1,603 symbols, zero dupes,
+  hash identical to the TSM-12-frozen value — no drift).
+- **Data/engine:** yfinance daily bars (1D), same as trials 1–40. Costs:
+  US market model per `config.MARKET_COSTS` — commission 1.0 bps, spread
+  2.0 bps, slippage 3.0 bps.
+- **Filters:** F1 `breakout` = priority 2; trend_following tested-and-
+  failed honestly (TSM-12, entry 46) ✓; F2 T1 evidence ✓ (C2 52-week-high
+  George & Hwang 2004 → deferred queue: cross-sectional form does not fit
+  the per-ticker engine, adaptation = variant-before-replication; C3
+  Donchian/Turtle → rejected: T2 + near-duplicate of failed Pre-Framework
+  DBO); F3 daily data, long-only (Rule 15), no leverage (Rule 16), halal
+  universe ✓.
+- **spec_hash:** `a96ccdf5c0640e4f` — first 16 hex of SHA-256 over the
+  UTF-8 param string (one line, literal pipes, no whitespace between
+  fields; TSM-12 derivation convention):
+  `trial_id=trb50_us_1d|strategy=trb50|archetype=breakout|tier=T1|signal=trading_range_breakout_BLL1992|resistance=max_close_prior_50d_shift1|band=0.01|entry=close>(1+band)*resistance|hold=fixed_10_trading_days|exit=close_of_10th_trading_day_after_entry|reentry=new_breakout_event_after_flat|side=long_only|stops=none|leverage=none|timeframe=1D|engine=yfinance|costs=US:commission_bps=1.0,spread_bps=2.0,slippage_bps=3.0|universe=us_halal_full.txt|universe_n=1603|universe_sha256=6dfca4bd8ddafb0c33a42ced44452157c4108b7e60e768016db09f7aad775e4e`
 
 ---
 

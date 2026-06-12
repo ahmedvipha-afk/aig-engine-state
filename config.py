@@ -242,6 +242,23 @@ WCK_STOP_ATR_MULT        = 1.0    # tight stop -- wick rejection thesis breaks f
 # lookback below, per the frozen spec.
 TSM12_LOOKBACK_DAYS = 252   # 12-month total-return window (trading days)
 
+# ---- TRB-50 strategy (frozen 2026-06-12, Track 2 Session A2) ------------
+# Trading Range Breakout per Brock/Lakonishok/LeBaron 1992 (Journal of
+# Finance) -- trial 41, trb50_us_1d, spec_hash a96ccdf5c0640e4f (canonical
+# spec + hash derivation live in strategy_register.md; Path 2d-A).
+# Signal: resistance = max(close) over the prior TRB50_WINDOW_DAYS bars,
+# shifted 1 bar (look-ahead-free, trials 1-39 convention). ENTRY when
+# close > (1 + TRB50_BAND) * resistance. Fixed hold: exit at the close of
+# the TRB50_HOLD_DAYS-th trading day after entry (the paper's post-signal
+# measurement window). NO stop (engine _stop_distance returns +inf for
+# trb50), no leverage, long-only; re-entry only on a fresh breakout event
+# after flat. All three values below are the paper's published rule set
+# (window in {50,150,200}, band in {0,0.01}, 10-day window) -- frozen
+# pre-data at operator approval; zero tunable parameters beyond them.
+TRB50_WINDOW_DAYS = 50    # resistance lookback (trading days)
+TRB50_BAND = 0.01         # 1% penetration band (published variant)
+TRB50_HOLD_DAYS = 10      # fixed holding period (trading days)
+
 # ---- HAT strategy (frozen 2026-05-21 Fire 14:55 UTC) --------------------
 # Heikin-Ashi Trend Continuation. Long-only signal derived from SMOOTHED
 # (Heikin-Ashi) candles rather than raw OHLC. Pre-registered BEFORE any
@@ -395,10 +412,13 @@ PORTFOLIO_GATE = {
     "min_universe_coverage": 0.05, # at least 5% of universe must contribute trades
     "bootstrap_iters": 2000,
     "bootstrap_conf": 0.95,
-    "n_trials_registered": 40,   # 13 sprint-loop strategies (ema200..wck) x 3 markets x 1D = 39
+    "n_trials_registered": 41,   # 13 sprint-loop strategies (ema200..wck) x 3 markets x 1D = 39
                                  # (all tagged Pre-Framework per Phase 1 directive 2026-05-22),
                                  # + trial 40: tsm12_us_1d (first Phase 1 three-filter candidate,
-                                 # US-only, pre-registered 2026-06-12, spec_hash efe8ac7b47f10a0f).
+                                 # US-only, pre-registered 2026-06-12, spec_hash efe8ac7b47f10a0f,
+                                 # verdict PORTFOLIO_FAIL per entry 46),
+                                 # + trial 41: trb50_us_1d (second three-filter candidate, US-only,
+                                 # pre-registered 2026-06-12 Session A2, spec_hash a96ccdf5c0640e4f).
                                  # Phase 1 candidates add NEW trials on top -- the count only grows,
                                  # the haircut only tightens.
 
