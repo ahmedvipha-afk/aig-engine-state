@@ -132,6 +132,82 @@ def test_tsm12_end_to_end_engine_run():
     assert bt["strategy"] == "tsm12"
 
 
+def _trb_df(closes):
+    idx = pd.bdate_range("2020-01-01", periods=len(closes))
+    c = pd.Series(closes, index=idx, dtype=float)
+    return pd.DataFrame({"open": c, "high": c * 1.01, "low": c * 0.99,
+                         "close": c, "volume": pd.Series([1e6] * len(c), index=idx)},
+                        index=idx)
+
+
+def test_trb50_warmup_and_no_lookahead():
+    from aig.strategy_trb50 import signals as tsig
+    from config import TRB50_WINDOW_DAYS
+    # flat 100s, then a single spike: the spike bar's own close must not
+    # be part of the resistance it is tested against (shift 1)
+    closes = [100.0] * 80 + [200.0] + [100.0] * 19
+    s = tsig(_trb_df(closes))
+    # warmup: ema sentinel (resistance) NaN for the first WINDOW bars
+    assert s["ema"].iloc[:TRB50_WINDOW_DAYS].isna().all()
+    assert not np.isnan(s["ema"].iloc[TRB50_WINDOW_DAYS])
+    # resistance at the spike bar reflects only PRIOR closes (=100)
+    assert s["resistance"].iloc[80] == 100.0
+    # the spike bar IS the entry (200 > 1.01*100); had the rolling max
+    # included the current bar, resistance would be 200 and no entry fires
+    assert bool(s["entry"].iloc[80])
+
+
+def test_trb50_band_required():
+    from aig.strategy_trb50 import signals as tsig
+    # close pokes only 0.9% above the trailing max: below the 1% band
+    closes = [100.0] * 80 + [100.9] + [100.0] * 19
+    s = tsig(_trb_df(closes))
+    assert not s["entry"].any()
+    # 1.1% above clears the band
+    closes2 = [100.0] * 80 + [101.1] + [100.0] * 19
+    s2 = tsig(_trb_df(closes2))
+    assert bool(s2["entry"].iloc[80])
+
+
+def test_trb50_fixed_hold_and_no_reentry_while_in_pos():
+    from aig.strategy_trb50 import signals as tsig
+    from config import TRB50_HOLD_DAYS
+    # breakout at bar 80, then keep rising >1%/day (continuous breakout
+    # conditions): only ONE entry may be marked until the fixed exit
+    closes = [100.0] * 80 + [100.0 * 1.02 ** k for k in range(1, 21)]
+    s = tsig(_trb_df(closes))
+    entries = list(np.flatnonzero(s["entry"].to_numpy()))
+    exits = list(np.flatnonzero(s["exit_signal"].to_numpy()))
+    assert entries[0] == 80
+    assert exits[0] == 80 + TRB50_HOLD_DAYS          # exactly 10 bars later
+    assert all(e > exits[0] for e in entries[1:])    # no entry while in pos
+    if len(entries) > 1:                             # re-entry after flat only
+        assert entries[1] >= exits[0] + 1
+
+
+def test_trb50_open_position_at_end_has_no_exit():
+    from aig.strategy_trb50 import signals as tsig
+    # entry fires 5 bars before end: hold window passes the end of data,
+    # no exit_signal anywhere (engine discards the unclosed trade)
+    closes = [100.0] * 80 + [200.0] + [200.0] * 4
+    s = tsig(_trb_df(closes))
+    assert bool(s["entry"].iloc[80])
+    assert not s["exit_signal"].any()
+
+
+def test_trb50_no_stop_is_infinite():
+    import math
+    from aig.backtest import _stop_distance
+    assert math.isinf(_stop_distance("trb50", {"atr": 0.0}))
+
+
+def test_trb50_end_to_end_engine_run():
+    from aig.backtest import split_backtest
+    bt = split_backtest("SYN", _df(900), timeframe="1d", strategy="trb50")
+    assert isinstance(bt["is_trades"], list)
+    assert bt["strategy"] == "trb50"
+
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     passed = 0

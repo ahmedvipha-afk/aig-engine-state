@@ -64,6 +64,9 @@ def _strategy_signals(name: str, df: pd.DataFrame) -> pd.DataFrame:
     if name == "tsm12":
         from aig.strategy_tsm12 import signals
         return signals(df)
+    if name == "trb50":
+        from aig.strategy_trb50 import signals
+        return signals(df)
     raise ValueError(f"unknown strategy: {name}")
 
 
@@ -112,6 +115,9 @@ def _stop_distance(name: str, row) -> float:
     if name == "tsm12":
         # Frozen spec efe8ac7b47f10a0f: NO stop. Infinite distance means
         # stop_px = -inf and row["low"] <= stop_px is never true.
+        return float("inf")
+    if name == "trb50":
+        # Frozen spec a96ccdf5c0640e4f: NO stop (fixed 10-day hold only).
         return float("inf")
     raise ValueError(name)
 
