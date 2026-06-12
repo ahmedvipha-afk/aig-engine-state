@@ -50,6 +50,9 @@
       design — banner is local-only). Entry "Tareq" + Step 1.3 refactor: blocked on lost text.
 
 ## Last actions
+- [06:29] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
+- [06:47] step 2 done foreground (detector ~17 min; harness auto-backgrounded, worker blocked on TaskOutput foreground wait per contract): 1030 watched, 7 entries, 7 exits, 36 open, 218 history; 2 fetch fails (EXAS/HOLX yfinance flaps) + 31 data-integrity skips
+- [06:47] steps 3-5: queue still EMPTY (WCK finalized, no auto-enrollment); dashboard regenerated (1.1 MB); sprint commit 62cb6d8 pushed; sentinel marked after every step (last 02:47:15Z)
 - [05:59] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
 - [06:17] step 2 done foreground (detector ~17 min; harness auto-backgrounded, worker blocked on TaskOutput foreground wait per contract): 1030 watched, 7 entries, 7 exits, 36 open, 211 history; 2 fetch fails (EXAS/HOLX yfinance flaps) + 31 data-integrity skips
 - [06:18] steps 3-5: queue still EMPTY (WCK finalized, no auto-enrollment); dashboard regenerated (1.1 MB); sprint commit 2ecda93 pushed; sentinel marked after every step (last 02:17:59Z)
@@ -65,9 +68,6 @@
 - [04:00] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
 - [04:17] step 2 done foreground (detector ~17 min; harness auto-backgrounded, worker blocked on TaskOutput foreground wait per contract): 1030 watched, 6 entries, 6 exits, 35 open, 185 history; 2 fetch fails (EXAS/HOLX yfinance flaps) + 32 data-integrity skips
 - [04:18] steps 3-5: queue still EMPTY (WCK finalized, no auto-enrollment); dashboard regenerated (1.1 MB); sprint commit ee4c545 pushed; sentinel marked after every step (last 00:18:18Z)
-- [03:30] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
-- [03:47] step 2 done foreground (detector ~17 min; harness auto-backgrounded, worker blocked on TaskOutput foreground wait per contract): 1030 watched, 8 entries, 6 exits, 35 open, 179 history; 2 fetch fails (EXAS/HOLX yfinance flaps) + 31 data-integrity skips
-- [03:48] steps 3-5: queue still EMPTY (WCK finalized, no auto-enrollment); dashboard regenerated (1.1 MB); sprint commit 1dfeaf9 pushed; sentinel marked after every step
 - [02:15-02:46] restoration fire: clean end-to-end (detector 23 entries/17 exits; commit 5f4152f); entry 44 written 02:55 post-exit (see "How to resume")
 
 ## Gotchas / context next session needs
