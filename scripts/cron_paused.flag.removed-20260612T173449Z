@@ -1,0 +1,7 @@
+﻿PAUSED 2026-06-12 by Track 2 Session A1 (TSM-12 trial 40, spec_hash efe8ac7b47f10a0f).
+REASON: canonical validation isolation. The staged_validate run for tsm12_us_1d and the
+engine-implementation commits must not race the sprint fires (shared working tree: fires
+run commit_session.ps1 which would sweep uncommitted implementation files; fires also call
+staged_validate --step which would double-run queue batches).
+Track 1 resumes when this flag is deleted at the end of the validation run (same session).
+Missed fires are handled by sprint_catchup per design.
