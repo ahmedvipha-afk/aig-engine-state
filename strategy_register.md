@@ -135,7 +135,7 @@ deviate without Ahmed approval logged in `decision_log`.
 | Slot | Status | Strategy | Notes |
 |------|--------|----------|-------|
 | 1 | FILLED | Divergence Daily | Grandfathered from Session 5 framework selection |
-| 2 | OPEN | — | Pending methodology output |
+| 2 | FILLED | TRB-50 (breakout) | Three-filter output, trial 41 CLEARED 2026-06-12 (entry 49); trend_following tested-and-failed first (TSM-12, trial 40, entry 46) |
 | 3 | OPEN | — | Pending methodology output |
 | 4 | OPEN | — | Pending methodology output |
 
@@ -914,7 +914,7 @@ trial means appending a row here BEFORE the run; the haircut recomputes.
 | 38 | `wck_crypto_1d`       | wck        | CRYPTO | 1D | yfinance        | 2026-05-22 (Sprint Obj-6 advance post-GAP) | pending (staged) | pending |
 | 39 | `wck_us_1d`           | wck        | US     | 1D | yfinance        | 2026-05-22 (Sprint Obj-6 advance post-GAP) | pending (staged) | pending |
 | 40 | `tsm12_us_1d`         | tsm12      | US     | 1D | yfinance        | 2026-06-12 (Track 2 Session A1, three-filter) | 2026-06-12 | **PORTFOLIO_FAIL** — 3,473 trades, exp 1.0537, WR 29.9% (< 40% floor), raw Sharpe 0.284, dSharpe -0.395 (< 0.5, n=40 haircut), CI lo -0.0085 (not > 0). Honest FAIL, decision_log entry 46. Slot 2 stayed open. |
-| 41 | `trb50_us_1d`         | trb50      | US     | 1D | yfinance        | 2026-06-12 (Track 2 Session A2, three-filter) | pending | pending |
+| 41 | `trb50_us_1d`         | trb50      | US     | 1D | yfinance        | 2026-06-12 (Track 2 Session A2, three-filter) | 2026-06-12 | **PORTFOLIO_CLEARED_FOR_PAPER_FORWARD** — 25,760 trades, exp 1.1521, **WR 50.97%** (first breakout-archetype clear of the 0.40 floor), raw Sharpe 3.483, **dSharpe 2.8021** (n=41 haircut), CI [+0.0032, +0.0052], 1,115/1,122 contributors (99.38% coverage — highest of any trial). decision_log entry 49. **US slot 2 FILLED.** Deployment pending watch-list pre-registration. |
 
 **`config.PORTFOLIO_GATE.n_trials_registered` must equal the row count above.**
 Current value: **41** (bumped 40 → 41 when TRB-50 registered 2026-06-12

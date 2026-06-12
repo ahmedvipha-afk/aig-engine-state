@@ -1,21 +1,29 @@
 # Project Handoff State
 
 **Project:** aig_engine
-**Last updated:** 2026-06-12 22:14 (GST)
-**Current phase:** Block 2 — Track 1 LIVE: first catch-up fire after flag removal COMPLETED ~18:14Z (MISSED_FIRES=41; ran 1 full iteration, residual catch-up drains next fires per SKILL time-budget overflow rule). US slot 2 remains OPEN (TSM-12 PORTFOLIO_FAIL, entry 46); Session A2 candidate selection is the next Ahmed-supervised step.
-**Current task:** idle between scheduled fires; routine 15-min fires drain residual catch-up debt
+**Last updated:** 2026-06-13 00:55 (GST)
+**Current phase:** Block 2 — Track 2 Session A2 CLOSED: TRB-50 (trial 41, trb50_us_1d, spec_hash a96ccdf5c0640e4f) CLEARED — PORTFOLIO_CLEARED_FOR_PAPER_FORWARD at 20:37Z (entry 49: 25,760 trades, exp 1.1521, WR 50.97%, dSharpe 2.8021 @ n=41, CI strictly positive, 99.38% coverage). **US SLOT 2 FILLED** (slots: 1 Divergence, 2 TRB-50, 3-4 open). Session also produced entry 47 (Amendment 1 adjudication: provenance ratified from transcript 57451b12, provision superseded as dead letter, directive recovered to ahmed_response_2026-05-22.md, config knobs removed) and entry 48 (TRB-50 pre-registration).
+**Current task:** remove cron_paused.flag, verify catch-up fire, then idle; Track 1 routine fires resume
 
-## Track 2 status (after Session A1)
-- TSM-12 FAILED the gate — no re-run, no tuning; spec stays frozen, result stands (entry 46).
-- Universe convention documented in entry 46: spec froze 1,603 tickers; engine evaluated
-  1,122 (481 excluded by the trials 1-39 pre-backtest data-integrity convention: 63
-  DATA_ERROR yfinance fetch fail/empty, 418 BLOCKED_DATA — 394 split/spike |ret|>50%,
-  23 insufficient history <300 rows, 2 high/low/close inconsistency).
-- NEXT STEP (Session A2): select next US slot 2 candidate per Filter 1 priority order in
-  strategy_register.md; full pre-registration (spec_hash freeze before data) per entry 45
-  pattern. No candidate work inside routine fires.
-- Observation parked in entry 46 (no action): trend-following's structurally low win rate
-  vs the 0.4 floor — future framework-level discussion via proper amendment process only.
+## Track 2 status (after Session A2)
+- TRB-50 CLEARED honestly under the strict gate (same code that failed trials 1-40);
+  win-rate hypothesis confirmed: fixed 10-day hold → WR 50.97% vs trend-family ~23-35%.
+- TRB-50 is CLEARED-NOT-DEPLOYED. NEXT operator-supervised step: paper-forward
+  deployment per the frozen watch-list protocol — selection from the 1,115-ticker
+  cleared-contributor set must be PRE-REGISTERED before any signal fires
+  (Improvement 1 / audit NEW-1 precedent). Do NOT let routine fires improvise this.
+- Slots 3-4: next candidate per Filter 1 priority (momentum is next untested archetype;
+  trend_following failed honestly via TSM-12, breakout cleared via TRB-50) — Session A3.
+- Entry 46 parked item now also carries the Amendment-1 substantive question (entry 47
+  merge): archetype-WR floor relief on merits, proper amendment process, forward-only.
+- Universe/exclusion convention: identical 481-exclusion profile in trials 40 and 41
+  (63 DATA_ERROR, 418 BLOCKED_DATA: 394 split/spike, 23 short history, 2 hi/lo) —
+  documented in entries 46/49. The 394 split/spike blocks remain a data-quality
+  investigation item for infrastructure time.
+- HOST DISK WARNING: C: (253GB) hit 0 bytes free 2026-06-12 ~19:57Z and killed the
+  first validation launch (no state corruption; clean restart). Reclaimed ~3.9GB
+  (npm cache, stale temp). Remaining big levers need operator decision: Recycle Bin
+  12.7GB; OneDrive local-copy dehydration. This WILL recur.
 
 ## Supervised fire 2026-06-11 17:12Z — evidence
 - (a) PASS  spawn: PID 22860 at 17:12:01Z, parent=launcher powershell, exe=~\.local\bin\claude.exe
@@ -62,6 +70,14 @@
       design — banner is local-only). Entry "Tareq" + Step 1.3 refactor: blocked on lost text.
 
 ## Last actions
+- [00:37] TRB-50 staged run FINALIZED: PORTFOLIO_CLEARED_FOR_PAPER_FORWARD — 25,760 trades / 1,115 contributors / exp 1.1521 / WR 0.5097 / dSharpe 2.8021 @ n=41 / CI [+0.0032,+0.0052]; one clean 31-min pass (9 batches + finalize) under config_hash c7ff799942e2c8da
+- [00:50] entry 49 verdict written; register row 41 + slot table updated (slot 2 FILLED); HANDOFF updated; committing verdict package then removing cron_paused.flag
+- [23:57] first validation launch DIED 5 min in: C: disk 0 bytes free; queue verified clean (0/1603, no partial); reclaimed ~3.9GB regenerable caches (npm 2GB, temp 360MB); relaunched clean
+- [23:50] cron_paused.flag UP (A2 validation isolation, documented reason); trb50_us_1d enrolled US-only (1,603 tickers, universe sha verified = frozen value)
+- [23:45] TRB-50 implemented spec-exact: aig/strategy_trb50.py (position-aware pass), dispatch + inf stop, 6 conformance tests, suite 20/20 green (715e38d)
+- [23:30] entry 48 pre-registration committed (03df618) after atomic pre-reg 91fad62 (row 41 + canonical spec + n_trials 40->41 + TRB50 params)
+- [23:15] entry 47 adjudication committed (c95fe0d): directive recovered verbatim from transcript 57451b12 to ahmed_response_2026-05-22.md; Amendment 1 superseded (register banner); config knobs removed, config_hash -> 2fa0e2f8cef4093d (then -> c7ff799942e2c8da at pre-reg); same-session-file rule recorded
+- [18:44] routine fire complete headless (claude -p): MISSED_FIRES=0, 1 iteration; detector ~26 min foreground-waited (sentinel refreshed mid-run): 1030 watched, 6 entries/6 exits (BROS, CAVA, FOR, GCO, MAS, MTH — same-day round trips), 44 open/295 history; EXAS/HOLX yfinance fetch fails, CNR/VRRM split-spike + MCW history integrity skips; queue EMPTY; dashboard regenerated (1.1 MB); commit 5479be7 pushed to origin/main
 - [22:17] catch-up fire VERIFIED by supervising session: sprint commit 23fa516 landed 18:11Z and is on origin/main; worker PID 17268 (spawned 17:44:43Z, 17:43 slot + jitter) exited cleanly 18:13:08Z (~28.5 min), ZERO leftover CLI workers; watchdog back to mode=normal (0 stale checks, 0 recoveries burned — transient 17:37Z recovering state self-healed on first sentinel mark); worker's uncommitted runtime state (HANDOFF/sentinel/missed_sprints.log/telegram log) committed by supervisor
 - [22:14] catch-up fire steps 3-5: queue EMPTY (no auto-enrollment); dashboard regenerated (1.1 MB); committing now; sentinel marked after every step
 - [22:09] step 2 done foreground (detector ~21 min in background, worker blocked on TaskOutput foreground wait per headless contract, sentinel refreshed at 10/20 min): 1030 watched, 14 entries, 8 exits, 44 open, 289 history; 2 fetch fails (EXAS/HOLX yfinance flaps) + 2 data-integrity skips (MCW/VRRM)

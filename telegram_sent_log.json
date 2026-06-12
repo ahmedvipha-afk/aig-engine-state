@@ -1,29 +1,5 @@
 [
   {
-    "ts_utc": "2026-05-26T00:29:11+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 258,
-    "preview": "\u2705 CC recovered at 04:29 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~2 min (177s wall-clock)."
-  },
-  {
-    "ts_utc": "2026-05-26T00:32:14+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 259,
-    "preview": "\ud83d\udea8 CC crash detected at 04:32 UAE 2026-05-26.\nCause: hung-repl-sentinel-930min-procs-1.\nRecovery initiated."
-  },
-  {
-    "ts_utc": "2026-05-26T00:35:32+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 260,
-    "preview": "\u2705 CC recovered at 04:35 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~3 min (191s wall-clock)."
-  },
-  {
     "ts_utc": "2026-05-26T00:36:25+00:00",
     "kind": "text",
     "to": 7096306994,
@@ -1598,5 +1574,29 @@
     "ok": true,
     "message_id": 417,
     "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-12</b>\n\n\ud83d\udfe2 ENTRY <b>AESI</b> $17.05 (stop $10.86)\n\ud83d\udfe2 ENTRY <b>ARCO</b> $8.81 (stop $8.41)\n\ud83d\udfe2 ENTRY <b>BP</b> $42.74 (stop $41.52)\n\ud83d\udfe2 ENTRY <b>BROS</b> $66.47 (stop $47.85)"
+  },
+  {
+    "ts_utc": "2026-06-12T18:14:57+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 418,
+    "preview": "\ud83d\ude80 Sprint fire 22:14 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-12T18:41:21+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 419,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-12</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $66.33 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $91.07 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.30 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>GCO</b> $43.03 (stop $28.5"
+  },
+  {
+    "ts_utc": "2026-06-12T19:01:00+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 420,
+    "preview": "\ud83d\ude80 Sprint fire 23:00 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
   }
 ]
