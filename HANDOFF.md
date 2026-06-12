@@ -1,8 +1,8 @@
 # Project Handoff State
 
 **Project:** aig_engine
-**Last updated:** 2026-06-12 05:19 (GST)
-**Current phase:** Block 2 (Track 1 LIVE) — routine fire 00:59Z ran headless end-to-end: all 5 SKILL steps in one turn. Sixth consecutive clean headless fire; contract fixes holding.
+**Last updated:** 2026-06-12 05:47 (GST)
+**Current phase:** Block 2 (Track 1 LIVE) — routine fire 01:29Z ran headless end-to-end: all 5 SKILL steps in one turn. Seventh consecutive clean headless fire; contract fixes holding.
 **Current task:** idle between scheduled fires (cron_paused.flag DOWN since 2026-06-11T22:01:48Z; AIG-Mode1-Sprint task live)
 
 ## Supervised fire 2026-06-11 17:12Z — evidence
@@ -50,6 +50,9 @@
       design — banner is local-only). Entry "Tareq" + Step 1.3 refactor: blocked on lost text.
 
 ## Last actions
+- [05:29] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
+- [05:46] step 2 done foreground (detector ~16 min; harness auto-backgrounded, worker polled process-exit foreground per contract, sentinel refreshed every 30s during poll): 1030 watched, 8 entries, 7 exits, 36 open, 204 history; 2 fetch fails (EXAS/HOLX yfinance flaps) + ~30 data-integrity skips
+- [05:47] steps 3-5: queue still EMPTY (WCK finalized, no auto-enrollment); dashboard regenerated (1.1 MB); sprint commit 1d51fb0 pushed; sentinel marked after every step (last 01:47:14Z)
 - [04:59] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
 - [05:17] step 2 done foreground (detector ~17 min; harness auto-backgrounded, worker polled process-exit foreground per contract): 1030 watched, 6 entries, 6 exits, 35 open, 197 history; 2 fetch fails (EXAS/HOLX yfinance flaps) + 32 data-integrity skips
 - [05:18] steps 3-5: queue still EMPTY (WCK finalized, no auto-enrollment); dashboard regenerated (1.1 MB); sprint commit eb236fb pushed; sentinel marked after every step (last 01:18:11Z)
@@ -65,11 +68,7 @@
 - [03:00] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
 - [03:18] step 2 done foreground (detector ~19 min; harness auto-backgrounded, worker blocked on TaskOutput foreground wait per contract): 1030 watched, 7 entries, 7 exits, 33 open, 173 history; 3 fetch fails (ADI/EXAS/HOLX yfinance flaps) + 31 data-integrity skips
 - [03:19] steps 3-5: queue still EMPTY (WCK finalized, no auto-enrollment); dashboard regenerated (1.1 MB); sprint commit ff8bf3f pushed; sentinel marked after every step (last 23:19:20Z)
-- [02:15] restoration fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
-- [02:39] step 2 done foreground (detector ran ~20 min under yfinance flaps EXAS/HOLX; harness auto-backgrounded the call — worker blocked on a foreground wait loop instead of ending turn; mid-wait sentinel refresh at 22:35Z): 1030 watched, 23 entries, 17 exits, 33 open, 166 history
-- [02:43] step 3: staged queue EMPTY — WCK finalized; no auto-enrollment per directive
-- [02:44] steps 4-5: dashboard regenerated (1.1 MB); sprint commit 5f4152f pushed; sentinel marked after every step (last 22:45:06Z)
-- [02:46] entry 44 NOT yet written: criteria (e) clean exit and (f) watchdog behavior are only observable after this process exits — operator to verify and write entry 44 (RESOLVED: written 02:55, see "How to resume")
+- [02:15-02:46] restoration fire: clean end-to-end (detector 23 entries/17 exits; commit 5f4152f); entry 44 written 02:55 post-exit (see "How to resume")
 
 ## Gotchas / context next session needs
 - Decision-log numbering is POSITIONAL (no id field). Planned map was 39 mandate / 40 scope /
