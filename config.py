@@ -226,6 +226,22 @@ WCK_VOLUME_MULT          = 1.2    # entry-bar volume >= mult * SMA(VOLUME_PERIOD
 WCK_EXIT_LOOKBACK        = 5      # exit when close >= rolling max of prior N closes
 WCK_STOP_ATR_MULT        = 1.0    # tight stop -- wick rejection thesis breaks fast
 
+# ---- TSM-12 strategy (frozen 2026-06-12, Phase 1 Track 2 slot-2 candidate) ----
+# Time-Series Momentum, 12-month lookback (Moskowitz/Ooi/Pedersen 2012, T1).
+# FIRST Phase 1 three-filter candidate (trial 40, US-ONLY, tsm12_us_1d --
+# first single-market trial; all 13 Pre-Framework strategies ran x3 markets).
+# spec_hash efe8ac7b47f10a0f -- canonical spec text + hash derivation live in
+# strategy_register.md (Path 2d-A: params here, hash in register only).
+# Signal: per-ticker 252-trading-day total return evaluated MONTHLY on the
+# last trading day of the month; LONG if positive, FLAT otherwise
+# (time-series momentum -- each ticker vs its own past, NOT cross-sectional
+# ranking). Rebalance monthly on last trading day; equal weight across all
+# long-signal tickers (maps to the engine's per-trade pooling convention,
+# identical to trials 1-39). Long-only, NO stop (engine _stop_distance
+# returns +inf for tsm12), no leverage. Zero tunable parameters beyond the
+# lookback below, per the frozen spec.
+TSM12_LOOKBACK_DAYS = 252   # 12-month total-return window (trading days)
+
 # ---- HAT strategy (frozen 2026-05-21 Fire 14:55 UTC) --------------------
 # Heikin-Ashi Trend Continuation. Long-only signal derived from SMOOTHED
 # (Heikin-Ashi) candles rather than raw OHLC. Pre-registered BEFORE any
@@ -399,11 +415,12 @@ PORTFOLIO_GATE = {
     "min_universe_coverage": 0.05, # at least 5% of universe must contribute trades
     "bootstrap_iters": 2000,
     "bootstrap_conf": 0.95,
-    "n_trials_registered": 39,   # 13 sprint-loop strategies (ema200..wck) x 3 markets x 1D.
-                                 # WCK added 2026-05-22 (post-GAP). Phase 1 framework directive 2026-05-22
-                                 # tags all 13 as Pre-Framework, sprint-loop-tested. Phase 1 candidates
-                                 # under the new three-filter methodology will add NEW trials on top of
-                                 # this count -- n_trials_registered will grow, the haircut tightens.
+    "n_trials_registered": 40,   # 13 sprint-loop strategies (ema200..wck) x 3 markets x 1D = 39
+                                 # (all tagged Pre-Framework per Phase 1 directive 2026-05-22),
+                                 # + trial 40: tsm12_us_1d (first Phase 1 three-filter candidate,
+                                 # US-only, pre-registered 2026-06-12, spec_hash efe8ac7b47f10a0f).
+                                 # Phase 1 candidates add NEW trials on top -- the count only grows,
+                                 # the haircut only tightens.
 
     # ---- Phase 1 directive amendments (2026-05-22) -----------------------
     "min_trades_by_market":              MIN_TRADES_BY_MARKET,             # Amendment 2

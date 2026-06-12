@@ -899,11 +899,14 @@ trial means appending a row here BEFORE the run; the haircut recomputes.
 | 37 | `wck_uae_1d`          | wck        | UAE    | 1D | yfinance+cache  | 2026-05-22 (Sprint Obj-6 advance post-GAP) | pending (staged) | pending |
 | 38 | `wck_crypto_1d`       | wck        | CRYPTO | 1D | yfinance        | 2026-05-22 (Sprint Obj-6 advance post-GAP) | pending (staged) | pending |
 | 39 | `wck_us_1d`           | wck        | US     | 1D | yfinance        | 2026-05-22 (Sprint Obj-6 advance post-GAP) | pending (staged) | pending |
+| 40 | `tsm12_us_1d`         | tsm12      | US     | 1D | yfinance        | 2026-06-12 (Track 2 Session A1, three-filter) | pending | pending |
 
 **`config.PORTFOLIO_GATE.n_trials_registered` must equal the row count above.**
-Current value: **39** (bumped 36 → 39 when WCK registered 2026-05-22 Sprint
-Obj-6 advance post-GAP, in the same commit that added the three trial-budget
-rows above).
+Current value: **40** (bumped 39 → 40 when TSM-12 registered 2026-06-12
+Track 2 Session A1, in the same commit that added trial row 40 and the
+TSM-12 canonical spec below — first Phase 1 three-filter candidate and
+first single-market trial; the 13 Pre-Framework strategies all ran ×3
+markets).
 
 ### How to add a trial (procedure)
 
@@ -917,6 +920,40 @@ rows above).
 Trials retired by removal of a strategy DO NOT reduce the haircut count —
 the haircut is permanent for the project lifetime to prevent
 selective-removal data-mining.
+
+### TSM-12 canonical spec (trial 40, frozen 2026-06-12, spec_hash `efe8ac7b47f10a0f`)
+
+Approved by operator 2026-06-12 (Track 2 Session A1). Params live in
+config.py (`TSM12_LOOKBACK_DAYS`); the hash binds spec + universe content
+(Path 2d-A: params in config.py, hash in register only).
+
+- **Name:** TSM-12 | **Trial id:** `tsm12_us_1d` | **Archetype:**
+  `trend_following` | **Tier:** T1 (Moskowitz/Ooi/Pedersen 2012,
+  time-series momentum family — per Filter 2 list above)
+- **Signal:** per-ticker 12-month total return = 252-trading-day total
+  return, computed monthly on the last trading day. LONG if positive,
+  FLAT otherwise. Time-series momentum (each ticker vs its own past),
+  NOT cross-sectional ranking.
+- **Rebalance:** monthly, last trading day. Equal weight across all
+  long-signal tickers. Long-only, no stop, no leverage, no shorting
+  (negative signal = flat, never short).
+- **Universe:** universe/us_halal_full.txt, 1,603 tickers, FROZEN at
+  pre-registration. universe_sha256 =
+  `6dfca4bd8ddafb0c33a42ced44452157c4108b7e60e768016db09f7aad775e4e`
+  (SHA-256 over the 1,603 symbols joined by `\n`, comments excluded).
+- **Data/engine:** yfinance daily bars (1D), same as trials 1–39. Costs:
+  US market model per `config.MARKET_COSTS` — commission 1.0 bps, spread
+  2.0 bps, slippage 3.0 bps (round-trip model, as all prior trials).
+- **Filters:** F1 `trend_following` = priority 1, no cleared trend
+  strategy ✓; F2 T1 evidence ✓; F3 daily data, long-only (Rule 15),
+  no leverage (Rule 16), halal universe ✓.
+- **spec_hash:** `efe8ac7b47f10a0f` — first 16 hex of SHA-256 over the
+  UTF-8 param string (one line, literal pipes, no whitespace between
+  fields):
+  `trial_id=tsm12_us_1d|strategy=tsm12|archetype=trend_following|tier=T1|signal=ts_momentum_252d_total_return_monthly|long_if=ret_252d>0|else=flat|rebalance=monthly_last_trading_day|weighting=equal_weight_across_long_signals|side=long_only|stops=none|leverage=none|timeframe=1D|engine=yfinance|costs=US:commission_bps=1.0,spread_bps=2.0,slippage_bps=3.0|universe=us_halal_full.txt|universe_n=1603|universe_sha256=6dfca4bd8ddafb0c33a42ced44452157c4108b7e60e768016db09f7aad775e4e`
+  NOTE: this derivation convention is defined HERE (the prior session's
+  convention and its hash `10d76bc7e0ee5e28` were lost with that session
+  and exist nowhere on disk; not comparable).
 
 ---
 
