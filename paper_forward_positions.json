@@ -2094,10 +2094,73 @@
       "exit_price": 71.91,
       "exit_reason": "rsi_or_trend_exit",
       "pnl_pct": 0.0
+    },
+    {
+      "ticker": "ADPT",
+      "entry_date": "2026-06-11",
+      "entry_price": 18.73,
+      "exit_date": "2026-06-11",
+      "exit_price": 18.73,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": -0.0
+    },
+    {
+      "ticker": "ASBFY",
+      "entry_date": "2026-06-11",
+      "entry_price": 26.38,
+      "exit_date": "2026-06-11",
+      "exit_price": 26.38,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": -0.0
+    },
+    {
+      "ticker": "BROS",
+      "entry_date": "2026-06-11",
+      "entry_price": 65.03,
+      "exit_date": "2026-06-11",
+      "exit_price": 65.03,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": -0.0
+    },
+    {
+      "ticker": "GCO",
+      "entry_date": "2026-06-11",
+      "entry_price": 42.72,
+      "exit_date": "2026-06-11",
+      "exit_price": 42.72,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": 0.0
+    },
+    {
+      "ticker": "GIL",
+      "entry_date": "2026-06-11",
+      "entry_price": 59.7,
+      "exit_date": "2026-06-11",
+      "exit_price": 57.19,
+      "exit_reason": "stop_hit",
+      "pnl_pct": -4.204
+    },
+    {
+      "ticker": "RGEN",
+      "entry_date": "2026-06-11",
+      "entry_price": 133.33,
+      "exit_date": "2026-06-11",
+      "exit_price": 133.33,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": 0.0
+    },
+    {
+      "ticker": "TMHC",
+      "entry_date": "2026-06-11",
+      "entry_price": 71.91,
+      "exit_date": "2026-06-11",
+      "exit_price": 71.91,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": 0.0
     }
   ],
-  "last_run": "2026-06-12T05:45:28+04:00",
-  "last_run_summary": "watched 1030 tickers \u00b7 8 new entries \u00b7 7 exits \u00b7 open positions 36 \u00b7 history 204",
+  "last_run": "2026-06-12T06:16:46+04:00",
+  "last_run_summary": "watched 1030 tickers \u00b7 7 new entries \u00b7 7 exits \u00b7 open positions 36 \u00b7 history 211",
   "watch_list": [
     "A",
     "AA",
