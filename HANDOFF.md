@@ -1,7 +1,7 @@
 # Project Handoff State
 
 **Project:** aig_engine
-**Last updated:** 2026-06-13 00:55 (GST)
+**Last updated:** 2026-06-13 01:53 (GST)
 **Current phase:** Block 2 — Track 2 Session A2 CLOSED: TRB-50 (trial 41, trb50_us_1d, spec_hash a96ccdf5c0640e4f) CLEARED — PORTFOLIO_CLEARED_FOR_PAPER_FORWARD at 20:37Z (entry 49: 25,760 trades, exp 1.1521, WR 50.97%, dSharpe 2.8021 @ n=41, CI strictly positive, 99.38% coverage). **US SLOT 2 FILLED** (slots: 1 Divergence, 2 TRB-50, 3-4 open). Session also produced entry 47 (Amendment 1 adjudication: provenance ratified from transcript 57451b12, provision superseded as dead letter, directive recovered to ahmed_response_2026-05-22.md, config knobs removed) and entry 48 (TRB-50 pre-registration).
 **Current task:** remove cron_paused.flag, verify catch-up fire, then idle; Track 1 routine fires resume
 
@@ -70,6 +70,7 @@
       design — banner is local-only). Entry "Tareq" + Step 1.3 refactor: blocked on lost text.
 
 ## Last actions
+- [01:52] routine fire complete headless (claude -p): MISSED_FIRES=2 → 3 iterations of steps 2-5, all foreground (detector waited via blocking TaskOutput, sentinel refreshed per step + mid-run); each iter: 1030 watched, 5 entries/5 exits (BROS/CAVA/FOR/MTH + MAS or HCSG round trips), 44 open, history 300→305→310; queue EMPTY all iters (no auto-enroll per directive); dashboard regenerated 3x; commits f4087f8, 66efee3, 94e91f6 pushed to origin/main; persistent data errors: EXAS/HOLX yfinance empty, CNR/VRRM split-spike, MCW short history
 - [00:37] TRB-50 staged run FINALIZED: PORTFOLIO_CLEARED_FOR_PAPER_FORWARD — 25,760 trades / 1,115 contributors / exp 1.1521 / WR 0.5097 / dSharpe 2.8021 @ n=41 / CI [+0.0032,+0.0052]; one clean 31-min pass (9 batches + finalize) under config_hash c7ff799942e2c8da
 - [00:50] entry 49 verdict written; register row 41 + slot table updated (slot 2 FILLED); HANDOFF updated; committing verdict package then removing cron_paused.flag
 - [23:57] first validation launch DIED 5 min in: C: disk 0 bytes free; queue verified clean (0/1603, no partial); reclaimed ~3.9GB regenerable caches (npm 2GB, temp 360MB); relaunched clean
