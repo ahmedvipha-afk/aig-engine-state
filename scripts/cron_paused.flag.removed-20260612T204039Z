@@ -1,0 +1,8 @@
+PAUSED 2026-06-12 by Track 2 Session A2 (TRB-50 trial 41, spec_hash a96ccdf5c0640e4f).
+REASON: canonical validation isolation (the A1 pattern, entry 46/48). The staged_validate
+run for trb50_us_1d and the engine-implementation commits must not race the sprint fires
+(shared working tree: fires run commit_session.ps1 which would sweep uncommitted
+validation state; fires also call staged_validate --step which would double-run queue
+batches). Track 1 resumes when this flag is deleted at the end of the validation run
+(same session, after the entry-49 verdict). Missed fires are handled by sprint_catchup
+per design.
