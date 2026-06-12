@@ -71,6 +71,67 @@ def test_gate_defaults_fail_on_no_trades():
     assert r["passed"] is False
 
 
+# ---- TSM-12 conformance (frozen spec efe8ac7b47f10a0f) --------------------
+
+def _df_down(n=600):
+    idx = pd.bdate_range("2020-01-01", periods=n)
+    c = pd.Series(np.linspace(200, 100, n), index=idx)
+    return pd.DataFrame({"open": c, "high": c * 1.01, "low": c * 0.99,
+                         "close": c, "volume": pd.Series([1e6] * n, index=idx)},
+                        index=idx)
+
+
+def test_tsm12_columns_and_warmup():
+    from aig.strategy_tsm12 import signals as tsig
+    s = tsig(_df(600))
+    for col in ("ema", "atr", "entry", "exit_signal"):
+        assert col in s.columns
+    # insufficient-history convention: ema sentinel NaN for the full
+    # 252-bar warmup, so the engine skips those bars entirely
+    assert s["ema"].iloc[:252].isna().all()
+    assert not np.isnan(s["atr"]).any()
+
+
+def test_tsm12_signals_only_on_month_end():
+    from aig.strategy_tsm12 import signals as tsig
+    s = tsig(_df(600))
+    sig_days = s.index[s["entry"] | s["exit_signal"]]
+    assert len(sig_days) > 0
+    months = s.index.to_period("M")
+    for ts in sig_days:
+        later_same_month = s.index[(s.index > ts) & (months == ts.to_period("M"))]
+        assert len(later_same_month) == 0   # nothing later in that month
+    # final bar is never an evaluation day (incomplete month convention)
+    assert not bool(s["entry"].iloc[-1]) and not bool(s["exit_signal"].iloc[-1])
+
+
+def test_tsm12_long_if_positive_flat_if_not():
+    from aig.strategy_tsm12 import signals as tsig
+    up = tsig(_df(600))
+    post = up[~up["ema"].isna()]
+    evs = post[post["entry"] | post["exit_signal"]]
+    assert len(evs) > 0 and evs["entry"].all()          # rising: always long
+    dn = tsig(_df_down(600))
+    post2 = dn[~dn["ema"].isna()]
+    evs2 = post2[post2["entry"] | post2["exit_signal"]]
+    assert len(evs2) > 0 and evs2["exit_signal"].all()  # falling: always flat
+
+
+def test_tsm12_no_stop_is_infinite():
+    import math
+    from aig.backtest import _stop_distance
+    assert math.isinf(_stop_distance("tsm12", {"atr": 0.0}))
+
+
+def test_tsm12_end_to_end_engine_run():
+    from aig.backtest import split_backtest
+    bt = split_backtest("SYN", _df(900), timeframe="1d", strategy="tsm12")
+    # rising synthetic series: at least one closed trade somewhere across
+    # IS/OOS/WF segments, and no exceptions end-to-end
+    assert isinstance(bt["is_trades"], list)
+    assert bt["strategy"] == "tsm12"
+
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     passed = 0

@@ -61,6 +61,9 @@ def _strategy_signals(name: str, df: pd.DataFrame) -> pd.DataFrame:
     if name == "wck":
         from aig.strategy_wck import signals
         return signals(df)
+    if name == "tsm12":
+        from aig.strategy_tsm12 import signals
+        return signals(df)
     raise ValueError(f"unknown strategy: {name}")
 
 
@@ -106,6 +109,10 @@ def _stop_distance(name: str, row) -> float:
     if name == "wck":
         from config import WCK_STOP_ATR_MULT
         return WCK_STOP_ATR_MULT * row["atr"]
+    if name == "tsm12":
+        # Frozen spec efe8ac7b47f10a0f: NO stop. Infinite distance means
+        # stop_px = -inf and row["low"] <= stop_px is never true.
+        return float("inf")
     raise ValueError(name)
 
 
