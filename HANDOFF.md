@@ -1,9 +1,9 @@
 # Project Handoff State
 
 **Project:** aig_engine
-**Last updated:** 2026-06-12 21:35 (GST)
-**Current phase:** Block 2 — Track 2 Session A1 CLOSED: TSM-12 (trial 40, tsm12_us_1d, spec_hash efe8ac7b47f10a0f) verdict PORTFOLIO_FAIL at 08:15Z, recorded as decision_log entry 46 (honest FAIL: 3,473 trades, expectancy 1.0537, win rate 0.299 < 0.4, Sharpe raw 0.284 / deflated -0.395 at n=40 haircut, CI lo -0.0085 not > 0). US slot 2 remains OPEN. Track 1 resuming (cron_paused.flag removed this session).
-**Current task:** verify first Track 1 catch-up fire after flag removal (sprint_catchup capped 5 iterations), then idle between scheduled fires
+**Last updated:** 2026-06-12 22:14 (GST)
+**Current phase:** Block 2 — Track 1 LIVE: first catch-up fire after flag removal COMPLETED ~18:14Z (MISSED_FIRES=41; ran 1 full iteration, residual catch-up drains next fires per SKILL time-budget overflow rule). US slot 2 remains OPEN (TSM-12 PORTFOLIO_FAIL, entry 46); Session A2 candidate selection is the next Ahmed-supervised step.
+**Current task:** idle between scheduled fires; routine 15-min fires drain residual catch-up debt
 
 ## Track 2 status (after Session A1)
 - TSM-12 FAILED the gate — no re-run, no tuning; spec stays frozen, result stands (entry 46).
@@ -62,6 +62,10 @@
       design — banner is local-only). Entry "Tareq" + Step 1.3 refactor: blocked on lost text.
 
 ## Last actions
+- [22:17] catch-up fire VERIFIED by supervising session: sprint commit 23fa516 landed 18:11Z and is on origin/main; worker PID 17268 (spawned 17:44:43Z, 17:43 slot + jitter) exited cleanly 18:13:08Z (~28.5 min), ZERO leftover CLI workers; watchdog back to mode=normal (0 stale checks, 0 recoveries burned — transient 17:37Z recovering state self-healed on first sentinel mark); worker's uncommitted runtime state (HANDOFF/sentinel/missed_sprints.log/telegram log) committed by supervisor
+- [22:14] catch-up fire steps 3-5: queue EMPTY (no auto-enrollment); dashboard regenerated (1.1 MB); committing now; sentinel marked after every step
+- [22:09] step 2 done foreground (detector ~21 min in background, worker blocked on TaskOutput foreground wait per headless contract, sentinel refreshed at 10/20 min): 1030 watched, 14 entries, 8 exits, 44 open, 289 history; 2 fetch fails (EXAS/HOLX yfinance flaps) + 2 data-integrity skips (MCW/VRRM)
+- [21:47] catch-up fire started headless (claude -p): MISSED_FIRES=41 (flag-paused interval); cap = 5 iterations, but iteration 1 (~25 min) exhausted the SKILL's 10-min total time budget — ran 1 full iteration, overflow drains next fires per SKILL TIME BUDGET section (Track 1 cadence 15 min, sentinel kept fresh so next MISSED_FIRES is small)
 - [21:33] decision_log entry 46 written: TSM-12 PORTFOLIO_FAIL verdict, full numbers + universe convention (1,603 frozen / 1,122 evaluated, exclusion rule listed); slot 2 OPEN, Session A2 next
 - [21:35] HANDOFF updated (verdict, slot status, Track 2 next step); committing verdict + validation_tsm12_us_1d.json + validation-session leftovers, then removing cron_paused.flag (rename convention) to resume Track 1
 - [10:45] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
