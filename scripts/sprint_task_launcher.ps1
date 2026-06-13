@@ -23,10 +23,13 @@ $ProjectRoot    = 'C:\Users\ahmed\OneDrive\Documents\Projects\stocks\Ahmed group
 $SkillFile      = "$env:USERPROFILE\.claude\scheduled-tasks\aig-mode1-sprint\SKILL.md"
 $LogFile        = Join-Path $ProjectRoot 'scripts\sprint_task.log'
 $CronPausedFlag = Join-Path $ProjectRoot 'scripts\cron_paused.flag'
-# 65 min: SKILL caps bursts at 5 x 10-min iterations; the scheduled task's
-# own ExecutionTimeLimit (PT75M) backstops THIS script, so the launcher
-# always gets to do the logging + tree-kill itself.
-$TimeoutSeconds = 3900
+# 90 min (raised from 65 on 2026-06-13): the SKILL now runs TWO detectors
+# per iteration (divergence slot 1 + trb50 slot 2, entry 50) and a catch-up
+# burst of several ~21-min iterations was clipping at 65 min on a moderate-
+# RAM-pressure host. The scheduled task's own ExecutionTimeLimit (raised
+# PT75M -> PT95M to match) backstops THIS script, so the launcher always
+# gets to do the logging + tree-kill itself.
+$TimeoutSeconds = 5400
 
 $ClaudeExe = "$env:USERPROFILE\.local\bin\claude.exe"
 if (-not (Test-Path $ClaudeExe)) {
