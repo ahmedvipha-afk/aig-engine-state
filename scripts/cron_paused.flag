@@ -1,0 +1,14 @@
+PAUSED 2026-06-13 by supervisor (TRB-50 deployment verification session).
+REASON: stop the orphan-leak doom-loop. The model fix (f247d4e) works, but every
+two-detector fire currently runs >65min on the degraded host and hits the launcher
+timeout; the timeout-kill (taskkill /T) is FAILING to reap the worker process tree
+(launcher log: repeated "taskkill: ERROR ... timeout period expired"), so each failed
+fire leaks orphaned claude.exe children. Probe @14:32Z: 15 claude procs, 2.2GB free RAM.
+This compounds: orphans -> low memory -> slow detectors (~40min divergence vs ~22 normal)
+-> timeout -> failed kill -> more orphans. Pausing stops further accumulation.
+UNBLOCK: clear orphaned claude.exe (operator interactive zombie_kill.py) to restore
+host headroom; then a healthy two-detector fire (~34min) fits the budget. Optionally
+harden the launcher kill (taskkill reliability) and/or bump timeouts. ENTRY-50 DEPLOYMENT
+IS VERIFIED (both detectors ran on live data, trb50 state correct, digest sent) — only a
+fully-completing fire remains, gated on host recovery. Remove this flag once the host is
+clear and the timing decision is made.
