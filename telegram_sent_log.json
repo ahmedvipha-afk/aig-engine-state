@@ -1,101 +1,5 @@
 [
   {
-    "ts_utc": "2026-05-26T00:53:02+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 267,
-    "preview": "\u2705 CC recovered at 04:53 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~2 min (167s wall-clock)."
-  },
-  {
-    "ts_utc": "2026-05-26T00:53:15+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 268,
-    "preview": "\ud83d\udea8 CC crash detected at 04:53 UAE 2026-05-26.\nCause: hung-repl-sentinel-951min-procs-1.\nRecovery initiated."
-  },
-  {
-    "ts_utc": "2026-05-26T01:04:16+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 269,
-    "preview": "\ud83d\udea8 CC crash detected at 05:04 UAE 2026-05-26.\nCause: hung-repl-sentinel-962min-procs-1.\nRecovery initiated."
-  },
-  {
-    "ts_utc": "2026-05-26T01:08:03+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 270,
-    "preview": "\u2705 CC recovered at 05:07 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~3 min (211s wall-clock)."
-  },
-  {
-    "ts_utc": "2026-05-26T01:08:18+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 271,
-    "preview": "\ud83d\udea8 CC crash detected at 05:08 UAE 2026-05-26.\nCause: hung-repl-sentinel-966min-procs-1.\nRecovery initiated."
-  },
-  {
-    "ts_utc": "2026-05-26T01:19:16+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 272,
-    "preview": "\ud83d\udea8 CC crash detected at 05:19 UAE 2026-05-26.\nCause: hung-repl-sentinel-977min-procs-1.\nRecovery initiated."
-  },
-  {
-    "ts_utc": "2026-05-26T01:22:24+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 273,
-    "preview": "\u2705 CC recovered at 05:22 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~3 min (186s wall-clock)."
-  },
-  {
-    "ts_utc": "2026-05-26T01:23:14+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 274,
-    "preview": "\ud83d\udea8 CC crash detected at 05:23 UAE 2026-05-26.\nCause: hung-repl-sentinel-981min-procs-1.\nRecovery initiated."
-  },
-  {
-    "ts_utc": "2026-05-26T01:26:15+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": false,
-    "message_id": null,
-    "preview": "\u2705 CC recovered at 05:26 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~3 min (180s wall-clock)."
-  },
-  {
-    "ts_utc": "2026-05-26T01:27:14+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 275,
-    "preview": "\ud83d\udea8 CC crash detected at 05:27 UAE 2026-05-26.\nCause: hung-repl-sentinel-985min-procs-1.\nRecovery initiated."
-  },
-  {
-    "ts_utc": "2026-05-26T01:30:29+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 276,
-    "preview": "\u2705 CC recovered at 05:30 UAE 2026-05-26.\nSession resumed via headless `claude -p`.\nLag: ~3 min (194s wall-clock)."
-  },
-  {
-    "ts_utc": "2026-05-26T01:31:17+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 277,
-    "preview": "\ud83d\udea8 CC crash detected at 05:31 UAE 2026-05-26.\nCause: hung-repl-sentinel-989min-procs-1.\nRecovery initiated."
-  },
-  {
     "ts_utc": "2026-05-26T01:34:04+00:00",
     "kind": "text",
     "to": 7096306994,
@@ -1597,6 +1501,102 @@
     "to": 7096306994,
     "ok": true,
     "message_id": 426,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-13</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-13T11:33:01+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 427,
+    "preview": "\u26a0 Phase 1 sprint: 51 fires missed in a row.\n\nCron windows were skipped because the REPL was busy. Catching up all 51 fires now back-to-back, then resuming normal 15-min cadence.\n\nTo reduce missed fire"
+  },
+  {
+    "ts_utc": "2026-06-13T11:33:08+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 428,
+    "preview": "\ud83d\ude80 Sprint fire 15:32 UAE \u2014 catching up 51 missed \u2192 52 iterations back-to-back\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exit"
+  },
+  {
+    "ts_utc": "2026-06-13T12:44:34+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 429,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-13</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-13T12:47:53+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 430,
+    "preview": "\ud83d\ude80 Sprint fire 16:47 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-13T13:39:16+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 431,
+    "preview": "\ud83d\udd37 <b>AIG TRB-50 digest \u2014 2026-06-13</b> <i>(paper-forward, slot 2)</i>\nENTRIES 26: LIN, NUE, WSM, JBL, STLD, RL, AMKR, ONTO, ACMR, COCO, OSW, SMSMY, TWST, HUN, BHE +11 more\nOpen: 26 \u00b7 Closed-to-date: "
+  },
+  {
+    "ts_utc": "2026-06-13T13:51:41+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 432,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-13</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-13T14:03:14+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 433,
+    "preview": "\ud83d\ude80 Sprint fire 18:02 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-13T14:57:41+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 434,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-13</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-13T15:22:15+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 435,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-13</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-13T16:15:46+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 436,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-13</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-13T17:08:34+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-13</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-13T18:01:54+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 437,
     "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-13</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
   }
 ]
