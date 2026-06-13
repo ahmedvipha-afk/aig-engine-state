@@ -1125,6 +1125,46 @@ draw from the cleared-universe set; pre-register seed and N before sampling;
 freeze to a file; tag the state with the method. No expectancy-based
 selection is admissible.
 
+### TRB-50 paper-forward deployment (pre-registered, decision_log entry 50, 2026-06-13)
+
+Operator-approved 2026-06-12 22:12Z with Amendments A/B/C. Frozen BEFORE
+any TRB-50 forward signal fired:
+
+1. **Source population:** the 1,115 contributing tickers (`oos_n > 0`) from
+   the run that certified the strategy (`validation_trb50_us_1d.json`,
+   config_hash `c7ff799942e2c8da`, spec_hash `a96ccdf5c0640e4f`, entry 49).
+2. **Selection method:** Improvement 1 **Option A** — the ENTIRE
+   cleared-contributor set, no subsetting (operator ruling 2026-06-12;
+   precedent: 33d93ae full-universe convention). The 7 evaluated-but-
+   zero-signal tickers (STRK, STRF, TEM, LOAR, WAY, TTAM, WFF) are
+   excluded on a deterministic, NON-performance basis — they produced no
+   OOS signals under the frozen spec. Improvement 2 (sector/liquidity
+   constraints) recorded as N/A under Option A (no sampling step to
+   constrain; operator-confirmed reading).
+3. **Frozen artefact:** `universe/trb50_us_paperforward_watchlist.txt`
+   (1,115 symbols) committed at deployment. The file IS the watch list.
+   Modification requires a new pre-registration entry here.
+4. **Audit tag:** detector writes `watch_list_method =
+   "full_cleared_contributor_set_n1115_from_validation_trb50_us_1d_cfg_
+   c7ff799942e2c8da_entry50_2026-06-13"` into
+   `paper_forward_positions_trb50.json` on every run.
+5. **Detector:** `scripts/paper_forward_trb50.py` — imports `signals`
+   DIRECTLY from `aig/strategy_trb50.py` (Amendment A single source of
+   truth; identity asserted by conformance test). Fixed 10-trading-day
+   hold driven by the paper entry date (bar-count exit, idempotent,
+   no-new-bar no-op); no stop; same-bar re-entry guard mirroring the
+   engine. Telegram is DIGEST-ONLY (Amendment C): one summary block per
+   fire; the Divergence per-signal contract is unchanged. Migrating
+   Divergence to digest later is a pure operational change requiring
+   only a logged note.
+6. **Routing reconciliation (Amendment B):** `winners_assignment.json`
+   rebuilt with sources = {divergence, trb50}; Pre-Framework mbv/pmr/str
+   tagged out per the entry-32 grandfathering; their 5 open paper
+   positions (CARR, CMI, ADI, MUR, GGDVY — all mbv, entries 2026-05-21)
+   administratively closed in `paper_forward_positions_full.json`
+   (history preserved, not Phase-1 evidence). That detector is DORMANT;
+   live detectors are the two per-strategy scripts above.
+
 - Audit NEW-1: **RESOLVED** by the protocol above + the committed watch
   list file. The detector now scans 50 random names rather than the
   top-5 by expectancy. The deployment has zero closed paper trades, so

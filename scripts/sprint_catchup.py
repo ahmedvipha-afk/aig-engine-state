@@ -134,16 +134,24 @@ def _staged_progress_brief() -> str:
 
 
 def _paper_forward_brief() -> str:
-    """Brief one-liner on the paper-forward detector state."""
+    """Brief one-liner on the LIVE paper-forward detectors' state.
+
+    Reads the per-strategy state files the sprint actually drives
+    (entry 50: divergence slot 1 + trb50 slot 2). The old
+    paper_forward_positions_full.json is dormant and no longer reported.
+    """
     try:
         import json
-        pf_file = ROOT / "paper_forward_positions_full.json"
-        if not pf_file.exists():
-            return "detector idle"
-        data = json.loads(pf_file.read_text(encoding="utf-8"))
-        n_open = len(data.get("open_positions", {}))
-        n_hist = len(data.get("history", []))
-        return f"{n_open} open, {n_hist} closed"
+        parts = []
+        for label, fn in (("div", "paper_forward_positions.json"),
+                          ("trb50", "paper_forward_positions_trb50.json")):
+            pf_file = ROOT / fn
+            if not pf_file.exists():
+                continue
+            data = json.loads(pf_file.read_text(encoding="utf-8"))
+            parts.append(f"{label} {len(data.get('open_positions', {}))} open/"
+                         f"{len(data.get('history', []))} closed")
+        return " · ".join(parts) if parts else "detector idle"
     except Exception:
         return "detector state unknown"
 

@@ -27,13 +27,30 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 os.chdir(ROOT)
 
-# CLEARED (strategy, market) sources — update when a new market clears
+# CLEARED (strategy, market) sources — update when a new market clears.
+# RECONCILED 2026-06-13 per decision_log entry 50 Amendment B: only
+# Phase 1 framework-recognized strategies route to paper-forward —
+# divergence (grandfathered slot 1) + trb50 (slot 2, entry 49).
 CLEARED_SOURCES = {
     ("divergence", "US"): "validation_divergence_1d_full_haircut6.json",
-    ("mbv",        "US"): "validation_mbv_us_1d.json",
-    ("pmr",        "US"): "validation_pmr_us_1d.json",
-    ("str",        "US"): "validation_str_us_1d.json",
+    ("trb50",      "US"): "validation_trb50_us_1d.json",
     # Add new (strategy, market) here as they clear portfolio gate.
+}
+
+# PRE-FRAMEWORK TAGGED OUT (entry 50 Amendment B, applying the entry-32
+# amendment's grandfathering: ONLY divergence carried into Phase 1).
+# These cleared the gate under the pre-amendment regime; their verdicts
+# stand as honest historical record, but they do NOT route to
+# paper-forward and do NOT fill Phase 1 slots until re-validated under
+# the amended gate via Method A (fresh OOS window) or Method B
+# (post-2026-05-22 forward data). Their 5 open paper positions in
+# paper_forward_positions_full.json were administratively closed at
+# reconciliation (logged in entry 50) — history preserved, not Phase-1
+# evidence.
+PRE_FRAMEWORK_TAGGED_OUT = {
+    ("mbv", "US"): "validation_mbv_us_1d.json",
+    ("pmr", "US"): "validation_pmr_us_1d.json",
+    ("str", "US"): "validation_str_us_1d.json",
 }
 
 # Near-miss research strategies (positive dSharpe + positive expectancy,
@@ -151,9 +168,14 @@ def reassign():
 
 def write_assignment_json(assignments: dict, by_strat: dict, per_ticker: dict):
     out = {
-        "generated_at": "2026-05-22",
+        "generated_at": "2026-06-13",
+        "routing_reconciliation": ("entry 50 Amendment B (2026-06-13): Pre-Framework "
+                                   "mbv/pmr/str removed from routing per entry-32 "
+                                   "grandfathering; sources = divergence (slot 1) + "
+                                   "trb50 (slot 2, entry 49)"),
         "criterion": "highest_oos_sharpe_deflated_then_expectancy_within_cleared_portfolios",
         "cleared_sources": {f"{s}/{m}": fn for (s, m), fn in CLEARED_SOURCES.items()},
+        "pre_framework_tagged_out": {f"{s}/{m}": fn for (s, m), fn in PRE_FRAMEWORK_TAGGED_OUT.items()},
         "tally": {s: len(tks) for s, tks in by_strat.items()},
         "tickers_in_both_strategies": sum(1 for tk in per_ticker if len(per_ticker[tk]) > 1),
         "tickers_in_one_only": sum(1 for tk in per_ticker if len(per_ticker[tk]) == 1),

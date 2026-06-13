@@ -1,5 +1,15 @@
 """AIG Paper-Forward Detector — FULL VALIDATED UNIVERSE (Phase 1 directive F3).
 
+DORMANT since 2026-05-26; routing reconciled 2026-06-13 (entry 50 Amendment B).
+The LIVE detectors driven by sprint fires are paper_forward_divergence.py
+(slot 1) and paper_forward_trb50.py (slot 2). winners_assignment.json now
+routes only {divergence, trb50}; Pre-Framework mbv/pmr/str were tagged out
+and their 5 open paper positions administratively closed (state key
+`administratively_closed_preframework`). Do NOT run this script for trb50
+without porting the fixed-hold exit state from paper_forward_trb50.py —
+its generic exit logic does not implement the 10-day bar-count hold (an
+assignment routed here to trb50 degrades to errors_n, not to wrong exits).
+
 Reads `winners_assignment.json` for the (ticker → strategy) mapping built by
 `reassign_best_strategy.py`. For each assigned ticker, runs that strategy's
 signals against today's bars and detects entry/exit events.
