@@ -1,8 +1,0 @@
-PAUSED 2026-06-12 by TRB-50 deployment build (entry 50, operator-approved plan with
-Amendments A/B/C, 2026-06-12 22:12Z).
-REASON: deployment isolation. This session is modifying scripts/paper_forward_full_universe.py
-(second detector: trb50), rebuilding winners_assignment.json (routing reconciliation per
-Amendment B), and committing the frozen watchlist + register pre-registration + entry 50
-atomically. Sprint fires must not run the detector mid-modification nor sweep uncommitted
-deployment files. Track 1 resumes when this flag is deleted at the end of the deployment
-(same session); the first two-detector fire is then verified end-to-end.
