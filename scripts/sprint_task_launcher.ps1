@@ -61,7 +61,12 @@ try {
     $psi = New-Object System.Diagnostics.ProcessStartInfo
     $psi.FileName = $ClaudeExe
     $escaped = $prompt.Replace('"', '\"')
-    $psi.Arguments = "-p `"$escaped`""
+    # Pin the headless worker to claude-sonnet-4-6: the global settings.json
+    # default (claude-fable-5[1m]) is NOT entitled for headless `claude -p`,
+    # which made every fire exit 1 in ~5s after the 2026-06-12 CLI update
+    # (proven by failed-worker transcripts; decision_log + sprint_task.log).
+    # Scoped here only — interactive/Desktop sessions keep their default.
+    $psi.Arguments = "-p --model claude-sonnet-4-6 `"$escaped`""
     $psi.WorkingDirectory = $ProjectRoot
     $psi.UseShellExecute = $false
     $psi.CreateNoWindow = $true
