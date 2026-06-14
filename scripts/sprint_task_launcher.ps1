@@ -95,6 +95,15 @@ try {
         $psi.EnvironmentVariables['NODE_OPTIONS'] = '--dns-result-order=ipv4first'
     }
 
+    # Per-tool timeout (defense-in-depth, decision_log 2026-06-14): bound shell
+    # tool-calls so a stalled probe (e.g. a git/file op on a slow volume) fails
+    # fast and the model can retry, instead of one blocked call wedging the turn.
+    # NOTE: covers Bash tool-calls only; the primary 2026-06-14 hang was a
+    # file-hydration/read wait on the OneDrive volume, which this does NOT bound
+    # -- the real cure is relocating the repo off OneDrive. The verify-kill reap
+    # loop below is the load-bearing part of this fix.
+    $psi.EnvironmentVariables['BASH_DEFAULT_TIMEOUT_MS'] = '300000'
+
     $proc = [System.Diagnostics.Process]::Start($psi)
     $workerPid = $proc.Id
     Log "spawned claude -p pid=$workerPid"
@@ -111,8 +120,27 @@ try {
     $exited = $proc.WaitForExit($TimeoutSeconds * 1000)
     if (-not $exited) {
         Log "TIMEOUT after $TimeoutSeconds s; killing tree pid=$workerPid"
-        # taskkill /T kills the whole descendant tree (Node workers, MCP children).
-        & taskkill /PID $workerPid /T /F 2>&1 | ForEach-Object { Log "taskkill: $_" }
+        # VERIFY-KILL LOOP (decision_log 2026-06-14): a worker wedged in an
+        # uninterruptible kernel I/O wait survives a single taskkill -- it dies
+        # only once the wait aborts (observed 10-25s later). The OLD code issued
+        # one taskkill then exited immediately, so the still-alive worker
+        # ORPHANED and -- with MultipleInstances=IgnoreNew -- jammed every
+        # subsequent fire for hours. Loop: kill, wait, confirm dead, retry.
+        # 12 x 5s = 60s max; 90min cap + 60s < 95min task ExecutionTimeLimit.
+        $reaped = $false
+        for ($attempt = 1; $attempt -le 12; $attempt++) {
+            & taskkill /PID $workerPid /T /F 2>&1 | ForEach-Object { Log "taskkill[$attempt]: $_" }
+            Start-Sleep -Seconds 5
+            if (-not (Get-Process -Id $workerPid -ErrorAction SilentlyContinue)) {
+                $reaped = $true
+                Log "reaped pid=$workerPid after $attempt attempt(s)"
+                break
+            }
+            Log "pid=$workerPid still alive after attempt $attempt (wedged in kernel wait); retrying"
+        }
+        if (-not $reaped) {
+            Log "WARNING: pid=$workerPid NOT reaped after 12 attempts (~60s) -- may orphan and jam the IgnoreNew slot; operator check needed"
+        }
         exit 2
     }
 
