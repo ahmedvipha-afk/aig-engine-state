@@ -77,6 +77,24 @@ try {
     $psi.RedirectStandardOutput = $true
     $psi.RedirectStandardError = $true
 
+    # Prefer IPv4 for the headless worker ONLY (decision_log, 2026-06-14
+    # regression). The IPv6 address of api.anthropic.com (2607:6bc0::10)
+    # began black-holing PAST the TCP handshake ~10:14Z: the socket reached
+    # ESTABLISHED but no response data ever streamed, so every -p worker hung
+    # on its first model call (~0 CPU, no transcript ever written) and the
+    # launcher killed it at the cap -- 6 consecutive fires dead over 5.5h.
+    # Interactive/Desktop sessions on IPv4 (160.79.104.10) were unaffected.
+    # --dns-result-order=ipv4first prefers the working IPv4 path WITH failover
+    # (chosen over a hosts pin so it survives Anthropic rotating the IPv4 IP).
+    # EnvironmentVariables is honored because UseShellExecute=$false; scoped to
+    # this worker process only. Append, don't clobber any inherited NODE_OPTIONS.
+    $existingNodeOpts = $psi.EnvironmentVariables['NODE_OPTIONS']
+    if ($existingNodeOpts) {
+        $psi.EnvironmentVariables['NODE_OPTIONS'] = "$existingNodeOpts --dns-result-order=ipv4first"
+    } else {
+        $psi.EnvironmentVariables['NODE_OPTIONS'] = '--dns-result-order=ipv4first'
+    }
+
     $proc = [System.Diagnostics.Process]::Start($psi)
     $workerPid = $proc.Id
     Log "spawned claude -p pid=$workerPid"
