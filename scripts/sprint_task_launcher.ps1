@@ -19,7 +19,7 @@
 
 $ErrorActionPreference = 'Continue'
 
-$ProjectRoot    = 'C:\Users\ahmed\OneDrive\Documents\Projects\stocks\Ahmed group\Working Area\aig_engine'
+$ProjectRoot    = 'C:\aig_engine'
 $SkillFile      = "$env:USERPROFILE\.claude\scheduled-tasks\aig-mode1-sprint\SKILL.md"
 $LogFile        = Join-Path $ProjectRoot 'scripts\sprint_task.log'
 $CronPausedFlag = Join-Path $ProjectRoot 'scripts\cron_paused.flag'

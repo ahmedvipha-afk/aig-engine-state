@@ -102,7 +102,7 @@ param(
 $ErrorActionPreference = 'Continue'
 
 # --- Paths -------------------------------------------------------------------
-$ProjectRoot   = 'C:\Users\ahmed\OneDrive\Documents\Projects\stocks\Ahmed group\Working Area\aig_engine'
+$ProjectRoot   = 'C:\aig_engine'
 $ScriptsDir    = Join-Path $ProjectRoot 'scripts'
 $StateFile     = Join-Path $ScriptsDir 'cc_watchdog_state.json'
 $LockFile      = Join-Path $ScriptsDir 'cc_watchdog_recovery.lock'

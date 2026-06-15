@@ -18,7 +18,7 @@ param([switch]$Uninstall)
 $ErrorActionPreference = 'Stop'
 
 $TaskName       = 'AIG-CC-Watchdog'
-$ProjectRoot    = 'C:\Users\ahmed\OneDrive\Documents\Projects\stocks\Ahmed group\Working Area\aig_engine'
+$ProjectRoot    = 'C:\aig_engine'
 $WatchdogScript = Join-Path $ProjectRoot 'scripts\cc_watchdog.ps1'
 $RefDir         = "$env:USERPROFILE\.claude\scheduled-tasks\aig-cc-watchdog"
 $RefSkill       = Join-Path $RefDir 'SKILL.md'

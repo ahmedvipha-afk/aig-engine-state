@@ -13,7 +13,7 @@ param()
 
 $ErrorActionPreference = 'Continue'
 
-$ProjectRoot   = 'C:\Users\ahmed\OneDrive\Documents\Projects\stocks\Ahmed group\Working Area\aig_engine'
+$ProjectRoot   = 'C:\aig_engine'
 $ScriptsDir    = Join-Path $ProjectRoot 'scripts'
 $Watchdog      = Join-Path $ScriptsDir 'cc_watchdog.ps1'
 $ResumePrompt  = Join-Path $ScriptsDir 'session_resume_prompt.txt'
