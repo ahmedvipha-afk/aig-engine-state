@@ -10,77 +10,77 @@
       "entry_date": "2026-06-12",
       "entry_price": 523.57,
       "stop_price": null,
-      "bars_held": 0,
+      "bars_held": 1,
       "resistance_at_entry": 515.9485
     },
     "NUE": {
       "entry_date": "2026-06-12",
       "entry_price": 266.35,
       "stop_price": null,
-      "bars_held": 0,
+      "bars_held": 1,
       "resistance_at_entry": 262.28
     },
     "WSM": {
       "entry_date": "2026-06-12",
       "entry_price": 223.54,
       "stop_price": null,
-      "bars_held": 0,
+      "bars_held": 1,
       "resistance_at_entry": 218.74
     },
     "JBL": {
       "entry_date": "2026-06-12",
       "entry_price": 384.82,
       "stop_price": null,
-      "bars_held": 0,
+      "bars_held": 1,
       "resistance_at_entry": 380.25
     },
     "STLD": {
       "entry_date": "2026-06-12",
       "entry_price": 282.76,
       "stop_price": null,
-      "bars_held": 0,
+      "bars_held": 1,
       "resistance_at_entry": 279.55
     },
     "RL": {
       "entry_date": "2026-06-12",
       "entry_price": 403.98,
       "stop_price": null,
-      "bars_held": 0,
+      "bars_held": 1,
       "resistance_at_entry": 393.3
     },
     "AMKR": {
       "entry_date": "2026-06-12",
       "entry_price": 82.78,
       "stop_price": null,
-      "bars_held": 0,
+      "bars_held": 1,
       "resistance_at_entry": 78.0122
     },
     "ONTO": {
       "entry_date": "2026-06-12",
       "entry_price": 323.88,
       "stop_price": null,
-      "bars_held": 0,
+      "bars_held": 1,
       "resistance_at_entry": 307.86
     },
     "ACMR": {
       "entry_date": "2026-06-12",
       "entry_price": 93.95,
       "stop_price": null,
-      "bars_held": 0,
+      "bars_held": 1,
       "resistance_at_entry": 92.86
     },
     "COCO": {
       "entry_date": "2026-06-12",
       "entry_price": 80.9,
       "stop_price": null,
-      "bars_held": 0,
+      "bars_held": 1,
       "resistance_at_entry": 79.23
     },
     "OSW": {
       "entry_date": "2026-06-12",
       "entry_price": 25.79,
       "stop_price": null,
-      "bars_held": 0,
+      "bars_held": 1,
       "resistance_at_entry": 25.2659
     },
     "SMSMY": {
@@ -94,28 +94,28 @@
       "entry_date": "2026-06-12",
       "entry_price": 76.17,
       "stop_price": null,
-      "bars_held": 0,
+      "bars_held": 1,
       "resistance_at_entry": 74.05
     },
     "HUN": {
       "entry_date": "2026-06-12",
       "entry_price": 15.74,
       "stop_price": null,
-      "bars_held": 0,
+      "bars_held": 1,
       "resistance_at_entry": 15.47
     },
     "BHE": {
       "entry_date": "2026-06-12",
       "entry_price": 89.93,
       "stop_price": null,
-      "bars_held": 0,
+      "bars_held": 1,
       "resistance_at_entry": 89.01
     },
     "SCL": {
       "entry_date": "2026-06-12",
       "entry_price": 54.48,
       "stop_price": null,
-      "bars_held": 0,
+      "bars_held": 1,
       "resistance_at_entry": 53.4475
     },
     "SENEB": {
@@ -129,69 +129,300 @@
       "entry_date": "2026-06-12",
       "entry_price": 175.37,
       "stop_price": null,
-      "bars_held": 0,
+      "bars_held": 1,
       "resistance_at_entry": 167.32
     },
     "AIP": {
       "entry_date": "2026-06-12",
       "entry_price": 41.0,
       "stop_price": null,
-      "bars_held": 0,
+      "bars_held": 1,
       "resistance_at_entry": 37.94
     },
     "CLW": {
       "entry_date": "2026-06-12",
       "entry_price": 17.68,
       "stop_price": null,
-      "bars_held": 0,
+      "bars_held": 1,
       "resistance_at_entry": 16.6
     },
     "WEYS": {
       "entry_date": "2026-06-12",
       "entry_price": 37.0,
       "stop_price": null,
-      "bars_held": 0,
+      "bars_held": 1,
       "resistance_at_entry": 36.29
     },
     "NRDY": {
       "entry_date": "2026-06-12",
       "entry_price": 0.997,
       "stop_price": null,
-      "bars_held": 0,
+      "bars_held": 1,
       "resistance_at_entry": 0.98
     },
     "SGC": {
       "entry_date": "2026-06-12",
       "entry_price": 13.88,
       "stop_price": null,
-      "bars_held": 0,
+      "bars_held": 1,
       "resistance_at_entry": 13.47
     },
     "JYNT": {
       "entry_date": "2026-06-12",
       "entry_price": 9.58,
       "stop_price": null,
-      "bars_held": 0,
+      "bars_held": 1,
       "resistance_at_entry": 9.3
     },
     "ASYS": {
       "entry_date": "2026-06-12",
       "entry_price": 23.99,
       "stop_price": null,
-      "bars_held": 0,
+      "bars_held": 1,
       "resistance_at_entry": 22.82
     },
     "TLYS": {
       "entry_date": "2026-06-12",
       "entry_price": 5.45,
       "stop_price": null,
-      "bars_held": 0,
+      "bars_held": 1,
       "resistance_at_entry": 5.39
+    },
+    "EMR": {
+      "entry_date": "2026-06-15",
+      "entry_price": 149.1,
+      "stop_price": null,
+      "bars_held": 0,
+      "resistance_at_entry": 147.3943
+    },
+    "FDX": {
+      "entry_date": "2026-06-15",
+      "entry_price": 343.26,
+      "stop_price": null,
+      "bars_held": 0,
+      "resistance_at_entry": 338.49
+    },
+    "STX": {
+      "entry_date": "2026-06-15",
+      "entry_price": 1004.54,
+      "stop_price": null,
+      "bars_held": 0,
+      "resistance_at_entry": 940.69
+    },
+    "WDC": {
+      "entry_date": "2026-06-15",
+      "entry_price": 635.605,
+      "stop_price": null,
+      "bars_held": 0,
+      "resistance_at_entry": 593.9551
+    },
+    "IP": {
+      "entry_date": "2026-06-15",
+      "entry_price": 37.165,
+      "stop_price": null,
+      "bars_held": 0,
+      "resistance_at_entry": 36.5843
+    },
+    "TER": {
+      "entry_date": "2026-06-15",
+      "entry_price": 429.2,
+      "stop_price": null,
+      "bars_held": 0,
+      "resistance_at_entry": 417.9221
+    },
+    "RBA": {
+      "entry_date": "2026-06-15",
+      "entry_price": 109.125,
+      "stop_price": null,
+      "bars_held": 0,
+      "resistance_at_entry": 107.63
+    },
+    "SNA": {
+      "entry_date": "2026-06-15",
+      "entry_price": 392.025,
+      "stop_price": null,
+      "bars_held": 0,
+      "resistance_at_entry": 388.1012
+    },
+    "ENTG": {
+      "entry_date": "2026-06-15",
+      "entry_price": 166.57,
+      "stop_price": null,
+      "bars_held": 0,
+      "resistance_at_entry": 156.3319
+    },
+    "LTM": {
+      "entry_date": "2026-06-15",
+      "entry_price": 56.87,
+      "stop_price": null,
+      "bars_held": 0,
+      "resistance_at_entry": 55.5182
+    },
+    "SNX": {
+      "entry_date": "2026-06-15",
+      "entry_price": 284.7,
+      "stop_price": null,
+      "bars_held": 0,
+      "resistance_at_entry": 280.65
+    },
+    "NDSN": {
+      "entry_date": "2026-06-15",
+      "entry_price": 295.135,
+      "stop_price": null,
+      "bars_held": 0,
+      "resistance_at_entry": 290.13
+    },
+    "DLAKY": {
+      "entry_date": "2026-06-15",
+      "entry_price": 10.39,
+      "stop_price": null,
+      "bars_held": 0,
+      "resistance_at_entry": 10.0
+    },
+    "EBCOY": {
+      "entry_date": "2026-06-15",
+      "entry_price": 19.21,
+      "stop_price": null,
+      "bars_held": 0,
+      "resistance_at_entry": 18.82
+    },
+    "LEVI": {
+      "entry_date": "2026-06-15",
+      "entry_price": 24.58,
+      "stop_price": null,
+      "bars_held": 0,
+      "resistance_at_entry": 24.24
+    },
+    "CVLT": {
+      "entry_date": "2026-06-15",
+      "entry_price": 129.2,
+      "stop_price": null,
+      "bars_held": 0,
+      "resistance_at_entry": 127.76
+    },
+    "MHK": {
+      "entry_date": "2026-06-15",
+      "entry_price": 111.61,
+      "stop_price": null,
+      "bars_held": 0,
+      "resistance_at_entry": 109.51
+    },
+    "SUBCY": {
+      "entry_date": "2026-06-15",
+      "entry_price": 37.5,
+      "stop_price": null,
+      "bars_held": 0,
+      "resistance_at_entry": 36.2588
+    },
+    "LPX": {
+      "entry_date": "2026-06-15",
+      "entry_price": 78.05,
+      "stop_price": null,
+      "bars_held": 0,
+      "resistance_at_entry": 76.6413
+    },
+    "SMTC": {
+      "entry_date": "2026-06-15",
+      "entry_price": 175.15,
+      "stop_price": null,
+      "bars_held": 0,
+      "resistance_at_entry": 169.35
+    },
+    "QLYS": {
+      "entry_date": "2026-06-15",
+      "entry_price": 115.6,
+      "stop_price": null,
+      "bars_held": 0,
+      "resistance_at_entry": 114.02
+    },
+    "CPA": {
+      "entry_date": "2026-06-15",
+      "entry_price": 147.81,
+      "stop_price": null,
+      "bars_held": 0,
+      "resistance_at_entry": 142.89
+    },
+    "CBT": {
+      "entry_date": "2026-06-15",
+      "entry_price": 88.55,
+      "stop_price": null,
+      "bars_held": 0,
+      "resistance_at_entry": 87.65
+    },
+    "COLM": {
+      "entry_date": "2026-06-15",
+      "entry_price": 68.475,
+      "stop_price": null,
+      "bars_held": 0,
+      "resistance_at_entry": 67.79
+    },
+    "KN": {
+      "entry_date": "2026-06-15",
+      "entry_price": 40.205,
+      "stop_price": null,
+      "bars_held": 0,
+      "resistance_at_entry": 39.78
+    },
+    "PRLB": {
+      "entry_date": "2026-06-15",
+      "entry_price": 79.825,
+      "stop_price": null,
+      "bars_held": 0,
+      "resistance_at_entry": 78.94
+    },
+    "ULCC": {
+      "entry_date": "2026-06-15",
+      "entry_price": 6.79,
+      "stop_price": null,
+      "bars_held": 0,
+      "resistance_at_entry": 6.35
+    },
+    "APOG": {
+      "entry_date": "2026-06-15",
+      "entry_price": 40.875,
+      "stop_price": null,
+      "bars_held": 0,
+      "resistance_at_entry": 40.14
+    },
+    "VLRS": {
+      "entry_date": "2026-06-15",
+      "entry_price": 8.47,
+      "stop_price": null,
+      "bars_held": 0,
+      "resistance_at_entry": 8.12
+    },
+    "ABSI": {
+      "entry_date": "2026-06-15",
+      "entry_price": 7.49,
+      "stop_price": null,
+      "bars_held": 0,
+      "resistance_at_entry": 7.34
+    },
+    "CTRN": {
+      "entry_date": "2026-06-15",
+      "entry_price": 52.92,
+      "stop_price": null,
+      "bars_held": 0,
+      "resistance_at_entry": 51.69
+    },
+    "FLXS": {
+      "entry_date": "2026-06-15",
+      "entry_price": 64.73,
+      "stop_price": null,
+      "bars_held": 0,
+      "resistance_at_entry": 63.21
+    },
+    "SRI": {
+      "entry_date": "2026-06-15",
+      "entry_price": 7.93,
+      "stop_price": null,
+      "bars_held": 0,
+      "resistance_at_entry": 7.82
     }
   },
   "history": [],
-  "last_run": "2026-06-15T14:04:24+04:00",
-  "last_run_summary": "watched 1115 tickers \u00b7 0 new entries \u00b7 0 exits \u00b7 open positions 26 \u00b7 history 0",
+  "last_run": "2026-06-15T18:16:47+04:00",
+  "last_run_summary": "watched 1115 tickers \u00b7 33 new entries \u00b7 0 exits \u00b7 open positions 59 \u00b7 history 0",
   "watch_list": [
     "NVDA",
     "MSFT",
