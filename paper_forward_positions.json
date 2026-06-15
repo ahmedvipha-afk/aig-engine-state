@@ -291,6 +291,20 @@
       "stop_price": 5.42,
       "rsi_at_entry": 60.97,
       "ema_at_entry": 5.066
+    },
+    "CAAP": {
+      "entry_date": "2026-06-15",
+      "entry_price": 28.265,
+      "stop_price": 22.32,
+      "rsi_at_entry": 64.94,
+      "ema_at_entry": 24.515
+    },
+    "MAS": {
+      "entry_date": "2026-06-15",
+      "entry_price": 74.37,
+      "stop_price": 66.31,
+      "rsi_at_entry": 64.9,
+      "ema_at_entry": 67.3427
     }
   },
   "history": [
@@ -5711,10 +5725,28 @@
       "exit_price": 71.92,
       "exit_reason": "rsi_or_trend_exit",
       "pnl_pct": -0.0
+    },
+    {
+      "ticker": "HCSG",
+      "entry_date": "2026-06-15",
+      "entry_price": 22.51,
+      "exit_date": "2026-06-15",
+      "exit_price": 22.51,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": 0.0
+    },
+    {
+      "ticker": "TMHC",
+      "entry_date": "2026-06-15",
+      "entry_price": 71.935,
+      "exit_date": "2026-06-15",
+      "exit_price": 71.935,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": -0.0
     }
   ],
-  "last_run": "2026-06-15T23:14:21+04:00",
-  "last_run_summary": "watched 1030 tickers \u00b7 5 new entries \u00b7 5 exits \u00b7 open positions 41 \u00b7 history 602",
+  "last_run": "2026-06-15T23:59:49+04:00",
+  "last_run_summary": "watched 1030 tickers \u00b7 4 new entries \u00b7 2 exits \u00b7 open positions 43 \u00b7 history 604",
   "watch_list": [
     "A",
     "AA",
