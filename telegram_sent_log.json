@@ -1,77 +1,5 @@
 [
   {
-    "ts_utc": "2026-05-27T02:22:16+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 373,
-    "preview": "\ud83d\udea8 CC crash detected at 06:22 UAE 2026-05-27.\nCause: hung-repl-sentinel-44min-procs-1.\nRecovery initiated."
-  },
-  {
-    "ts_utc": "2026-05-27T02:33:20+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 374,
-    "preview": "\ud83d\udea8 CC crash detected at 06:33 UAE 2026-05-27.\nCause: hung-repl-sentinel-55min-procs-1.\nRecovery initiated."
-  },
-  {
-    "ts_utc": "2026-05-27T02:44:20+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 375,
-    "preview": "\ud83d\udea8 CC crash detected at 06:44 UAE 2026-05-27.\nCause: hung-repl-sentinel-66min-procs-1.\nRecovery initiated."
-  },
-  {
-    "ts_utc": "2026-05-27T02:55:17+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": false,
-    "message_id": null,
-    "preview": "\ud83d\udea8 CC crash detected at 06:55 UAE 2026-05-27.\nCause: hung-repl-sentinel-77min-procs-1.\nRecovery initiated."
-  },
-  {
-    "ts_utc": "2026-05-27T03:02:05+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 376,
-    "preview": "\u26a0 Phase 1 sprint: 5 fires missed in a row.\n\nCron windows were skipped because the REPL was busy. Catching up all 5 fires now back-to-back, then resuming normal 15-min cadence.\n\nTo reduce missed fires,"
-  },
-  {
-    "ts_utc": "2026-05-27T03:05:29+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 377,
-    "preview": "\u2705 CC recovered at 07:05 UAE 2026-05-27.\nSession resumed via headless `claude -p`.\nLag: ~9 min (596s wall-clock)."
-  },
-  {
-    "ts_utc": "2026-05-27T03:36:23+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 378,
-    "preview": "\ud83d\udea8 CC crash detected at 07:36 UAE 2026-05-27.\nCause: hung-repl-sentinel-32min-procs-1.\nRecovery initiated."
-  },
-  {
-    "ts_utc": "2026-05-27T03:47:31+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 379,
-    "preview": "\ud83d\udea8 CC crash detected at 07:47 UAE 2026-05-27.\nCause: hung-repl-sentinel-43min-procs-1.\nRecovery initiated."
-  },
-  {
-    "ts_utc": "2026-05-27T03:58:17+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 380,
-    "preview": "\ud83d\udea8 CC crash detected at 07:58 UAE 2026-05-27.\nCause: hung-repl-sentinel-54min-procs-1.\nRecovery initiated."
-  },
-  {
     "ts_utc": "2026-05-27T10:28:31+00:00",
     "kind": "text",
     "to": 7096306994,
@@ -1598,5 +1526,77 @@
     "ok": true,
     "message_id": 530,
     "preview": "\ud83d\udd37 <b>AIG TRB-50 digest \u2014 2026-06-15</b> <i>(paper-forward, slot 2)</i>\nENTRIES 33: EMR, FDX, STX, WDC, IP, TER, RBA, SNA, ENTG, LTM, SNX, NDSN, DLAKY, EBCOY, LEVI +18 more\nOpen: 59 \u00b7 Closed-to-date: 0"
+  },
+  {
+    "ts_utc": "2026-06-15T14:27:45+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 531,
+    "preview": "\ud83d\ude80 Sprint fire 18:27 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-15T14:49:56+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-15</b>\n\n\ud83d\udfe2 ENTRY <b>FNV</b> $220.74 (stop $217.43)\n\ud83d\udfe2 ENTRY <b>MAS</b> $74.89 (stop $66.31)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.86 (stop $59.66)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.96 (stop $56."
+  },
+  {
+    "ts_utc": "2026-06-15T15:01:42+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 532,
+    "preview": "\ud83d\udd37 <b>AIG TRB-50 digest \u2014 2026-06-15</b> <i>(paper-forward, slot 2)</i>\nENTRIES 5: MTNOY, SSD, CAAP, AIN, MD\nOpen: 64 \u00b7 Closed-to-date: 0"
+  },
+  {
+    "ts_utc": "2026-06-15T15:12:36+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 533,
+    "preview": "\ud83d\ude80 Sprint fire 19:12 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-15T15:32:02+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 534,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-15</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.25)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.41 (stop $19.5)\n\ud83d\udfe2 ENTRY <b>IOT</b> $34.02 (stop $25.1)\n\ud83d\udfe2 ENTRY <b>MAS</b> $74.95 (stop $66.31)\n"
+  },
+  {
+    "ts_utc": "2026-06-15T15:43:24+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 535,
+    "preview": "\ud83d\udd37 <b>AIG TRB-50 digest \u2014 2026-06-15</b> <i>(paper-forward, slot 2)</i>\nENTRIES 6: PKG, FND, BLBD, AXGN, TCMD, CLAR\nOpen: 70 \u00b7 Closed-to-date: 0"
+  },
+  {
+    "ts_utc": "2026-06-15T15:57:33+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 536,
+    "preview": "\ud83d\ude80 Sprint fire 19:57 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-15T16:12:44+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 537,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-15</b>\n\n\ud83d\udfe2 ENTRY <b>ADPT</b> $17.74 (stop $11.76)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.52 (stop $19.5)\n\ud83d\udfe2 ENTRY <b>MAS</b> $75.05 (stop $66.31)\n\ud83d\udfe2 ENTRY <b>VLRS</b> $8.55 (stop $6.78)"
+  },
+  {
+    "ts_utc": "2026-06-15T16:23:27+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 538,
+    "preview": "\ud83d\udd37 <b>AIG TRB-50 digest \u2014 2026-06-15</b> <i>(paper-forward, slot 2)</i>\nENTRIES 3: CDNA, KRT, CIX\nOpen: 73 \u00b7 Closed-to-date: 0"
   }
 ]
