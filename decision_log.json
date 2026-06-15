@@ -874,5 +874,24 @@
     ],
     "ts_utc": "2026-06-15T20:51:02+00:00",
     "commit_sha": null
+  },
+  {
+    "title": "Council round (degraded): single-external-opinion input",
+    "methodology_source": "audit_finding_resolution",
+    "decision": "RECORD of the council/cross-check round convened on the validation-gate-integrity brief (council_brief_gate_integrity_2026-06-16.md, commit 9ad054b; builds on entries 52+53). The round ran DEGRADED: the Tier-2 true-council (external models via OpenRouter) had all three primary seats fail/rate-limit -- Kimi K2 (moonshotai/kimi-k2:free) and DeepSeek R1 (deepseek/deepseek-r1:free) BOTH fell back to the SAME substitute model (openai/gpt-oss-120b:free), and Gemini 2.5 Pro (google/gemini-2.5-pro-exp + substitutes) 404'd entirely. So the round was effectively ONE external model heard twice + Claude as Chairman -- NOT the 3-model diversity intended. DIRECTIONAL ANSWER (recorded as a SINGLE-EXTERNAL-OPINION input, explicitly NOT a 3-0 consensus): keep the evidenced CODE gate as operative; remediate by FIXING THE DOCS (remove or re-label the unattainable PF>=1.5, which duplicates the already-enforced expectancy>=1.0 i.e. PF>=1.0); do NOT lower any threshold to admit the existing portfolio. The model added one substantive instrument beyond the brief: a formal 'Gate Specification Update' recording the operational gate AND requiring a feasibility simulation before any FUTURE gate revision deploys (institutionalizing the missing feasibility check). LIMITATIONS (explicit, so this is weighted correctly later): (i) one model not three -- convergence is not corroboration; (ii) the prompt carried the hard constraint + evidentiary asymmetry, so the answer is partly downstream of FRAMING, not independent; (iii) questions (c) [is 'PF' a different statistic than expectancy?] and (e) [forward-only vs re-validate specifics] were under-addressed -- the seats ASSUMED PF==expectancy. NO DECISION MADE; no code/config/gate changed. This entry records the round as INPUT to the operator's pending decision, which awaits the question-(c) provenance dig and a genuine multi-model re-run when seats verify healthy.",
+    "rationale": "Audit honesty: a cross-check round that degraded must be recorded AS degraded so it is weighted correctly (one external opinion, framing-influenced) and not later mistaken for a 3-model consensus. Recording the directional answer plus its limitations preserves the input without inflating its evidentiary weight -- the same discipline that logged the enforcement gap (entry 52) and the expectancy==PF math error (entry 53).",
+    "alternatives_considered": [
+      "Record it as a council consensus (rejected -- it was one model heard twice; calling it consensus is the exact inflation the audit discipline guards against)",
+      "Do not record a degraded round at all (rejected -- the round happened and informed thinking; an unrecorded cross-check is a provenance hole)",
+      "Re-run immediately to force diversity (rejected for THIS entry -- free seats are rate-limited; re-run only when seats verify healthy, as a separate step)"
+    ],
+    "audit_finding_refs": [
+      "council_brief_gate_integrity_2026-06-16.md (commit 9ad054b) -- the deliberated brief",
+      "builds on entries 52 (amendments defined-but-unenforced) + 53 (expectancy==PF, PF>=1.5 uncleanable)",
+      "seats actually used: kimi-k2:free + deepseek-r1:free BOTH -> openai/gpt-oss-120b:free; gemini-2.5-pro + substitutes 404",
+      "OPEN: question (c) provenance dig + a genuine 3-model re-run on the same brief, pending healthy seats"
+    ],
+    "ts_utc": "2026-06-15T21:14:46+00:00",
+    "commit_sha": null
   }
 ]
