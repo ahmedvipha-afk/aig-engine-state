@@ -47,13 +47,6 @@
       "rsi_at_entry": 52.38,
       "ema_at_entry": 34.6032
     },
-    "WDS": {
-      "entry_date": "2026-05-22",
-      "entry_price": 22.59,
-      "stop_price": 21.6,
-      "rsi_at_entry": 47.16,
-      "ema_at_entry": 19.1111
-    },
     "WLDN": {
       "entry_date": "2026-05-22",
       "entry_price": 93.55,
@@ -222,13 +215,6 @@
       "rsi_at_entry": 60.81,
       "ema_at_entry": 70.59
     },
-    "VLRS": {
-      "entry_date": "2026-06-11",
-      "entry_price": 7.65,
-      "stop_price": 6.83,
-      "rsi_at_entry": 54.13,
-      "ema_at_entry": 7.4724
-    },
     "AESI": {
       "entry_date": "2026-06-12",
       "entry_price": 17.05,
@@ -242,13 +228,6 @@
       "stop_price": 8.41,
       "rsi_at_entry": 55.05,
       "ema_at_entry": 8.0467
-    },
-    "BP": {
-      "entry_date": "2026-06-12",
-      "entry_price": 42.735,
-      "stop_price": 41.52,
-      "rsi_at_entry": 44.57,
-      "ema_at_entry": 38.9891
     },
     "BYD": {
       "entry_date": "2026-06-12",
@@ -299,13 +278,6 @@
       "rsi_at_entry": 51.09,
       "ema_at_entry": 209.9989
     },
-    "MAS": {
-      "entry_date": "2026-06-12",
-      "entry_price": 74.03,
-      "stop_price": 66.37,
-      "rsi_at_entry": 64.13,
-      "ema_at_entry": 67.2721
-    },
     "KAJMY": {
       "entry_date": "2026-06-12",
       "entry_price": 35.99,
@@ -313,12 +285,40 @@
       "rsi_at_entry": 50.37,
       "ema_at_entry": 35.8193
     },
-    "SSLZY": {
-      "entry_date": "2026-06-12",
-      "entry_price": 5.85,
-      "stop_price": 5.42,
-      "rsi_at_entry": 60.97,
-      "ema_at_entry": 5.066
+    "CIG": {
+      "entry_date": "2026-06-15",
+      "entry_price": 2.16,
+      "stop_price": 2.06,
+      "rsi_at_entry": 47.37,
+      "ema_at_entry": 2.1205
+    },
+    "CRH": {
+      "entry_date": "2026-06-15",
+      "entry_price": 112.16,
+      "stop_price": 99.45,
+      "rsi_at_entry": 59.02,
+      "ema_at_entry": 110.364
+    },
+    "IOT": {
+      "entry_date": "2026-06-15",
+      "entry_price": 33.95,
+      "stop_price": 25.13,
+      "rsi_at_entry": 55.13,
+      "ema_at_entry": 33.6645
+    },
+    "RGEN": {
+      "entry_date": "2026-06-15",
+      "entry_price": 132.9,
+      "stop_price": 100.27,
+      "rsi_at_entry": 63.59,
+      "ema_at_entry": 132.3473
+    },
+    "TG": {
+      "entry_date": "2026-06-15",
+      "entry_price": 8.32,
+      "stop_price": 7.26,
+      "rsi_at_entry": 52.85,
+      "ema_at_entry": 8.2259
     }
   },
   "history": [
@@ -5325,10 +5325,91 @@
       "exit_price": 74.44,
       "exit_reason": "rsi_or_trend_exit",
       "pnl_pct": 0.0
+    },
+    {
+      "ticker": "BP",
+      "entry_date": "2026-06-12",
+      "entry_price": 42.735,
+      "exit_date": "2026-06-15",
+      "exit_price": 41.52,
+      "exit_reason": "stop_hit",
+      "pnl_pct": -2.843
+    },
+    {
+      "ticker": "GCO",
+      "entry_date": "2026-06-15",
+      "entry_price": 42.57,
+      "exit_date": "2026-06-15",
+      "exit_price": 42.57,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": -0.0
+    },
+    {
+      "ticker": "HCSG",
+      "entry_date": "2026-06-15",
+      "entry_price": 22.51,
+      "exit_date": "2026-06-15",
+      "exit_price": 22.51,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": 0.0
+    },
+    {
+      "ticker": "MAS",
+      "entry_date": "2026-06-12",
+      "entry_price": 74.03,
+      "exit_date": "2026-06-15",
+      "exit_price": 75.38,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": 1.824
+    },
+    {
+      "ticker": "MTH",
+      "entry_date": "2026-06-15",
+      "entry_price": 75.295,
+      "exit_date": "2026-06-15",
+      "exit_price": 75.295,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": -0.0
+    },
+    {
+      "ticker": "SSLZY",
+      "entry_date": "2026-06-12",
+      "entry_price": 5.85,
+      "exit_date": "2026-06-15",
+      "exit_price": 5.42,
+      "exit_reason": "stop_hit",
+      "pnl_pct": -7.35
+    },
+    {
+      "ticker": "TMHC",
+      "entry_date": "2026-06-15",
+      "entry_price": 71.91,
+      "exit_date": "2026-06-15",
+      "exit_price": 71.91,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": 0.0
+    },
+    {
+      "ticker": "VLRS",
+      "entry_date": "2026-06-11",
+      "entry_price": 7.65,
+      "exit_date": "2026-06-15",
+      "exit_price": 8.54,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": 11.634
+    },
+    {
+      "ticker": "WDS",
+      "entry_date": "2026-05-22",
+      "entry_price": 22.59,
+      "exit_date": "2026-06-15",
+      "exit_price": 21.6,
+      "exit_reason": "stop_hit",
+      "pnl_pct": -4.382
     }
   ],
-  "last_run": "2026-06-15T17:19:20+04:00",
-  "last_run_summary": "watched 1030 tickers \u00b7 5 new entries \u00b7 5 exits \u00b7 open positions 45 \u00b7 history 556",
+  "last_run": "2026-06-15T18:05:27+04:00",
+  "last_run_summary": "watched 1030 tickers \u00b7 9 new entries \u00b7 9 exits \u00b7 open positions 45 \u00b7 history 565",
   "watch_list": [
     "A",
     "AA",
