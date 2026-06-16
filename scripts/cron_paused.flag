@@ -1,0 +1,6 @@
+PAUSED 2026-06-16 by gate-calibration capture session.
+REASON: freezing a canonical yfinance OHLCV snapshot (decision_log entry 60/61)
+then running the metric-capture re-run on the frozen data. Track 1 paused to avoid
+yfinance rate-limit contention between the ~1750-ticker snapshot fetch and live
+sprint fetches. A1/A2 isolation pattern — removed (renamed) this same session once
+the isolated capture completes.
