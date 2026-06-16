@@ -1,0 +1,61 @@
+{
+  "trb50": {
+    "slow": {
+      "verdict": "PORTFOLIO_CLEARED_FOR_PAPER_FORWARD",
+      "PF": 1.3312,
+      "WR": 0.5386,
+      "SR": 2.5426,
+      "DSR": 1.8613,
+      "CI_lo": 0.004387,
+      "CI_hi": 0.00864,
+      "trades": 3804,
+      "contrib": 141,
+      "universe": 143
+    },
+    "fast": {
+      "verdict": "PORTFOLIO_CLEARED_FOR_PAPER_FORWARD",
+      "PF": 1.3312,
+      "WR": 0.5386,
+      "SR": 2.5426,
+      "DSR": 1.8613,
+      "CI_lo": 0.004387,
+      "CI_hi": 0.00864,
+      "trades": 3804,
+      "contrib": 141,
+      "universe": 143
+    },
+    "IDENTICAL": true,
+    "slow_secs": 342.8,
+    "fast_secs": 431.0
+  },
+  "divergence": {
+    "slow": {
+      "verdict": "PORTFOLIO_CLEARED_FOR_PAPER_FORWARD",
+      "PF": 1.4217,
+      "WR": 0.4819,
+      "SR": 2.0433,
+      "DSR": 1.362,
+      "CI_lo": 0.003503,
+      "CI_hi": 0.00807,
+      "trades": 1822,
+      "contrib": 137,
+      "universe": 143
+    },
+    "fast": {
+      "verdict": "PORTFOLIO_CLEARED_FOR_PAPER_FORWARD",
+      "PF": 1.4217,
+      "WR": 0.4819,
+      "SR": 2.0433,
+      "DSR": 1.362,
+      "CI_lo": 0.003503,
+      "CI_hi": 0.00807,
+      "trades": 1822,
+      "contrib": 137,
+      "universe": 143
+    },
+    "IDENTICAL": true,
+    "slow_secs": 767.9,
+    "fast_secs": 407.2
+  },
+  "ALL_IDENTICAL": true
+}

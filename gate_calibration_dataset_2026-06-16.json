@@ -1,0 +1,874 @@
+{
+  "created_utc": "2026-06-16",
+  "snapshot_canonical_sha256": "9d2dc9ffae515dd1c6d249dbd592e07a43dccde976969e188d58903cefc9100b",
+  "config_hash": "c7ff799942e2c8da",
+  "provenance": {
+    "utc": "2026-06-16T15:10:24+00:00",
+    "file_hashes": {
+      "config.py": "3d6ee7c03e70a3f9",
+      "aig/strategy_ema200.py": "53b58f8a447b09d9",
+      "aig/backtest.py": "d7080f4857209ab7",
+      "aig/validation_gate.py": "5667054d2407e5b5",
+      "aig/stats.py": "23715e456732ed73",
+      "aig/costs.py": "aab2cafc67d08ba2"
+    },
+    "config_hash": "c7ff799942e2c8da"
+  },
+  "universe": "us_halal_full.txt",
+  "universe_size": 1603,
+  "data_ok": 1122,
+  "data_blocked": 412,
+  "data_missing": 69,
+  "missing_sample": [
+    "K",
+    "HOLX",
+    "DAY",
+    "EXAS",
+    "IPG",
+    "ALIV",
+    "360",
+    "INFA",
+    "CFLT",
+    "ATGE",
+    "OS",
+    "ATCO",
+    "REVG",
+    "PINC",
+    "SCS",
+    "MCW",
+    "MODG",
+    "IAS",
+    "AVDL",
+    "BRRAY",
+    "MRC",
+    "BOKU",
+    "GES",
+    "ODP",
+    "RYI",
+    "PHLT",
+    "ZIMV",
+    "PBPB",
+    "SMLR",
+    "SRDX",
+    "VSTA",
+    "IFOS",
+    "ZEUS",
+    "CRN",
+    "PPHC",
+    "SCPH",
+    "LVRO",
+    "XTKG",
+    "DEVO",
+    "SOM",
+    "ESGL",
+    "NVFY",
+    "MEHCQ",
+    "QTIH",
+    "ZENV",
+    "AOTI",
+    "YGMZ",
+    "BEDU",
+    "ZYXI",
+    "ADAP",
+    "TBHC",
+    "ISPO",
+    "BGFV",
+    "SVRS",
+    "PWM",
+    "900100",
+    "BLMZ",
+    "ENL",
+    "FADL",
+    "ABP"
+  ],
+  "method_note": "Portfolio metrics reproduced via UNMODIFIED portfolio_evaluate on per-ticker OOS streams from the same _simulate/60-40 split/costs as 2026-05. Walk-forward folds + per-ticker bootstrap omitted (do not feed portfolio verdict).",
+  "note_portfolio_calmar": "Portfolio-level Calmar/maxDD NOT computable: pooled OOS trades have no cross-ticker chronology (bare return floats, no dates). Per-ticker maxDD/Calmar aggregates given (within-ticker order preserved).",
+  "strategies": {
+    "cmf": {
+      "reproduced": {
+        "PF": 1.3778,
+        "WR": 0.3371,
+        "SR": 6.2581,
+        "DSR": 5.5768,
+        "CI": 0.008698,
+        "tr": 17489,
+        "cov": 0.9875,
+        "verdict": "PORTFOLIO_FAIL",
+        "reasons": [
+          "portfolio win rate 0.337 < 0.4"
+        ]
+      },
+      "extended": {
+        "PSR_vs0": 1.0,
+        "per_trade_SR": 0.107,
+        "skew": 2.8012,
+        "kurtosis_nonexcess": 19.0054,
+        "sortino_annualised": 12.6463,
+        "per_ticker_maxDD_median": -0.1818,
+        "per_ticker_maxDD_worst": -0.6546,
+        "per_ticker_calmar_median": 0.0543,
+        "tail": {
+          "max_single_trade": 1.4380243524221972,
+          "min_single_trade": -0.275231488068292,
+          "max_win_share_of_gross_profit": 0.0022522961820893917,
+          "p99_abs": 0.34229207069908374
+        }
+      },
+      "baseline_2026_05": {
+        "PF": 1.396,
+        "WR": 0.34,
+        "SR": 6.533,
+        "DSR": 5.872,
+        "CI": 0.0091,
+        "tr": 17646,
+        "cov": 0.987,
+        "v": "FAIL"
+      },
+      "drift": {
+        "dPF": -0.0182,
+        "dWR": -0.0029,
+        "dDSR": -0.2952,
+        "dtrades": -157,
+        "dcov": 0.0005,
+        "baseline_verdict": "FAIL",
+        "repro_verdict": "FAIL",
+        "FLIP": false
+      },
+      "contributors": 1108,
+      "pooled_n": 17489
+    },
+    "mbv": {
+      "reproduced": {
+        "PF": 1.2992,
+        "WR": 0.53,
+        "SR": 4.8364,
+        "DSR": 4.155,
+        "CI": 0.005164,
+        "tr": 10664,
+        "cov": 0.9608,
+        "verdict": "PORTFOLIO_CLEARED_FOR_PAPER_FORWARD",
+        "reasons": []
+      },
+      "extended": {
+        "PSR_vs0": 1.0,
+        "per_trade_SR": 0.1071,
+        "skew": 0.6967,
+        "kurtosis_nonexcess": 6.2764,
+        "sortino_annualised": 5.5021,
+        "per_ticker_maxDD_median": -0.0999,
+        "per_ticker_maxDD_worst": -0.4451,
+        "per_ticker_calmar_median": 0.0385,
+        "tail": {
+          "max_single_trade": 0.5681489794548605,
+          "min_single_trade": -0.30123384878639803,
+          "max_win_share_of_gross_profit": 0.0019494204799202681,
+          "p99_abs": 0.1766337990393724
+        }
+      },
+      "baseline_2026_05": {
+        "PF": 1.302,
+        "WR": 0.531,
+        "SR": 4.889,
+        "DSR": 4.365,
+        "CI": 0.0052,
+        "tr": 10833,
+        "cov": 0.96,
+        "v": "CLEAR"
+      },
+      "drift": {
+        "dPF": -0.0028,
+        "dWR": -0.001,
+        "dDSR": -0.21,
+        "dtrades": -169,
+        "dcov": 0.0008,
+        "baseline_verdict": "CLEAR",
+        "repro_verdict": "CLEAR",
+        "FLIP": false
+      },
+      "contributors": 1078,
+      "pooled_n": 10664
+    },
+    "roc": {
+      "reproduced": {
+        "PF": 1.2163,
+        "WR": 0.2962,
+        "SR": 4.3067,
+        "DSR": 3.6253,
+        "CI": 0.005075,
+        "tr": 34750,
+        "cov": 0.9982,
+        "verdict": "PORTFOLIO_FAIL",
+        "reasons": [
+          "portfolio win rate 0.296 < 0.4"
+        ]
+      },
+      "extended": {
+        "PSR_vs0": 1.0,
+        "per_trade_SR": 0.05171,
+        "skew": 6.8061,
+        "kurtosis_nonexcess": 101.4808,
+        "sortino_annualised": 10.718,
+        "per_ticker_maxDD_median": -0.3299,
+        "per_ticker_maxDD_worst": -0.9763,
+        "per_ticker_calmar_median": -0.0074,
+        "tail": {
+          "max_single_trade": 3.048180279813509,
+          "min_single_trade": -0.36111902337509594,
+          "max_win_share_of_gross_profit": 0.002465975541241204,
+          "p99_abs": 0.4827909110938179
+        }
+      },
+      "baseline_2026_05": {
+        "PF": 1.217,
+        "WR": 0.299,
+        "SR": 4.306,
+        "DSR": 3.724,
+        "CI": 0.005,
+        "tr": 34612,
+        "cov": 0.997,
+        "v": "FAIL"
+      },
+      "drift": {
+        "dPF": -0.0007,
+        "dWR": -0.0028,
+        "dDSR": -0.0987,
+        "dtrades": 138,
+        "dcov": 0.0012,
+        "baseline_verdict": "FAIL",
+        "repro_verdict": "FAIL",
+        "FLIP": false
+      },
+      "contributors": 1120,
+      "pooled_n": 34750
+    },
+    "dbo": {
+      "reproduced": {
+        "PF": 1.3009,
+        "WR": 0.3405,
+        "SR": 3.5367,
+        "DSR": 2.8554,
+        "CI": 0.008232,
+        "tr": 11963,
+        "cov": 0.9938,
+        "verdict": "PORTFOLIO_FAIL",
+        "reasons": [
+          "portfolio win rate 0.340 < 0.4"
+        ]
+      },
+      "extended": {
+        "PSR_vs0": 1.0,
+        "per_trade_SR": 0.07209,
+        "skew": 5.9857,
+        "kurtosis_nonexcess": 74.0246,
+        "sortino_annualised": 8.5027,
+        "per_ticker_maxDD_median": -0.1973,
+        "per_ticker_maxDD_worst": -0.8483,
+        "per_ticker_calmar_median": -0.0116,
+        "tail": {
+          "max_single_trade": 3.053065935613328,
+          "min_single_trade": -0.2483304755763448,
+          "max_win_share_of_gross_profit": 0.005379256015584194,
+          "p99_abs": 0.5873531833683179
+        }
+      },
+      "baseline_2026_05": {
+        "PF": 1.298,
+        "WR": 0.341,
+        "SR": 3.498,
+        "DSR": 2.941,
+        "CI": 0.0082,
+        "tr": 11910,
+        "cov": 0.995,
+        "v": "FAIL"
+      },
+      "drift": {
+        "dPF": 0.0029,
+        "dWR": -0.0005,
+        "dDSR": -0.0856,
+        "dtrades": 53,
+        "dcov": -0.0012,
+        "baseline_verdict": "FAIL",
+        "repro_verdict": "FAIL",
+        "FLIP": false
+      },
+      "contributors": 1115,
+      "pooled_n": 11963
+    },
+    "trb50": {
+      "reproduced": {
+        "PF": 1.1506,
+        "WR": 0.5096,
+        "SR": 3.4545,
+        "DSR": 2.7732,
+        "CI": 0.003096,
+        "tr": 25761,
+        "cov": 0.9938,
+        "verdict": "PORTFOLIO_CLEARED_FOR_PAPER_FORWARD",
+        "reasons": []
+      },
+      "extended": {
+        "PSR_vs0": 1.0,
+        "per_trade_SR": 0.04845,
+        "skew": 0.9821,
+        "kurtosis_nonexcess": 11.3997,
+        "sortino_annualised": 3.8241,
+        "per_ticker_maxDD_median": -0.2563,
+        "per_ticker_maxDD_worst": -0.7928,
+        "per_ticker_calmar_median": -0.0066,
+        "tail": {
+          "max_single_trade": 1.0866002971591544,
+          "min_single_trade": -0.55653594768628,
+          "max_win_share_of_gross_profit": 0.0013304721725632298,
+          "p99_abs": 0.2930619125271527
+        }
+      },
+      "baseline_2026_05": {
+        "PF": 1.152,
+        "WR": 0.51,
+        "SR": 3.483,
+        "DSR": 2.802,
+        "CI": 0.0032,
+        "tr": 25760,
+        "cov": 0.994,
+        "v": "CLEAR"
+      },
+      "drift": {
+        "dPF": -0.0014,
+        "dWR": -0.0004,
+        "dDSR": -0.0288,
+        "dtrades": 1,
+        "dcov": -0.0002,
+        "baseline_verdict": "CLEAR",
+        "repro_verdict": "CLEAR",
+        "FLIP": false
+      },
+      "contributors": 1115,
+      "pooled_n": 25761
+    },
+    "divergence": {
+      "reproduced": {
+        "PF": 1.2147,
+        "WR": 0.4446,
+        "SR": 2.9021,
+        "DSR": 2.2208,
+        "CI": 0.002802,
+        "tr": 10598,
+        "cov": 0.9064,
+        "verdict": "PORTFOLIO_CLEARED_FOR_PAPER_FORWARD",
+        "reasons": []
+      },
+      "extended": {
+        "PSR_vs0": 1.0,
+        "per_trade_SR": 0.06421,
+        "skew": 0.7836,
+        "kurtosis_nonexcess": 8.5455,
+        "sortino_annualised": 3.5765,
+        "per_ticker_maxDD_median": -0.0945,
+        "per_ticker_maxDD_worst": -0.5995,
+        "per_ticker_calmar_median": 0.0048,
+        "tail": {
+          "max_single_trade": 0.5469452524798063,
+          "min_single_trade": -0.47840115246956383,
+          "max_win_share_of_gross_profit": 0.0022999268142736094,
+          "p99_abs": 0.2187547570533466
+        }
+      },
+      "baseline_2026_05": {
+        "PF": 1.227,
+        "WR": 0.448,
+        "SR": 3.08,
+        "DSR": 2.606,
+        "CI": 0.003,
+        "tr": 10715,
+        "cov": 0.916,
+        "v": "CLEAR"
+      },
+      "drift": {
+        "dPF": -0.0123,
+        "dWR": -0.0034,
+        "dDSR": -0.3852,
+        "dtrades": -117,
+        "dcov": -0.0096,
+        "baseline_verdict": "CLEAR",
+        "repro_verdict": "CLEAR",
+        "FLIP": false
+      },
+      "contributors": 1017,
+      "pooled_n": 10598
+    },
+    "pmr": {
+      "reproduced": {
+        "PF": 1.2494,
+        "WR": 0.4686,
+        "SR": 2.692,
+        "DSR": 2.0107,
+        "CI": 0.003851,
+        "tr": 4693,
+        "cov": 0.8779,
+        "verdict": "PORTFOLIO_CLEARED_FOR_PAPER_FORWARD",
+        "reasons": []
+      },
+      "extended": {
+        "PSR_vs0": 1.0,
+        "per_trade_SR": 0.09165,
+        "skew": 0.7749,
+        "kurtosis_nonexcess": 4.7253,
+        "sortino_annualised": 3.3874,
+        "per_ticker_maxDD_median": -0.0579,
+        "per_ticker_maxDD_worst": -0.3976,
+        "per_ticker_calmar_median": -0.0096,
+        "tail": {
+          "max_single_trade": 0.4158831321637818,
+          "min_single_trade": -0.27358596184436634,
+          "max_win_share_of_gross_profit": 0.003201951492352652,
+          "p99_abs": 0.1762585069389903
+        }
+      },
+      "baseline_2026_05": {
+        "PF": 1.268,
+        "WR": 0.473,
+        "SR": 2.894,
+        "DSR": 2.263,
+        "CI": 0.0042,
+        "tr": 4759,
+        "cov": 0.88,
+        "v": "CLEAR"
+      },
+      "drift": {
+        "dPF": -0.0186,
+        "dWR": -0.0044,
+        "dDSR": -0.2523,
+        "dtrades": -66,
+        "dcov": -0.0021,
+        "baseline_verdict": "CLEAR",
+        "repro_verdict": "CLEAR",
+        "FLIP": false
+      },
+      "contributors": 985,
+      "pooled_n": 4693
+    },
+    "art": {
+      "reproduced": {
+        "PF": 1.202,
+        "WR": 0.3471,
+        "SR": 2.6108,
+        "DSR": 1.9295,
+        "CI": 0.004245,
+        "tr": 11713,
+        "cov": 0.9866,
+        "verdict": "PORTFOLIO_FAIL",
+        "reasons": [
+          "portfolio win rate 0.347 < 0.4"
+        ]
+      },
+      "extended": {
+        "PSR_vs0": 1.0,
+        "per_trade_SR": 0.05405,
+        "skew": 5.1063,
+        "kurtosis_nonexcess": 61.0405,
+        "sortino_annualised": 5.3723,
+        "per_ticker_maxDD_median": -0.1688,
+        "per_ticker_maxDD_worst": -0.7484,
+        "per_ticker_calmar_median": -0.0377,
+        "tail": {
+          "max_single_trade": 2.348677301222278,
+          "min_single_trade": -0.22949623708702316,
+          "max_win_share_of_gross_profit": 0.005297575875855337,
+          "p99_abs": 0.43963266075343344
+        }
+      },
+      "baseline_2026_05": {
+        "PF": 1.209,
+        "WR": 0.349,
+        "SR": 2.693,
+        "DSR": 2.041,
+        "CI": 0.0044,
+        "tr": 11733,
+        "cov": 0.986,
+        "v": "FAIL"
+      },
+      "drift": {
+        "dPF": -0.007,
+        "dWR": -0.0019,
+        "dDSR": -0.1115,
+        "dtrades": -20,
+        "dcov": 0.0006,
+        "baseline_verdict": "FAIL",
+        "repro_verdict": "FAIL",
+        "FLIP": false
+      },
+      "contributors": 1107,
+      "pooled_n": 11713
+    },
+    "ema200": {
+      "reproduced": {
+        "PF": 1.4831,
+        "WR": 0.1833,
+        "SR": 2.0463,
+        "DSR": 1.365,
+        "CI": 0.01043,
+        "tr": 5428,
+        "cov": 0.9599,
+        "verdict": "PORTFOLIO_FAIL",
+        "reasons": [
+          "portfolio win rate 0.183 < 0.4"
+        ]
+      },
+      "extended": {
+        "PSR_vs0": 1.0,
+        "per_trade_SR": 0.06159,
+        "skew": 12.3762,
+        "kurtosis_nonexcess": 236.3478,
+        "sortino_annualised": 10.9729,
+        "per_ticker_maxDD_median": -0.1086,
+        "per_ticker_maxDD_worst": -0.527,
+        "per_ticker_calmar_median": -0.1897,
+        "tail": {
+          "max_single_trade": 7.8094917460473985,
+          "min_single_trade": -0.2352857172051256,
+          "max_win_share_of_gross_profit": 0.02617054278809813,
+          "p99_abs": 1.1208562551463421
+        }
+      },
+      "baseline_2026_05": {
+        "PF": 1.556,
+        "WR": 0.186,
+        "SR": 2.257,
+        "DSR": 1.962,
+        "CI": 0.013,
+        "tr": 5361,
+        "cov": 0.954,
+        "v": "FAIL"
+      },
+      "drift": {
+        "dPF": -0.0729,
+        "dWR": -0.0027,
+        "dDSR": -0.597,
+        "dtrades": 67,
+        "dcov": 0.0059,
+        "baseline_verdict": "FAIL",
+        "repro_verdict": "FAIL",
+        "FLIP": false
+      },
+      "contributors": 1077,
+      "pooled_n": 5428
+    },
+    "vcb": {
+      "reproduced": {
+        "PF": 1.1725,
+        "WR": 0.2311,
+        "SR": 2.4115,
+        "DSR": 1.7302,
+        "CI": 0.003209,
+        "tr": 18306,
+        "cov": 0.992,
+        "verdict": "PORTFOLIO_FAIL",
+        "reasons": [
+          "portfolio win rate 0.231 < 0.4"
+        ]
+      },
+      "extended": {
+        "PSR_vs0": 1.0,
+        "per_trade_SR": 0.04051,
+        "skew": 5.4613,
+        "kurtosis_nonexcess": 55.5395,
+        "sortino_annualised": 6.6773,
+        "per_ticker_maxDD_median": -0.244,
+        "per_ticker_maxDD_worst": -0.6865,
+        "per_ticker_calmar_median": -0.0565,
+        "tail": {
+          "max_single_trade": 2.6259496829375895,
+          "min_single_trade": -0.18619775390625004,
+          "max_win_share_of_gross_profit": 0.004311432503350579,
+          "p99_abs": 0.53870205735107
+        }
+      },
+      "baseline_2026_05": {
+        "PF": 1.187,
+        "WR": 0.234,
+        "SR": 2.525,
+        "DSR": 1.924,
+        "CI": 0.0035,
+        "tr": 18221,
+        "cov": 0.992,
+        "v": "FAIL"
+      },
+      "drift": {
+        "dPF": -0.0145,
+        "dWR": -0.0029,
+        "dDSR": -0.1938,
+        "dtrades": 85,
+        "dcov": 0.0,
+        "baseline_verdict": "FAIL",
+        "repro_verdict": "FAIL",
+        "FLIP": false
+      },
+      "contributors": 1113,
+      "pooled_n": 18306
+    },
+    "gap": {
+      "reproduced": {
+        "PF": 1.1838,
+        "WR": 0.3787,
+        "SR": 2.1403,
+        "DSR": 1.459,
+        "CI": 0.002875,
+        "tr": 7467,
+        "cov": 0.9643,
+        "verdict": "PORTFOLIO_FAIL",
+        "reasons": [
+          "portfolio win rate 0.379 < 0.4"
+        ]
+      },
+      "extended": {
+        "PSR_vs0": 1.0,
+        "per_trade_SR": 0.05443,
+        "skew": 3.0401,
+        "kurtosis_nonexcess": 19.4991,
+        "sortino_annualised": 3.8651,
+        "per_ticker_maxDD_median": -0.0906,
+        "per_ticker_maxDD_worst": -0.6733,
+        "per_ticker_calmar_median": -0.0329,
+        "tail": {
+          "max_single_trade": 1.144814855715779,
+          "min_single_trade": -0.17237217781526748,
+          "max_win_share_of_gross_profit": 0.004696839229680507,
+          "p99_abs": 0.3775317766871251
+        }
+      },
+      "baseline_2026_05": {
+        "PF": 1.181,
+        "WR": 0.381,
+        "SR": 2.131,
+        "DSR": 1.462,
+        "CI": 0.003,
+        "tr": 7421,
+        "cov": 0.963,
+        "v": "FAIL"
+      },
+      "drift": {
+        "dPF": 0.0028,
+        "dWR": -0.0023,
+        "dDSR": -0.003,
+        "dtrades": 46,
+        "dcov": 0.0013,
+        "baseline_verdict": "FAIL",
+        "repro_verdict": "FAIL",
+        "FLIP": false
+      },
+      "contributors": 1082,
+      "pooled_n": 7467
+    },
+    "wck": {
+      "reproduced": {
+        "PF": 1.0999,
+        "WR": 0.5368,
+        "SR": 1.9838,
+        "DSR": 1.3024,
+        "CI": 0.000822,
+        "tr": 16376,
+        "cov": 0.943,
+        "verdict": "PORTFOLIO_CLEARED_FOR_PAPER_FORWARD",
+        "reasons": []
+      },
+      "extended": {
+        "PSR_vs0": 1.0,
+        "per_trade_SR": 0.03586,
+        "skew": 1.5493,
+        "kurtosis_nonexcess": 11.2296,
+        "sortino_annualised": 2.2773,
+        "per_ticker_maxDD_median": -0.0969,
+        "per_ticker_maxDD_worst": -0.6164,
+        "per_ticker_calmar_median": -0.0044,
+        "tail": {
+          "max_single_trade": 0.471392700851747,
+          "min_single_trade": -0.20115589919093202,
+          "max_win_share_of_gross_profit": 0.00181857757013484,
+          "p99_abs": 0.1334111486873958
+        }
+      },
+      "baseline_2026_05": {
+        "PF": 1.096,
+        "WR": 0.537,
+        "SR": 1.921,
+        "DSR": 1.244,
+        "CI": 0.0008,
+        "tr": 16621,
+        "cov": 0.947,
+        "v": "CLEAR"
+      },
+      "drift": {
+        "dPF": 0.0039,
+        "dWR": -0.0002,
+        "dDSR": 0.0584,
+        "dtrades": -245,
+        "dcov": -0.004,
+        "baseline_verdict": "CLEAR",
+        "repro_verdict": "CLEAR",
+        "FLIP": false
+      },
+      "contributors": 1058,
+      "pooled_n": 16376
+    },
+    "hat": {
+      "reproduced": {
+        "PF": 1.0696,
+        "WR": 0.3702,
+        "SR": 1.6301,
+        "DSR": 0.9488,
+        "CI": 0.000581,
+        "tr": 33459,
+        "cov": 0.9964,
+        "verdict": "PORTFOLIO_FAIL",
+        "reasons": [
+          "portfolio win rate 0.370 < 0.4"
+        ]
+      },
+      "extended": {
+        "PSR_vs0": 0.9999,
+        "per_trade_SR": 0.02009,
+        "skew": 3.9314,
+        "kurtosis_nonexcess": 40.5966,
+        "sortino_annualised": 2.7166,
+        "per_ticker_maxDD_median": -0.2043,
+        "per_ticker_maxDD_worst": -0.6602,
+        "per_ticker_calmar_median": -0.0363,
+        "tail": {
+          "max_single_trade": 1.2612950210971126,
+          "min_single_trade": -0.26757752286345526,
+          "max_win_share_of_gross_profit": 0.0020442223248955125,
+          "p99_abs": 0.2245244510845285
+        }
+      },
+      "baseline_2026_05": {
+        "PF": 1.071,
+        "WR": 0.37,
+        "SR": 1.669,
+        "DSR": 1.039,
+        "CI": 0.0006,
+        "tr": 33451,
+        "cov": 0.995,
+        "v": "FAIL"
+      },
+      "drift": {
+        "dPF": -0.0014,
+        "dWR": 0.0002,
+        "dDSR": -0.0902,
+        "dtrades": 8,
+        "dcov": 0.0014,
+        "baseline_verdict": "FAIL",
+        "repro_verdict": "FAIL",
+        "FLIP": false
+      },
+      "contributors": 1118,
+      "pooled_n": 33459
+    },
+    "str": {
+      "reproduced": {
+        "PF": 1.099,
+        "WR": 0.5534,
+        "SR": 1.4724,
+        "DSR": 0.7911,
+        "CI": 0.000681,
+        "tr": 9252,
+        "cov": 0.9207,
+        "verdict": "PORTFOLIO_CLEARED_FOR_PAPER_FORWARD",
+        "reasons": []
+      },
+      "extended": {
+        "PSR_vs0": 0.9997,
+        "per_trade_SR": 0.0356,
+        "skew": 0.7601,
+        "kurtosis_nonexcess": 8.4303,
+        "sortino_annualised": 1.4941,
+        "per_ticker_maxDD_median": -0.0793,
+        "per_ticker_maxDD_worst": -0.3721,
+        "per_ticker_calmar_median": -0.0072,
+        "tail": {
+          "max_single_trade": 0.42611650118254996,
+          "min_single_trade": -0.32805416258755216,
+          "max_win_share_of_gross_profit": 0.0025492581961996264,
+          "p99_abs": 0.14018853557019642
+        }
+      },
+      "baseline_2026_05": {
+        "PF": 1.103,
+        "WR": 0.556,
+        "SR": 1.544,
+        "DSR": 0.902,
+        "CI": 0.0008,
+        "tr": 9358,
+        "cov": 0.924,
+        "v": "CLEAR"
+      },
+      "drift": {
+        "dPF": -0.004,
+        "dWR": -0.0026,
+        "dDSR": -0.1109,
+        "dtrades": -106,
+        "dcov": -0.0033,
+        "baseline_verdict": "CLEAR",
+        "repro_verdict": "CLEAR",
+        "FLIP": false
+      },
+      "contributors": 1033,
+      "pooled_n": 9252
+    },
+    "tsm12": {
+      "reproduced": {
+        "PF": 1.0535,
+        "WR": 0.2989,
+        "SR": 0.2831,
+        "DSR": -0.3982,
+        "CI": -0.008505,
+        "tr": 3473,
+        "cov": 0.8984,
+        "verdict": "PORTFOLIO_FAIL",
+        "reasons": [
+          "portfolio win rate 0.299 < 0.4",
+          "portfolio deflated Sharpe -0.398 < 0.5 (raw 0.283, 41 strategies)",
+          "95% CI lower bound on mean trade not > 0 (lo=-0.008505398177061323)"
+        ]
+      },
+      "extended": {
+        "PSR_vs0": 0.7551,
+        "per_trade_SR": 0.01113,
+        "skew": 9.1653,
+        "kurtosis_nonexcess": 133.9166,
+        "sortino_annualised": 0.7606,
+        "per_ticker_maxDD_median": -0.1225,
+        "per_ticker_maxDD_worst": -0.7036,
+        "per_ticker_calmar_median": -0.2094,
+        "tail": {
+          "max_single_trade": 8.30821064313099,
+          "min_single_trade": -0.6368329702835555,
+          "max_win_share_of_gross_profit": 0.026890453033474267,
+          "p99_abs": 1.4627812878039748
+        }
+      },
+      "baseline_2026_05": {
+        "PF": 1.054,
+        "WR": 0.299,
+        "SR": 0.284,
+        "DSR": -0.395,
+        "CI": -0.0085,
+        "tr": 3473,
+        "cov": 0.898,
+        "v": "FAIL"
+      },
+      "drift": {
+        "dPF": -0.0005,
+        "dWR": -0.0001,
+        "dDSR": -0.0032,
+        "dtrades": 0,
+        "dcov": 0.0004,
+        "baseline_verdict": "FAIL",
+        "repro_verdict": "FAIL",
+        "FLIP": false
+      },
+      "contributors": 1008,
+      "pooled_n": 3473
+    }
+  },
+  "flips": []
+}
