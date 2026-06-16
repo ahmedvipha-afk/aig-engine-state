@@ -1,0 +1,155 @@
+# PROJECT_MAP.md — aig_engine master index ("what's done, where it lives, why")
+
+**This is the project's table of contents.** Any "what happened and why" question
+should be answerable by reading this one file. Last updated 2026-06-17.
+
+> **APPEND RULE (every future task adds ONE line):** when a task lands, append a
+> one-liner to the relevant section as `**what** — why (hash/entry)`. Keep it to
+> one line; the detail lives in the decision_log entry / doc it points to.
+
+---
+
+## 1. WHAT THIS IS
+A Halal US/UAE/Crypto quant-strategy **validation engine**. It does not chase
+returns; it runs an adversarial **validation gate** that decides whether a frozen,
+pre-registered strategy has earned **paper-forward** observation. Default verdict
+is FAIL. The binding contract is **reproducibility** (config/code hashes + frozen
+data) and **audit trail** (every decision logged with who/why).
+
+## 2. LIVE SLOTS (paper-forward) — status
+- **US Slot 1: Divergence** — CLEARED (grandfathered, entry 8). Frozen-snapshot
+  recheck held CLEAR: PF 1.215 / WR 0.445 / DSR 2.221 (entry 62).
+- **US Slot 2: TRB-50** (trb50_us_1d, spec_hash a96ccdf5c0640e4f) — CLEARED entry
+  49; recheck held CLEAR: PF 1.151 / WR 0.510 / DSR 2.773 (entry 62).
+- **US Slots 3–4:** open. **UAE / Crypto:** no strategy cleared (small-market
+  trade-count floor; definitive FAIL pattern across all trials).
+- Both live slots **survived the data-freeze drift with zero verdict flips**
+  (entry 62).
+
+## 3. THE GATE
+- **As it ACTUALLY runs:** [aig/GATE_PLAIN_ENGLISH.md](aig/GATE_PLAIN_ENGLISH.md)
+  — 6 enforced rules (trades≥1000, expectancy≥1.0, WR≥0.40, coverage≥5%, deflated
+  Sharpe≥0.5 @ N_trials=41, bootstrap CI>0). Code: `aig/validation_gate.py`.
+- **Unwired amendments** (defined in `config.py PORTFOLIO_GATE`, never enforced):
+  per-market floors (PARKED/OUT), PF≥1.5, OOS≥0.7×IS, 24-mo span, GCC. = Strand C.
+
+## 4. STRAND C — gate redesign (NEXT, OPERATOR-SUPERVISED ONLY — not started)
+- **Scope:** wire OOS≥0.7×IS + 24-month span, recompute `config_hash`, run the
+  migration test. Per-market floors stay **PARKED/OUT** (loosening).
+- **Design inputs it MUST open on:**
+  - **entry 63** — the WR≥0.40 floor is doing *implicit tail-risk screening*; any
+    replacement metric MUST capture tail fragility (skew/kurt/max-trade share) or
+    it loosens the gate. PSR saturates ~1.0 → NOT a hurdle. DSR stays binding.
+  - **entry 59** — council outcome: raise the haircut, drop flat PF≥1.5.
+  - Calibration data: `gate_calibration_dataset_2026-06-16.json` (HASH3 15ef8b3).
+  - Benchmark study: [aig/benchmark_study_gate_calibration.md].
+  - Workbook: [aig/gate_calibration_workbook_2026-06-16.md].
+  - Council brief: [council_brief_gate_integrity_2026-06-16.md].
+- **Isolation note (for the migration test):** the `cron_paused.flag` blocks NEW
+  sprint launches but does NOT abort an in-flight worker — confirm none running
+  before isolating (entry 26; HANDOFF 2026-06-16).
+
+## 5. STANDING PRINCIPLES (locked — entry 57; operator memory)
+1. **Stricter, never looser** — a gate redesign may only tighten; never reverse-
+   engineer a threshold from what admits the current portfolio.
+2. **Test breadth, not a winner factory** — measure many strategies fairly; don't
+   tune to manufacture passes.
+3. **Enforcement verified in code** — a rule counts only if `portfolio_evaluate`
+   actually reads it (the entire entry-52 lesson).
+4. **Benchmark + council before any gate change.**
+
+## 6. DATA SOURCES
+- **Canonical FROZEN snapshot (US+Crypto):** `data_cache/` — 1,727 CSVs, canonical
+  sha256 **9d2dc9ff…100b**, frozen 2026-06-16 (HASH2 639eb9b, entries 60/61).
+  Closes the repro gap (US data was never snapshotted; yfinance drifts).
+- **Live source today:** yfinance (`aig/data.py`, period=15y, auto_adjust, today-
+  anchored — drifts; that's why we freeze).
+- **MCP / external data inventory + US-Vault consumption options:**
+  [DATA_SOURCES_INVENTORY.md](DATA_SOURCES_INVENTORY.md) — incl. the US Vault's
+  Sharadar-backed PIT OHLC cache as a candidate canonical US source (read-only).
+- **UAE:** pinned via `data_cache` (TradingView-sourced); unaffected by the gap.
+
+## 7. KEY DOCS
+- [aig/engine_roadmap.md] — engine roadmap.
+- [aig/GATE_PLAIN_ENGLISH.md] — the judge, in plain English (#3 above).
+- [AUTONOMY_AND_ROLES.md](AUTONOMY_AND_ROLES.md) — bounded autonomy + 27-agent
+  roles + principles + retired mandate.
+- [DATA_SOURCES_INVENTORY.md] — MCP + US-Vault data inventory (#6).
+- [strategy_register.md] / [winners_registry.md] — strategy specs + rosters.
+- `decision_log.{json,md}` — the full audit chain (writer: `scripts/decision_log_append.py`).
+- `ceo_brain.md` — **STALE** Phase-1 tracker (superseded; see AUTONOMY_AND_ROLES.md).
+
+## 8. HASH REGISTRY (provenance anchors)
+- HASH1 `291f19e` — entry 60 (reproducibility gap recorded).
+- HASH2 `639eb9b` — canonical data snapshot frozen (sha256 9d2dc9ff…100b).
+- HASH3 `15ef8b3` — entry 62 calibration capture + control (0 flips, faithful).
+- `1a5cb27` — entry 63 (Strand-C tail-risk design input).
+- spec_hash TRB-50 `a96ccdf5c0640e4f`; TSM-12 `efe8ac7b47f10a0f`.
+
+## 9. DECISION LOG — 1-63, one line each
+1. Withdraw Path 3 (post-hoc gate amendment) — Session-5 audit response.
+2. Deploy US Divergence Daily to paper-forward.
+3. Watch list = top-5 by per-ticker OOS expectancy (SUPERSEDED).
+4. Expand UAE universe 44→64 retrievable tickers.
+5. Accept NO CERTIFIABLE CRYPTO EDGE verdict.
+6. CC crash auto-recovery — watchdog design choices.
+7. Receipt of Phase-1 framework directive (ahmed_response_2026-05-22).
+8. Phase-1 cap = 4 candidates; Divergence grandfathered US slot 1.
+9. 13 sprint-loop strategies tagged Pre-Framework.
+10. Pause autonomous sprint cron (aig-mode1-sprint).
+11. WCK US drain to completion as Pre-Framework.
+12. Decision Log = dual format (.md + .json) with methodology_source.
+13. Amendment 5 (GCC universe) deferred to Phase 2.
+14. Amendment 1 auto-execution layer deferred to Phase 2.
+15. Improvement 5 — hide tickers with OOS n<30 from per-ticker displays.
+16. Improvement 1 — replace cherry-picked watch list with full cleared universe.
+17. Fix watchdog false-fire loop — add cron_paused.flag intentional-pause check.
+18. Fix crash_log.json JSON-via-argv encoding bug.
+19. Flag-removal sequencing — coordination-gap retrospective.
+20. Recreate cron_paused.flag (Option A) — coordinated pause restored.
+21. 33d93ae commit message overstated completion — SKILL.md never landed.
+22. Correction to 21 — SKILL.md DOES exist at user-scoped path; prior was scope error.
+23. Cron re-enable — aig-mode1-sprint resumed after SKILL.md verification.
+24. Sprint burst killed by watchdog — SKILL.md missing --mark-done between iters.
+25. WCK US CLEARED via orphan-spawn — anomalous trigger, gate intact.
+26. Watchdog-recovery-spawn gap — pauses stop NEW spawns, in-flight orphans finish.
+27. Append to 24 — catch-up cap × iteration budget exceeds stale threshold by design.
+28. Correction to 25/26 — timezone label error + second orphan-spawn instance noted.
+29. SKILL.md patched — per-iteration --mark-done; catch-up sentinel-stale bug closed.
+30. Correction to 29 — MCP description reflects frontmatter not body; verify flaw.
+31. Cron re-enable (Option D) — first fire as verification; accept recovery gap.
+32. Framework amendment — per-market caps; TV sources qualified; 12-mo coverage target.
+33. Walk-forward research (Track 3) added as separate parallel effort.
+34. Track-1 restart with explicit acceptance of recovery-spawn architecture gap.
+35. Maintenance fire after ~17h gap — coverage/Phase-1 tracker flagged STALE.
+36. Sprint iter 4/5 yfinance flap halt.
+37. Recovery 2026-05-27 03:00Z — watchdog false-loop broken; orphan gap flagged.
+38. Recovery 2026-05-27 04:05Z — watchdog runaway HALTED via flag; orphan isolated.
+39. **Retire 3x/10x annual mandate** — replace with Kelly-bound 5–10% CAGR anchor.
+40. Archive v7 Scope Document as historical-aspirational reference.
+41. Phase-2 verdict — recovery-spawn gap fixed (watchdog v1.5); driver decision open.
+42. Reserve Tareq pure-price-action system as Phase-B UAE candidate (lightweight).
+43. Track-1 driver change (Task Scheduler + headless claude -p) — first fire FAILED; F1/F2/F3 fixes.
+44. Track-1 driver RESTORED — restoration fire passed all 8 criteria; Track 1 LIVE.
+45. Pre-register TSM-12 (trial 40) — first three-filter candidate, US slot 2.
+46. TSM-12 verdict — PORTFOLIO_FAIL; US slot 2 remains open.
+47. Amendment-1 adjudication — provenance ratified, provision dead letter, knobs removed.
+48. Pre-register TRB-50 (trial 41) — second three-filter candidate, US slot 2.
+49. **TRB-50 verdict — PORTFOLIO_CLEARED; US slot 2 FILLED.**
+50. Deploy TRB-50 to paper-forward — watch-list pre-reg + second detector + routing.
+51. Relocate Track-1 driver off OneDrive to C:\aig_engine (cured the hang class).
+52. **Integrity gap — 2026-05-22 amendments unenforced by gate code.**
+53. expectancy == profit factor; documented PF≥1.5 uncleanable (later corrected by 56).
+54. Council round (degraded) — single-external-opinion input.
+55. Amendment-3 PF≥1.5 intentional; remediation is operator-intent.
+56. **Correction to 53/55 — PF≥1.5 IS achievable (ema200 1.556).**
+57. **Gate joint-calibration project — setup, gated, four locked principles.**
+58. Council charge — migration test for the stricter gate.
+59. Gate-calibration council — raise haircut, drop flat PF≥1.5.
+60. **Reproducibility gap — US market data was never snapshotted** (HASH1 291f19e).
+61. **Canonical data snapshot frozen** — closes entry-60 gap (HASH2 639eb9b).
+62. **Calibration capture on frozen snapshot — 0 flips, method proven faithful** (HASH3 15ef8b3).
+63. **Calibration input to Strand C — WR floor is implicit tail-risk screening** (1a5cb27).
+
+---
+*Pointers, not prose. Update the relevant section's one-liner whenever a task lands.*
