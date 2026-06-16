@@ -1169,3 +1169,24 @@ any TRB-50 forward signal fired:
   list file. The detector now scans 50 random names rather than the
   top-5 by expectancy. The deployment has zero closed paper trades, so
   resolving this before any trade fires keeps the audit trail clean.
+
+---
+
+## CANONICAL DATA SNAPSHOT (pre-registered 2026-06-16, decision_log 60-61)
+
+US + Crypto OHLCV is now FROZEN to `data_cache/` as the canonical dataset (UAE was
+already cached). All future US/Crypto trials, the gate-calibration capture, and
+Strand-C's migration test MUST run against this snapshot — NOT a fresh yfinance fetch
+(which drifts via auto-adjust + daily extension).
+- Snapshot date: 2026-06-16; files: 1,727 (US universe minus ~69 now-delisted + crypto
+  150 minus ~2 + 45 UAE). 71 tickers unfetchable on yfinance as of 2026-06-16
+  (delisted/empty/short; incl. K, HOLX, EXAS, MCW) — recorded in the manifest; these
+  were live in the 2026-05 runs and their absence is part of the documented drift (entry 60).
+- Canonical hash (LF sha256 over sorted `ticker:filehash`):
+  `9d2dc9ffae515dd1c6d249dbd592e07a43dccde976969e188d58903cefc9100b`
+- Manifest: `data_cache_manifest_2026-06-16.json` (per-file sha256 + rows + date range);
+  hash file `data_cache_manifest_2026-06-16.sha256`.
+- `data_cache/` stays gitignored (424 MB); the committed manifest + hash are the durable
+  provenance pin. Any future run verifies its data against the manifest; a mismatch
+  (e.g. a re-fetched drifted CSV) must FLAG, not silently proceed.
+- Closes the entry-60 reproducibility gap going forward.
