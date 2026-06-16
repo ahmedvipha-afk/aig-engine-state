@@ -1051,5 +1051,26 @@
     ],
     "ts_utc": "2026-06-16T15:58:48+00:00",
     "commit_sha": null
+  },
+  {
+    "title": "Calibration input to Strand C: the WR floor is implicit tail-risk screening",
+    "methodology_source": "audit_finding_resolution",
+    "decision": "SHARPEST CALIBRATION FINDING from the entry-62 frozen-snapshot capture, recorded as the starting input for the Strand-C gate redesign. (1) The CLEARED slots are all LOW-SKEW (~0.7-1.5) / MODEST-KURTOSIS -- evenly-distributed edges: mbv (skew 0.70/kurt 6.3), pmr (0.77/4.7), divergence (0.78/8.5), str (0.76/8.4), trb50 (0.98/11.4), wck (1.55/11.2). (2) Several WR-floor FAILs are EXTREME-RIGHT-TAIL-DRIVEN -- lottery-shaped: ema200 (skew +12.38/kurt 236.3, max single trade +780%, p99|ret| 1.121), roc (+6.81/101.5), art (+5.11/61.0), dbo (+5.99/74.0), vcb (+5.46/55.5), tsm12 (+9.17/133.9). These FAIL chiefly on win-rate < 0.40. IMPLICATION FOR C (binding design constraint): the flat WR>=0.40 floor has been doing IMPLICIT TAIL-RISK SCREENING -- it rejects edges whose profit concentrates in a few outsized winners. Therefore ANY replacement/relaxation of the WR floor in C MUST explicitly capture tail fragility (skew, kurtosis, and/or max-single-trade contribution to gross profit), or it will ADMIT the lottery-shaped edges the WR floor was filtering. A WR-for-PF swap that ignores higher moments would be a strict loosening in disguise (principle 1 violation). (3) NEGATIVE RESULT -- do NOT add PSR as a C hurdle: probabilistic Sharpe vs 0 saturates at ~1.0000 for 14 of 15 trials at these trade counts (n = thousands), so it is non-discriminating here; only tsm12 (0.7551) and marginally hat/str fall below 1.0. The trial-haircut deflated Sharpe (DSR) remains the binding Sharpe-family metric. Per-ticker maxDD/Calmar were computed (within-ticker order) but are noisy at the per-name level and portfolio-level Calmar is not computable (no cross-ticker trade chronology) -- so tail screening should lean on the distributional moments + max-single-trade contribution, not equity-curve drawdown. No gate/config/code changed; this is a recorded finding, not a wiring.",
+    "rationale": "C is a separate operator-supervised session with a fresh head; the most valuable thing to carry into it is not the full table but the ONE structural insight the capture revealed -- WHY the existing gate works. The WR floor's hidden job (tail-risk screening) is the constraint that determines whether any proposed metric swap in C is honestly stricter or a loosening in costume. Recording the PSR null result is equally important: it stops C from wasting a hurdle slot on a metric that cannot discriminate at this sample size.",
+    "alternatives_considered": [
+      "Append only to the dataset JSON (rejected -- this is the decisive design constraint for C; it belongs in the audit log so the redesign session opens on it)",
+      "Add PSR as a tail-aware hurdle (rejected -- it saturates ~1.0 at these n; non-discriminating)",
+      "Use drawdown/Calmar as the tail metric (deprioritised -- per-ticker maxDD is noisy, portfolio Calmar not computable without trade dates; distributional moments + max-single-trade contribution are the cleaner signal)"
+    ],
+    "audit_finding_refs": [
+      "entry-62 capture: gate_calibration_dataset_2026-06-16.json (extended metrics block per strategy)",
+      "CLEAR slots low skew/kurt: mbv 0.70/6.3, pmr 0.77/4.7, divergence 0.78/8.5, str 0.76/8.4, trb50 0.98/11.4, wck 1.55/11.2",
+      "tail-driven FAILs: ema200 12.38/236.3 (max trade +780%), roc 6.81/101.5, art 5.11/61.0, dbo 5.99/74.0, vcb 5.46/55.5, tsm12 9.17/133.9",
+      "PSR_vs0 saturates ~1.0000 for 14/15 (tsm12 0.7551) -> non-discriminating -> NOT a C hurdle",
+      "DSR remains the binding Sharpe-family metric (trial haircut, n_trials=41)",
+      "C design rule: replacing the WR floor REQUIRES an explicit tail-fragility term or it loosens the gate (principle 1)"
+    ],
+    "ts_utc": "2026-06-16T16:43:58+00:00",
+    "commit_sha": null
   }
 ]
