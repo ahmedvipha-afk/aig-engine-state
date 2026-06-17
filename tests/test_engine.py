@@ -239,6 +239,35 @@ def test_r2_concentration_cap_threshold_is_ten_percent():
     assert PORTFOLIO_GATE["max_single_name_pnl_share"] == 0.10
 
 
+# ---- N-growth re-tighten: cumulative trial ledger (Strand C) --------------
+
+def test_ngrowth_ledger_autoincrement():
+    import tempfile, os, json
+    from aig.trials import cumulative_n_trials, register_trial
+    p = os.path.join(tempfile.gettempdir(), "test_ledger_aig_ngrowth.json")
+    json.dump({"trials": [{"strategy": "a", "market": "US", "timeframe": "1d"}]},
+              open(p, "w"))
+    try:
+        assert cumulative_n_trials(p) == 1
+        assert register_trial("b", "US", "1d", path=p) == 2      # new spec -> +1
+        assert register_trial("b", "US", "1d", path=p) == 2      # identical re-run -> no bump
+        assert register_trial("b", "UAE", "1d", path=p) == 3     # different market -> +1
+        assert register_trial("b", "US", "1h", path=p) == 4      # different timeframe -> +1
+    finally:
+        os.remove(p)
+
+
+def test_ngrowth_haircut_monotonic():
+    from aig.stats import deflated_sharpe
+    # higher N -> strictly lower (tighter) deflated Sharpe
+    assert deflated_sharpe(2.0, 41) > deflated_sharpe(2.0, 100) > deflated_sharpe(2.0, 1000)
+
+
+def test_ngrowth_seed_count_is_41():
+    from aig.trials import cumulative_n_trials
+    assert cumulative_n_trials() == 41   # seeded baseline (13x3 + tsm12_us + trb50_us)
+
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     passed = 0

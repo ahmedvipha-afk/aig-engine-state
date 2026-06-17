@@ -22,7 +22,12 @@ def _sha(path: str) -> str:
 
 def provenance() -> dict:
     files = ["config.py", "aig/strategy_ema200.py", "aig/backtest.py",
-             "aig/validation_gate.py", "aig/stats.py", "aig/costs.py"]
+             "aig/validation_gate.py", "aig/stats.py", "aig/costs.py",
+             "aig/trials.py", "trial_ledger.json"]
+    # trial_ledger.json is hashed: the multiple-testing N (deflated-Sharpe haircut)
+    # is a gate parameter, so config_hash must bind it (decision_log Strand C). As
+    # the ledger grows, config_hash changes and prior verdicts are re-confirmed
+    # under the honest, larger N — the intended behaviour.
     hashes = {f: _sha(os.path.join(_ROOT, f)) for f in files}
     combined = hashlib.sha256(
         json.dumps(hashes, sort_keys=True).encode()).hexdigest()[:16]

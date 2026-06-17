@@ -9,6 +9,8 @@ results no longer apply to the new spec.
 
 **GATE CHANGE 2026-06-17 (Strand C, R2 wired):** added `PORTFOLIO_GATE['max_single_name_pnl_share'] = 0.10` — a single-name P&L concentration cap enforced in `portfolio_evaluate` (default-FAIL: no ticker may carry >10% of total NET portfolio P&L). **`config_hash` c7ff799942e2c8da → 3c56aead8f358363** — prior results were produced under the OLD hash; the live slots were re-confirmed under the new hash via the R2 migration test (Divergence + TRB-50 both still CLEARED, single-name share 2.5%/2.3%, zero flip). First wired Strand-C rule; see decision_log entry 67 + PROJECT_MAP §4. R0/R1/R3/R4 + amendments remain proposals.
 
+**GATE CHANGE 2026-06-17 (Strand C, N-growth re-tighten wired):** the deflated-Sharpe multiple-testing **N is no longer the hardcoded `n_trials_registered=41`** — it is now an auto-counted **`trial_ledger.json`** (distinct strategy×market×timeframe specs; idempotent on re-runs), read live by `portfolio_evaluate` and hashed into `config_hash` (`aig/trials.py`, `aig/provenance.py`). `run_validation` auto-registers each run, so N self-maintains as the pipeline grows (fixes the literal that claimed to grow but didn't). **`config_hash` 3c56aead8f358363 → 8d668f736ba1fb10**; both live slots re-confirmed CLEAR (N=41 today, zero flip). See decision_log entry 70.
+
 **Amendment 2026-05-21 (audit response):** strategy specs are explicitly
 timeframe-agnostic at the rules level; each (strategy × market × timeframe)
 combination is one **trial** and must be enumerated below before being run.

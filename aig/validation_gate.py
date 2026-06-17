@@ -17,6 +17,7 @@ from config import GATE, PORTFOLIO_GATE
 from aig.stats import (expectancy, sharpe, bootstrap_ci,
                        deflated_sharpe, bonferroni_alpha)
 from aig.agents import audit
+from aig.trials import cumulative_n_trials
 
 
 def evaluate(bt: dict, n_trials: int) -> dict:
@@ -88,10 +89,17 @@ def portfolio_evaluate(per_ticker_results: list[dict],
     reflect the full claim set, not the winning subset.
     """
     g = PORTFOLIO_GATE
-    # back-compat shim: old callers passed n_strategies; treat as alias.
+    # Multiple-testing N for the deflated-Sharpe haircut. Explicit n_trials/
+    # n_strategies still win (back-compat + tests). Otherwise N is the HONEST
+    # cumulative count from the trial ledger (aig/trials.py) — self-maintaining,
+    # grows monotonically — NOT the old hardcoded n_trials_registered literal
+    # (the frozen-N bug; decision_log Strand C). Fall back to the config seed
+    # only if the ledger is missing/empty.
     n_trials_val = (n_trials if n_trials is not None
                     else n_strategies if n_strategies is not None
-                    else g.get("n_trials_registered", g.get("n_strategies_registered", 2)))
+                    else (cumulative_n_trials()
+                          or g.get("n_trials_registered",
+                                   g.get("n_strategies_registered", 2))))
     n_strats = n_trials_val
     # only count tickers that produced trades (others are noise carriers)
     contributors = [r for r in per_ticker_results

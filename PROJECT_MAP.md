@@ -30,7 +30,8 @@ data) and **audit trail** (every decision logged with who/why).
 - **As it ACTUALLY runs:** [aig/GATE_PLAIN_ENGLISH.md](aig/GATE_PLAIN_ENGLISH.md)
   — now **7 enforced rules**: trades≥1000, expectancy≥1.0, WR≥0.40, coverage≥5%,
   deflated Sharpe≥0.5 @ N_trials=41, bootstrap CI>0, **+ R2 single-name P&L
-  concentration ≤10% (WIRED 2026-06-17, entry 67, config_hash 3c56aead8f358363)**.
+  concentration ≤10% (entry 67)**, and the multiple-testing N is now an auto-counted
+  trial ledger, not a literal (entry 70, config_hash 8d668f736ba1fb10).
   Code: `aig/validation_gate.py`.
 - **Unwired amendments** (defined in `config.py PORTFOLIO_GATE`, never enforced):
   per-market floors (PARKED/OUT), PF≥1.5, OOS≥0.7×IS, 24-mo span, GCC. = Strand C.
@@ -82,11 +83,15 @@ data) and **audit trail** (every decision logged with who/why).
   gate never saw. Add a pairwise-correlation screen at routing time. Candidate alongside
   R0/R2.
 
-  **NEAR-TERM C ITEM — GATE-THRESHOLD DECAY / N-GROWTH** (entries 65 + 68, flagged in
-  TWO councils → elevated from parked): the DSR multiple-testing haircut uses N=41, but N
-  grows with the research pipeline (√(2·ln N)), so a DSR-0.5 pass today weakens as
-  cumulative trials grow. **Build a periodic re-tighten policy keyed to CUMULATIVE
-  strategies ever evaluated**, not the current batch. Top recurring stringency risk.
+  ✅ **WIRED 2026-06-17 (entry 70) — GATE-THRESHOLD DECAY / N-GROWTH FIXED** (the
+  foundation item, flagged in councils 65 + 68): the deflated-Sharpe multiple-testing N
+  is no longer the hardcoded `n_trials_registered=41` (a literal that claimed to grow but
+  didn't) — it is now an **auto-counted `trial_ledger.json`** (distinct strategy×market×
+  timeframe specs, idempotent on re-runs; `aig/trials.py`), read LIVE by
+  `portfolio_evaluate`, auto-registered by `run_validation`, and hashed into config_hash.
+  Self-maintaining + monotonic. config_hash 3c56aead8f358363 → **8d668f736ba1fb10**.
+  Migration: both live slots CLEAR (N=41 today; zero flip; immune to realistic N-growth —
+  breach only at N≈10²⁰/10³⁰). Option A (auto-track), not B.
 
   **C SUB-TASKS / OPEN ITEMS (entry 65):**
   - **Parsimony pass** (Q1/Q5): the set has real redundancy but seats named DIFFERENT
@@ -226,6 +231,7 @@ data) and **audit trail** (every decision logged with who/why).
 67. **Strand C R2 WIRED — single-name P&L concentration cap (10%), default-FAIL; live slots zero-flip; config_hash → 3c56aead8f358363** (first redesign rule in code).
 68. **Routing + universe-breadth council — universe-wide gate is the right default; sub-universe tier gated-future; routing is correlation-blind; Q3 winner-take-one vs ensemble split**.
 69. **Routing-council inputs captured into Strand-C plan; N-growth gate-threshold decay elevated to near-term** (PROJECT_MAP §4).
+70. **Strand C N-growth re-tighten WIRED — multiple-testing N is now an auto-counted trial ledger (not hardcoded 41); config_hash → 8d668f736ba1fb10; live slots zero-flip** (foundation fix).
 
 ---
 *Pointers, not prose. Update the relevant section's one-liner whenever a task lands.*

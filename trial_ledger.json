@@ -1,0 +1,211 @@
+{
+ "description": "Cumulative trial ledger for the deflated-Sharpe multiple-testing haircut. A trial = a distinct (strategy, market, timeframe) spec that reached a verdict. N = count of distinct keys. Pure same-config same-data re-runs do NOT add; genuinely different universe/timeframe/params DO. Replaces the hardcoded n_trials_registered=41 (decision_log Strand C). Self-maintaining: run_validation auto-registers each run.",
+ "seeded": "2026-06-17 with the 41 registered 1D specs (13 sprint-loop strategies x 3 markets + tsm12_us + trb50_us). Pre-framework subset/timeframe explorations (e.g. ema200_1h_top30) excluded as dev-stage subset runs; including them would change N by <=~9 and the haircut by <0.01 (immaterial \u2014 migration confirmed zero-flip for N in 41..60).",
+ "trials": [
+  {
+   "strategy": "ema200",
+   "market": "US",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "ema200",
+   "market": "UAE",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "ema200",
+   "market": "CRYPTO",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "divergence",
+   "market": "US",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "divergence",
+   "market": "UAE",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "divergence",
+   "market": "CRYPTO",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "mbv",
+   "market": "US",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "mbv",
+   "market": "UAE",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "mbv",
+   "market": "CRYPTO",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "dbo",
+   "market": "US",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "dbo",
+   "market": "UAE",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "dbo",
+   "market": "CRYPTO",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "roc",
+   "market": "US",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "roc",
+   "market": "UAE",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "roc",
+   "market": "CRYPTO",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "vcb",
+   "market": "US",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "vcb",
+   "market": "UAE",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "vcb",
+   "market": "CRYPTO",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "hat",
+   "market": "US",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "hat",
+   "market": "UAE",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "hat",
+   "market": "CRYPTO",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "pmr",
+   "market": "US",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "pmr",
+   "market": "UAE",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "pmr",
+   "market": "CRYPTO",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "str",
+   "market": "US",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "str",
+   "market": "UAE",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "str",
+   "market": "CRYPTO",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "art",
+   "market": "US",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "art",
+   "market": "UAE",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "art",
+   "market": "CRYPTO",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "cmf",
+   "market": "US",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "cmf",
+   "market": "UAE",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "cmf",
+   "market": "CRYPTO",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "gap",
+   "market": "US",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "gap",
+   "market": "UAE",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "gap",
+   "market": "CRYPTO",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "wck",
+   "market": "US",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "wck",
+   "market": "UAE",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "wck",
+   "market": "CRYPTO",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "tsm12",
+   "market": "US",
+   "timeframe": "1d"
+  },
+  {
+   "strategy": "trb50",
+   "market": "US",
+   "timeframe": "1d"
+  }
+ ]
+}

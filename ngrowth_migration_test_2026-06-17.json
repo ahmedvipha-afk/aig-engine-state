@@ -1,0 +1,25 @@
+{
+  "config_hash": "8d668f736ba1fb10",
+  "strategies": {
+    "divergence": {
+      "verdict": "PORTFOLIO_CLEARED_FOR_PAPER_FORWARD",
+      "PF": 1.2147,
+      "WR": 0.4446,
+      "DSR": 2.2208,
+      "max_single_name_pnl_share": 0.0247,
+      "concentration_reason": [],
+      "all_reasons": [],
+      "passed": true
+    },
+    "trb50": {
+      "verdict": "PORTFOLIO_CLEARED_FOR_PAPER_FORWARD",
+      "PF": 1.1506,
+      "WR": 0.5096,
+      "DSR": 2.7732,
+      "max_single_name_pnl_share": 0.0233,
+      "concentration_reason": [],
+      "all_reasons": [],
+      "passed": true
+    }
+  }
+}

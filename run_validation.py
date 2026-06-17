@@ -78,6 +78,13 @@ def main():
         tickers = DEFAULT
         universe_label = "default"
 
+    # Self-maintaining multiple-testing N (decision_log Strand C): register this
+    # run's distinct (strategy, market, timeframe) spec in the trial ledger. New
+    # specs grow N (tightening the deflated-Sharpe haircut); identical re-runs are
+    # idempotent. Replaces the old hardcoded n_trials_registered literal.
+    from aig.trials import register_trial, market_from_universe
+    register_trial(args.strategy, market_from_universe(universe_label), args.timeframe)
+
     offline = not args.live
     prov = provenance()
 
