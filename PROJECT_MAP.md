@@ -48,23 +48,49 @@ data) and **audit trail** (every decision logged with who/why).
 - **Isolation note (for the migration test):** the `cron_paused.flag` blocks NEW
   sprint launches but does NOT abort an in-flight worker — confirm none running
   before isolating (entry 26; HANDOFF 2026-06-16).
-- **COUNCIL-VETTED CANDIDATE RULES (entry 64 — proposals to TEST in C, NOT adopted):**
-  1. **Raise the DSR floor 0.5 → ~1.0–1.5** — the real "stricter on edge" lever
-     (unanimous council). MUST run the migration test: live DSRs are Divergence 2.22
-     / TRB-50 2.77, likely survive 1.5 but VERIFY.
-  2. **Add a single-name CONCENTRATION CAP** — max ~10–15% of total P&L from any one
-     ticker (gpt), or an HHI/Gini ceiling (gemini). Sound version of the operator's
-     P1 instinct; fills a real gap (the gate has NO concentration guard today).
-     **Diagnostic (`concentration_diagnostic_2026-06-17.json`, read-only):** both live
-     slots are ~310-effective-names diversified — Divergence max single name 1.07% of
-     gross profit (HHI 0.00322), TRB-50 1.06% (HHI 0.00319) → both pass a 10–15% cap
-     with huge margin; the cap binds on nothing live, only future one-stock-wonders.
-  3. **Tail-fragility check** — reject if WR<0.45 AND skew>4 or kurtosis>50;
-     operationalizes entry-63 (the WR floor was doing implicit tail-screening).
-  4. **DROP the 60% WR idea (P2 — UNANIMOUS REJECT: clears zero, un-clears both live
-     slots); KEEP the 40% floor** until the tail-check above can explicitly replace
-     its tail-screening function.
-  *(Council INFORMS only — none of these are wired. Entry 64.)*
+- **STRAND-C PLAN (council-enriched; entries 64 + 65 — proposals to TEST, NOT wired):**
+
+  **R0 — NEW TOP-PRIORITY RULE: REGIME / TIME-STABILITY + CROSS-SLOT** (whole-system
+  council's strongest finding, Q2 — a gap NO current or proposed rule covers; goes
+  AHEAD of R1–R4):
+  - (a) **Temporal:** split OOS into halves, require PF>1.0 (edge holds) in BOTH —
+    kills strategies whose whole edge came from one window/regime.
+  - (b) **Cross-sectional:** pairwise slot correlation + joint-tail check, so two live
+    slots can't draw down together invisibly (both load US equity factors).
+
+  **R1–R4 — STAND, validated SAFE for the live book** (Q6 UNANIMOUS: all four wired
+  TOGETHER do NOT un-clear either slot, even at DSR 1.5 — set is calibrated, not
+  over-harsh):
+  1. **Raise DSR floor 0.5 → ~1.0–1.5** — the "stricter on edge" lever (verify via
+     migration: Divergence 2.22 / TRB-50 2.77 survive 1.5).
+  2. **Single-name CONCENTRATION CAP** — max ~10–15% P&L/ticker, or HHI/Gini ceiling.
+     Diagnostic (`concentration_diagnostic_2026-06-17.json`): live slots ~310 eff
+     names (max name ~1.07% / 1.06%) → pass with huge margin; binds on nothing live.
+  3. **Tail-fragility check** — reject if WR<0.45 AND skew>4 or kurtosis>50 (entry 63).
+  4. **KEEP 40% WR; the 60% idea is REJECTED** (P2 unanimous: clears zero, un-clears
+     both slots) — hold 40% until R3 explicitly replaces its tail-screening function.
+  - **Sequencing (Q4 consensus):** R2 = safe zero-flip FIRST step; **R3 must land
+    BEFORE any WR change**; each step independently migration-tested on the frozen snapshot.
+
+  **C SUB-TASKS / OPEN ITEMS (from entry 65):**
+  - **Parsimony pass** (Q1/Q5): the set has real redundancy but seats named DIFFERENT
+    cuts (retire PF / retire bootstrap-CI / fold R3 into DSR). Decide the cut WITH DATA
+    — do NOT pre-pick.
+  - **Snapshot tension** (Q8, OPEN QUESTION): the frozen snapshot fixes reproducibility
+    but may mask alpha-decay (listings/delistings/M&A in a static world). Likely answer:
+    KEEP the frozen snapshot AND add a periodic refresh-and-re-test vs fresh data to
+    catch decay — decide deliberately, don't dismiss.
+  - **Engine prerequisites** (Q3): before the cross-sectional engine, add turnover/
+    cost-sensitivity + rank-time look-ahead checks; R3/R4 land before the engine.
+  - **DOUBT FLAG** (Q8 unanimous, TOP stringency risk): the "41-trial" multiple-testing
+    haircut may not hold as trials grow/correlate — revisit before tightening further.
+
+  **PARKED — bigger-than-C reframes (Q7; capture, do NOT scope yet):** gemini's
+  factor-risk-allocation framework (judge by marginal diversification, not binary
+  pass/fail); grok's Bayesian posterior expectancy + purged k-fold OOS; gpt's
+  program-level FDR + subsample/rolling stability + cost stress + capacity model.
+
+  *(Council INFORMS only — none of this is wired. Entries 64 + 65.)*
 
 ## 5. STANDING PRINCIPLES (locked — entry 57; operator memory)
 1. **Stricter, never looser** — a gate redesign may only tighten; never reverse-
@@ -168,6 +194,8 @@ data) and **audit trail** (every decision logged with who/why).
 62. **Calibration capture on frozen snapshot — 0 flips, method proven faithful** (HASH3 15ef8b3).
 63. **Calibration input to Strand C — WR floor is implicit tail-risk screening** (1a5cb27).
 64. **Gate-redesign council — P2 (WR 0.60) REJECT, P1 (100 trades/stock) REJECT-as-stated; concentration cap is the sound core** (live slots ~310 eff names).
+65. **Whole-system gate+roadmap council — 4-rule set keeps both live slots (Q6); regime/time-stability is the #1 uncovered gap** (2f79a2e).
+66. **Strand-C plan enriched from entry 65 — regime rule added as top priority, parsimony + snapshot-decay sub-tasks recorded** (PROJECT_MAP §4).
 
 ---
 *Pointers, not prose. Update the relevant section's one-liner whenever a task lands.*

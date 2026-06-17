@@ -1120,5 +1120,26 @@
     ],
     "ts_utc": "2026-06-17T09:49:24+00:00",
     "commit_sha": null
+  },
+  {
+    "title": "Strand-C plan enriched from the whole-system council (entry 65) \u00e2\u20ac\u201d regime rule added as top priority",
+    "methodology_source": "audit_finding_resolution",
+    "decision": "Captured the whole-system council findings (entry 65) into the Strand-C plan in PROJECT_MAP.md \u00c2\u00a74. Nothing wired. Priority order now: (R0, NEW TOP PRIORITY, ahead of R1-R4) a REGIME/TIME-STABILITY + CROSS-SLOT rule -- (a) temporal split-OOS PF>1.0 in both halves, (b) cross-slot correlation + joint-tail -- the council's strongest finding (Q2), a gap no current or proposed rule covers. R1-R4 STAND, validated safe for the live book (Q6: all four together do not un-clear either slot even at DSR 1.5); sequencing R2 first (zero-flip), R3 before any WR change. Sub-tasks recorded: a PARSIMONY pass (seats named different cuts -- retire PF / retire bootstrap-CI / fold R3 into DSR -- decide with data, do not pre-pick); the SNAPSHOT TENSION open question (frozen snapshot may mask alpha-decay -> likely keep frozen + add periodic refresh-and-re-test, decide deliberately); ENGINE PREREQUISITES (turnover/cost + rank look-ahead checks before the cross-sectional engine; R3/R4 first); and the TOP DOUBT FLAG (the 41-trial multiple-testing haircut may not hold as trials grow/correlate). Parked (capture-only, bigger-than-C): the Q7 reframes -- factor-risk-allocation, Bayesian posterior expectancy + purged k-fold, program-level FDR + cost stress. No code/config/gate change; C remains the next operator-supervised session, now opening on this enriched plan.",
+    "rationale": "The whole-system council (entry 65) produced more than per-rule verdicts: a new top-priority rule, a sequencing constraint, a parsimony question, an open data-decay tension, and engine prerequisites. Recording them in the one place C will open on (PROJECT_MAP \u00c2\u00a74) keeps the plan authoritative and ordered, so the operator session starts from the enriched picture rather than re-deriving it.",
+    "alternatives_considered": [
+      "Leave the plan at the 4 original candidates (rejected -- the council's strongest finding, the regime gap, is not among them and must lead)",
+      "Pre-pick the parsimony cut now (rejected -- seats disagreed; decide with data in C)",
+      "Dismiss the snapshot-decay tension (rejected -- recorded as an open question to answer deliberately)"
+    ],
+    "audit_finding_refs": [
+      "source: decision_log entry 65 (whole-system council, Q1-Q8)",
+      "R0 regime/time-stability + cross-slot = new top-priority rule (Q2)",
+      "R1-R4 validated safe for live book (Q6); R2 first, R3 before WR change (Q4)",
+      "sub-tasks: parsimony pass (no pre-pick), snapshot-decay open question, engine prereqs, 41-trial doubt flag",
+      "parked Q7 reframes (factor-allocation / Bayesian+purged-kfold / program-FDR+cost-stress)",
+      "captured in PROJECT_MAP.md \u00c2\u00a74; nothing wired"
+    ],
+    "ts_utc": "2026-06-17T10:20:23+00:00",
+    "commit_sha": null
   }
 ]
