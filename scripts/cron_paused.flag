@@ -1,0 +1,6 @@
+PAUSED 2026-06-17 by Strand C N-growth re-tighten wiring — gate change, isolation.
+REASON: replacing the hardcoded n_trials_registered=41 with an auto-counted cumulative
+distinct-spec count so the deflated-Sharpe multiple-testing haircut is honest + self-
+maintaining (decision_log Strand C; councils 65/68). Track 1 paused for the atomic gate
+change + migration test. Operator-approved. Removed (renamed) this same session once
+wired, migration-confirmed, committed, pushed.
