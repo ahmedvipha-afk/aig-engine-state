@@ -76,25 +76,48 @@ data) and **audit trail** (every decision logged with who/why).
   - **Sequencing (Q4 consensus):** R2 = safe zero-flip FIRST step; **R3 must land
     BEFORE any WR change**; each step independently migration-tested on the frozen snapshot.
 
-  **C SUB-TASKS / OPEN ITEMS (from entry 65):**
+  **R5 — ROUTING-TIME CORRELATION SCREEN** (routing council, entry 68 Q2 — new gap):
+  routing (best per-ticker DSR) is currently CORRELATION-BLIND; it can route factor-
+  correlated tickers to one strategy, amplifying book-level drawdown the universe-wide
+  gate never saw. Add a pairwise-correlation screen at routing time. Candidate alongside
+  R0/R2.
+
+  **NEAR-TERM C ITEM — GATE-THRESHOLD DECAY / N-GROWTH** (entries 65 + 68, flagged in
+  TWO councils → elevated from parked): the DSR multiple-testing haircut uses N=41, but N
+  grows with the research pipeline (√(2·ln N)), so a DSR-0.5 pass today weakens as
+  cumulative trials grow. **Build a periodic re-tighten policy keyed to CUMULATIVE
+  strategies ever evaluated**, not the current batch. Top recurring stringency risk.
+
+  **C SUB-TASKS / OPEN ITEMS (entry 65):**
   - **Parsimony pass** (Q1/Q5): the set has real redundancy but seats named DIFFERENT
     cuts (retire PF / retire bootstrap-CI / fold R3 into DSR). Decide the cut WITH DATA
     — do NOT pre-pick.
   - **Snapshot tension** (Q8, OPEN QUESTION): the frozen snapshot fixes reproducibility
-    but may mask alpha-decay (listings/delistings/M&A in a static world). Likely answer:
-    KEEP the frozen snapshot AND add a periodic refresh-and-re-test vs fresh data to
-    catch decay — decide deliberately, don't dismiss.
+    but may mask alpha-decay. Likely answer: KEEP the frozen snapshot AND add a periodic
+    refresh-and-re-test vs fresh data — decide deliberately, don't dismiss.
   - **Engine prerequisites** (Q3): before the cross-sectional engine, add turnover/
     cost-sensitivity + rank-time look-ahead checks; R3/R4 land before the engine.
-  - **DOUBT FLAG** (Q8 unanimous, TOP stringency risk): the "41-trial" multiple-testing
-    haircut may not hold as trials grow/correlate — revisit before tightening further.
 
-  **PARKED — bigger-than-C reframes (Q7; capture, do NOT scope yet):** gemini's
-  factor-risk-allocation framework (judge by marginal diversification, not binary
-  pass/fail); grok's Bayesian posterior expectancy + purged k-fold OOS; gpt's
-  program-level FDR + subsample/rolling stability + cost stress + capacity model.
+  **ROUTING / ARCHITECTURE inputs (routing council, entry 68):**
+  - **Q1 RESOLVED — universe-wide gate is the RIGHT default** (unanimous lottery defense).
+    A sector/SUB-UNIVERSE validation tier is a **GATED FUTURE item** (like the cross-
+    sectional engine), admissible ONLY with: pre-registered FIXED sectors + a Bonferroni/
+    Šidák-raised DSR floor (~1.05 at 11 sectors; 1.2–1.5 for narrow sleeves) + grok's dual
+    bar (a sleeve claim must ALSO clear a diluted full-universe hurdle, coverage≥2% /
+    trades≥300). NEVER without the raised stats — unguarded = lottery in disguise.
+  - **Q3 OPEN ARCHITECTURE CHOICE (not decided — deliberate operator call):** winner-take-
+    one routing (gpt+grok: max edge + auditability + trivial R2) vs deterministic DSR-
+    weighted ensemble (gemini: robustness, buffers a bad print, but dilutes edge +
+    complicates R2). Constraint if ever ensemble: **fixed-weight only, never data-learned.**
+  - **Q4 R0 DESIGN INPUT (for the R0 build session):** R2 stays at the gate on FULL
+    contributors (unanimous); R0 cross-slot correlation measured on the ROUTED rosters
+    (majority gemini+grok) with an optional full-contributor similarity cap ρ<0.8 (gpt).
 
-  *(Council INFORMS only — none of this is wired. Entries 64 + 65.)*
+  **PARKED — bigger-than-C reframes (entry 65 Q7; capture, don't scope yet):** factor-
+  risk-allocation framework; Bayesian posterior expectancy + purged k-fold OOS; program-
+  level FDR + subsample/rolling stability + cost stress + capacity model.
+
+  *(Council INFORMS only — none of this is wired. Entries 64 + 65 + 68.)*
 
 ## 5. STANDING PRINCIPLES (locked — entry 57; operator memory)
 1. **Stricter, never looser** — a gate redesign may only tighten; never reverse-
@@ -201,6 +224,8 @@ data) and **audit trail** (every decision logged with who/why).
 65. **Whole-system gate+roadmap council — 4-rule set keeps both live slots (Q6); regime/time-stability is the #1 uncovered gap** (2f79a2e).
 66. **Strand-C plan enriched from entry 65 — regime rule added as top priority, parsimony + snapshot-decay sub-tasks recorded** (PROJECT_MAP §4).
 67. **Strand C R2 WIRED — single-name P&L concentration cap (10%), default-FAIL; live slots zero-flip; config_hash → 3c56aead8f358363** (first redesign rule in code).
+68. **Routing + universe-breadth council — universe-wide gate is the right default; sub-universe tier gated-future; routing is correlation-blind; Q3 winner-take-one vs ensemble split**.
+69. **Routing-council inputs captured into Strand-C plan; N-growth gate-threshold decay elevated to near-term** (PROJECT_MAP §4).
 
 ---
 *Pointers, not prose. Update the relevant section's one-liner whenever a task lands.*
