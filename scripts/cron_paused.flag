@@ -1,0 +1,6 @@
+PAUSED 2026-06-17 by Strand C R2 wiring — gate change, isolation.
+REASON: wiring the single-name concentration cap (max_single_name_pnl_share=0.10)
+into portfolio_evaluate + recomputing config_hash + migration test. Track 1 paused
+so no sprint worker commits/contends during the atomic gate change. Operator-
+supervised (decision_log Strand C). Removed (renamed) this same session once R2 is
+wired, migration-tested, committed, and pushed.
