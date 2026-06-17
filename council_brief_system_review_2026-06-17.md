@@ -96,6 +96,25 @@ sequence, each step independently testable via the migration test.
 STRICTER and SOUND (principle 1) — or are we adding complexity without adding edge
 discrimination? If you'd cut or merge any rule for parsimony, say which and why.
 
+**Q6 — SYSTEM-LEVEL MIGRATION TEST.** With ALL FOUR candidate rules wired TOGETHER
+(not one at a time), do the live slots **Divergence (DSR 2.22)** and **TRB-50 (DSR
+2.77)** still CLEAR? Reason about the rules' JOINT effect on the live portfolio, not
+each rule alone. If the COMBINED gate would UN-CLEAR either slot: is that the sound
+right answer (the slot genuinely isn't strong enough under a proper gate), or evidence
+the rule SET is OVER-CALIBRATED (too harsh in aggregate)? This is principle 1 at the
+SYSTEM level — stricter must not tip into a miscalibration that discards genuine edge.
+
+**Q7 — OPEN CHALLENGE.** For ANY part of this system — the gate rules, the 4
+candidates, the validation philosophy, the engine/per-ticker design, the roadmap, the
+strategy-acceptance approach, or the halal / long-only / no-leverage framing as it
+affects design — where would a rigorous quant fund do this DIFFERENTLY or BETTER?
+Propose concrete alternatives we may not have considered, including ones that
+challenge our current assumptions. We want the strongest ideas, NOT affirmation.
+
+**Q8 — DOUBT INVENTORY.** Name the pieces of this system that are WEAKEST or most
+uncertain — where the design rests on an assumption that might be wrong, or where we
+settled for "good enough." RANK them by how much they would matter if wrong.
+
 **HARD CONSTRAINT:** every change must be stricter-but-SOUND. Flag anything that
 loosens, tightens on a non-edge axis, or is complexity without discriminating power.
 Council INFORMS only — nothing is wired from this.
