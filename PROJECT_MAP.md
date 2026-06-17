@@ -48,6 +48,23 @@ data) and **audit trail** (every decision logged with who/why).
 - **Isolation note (for the migration test):** the `cron_paused.flag` blocks NEW
   sprint launches but does NOT abort an in-flight worker — confirm none running
   before isolating (entry 26; HANDOFF 2026-06-16).
+- **COUNCIL-VETTED CANDIDATE RULES (entry 64 — proposals to TEST in C, NOT adopted):**
+  1. **Raise the DSR floor 0.5 → ~1.0–1.5** — the real "stricter on edge" lever
+     (unanimous council). MUST run the migration test: live DSRs are Divergence 2.22
+     / TRB-50 2.77, likely survive 1.5 but VERIFY.
+  2. **Add a single-name CONCENTRATION CAP** — max ~10–15% of total P&L from any one
+     ticker (gpt), or an HHI/Gini ceiling (gemini). Sound version of the operator's
+     P1 instinct; fills a real gap (the gate has NO concentration guard today).
+     **Diagnostic (`concentration_diagnostic_2026-06-17.json`, read-only):** both live
+     slots are ~310-effective-names diversified — Divergence max single name 1.07% of
+     gross profit (HHI 0.00322), TRB-50 1.06% (HHI 0.00319) → both pass a 10–15% cap
+     with huge margin; the cap binds on nothing live, only future one-stock-wonders.
+  3. **Tail-fragility check** — reject if WR<0.45 AND skew>4 or kurtosis>50;
+     operationalizes entry-63 (the WR floor was doing implicit tail-screening).
+  4. **DROP the 60% WR idea (P2 — UNANIMOUS REJECT: clears zero, un-clears both live
+     slots); KEEP the 40% floor** until the tail-check above can explicitly replace
+     its tail-screening function.
+  *(Council INFORMS only — none of these are wired. Entry 64.)*
 
 ## 5. STANDING PRINCIPLES (locked — entry 57; operator memory)
 1. **Stricter, never looser** — a gate redesign may only tighten; never reverse-
@@ -150,6 +167,7 @@ data) and **audit trail** (every decision logged with who/why).
 61. **Canonical data snapshot frozen** — closes entry-60 gap (HASH2 639eb9b).
 62. **Calibration capture on frozen snapshot — 0 flips, method proven faithful** (HASH3 15ef8b3).
 63. **Calibration input to Strand C — WR floor is implicit tail-risk screening** (1a5cb27).
+64. **Gate-redesign council — P2 (WR 0.60) REJECT, P1 (100 trades/stock) REJECT-as-stated; concentration cap is the sound core** (live slots ~310 eff names).
 
 ---
 *Pointers, not prose. Update the relevant section's one-liner whenever a task lands.*
