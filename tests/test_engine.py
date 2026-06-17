@@ -208,6 +208,37 @@ def test_trb50_end_to_end_engine_run():
     assert bt["strategy"] == "trb50"
 
 
+# ---- R2: single-name P&L concentration cap (Strand C) ---------------------
+
+def _res(ticker, trades, tpy=10.0):
+    return {"ticker": ticker, "market": "US", "verdict": "FAIL",
+            "oos_trades": trades, "oos_trades_per_year": tpy}
+
+
+def test_r2_concentration_cap_flags_one_stock_wonder():
+    from aig.validation_gate import portfolio_evaluate
+    # ticker A carries ~91% of net P&L (10.0 of 11.0) -> must be flagged
+    results = [_res("A", [0.5] * 20), _res("B", [0.05] * 20)]
+    pf = portfolio_evaluate(results, strategy="t", timeframe="1d")
+    assert pf["max_single_name_pnl_share"] > 0.10
+    assert any("concentration" in x for x in pf["reasons"])
+    assert pf["passed"] is False
+
+
+def test_r2_concentration_cap_allows_diversified():
+    from aig.validation_gate import portfolio_evaluate
+    # 25 tickers, equal net P&L -> max share 1/25 = 0.04 < 0.10 -> NOT flagged
+    results = [_res(f"T{i}", [0.1, -0.02, 0.08]) for i in range(25)]
+    pf = portfolio_evaluate(results, strategy="t", timeframe="1d")
+    assert pf["max_single_name_pnl_share"] <= 0.10
+    assert not any("concentration" in x for x in pf["reasons"])
+
+
+def test_r2_concentration_cap_threshold_is_ten_percent():
+    from config import PORTFOLIO_GATE
+    assert PORTFOLIO_GATE["max_single_name_pnl_share"] == 0.10
+
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     passed = 0

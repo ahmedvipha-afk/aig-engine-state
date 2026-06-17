@@ -28,8 +28,10 @@ data) and **audit trail** (every decision logged with who/why).
 
 ## 3. THE GATE
 - **As it ACTUALLY runs:** [aig/GATE_PLAIN_ENGLISH.md](aig/GATE_PLAIN_ENGLISH.md)
-  — 6 enforced rules (trades≥1000, expectancy≥1.0, WR≥0.40, coverage≥5%, deflated
-  Sharpe≥0.5 @ N_trials=41, bootstrap CI>0). Code: `aig/validation_gate.py`.
+  — now **7 enforced rules**: trades≥1000, expectancy≥1.0, WR≥0.40, coverage≥5%,
+  deflated Sharpe≥0.5 @ N_trials=41, bootstrap CI>0, **+ R2 single-name P&L
+  concentration ≤10% (WIRED 2026-06-17, entry 67, config_hash 3c56aead8f358363)**.
+  Code: `aig/validation_gate.py`.
 - **Unwired amendments** (defined in `config.py PORTFOLIO_GATE`, never enforced):
   per-market floors (PARKED/OUT), PF≥1.5, OOS≥0.7×IS, 24-mo span, GCC. = Strand C.
 
@@ -63,9 +65,11 @@ data) and **audit trail** (every decision logged with who/why).
   over-harsh):
   1. **Raise DSR floor 0.5 → ~1.0–1.5** — the "stricter on edge" lever (verify via
      migration: Divergence 2.22 / TRB-50 2.77 survive 1.5).
-  2. **Single-name CONCENTRATION CAP** — max ~10–15% P&L/ticker, or HHI/Gini ceiling.
-     Diagnostic (`concentration_diagnostic_2026-06-17.json`): live slots ~310 eff
-     names (max name ~1.07% / 1.06%) → pass with huge margin; binds on nothing live.
+  2. ✅ **WIRED 2026-06-17 (entry 67):** single-name CONCENTRATION CAP = max 10% of
+     total NET P&L per ticker (`max_single_name_pnl_share=0.10`), default-FAIL in
+     `portfolio_evaluate`. config_hash → 3c56aead8f358363. Migration test: both live
+     slots CLEAR (Divergence share 0.0247, TRB-50 0.0233 — zero flip). The first
+     redesign rule in code; HHI/Gini complement may follow.
   3. **Tail-fragility check** — reject if WR<0.45 AND skew>4 or kurtosis>50 (entry 63).
   4. **KEEP 40% WR; the 60% idea is REJECTED** (P2 unanimous: clears zero, un-clears
      both slots) — hold 40% until R3 explicitly replaces its tail-screening function.
@@ -196,6 +200,7 @@ data) and **audit trail** (every decision logged with who/why).
 64. **Gate-redesign council — P2 (WR 0.60) REJECT, P1 (100 trades/stock) REJECT-as-stated; concentration cap is the sound core** (live slots ~310 eff names).
 65. **Whole-system gate+roadmap council — 4-rule set keeps both live slots (Q6); regime/time-stability is the #1 uncovered gap** (2f79a2e).
 66. **Strand-C plan enriched from entry 65 — regime rule added as top priority, parsimony + snapshot-decay sub-tasks recorded** (PROJECT_MAP §4).
+67. **Strand C R2 WIRED — single-name P&L concentration cap (10%), default-FAIL; live slots zero-flip; config_hash → 3c56aead8f358363** (first redesign rule in code).
 
 ---
 *Pointers, not prose. Update the relevant section's one-liner whenever a task lands.*

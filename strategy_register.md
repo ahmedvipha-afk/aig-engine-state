@@ -7,6 +7,8 @@ the portfolio-gate multi-test haircut covers. The actual frozen parameters
 live in `config.py`. If parameters change, the config hash changes and prior
 results no longer apply to the new spec.
 
+**GATE CHANGE 2026-06-17 (Strand C, R2 wired):** added `PORTFOLIO_GATE['max_single_name_pnl_share'] = 0.10` — a single-name P&L concentration cap enforced in `portfolio_evaluate` (default-FAIL: no ticker may carry >10% of total NET portfolio P&L). **`config_hash` c7ff799942e2c8da → 3c56aead8f358363** — prior results were produced under the OLD hash; the live slots were re-confirmed under the new hash via the R2 migration test (Divergence + TRB-50 both still CLEARED, single-name share 2.5%/2.3%, zero flip). First wired Strand-C rule; see decision_log entry 67 + PROJECT_MAP §4. R0/R1/R3/R4 + amendments remain proposals.
+
 **Amendment 2026-05-21 (audit response):** strategy specs are explicitly
 timeframe-agnostic at the rules level; each (strategy × market × timeframe)
 combination is one **trial** and must be enumerated below before being run.

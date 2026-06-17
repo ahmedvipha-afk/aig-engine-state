@@ -102,9 +102,12 @@ def portfolio_evaluate(per_ticker_results: list[dict],
 
     all_trades: list[float] = []
     total_tpy = 0.0
+    per_ticker_net: list[float] = []   # R2: per-ticker net P&L (Σ OOS trade returns)
     for r in contributors:
-        all_trades.extend(r["oos_trades"])
+        tr = r["oos_trades"]
+        all_trades.extend(tr)
         total_tpy += float(r.get("oos_trades_per_year", 0.0) or 0.0)
+        per_ticker_net.append(float(sum(tr)))
 
     reasons: list[str] = []
     n_total = len(all_trades)
@@ -125,6 +128,18 @@ def portfolio_evaluate(per_ticker_results: list[dict],
         reasons.append(f"universe coverage {coverage:.3f} < "
                        f"{g['min_universe_coverage']} "
                        f"({len(contributors)}/{n_universe} tickers traded)")
+
+    # R2 (Strand C): single-name P&L concentration cap. No single ticker may
+    # contribute more than max_single_name_pnl_share of total NET portfolio P&L.
+    # Guards: only meaningful when total net P&L > 0 (a net-negative strategy is
+    # already caught by the expectancy rule, so we do not double-penalise it).
+    total_net = sum(per_ticker_net)
+    max_name_share = ((max(per_ticker_net) / total_net)
+                      if (per_ticker_net and total_net > 0) else 0.0)
+    if max_name_share > g["max_single_name_pnl_share"]:
+        reasons.append(f"single-name P&L concentration {max_name_share:.3f} > "
+                       f"{g['max_single_name_pnl_share']} "
+                       f"(most-concentrated ticker carries too much of the edge)")
 
     # aggregate Sharpe annualised by SUM of trades-per-year across contributors
     sr = sharpe(all_trades, trades_per_year=max(total_tpy, 1.0))
@@ -159,6 +174,7 @@ def portfolio_evaluate(per_ticker_results: list[dict],
         "portfolio_sharpe_deflated": round(dsr, 4),
         "portfolio_ci_low": None if lo != lo else round(lo, 6),
         "portfolio_ci_high": None if hi != hi else round(hi, 6),
+        "max_single_name_pnl_share": round(max_name_share, 4),  # R2 diagnostic
         "n_trials_haircut": n_strats,
         "n_strategies_haircut": n_strats,  # back-compat alias for old callers
         "reasons": reasons,

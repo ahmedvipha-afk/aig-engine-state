@@ -410,6 +410,11 @@ PORTFOLIO_GATE = {
     "min_expectancy": 1.0,       # aggregate expectancy > 1.0
     "min_win_rate": 0.40,        # strict floor, binding for all archetypes -- see entries 46/47
     "min_universe_coverage": 0.05, # at least 5% of universe must contribute trades
+    "max_single_name_pnl_share": 0.10,  # R2 (Strand C): no single ticker may contribute
+                                        # > 10% of total NET portfolio P&L. Single-name
+                                        # concentration cap; council-vetted (entry 64/65),
+                                        # zero-flip on live slots (max ~2.5%, diagnostic
+                                        # 2026-06-17). Default-FAIL like the other gates.
     "bootstrap_iters": 2000,
     "bootstrap_conf": 0.95,
     "n_trials_registered": 41,   # 13 sprint-loop strategies (ema200..wck) x 3 markets x 1D = 39
