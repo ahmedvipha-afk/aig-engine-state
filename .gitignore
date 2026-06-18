@@ -44,6 +44,13 @@ logs_*.txt
 # --- Sprint driver runtime log (Task Scheduler launcher; grows per fire) ---
 scripts/sprint_task.log
 
+# --- Transient/ephemeral sprint artifacts (NEVER commit — PROJECT_MAP 8b T2) ---
+# The pause flag is raised/removed in-session and must never be published (it
+# was once swept to origin by a blanket stage and silently paused Track 1).
+# *_out.txt are tee'd detector/push stdout captures, regenerated every fire.
+scripts/cron_paused.flag
+*_out.txt
+
 # --- Crash-watchdog runtime files (state churns every minute, log grows) ---
 # crash_log.md / crash_log.json ARE tracked — they're the incident history.
 # These two are minute-by-minute internals.
