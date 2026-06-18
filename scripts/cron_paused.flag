@@ -1,0 +1,3 @@
+Strand C N-growth wiring
+Raised: 2026-06-18T20:29Z by Strand C session
+Reason: wiring the DSR multiple-testing N auto-count fix (replace hardcoded n_trials_registered=41 with auto-count of distinct frozen specs). Pausing Track-1 cron to obtain a clean wiring window. Will be removed once the commit lands and migration re-confirm passes.
