@@ -104,6 +104,21 @@ try {
     # loop below is the load-bearing part of this fix.
     $psi.EnvironmentVariables['BASH_DEFAULT_TIMEOUT_MS'] = '300000'
 
+    # T1 fix (PROJECT_MAP section 8b): give the headless worker the GitHub token
+    # in its OWN process environment. After SKILL step 5, the worker makes its
+    # own HANDOFF / runtime-state commits via raw `git push`; without GH_TOKEN
+    # that push has no credential, git falls through to Git Credential Manager's
+    # interactive dialog (never resolves under headless `claude -p`), and those
+    # commits stay LOCAL while the worker reports "pushed" -- origin lags a full
+    # sprint. With GH_TOKEN present, github.com's configured `gh auth
+    # git-credential` helper authenticates non-interactively (no token in any URL
+    # or argv). Same token source commit_session.ps1 uses (its L28). Scoped to
+    # this worker process only (EnvironmentVariables honored: UseShellExecute=$false).
+    $ghTokenFile = "$env:USERPROFILE\.claude\credentials\gh_token"
+    if (Test-Path $ghTokenFile) {
+        $psi.EnvironmentVariables['GH_TOKEN'] = (Get-Content $ghTokenFile -Raw).Trim()
+    }
+
     $proc = [System.Diagnostics.Process]::Start($psi)
     $workerPid = $proc.Id
     Log "spawned claude -p pid=$workerPid"
