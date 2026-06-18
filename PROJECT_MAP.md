@@ -161,6 +161,23 @@ data) and **audit trail** (every decision logged with who/why).
 - `1a5cb27` — entry 63 (Strand-C tail-risk design input).
 - spec_hash TRB-50 `a96ccdf5c0640e4f`; TSM-12 `efe8ac7b47f10a0f`.
 
+## 8b. TRACK-1 INFRA HARDENING (separate from gate redesign — TODO, do deliberately)
+Operational fixes surfaced 2026-06-18 during the Strand-C N-growth verification
+session. NOT gate-redesign work; do NOT bundle into §4. Both UNWIRED — recorded so
+they are not lost.
+- **T1. Headless `git push` fails on interactive credential dialog.** The Track-1
+  sprint commit step pushes via the default credential helper, which pops a
+  GUI dialog that never resolves in a headless `claude -p` fire — so origin can lag a
+  full sprint while HANDOFF reports "all pushed" (observed: origin stuck at `23a34eb`
+  while local was 3 ahead). **Fix:** wire the `GH_TOKEN` / `x-access-token` push path
+  (load token from `~/.claude/credentials/gh_token`, push with
+  `http.extraheader`/URL form, credential manager disabled) into the Track-1 sprint
+  commit step — the same path that recovered this session's push.
+- **T2. `git add -A` sweeps transient artifacts into mainline.** The blanket stage in
+  the sprint commit captured an ephemeral `scripts/cron_paused.flag` and published it to
+  origin (cleaned up in `bfb3b46`). **Fix:** add `scripts/cron_paused.flag` and `*_out.txt`
+  to `.gitignore` so transient/ephemeral artifacts can never reach a commit.
+
 ## 9. DECISION LOG — 1-63, one line each
 1. Withdraw Path 3 (post-hoc gate amendment) — Session-5 audit response.
 2. Deploy US Divergence Daily to paper-forward.
