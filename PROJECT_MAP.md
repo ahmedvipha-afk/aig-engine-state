@@ -161,22 +161,33 @@ data) and **audit trail** (every decision logged with who/why).
 - `1a5cb27` — entry 63 (Strand-C tail-risk design input).
 - spec_hash TRB-50 `a96ccdf5c0640e4f`; TSM-12 `efe8ac7b47f10a0f`.
 
-## 8b. TRACK-1 INFRA HARDENING (separate from gate redesign — TODO, do deliberately)
+## 8b. TRACK-1 INFRA HARDENING (separate from gate redesign)
 Operational fixes surfaced 2026-06-18 during the Strand-C N-growth verification
-session. NOT gate-redesign work; do NOT bundle into §4. Both UNWIRED — recorded so
-they are not lost.
-- **T1. Headless `git push` fails on interactive credential dialog.** The Track-1
-  sprint commit step pushes via the default credential helper, which pops a
-  GUI dialog that never resolves in a headless `claude -p` fire — so origin can lag a
-  full sprint while HANDOFF reports "all pushed" (observed: origin stuck at `23a34eb`
-  while local was 3 ahead). **Fix:** wire the `GH_TOKEN` / `x-access-token` push path
-  (load token from `~/.claude/credentials/gh_token`, push with
-  `http.extraheader`/URL form, credential manager disabled) into the Track-1 sprint
-  commit step — the same path that recovered this session's push.
-- **T2. `git add -A` sweeps transient artifacts into mainline.** The blanket stage in
-  the sprint commit captured an ephemeral `scripts/cron_paused.flag` and published it to
-  origin (cleaned up in `bfb3b46`). **Fix:** add `scripts/cron_paused.flag` and `*_out.txt`
-  to `.gitignore` so transient/ephemeral artifacts can never reach a commit.
+session. NOT gate-redesign work; were not bundled into §4. Both now WIRED.
+- ✅ **T1. Headless worker's own `git push` failed on an interactive credential dialog
+  — WIRED 2026-06-18 (commit `02699ac`).** After SKILL step 5, the headless `claude -p`
+  worker makes its own `HANDOFF update` / `runtime state sync` commits via raw `git push`.
+  The launcher did not pass `GH_TOKEN` into the worker process, so that push had no
+  credential, fell through to Git Credential Manager's interactive dialog (never resolves
+  headless), and those commits stayed LOCAL while the worker reported "pushed" — origin
+  lagged a full sprint. NB the real culprit was the worker's OWN push, not the step-5
+  `Sprint` commit: `commit_session.ps1` already worked because it self-loads `GH_TOKEN`.
+  **Fix (Option A):** inject `GH_TOKEN` (from `~/.claude/credentials/gh_token`, the same
+  source `commit_session.ps1` uses) into the worker-spawn environment in
+  `sprint_task_launcher.ps1`, so the worker's push authenticates non-interactively via the
+  configured `gh auth git-credential` helper — no token in any URL/argv. Worker-spawn env
+  ONLY; detector/commit/SKILL untouched. (Option B — token-URL in `commit_session.ps1` —
+  was rejected: it would harden an already-working path and embed a token in a URL.)
+  **Verified:** post-fix fire pid=22096 (spawned 19:29Z, after the fix) made worker commit
+  `f856694` ("runtime state sync") which reached ORIGIN with no manual push and no fresh
+  credential dialog (`push_err.txt` stayed stale).
+- ✅ **T2. Blanket staging swept transient artifacts into mainline — WIRED 2026-06-18
+  (commit `0af91bf`).** `commit_session.ps1` stages the whole `scripts/` dir (and the
+  worker's `git add -A` stages everything), which captured an ephemeral
+  `scripts/cron_paused.flag` and published it to origin (cleaned up in `bfb3b46`).
+  **Fix:** `scripts/cron_paused.flag` and `*_out.txt` added to `.gitignore` so
+  transient/ephemeral artifacts can never reach a commit. (Both were untracked, so
+  gitignore alone sufficed — no `git rm --cached` needed.)
 
 ## 9. DECISION LOG — 1-63, one line each
 1. Withdraw Path 3 (post-hoc gate amendment) — Session-5 audit response.
