@@ -1,69 +1,5 @@
 [
   {
-    "ts_utc": "2026-06-15T23:00:27+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 562,
-    "preview": "\ud83d\ude80 Sprint fire 03:00 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-06-15T23:15:36+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 563,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-16</b>\n\n\ud83d\udfe2 ENTRY <b>SSLZY</b> $5.85 (stop $5.42)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.79)\n\ud83d\udd34 EXIT <b>TMHC</b> $71.95 P&L -0.00% \u00b7 rsi_or_trend_exit\n\nOpen: 41 \u00b7 Closed-to"
-  },
-  {
-    "ts_utc": "2026-06-15T23:30:44+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 564,
-    "preview": "\ud83d\ude80 Sprint fire 03:30 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-06-15T23:45:54+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": false,
-    "message_id": null,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-16</b>\n\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.79)\n\ud83d\udd34 EXIT <b>TMHC</b> $71.95 P&L -0.00% \u00b7 rsi_or_trend_exit\n\nOpen: 41 \u00b7 Closed-to-date: 614\n<i>Strategy: AIG Divergence D"
-  },
-  {
-    "ts_utc": "2026-06-16T00:00:22+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 565,
-    "preview": "\ud83d\ude80 Sprint fire 04:00 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-06-16T00:16:42+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 566,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-16</b>\n\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.79)\n\ud83d\udd34 EXIT <b>TMHC</b> $71.95 P&L -0.00% \u00b7 rsi_or_trend_exit\n\nOpen: 41 \u00b7 Closed-to-date: 615\n<i>Strategy: AIG Divergence D"
-  },
-  {
-    "ts_utc": "2026-06-16T00:30:20+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 567,
-    "preview": "\ud83d\ude80 Sprint fire 04:30 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-06-16T00:45:40+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 568,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-16</b>\n\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.79)\n\ud83d\udd34 EXIT <b>TMHC</b> $71.95 P&L -0.00% \u00b7 rsi_or_trend_exit\n\nOpen: 41 \u00b7 Closed-to-date: 616\n<i>Strategy: AIG Divergence D"
-  },
-  {
     "ts_utc": "2026-06-16T01:00:24+00:00",
     "kind": "text",
     "to": 7096306994,
@@ -1597,6 +1533,70 @@
     "to": 7096306994,
     "ok": true,
     "message_id": 730,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-18</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
+  },
+  {
+    "ts_utc": "2026-06-18T17:12:27+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 731,
+    "preview": "\ud83d\udea8 CC crash detected at 21:12 UAE 2026-06-18.\nCause: process-absent+sentinel-17min.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-06-18T17:15:11+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 732,
+    "preview": "\ud83d\ude80 Sprint fire 21:14 UAE \u2014 catching up 1 missed \u2192 2 iterations back-to-back\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits,"
+  },
+  {
+    "ts_utc": "2026-06-18T17:18:46+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-18</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
+  },
+  {
+    "ts_utc": "2026-06-18T17:23:10+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 733,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-18</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
+  },
+  {
+    "ts_utc": "2026-06-18T17:41:16+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 734,
+    "preview": "\ud83d\udea8 CC crash detected at 21:41 UAE 2026-06-18.\nCause: process-absent+sentinel-17min.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-06-18T17:45:08+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 735,
+    "preview": "\ud83d\ude80 Sprint fire 21:44 UAE \u2014 catching up 1 missed \u2192 2 iterations back-to-back\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits,"
+  },
+  {
+    "ts_utc": "2026-06-18T17:48:39+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 736,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-18</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
+  },
+  {
+    "ts_utc": "2026-06-18T17:53:01+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 737,
     "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-18</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
   }
 ]
