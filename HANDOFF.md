@@ -316,3 +316,4 @@
    three-filter methodology + pre-registration in strategy_register.md before enrollment.
 3. If Track 1 must ever be paused: create scripts/cron_paused.flag — BOTH the launcher
    and the watchdog honor it (one flag stops driver + recovery together).
+
