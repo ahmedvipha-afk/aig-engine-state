@@ -80,3 +80,8 @@ data_cache/
 # - ceo_brain.md, findings_*.md
 # - strategy_register.md
 # - pine/*.pine
+
+# --- Forensic audit log (untracked 2026-06-23): write-only, never read back by
+# any code, regenerable from config_hash. Was a ~150MB file re-committed every
+# sprint cycle = the repo-bloat / pack-objects OOM driver. Kept on disk. ---
+aig/audit_trail.md
