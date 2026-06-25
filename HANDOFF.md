@@ -616,6 +616,7 @@
 - [06:59] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
 - [07:17] step 2 done foreground (detector ~17 min; harness auto-backgrounded, worker blocked on TaskOutput foreground wait per contract, sentinel refreshed at 8 and 16 min): 1030 watched, 7 entries, 7 exits, 36 open, 225 history; 2 fetch fails (EXAS/HOLX yfinance flaps) + ~40 data-integrity skips
 - [07:18] steps 3-5: queue still EMPTY (WCK finalized, no auto-enrollment); dashboard regenerated (1.1 MB); sprint commit 62e8741 pushed; sentinel marked after every step (last 03:18:07Z)
+- [03:27Z] routine fire complete headless (claude -p): MISSED_FIRES=0, 1 iteration. Divergence: 1,030 watched, 4 entries/4 exits (FOR/HCSG/MTH/TMHC same-day round trips), 41 open, 2548 hist; persistent errors EXAS/HOLX yfinance empty, MCW short history, VRRM split-spike. TRB-50: 1,115 watched, 0 entries/0 exits, 78 open. Queue EMPTY. Dashboard 1.4 MB. Commit 4594cd7 local (push failed — GitHub audit_trail.md exceeds 100MB limit, retries next fire).
 - [03:09Z] routine fire complete headless (claude -p): MISSED_FIRES=0, 1 iteration. Divergence: 1,030 watched, 4 entries/4 exits (FOR/HCSG/MTH/TMHC same-day round trips), 41 open, 2544 hist; persistent errors EXAS/HOLX yfinance empty, MCW short history, VRRM split-spike. TRB-50: 1,115 watched, 0 entries/0 exits, 78 open. Queue EMPTY. Dashboard 1.4 MB. Commit 221c120 local (push failed — GitHub audit_trail.md exceeds 100MB limit, retries next fire).
 
 ## Gotchas / context next session needs
