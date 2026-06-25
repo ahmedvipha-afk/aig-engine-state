@@ -617,6 +617,9 @@
 - [09:00] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
 - [09:18] step 2 done foreground (detector ~18 min; harness auto-backgrounded, worker blocked on TaskOutput foreground wait per contract, sentinel refreshed at 10 min): 1030 watched, 8 entries, 8 exits, 38 open, 257 history; 2 fetch fails (EXAS/HOLX yfinance flaps) + 2 data-integrity skips (MCW/VRRM)
 - [09:19] steps 3-5: queue still EMPTY (WCK finalized, no auto-enrollment); dashboard regenerated (1.1 MB); sprint commit pushed; sentinel marked after every step
+- [06:31Z] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
+- [06:37Z] step 2 done foreground (divergence ~6 min, TRB-50 immediate): divergence 1030 watched 4in/4out 41open/2600hist; TRB-50 1115 watched 0in/0out 78open; 2 fetch fails (EXAS/HOLX yfinance flaps) + 2 data-integrity skips (MCW/VRRM); sentinel refreshed between detectors
+- [06:41Z] steps 3-5: queue EMPTY (no auto-enrollment); dashboard regenerated (1.4 MB); commit b814ce8 local (push failed — audit_trail.md >100MB, retries next fire); sentinel marked after every step
 - [08:30] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
 - [08:48] step 2 done foreground (detector ~18 min; harness auto-backgrounded, worker blocked on TaskOutput foreground wait per contract): 1030 watched, 8 entries, 8 exits, 38 open, 249 history; 2 fetch fails (EXAS/HOLX yfinance flaps) + 2 data-integrity skips (MCW/VRRM)
 - [08:48] steps 3-5: queue still EMPTY (WCK finalized, no auto-enrollment); dashboard regenerated (1.1 MB); sprint commit pushed; sentinel marked after every step
