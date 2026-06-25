@@ -71,6 +71,7 @@
       design — banner is local-only). Entry "Tareq" + Step 1.3 refactor: blocked on lost text.
 
 ## Last actions
+- [04:21Z 06-25] routine fire PUSH BLOCKED headless (claude -p): MISSED_FIRES=0, 1 iteration. Divergence: 1,030 watched, 4in/4out (FOR/HCSG/MTH/TMHC), 41 open, 2,564 history; TRB-50: 1,115 watched, 0in/0out, 78 open; queue EMPTY; dashboard 1.43 MB; commit 9fc60f3 LOCAL ONLY. PUSH STILL BLOCKED: aig/audit_trail.md exceeds GitHub 100 MB hard limit. OPERATOR ACTION REQUIRED.
 - [04:09Z 06-25] routine fire PUSH BLOCKED headless (claude -p): MISSED_FIRES=0, 1 iteration. Divergence: 1,030 watched, 4in/4out (FOR/HCSG/MTH/TMHC), 41 open, 2,560 history; TRB-50: 1,115 watched, 0in/0out, 78 open; queue EMPTY; dashboard 1.43 MB; commit 9b4f175 LOCAL ONLY. PUSH STILL BLOCKED: aig/audit_trail.md exceeds GitHub 100 MB hard limit. OPERATOR ACTION REQUIRED.
 - [03:53Z 06-25] routine fire PUSH BLOCKED headless (claude -p): MISSED_FIRES=0, 1 iteration. Divergence: 1,030 watched, 4in/4out (FOR/HCSG/MTH/TMHC), 41 open, 2,556 history; TRB-50: 1,115 watched, 0in/0out, 78 open; queue EMPTY; dashboard 1.43 MB; commit bd35c0f LOCAL ONLY. PUSH STILL BLOCKED: aig/audit_trail.md exceeds GitHub 100 MB hard limit. OPERATOR ACTION REQUIRED.
 - [03:41Z 06-25] routine fire PUSH BLOCKED headless (claude -p): MISSED_FIRES=0, 1 iteration. Divergence: 1,030 watched, 4in/4out (FOR/HCSG/MTH/TMHC), 41 open, 2,552 history (EXAS+HOLX delisted, MCW short, VRRM split/spike — non-fatal); TRB-50: 1,115 watched, 0in/0out, 78 open; queue EMPTY; dashboard 1.4 MB; commit e154675 LOCAL ONLY. PUSH STILL BLOCKED: aig/audit_trail.md exceeds GitHub 100 MB hard limit. OPERATOR ACTION REQUIRED.
@@ -591,6 +592,9 @@
 - [21:47] catch-up fire started headless (claude -p): MISSED_FIRES=41 (flag-paused interval); cap = 5 iterations, but iteration 1 (~25 min) exhausted the SKILL's 10-min total time budget — ran 1 full iteration, overflow drains next fires per SKILL TIME BUDGET section (Track 1 cadence 15 min, sentinel kept fresh so next MISSED_FIRES is small)
 - [21:33] decision_log entry 46 written: TSM-12 PORTFOLIO_FAIL verdict, full numbers + universe convention (1,603 frozen / 1,122 evaluated, exclusion rule listed); slot 2 OPEN, Session A2 next
 - [21:35] HANDOFF updated (verdict, slot status, Track 2 next step); committing verdict + validation_tsm12_us_1d.json + validation-session leftovers, then removing cron_paused.flag (rename convention) to resume Track 1
+- [08:31Z] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
+- [08:36Z] step 2 done foreground (~5 min): divergence 1030 watched 4in/4out 41open/2568hist; TRB-50 1115 watched 0in/0out 78open; 2 fetch fails (EXAS/HOLX) + 2 data-integrity skips (MCW/VRRM); sentinel refreshed between detectors
+- [08:36Z] steps 3-5: queue EMPTY (no auto-enrollment); dashboard regenerated (1.4 MB); commit 1fb7166 local (push timed out — GitHub audit_trail.md exceeds 100MB limit, retries next fire); sentinel marked after every step
 - [10:45] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
 - [11:12] step 2 done foreground (detector ~26 min; harness auto-backgrounded, worker blocked on TaskOutput foreground wait per contract, sentinel refreshed at 20 min): 1030 watched, 8 entries, 8 exits, 38 open, 281 history; 2 fetch fails (EXAS/HOLX yfinance flaps) + 2 data-integrity skips (MCW/VRRM)
 - [11:13] steps 3-5: queue still EMPTY (WCK finalized, no auto-enrollment); dashboard regenerated (1.1 MB); sprint commit pushed; sentinel marked after every step
