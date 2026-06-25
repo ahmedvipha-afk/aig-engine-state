@@ -610,6 +610,9 @@
 - [07:29] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
 - [07:46] step 2 done foreground (detector ~16 min; harness auto-backgrounded, worker blocked on TaskOutput foreground wait per contract): 1030 watched, 7 entries, 7 exits, 36 open, 232 history; 2 fetch fails (EXAS/HOLX yfinance flaps) + ~73 data-integrity skips
 - [07:47] steps 3-5: queue still EMPTY (WCK finalized, no auto-enrollment); dashboard regenerated (1.1 MB); sprint commit 82146ac pushed; sentinel marked after every step
+- [06:46] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
+- [06:52] step 2 done foreground (divergence ~6 min, TRB-50 immediate): divergence 1030 watched 4in/4out 41open/2540hist; TRB-50 1115 watched 0in/0out 78open; 2 fetch fails (EXAS/HOLX yfinance flaps) + 2 data-integrity skips (MCW/VRRM); sentinel refreshed between detectors
+- [06:54] steps 3-5: queue EMPTY (no auto-enrollment); dashboard regenerated (1.4 MB); commit e974bff local (push failed — GitHub unreachable, retries next fire); sentinel marked after every step
 - [06:59] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
 - [07:17] step 2 done foreground (detector ~17 min; harness auto-backgrounded, worker blocked on TaskOutput foreground wait per contract, sentinel refreshed at 8 and 16 min): 1030 watched, 7 entries, 7 exits, 36 open, 225 history; 2 fetch fails (EXAS/HOLX yfinance flaps) + ~40 data-integrity skips
 - [07:18] steps 3-5: queue still EMPTY (WCK finalized, no auto-enrollment); dashboard regenerated (1.1 MB); sprint commit 62e8741 pushed; sentinel marked after every step (last 03:18:07Z)
