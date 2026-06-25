@@ -71,6 +71,7 @@
       design — banner is local-only). Entry "Tareq" + Step 1.3 refactor: blocked on lost text.
 
 ## Last actions
+- [16:47Z 06-25] routine fire PUSH BLOCKED headless (claude -p): MISSED_FIRES=0, 1 iteration. Divergence: 1,030 watched, 4in/4out (FOR/HCSG/MTH/TMHC same-day round trips), 41 open, 2,672 history; TRB-50: 1,115 watched, 0in/0out, 78 open; queue EMPTY; dashboard 1.36 MB; commit 927c203 LOCAL ONLY. PUSH STILL BLOCKED: aig/audit_trail.md exceeds GitHub 100 MB hard limit. OPERATOR ACTION REQUIRED.
 - [16:07Z 06-25] routine fire PUSH BLOCKED headless (claude -p): MISSED_FIRES=0, 1 iteration. Divergence: 1,030 watched, 4in/4out (FOR/HCSG/MTH/TMHC same-day round trips), 41 open, 2,664 history; TRB-50: 1,115 watched, 0in/0out, 78 open; queue EMPTY; dashboard 1.36 MB; commit da09f5b LOCAL ONLY. PUSH STILL BLOCKED: aig/audit_trail.md exceeds GitHub 100 MB hard limit. OPERATOR ACTION REQUIRED.
 - [15:52Z 06-25] routine fire PUSH BLOCKED headless (claude -p): MISSED_FIRES=0, 1 iteration. Divergence: 1,030 watched, 4in/4out (FOR/HCSG/MTH/TMHC same-day round trips), 41 open, 2,660 history; TRB-50: 1,115 watched, 0in/0out, 78 open; queue EMPTY; dashboard 1.36 MB; commit 5cbf6f1 LOCAL ONLY. PUSH STILL BLOCKED: aig/audit_trail.md exceeds GitHub 100 MB hard limit. OPERATOR ACTION REQUIRED.
 - [17:31Z 06-25] routine fire PUSH BLOCKED headless (claude -p): MISSED_FIRES=0, 1 iteration. Divergence: 1,030 watched, 4in/4out (FOR/HCSG/MTH/TMHC same-day round trips), 41 open, 2,656 history; TRB-50: 1,115 watched, 0in/0out, 78 open; queue EMPTY; dashboard 1.36 MB; commit e329037 LOCAL ONLY. PUSH STILL BLOCKED: aig/audit_trail.md exceeds GitHub 100 MB hard limit. OPERATOR ACTION REQUIRED.
@@ -656,7 +657,13 @@
 - [07:17] step 2 done foreground (detector ~17 min; harness auto-backgrounded, worker blocked on TaskOutput foreground wait per contract, sentinel refreshed at 8 and 16 min): 1030 watched, 7 entries, 7 exits, 36 open, 225 history; 2 fetch fails (EXAS/HOLX yfinance flaps) + ~40 data-integrity skips
 - [07:18] steps 3-5: queue still EMPTY (WCK finalized, no auto-enrollment); dashboard regenerated (1.1 MB); sprint commit 62e8741 pushed; sentinel marked after every step (last 03:18:07Z)
 - [03:27Z] routine fire complete headless (claude -p): MISSED_FIRES=0, 1 iteration. Divergence: 1,030 watched, 4 entries/4 exits (FOR/HCSG/MTH/TMHC same-day round trips), 41 open, 2548 hist; persistent errors EXAS/HOLX yfinance empty, MCW short history, VRRM split-spike. TRB-50: 1,115 watched, 0 entries/0 exits, 78 open. Queue EMPTY. Dashboard 1.4 MB. Commit 4594cd7 local (push failed — GitHub audit_trail.md exceeds 100MB limit, retries next fire).
+- [16:16Z] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
+- [16:23Z] step 2 done foreground (divergence ~6 min, TRB-50 immediate): divergence 1030 watched 4in/4out 41open/2668hist; TRB-50 1115 watched 0in/0out 78open; 2 fetch fails (EXAS/HOLX yfinance flaps) + 2 data-integrity skips (MCW/VRRM); sentinel refreshed between detectors
+- [16:26Z] steps 3-5: queue EMPTY (no auto-enrollment); dashboard regenerated (1.4 MB); commit 931ac41 local (push failed — audit_trail.md >100MB, retries next fire); sentinel marked after every step
 - [03:09Z] routine fire complete headless (claude -p): MISSED_FIRES=0, 1 iteration. Divergence: 1,030 watched, 4 entries/4 exits (FOR/HCSG/MTH/TMHC same-day round trips), 41 open, 2544 hist; persistent errors EXAS/HOLX yfinance empty, MCW short history, VRRM split-spike. TRB-50: 1,115 watched, 0 entries/0 exits, 78 open. Queue EMPTY. Dashboard 1.4 MB. Commit 221c120 local (push failed — GitHub audit_trail.md exceeds 100MB limit, retries next fire).
+- [17:01Z] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
+- [17:09Z] step 2 done foreground: divergence 1030 watched 4in/4out 41open/2676hist (FOR/HCSG/MTH/TMHC same-day round trips); TRB-50 1115 watched 0in/0out 78open; 2 fetch fails (EXAS/HOLX) + 2 data-integrity skips (MCW/VRRM); sentinel refreshed between detectors
+- [17:10Z] steps 3-5: queue EMPTY (no auto-enrollment); dashboard regenerated (1.4 MB); commit eb22a95; sentinel marked after every step
 
 ## Gotchas / context next session needs
 - Decision-log numbering is POSITIONAL (no id field). Planned map was 39 mandate / 40 scope /
