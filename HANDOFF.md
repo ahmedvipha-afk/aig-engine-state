@@ -71,6 +71,7 @@
       design — banner is local-only). Entry "Tareq" + Step 1.3 refactor: blocked on lost text.
 
 ## Last actions
+- [07:07Z 06-26] routine fire PUSH BLOCKED headless (claude -p): MISSED_FIRES=0, 1 iteration. Divergence: 1,030 watched, 4in/4out (FOR/HCSG/MTH/TMHC same-day round trips), 41 open, 2,776 history; TRB-50: 1,115 watched, 0in/0out, 78 open; queue EMPTY; dashboard 1.43 MB; commit aad5f1e LOCAL ONLY. PUSH STILL BLOCKED: aig/audit_trail.md exceeds GitHub 100 MB hard limit. OPERATOR ACTION REQUIRED.
 - [06:37Z 06-26] routine fire PUSH BLOCKED headless (claude -p): MISSED_FIRES=0, 1 iteration. Divergence: 1,030 watched, 4in/4out (FOR/HCSG/MTH/TMHC same-day round trips), 41 open, 2,772 history; TRB-50: 1,115 watched, 0in/0out, 78 open; queue EMPTY; dashboard 1.43 MB; commit c81b2f4 LOCAL ONLY. PUSH STILL BLOCKED: aig/audit_trail.md exceeds GitHub 100 MB hard limit. OPERATOR ACTION REQUIRED.
 - [05:57Z 06-26] routine fire PUSH BLOCKED headless (claude -p): MISSED_FIRES=0, 1 iteration. Divergence: 1,030 watched, 4in/4out (FOR/HCSG/MTH/TMHC same-day round trips), 41 open, 2,768 history; TRB-50: 1,115 watched, 0in/0out, 78 open; queue EMPTY; dashboard 1.43 MB; commit 5b1817d LOCAL ONLY. PUSH STILL BLOCKED: aig/audit_trail.md exceeds GitHub 100 MB hard limit. OPERATOR ACTION REQUIRED.
 - [04:53Z 06-26] routine fire PUSH BLOCKED headless (claude -p): MISSED_FIRES=0, 1 iteration. Divergence: 1,030 watched, 4in/4out (FOR/HCSG/MTH/TMHC same-day round trips), 41 open, 2,760 history; TRB-50: 1,115 watched, 0in/0out, 78 open; queue EMPTY; dashboard 1.43 MB; commit d5e7ea4 LOCAL ONLY. PUSH STILL BLOCKED: aig/audit_trail.md exceeds GitHub 100 MB hard limit. OPERATOR ACTION REQUIRED.
@@ -694,6 +695,9 @@
 - [05:01Z] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
 - [05:21Z] step 2 done foreground: divergence 1030 watched 4in/4out 41open/2764hist (FOR/HCSG/MTH/TMHC same-day round trips); TRB-50 1115 watched 0in/0out 78open; 2 fetch fails (EXAS/HOLX) + 2 data-integrity skips (MCW/VRRM); sentinel refreshed between detectors
 - [05:26Z] steps 3-5: queue EMPTY (no auto-enrollment); dashboard regenerated (1.4 MB); commit a169414 local (push failed — audit_trail.md >100MB, retries next fire); sentinel marked after every step
+- [07:16Z] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
+- [07:35Z] step 2 done foreground: divergence 1030 watched 4in/4out 41open/2780hist (FOR/HCSG/MTH/TMHC same-day round trips); TRB-50 1115 watched 0in/0out 78open; 2 fetch fails (EXAS/HOLX) + 2 data-integrity skips (MCW/VRRM); sentinel refreshed between detectors
+- [07:38Z] steps 3-5: queue EMPTY (no auto-enrollment); dashboard regenerated (1.4 MB); commit fb8907d local (push failed — audit_trail.md >100MB, retries next fire); sentinel marked after every step
 
 ## Gotchas / context next session needs
 - Decision-log numbering is POSITIONAL (no id field). Planned map was 39 mandate / 40 scope /
