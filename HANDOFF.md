@@ -725,6 +725,7 @@
 - [13:01Z] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
 - [13:10Z] step 2 done foreground: divergence 1030 watched 4in/4out 41open/2824hist (FOR/HCSG/MTH/TMHC same-day round trips); TRB-50 1115 watched 0in/0out 78open; 2 fetch fails (EXAS/HOLX) + 2 data-integrity skips (MCW/VRRM); sentinel refreshed between detectors
 - [13:11Z] steps 3-5: queue EMPTY (no auto-enrollment); dashboard regenerated (1.4 MB); commit 641840d local; sentinel marked after every step
+- [19:20Z] routine fire complete headless (claude -p): MISSED_FIRES=0, 1 iteration. Divergence: 1,030 watched, 4 entries/4 exits (FOR/HCSG/MTH/TMHC same-day round trips), 41 open, 2,856 history; persistent errors EXAS/HOLX yfinance empty, MCW short history, VRRM split-spike. TRB-50: 1,115 watched, 0 entries/0 exits, 78 open. Queue EMPTY. Dashboard 1.4 MB. Commit b4c6b9c + pending; sentinel marked after every step.
 
 ## Gotchas / context next session needs
 - Decision-log numbering is POSITIONAL (no id field). Planned map was 39 mandate / 40 scope /
