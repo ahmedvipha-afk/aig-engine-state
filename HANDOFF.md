@@ -685,7 +685,7 @@
 - [02:25Z] steps 3-5: queue EMPTY (no auto-enrollment); dashboard regenerated (1.4 MB); commit 0fb28ce local (push failed — audit_trail.md >100MB, retries next fire); sentinel marked after every step
 - [03:01Z] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
 - [03:21Z] step 2 done foreground: divergence 1030 watched 4in/4out 41open/2748hist (FOR/HCSG/MTH/TMHC same-day round trips); TRB-50 1115 watched 0in/0out 78open; 2 fetch fails (EXAS/HOLX) + 2 data-integrity skips (MCW/VRRM); sentinel refreshed between detectors
-- [03:23Z] steps 3-5: queue EMPTY (no auto-enrollment); dashboard regenerated (1.4 MB); committing now; sentinel marked after every step
+- [03:23Z] steps 3-5: queue EMPTY (no auto-enrollment); dashboard regenerated (1.4 MB); commit 4e821f1 local (push failed — audit_trail.md >100MB, retries next fire); sentinel marked after every step
 
 ## Gotchas / context next session needs
 - Decision-log numbering is POSITIONAL (no id field). Planned map was 39 mandate / 40 scope /
