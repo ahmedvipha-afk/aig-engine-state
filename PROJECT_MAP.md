@@ -71,7 +71,7 @@ data) and **audit trail** (every decision logged with who/why).
      `portfolio_evaluate`. config_hash → 3c56aead8f358363. Migration test: both live
      slots CLEAR (Divergence share 0.0247, TRB-50 0.0233 — zero flip). The first
      redesign rule in code; HHI/Gini complement may follow.
-  3. **Tail-fragility check** — reject if WR<0.45 AND skew>4 or kurtosis>50 (entry 63).
+  3. ✅ **WIRED TDD-session 2026-06-27 (commit 656b5db):** Tail-fragility check -- reject if WR<0.45 AND (skew>4 OR kurtosis>50) (entry 63). trade_moments() in aig/stats.py; R3 block in portfolio_evaluate; 8 tests. Zero flips: Divergence skew=1.06/kurt=5.4 (well below thresholds), TRB-50 WR=0.51 (not triggered).
   4. **KEEP 40% WR; the 60% idea is REJECTED** (P2 unanimous: clears zero, un-clears
      both slots) — hold 40% until R3 explicitly replaces its tail-screening function.
   - **Sequencing (Q4 consensus):** R2 = safe zero-flip FIRST step; **R3 must land
