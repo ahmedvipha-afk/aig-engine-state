@@ -772,6 +772,9 @@
 - [13:01Z] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration
 - [13:10Z] step 2 done foreground: divergence 1030 watched 4in/4out 41open/2824hist (FOR/HCSG/MTH/TMHC same-day round trips); TRB-50 1115 watched 0in/0out 78open; 2 fetch fails (EXAS/HOLX) + 2 data-integrity skips (MCW/VRRM); sentinel refreshed between detectors
 - [13:11Z] steps 3-5: queue EMPTY (no auto-enrollment); dashboard regenerated (1.4 MB); commit 641840d local; sentinel marked after every step
+- [16:17Z] routine fire started headless (claude -p): MISSED_FIRES=33, 1 iteration completed (33 fires missed since 07:53Z due to SKILL.md read-permission block in headless sessions)
+- [16:41Z] step 2 done foreground (divergence ~24 min harness-backgrounded/TaskOutput waited, TRB-50 immediate): divergence 1030 watched 4in/4out 41open/2956hist; TRB-50 1115 watched 0in/0out 78open; 2 fetch fails (EXAS/HOLX) + 2 data-integrity skips (MCW/VRRM); sentinel refreshed between detectors
+- [16:55Z] steps 3-5: queue EMPTY; dashboard regenerated (1.77 MB); commit 52237b8 local (push failed - audit_trail.md >100MB in git history, operator action required); sentinel marked
 - [19:20Z] routine fire complete headless (claude -p): MISSED_FIRES=0, 1 iteration. Divergence: 1,030 watched, 4 entries/4 exits (FOR/HCSG/MTH/TMHC same-day round trips), 41 open, 2,856 history; persistent errors EXAS/HOLX yfinance empty, MCW short history, VRRM split-spike. TRB-50: 1,115 watched, 0 entries/0 exits, 78 open. Queue EMPTY. Dashboard 1.4 MB. Commits b4c6b9c + 64569be local (push failed — audit_trail.md >100MB, retries next fire); sentinel marked after every step.
 
 ## Gotchas / context next session needs
