@@ -1,7 +1,7 @@
 ﻿# Project Handoff State
 
 **Project:** aig_engine
-**Last updated:** 2026-06-26 20:33 (UTC)
+**Last updated:** 2026-06-27 00:52 (UTC)
 **Repo path:** C:\aig_engine (relocated off OneDrive 2026-06-15 — see decision_log entry 51; OLD OneDrive path is now empty)
 **Current phase:** Block 2 — Track 2 Session A2 CLOSED: TRB-50 (trial 41, trb50_us_1d, spec_hash a96ccdf5c0640e4f) CLEARED — PORTFOLIO_CLEARED_FOR_PAPER_FORWARD at 20:37Z (entry 49: 25,760 trades, exp 1.1521, WR 50.97%, dSharpe 2.8021 @ n=41, CI strictly positive, 99.38% coverage). **US SLOT 2 FILLED** (slots: 1 Divergence, 2 TRB-50, 3-4 open). Session also produced entry 47 (Amendment 1 adjudication: provenance ratified from transcript 57451b12, provision superseded as dead letter, directive recovered to ahmed_response_2026-05-22.md, config knobs removed) and entry 48 (TRB-50 pre-registration).
 **Current task:** Track 1 LIVE on the NEW local path C:\aig_engine (2b relocation COMPLETE + verified). OneDrive hang root cause cured. A3 deferred until Track 1 demonstrates sustained stability on the new path.
@@ -71,6 +71,7 @@
       design — banner is local-only). Entry "Tareq" + Step 1.3 refactor: blocked on lost text.
 
 ## Last actions
+- [00:52Z 06-27] routine fire PUSH BLOCKED headless (claude -p): MISSED_FIRES=1, 2 iters. iter1: Divergence 1030 watched, 4in/4out (FOR/HCSG/MTH/TMHC), 41open/2900hist commit 2dc0b63. iter2: Divergence 4in/4out 41open/2904hist; TRB50 1115 watched, 0in/0out, 78open; dashboard 1.40 MB; commit 3f5afc2 LOCAL ONLY. PUSH BLOCKED: audit_trail.md exceeds GitHub 100 MB. OPERATOR ACTION REQUIRED.
 - [00:01Z 06-27] routine fire PUSH BLOCKED headless (claude -p): MISSED_FIRES=0, 1 iteration. Divergence: 1,030 watched, 4in/4out (FOR/HCSG/MTH/TMHC same-day round trips), 41 open, 2,896 history; TRB-50: 1,115 watched, 0in/0out, 78 open; queue EMPTY; dashboard 1.40 MB; commit 25e1774 LOCAL ONLY. PUSH STILL BLOCKED: aig/audit_trail.md exceeds GitHub 100 MB hard limit. OPERATOR ACTION REQUIRED.
 - [23:46Z 06-26] routine fire PUSH BLOCKED headless (claude -p): MISSED_FIRES=0, 1 iteration. Divergence: 1,030 watched, 4in/4out (FOR/HCSG/MTH/TMHC same-day round trips), 41 open, 2,892 history; TRB-50: 1,115 watched, 0in/0out, 78 open; queue EMPTY; dashboard 1.40 MB; commit 3b1e6a3 LOCAL ONLY. PUSH STILL BLOCKED: aig/audit_trail.md exceeds GitHub 100 MB hard limit. OPERATOR ACTION REQUIRED.
 - [23:28Z 06-26] routine fire PUSH BLOCKED headless (claude -p): MISSED_FIRES=0, 1 iteration. Divergence: 1,030 watched, 4in/4out (FOR/HCSG/MTH/TMHC same-day round trips), 41 open, 2,888 history; TRB-50: 1,115 watched, 0in/0out, 78 open; queue EMPTY; dashboard 1.40 MB; commit c8ac6a3 LOCAL ONLY. PUSH STILL BLOCKED: push timeout (aig/audit_trail.md exceeds GitHub 100 MB hard limit). OPERATOR ACTION REQUIRED.
