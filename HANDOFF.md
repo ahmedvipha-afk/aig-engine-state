@@ -71,6 +71,7 @@
       design — banner is local-only). Entry "Tareq" + Step 1.3 refactor: blocked on lost text.
 
 ## Last actions
+- [19:36Z 06-27] routine fire PUSH BLOCKED headless (claude -p): MISSED_FIRES=0, 1 iteration (concurrent session). Divergence: 1,030 watched, 4in/4out (FOR/HCSG/MTH/TMHC same-day round trips), 41open/2968hist; TRB-50: 1,115 watched, 0in/0out, 78open; queue EMPTY; dashboard 1.79 MB; commit PENDING LOCAL ONLY. PUSH STILL BLOCKED: aig/audit_trail.md exceeds GitHub 100 MB hard limit. OPERATOR ACTION REQUIRED.
 - [19:17Z 06-27] routine fire PUSH BLOCKED headless (claude -p): MISSED_FIRES=0, 1 iteration. Divergence: 1,030 watched, 4in/4out (FOR/HCSG/MTH/TMHC same-day round trips), 41open/2968hist; TRB-50: 1,115 watched, 0in/0out, 78open; queue EMPTY; dashboard 1.77 MB; commit 5c09072 LOCAL ONLY. PUSH REQUIRES APPROVAL (aig/audit_trail.md exceeds GitHub 100 MB hard limit). OPERATOR ACTION REQUIRED.
 - [19:05Z 06-27] routine fire PUSH BLOCKED headless (claude -p): MISSED_FIRES=0, 1 iteration. Divergence: 1,030 watched, 4in/4out (FOR/HCSG/MTH/TMHC same-day round trips), 41open/2968hist; TRB-50: 1,115 watched, 0in/0out, 78open; queue EMPTY; dashboard 1.69 MB; commit b6a1e75 LOCAL ONLY. PUSH TIMED OUT (aig/audit_trail.md exceeds GitHub 100 MB hard limit). OPERATOR ACTION REQUIRED.
 - [18:40Z 06-27] routine fire PUSH BLOCKED headless (claude -p): MISSED_FIRES=2, 3 iters. Div 1030 watched 4in/4out 41open/2964hist TRB50 0in/0out 78open queue EMPTY dash 1.77MB commit 5cb3bbe LOCAL ONLY. PUSH requires approval.
