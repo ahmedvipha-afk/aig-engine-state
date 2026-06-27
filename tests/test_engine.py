@@ -268,6 +268,73 @@ def test_ngrowth_seed_count_is_41():
     assert cumulative_n_trials() == 41   # seeded baseline (13x3 + tsm12_us + trb50_us)
 
 
+
+# ---- R3: tail-fragility check (Strand C, entry 63) -------------------------
+# Reject if WR<0.45 AND (skew>4 OR kurtosis>50).
+
+def _fat_tail_trades():
+    """WR=40%, right-skewed: 60% small losses, 39% small wins, 1% huge wins."""
+    return [-0.02] * 600 + [0.01] * 390 + [5.0] * 10   # 1000 trades total
+
+
+def test_trade_moments_right_skewed_fat_tail():
+    from aig.stats import trade_moments
+    skew, _ = trade_moments(_fat_tail_trades())
+    assert skew > 4.0, f"expected skew > 4.0, got {skew}"
+
+
+def test_trade_moments_high_kurtosis():
+    from aig.stats import trade_moments
+    trades = [-0.01] * 560 + [0.01] * 439 + [100.0] * 1
+    _, kurt = trade_moments(trades)
+    assert kurt > 50.0, f"expected kurtosis > 50, got {kurt}"
+
+
+def test_trade_moments_normal_bimodal_is_not_fat_tailed():
+    from aig.stats import trade_moments
+    trades = [-0.02] * 600 + [0.03] * 400
+    skew, kurt = trade_moments(trades)
+    assert skew < 4.0 and kurt < 50.0, f"skew={skew}, kurt={kurt}"
+
+
+def test_r3_rejects_low_wr_and_high_skew():
+    from aig.validation_gate import portfolio_evaluate
+    results = [_res("FAT", _fat_tail_trades(), tpy=25.0)]
+    pf = portfolio_evaluate(results, strategy="t", timeframe="1d")
+    assert any("tail fragility" in r for r in pf["reasons"]), pf["reasons"]
+
+
+def test_r3_rejects_low_wr_and_high_kurtosis():
+    from aig.validation_gate import portfolio_evaluate
+    trades = [-0.01] * 560 + [0.01] * 439 + [100.0] * 1
+    results = [_res("KURT", trades, tpy=25.0)]
+    pf = portfolio_evaluate(results, strategy="t", timeframe="1d")
+    assert any("tail fragility" in r for r in pf["reasons"]), pf["reasons"]
+
+
+def test_r3_passes_low_wr_with_normal_like_distribution():
+    from aig.validation_gate import portfolio_evaluate
+    trades = [-0.02] * 600 + [0.03] * 400
+    results = [_res("NORM", trades, tpy=25.0)]
+    pf = portfolio_evaluate(results, strategy="t", timeframe="1d")
+    assert not any("tail fragility" in r for r in pf["reasons"]), pf["reasons"]
+
+
+def test_r3_passes_high_wr_even_with_fat_tails():
+    from aig.validation_gate import portfolio_evaluate
+    trades = [-0.02] * 400 + [0.01] * 590 + [5.0] * 10
+    results = [_res("HIWR", trades, tpy=25.0)]
+    pf = portfolio_evaluate(results, strategy="t", timeframe="1d")
+    assert not any("tail fragility" in r for r in pf["reasons"]), pf["reasons"]
+
+
+def test_r3_threshold_config():
+    from config import PORTFOLIO_GATE
+    assert PORTFOLIO_GATE["tail_fragility_wr_threshold"] == 0.45
+    assert PORTFOLIO_GATE["tail_fragility_skew_cap"] == 4.0
+    assert PORTFOLIO_GATE["tail_fragility_kurtosis_cap"] == 50.0
+
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     passed = 0

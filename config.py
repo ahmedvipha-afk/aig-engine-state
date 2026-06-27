@@ -436,6 +436,14 @@ PORTFOLIO_GATE = {
     "min_oos_to_is_sharpe_ratio":        MIN_OOS_TO_IS_SHARPE_RATIO,       # Amendment 2 extension
     "gcc_universe_enabled":              GCC_UNIVERSE_ENABLED,             # Amendment 5
 
+    # R3 (Strand C): tail-fragility check thresholds.
+    # Reject if WR < threshold AND (skew > skew_cap OR kurtosis > kurtosis_cap).
+    # A strategy with low win rate AND fat-tailed returns relies on rare extreme
+    # wins — structurally fragile. Must land before any WR-floor change (entry 63).
+    "tail_fragility_wr_threshold": 0.45,
+    "tail_fragility_skew_cap": 4.0,
+    "tail_fragility_kurtosis_cap": 50.0,
+
     # Framework finality (binding): freeze begins on this commit's date.
     "framework_freeze_start":            "2026-05-22",
     "framework_freeze_months":           6,

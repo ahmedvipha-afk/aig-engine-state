@@ -58,3 +58,21 @@ def deflated_sharpe(sr: float, n_trials: int) -> float:
 
 def bonferroni_alpha(n_tests: int) -> float:
     return GATE["alpha"] / max(n_tests, 1)
+
+
+def trade_moments(trades: list[float]) -> tuple[float, float]:
+    """Returns (Fisher skewness, Fisher excess kurtosis) of trade returns.
+    Uses population std (ddof=0) for moment standardisation.
+    Returns (0.0, 0.0) for fewer than 4 trades or zero variance.
+    """
+    if len(trades) < 4:
+        return (0.0, 0.0)
+    t = np.array(trades, dtype=float)
+    mean = t.mean()
+    std = t.std(ddof=0)
+    if std == 0.0:
+        return (0.0, 0.0)
+    z = (t - mean) / std
+    skew = float(np.mean(z ** 3))
+    excess_kurtosis = float(np.mean(z ** 4) - 3.0)
+    return (skew, excess_kurtosis)

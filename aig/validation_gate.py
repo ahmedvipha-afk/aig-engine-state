@@ -149,6 +149,23 @@ def portfolio_evaluate(per_ticker_results: list[dict],
                        f"{g['max_single_name_pnl_share']} "
                        f"(most-concentrated ticker carries too much of the edge)")
 
+    # R3 (Strand C): tail-fragility check (entry 63).
+    # A strategy with low WR AND fat-tailed returns relies on rare extreme wins —
+    # structurally fragile. Runs before the Sharpe check so it is ordered by severity.
+    if wr < g.get("tail_fragility_wr_threshold", 0.45) and all_trades:
+        from aig.stats import trade_moments
+        skew, kurt = trade_moments(all_trades)
+        if skew > g.get("tail_fragility_skew_cap", 4.0):
+            reasons.append(
+                f"tail fragility: WR {wr:.3f} < 0.45 and skew {skew:.2f} > 4.0 "
+                f"(edge driven by rare fat-tail wins)"
+            )
+        if kurt > g.get("tail_fragility_kurtosis_cap", 50.0):
+            reasons.append(
+                f"tail fragility: WR {wr:.3f} < 0.45 and kurtosis {kurt:.2f} > 50.0 "
+                f"(edge driven by rare extreme events)"
+            )
+
     # aggregate Sharpe annualised by SUM of trades-per-year across contributors
     sr = sharpe(all_trades, trades_per_year=max(total_tpy, 1.0))
     dsr = deflated_sharpe(sr, n_strats)   # strategy-level multi-test haircut
