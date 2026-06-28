@@ -71,6 +71,7 @@
       design — banner is local-only). Entry "Tareq" + Step 1.3 refactor: blocked on lost text.
 
 ## Last actions
+- [09:35Z 06-28] routine fire headless (claude -p): MISSED_FIRES=0, 1 iteration. Divergence: 41open-only (yfinance full-hang), 0in/0out, 41open/3040hist; TRB-50: 1,115 watched, 0in/0out, 78open; queue EMPTY; dashboard 1.78 MB; commits fad95c9+3e1135a LOCAL ONLY. Sentinel 09:35Z. PUSH BLOCKED (permission + aig/audit_trail.md exceeds GitHub 100 MB hard limit). OPERATOR ACTION REQUIRED.
 - [09:14Z 06-28] routine fire headless (claude -p): MISSED_FIRES=0, 1 iteration. Divergence: 41open-only (yfinance full-hang), 0in/0out, 41open/3040hist; TRB-50: 1,115 watched, 0in/0out, 78open; queue EMPTY; dashboard 1.78 MB; commit 543b6ce LOCAL ONLY. Sentinel 09:14Z. PUSH BLOCKED (aig/audit_trail.md exceeds GitHub 100 MB hard limit). OPERATOR ACTION REQUIRED.
 
 - [09:08Z 06-28] routine fire CONCURRENT headless (claude -p): MISSED_FIRES=0, 1 iteration. Divergence: 41open scanned-only (full 1,030 bg scan hung on MCW/yfinance after ~15 min; open-only last_run from 08:47Z), 0in/0out, 41open/3040hist; TRB-50: 1,115 watched, 0in/0out, 78open; queue EMPTY; dashboard 1.78 MB; commit d8cc7bd LOCAL ONLY. Sentinel 09:08Z. PUSH BLOCKED (aig/audit_trail.md exceeds GitHub 100 MB hard limit). OPERATOR ACTION REQUIRED.
