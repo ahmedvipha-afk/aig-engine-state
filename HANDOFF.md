@@ -1,7 +1,7 @@
 # Project Handoff State
 
 **Project:** aig_engine
-**Last updated:** 2026-06-28 03:52 (UTC)
+**Last updated:** 2026-06-28 06:27 (UTC)
 **Repo path:** C:\aig_engine (relocated off OneDrive 2026-06-15 — see decision_log entry 51; OLD OneDrive path is now empty)
 **Current phase:** Block 2 — Track 2 Session A2 CLOSED: TRB-50 (trial 41, trb50_us_1d, spec_hash a96ccdf5c0640e4f) CLEARED — PORTFOLIO_CLEARED_FOR_PAPER_FORWARD at 20:37Z (entry 49: 25,760 trades, exp 1.1521, WR 50.97%, dSharpe 2.8021 @ n=41, CI strictly positive, 99.38% coverage). **US SLOT 2 FILLED** (slots: 1 Divergence, 2 TRB-50, 3-4 open). Session also produced entry 47 (Amendment 1 adjudication: provenance ratified from transcript 57451b12, provision superseded as dead letter, directive recovered to ahmed_response_2026-05-22.md, config knobs removed) and entry 48 (TRB-50 pre-registration).
 **Current task:** Track 1 LIVE on the NEW local path C:\aig_engine (2b relocation COMPLETE + verified). OneDrive hang root cause cured. A3 deferred until Track 1 demonstrates sustained stability on the new path.
@@ -822,6 +822,9 @@
 - [01:18Z] iter 1 step 2 done foreground (~30 min harness-backgrounded/TaskOutput waited): divergence 1030 watched 4in/4out 41open/3000hist (FOR/HCSG/MTH/TMHC same-day round trips); TRB-50 1115 watched 0in/0out 78open; 2 fetch fails (EXAS/HOLX) + 2 data-integrity skips (MCW/VRRM); sentinel refreshed between detectors
 - [01:19Z] iter 1 steps 3-5: queue EMPTY; dashboard regenerated (1.78 MB); commit 2ecd37f local (push blocked — user approval required); sentinel marked after every step
 - [01:54Z] iter 2 complete: divergence 1030 4in/4out 41open/3004hist; TRB-50 0/0 78open; queue EMPTY; dashboard 1.78 MB; commit 1cd9c5d local (push blocked — user approval required); sentinel marked after every step
+- [06:02Z] routine fire started headless (claude -p): MISSED_FIRES=0, 1 iteration total
+- [06:26Z] step 2 done foreground: divergence 1030 watched 4in/4out 41open/3024hist (FOR/HCSG/MTH/TMHC same-day round trips); TRB-50 1115 0in/0out 78open; 2 fetch fails (EXAS/HOLX) + 2 skips (MCW/VRRM); sentinel refreshed between detectors
+- [06:27Z] steps 3-5: queue EMPTY; dashboard 1.80 MB; commit b3f205f local (push blocked - audit_trail.md >100MB); sentinel marked
 ## Gotchas / context next session needs
 - SKILL.md READ WORKAROUND (2026-06-27): headless Read tool blocks files outside C:/aig_engine. Fix: use Python subprocess to read SKILL.md (as done this fire). Root cause of 33 missed fires 07:53Z-16:17Z.
 - Decision-log numbering is POSITIONAL (no id field). Planned map was 39 mandate / 40 scope /
