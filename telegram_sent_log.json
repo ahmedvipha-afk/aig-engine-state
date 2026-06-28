@@ -1,29 +1,5 @@
 [
   {
-    "ts_utc": "2026-06-27T10:49:15+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 1682,
-    "preview": "\ud83d\udea8 CC crash detected at 14:49 UAE 2026-06-27.\nCause: hung-repl-sentinel-176min-procs-1.\nRecovery initiated."
-  },
-  {
-    "ts_utc": "2026-06-27T11:00:29+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 1683,
-    "preview": "\ud83d\udea8 CC crash detected at 15:00 UAE 2026-06-27.\nCause: hung-repl-sentinel-187min-procs-1.\nRecovery initiated."
-  },
-  {
-    "ts_utc": "2026-06-27T11:11:28+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 1684,
-    "preview": "\ud83d\udea8 CC crash detected at 15:11 UAE 2026-06-27.\nCause: sentinel-stale-198min.\nRecovery initiated."
-  },
-  {
     "ts_utc": "2026-06-27T11:18:35+00:00",
     "kind": "text",
     "to": 7096306994,
@@ -1598,5 +1574,29 @@
     "ok": true,
     "message_id": 1849,
     "preview": "\ud83d\ude80 Sprint fire 18:46 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-28T15:17:15+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 1850,
+    "preview": "\ud83d\ude80 Sprint fire 19:16 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-28T15:31:25+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 1851,
+    "preview": "\ud83d\ude80 Sprint fire 19:31 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-28T15:47:12+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 1852,
+    "preview": "\ud83d\ude80 Sprint fire 19:47 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
   }
 ]
