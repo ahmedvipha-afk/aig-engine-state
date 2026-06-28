@@ -1,21 +1,5 @@
 [
   {
-    "ts_utc": "2026-06-27T09:49:20+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 1669,
-    "preview": "\ud83d\ude80 Sprint fire 13:49 UAE \u2014 catching up 7 missed \u2192 8 iterations back-to-back\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits,"
-  },
-  {
-    "ts_utc": "2026-06-27T09:54:44+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 1670,
-    "preview": "\ud83d\udea8 CC crash detected at 13:54 UAE 2026-06-27.\nCause: hung-repl-sentinel-121min-procs-1.\nRecovery initiated."
-  },
-  {
     "ts_utc": "2026-06-27T10:01:39+00:00",
     "kind": "text",
     "to": 7096306994,
@@ -1598,5 +1582,21 @@
     "ok": true,
     "message_id": 1836,
     "preview": "\ud83d\ude80 Sprint fire 15:17 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-28T11:31:45+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 1837,
+    "preview": "\ud83d\ude80 Sprint fire 15:31 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-28T11:47:11+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 1838,
+    "preview": "\ud83d\ude80 Sprint fire 15:46 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
   }
 ]
