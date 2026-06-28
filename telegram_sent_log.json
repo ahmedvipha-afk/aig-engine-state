@@ -1,21 +1,5 @@
 [
   {
-    "ts_utc": "2026-06-27T09:43:31+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 1667,
-    "preview": "\ud83d\udea8 CC crash detected at 13:43 UAE 2026-06-27.\nCause: sentinel-stale-110min.\nRecovery initiated."
-  },
-  {
-    "ts_utc": "2026-06-27T09:49:15+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 1668,
-    "preview": "\u26a0 Phase 1 sprint: 7 fires missed in a row.\n\nCron windows were skipped because the REPL was busy. Catching up all 7 fires now back-to-back, then resuming normal 15-min cadence.\n\nTo reduce missed fires,"
-  },
-  {
     "ts_utc": "2026-06-27T09:49:20+00:00",
     "kind": "text",
     "to": 7096306994,
@@ -1598,5 +1582,21 @@
     "ok": false,
     "message_id": null,
     "preview": "\ud83d\ude80 Sprint fire 15:01 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-28T11:12:50+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "Sprint 2026-06-28_11-01 COMPLETE\n\nMISSED_FIRES=0 (1 iteration)\nDivergence: 41open-only 0in/0out (yfinance-full-hang; weekend)\nTRB-50: 1,115 watched 0in/0out 78open\nQueue: EMPTY\nDashboard: 1.79 MB\nComm"
+  },
+  {
+    "ts_utc": "2026-06-28T11:17:28+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 1836,
+    "preview": "\ud83d\ude80 Sprint fire 15:17 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
   }
 ]
