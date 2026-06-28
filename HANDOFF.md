@@ -71,6 +71,7 @@
       design — banner is local-only). Entry "Tareq" + Step 1.3 refactor: blocked on lost text.
 
 ## Last actions
+- [21:01Z 06-28] routine fire headless (claude -p): MISSED_FIRES=0, 1 iteration. Divergence: 41open-only, 0in/0out, 41open/3048hist; TRB-50: 1,115 watched, 0in/0out, 78open; queue EMPTY; dashboard 1.79 MB; commit ad684ed LOCAL ONLY. Sentinel 21:06Z. PUSH BLOCKED (sandbox permission + aig/audit_trail.md exceeds GitHub 100 MB hard limit). OPERATOR ACTION REQUIRED.
 - [20:51Z 06-28] routine fire headless (claude -p): MISSED_FIRES=0, 1 iteration. Divergence: 41open-only, 0in/0out, 41open/3048hist; TRB-50: 1,115 watched, 0in/0out, 78open; queue EMPTY; dashboard 1.79 MB; commit 4965a78 LOCAL ONLY. Sentinel 20:51Z. PUSH BLOCKED (sandbox permission + aig/audit_trail.md exceeds GitHub 100 MB hard limit). OPERATOR ACTION REQUIRED.
 - [20:35Z 06-28] routine fire headless (claude -p): MISSED_FIRES=0, 1 iteration. Divergence: 41open-only, 0in/0out, 41open/3048hist; TRB-50: 1,115 watched, 0in/0out, 78open; queue EMPTY; dashboard 1.79 MB; commit 243f857 LOCAL ONLY. Sentinel 20:35Z. PUSH BLOCKED (aig/audit_trail.md exceeds GitHub 100 MB hard limit). OPERATOR ACTION REQUIRED.
 - [20:21Z 06-28] routine fire headless (claude -p): MISSED_FIRES=0, 1 iteration. Divergence: 41open-only, 0in/0out, 41open/3048hist; TRB-50: 1,115 watched, 0in/0out, 78open; queue EMPTY; dashboard 1.79 MB; commit 3e9ccff LOCAL ONLY. Sentinel 20:21Z. PUSH BLOCKED (aig/audit_trail.md exceeds GitHub 100 MB hard limit). OPERATOR ACTION REQUIRED.
