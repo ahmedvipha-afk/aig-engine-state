@@ -1,7 +1,7 @@
 # Project Handoff State
 
 **Project:** aig_engine
-**Last updated:** 2026-06-28 06:27 (UTC)
+**Last updated:** 2026-06-28 06:34 (UTC)
 **Repo path:** C:\aig_engine (relocated off OneDrive 2026-06-15 — see decision_log entry 51; OLD OneDrive path is now empty)
 **Current phase:** Block 2 — Track 2 Session A2 CLOSED: TRB-50 (trial 41, trb50_us_1d, spec_hash a96ccdf5c0640e4f) CLEARED — PORTFOLIO_CLEARED_FOR_PAPER_FORWARD at 20:37Z (entry 49: 25,760 trades, exp 1.1521, WR 50.97%, dSharpe 2.8021 @ n=41, CI strictly positive, 99.38% coverage). **US SLOT 2 FILLED** (slots: 1 Divergence, 2 TRB-50, 3-4 open). Session also produced entry 47 (Amendment 1 adjudication: provenance ratified from transcript 57451b12, provision superseded as dead letter, directive recovered to ahmed_response_2026-05-22.md, config knobs removed) and entry 48 (TRB-50 pre-registration).
 **Current task:** Track 1 LIVE on the NEW local path C:\aig_engine (2b relocation COMPLETE + verified). OneDrive hang root cause cured. A3 deferred until Track 1 demonstrates sustained stability on the new path.
@@ -71,6 +71,7 @@
       design — banner is local-only). Entry "Tareq" + Step 1.3 refactor: blocked on lost text.
 
 ## Last actions
+- [06:31Z 06-28] routine fire PUSH BLOCKED headless (claude -p): MISSED_FIRES=0, 1 iteration. Divergence: 41open scanned-only (open-positions-only, weekend), 0in/0out, 41open/3024hist; TRB-50: 1,115 watched, 0in/0out, 78open; queue EMPTY; dashboard 1.78 MB; commit 2ba718d LOCAL ONLY. Sentinel 06:34Z. PUSH BLOCKED (sandbox permission + aig/audit_trail.md exceeds GitHub 100 MB hard limit). OPERATOR ACTION REQUIRED.
 - [06:24Z 06-28] routine fire PUSH BLOCKED headless (claude -p): MISSED_FIRES=0, 1 iteration. Divergence: 41open scanned-only (open-positions-only, weekend/rate-limit), 0in/0out, 41open/3020hist; TRB-50: 1,115 watched, 0in/0out, 78open; queue EMPTY; dashboard 1.78 MB; commit 26a10ee LOCAL ONLY. Sentinel 06:25Z. PUSH BLOCKED (sandbox/aig/audit_trail.md exceeds GitHub 100 MB hard limit). OPERATOR ACTION REQUIRED.
 - [04:53Z 06-28] routine fire CONCURRENT headless (claude -p): MISSED_FIRES=0, 1 iteration. Divergence: 41open scanned only (rate-limit workaround; yfinance hung after 2 tickers on full 1,030 scan; open-positions-only used), 0in/0out, 41open/3020hist; TRB-50: 78open (run by concurrent sprint 04-45); queue EMPTY; dashboard 1.77 MB; concurrent sprint 1f56f45 already committed data. Sentinel updated 04:53Z. PUSH STILL BLOCKED (aig/audit_trail.md exceeds GitHub 100 MB hard limit). OPERATOR ACTION REQUIRED.
 - [04:49Z 06-28] routine fire PUSH BLOCKED headless (claude -p): MISSED_FIRES=0, 1 iteration. Divergence: 41open scanned-only (open-positions-only, weekend), 0in/0out, 41open/3020hist; TRB-50: 78open scanned-only, 0in/0out, 78open; queue EMPTY; dashboard 1.77 MB; commit e7a85c4 LOCAL ONLY. Sentinel 04:52Z. PUSH TIMED OUT 180s (aig/audit_trail.md exceeds GitHub 100 MB hard limit). OPERATOR ACTION REQUIRED.
