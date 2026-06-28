@@ -1,21 +1,5 @@
 [
   {
-    "ts_utc": "2026-06-27T10:01:39+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 1671,
-    "preview": "\u26a0 Phase 1 sprint: 8 fires missed in a row.\n\nCron windows were skipped because the REPL was busy. Catching up all 8 fires now back-to-back, then resuming normal 15-min cadence.\n\nTo reduce missed fires,"
-  },
-  {
-    "ts_utc": "2026-06-27T10:01:42+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 1672,
-    "preview": "\ud83d\ude80 Sprint fire 14:01 UAE \u2014 catching up 8 missed \u2192 9 iterations back-to-back\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits,"
-  },
-  {
     "ts_utc": "2026-06-27T10:05:30+00:00",
     "kind": "text",
     "to": 7096306994,
@@ -1598,5 +1582,21 @@
     "ok": true,
     "message_id": 1838,
     "preview": "\ud83d\ude80 Sprint fire 15:46 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-28T11:55:23+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 1839,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-28</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
+  },
+  {
+    "ts_utc": "2026-06-28T12:03:14+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 1840,
+    "preview": "\ud83d\ude80 Sprint fire 16:03 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
   }
 ]
