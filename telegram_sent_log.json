@@ -1,21 +1,5 @@
 [
   {
-    "ts_utc": "2026-06-27T12:17:31+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 1698,
-    "preview": "\ud83d\udea8 CC crash detected at 16:17 UAE 2026-06-27.\nCause: hung-repl-sentinel-264min-procs-1.\nRecovery initiated."
-  },
-  {
-    "ts_utc": "2026-06-27T12:28:30+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 1699,
-    "preview": "\ud83d\udea8 CC crash detected at 16:28 UAE 2026-06-27.\nCause: sentinel-stale-275min.\nRecovery initiated."
-  },
-  {
     "ts_utc": "2026-06-27T12:32:57+00:00",
     "kind": "text",
     "to": 7096306994,
@@ -1598,5 +1582,21 @@
     "ok": true,
     "message_id": 1865,
     "preview": "\ud83d\ude80 Sprint fire 23:02 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-28T19:07:41+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "Sprint 2026-06-28T19:05Z DONE\n\nMISSED_FIRES=0, 1 iteration\nDivergence: 41open-only, 0in/0out, 41open/3048hist\nTRB-50: 1,115 watched, 0in/0out, 78open\nQueue: EMPTY\nDashboard: 1.79 MB\nCommits: bd59808 +"
+  },
+  {
+    "ts_utc": "2026-06-28T19:17:17+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 1866,
+    "preview": "\ud83d\ude80 Sprint fire 23:17 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
   }
 ]
