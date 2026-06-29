@@ -1,13 +1,5 @@
 [
   {
-    "ts_utc": "2026-06-27T14:18:17+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 1715,
-    "preview": "\ud83d\ude80 Sprint fire 18:17 UAE \u2014 catching up 25 missed \u2192 26 iterations back-to-back\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exit"
-  },
-  {
     "ts_utc": "2026-06-27T14:29:30+00:00",
     "kind": "text",
     "to": 7096306994,
@@ -1598,5 +1590,13 @@
     "ok": true,
     "message_id": 1881,
     "preview": "\ud83d\ude80 Sprint fire 04:23 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-29T00:32:58+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\ude80 Sprint fire 04:32 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
   }
 ]
