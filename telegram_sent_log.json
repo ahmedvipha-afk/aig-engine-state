@@ -1,21 +1,5 @@
 [
   {
-    "ts_utc": "2026-06-28T11:02:10+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": false,
-    "message_id": null,
-    "preview": "\ud83d\ude80 Sprint fire 15:01 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-06-28T11:12:50+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": false,
-    "message_id": null,
-    "preview": "Sprint 2026-06-28_11-01 COMPLETE\n\nMISSED_FIRES=0 (1 iteration)\nDivergence: 41open-only 0in/0out (yfinance-full-hang; weekend)\nTRB-50: 1,115 watched 0in/0out 78open\nQueue: EMPTY\nDashboard: 1.79 MB\nComm"
-  },
-  {
     "ts_utc": "2026-06-28T11:17:28+00:00",
     "kind": "text",
     "to": 7096306994,
@@ -1597,6 +1581,22 @@
     "to": 7096306994,
     "ok": true,
     "message_id": 2003,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-30</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
+  },
+  {
+    "ts_utc": "2026-06-29T22:31:37+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 2004,
+    "preview": "\ud83d\ude80 Sprint fire 02:31 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-29T22:43:59+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
     "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-30</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
   }
 ]
