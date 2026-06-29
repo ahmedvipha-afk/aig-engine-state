@@ -1,13 +1,5 @@
 [
   {
-    "ts_utc": "2026-06-27T15:35:33+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": false,
-    "message_id": null,
-    "preview": "\ud83d\udea8 CC crash detected at 19:35 UAE 2026-06-27.\nCause: hung-repl-sentinel-462min-procs-1.\nRecovery initiated."
-  },
-  {
     "ts_utc": "2026-06-27T15:46:32+00:00",
     "kind": "text",
     "to": 7096306994,
@@ -1598,5 +1590,13 @@
     "ok": true,
     "message_id": 1893,
     "preview": "\ud83d\ude80 Sprint fire 07:17 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-29T03:32:44+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 1894,
+    "preview": "\ud83d\ude80 Sprint fire 07:32 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
   }
 ]
