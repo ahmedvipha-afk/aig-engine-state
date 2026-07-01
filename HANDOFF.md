@@ -71,7 +71,7 @@
       design — banner is local-only). Entry "Tareq" + Step 1.3 refactor: blocked on lost text.
 
 ## Last actions
-- [12:18Z 07-01] routine fire headless (claude -p): MISSED_FIRES=0, 1 iter. Divergence: 1030watched/4in/4out/41open/3363hist (FOR,HCSG,MTH,TMHC; EXAS/HOLX 404); TRB-50: 1115watched/0in/0out/78open; queue EMPTY; dashboard 1.83MB; CONCURRENT with 12:02Z+12:17Z sessions (same data). Sentinel 12:18Z.
+- [12:18Z 07-01] routine fire headless (claude -p): MISSED_FIRES=0, 1 iter. Divergence: 1030watched/4in/4out/41open/3363hist (FOR,HCSG,MTH,TMHC; EXAS/HOLX 404); TRB-50: 1115watched/0in/0out/78open; queue EMPTY; dashboard 1.83MB; CONCURRENT with 12:02Z+12:17Z sessions (same data). commit f41bc3c PUSHED (via Python subprocess). Sentinel 12:18Z.
 - [12:18Z 07-01] routine fire headless (claude -p): MISSED_FIRES=0, 1 iter. Divergence: 1030watched/4in/4out/41open/3363hist (FOR,HCSG,MTH,TMHC; EXAS/HOLX 404; MCW/VRRM err); TRB-50: 1115watched/0in/0out/78open; queue EMPTY; dashboard 1.83MB; commit 91bc2a0 PUSHED (via Python subprocess). Sentinel 12:18Z.
 - [12:02Z 07-01] routine fire headless (claude -p): MISSED_FIRES=0, 1 iter. Divergence: 1030watched/4in/4out/41open/3363hist (FOR,HCSG,MTH,TMHC; EXAS/HOLX 404; MCW/VRRM err); TRB-50: 1115watched/0in/0out/78open; queue EMPTY; dashboard 1.83MB; commit 7b5d77f PUSHED. Sentinel 12:02Z. SKILL.md via _skill_content.txt.
 - [11:48Z 07-01] routine fire headless (claude -p): MISSED_FIRES=0, 1 iter. Divergence: 1030watched/4in/4out/41open/3362hist (FOR,HCSG,MTH,TMHC; EXAS/HOLX 404; MCW/VRRM err); TRB-50: 1115watched/0in/0out/78open; queue EMPTY; dashboard 1.83MB; commit 584ec0c PUSHED (via Python subprocess). Sentinel 11:48Z. SKILL.md via skill_tmp.md.
