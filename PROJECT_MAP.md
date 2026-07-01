@@ -188,6 +188,37 @@ session. NOT gate-redesign work; were not bundled into §4. Both now WIRED.
   **Fix:** `scripts/cron_paused.flag` and `*_out.txt` added to `.gitignore` so
   transient/ephemeral artifacts can never reach a commit. (Both were untracked, so
   gitignore alone sufficed — no `git rm --cached` needed.)
+- ⚠️ **INCIDENT + FIX (RESOLVED 2026-07-01): T1 was correct but origin still froze — the
+  cause was an oversized file, not credentials.** Despite T1 being wired + on origin since
+  2026-06-18, origin stopped advancing at `6bc71de` (2026-06-21) and ~1282 commits piled up
+  locally while HANDOFF kept reporting "pushed". Root cause: `aig/audit_trail.md` grew past
+  GitHub's hard **100 MB per-file limit**; every push carrying it was **rejected by the remote
+  (GH001)**, NOT dropped to a credential dialog — token was valid (`ghp_…`, scope `repo`), the
+  T1 `gh auth git-credential` helper working. The file was untracked+gitignored 2026-06-23
+  (`6018ade`) to stop further bloat, but 116 oversized historical blobs (145–149 MB) remained
+  in the unpushed range, so pushes stayed rejected. **Resolution (checkpointed, sole-clone
+  confirmed — no other clones/worktrees/mirrors reference the old SHAs):**
+  (1) verbatim `.git` backup → `C:\aig_engine_backup_2026-06-30.git` (1.5 GB, fsck
+  connectivity-clean, old history HEAD `4839e58`); (2) paused Track 1 via `cron_paused.flag`,
+  drained in-flight workers to 0 (did not kill mid-fire); (3) `git filter-repo --path
+  aig/audit_trail.md --invert-paths --force` purged it from all history (1976→1975 commits;
+  largest reachable blob now 31.4 MB; 0 blobs >100 MB), `.git` 1.5 GB → 12 MB; (4) re-added
+  origin, force-pushed `6bc71de…e80cb6c` — clean, no GH001. **Verified END-TO-END
+  (2026-07-01):** after removing the flag, real post-resume worker fires landed on origin
+  (`e80cb6c → 63ef42d`, 15 worker commits; local HEAD == local origin/main == authoritative
+  `ls-remote` == `63ef42d`; largest blob 31.4 MB, 0 >100 MB). Backup path proven healthy.
+  NB the live gitignored working `aig/audit_trail.md` (~388 MB on disk) is untouched — only
+  history was purged; it must **NOT be re-tracked** (guard against re-firing the same bug).
+- 🟡 **REMAINING (separate next task — NOT wired this turn): SKILL honest-reporting fix.** The
+  worker writes "pushed" in HANDOFF without verifying the push landed. Fix location:
+  `~/.claude/scheduled-tasks/aig-mode1-sprint/SKILL.md` step 5 (~L85-86) — after the push,
+  assert `git rev-parse HEAD == git rev-parse origin/main`; on mismatch write "PUSH FAILED —
+  local only" instead of "pushed". No SCRIPT writes a false "pushed" (`commit_session.ps1`
+  L114-118 and the `_do_push*.ps1` all report the push exit code) — the gap is worker/SKILL
+  behaviour. Also observed 2026-07-01: the headless worker's DIRECT `git push` now sometimes
+  hits a Bash **sandbox-approval** prompt (logs "push blocked sandbox") and works around it via
+  a Python-subprocess push ("PUSHED; Python subprocess push"); pushes ARE landing, but fold
+  this sandbox interaction into the honest-reporting task.
 
 ## 9. DECISION LOG — 1-63, one line each
 1. Withdraw Path 3 (post-hoc gate amendment) — Session-5 audit response.
