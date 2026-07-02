@@ -82,8 +82,13 @@ step (e.g. the detector under yfinance retries) runs long.
 4. **Regenerate dashboard.**
    `python scripts/generate_dashboard.py`
 
-5. **Commit + push.**
+5. **Commit + push — then VERIFY IT LANDED before claiming success.**
    `powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/commit_session.ps1 -Message "Sprint $(Get-Date -Format yyyy-MM-dd_HH-mm): <brief>"`
+   (If the Bash-tool push is sandbox-blocked, push via `python scripts/_do_push.py`.)
+   After the push, run `python scripts/verify_pushed.py` and copy its verdict verbatim
+   into HANDOFF. NEVER write "pushed" unless it prints `PUSH_VERIFIED`; on
+   `PUSH_FAILED_LOCAL_ONLY` write "commit <sha> LOCAL ONLY — origin lags, OPERATOR
+   ACTION REQUIRED".
 
 # WHAT THIS SPRINT DOES NOT DO
 

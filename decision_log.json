@@ -1233,5 +1233,21 @@
     ],
     "ts_utc": "2026-06-17T19:42:30+00:00",
     "commit_sha": null
+  },
+  {
+    "title": "Push honesty script-enforced via verify_pushed.py",
+    "decision": "Added scripts/verify_pushed.py (asserts HEAD==origin/main after push, prints PUSH_VERIFIED/PUSH_FAILED_LOCAL_ONLY). Sprint SKILL step 5 now requires running it after every push and copying its verdict verbatim into HANDOFF; never record pushed unless it prints PUSH_VERIFIED.",
+    "rationale": "The 9-day silent origin freeze was hidden because the worker recorded pushed by model discretion without verifying the push landed. A script-level assertion removes discretion.",
+    "alternatives_considered": [
+      "Prose-only SKILL edit (rejected: still model-discretion; both SKILL copies must stay in sync)",
+      "Edit ~/.claude SKILL only (rejected: worker sandbox blocks ~/.claude; worker reads repo _skill_content.txt)",
+      "Extend commit_session.ps1 only (rejected: worker actual push path is _do_push.py, bypassing it)"
+    ],
+    "audit_finding_refs": [
+      "PROJECT_MAP 8b frozen-origin incident 2026-07-01"
+    ],
+    "methodology_source": "infrastructure_decision",
+    "ts_utc": "2026-07-02T21:05:42+00:00",
+    "commit_sha": null
   }
 ]

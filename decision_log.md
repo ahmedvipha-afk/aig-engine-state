@@ -756,3 +756,14 @@ _Written by `scripts/decision_log_append.py`. Sync mirror: `decision_log.json`._
   - Derive N by counting validation artifacts on disk (rejected -- fragile/non-reproducible; a version-controlled ledger is auditable and hashed)
   - Seed the ledger with the larger ~46-50 (incl. subset/timeframe explorations) (deferred -- operator-adjustable; immaterial to verdicts, haircut delta <0.01)
 - **audit_finding_refs:** `bug: hardcoded PORTFOLIO_GATE['n_trials_registered']=41 (comment claims growth; code never grew)`, `fix: trial_ledger.json (seed 41) + aig/trials.py (cumulative_n_trials + idempotent register_trial); portfolio_evaluate derives N live; run_validation auto-registers; provenance hashes the ledger`, `definition: distinct (strategy,market,timeframe) verdict-reaching specs; re-runs idempotent; universe/timeframe/params count`, `config_hash 3c56aead8f358363 -> 8d668f736ba1fb10`, `tests 26/26 green incl 3 N-growth tests (autoincrement, monotonic, seed==41)`, `migration (ledger N): Divergence CLEARED DSR 2.2208; TRB-50 CLEARED DSR 2.7732 -> ZERO FLIP (ngrowth_migration_test_2026-06-17.json)`, `isolation: flag up, clean window (pid 29468 done 16:54Z, 16:59Z skip), removed after`, `foundation fix flagged in councils 65 + 68; Option A chosen; principle 1 (honest+self-maintaining, not bigger)`
+### Push honesty script-enforced via verify_pushed.py
+
+- **ts_utc:** `2026-07-02T21:05:42+00:00`
+- **methodology_source:** `infrastructure_decision`
+- **decision:** Added scripts/verify_pushed.py (asserts HEAD==origin/main after push, prints PUSH_VERIFIED/PUSH_FAILED_LOCAL_ONLY). Sprint SKILL step 5 now requires running it after every push and copying its verdict verbatim into HANDOFF; never record pushed unless it prints PUSH_VERIFIED.
+- **rationale:** The 9-day silent origin freeze was hidden because the worker recorded pushed by model discretion without verifying the push landed. A script-level assertion removes discretion.
+- **alternatives_considered:**
+  - Prose-only SKILL edit (rejected: still model-discretion; both SKILL copies must stay in sync)
+  - Edit ~/.claude SKILL only (rejected: worker sandbox blocks ~/.claude; worker reads repo _skill_content.txt)
+  - Extend commit_session.ps1 only (rejected: worker actual push path is _do_push.py, bypassing it)
+- **audit_finding_refs:** `PROJECT_MAP 8b frozen-origin incident 2026-07-01`
