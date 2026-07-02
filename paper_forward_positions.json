@@ -32065,6 +32065,24 @@
       "pnl_pct": -0.0
     },
     {
+      "ticker": "FOR",
+      "entry_date": "2026-06-12",
+      "entry_price": 29.2,
+      "exit_date": "2026-06-12",
+      "exit_price": 29.2,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": 0.0
+    },
+    {
+      "ticker": "HCSG",
+      "entry_date": "2026-06-12",
+      "entry_price": 22.38,
+      "exit_date": "2026-06-12",
+      "exit_price": 22.38,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": -0.0
+    },
+    {
       "ticker": "MTH",
       "entry_date": "2026-06-12",
       "entry_price": 74.44,
@@ -32083,8 +32101,8 @@
       "pnl_pct": -0.0
     }
   ],
-  "last_run": "2026-07-02T19:59:56+04:00",
-  "last_run_summary": "watched 150 tickers \u00b7 1 new entries \u00b7 1 exits \u00b7 open positions 41 \u00b7 history 3532",
+  "last_run": "2026-07-02T20:14:39+04:00",
+  "last_run_summary": "watched 150 tickers \u00b7 1 new entries \u00b7 1 exits \u00b7 open positions 41 \u00b7 history 3534",
   "watch_list": [
     "SXT",
     "SYK",
