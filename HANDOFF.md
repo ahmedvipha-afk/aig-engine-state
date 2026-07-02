@@ -1,7 +1,7 @@
 # Project Handoff State
 
 **Project:** aig_engine
-**Last updated:** 2026-07-02 11:01 (UTC)
+**Last updated:** 2026-07-02 12:31 (UTC)
 **Repo path:** C:\aig_engine (relocated off OneDrive 2026-06-15 — see decision_log entry 51; OLD OneDrive path is now empty)
 **Current phase:** Block 2 — Track 2 Session A2 CLOSED: TRB-50 (trial 41, trb50_us_1d, spec_hash a96ccdf5c0640e4f) CLEARED — PORTFOLIO_CLEARED_FOR_PAPER_FORWARD at 20:37Z (entry 49: 25,760 trades, exp 1.1521, WR 50.97%, dSharpe 2.8021 @ n=41, CI strictly positive, 99.38% coverage). **US SLOT 2 FILLED** (slots: 1 Divergence, 2 TRB-50, 3-4 open). Session also produced entry 47 (Amendment 1 adjudication: provenance ratified from transcript 57451b12, provision superseded as dead letter, directive recovered to ahmed_response_2026-05-22.md, config knobs removed) and entry 48 (TRB-50 pre-registration).
 **Current task:** Track 1 LIVE on the NEW local path C:\aig_engine (2b relocation COMPLETE + verified). OneDrive hang root cause cured. A3 deferred until Track 1 demonstrates sustained stability on the new path.
@@ -71,6 +71,7 @@
       design — banner is local-only). Entry "Tareq" + Step 1.3 refactor: blocked on lost text.
 
 ## Last actions
+- [12:31Z 07-02] routine fire headless (claude -p): MISSED_FIRES=0, 1 iter. Divergence: 1030watched/4in/4out/41open/3511hist (FOR,HCSG,MTH,TMHC; EXAS/HOLX 404; MCW/VRRM err); TRB-50: 1115watched/0in/0out/78open; queue EMPTY; dashboard 1.83MB; commit 0452e18 PUSHED. Sentinel 12:31Z. SKILL.md via _skill_content.txt. git via Python subprocess.
 - [12:18Z 07-02] routine fire headless (claude -p): MISSED_FIRES=0, 1 iter. Divergence: 1030watched/4in/4out/41open/3511hist (FOR,HCSG,MTH,TMHC; EXAS/HOLX 404; MCW/VRRM err); TRB-50: 1115watched/0in/0out/78open; queue EMPTY; dashboard 1.83MB; commit 605c3b8 PUSHED. Sentinel 12:18Z. SKILL.md via python -c. Div detector ran ~28min (bg via Bash tool; waited via TaskOutput).
 - [11:50Z 07-02] routine fire headless (claude -p): MISSED_FIRES=0, 1 iter. Divergence: 1030watched/4in/4out/41open/3507hist (FOR,HCSG,MTH,TMHC; EXAS/HOLX 404; MCW/VRRM err); TRB-50: 1115watched/0in/0out/78open; queue EMPTY; dashboard 1.83MB; commit 97b6ec7 PUSHED. Sentinel 11:50Z. SKILL.md via _skill_content.txt. git via Python subprocess.
 - [11:45Z 07-02] routine fire headless (claude -p): MISSED_FIRES=0, 1 iter. Divergence: 1030watched/4in/4out/41open/3507hist (FOR,HCSG,MTH,TMHC; EXAS/HOLX 404; MCW/VRRM err); TRB-50: 1115watched/0in/0out/78open; queue EMPTY; dashboard 1.83MB; commit ca38b05 PUSHED. Sentinel 11:45Z. SKILL.md via _skill_content.txt. NOTE: concurrent with 11:31Z session (ee4b2e9); idempotent re-run.
