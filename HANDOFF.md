@@ -71,6 +71,7 @@
       design — banner is local-only). Entry "Tareq" + Step 1.3 refactor: blocked on lost text.
 
 ## Last actions
+- [16:33Z 07-02] routine fire headless (claude -p): MISSED_FIRES=0, 1 iter. Divergence: 1030watched/4in/4out/41open/3536hist (FOR,HCSG,MTH,TMHC; EXAS/HOLX 404; MCW/VRRM err); TRB-50: 1115watched/0in/0out/78open; queue EMPTY; dashboard 1.75MB; commit 1f9f71e PUSHED. Sentinel 16:33Z. SKILL.md via _skill_content.txt. Div detector bg Bash + TaskOutput (~32min).
 - [16:18Z 07-02] routine fire headless (claude -p): MISSED_FIRES=0, 1 iter. Divergence: 1030watched/4in/4out/41open/3534hist (FOR,HCSG,MTH,TMHC; EXAS/HOLX 404; MCW/VRRM err); TRB-50: 1115watched/0in/0out/78open; queue EMPTY; dashboard 1.74MB; commit 6609eb0 PUSHED. Sentinel 16:18Z. Div+TRB50 5 chunks each (foreground, no bg tasks).
 - [16:02Z 07-02] routine fire headless (claude -p): MISSED_FIRES=0, 1 iter. Divergence: 1030watched/4in/4out/41open/3532hist (FOR,HCSG,MTH,TMHC; EXAS/HOLX 404; MCW/VRRM err); TRB-50: 1115watched/0in/0out/78open; queue EMPTY; dashboard 1.82MB; commit d5e03dc PUSHED. Sentinel 16:04Z. SKILL.md via _skill_content.txt. Div+TRB50 5 chunks each (foreground, no bg tasks).
 - [15:48Z 07-02] routine fire headless (claude -p): MISSED_FIRES=0, 1 iter. Divergence: 1030watched/4in/4out/41open/3531hist (FOR,HCSG,MTH,TMHC; EXAS/HOLX 404; MCW/VRRM err); TRB-50: 1115watched/0in/0out/78open; queue EMPTY; dashboard 1.83MB; commit 6eccae3 PUSHED. Sentinel 15:49Z. SKILL.md via _skill_content.txt. Div detector bg Bash + TaskOutput; TRB50 foreground.
