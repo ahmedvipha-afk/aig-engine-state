@@ -34079,10 +34079,46 @@
       "exit_price": 71.95,
       "exit_reason": "rsi_or_trend_exit",
       "pnl_pct": -0.0
+    },
+    {
+      "ticker": "FOR",
+      "entry_date": "2026-06-12",
+      "entry_price": 29.2,
+      "exit_date": "2026-06-12",
+      "exit_price": 29.2,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": 0.0
+    },
+    {
+      "ticker": "HCSG",
+      "entry_date": "2026-06-12",
+      "entry_price": 22.38,
+      "exit_date": "2026-06-12",
+      "exit_price": 22.38,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": -0.0
+    },
+    {
+      "ticker": "MTH",
+      "entry_date": "2026-06-12",
+      "entry_price": 74.44,
+      "exit_date": "2026-06-12",
+      "exit_price": 74.44,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": 0.0
+    },
+    {
+      "ticker": "TMHC",
+      "entry_date": "2026-06-15",
+      "entry_price": 71.95,
+      "exit_date": "2026-06-15",
+      "exit_price": 71.95,
+      "exit_reason": "rsi_or_trend_exit",
+      "pnl_pct": -0.0
     }
   ],
-  "last_run": "2026-07-04T01:47:47+04:00",
-  "last_run_summary": "watched 1030 tickers \u00b7 4 new entries \u00b7 4 exits \u00b7 open positions 41 \u00b7 history 3754",
+  "last_run": "2026-07-04T02:17:43+04:00",
+  "last_run_summary": "watched 1030 tickers \u00b7 4 new entries \u00b7 4 exits \u00b7 open positions 41 \u00b7 history 3758",
   "watch_list": [
     "A",
     "AA",
