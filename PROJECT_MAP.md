@@ -209,16 +209,32 @@ session. NOT gate-redesign work; were not bundled into §4. Both now WIRED.
   `ls-remote` == `63ef42d`; largest blob 31.4 MB, 0 >100 MB). Backup path proven healthy.
   NB the live gitignored working `aig/audit_trail.md` (~388 MB on disk) is untouched — only
   history was purged; it must **NOT be re-tracked** (guard against re-firing the same bug).
-- 🟡 **REMAINING (separate next task — NOT wired this turn): SKILL honest-reporting fix.** The
-  worker writes "pushed" in HANDOFF without verifying the push landed. Fix location:
-  `~/.claude/scheduled-tasks/aig-mode1-sprint/SKILL.md` step 5 (~L85-86) — after the push,
-  assert `git rev-parse HEAD == git rev-parse origin/main`; on mismatch write "PUSH FAILED —
-  local only" instead of "pushed". No SCRIPT writes a false "pushed" (`commit_session.ps1`
-  L114-118 and the `_do_push*.ps1` all report the push exit code) — the gap is worker/SKILL
-  behaviour. Also observed 2026-07-01: the headless worker's DIRECT `git push` now sometimes
-  hits a Bash **sandbox-approval** prompt (logs "push blocked sandbox") and works around it via
-  a Python-subprocess push ("PUSHED; Python subprocess push"); pushes ARE landing, but fold
-  this sandbox interaction into the honest-reporting task.
+- ✅ **T3. Push honesty — WIRED + VERIFIED IN THE WILD 2026-07-03 (commit `292471b` + worker
+  commit `a150fea`).** The worker used to write "pushed" in HANDOFF by model discretion without
+  verifying the push landed — that is what hid the 9-day origin freeze (T3-incident above).
+  **Fix (Option B — script-enforced, not prose-only):** new `scripts/verify_pushed.py` fetches
+  origin and asserts `HEAD == origin/main`, printing `PUSH_VERIFIED <sha>` (exit 0) /
+  `PUSH_FAILED_LOCAL_ONLY head=<h> remote=<r>` (exit 1) / `PUSH_UNVERIFIED_FETCH_FAILED` (exit 2 —
+  fails safe, never a false verify). Sprint SKILL step 5 now requires running it after every push
+  and copying the verdict verbatim into HANDOFF; NEVER record "pushed" unless `PUSH_VERIFIED`.
+  **Two corrections that made this land in the file actually in the loop** (both confirmed): (a)
+  the headless worker's sandbox BLOCKS `~/.claude/scheduled-tasks/`, so the worker reads the
+  repo-local **`_skill_content.txt`** copy (HANDOFF: "SKILL.md via _skill_content"), NOT the
+  `~/.claude` SKILL — the step-5 pointer was added to BOTH copies, kept in sync; (b) the worker's
+  actual push path is now **`scripts/_do_push.py`** (python-subprocess push that sidesteps the
+  Bash-tool sandbox-approval gate), which bypasses `commit_session.ps1`'s existing exit-code check
+  — so the verify had to be a standalone step both push paths converge on. **Tested green/red in an
+  isolated scratch harness before wiring** (GREEN HEAD==fakeorigin→PUSH_VERIFIED exit 0; RED local
+  commit unpushed→PUSH_FAILED_LOCAL_ONLY exit 1). **Verified in the wild:** post-wire fires record
+  `commit <sha> PUSH_VERIFIED` in HANDOFF + commit messages (22 markers, baseline 0), and every
+  sampled verdict commit (`be2ac0d`/`56f7cf1`/`572f052`) is genuinely on origin — verdicts truthful.
+- 🟡 **OPEN ENV DECISION (deferred, separate from T3): headless-worker sandbox allowlist.** The
+  worker's sandbox blocks BOTH reading `~/.claude/scheduled-tasks/` AND a direct Bash-tool
+  `git push` (approval prompt). The current workarounds — `_skill_content.txt` (repo copy of the
+  SKILL) + `_do_push.py` (python-subprocess push) — are load-bearing because of these blocks.
+  Adding `~/.claude/scheduled-tasks` to the sandbox read-allowlist and permitting `git push`
+  would obviate both workarounds and remove the two-file SKILL-sync burden. Ahmed to decide
+  (settings/permissions change, not a code fix).
 
 ## 9. DECISION LOG — 1-63, one line each
 1. Withdraw Path 3 (post-hoc gate amendment) — Session-5 audit response.
