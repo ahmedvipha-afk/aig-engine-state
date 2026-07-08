@@ -1,21 +1,5 @@
 [
   {
-    "ts_utc": "2026-06-12T00:47:48+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 396,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-12</b>\n\n\ud83d\udfe2 ENTRY <b>ADPT</b> $18.73 (stop $12.04)\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.03 (stop $47.86)\n\ud83d\udfe2 ENTRY <b>GCO</b> $42.72 (stop $28.56)\n\ud83d\udfe2 ENTRY <b>GIL</b> $59.70 (stop $57.1"
-  },
-  {
-    "ts_utc": "2026-06-12T01:00:08+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 397,
-    "preview": "\ud83d\ude80 Sprint fire 04:59 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
     "ts_utc": "2026-06-12T01:17:00+00:00",
     "kind": "text",
     "to": 7096306994,
@@ -1597,6 +1581,22 @@
     "to": 7096306994,
     "ok": false,
     "message_id": null,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
+  },
+  {
+    "ts_utc": "2026-07-08T12:00:07+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 3340,
+    "preview": "\ud83d\ude80 Sprint fire 15:59 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-07-08T12:05:31+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 3341,
     "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
   }
 ]
