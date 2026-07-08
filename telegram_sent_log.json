@@ -1,21 +1,5 @@
 [
   {
-    "ts_utc": "2026-05-26T19:01:48+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 362,
-    "preview": "\ud83d\ude80 Sprint fire 23:01 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-05-26T19:08:14+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 363,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-05-26</b>\n\n\ud83d\udfe2 ENTRY <b>AA</b> $74.22 (stop $59.04)\n\ud83d\udfe2 ENTRY <b>ADPT</b> $14.13 (stop $12.52)\n\ud83d\udfe2 ENTRY <b>AESI</b> $19.29 (stop $10.95)\n\ud83d\udfe2 ENTRY <b>AMBA</b> $93.61 (stop $42.6"
-  },
-  {
     "ts_utc": "2026-05-26T19:10:34+00:00",
     "kind": "text",
     "to": 7096306994,
@@ -1598,5 +1582,21 @@
     "ok": true,
     "message_id": 3301,
     "preview": "\ud83d\udd37 <b>AIG TRB-50 digest \u2014 2026-07-08</b> <i>(paper-forward, slot 2)</i>\nENTRIES 16: WM, RSG, UPS, WCN, EHC, TTAN, CVLT, LTH, SPSC, RARE, TARS, ARQT, STRA, ICFI, IBEX +1 more\nEXITS 26 (8W/18L, \u03a3P&L -222"
+  },
+  {
+    "ts_utc": "2026-07-08T06:43:47+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
+  },
+  {
+    "ts_utc": "2026-07-08T06:47:32+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 3303,
+    "preview": "\ud83d\ude80 Sprint fire 10:47 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
   }
 ]
