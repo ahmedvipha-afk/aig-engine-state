@@ -1,3 +1,5 @@
+## Last actions
+- [06:34Z 07-08] routine fire headless (claude -p): MISSED_FIRES=665, 1 iter. Divergence: 1030watched/17in/26out/36open/542hist (EXAS/HOLX/TIAIY 404; FTHM/MCW/VRRM err); TRB-50: 1115watched/16in/26out/16open/26hist; queue EMPTY; dashboard 2.39MB; commit 50906ce PUSH_VERIFIED. Sentinel 06:39Z. SKILL.md via Python read. Div bg TaskOutput (polled). git push via Python. NOTE: OneDrive repo diverged; committed from C:/aig_engine.
 ﻿# Project Handoff State
 
 **Project:** aig_engine
