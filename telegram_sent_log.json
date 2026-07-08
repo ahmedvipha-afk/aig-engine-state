@@ -1,21 +1,5 @@
 [
   {
-    "ts_utc": "2026-05-27T11:18:28+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 385,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-05-27</b>\n\n\ud83d\udfe2 ENTRY <b>AA</b> $74.57 (stop $59.04)\n\ud83d\udfe2 ENTRY <b>AESI</b> $19.33 (stop $10.94)\n\ud83d\udfe2 ENTRY <b>AMBA</b> $93.57 (stop $42.62)\n\ud83d\udfe2 ENTRY <b>BRZE</b> $25.45 (stop $18.6"
-  },
-  {
-    "ts_utc": "2026-05-27T11:31:54+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 386,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-05-27</b>\n\n\ud83d\udfe2 ENTRY <b>AA</b> $74.57 (stop $59.04)\n\ud83d\udfe2 ENTRY <b>AESI</b> $19.33 (stop $10.94)\n\ud83d\udfe2 ENTRY <b>AMBA</b> $93.57 (stop $42.62)\n\ud83d\udfe2 ENTRY <b>BRZE</b> $25.45 (stop $18.6"
-  },
-  {
     "ts_utc": "2026-06-11T17:12:36+00:00",
     "kind": "text",
     "to": 7096306994,
@@ -1597,6 +1581,22 @@
     "to": 7096306994,
     "ok": true,
     "message_id": 3329,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
+  },
+  {
+    "ts_utc": "2026-07-08T10:29:57+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 3330,
+    "preview": "\ud83d\ude80 Sprint fire 14:29 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-07-08T10:31:39+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 3331,
     "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
   }
 ]
