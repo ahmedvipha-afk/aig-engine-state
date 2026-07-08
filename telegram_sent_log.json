@@ -1,30 +1,1478 @@
 [
   {
-    "ts_utc": "2026-07-07T04:17:00+00:00",
+    "ts_utc": "2026-05-26T19:01:48+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": true,
-    "message_id": 3125,
+    "message_id": 362,
+    "preview": "\ud83d\ude80 Sprint fire 23:01 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-05-26T19:08:14+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 363,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-05-26</b>\n\n\ud83d\udfe2 ENTRY <b>AA</b> $74.22 (stop $59.04)\n\ud83d\udfe2 ENTRY <b>ADPT</b> $14.13 (stop $12.52)\n\ud83d\udfe2 ENTRY <b>AESI</b> $19.29 (stop $10.95)\n\ud83d\udfe2 ENTRY <b>AMBA</b> $93.61 (stop $42.6"
+  },
+  {
+    "ts_utc": "2026-05-26T19:10:34+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 364,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-05-26</b>\n\n\ud83d\udfe2 ENTRY <b>AA</b> $74.19 (stop $59.04)\n\ud83d\udfe2 ENTRY <b>ADPT</b> $14.11 (stop $12.52)\n\ud83d\udfe2 ENTRY <b>AESI</b> $19.28 (stop $10.95)\n\ud83d\udfe2 ENTRY <b>AMBA</b> $93.62 (stop $42.6"
+  },
+  {
+    "ts_utc": "2026-05-26T19:23:32+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-05-26</b>\n\n\ud83d\udfe2 ENTRY <b>AA</b> $73.91 (stop $59.04)\n\ud83d\udfe2 ENTRY <b>AESI</b> $19.24 (stop $10.95)\n\ud83d\udfe2 ENTRY <b>AMBA</b> $93.51 (stop $42.62)\n\ud83d\udfe2 ENTRY <b>BRZE</b> $25.51 (stop $18.6"
+  },
+  {
+    "ts_utc": "2026-05-26T19:37:40+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 365,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-05-26</b>\n\n\ud83d\udfe2 ENTRY <b>AA</b> $74.25 (stop $59.04)\n\ud83d\udfe2 ENTRY <b>AESI</b> $19.26 (stop $10.95)\n\ud83d\udfe2 ENTRY <b>AMBA</b> $93.62 (stop $42.62)\n\ud83d\udfe2 ENTRY <b>BRZE</b> $25.62 (stop $18.6"
+  },
+  {
+    "ts_utc": "2026-05-27T00:02:17+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 366,
+    "preview": "\ud83d\udea8 CC crash detected at 04:02 UAE 2026-05-27.\nCause: hung-repl-sentinel-278min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-27T00:13:20+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 367,
+    "preview": "\ud83d\udea8 CC crash detected at 04:13 UAE 2026-05-27.\nCause: hung-repl-sentinel-289min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-27T00:24:32+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 368,
+    "preview": "\ud83d\udea8 CC crash detected at 04:24 UAE 2026-05-27.\nCause: hung-repl-sentinel-300min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-27T00:35:16+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 369,
+    "preview": "\ud83d\udea8 CC crash detected at 04:35 UAE 2026-05-27.\nCause: hung-repl-sentinel-311min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-27T00:46:16+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 370,
+    "preview": "\ud83d\udea8 CC crash detected at 04:46 UAE 2026-05-27.\nCause: hung-repl-sentinel-322min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-27T01:22:38+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udea8 CC crash detected at 05:22 UAE 2026-05-27.\nCause: hung-repl-sentinel-32min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-27T01:33:20+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 371,
+    "preview": "\ud83d\udea8 CC crash detected at 05:33 UAE 2026-05-27.\nCause: hung-repl-sentinel-43min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-27T02:11:15+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 372,
+    "preview": "\ud83d\udea8 CC crash detected at 06:11 UAE 2026-05-27.\nCause: hung-repl-sentinel-33min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-27T02:22:16+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 373,
+    "preview": "\ud83d\udea8 CC crash detected at 06:22 UAE 2026-05-27.\nCause: hung-repl-sentinel-44min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-27T02:33:20+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 374,
+    "preview": "\ud83d\udea8 CC crash detected at 06:33 UAE 2026-05-27.\nCause: hung-repl-sentinel-55min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-27T02:44:20+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 375,
+    "preview": "\ud83d\udea8 CC crash detected at 06:44 UAE 2026-05-27.\nCause: hung-repl-sentinel-66min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-27T02:55:17+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udea8 CC crash detected at 06:55 UAE 2026-05-27.\nCause: hung-repl-sentinel-77min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-27T03:02:05+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 376,
+    "preview": "\u26a0 Phase 1 sprint: 5 fires missed in a row.\n\nCron windows were skipped because the REPL was busy. Catching up all 5 fires now back-to-back, then resuming normal 15-min cadence.\n\nTo reduce missed fires,"
+  },
+  {
+    "ts_utc": "2026-05-27T03:05:29+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 377,
+    "preview": "\u2705 CC recovered at 07:05 UAE 2026-05-27.\nSession resumed via headless `claude -p`.\nLag: ~9 min (596s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-05-27T03:36:23+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 378,
+    "preview": "\ud83d\udea8 CC crash detected at 07:36 UAE 2026-05-27.\nCause: hung-repl-sentinel-32min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-27T03:47:31+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 379,
+    "preview": "\ud83d\udea8 CC crash detected at 07:47 UAE 2026-05-27.\nCause: hung-repl-sentinel-43min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-27T03:58:17+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 380,
+    "preview": "\ud83d\udea8 CC crash detected at 07:58 UAE 2026-05-27.\nCause: hung-repl-sentinel-54min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-05-27T10:28:31+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 381,
+    "preview": "\u26a0 Phase 1 sprint: 29 fires missed in a row.\n\nCron windows were skipped because the REPL was busy. Catching up all 29 fires now back-to-back, then resuming normal 15-min cadence.\n\nTo reduce missed fire"
+  },
+  {
+    "ts_utc": "2026-05-27T10:28:53+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\ude80 Sprint fire 14:28 UAE \u2014 catching up 29 missed \u2192 30 iterations back-to-back\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exit"
+  },
+  {
+    "ts_utc": "2026-05-27T10:40:52+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 382,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-05-27</b>\n\n\ud83d\udfe2 ENTRY <b>AA</b> $74.57 (stop $59.04)\n\ud83d\udfe2 ENTRY <b>ADPT</b> $14.13 (stop $12.52)\n\ud83d\udfe2 ENTRY <b>AESI</b> $19.33 (stop $10.94)\n\ud83d\udfe2 ENTRY <b>AMBA</b> $93.57 (stop $42.6"
+  },
+  {
+    "ts_utc": "2026-05-27T10:53:43+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 383,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-05-27</b>\n\n\ud83d\udfe2 ENTRY <b>AA</b> $74.57 (stop $59.04)\n\ud83d\udfe2 ENTRY <b>AESI</b> $19.33 (stop $10.94)\n\ud83d\udfe2 ENTRY <b>AMBA</b> $93.57 (stop $42.62)\n\ud83d\udfe2 ENTRY <b>BRZE</b> $25.45 (stop $18.6"
+  },
+  {
+    "ts_utc": "2026-05-27T11:05:55+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 384,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-05-27</b>\n\n\ud83d\udfe2 ENTRY <b>AA</b> $74.57 (stop $59.04)\n\ud83d\udfe2 ENTRY <b>AESI</b> $19.33 (stop $10.94)\n\ud83d\udfe2 ENTRY <b>AMBA</b> $93.57 (stop $42.62)\n\ud83d\udfe2 ENTRY <b>BRZE</b> $25.45 (stop $18.6"
+  },
+  {
+    "ts_utc": "2026-05-27T11:18:28+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 385,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-05-27</b>\n\n\ud83d\udfe2 ENTRY <b>AA</b> $74.57 (stop $59.04)\n\ud83d\udfe2 ENTRY <b>AESI</b> $19.33 (stop $10.94)\n\ud83d\udfe2 ENTRY <b>AMBA</b> $93.57 (stop $42.62)\n\ud83d\udfe2 ENTRY <b>BRZE</b> $25.45 (stop $18.6"
+  },
+  {
+    "ts_utc": "2026-05-27T11:31:54+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 386,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-05-27</b>\n\n\ud83d\udfe2 ENTRY <b>AA</b> $74.57 (stop $59.04)\n\ud83d\udfe2 ENTRY <b>AESI</b> $19.33 (stop $10.94)\n\ud83d\udfe2 ENTRY <b>AMBA</b> $93.57 (stop $42.62)\n\ud83d\udfe2 ENTRY <b>BRZE</b> $25.45 (stop $18.6"
+  },
+  {
+    "ts_utc": "2026-06-11T17:12:36+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 387,
+    "preview": "\ud83d\ude80 Sprint fire 21:12 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-11T22:15:34+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 388,
+    "preview": "\ud83d\ude80 Sprint fire 02:15 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-11T22:43:15+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 389,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-12</b>\n\n\ud83d\udfe2 ENTRY <b>ALGN</b> $176.51 (stop $150.05)\n\ud83d\udfe2 ENTRY <b>ASBFY</b> $26.32 (stop $23.73)\n\ud83d\udfe2 ENTRY <b>ASTE</b> $50.29 (stop $46.72)\n\ud83d\udfe2 ENTRY <b>BCPC</b> $165.34 (stop"
+  },
+  {
+    "ts_utc": "2026-06-11T23:00:03+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 390,
+    "preview": "\ud83d\ude80 Sprint fire 02:59 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-11T23:18:37+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-12</b>\n\n\ud83d\udfe2 ENTRY <b>ADPT</b> $18.73 (stop $12.04)\n\ud83d\udfe2 ENTRY <b>ASBFY</b> $26.32 (stop $23.73)\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.03 (stop $47.86)\n\ud83d\udfe2 ENTRY <b>GCO</b> $42.72 (stop $28"
+  },
+  {
+    "ts_utc": "2026-06-11T23:30:11+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 391,
+    "preview": "\ud83d\ude80 Sprint fire 03:29 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-11T23:47:34+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 392,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-12</b>\n\n\ud83d\udfe2 ENTRY <b>ADPT</b> $18.73 (stop $12.04)\n\ud83d\udfe2 ENTRY <b>ASBFY</b> $25.97 (stop $23.74)\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.03 (stop $47.86)\n\ud83d\udfe2 ENTRY <b>GCO</b> $42.72 (stop $28"
+  },
+  {
+    "ts_utc": "2026-06-11T23:59:57+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 393,
+    "preview": "\ud83d\ude80 Sprint fire 03:59 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-12T00:17:37+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 394,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-12</b>\n\n\ud83d\udfe2 ENTRY <b>ADPT</b> $18.73 (stop $12.04)\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.03 (stop $47.86)\n\ud83d\udfe2 ENTRY <b>GCO</b> $42.72 (stop $28.56)\n\ud83d\udfe2 ENTRY <b>GIL</b> $59.70 (stop $57.1"
+  },
+  {
+    "ts_utc": "2026-06-12T00:30:06+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 395,
+    "preview": "\ud83d\ude80 Sprint fire 04:29 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-12T00:47:48+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 396,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-12</b>\n\n\ud83d\udfe2 ENTRY <b>ADPT</b> $18.73 (stop $12.04)\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.03 (stop $47.86)\n\ud83d\udfe2 ENTRY <b>GCO</b> $42.72 (stop $28.56)\n\ud83d\udfe2 ENTRY <b>GIL</b> $59.70 (stop $57.1"
+  },
+  {
+    "ts_utc": "2026-06-12T01:00:08+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 397,
+    "preview": "\ud83d\ude80 Sprint fire 04:59 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-12T01:17:00+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-12</b>\n\n\ud83d\udfe2 ENTRY <b>ADPT</b> $18.73 (stop $12.04)\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.03 (stop $47.86)\n\ud83d\udfe2 ENTRY <b>GCO</b> $42.72 (stop $28.56)\n\ud83d\udfe2 ENTRY <b>GIL</b> $59.70 (stop $57.1"
+  },
+  {
+    "ts_utc": "2026-06-12T01:29:56+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 398,
+    "preview": "\ud83d\ude80 Sprint fire 05:29 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-12T01:45:44+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 399,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-12</b>\n\n\ud83d\udfe2 ENTRY <b>ADPT</b> $18.73 (stop $12.04)\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.03 (stop $47.86)\n\ud83d\udfe2 ENTRY <b>CRWS</b> $2.80 (stop $2.51)\n\ud83d\udfe2 ENTRY <b>GCO</b> $42.72 (stop $28.56"
+  },
+  {
+    "ts_utc": "2026-06-12T02:00:07+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 400,
+    "preview": "\ud83d\ude80 Sprint fire 05:59 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-12T02:17:01+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 401,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-12</b>\n\n\ud83d\udfe2 ENTRY <b>ADPT</b> $18.73 (stop $12.04)\n\ud83d\udfe2 ENTRY <b>ASBFY</b> $26.38 (stop $23.72)\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.03 (stop $47.86)\n\ud83d\udfe2 ENTRY <b>GCO</b> $42.72 (stop $28"
+  },
+  {
+    "ts_utc": "2026-06-12T02:30:16+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\ude80 Sprint fire 06:29 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-12T02:46:54+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 402,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-12</b>\n\n\ud83d\udfe2 ENTRY <b>ADPT</b> $18.73 (stop $12.04)\n\ud83d\udfe2 ENTRY <b>ASBFY</b> $26.38 (stop $23.72)\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.03 (stop $47.86)\n\ud83d\udfe2 ENTRY <b>GCO</b> $42.72 (stop $28"
+  },
+  {
+    "ts_utc": "2026-06-12T03:00:20+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\ude80 Sprint fire 06:59 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-12T03:17:12+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 403,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-12</b>\n\n\ud83d\udfe2 ENTRY <b>ADPT</b> $18.73 (stop $12.04)\n\ud83d\udfe2 ENTRY <b>ASBFY</b> $26.38 (stop $23.72)\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.03 (stop $47.86)\n\ud83d\udfe2 ENTRY <b>GCO</b> $42.72 (stop $28"
+  },
+  {
+    "ts_utc": "2026-06-12T03:30:07+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 404,
+    "preview": "\ud83d\ude80 Sprint fire 07:29 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-12T03:46:22+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 405,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-12</b>\n\n\ud83d\udfe2 ENTRY <b>ADPT</b> $18.73 (stop $12.04)\n\ud83d\udfe2 ENTRY <b>ASBFY</b> $26.38 (stop $23.73)\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.03 (stop $47.86)\n\ud83d\udfe2 ENTRY <b>GCO</b> $42.72 (stop $28"
+  },
+  {
+    "ts_utc": "2026-06-12T04:00:12+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 406,
+    "preview": "\ud83d\ude80 Sprint fire 07:59 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-12T04:17:30+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 407,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-12</b>\n\n\ud83d\udfe2 ENTRY <b>ADPT</b> $18.73 (stop $12.04)\n\ud83d\udfe2 ENTRY <b>ASBFY</b> $26.38 (stop $23.72)\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.03 (stop $47.86)\n\ud83d\udfe2 ENTRY <b>GCO</b> $42.72 (stop $28"
+  },
+  {
+    "ts_utc": "2026-06-12T04:30:21+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 408,
+    "preview": "\ud83d\ude80 Sprint fire 08:30 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-12T04:48:18+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-12</b>\n\n\ud83d\udfe2 ENTRY <b>ADPT</b> $18.73 (stop $12.04)\n\ud83d\udfe2 ENTRY <b>ASBFY</b> $26.38 (stop $23.72)\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.03 (stop $47.86)\n\ud83d\udfe2 ENTRY <b>GCO</b> $42.72 (stop $28"
+  },
+  {
+    "ts_utc": "2026-06-12T05:00:12+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 409,
+    "preview": "\ud83d\ude80 Sprint fire 08:59 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-12T05:18:28+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 410,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-12</b>\n\n\ud83d\udfe2 ENTRY <b>ADPT</b> $18.73 (stop $12.04)\n\ud83d\udfe2 ENTRY <b>ASBFY</b> $26.38 (stop $23.72)\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.03 (stop $47.86)\n\ud83d\udfe2 ENTRY <b>GCO</b> $42.72 (stop $28"
+  },
+  {
+    "ts_utc": "2026-06-12T05:30:13+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\ude80 Sprint fire 09:29 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-12T06:05:51+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 411,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-12</b>\n\n\ud83d\udfe2 ENTRY <b>ADPT</b> $18.73 (stop $12.04)\n\ud83d\udfe2 ENTRY <b>ASBFY</b> $26.38 (stop $23.72)\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.03 (stop $47.86)\n\ud83d\udfe2 ENTRY <b>GCO</b> $42.72 (stop $28"
+  },
+  {
+    "ts_utc": "2026-06-12T06:15:19+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 412,
+    "preview": "\ud83d\ude80 Sprint fire 10:15 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-12T06:36:06+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 413,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-12</b>\n\n\ud83d\udfe2 ENTRY <b>ADPT</b> $18.73 (stop $12.04)\n\ud83d\udfe2 ENTRY <b>ASBFY</b> $26.38 (stop $23.72)\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.03 (stop $47.86)\n\ud83d\udfe2 ENTRY <b>GCO</b> $42.72 (stop $28"
+  },
+  {
+    "ts_utc": "2026-06-12T06:45:46+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 414,
+    "preview": "\ud83d\ude80 Sprint fire 10:45 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-12T07:12:41+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-12</b>\n\n\ud83d\udfe2 ENTRY <b>ADPT</b> $18.73 (stop $12.04)\n\ud83d\udfe2 ENTRY <b>ASBFY</b> $26.38 (stop $23.72)\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.03 (stop $47.86)\n\ud83d\udfe2 ENTRY <b>GCO</b> $42.72 (stop $28"
+  },
+  {
+    "ts_utc": "2026-06-12T17:37:41+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udea8 CC crash detected at 21:37 UAE 2026-06-12.\nCause: sentinel-stale-623min.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-06-12T17:43:09+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\u2705 CC recovered at 21:42 UAE 2026-06-12.\nSession resumed via headless `claude -p`.\nLag: ~5 min (302s wall-clock)."
+  },
+  {
+    "ts_utc": "2026-06-12T17:43:43+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 415,
+    "preview": "\ud83d\udea8 CC crash detected at 21:43 UAE 2026-06-12.\nCause: sentinel-stale-629min.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-06-12T17:47:01+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\u26a0 Phase 1 sprint: 41 fires missed in a row.\n\nCron windows were skipped because the REPL was busy. Catching up all 41 fires now back-to-back, then resuming normal 15-min cadence.\n\nTo reduce missed fire"
+  },
+  {
+    "ts_utc": "2026-06-12T17:47:10+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 416,
+    "preview": "\ud83d\ude80 Sprint fire 21:46 UAE \u2014 catching up 41 missed \u2192 42 iterations back-to-back\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exit"
+  },
+  {
+    "ts_utc": "2026-06-12T18:08:37+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 417,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-12</b>\n\n\ud83d\udfe2 ENTRY <b>AESI</b> $17.05 (stop $10.86)\n\ud83d\udfe2 ENTRY <b>ARCO</b> $8.81 (stop $8.41)\n\ud83d\udfe2 ENTRY <b>BP</b> $42.74 (stop $41.52)\n\ud83d\udfe2 ENTRY <b>BROS</b> $66.47 (stop $47.85)"
+  },
+  {
+    "ts_utc": "2026-06-12T18:14:57+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 418,
+    "preview": "\ud83d\ude80 Sprint fire 22:14 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-12T18:41:21+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 419,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-12</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $66.33 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $91.07 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.30 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>GCO</b> $43.03 (stop $28.5"
+  },
+  {
+    "ts_utc": "2026-06-12T19:01:00+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 420,
+    "preview": "\ud83d\ude80 Sprint fire 23:00 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-12T20:43:32+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udea8 CC crash detected at 00:43 UAE 2026-06-13.\nCause: sentinel-stale-40min.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-06-12T20:48:08+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 421,
+    "preview": "\ud83d\ude80 Sprint fire 00:47 UAE \u2014 catching up 2 missed \u2192 3 iterations back-to-back\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits,"
+  },
+  {
+    "ts_utc": "2026-06-12T21:07:27+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 422,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-13</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>MAS</b> $74.03 (stop $66.3"
+  },
+  {
+    "ts_utc": "2026-06-12T21:27:32+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 423,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-13</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-12T21:51:17+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 424,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-13</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-12T22:03:02+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 425,
+    "preview": "\ud83d\ude80 Sprint fire 02:02 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-12T22:26:09+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 426,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-13</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-13T11:33:01+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 427,
+    "preview": "\u26a0 Phase 1 sprint: 51 fires missed in a row.\n\nCron windows were skipped because the REPL was busy. Catching up all 51 fires now back-to-back, then resuming normal 15-min cadence.\n\nTo reduce missed fire"
+  },
+  {
+    "ts_utc": "2026-06-13T11:33:08+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 428,
+    "preview": "\ud83d\ude80 Sprint fire 15:32 UAE \u2014 catching up 51 missed \u2192 52 iterations back-to-back\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exit"
+  },
+  {
+    "ts_utc": "2026-06-13T12:44:34+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 429,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-13</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-13T12:47:53+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 430,
+    "preview": "\ud83d\ude80 Sprint fire 16:47 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-13T13:39:16+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 431,
+    "preview": "\ud83d\udd37 <b>AIG TRB-50 digest \u2014 2026-06-13</b> <i>(paper-forward, slot 2)</i>\nENTRIES 26: LIN, NUE, WSM, JBL, STLD, RL, AMKR, ONTO, ACMR, COCO, OSW, SMSMY, TWST, HUN, BHE +11 more\nOpen: 26 \u00b7 Closed-to-date: "
+  },
+  {
+    "ts_utc": "2026-06-13T13:51:41+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 432,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-13</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-13T14:03:14+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 433,
+    "preview": "\ud83d\ude80 Sprint fire 18:02 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-13T14:57:41+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 434,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-13</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-13T15:22:15+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 435,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-13</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-13T16:15:46+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 436,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-13</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-13T17:08:34+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-13</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-13T18:01:54+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 437,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-13</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-13T21:27:50+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 438,
+    "preview": "\ud83d\ude80 Sprint fire 01:27 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-13T21:57:35+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\ude80 Sprint fire 01:57 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-13T22:19:14+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 439,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-14</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-13T22:42:23+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 440,
+    "preview": "\ud83d\ude80 Sprint fire 02:42 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-13T22:59:48+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-14</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-13T23:12:33+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 441,
+    "preview": "\ud83d\ude80 Sprint fire 03:12 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-13T23:24:28+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 442,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-14</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-13T23:42:33+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 443,
+    "preview": "\ud83d\ude80 Sprint fire 03:42 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-13T23:54:19+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 444,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-14</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-14T00:12:25+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 445,
+    "preview": "\ud83d\ude80 Sprint fire 04:12 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-14T00:24:06+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 446,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-14</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-14T00:42:41+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\ude80 Sprint fire 04:42 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-14T00:54:30+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-14</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-14T01:22:19+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 447,
+    "preview": "\ud83d\udea8 CC crash detected at 05:22 UAE 2026-06-14.\nCause: process-absent+sentinel-18min.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-06-14T01:27:17+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 448,
+    "preview": "\ud83d\ude80 Sprint fire 05:27 UAE \u2014 catching up 1 missed \u2192 2 iterations back-to-back\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits,"
+  },
+  {
+    "ts_utc": "2026-06-14T01:42:30+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 449,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-14</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-14T02:06:36+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 450,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-14</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-14T02:27:24+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 451,
+    "preview": "\ud83d\ude80 Sprint fire 06:27 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-14T02:39:01+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 452,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-14</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-14T02:57:14+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 453,
+    "preview": "\ud83d\ude80 Sprint fire 06:57 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-14T03:08:59+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-14</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-14T03:27:17+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 454,
+    "preview": "\ud83d\ude80 Sprint fire 07:27 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-14T03:42:23+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 455,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-14</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-14T03:57:34+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 456,
+    "preview": "\ud83d\ude80 Sprint fire 07:57 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-14T04:08:57+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 457,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-14</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-14T04:27:33+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 458,
+    "preview": "\ud83d\ude80 Sprint fire 08:27 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-14T04:39:00+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 459,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-14</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-14T04:57:35+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 460,
+    "preview": "\ud83d\ude80 Sprint fire 08:57 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-14T05:10:22+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-14</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-14T05:27:34+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 461,
+    "preview": "\ud83d\ude80 Sprint fire 09:27 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-14T05:39:03+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 462,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-14</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-14T05:57:43+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 463,
+    "preview": "\ud83d\ude80 Sprint fire 09:57 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-14T06:09:33+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 464,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-14</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-14T06:27:35+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\ude80 Sprint fire 10:27 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-14T06:39:16+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 465,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-14</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-14T06:57:39+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 466,
+    "preview": "\ud83d\ude80 Sprint fire 10:57 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-14T07:09:35+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 467,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-14</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-14T07:27:33+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 468,
+    "preview": "\ud83d\ude80 Sprint fire 11:27 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-14T07:40:23+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-14</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-14T07:57:40+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 469,
+    "preview": "\ud83d\ude80 Sprint fire 11:57 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-14T08:17:09+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-14</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-14T08:42:35+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 470,
+    "preview": "\ud83d\ude80 Sprint fire 12:42 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-14T09:02:04+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 471,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-14</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-14T09:27:33+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 472,
+    "preview": "\ud83d\ude80 Sprint fire 13:27 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-14T09:51:19+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-14</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-14T10:49:47+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 473,
+    "preview": "\ud83d\udea8 CC crash detected at 14:42 UAE 2026-06-14.\nCause: hung-repl-sentinel-36min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-06-14T11:14:25+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 474,
+    "preview": "\ud83d\udea8 CC crash detected at 15:08 UAE 2026-06-14.\nCause: hung-repl-sentinel-62min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-06-14T11:49:07+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 475,
+    "preview": "\ud83d\udea8 CC crash detected at 15:47 UAE 2026-06-14.\nCause: hung-repl-sentinel-102min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-06-14T12:07:42+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 476,
+    "preview": "\ud83d\udea8 CC crash detected at 16:07 UAE 2026-06-14.\nCause: hung-repl-sentinel-122min-procs-2.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-06-14T12:19:36+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udea8 CC crash detected at 16:19 UAE 2026-06-14.\nCause: hung-repl-sentinel-135min-procs-2.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-06-14T12:44:45+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udea8 CC crash detected at 16:41 UAE 2026-06-14.\nCause: hung-repl-sentinel-153min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-06-14T13:15:54+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udea8 CC crash detected at 17:11 UAE 2026-06-14.\nCause: hung-repl-sentinel-183min-procs-2.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-06-14T13:31:57+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 477,
+    "preview": "\ud83d\udea8 CC crash detected at 17:31 UAE 2026-06-14.\nCause: sentinel-stale-207min.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-06-14T13:45:56+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 478,
+    "preview": "\ud83d\udea8 CC crash detected at 17:45 UAE 2026-06-14.\nCause: hung-repl-sentinel-221min-procs-2.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-06-14T14:02:03+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 479,
+    "preview": "\ud83d\udea8 CC crash detected at 18:01 UAE 2026-06-14.\nCause: sentinel-stale-238min.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-06-14T14:42:50+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 480,
+    "preview": "\ud83d\udea8 CC crash detected at 18:40 UAE 2026-06-14.\nCause: hung-repl-sentinel-271min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-06-14T14:59:13+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 481,
+    "preview": "\ud83d\udea8 CC crash detected at 18:57 UAE 2026-06-14.\nCause: hung-repl-sentinel-291min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-06-14T15:49:30+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 482,
+    "preview": "\ud83d\udea8 CC crash detected at 19:44 UAE 2026-06-14.\nCause: hung-repl-sentinel-334min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-06-14T16:20:05+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 483,
+    "preview": "\ud83d\udea8 CC crash detected at 20:09 UAE 2026-06-14.\nCause: hung-repl-sentinel-363min-procs-2.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-06-14T16:46:46+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 484,
+    "preview": "\ud83d\udea8 CC crash detected at 20:43 UAE 2026-06-14.\nCause: hung-repl-sentinel-395min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-06-14T17:06:40+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udea8 CC crash detected at 20:59 UAE 2026-06-14.\nCause: hung-repl-sentinel-412min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-06-14T17:18:42+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 485,
+    "preview": "\ud83d\udea8 CC crash detected at 21:15 UAE 2026-06-14.\nCause: hung-repl-sentinel-426min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-06-14T17:30:45+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 486,
+    "preview": "\ud83d\udea8 CC crash detected at 21:25 UAE 2026-06-14.\nCause: hung-repl-sentinel-440min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-06-14T18:06:24+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 487,
+    "preview": "\ud83d\udea8 CC crash detected at 22:00 UAE 2026-06-14.\nCause: hung-repl-sentinel-472min-procs-2.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-06-14T18:22:14+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 488,
+    "preview": "\ud83d\udea8 CC crash detected at 22:17 UAE 2026-06-14.\nCause: hung-repl-sentinel-488min-procs-2.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-06-14T19:11:55+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\ude80 Sprint fire 23:05 UAE \u2014 catching up 2 missed \u2192 3 iterations back-to-back\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits,"
+  },
+  {
+    "ts_utc": "2026-06-14T19:34:52+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 489,
+    "preview": "\u26a0 Phase 1 sprint: 4 fires missed in a row.\n\nCron windows were skipped because the REPL was busy. Catching up all 4 fires now back-to-back, then resuming normal 15-min cadence.\n\nTo reduce missed fires,"
+  },
+  {
+    "ts_utc": "2026-06-14T19:35:10+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\ude80 Sprint fire 23:34 UAE \u2014 catching up 4 missed \u2192 5 iterations back-to-back\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits,"
+  },
+  {
+    "ts_utc": "2026-06-14T20:34:24+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 490,
+    "preview": "\ud83d\udea8 CC crash detected at 00:32 UAE 2026-06-15.\nCause: hung-repl-sentinel-57min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-06-14T20:47:29+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 491,
+    "preview": "\ud83d\udea8 CC crash detected at 00:46 UAE 2026-06-15.\nCause: sentinel-stale-70min.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-06-14T20:52:44+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-14</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-14T20:58:53+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 492,
+    "preview": "\ud83d\udea8 CC crash detected at 00:58 UAE 2026-06-15.\nCause: sentinel-stale-83min.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-06-14T21:02:10+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\u26a0 Phase 1 sprint: 5 fires missed in a row.\n\nCron windows were skipped because the REPL was busy. Catching up all 5 fires now back-to-back, then resuming normal 15-min cadence.\n\nTo reduce missed fires,"
+  },
+  {
+    "ts_utc": "2026-06-14T21:02:26+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 493,
+    "preview": "\ud83d\ude80 Sprint fire 01:01 UAE \u2014 catching up 5 missed \u2192 6 iterations back-to-back\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits,"
+  },
+  {
+    "ts_utc": "2026-06-14T21:53:46+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 494,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-15</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-14T22:31:24+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 495,
+    "preview": "\ud83d\ude80 Sprint fire 02:31 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-14T22:46:56+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 496,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-15</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-14T23:01:21+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\ude80 Sprint fire 03:01 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-14T23:20:35+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 497,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-15</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-14T23:46:21+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 498,
+    "preview": "\ud83d\ude80 Sprint fire 03:46 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-06-15T01:08:29+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 499,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-15</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-15T01:26:22+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 500,
+    "preview": "\ud83d\udea8 CC crash detected at 05:26 UAE 2026-06-15.\nCause: process-absent+sentinel-18min.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-06-15T01:31:27+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 501,
+    "preview": "\ud83d\ude80 Sprint fire 05:31 UAE \u2014 catching up 1 missed \u2192 2 iterations back-to-back\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits,"
+  },
+  {
+    "ts_utc": "2026-06-15T02:28:13+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 502,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-15</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
+  },
+  {
+    "ts_utc": "2026-06-15T03:04:33+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udea8 CC crash detected at 07:04 UAE 2026-06-15.\nCause: process-absent+sentinel-17min.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-06-15T03:15:35+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 503,
+    "preview": "\ud83d\udea8 CC crash detected at 07:15 UAE 2026-06-15.\nCause: process-absent+sentinel-28min.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-06-15T03:17:23+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\ude80 Sprint fire 07:17 UAE \u2014 catching up 1 missed \u2192 2 iterations back-to-back\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits,"
+  },
+  {
+    "ts_utc": "2026-06-15T03:50:30+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 504,
+    "preview": "\ud83d\udea8 CC crash detected at 07:50 UAE 2026-06-15.\nCause: hung-repl-sentinel-33min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-06-15T04:01:25+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 505,
+    "preview": "\ud83d\ude80 Sprint fire 08:01 UAE \u2014 catching up 2 missed \u2192 3 iterations back-to-back\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits,"
+  },
+  {
+    "ts_utc": "2026-06-15T04:01:43+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 506,
+    "preview": "\ud83d\udea8 CC crash detected at 08:01 UAE 2026-06-15.\nCause: hung-repl-sentinel-44min-procs-1.\nRecovery initiated."
+  },
+  {
+    "ts_utc": "2026-06-15T04:16:23+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 507,
     "preview": "\ud83d\ude80 Sprint fire 08:16 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
   },
   {
-    "ts_utc": "2026-07-07T04:31:28+00:00",
+    "ts_utc": "2026-06-15T04:33:52+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": true,
-    "message_id": 3126,
-    "preview": "\ud83d\ude80 Sprint fire 08:31 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+    "message_id": 508,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-15</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
   },
   {
-    "ts_utc": "2026-07-07T04:46:08+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3127,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T04:46:22+00:00",
+    "ts_utc": "2026-06-15T04:46:28+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": false,
@@ -32,1571 +1480,123 @@
     "preview": "\ud83d\ude80 Sprint fire 08:46 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
   },
   {
-    "ts_utc": "2026-07-07T05:01:45+00:00",
+    "ts_utc": "2026-06-15T05:03:40+00:00",
     "kind": "text",
     "to": 7096306994,
-    "ok": true,
-    "message_id": 3128,
-    "preview": "\ud83d\ude80 Sprint fire 09:01 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+    "ok": false,
+    "message_id": null,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-15</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
   },
   {
-    "ts_utc": "2026-07-07T05:06:49+00:00",
+    "ts_utc": "2026-06-15T05:16:19+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": true,
-    "message_id": 3129,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T05:10:46+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3130,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T05:16:25+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3131,
+    "message_id": 509,
     "preview": "\ud83d\ude80 Sprint fire 09:16 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
   },
   {
-    "ts_utc": "2026-07-07T05:23:40+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3132,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T05:31:48+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3133,
-    "preview": "\ud83d\ude80 Sprint fire 09:31 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T05:36:00+00:00",
+    "ts_utc": "2026-06-15T05:32:48+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": false,
     "message_id": null,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-15</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
   },
   {
-    "ts_utc": "2026-07-07T05:46:50+00:00",
+    "ts_utc": "2026-06-15T05:46:22+00:00",
     "kind": "text",
     "to": 7096306994,
-    "ok": true,
-    "message_id": 3134,
+    "ok": false,
+    "message_id": null,
     "preview": "\ud83d\ude80 Sprint fire 09:46 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
   },
   {
-    "ts_utc": "2026-07-07T06:00:12+00:00",
+    "ts_utc": "2026-06-15T06:03:20+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": true,
-    "message_id": 3135,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
+    "message_id": 510,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-15</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
   },
   {
-    "ts_utc": "2026-07-07T06:02:00+00:00",
+    "ts_utc": "2026-06-15T06:31:29+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": true,
-    "message_id": 3136,
-    "preview": "\ud83d\ude80 Sprint fire 10:01 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T06:09:09+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3137,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T06:16:51+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3138,
-    "preview": "\ud83d\ude80 Sprint fire 10:16 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T06:25:21+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3139,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T06:31:54+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3140,
+    "message_id": 511,
     "preview": "\ud83d\ude80 Sprint fire 10:31 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
   },
   {
-    "ts_utc": "2026-07-07T06:41:13+00:00",
+    "ts_utc": "2026-06-15T06:47:15+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": true,
-    "message_id": 3141,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
+    "message_id": 512,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-15</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
   },
   {
-    "ts_utc": "2026-07-07T06:46:53+00:00",
+    "ts_utc": "2026-06-15T07:01:26+00:00",
     "kind": "text",
     "to": 7096306994,
-    "ok": true,
-    "message_id": 3142,
-    "preview": "\ud83d\ude80 Sprint fire 10:46 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T06:53:57+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3143,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T07:01:51+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3144,
+    "ok": false,
+    "message_id": null,
     "preview": "\ud83d\ude80 Sprint fire 11:01 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
   },
   {
-    "ts_utc": "2026-07-07T07:06:52+00:00",
+    "ts_utc": "2026-06-15T07:21:43+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": true,
-    "message_id": 3145,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
+    "message_id": 513,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-06-15</b>\n\n\ud83d\udfe2 ENTRY <b>BROS</b> $65.89 (stop $47.85)\n\ud83d\udfe2 ENTRY <b>CAVA</b> $90.99 (stop $70.99)\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19."
   },
   {
-    "ts_utc": "2026-07-07T07:16:23+00:00",
+    "ts_utc": "2026-07-01T06:59:21+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": true,
-    "message_id": 3146,
-    "preview": "\ud83d\ude80 Sprint fire 11:16 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+    "message_id": 2159,
+    "preview": "\u26a0 Phase 1 sprint: 1533 fires missed in a row.\n\nCron windows were skipped because the REPL was busy. Catching up all 1533 fires now back-to-back, then resuming normal 15-min cadence.\n\nTo reduce missed "
   },
   {
-    "ts_utc": "2026-07-07T07:19:18+00:00",
+    "ts_utc": "2026-07-01T06:59:23+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": true,
-    "message_id": 3147,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
+    "message_id": 2161,
+    "preview": "\ud83d\ude80 Sprint fire 10:59 UAE \u2014 catching up 1533 missed \u2192 1534 iterations back-to-back\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/"
   },
   {
-    "ts_utc": "2026-07-07T07:31:37+00:00",
+    "ts_utc": "2026-07-08T05:29:27+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": true,
-    "message_id": 3148,
-    "preview": "\ud83d\ude80 Sprint fire 11:31 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+    "message_id": 3293,
+    "preview": "\u26a0 Phase 1 sprint: 665 fires missed in a row.\n\nCron windows were skipped because the REPL was busy. Catching up all 665 fires now back-to-back, then resuming normal 15-min cadence.\n\nTo reduce missed fi"
   },
   {
-    "ts_utc": "2026-07-07T07:33:55+00:00",
+    "ts_utc": "2026-07-08T05:29:43+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": true,
-    "message_id": 3149,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
+    "message_id": 3294,
+    "preview": "\ud83d\ude80 Sprint fire 09:29 UAE \u2014 catching up 665 missed \u2192 666 iterations back-to-back\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/ex"
   },
   {
-    "ts_utc": "2026-07-07T07:46:17+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3150,
-    "preview": "\ud83d\ude80 Sprint fire 11:46 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T07:47:57+00:00",
+    "ts_utc": "2026-07-08T06:16:38+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": false,
     "message_id": null,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>BURCA</b> $24.39 (stop $23.94)\n\ud83d\udfe2 ENTRY <b>CF</b> $114.94 (stop $102.21)\n\ud83d\udfe2 ENTRY <b>CHE</b> $485.37 (stop $411.14)\n\ud83d\udfe2 ENTRY <b>CXDO</b> $7.87 (stop $6"
   },
   {
-    "ts_utc": "2026-07-07T08:01:28+00:00",
+    "ts_utc": "2026-07-08T06:33:49+00:00",
     "kind": "text",
     "to": 7096306994,
     "ok": true,
-    "message_id": 3151,
-    "preview": "\ud83d\ude80 Sprint fire 12:01 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T08:02:29+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3152,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T08:16:27+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3153,
-    "preview": "\ud83d\ude80 Sprint fire 12:16 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T08:17:08+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3154,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T08:31:18+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3155,
-    "preview": "\ud83d\ude80 Sprint fire 12:31 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T08:32:24+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3156,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T08:46:45+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3157,
-    "preview": "\ud83d\ude80 Sprint fire 12:46 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T08:47:52+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3158,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T09:01:25+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3159,
-    "preview": "\ud83d\ude80 Sprint fire 13:01 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T09:17:01+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3160,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T09:21:38+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3161,
-    "preview": "\ud83d\ude80 Sprint fire 13:21 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T09:31:33+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3162,
-    "preview": "\ud83d\ude80 Sprint fire 13:31 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T09:33:09+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3163,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T09:46:31+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3164,
-    "preview": "\ud83d\ude80 Sprint fire 13:46 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T09:53:36+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3165,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T10:01:36+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": false,
-    "message_id": null,
-    "preview": "\ud83d\ude80 Sprint fire 14:01 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T10:04:24+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": false,
-    "message_id": null,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T10:16:37+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3166,
-    "preview": "\ud83d\ude80 Sprint fire 14:16 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T10:18:23+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3167,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T10:31:35+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3168,
-    "preview": "\ud83d\ude80 Sprint fire 14:31 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T10:33:47+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3169,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T10:46:19+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3170,
-    "preview": "\ud83d\ude80 Sprint fire 14:46 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T10:48:48+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3171,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T11:02:18+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3172,
-    "preview": "\ud83d\ude80 Sprint fire 15:02 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T11:16:37+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3173,
-    "preview": "\ud83d\ude80 Sprint fire 15:16 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T11:19:33+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": false,
-    "message_id": null,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T11:31:38+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3174,
-    "preview": "\ud83d\ude80 Sprint fire 15:31 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T11:35:39+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": false,
-    "message_id": null,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T11:46:29+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3175,
-    "preview": "\ud83d\ude80 Sprint fire 15:46 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T11:50:25+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3176,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T12:01:46+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3177,
-    "preview": "\ud83d\ude80 Sprint fire 16:01 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T12:04:52+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3178,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T12:16:26+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3179,
-    "preview": "\ud83d\ude80 Sprint fire 16:16 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T12:19:32+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3180,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T12:31:50+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3181,
-    "preview": "\ud83d\ude80 Sprint fire 16:31 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T12:36:29+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3182,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T12:46:43+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3183,
-    "preview": "\ud83d\ude80 Sprint fire 16:46 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T12:52:49+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3184,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T13:01:45+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": false,
-    "message_id": null,
-    "preview": "\ud83d\ude80 Sprint fire 17:01 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T13:08:52+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3185,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T13:16:50+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3186,
-    "preview": "\ud83d\ude80 Sprint fire 17:16 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T13:27:24+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": false,
-    "message_id": null,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T13:32:10+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3187,
-    "preview": "\ud83d\ude80 Sprint fire 17:32 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T13:43:37+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": false,
-    "message_id": null,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T13:47:19+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3188,
-    "preview": "\ud83d\ude80 Sprint fire 17:47 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T13:58:34+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3189,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T14:01:46+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3190,
-    "preview": "\ud83d\ude80 Sprint fire 18:01 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T14:10:53+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": false,
-    "message_id": null,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T14:16:57+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3191,
-    "preview": "\ud83d\ude80 Sprint fire 18:16 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T14:24:08+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": false,
-    "message_id": null,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T14:32:06+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": false,
-    "message_id": null,
-    "preview": "\ud83d\ude80 Sprint fire 18:31 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T14:37:12+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3192,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T14:46:19+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3193,
-    "preview": "\ud83d\ude80 Sprint fire 18:46 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T14:50:33+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3194,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T15:01:48+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3195,
-    "preview": "\ud83d\ude80 Sprint fire 19:01 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T15:04:50+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3196,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T15:16:40+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": false,
-    "message_id": null,
-    "preview": "\ud83d\ude80 Sprint fire 19:16 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T15:17:12+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3197,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T15:31:43+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3198,
-    "preview": "\ud83d\ude80 Sprint fire 19:31 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T15:31:58+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": false,
-    "message_id": null,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T15:47:00+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3199,
-    "preview": "\ud83d\ude80 Sprint fire 19:46 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T15:47:00+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3200,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T16:01:41+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3201,
-    "preview": "\ud83d\ude80 Sprint fire 20:01 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T16:01:50+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3202,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T16:16:07+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3203,
-    "preview": "\ud83d\ude80 Sprint fire 20:16 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T16:16:27+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": false,
-    "message_id": null,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T16:32:14+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": false,
-    "message_id": null,
-    "preview": "\ud83d\ude80 Sprint fire 20:31 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T16:32:26+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3204,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T16:47:04+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3205,
-    "preview": "\ud83d\ude80 Sprint fire 20:46 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T17:01:41+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": false,
-    "message_id": null,
-    "preview": "\ud83d\ude80 Sprint fire 21:01 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T17:01:58+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3206,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T17:16:51+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3207,
-    "preview": "\ud83d\ude80 Sprint fire 21:16 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T17:18:23+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3208,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T17:31:45+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3209,
-    "preview": "\ud83d\ude80 Sprint fire 21:31 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T17:32:48+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": false,
-    "message_id": null,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T17:46:33+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3210,
-    "preview": "\ud83d\ude80 Sprint fire 21:46 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T17:47:12+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": false,
-    "message_id": null,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T18:01:42+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3211,
-    "preview": "\ud83d\ude80 Sprint fire 22:01 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T18:02:25+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3212,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T18:16:49+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": false,
-    "message_id": null,
-    "preview": "\ud83d\ude80 Sprint fire 22:16 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T18:18:24+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3213,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T18:31:58+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": false,
-    "message_id": null,
-    "preview": "\ud83d\ude80 Sprint fire 22:31 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T18:35:01+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3214,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T18:46:43+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3215,
-    "preview": "\ud83d\ude80 Sprint fire 22:46 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T18:50:41+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3216,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T19:01:37+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3217,
-    "preview": "\ud83d\ude80 Sprint fire 23:01 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T19:04:49+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3218,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T19:16:28+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": false,
-    "message_id": null,
-    "preview": "\ud83d\ude80 Sprint fire 23:16 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T19:19:34+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": false,
-    "message_id": null,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T19:31:32+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3219,
-    "preview": "\ud83d\ude80 Sprint fire 23:31 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T19:34:32+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3220,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T19:46:51+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3221,
-    "preview": "\ud83d\ude80 Sprint fire 23:46 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T19:49:07+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3222,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T20:01:49+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3223,
-    "preview": "\ud83d\ude80 Sprint fire 00:01 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T20:03:25+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3224,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T20:14:55+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3225,
-    "preview": "\ud83d\ude80 Sprint fire 00:14 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T20:16:42+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3226,
-    "preview": "\ud83d\ude80 Sprint fire 00:16 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T20:20:46+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3227,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-07</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T20:29:55+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": false,
-    "message_id": null,
-    "preview": "\ud83d\ude80 Sprint fire 00:29 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T20:44:42+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3228,
-    "preview": "\ud83d\ude80 Sprint fire 00:44 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T20:53:28+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": false,
-    "message_id": null,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T20:55:38+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3229,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T20:59:45+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3230,
-    "preview": "\ud83d\ude80 Sprint fire 00:59 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T21:15:10+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3231,
-    "preview": "\ud83d\ude80 Sprint fire 01:14 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T21:21:57+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3232,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T21:29:36+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3233,
-    "preview": "\ud83d\ude80 Sprint fire 01:29 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T21:35:03+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3234,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T21:44:50+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3235,
-    "preview": "\ud83d\ude80 Sprint fire 01:44 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T21:48:44+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": false,
-    "message_id": null,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T21:59:30+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3236,
-    "preview": "\ud83d\ude80 Sprint fire 01:59 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T22:00:57+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3237,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T22:14:41+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3238,
-    "preview": "\ud83d\ude80 Sprint fire 02:14 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T22:14:51+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3239,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T22:29:43+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3240,
-    "preview": "\ud83d\ude80 Sprint fire 02:29 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T22:44:20+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3241,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T22:44:52+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3242,
-    "preview": "\ud83d\ude80 Sprint fire 02:44 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T22:58:21+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3243,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T23:01:01+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3244,
-    "preview": "\ud83d\ude80 Sprint fire 03:00 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T23:14:15+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3245,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T23:15:04+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3246,
-    "preview": "\ud83d\ude80 Sprint fire 03:14 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T23:30:46+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3247,
-    "preview": "\ud83d\ude80 Sprint fire 03:30 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T23:35:09+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3248,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T23:45:03+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3249,
-    "preview": "\ud83d\ude80 Sprint fire 03:44 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-07T23:49:16+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3250,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-07T23:59:55+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3251,
-    "preview": "\ud83d\ude80 Sprint fire 03:59 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-08T00:01:47+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3252,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-08T00:15:15+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3253,
-    "preview": "\ud83d\ude80 Sprint fire 04:15 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-08T00:16:00+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3254,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-08T00:30:00+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": false,
-    "message_id": null,
-    "preview": "\ud83d\ude80 Sprint fire 04:29 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-08T00:31:05+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3255,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-08T00:44:45+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3256,
-    "preview": "\ud83d\ude80 Sprint fire 04:44 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-08T00:45:42+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3257,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-08T00:59:40+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3258,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-08T01:00:05+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3259,
-    "preview": "\ud83d\ude80 Sprint fire 04:59 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-08T01:14:27+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3260,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-08T01:14:33+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3261,
-    "preview": "\ud83d\ude80 Sprint fire 05:14 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-08T01:29:48+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3262,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-08T01:30:04+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3263,
-    "preview": "\ud83d\ude80 Sprint fire 05:29 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-08T01:44:32+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3264,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-08T01:44:53+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3265,
-    "preview": "\ud83d\ude80 Sprint fire 05:44 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-08T01:59:49+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3266,
-    "preview": "\ud83d\ude80 Sprint fire 05:59 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-08T02:00:28+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3267,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-08T02:15:24+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3268,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-08T02:15:28+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3269,
-    "preview": "\ud83d\ude80 Sprint fire 06:15 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-08T02:29:59+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3270,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-08T02:30:24+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3271,
-    "preview": "\ud83d\ude80 Sprint fire 06:30 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-08T02:44:39+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3272,
-    "preview": "\ud83d\ude80 Sprint fire 06:44 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-08T02:46:24+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3273,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-08T02:59:44+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3274,
-    "preview": "\ud83d\ude80 Sprint fire 06:59 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-08T03:01:19+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3275,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-08T03:14:45+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3276,
-    "preview": "\ud83d\ude80 Sprint fire 07:14 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-08T03:16:01+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3277,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-08T03:29:52+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3278,
-    "preview": "\ud83d\ude80 Sprint fire 07:29 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-08T03:30:13+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3279,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-08T03:44:35+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": false,
-    "message_id": null,
-    "preview": "\ud83d\ude80 Sprint fire 07:44 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-08T03:44:59+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3280,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-08T03:58:07+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3281,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-08T03:59:37+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3282,
-    "preview": "\ud83d\ude80 Sprint fire 07:59 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-08T04:09:13+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3283,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-08T04:15:03+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3284,
-    "preview": "\ud83d\ude80 Sprint fire 08:14 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-08T04:22:09+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3285,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-08T04:29:33+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3286,
-    "preview": "\ud83d\ude80 Sprint fire 08:29 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-08T04:37:22+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3287,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-08T04:44:25+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": false,
-    "message_id": null,
-    "preview": "\ud83d\ude80 Sprint fire 08:44 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-08T04:51:46+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3288,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-08T05:00:17+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3289,
-    "preview": "\ud83d\ude80 Sprint fire 09:00 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-08T05:10:06+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3290,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-08T05:14:58+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3291,
-    "preview": "\ud83d\ude80 Sprint fire 09:14 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
-    "ts_utc": "2026-07-08T05:28:22+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3292,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-08T05:44:18+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3295,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-08T05:44:57+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3296,
-    "preview": "\ud83d\ude80 Sprint fire 09:44 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+    "message_id": 3301,
+    "preview": "\ud83d\udd37 <b>AIG TRB-50 digest \u2014 2026-07-08</b> <i>(paper-forward, slot 2)</i>\nENTRIES 16: WM, RSG, UPS, WCN, EHC, TTAN, CVLT, LTH, SPSC, RARE, TARS, ARQT, STRA, ICFI, IBEX +1 more\nEXITS 26 (8W/18L, \u03a3P&L -222"
   }
 ]
