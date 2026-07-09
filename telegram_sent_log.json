@@ -1,21 +1,5 @@
 [
   {
-    "ts_utc": "2026-07-08T06:16:38+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": false,
-    "message_id": null,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-08</b>\n\n\ud83d\udfe2 ENTRY <b>BURCA</b> $24.39 (stop $23.94)\n\ud83d\udfe2 ENTRY <b>CF</b> $114.94 (stop $102.21)\n\ud83d\udfe2 ENTRY <b>CHE</b> $485.37 (stop $411.14)\n\ud83d\udfe2 ENTRY <b>CXDO</b> $7.87 (stop $6"
-  },
-  {
-    "ts_utc": "2026-07-08T06:33:49+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3301,
-    "preview": "\ud83d\udd37 <b>AIG TRB-50 digest \u2014 2026-07-08</b> <i>(paper-forward, slot 2)</i>\nENTRIES 16: WM, RSG, UPS, WCN, EHC, TTAN, CVLT, LTH, SPSC, RARE, TARS, ARQT, STRA, ICFI, IBEX +1 more\nEXITS 26 (8W/18L, \u03a3P&L -222"
-  },
-  {
     "ts_utc": "2026-07-08T06:43:47+00:00",
     "kind": "text",
     "to": 7096306994,
@@ -1598,5 +1582,21 @@
     "ok": false,
     "message_id": null,
     "preview": "\ud83d\ude80 Sprint fire 11:33 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-07-09T07:49:33+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 3475,
+    "preview": "\ud83d\ude80 Sprint fire 11:49 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-07-09T07:49:50+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 3476,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-09</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
   }
 ]
