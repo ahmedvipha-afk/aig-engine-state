@@ -1,21 +1,5 @@
 [
   {
-    "ts_utc": "2026-07-08T23:34:53+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3417,
-    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-09</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
-  },
-  {
-    "ts_utc": "2026-07-08T23:48:49+00:00",
-    "kind": "text",
-    "to": 7096306994,
-    "ok": true,
-    "message_id": 3418,
-    "preview": "\ud83d\ude80 Sprint fire 03:48 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
-  },
-  {
     "ts_utc": "2026-07-08T23:50:45+00:00",
     "kind": "text",
     "to": 7096306994,
@@ -1598,5 +1582,21 @@
     "ok": true,
     "message_id": 3579,
     "preview": "\ud83d\ude80 Sprint fire 03:59 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-07-10T00:14:27+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 3580,
+    "preview": "\ud83d\ude80 Sprint fire 04:14 UAE \u2014 1 iteration\n\n\ud83d\udccb What it does: reads CEO brain, advances the next Phase 1 objective by one step, scans paper-forward for new entries/exits, runs one staged validation batch, re"
+  },
+  {
+    "ts_utc": "2026-07-10T00:14:44+00:00",
+    "kind": "text",
+    "to": 7096306994,
+    "ok": true,
+    "message_id": 3581,
+    "preview": "\ud83d\udce1 <b>AIG Paper-Forward \u2014 2026-07-10</b>\n\n\ud83d\udfe2 ENTRY <b>FOR</b> $29.20 (stop $25.26)\n\ud83d\udfe2 ENTRY <b>HCSG</b> $22.38 (stop $19.49)\n\ud83d\udfe2 ENTRY <b>MTH</b> $74.44 (stop $59.73)\n\ud83d\udfe2 ENTRY <b>TMHC</b> $71.95 (stop $56.7"
   }
 ]
