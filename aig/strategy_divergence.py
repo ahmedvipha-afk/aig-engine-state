@@ -72,26 +72,32 @@ def signals(df: pd.DataFrame) -> pd.DataFrame:
     stop_dist = np.zeros(len(out), dtype=float)
     swing_idx = np.where(out["swing"].values)[0]
 
+    low_v = out["low"].values
+    rsi_v = out["rsi"].values
+    close_v = out["close"].values
+    ema_v = out["ema"].values
+    atr_v = out["atr"].values
+
     for i in range(DIV_LOOKBACK_BARS, len(out)):
         # collect the two most recent confirmed swing lows in the lookback window
         recent = swing_idx[(swing_idx <= i) & (swing_idx >= i - DIV_LOOKBACK_BARS)]
         if len(recent) < 2:
             continue
         i_recent, i_prior = recent[-1], recent[-2]
-        price_ll = out["low"].iat[i_recent] < out["low"].iat[i_prior]
-        rsi_hl = out["rsi"].iat[i_recent] > out["rsi"].iat[i_prior]
+        price_ll = low_v[i_recent] < low_v[i_prior]
+        rsi_hl = rsi_v[i_recent] > rsi_v[i_prior]
         if not (price_ll and rsi_hl):
             continue
         # confirmation: close > previous close
-        if out["close"].iat[i] <= out["close"].iat[i - 1]:
+        if close_v[i] <= close_v[i - 1]:
             continue
         # trend filter: close above DIV_TREND_EMA
-        if not (out["close"].iat[i] > out["ema"].iat[i]):
+        if not (close_v[i] > ema_v[i]):
             continue
         entries[i] = True
         # stop distance = entry close - (recent swing low - buffer)
-        buf = DIV_STOP_ATR_MULT * out["atr"].iat[i]
-        sd = float(out["close"].iat[i] - (out["low"].iat[i_recent] - buf))
+        buf = DIV_STOP_ATR_MULT * atr_v[i]
+        sd = float(close_v[i] - (low_v[i_recent] - buf))
         stop_dist[i] = max(sd, 0.0001)
 
     out["entry"] = entries
